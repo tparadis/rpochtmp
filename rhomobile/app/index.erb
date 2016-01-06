@@ -1,21 +1,12 @@
-     
-    <div id="page">
+<div data-role="page" data-url="<%= Rho::RhoConfig.start_path %>/">
+
     
-    <!-- 
-      <form action="http://leopoldofr.ddns.net:3000/" method="GET" data-remote="true">
-      <input type="text" value="3" name="value" />
-      <input type="submit" value="se Connecter" />
-      </form>
-    -->
+  <div data-role="content">
     
-    <h4 id="titre">Application Rennes en poche</h4>
-    <a href="choixParcours.erb">
-      <img src="/public/images/parlement.jpg" id ="image" alt="" />
-    </a>
-    <a name="choixParcours" href="choixParcours.erb">
-      <p id="parcours"> Cr&eacuteer son propre parcours </p>
-    </a>
-    <div id="results"></div>
-    </div>
-    
-    
+
+    <%= render :file => "Accueil/accueil.erb"  %>
+
+  </div>
+
+
+</div>
