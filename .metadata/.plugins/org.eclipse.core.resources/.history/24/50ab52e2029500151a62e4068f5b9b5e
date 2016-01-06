@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+      <meta charset="utf-8" />        
+  </head>
+  
+  <body> 
+     
+    <div id="page">
+    <p id="titre">Application Rennes en poche</p>
+    <p id="titre"> Page de parcours personnalis&eacutes </p>
+    
+    <ul id="menu-demo2">
+      <li><a href="#">Restauration</a>
+        <ul>
+          <li><a href="#">Fast-Food</a></li>
+          <li><a href="#">Pizz&eacuteria</a></li>
+          <li><a href="#">Cr&egraveperie</a></li>
+          <li><a href="#">Etranger</a></li>
+        </ul>
+      </li>
+      <li><a href="#">V&ecirctement</a>
+        <ul>
+          <li><a href="#">Chaussures</a></li>
+          <li><a href="#">Homme</a></li>
+          <li><a href="#">Femme</a></li>
+          <li><a href="#">Enfant</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Café - Bar</a>
+        <ul>
+          <li><a href="#">A th&egraveme</a></li>
+          <li><a href="#">Avec tabac</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Equipement</a>
+        <ul>
+          <li><a href="#">Fleuriste</a></li>
+          <li><a href="#">D&eacutecoration</a></li>
+          <li><a href="#">Meuble</a></li>
+          <li><a href="#">Electrom&eacutenager</a></li>
+        </ul>
+      </li>
+    </ul>
+    </div>
+    
+  </body>
+  
+</html>

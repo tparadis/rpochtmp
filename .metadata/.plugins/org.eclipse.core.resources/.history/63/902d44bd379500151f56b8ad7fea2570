@@ -1,0 +1,27 @@
+     
+    <div id="page">
+    <p id="titre">Application Rennes en poche</p>
+    <p id="titre"> Page de parcours personnalis&eacutes </p>
+    
+    <form id="menu" action="traitement.js">
+      <select name="restauration" id="resto">
+        <option value="choix">Restauration</option>
+        <option value="fastfood">Fast-Food</option>
+        <option value="pizeeria">Pizz&eacuteria</option>
+        <option value="creperie">Cr&egraveperie</option>
+        <option value="etranger">Etranger</option>
+      </select>
+    </form>
+    
+    <form id="menu" #="traitement.js">
+      <select name="vetement" id="resto">
+        <option value="choix">V&ecirctement</option>
+        <option value="chaussures">Chaussures</option>
+        <option value="homme">Homme</option>
+        <option value="femme">Femme</option>
+        <option value="enfant">Enfant</option>
+      </select>
+    </form>
+   
+    </div>
+    

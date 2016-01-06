@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+  
+    <meta charset="utf-8" />
+    <p>Application Rennes en poche</p>
+       
+  </head>
+  
+  <body>    
+    <div id="page">
+    <img src="/public/images/parlement.jpg" width="100" height="auto" alt="" />
+    </div>
+  </body>
+  
+</html>

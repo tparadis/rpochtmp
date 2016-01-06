@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+      <meta charset="utf-8" />        
+  </head>
+  
+  <body> 
+     
+    <div id="page">
+    <p>Application Rennes en poche</p>
+    <p> Page de parcours personnalis&eacutes </p>
+    </div>
+    
+  </body>
+  
+</html>

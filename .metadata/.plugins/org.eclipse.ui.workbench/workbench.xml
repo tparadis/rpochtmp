@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench version="2.0">
+<workbenchAdvisor/>
+<window height="860" width="800" x="0" y="0">
+<fastViewData fastViewLocation="1024"/>
+<perspectiveBar>
+<itemSize x="160"/>
+</perspectiveBar>
+<coolbarLayout>
+<coolItem id="group.file" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="193" y="22"/>
+<coolItem id="additions" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="129" y="22"/>
+<coolItem id="org.eclipse.dltk.tcl.ui.debug.consoleActionSet" itemType="typeToolBarContribution" x="53" y="22"/>
+<coolItem id="org.eclipse.egit.ui.gitaction" itemType="typeToolBarContribution" x="207" y="22"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="76" y="22"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="61" y="22"/>
+<coolItem id="group.nav" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
+<coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="group.help" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
+</coolbarLayout>
+<page focus="true" label="Workspace - RhoStudio">
+<editors>
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
+</presentation>
+</folder>
+</info>
+</editorArea>
+<editor id="rhogenwizard.editors.RubyEditor" name="index.erb" partName="index.erb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/index.erb" title="index.erb" tooltip="rhomobile/app/index.erb" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/app/index.erb"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="624" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="rpoch.css" partName="rpoch.css" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/public/css/rpoch.css" title="rpoch.css" tooltip="rhomobile/public/css/rpoch.css" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/public/css/rpoch.css"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="458" selectionTopPixel="79"/>
+</editor>
+<editor id="rhogenwizard.editors.RubyEditor" name="layout.erb" partName="layout.erb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/layout.erb" title="layout.erb" tooltip="rhomobile/app/layout.erb" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/app/layout.erb"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3378" selectionTopPixel="537"/>
+</editor>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="android.css" partName="android.css" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/public/css/android.css" title="android.css" tooltip="rhomobile/public/css/android.css" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/public/css/android.css"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6047" selectionTopPixel="3525"/>
+</editor>
+<editor id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" name="main.js" partName="main.js" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/public/customjs/main.js" title="main.js" tooltip="rhomobile/public/customjs/main.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/public/customjs/main.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="1" selectionOffset="1157" selectionTopPixel="0"/>
+</editor>
+<editor id="rhogenwizard.editors.RubyEditor" name="choixParcours.erb" partName="choixParcours.erb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/choixParcours.erb" title="choixParcours.erb" tooltip="rhomobile/app/choixParcours.erb" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/app/choixParcours.erb"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="492" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.ui.DefaultTextEditor" name="finalParcours.erb" partName="finalParcours.erb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/finalParcours.erb" title="finalParcours.erb" tooltip="rhomobile/app/finalParcours.erb" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/app/finalParcours.erb"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+</editors>
+<views>
+<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
+<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
+</view>
+<view id="org.eclipse.ui.views.ProgressView" partName="Progress"/>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
+</view>
+<view id="org.eclipse.egit.ui.RepositoriesView" partName="Git Repositories"/>
+</views>
+<perspectives activePart="org.eclipse.ui.DefaultTextEditor" activePerspective="rhogenwizard.perspectives.RhostudioPerspective">
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="rhogenwizard.perspectives.RhostudioPerspective" id="rhogenwizard.perspectives.RhostudioPerspective" label="RhoStudio"/>
+<alwaysOnActionSet id="rhostudio.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.dltk.tcl.ui.debug.consoleActionSet"/>
+<alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.mylyn.tasks.ui.navigation"/>
+<alwaysOnActionSet id="org.eclipse.rse.core.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.debugActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.profileActionSet"/>
+<alwaysOnActionSet id="org.eclipse.egit.ui.gitaction"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.folder"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.file"/>
+<new_wizard_action id="rhogenwizard.wizards.ModelWizard"/>
+<new_wizard_action id="rhogenwizard.wizards.ExtensionWizard"/>
+<new_wizard_action id="rhogenwizard.wizards.SpecWizard"/>
+<new_wizard_action id="rhogenwizard.wizards.SourceAdapterWizard"/>
+<perspective_action id="org.eclipse.dltk.ruby.ui.RubyPerspective"/>
+<perspective_action id="org.eclipse.dltk.ruby.ui.RubyBrowsingPerspective"/>
+<hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.ui.views.ProgressView"/>
+<view id="org.eclipse.egit.ui.RepositoriesView"/>
+<view id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<fastViewBars/>
+<layout>
+<mainWindow>
+<info folder="true" part="topLeft">
+<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">
+<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="750" ratioRight="250" relationship="2" relative="topLeft">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+</folder>
+</info>
+<info folder="true" part="bottomRight" ratio="0.7496136" ratioLeft="485" ratioRight="162" relationship="4" relative="topLeft">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.ui.views.ProgressView" label="Progress"/>
+<page content="org.eclipse.egit.ui.RepositoriesView" label="Git Repositories"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+</presentation>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="250" ratioRight="750" relationship="2" relative="topLeft"/>
+</mainWindow>
+</layout>
+</perspective>
+</perspectives>
+<workingSets/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/rhomobile/public/css/android.css"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/index.erb"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/rhomobile/public/css/rpoch.css"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/parcours.erb"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" path="/rhomobile/public/customjs/main.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/rhomobile/public/css/android.css"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/index.erb"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/parcours.erb"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/rhomobile/public/css/rpoch.css"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/rhomobile/public/css/rpoch.css"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/layout.erb"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" path="/rhomobile/public/customjs/main.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/parcours.erb"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/choixParcours.erb"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/rhomobile/app/finalParcours"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/rhomobile/app/finalParcours.erb"/>
+</editors>
+<item historyLabel="rpoch.css" index="2">
+<position info="not_deleted" x="458" y="0"/>
+</item>
+<item historyLabel="android.css" index="0">
+<position info="not_deleted" x="3261" y="0"/>
+</item>
+<item historyLabel="main.js" index="4">
+<position info="not_deleted" x="191" y="1"/>
+</item>
+<item historyLabel="index.erb" index="1">
+<position info="not_deleted" x="183" y="0"/>
+</item>
+<item historyLabel="parcours.erb" index="3">
+<position info="not_deleted" x="1467" y="0"/>
+</item>
+<item historyLabel="android.css" index="0">
+<position info="not_deleted" x="3261" y="0"/>
+</item>
+<item historyLabel="parcours.erb" index="3">
+<position info="not_deleted" x="1467" y="0"/>
+</item>
+<item historyLabel="android.css" index="0">
+<position info="not_deleted" x="6065" y="0"/>
+</item>
+<item historyLabel="parcours.erb" index="3">
+<position info="not_deleted" x="1555" y="0"/>
+</item>
+<item historyLabel="main.js" index="4">
+<position info="not_deleted" x="191" y="1"/>
+</item>
+<item historyLabel="android.css" index="5">
+<position info="not_deleted" x="6065" y="0"/>
+</item>
+<item historyLabel="index.erb" index="6">
+<position info="not_deleted" x="183" y="0"/>
+</item>
+<item historyLabel="android.css" index="5">
+<position info="not_deleted" x="6047" y="0"/>
+</item>
+<item historyLabel="parcours.erb" index="7">
+<position info="not_deleted" x="1555" y="0"/>
+</item>
+<item historyLabel="rpoch.css" index="8">
+<position info="not_deleted" x="458" y="0"/>
+</item>
+<item historyLabel="parcours.erb" index="7">
+<position info="not_deleted" x="1555" y="0"/>
+</item>
+<item historyLabel="index.erb" index="6">
+<position info="not_deleted" x="183" y="0"/>
+</item>
+<item historyLabel="rpoch.css" index="9">
+<position info="not_deleted" x="458" y="0"/>
+</item>
+<item historyLabel="index.erb" index="6">
+<position/>
+</item>
+<item historyLabel="layout.erb" index="10">
+<position info="not_deleted" x="3378" y="0"/>
+</item>
+<item historyLabel="index.erb" index="6">
+<position/>
+</item>
+<item historyLabel="main.js" index="11">
+<position info="not_deleted" x="1157" y="1"/>
+</item>
+<item historyLabel="index.erb" index="6">
+<position info="not_deleted" x="96" y="0"/>
+</item>
+<item historyLabel="parcours.erb" index="12">
+<position/>
+</item>
+<item historyLabel="index.erb" index="6">
+<position info="not_deleted" x="346" y="0"/>
+</item>
+<item historyLabel="choixParcours.erb" index="13">
+<position info="not_deleted" x="1837" y="0"/>
+</item>
+<item historyLabel="parcours.erb" index="12">
+<position/>
+</item>
+<item historyLabel="choixParcours.erb" index="13">
+<position info="not_deleted" x="1837" y="0"/>
+</item>
+<item historyLabel="parcours.erb" index="12">
+<position/>
+</item>
+<item historyLabel="choixParcours.erb" index="13">
+<position info="not_deleted" x="1837" y="0"/>
+</item>
+<item historyLabel="parcours.erb" index="12">
+<position/>
+</item>
+<item historyLabel="choixParcours.erb" index="13">
+<position info="not_deleted" x="1837" y="0"/>
+</item>
+<item historyLabel="parcours.erb" index="12">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="choixParcours.erb" index="13">
+<position info="not_deleted" x="1837" y="0"/>
+</item>
+<item historyLabel="finalParcours" index="14">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="finalParcours.erb" index="15">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="choixParcours.erb" index="13">
+<position/>
+</item>
+<item historyLabel="index.erb" index="6">
+<position info="not_deleted" x="276" y="0"/>
+</item>
+<item historyLabel="finalParcours.erb" index="15">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="choixParcours.erb" index="13">
+<position/>
+</item>
+<item historyLabel="index.erb" index="6">
+<position info="not_deleted" x="276" y="0"/>
+</item>
+<item historyLabel="choixParcours.erb" index="13">
+<position info="not_deleted" x="505" y="0"/>
+</item>
+<item historyLabel="index.erb" index="6">
+<position info="not_deleted" x="624" y="0"/>
+</item>
+<item historyLabel="choixParcours.erb" index="13">
+<position/>
+</item>
+<item historyLabel="index.erb" index="6">
+<position info="not_deleted" x="624" y="0"/>
+</item>
+<item historyLabel="choixParcours.erb" index="13">
+<position info="not_deleted" x="92" y="0"/>
+</item>
+<item historyLabel="index.erb" index="6">
+<position info="not_deleted" x="624" y="0"/>
+</item>
+<item historyLabel="choixParcours.erb" index="13">
+<position info="not_deleted" x="492" y="0"/>
+</item>
+<item historyLabel="index.erb" index="6">
+<position info="not_deleted" x="624" y="0"/>
+</item>
+<item active="true" historyLabel="finalParcours.erb" index="15">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+</navigationHistory>
+<input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
+</page>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+<trimLayout>
+<trimArea IMemento.internal.id="128">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
+<trimItem IMemento.internal.id="org.eclipse.mylyn.tasks.ui.trim.container"/>
+</trimArea>
+<trimArea IMemento.internal.id="1024">
+<trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
+<trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+</trimArea>
+</trimLayout>
+</window>
+<mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="finalParcours" tooltip="rhomobile/app/finalParcours">
+<persistable path="/rhomobile/app/finalParcours"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="parcours.erb" tooltip="rhomobile/app/parcours.erb">
+<persistable path="/rhomobile/app/parcours.erb"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="choixParcours.erb" tooltip="rhomobile/app/choixParcours.erb">
+<persistable path="/rhomobile/app/choixParcours.erb"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="ic_menu_more.png" tooltip="rhomobile/public/images/android/ic_menu_more.png">
+<persistable path="/rhomobile/public/images/android/ic_menu_more.png"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" name="main.js" tooltip="rhomobile/public/customjs/main.js">
+<persistable path="/rhomobile/public/customjs/main.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="android.css" tooltip="rhomobile/public/css/android.css">
+<persistable path="/rhomobile/public/css/android.css"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="layout.erb" tooltip="rhomobile/app/layout.erb">
+<persistable path="/rhomobile/app/layout.erb"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="rpoch.css" tooltip="rhomobile/public/css/rpoch.css">
+<persistable path="/rhomobile/public/css/rpoch.css"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="index.erb" tooltip="rhomobile/app/index.erb">
+<persistable path="/rhomobile/app/index.erb"/>
+</file>
+</mruList>
+</workbench>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+      <meta charset="utf-8" />        
+  </head>
+  
+  <body> 
+     
+    <div id="page">
+    <p id="titre">Application Rennes en poche</p>
+    <p id="titre"> Page de parcours personnalis&eacutes </p>
+    
+    <!-- <ul id="menu-demo2">
+      <li><a href="#">Restauration</a>
+        <ul>
+          <li>Fast-Food</li>
+          <li>Pizz&eacuteria</li>
+          <li>Cr&egraveperie</li>
+          <li>Etranger</li>
+        </ul>
+      </li>
+      <li><a href="#">V&ecirctement</a>
+        <ul>
+          <li>Chaussures</li>
+          <li>Homme</li>
+          <li>Femme</li>
+          <li>Enfant</li>
+        </ul>
+      </li>
+      <li><a href="#">Caf&eacute - Bar</a>
+        <ul>
+          <li>A th&egraveme</li>
+          <li>Avec tabac</li>
+        </ul>
+      </li>
+      <li><a href="#">Equipement</a>
+        <ul>
+          <li>Fleuriste</li>
+          <li>D&eacutecoration</li>
+          <li>Meuble</li>
+          <li>Electrom&eacutenager</li>
+        </ul>
+      </li>
+    </ul> -->
+    
+    <form id="menu">
+      <select name="restauration" id="resto">
+        <option value="choix">Restauration</option>
+        <option value="fastfood">Fast-Food</option>
+        <option value="pizeeria">Pizz&eacuteria</option>
+        <option value="creperie">Cr&egraveperie</option>
+        <option value="etranger">Etranger</option>
+      </select>
+    </form>
+    <form id="menu">
+      <select name="vetement" id="resto">
+        <option value="choix">V&ecirctement</option>
+        <option value="chaussures">Chaussures</option>
+        <option value="homme">Homme</option>
+        <option value="femme">Femme</option>
+        <option value="enfant">Enfant</option>
+      </select>
+    </form>
+   
+    </div>
+    
+  </body>
+  
+</html>
