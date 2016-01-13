@@ -52,7 +52,7 @@
 
 </tags>
 <tags langue ="en">
-<tag>bakery<tag>
+<tag>pastry<tag>
 <tag>baguette<tag>
 <tag>olive bread<tag>
 <tag>chocolate bread<tag>
@@ -228,288 +228,763 @@
 </etablissement>
 <etablissement nom = "Cinq - Design ArtShop">
 <tags langue ="fr">
-<tag><tag>
+<tag>montre<tag>
+<tag>bijoux<tag>
+<tag>désign<tag>
+<tag>collection<tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>watch<tag>
+<tag>jewelry<tag>
+<tag>design<tag>
+<tag>collection<tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>reloj<tag>
+<tag>relojería<tag>
+<tag>diseño<tag>
+<tag>colección<tag>
 </tags>
 </etablissement>
 <etablissement nom = "Copyright 35">
 <tags langue ="fr">
-<tag><tag>
+<tag>photocopie<tag>
+<tag>photocopies<tag>
+<tag>imprimante<tag>
+<tag>impression<tag>
+<tag>impression mugs<tag>
+<tag>impression t-shirts<tag>
+<tag>mug personnalisé<tag>
+<tag>t-shirt personnalisé<tag>
+<tag>internet<tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>photocopy<tag>
+<tag>photocopies<tag>
+<tag>printer<tag>
+<tag>impression<tag>
+<tag>mug impression<tag>
+<tag>t-shirt impression<tag>
+<tag>customized mug<tag>
+<tag>customized t-shirt<tag>
+<tag>internet<tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>fotocopia<tag>
+<tag>fotocopias<tag>
+<tag>impresora<tag>
+<tag>impresión<tag>
+<tag>impresión de mugs<tag>
+<tag>impresión de camisetas<tag>
+<tag>impresión<tag>
+<tag>internet<tag>
 </tags>
 </etablissement>
 <etablissement nom = "Crazy Republic">
 <tags langue ="fr">
-<tag><tag>
+<tag>Vêtements<tag>
+<tag>t-shirt<tag>
+<tag>accesoires<tag>
+<tag>chaussures<tag>
+<tag>hommes<tag>
+<tag>femmes<tag>
+<tag>adidas<tag>
+<tag>nike<tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>Vêtements<tag>
+<tag>t-shirt<tag>
+<tag>accesoires<tag>
+<tag>chaussures<tag>
+<tag>hommes<tag>
+<tag>femmes<tag>
+<tag>adidas<tag>
+<tag>nike<tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>Ropa<tag>
+<tag>Camisetas<tag>
+<tag>Polos<tag>
+<tag>accesorios<tag>
+<tag>zapatos<tag>
+<tag>tennis<tag>
+<tag>hombres<tag>
+<tag>mujeres<tag>
+<tag>adidas<tag>
+<tag>nike<tag>
 </tags>
 </etablissement>
 <etablissement nom = "La Harpe Noire">
 <tags langue ="fr">
-<tag><tag>
+<tag>Galettes<tag>
+<tag>Galette<tag>
+<tag>crêpe<tag>
+<tag>crêpes<tag>
+<tag>cidre<tag>
+<tag>bolée de cidre<tag>
+<tag>café<tag>
+<tag>15 EUR</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>Cookies</tag>
+<tag>Cookie</tag>
+<tag>Crepe</tag>
+<tag>Crepes</tag>
+<tag>Cider</tag>
+<tag>Cider bowl</tag>
+<tag>Coffee</tag>
+<tag>15 EUR</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>Galletas</tag>
+<tag>Galleta</tag>
+<tag>Crepe</tag>
+<tag>Crepes</tag>
+<tag>Crepas</tag>
+<tag>Cidra</tag>
+<tag>Tazón de cidra</tag>
+<tag>Café</tag>
+<tag>15 EUR</tag>
+<tag></tag>
 </tags>
 </etablissement>
 <etablissement nom = "Destination Chocolat">
 <tags langue ="fr">
-<tag><tag>
+<tag>Chocolat</tag>
+<tag>Chocolaterie</tag>
+<tag>Bonbon</tag>
+<tag>succete torsadés</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>Chocolate</tag>
+<tag>Chocolate store</tag>
+<tag>candy</tag>
+<tag>twisted lollipop</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>Chocolate</tag>
+<tag>Chocolatería</tag>
+<tag>Bonbón</tag>
+<tag>Colombina</tag>
+<tag>Chupeta</tag>
 </tags>
 </etablissement>
 <etablissement nom = "The Original Fish&Chips by MissDom">
 <tags langue ="fr">
-<tag><tag>
+<tag>En salle</tag>
+<tag>En terrace</tag>
+<tag>Á emporter</tag>
+<tag>restaurant</tag>
+<tag>resto</tag>
+<tag>poisson</tag>
+<tag>églefin</tag>
+<tag>cabillaud</tag>
+<tag>lieu noir</tag>
+<tag>lotte</tag>
+<tag>burger</tag>
+<tag>soupe</tag>
+<tag>frites</tag>
+<tag>purée de petits pois</tag>
+<tag>bière</tag>
+<tag>bière anglaise</tag>
+<tag>bière irlandaise</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>Restaurant</tag>
+<tag>Indoor</tag>
+<tag>Outdoor</tag>
+<tag>Takeout</tag>
+<tag>fish</tag>
+<tag>hadok</tag>
+<tag>cod</tag>
+<tag>saithe</tag>
+<tag>burbot</tag>
+<tag>hamburguer</tag>
+<tag>fries</tag>
+<tag>Mashed potatoes with green beans</tag>
+<tag>beer</tag>
+<tag>english beer</tag>
+<tag>irish beer</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>Restaurante</tag>
+<tag>comida a la mesa</tag>
+<tag>interior</tag>
+<tag>terraza</tag>
+<tag>para llevar</tag>
+<tag>pescado</tag>
+<tag>eglefino</tag>
+<tag>bacalao</tag>
+<tag>carbonero</tag>
+<tag>lota</tag>
+<tag>hamburguesa</tag>
+<tag>sopa</tag>
+<tag>papas fritas</tag>
+<tag>papas a la francesa</tag>
+<tag>puré con arvejas</tag>
+<tag>cerveza</tag>
+<tag>cerveza inglesa</tag>
+<tag>cerveza irlandesa</tag>
 </tags>
 </etablissement>
 <etablissement nom = "Francoise Chatelier Coiffure">
 <tags langue ="fr">
-<tag><tag>
+<tag>Coiffeur</tag>
+<tag>Coiffeur hommes</tag>
+<tag>Coiffeur femmes</tag>
+<tag>Coiffeur mixte</tag>
+<tag>Colorations</tag>
+<tag>Méches</tag>
+<tag>Permanentes</tag>
+<tag>Brushing</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>Hairdresser</tag>
+<tag>Hairdresser men</tag>
+<tag>Hairdresser women</tag>
+<tag>Hairdresser mixed</tag>
+<tag>Hair coloring</tag>
+<tag>Permanent</tag>
+<tag>Brushing</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>Peluquería</tag>
+<tag>Peluquería hombres</tag>
+<tag>Peluquería mujeres</tag>
+<tag>Peluquería mixta</tag>
+<tag>Coloración</tag>
+<tag>Rayitos</tag>
+<tag>Permanentes</tag>
+<tag>Cepillado</tag>
 </tags>
 </etablissement>
-<etablissement nom = "Galerie Leterreau">
+<etablissement nom = "Galerie Briec Leterreau">
 <tags langue ="fr">
-<tag><tag>
+<tag>art</tag>
+<tag>galerie d'art</tag>
+<tag>peinture</tag>
+<tag>vente d'art</tag>
+<tag>ouevre d'art</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>art</tag>
+<tag>art gallery</tag>
+<tag>painting</tag>
+<tag>art for sale</tag>
+<tag>work of art</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>arte</tag>
+<tag>galería de arte</tag>
+<tag>pintura</tag>
+<tag>venta de arte</tag>
+<tag>obra de arte</tag>
 </tags>
 </etablissement>
 <etablissement nom = "Goût & Gourmandise">
 <tags langue ="fr">
-<tag><tag>
+<tag>Restaurant</tag>
+<tag>Resto</tag>
+<tag>Galette</tag>
+<tag>Galette brettonne</tag>
+<tag>thé</tag>
+<tag>pâtisserie</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>Restaurant</tag>
+<tag>Cookie</tag>
+<tag>tea</tag>
+<tag>pastry</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>Restaurante</tag>
+<tag>Galleta</tag>
+<tag>Té</tag>
+<tag>Pastelería</tag>
 </tags>
 </etablissement>
 <etablissement nom = "Hôtel des Lices">
 <tags langue ="fr">
-<tag><tag>
+<tag>hôtel</tag>
+<tag>hôtel trois etoiles</tag>
+<tag>petit déjeuner</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>hotel</tag>
+<tag>tree star hotel</tag>
+<tag>breakfast</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>hotel</tag>
+<tag>hotel tres estrellas</tag>
+<tag>desayuno</tag>
 </tags>
 </etablissement>
 <etablissement nom = "ICR fitness club">
 <tags langue ="fr">
-<tag><tag>
+<tag>gym</tag>
+<tag>fitness</tag>
+<tag>club de fitness</tag>
+<tag>cardio-training</tag>
+<tag>réductions</tag>
+<tag>pilates</tag>
+<tag>zumba</tag>
+<tag>stretching</tag>
+<tag>abdo</tag>
+<tag>cardio</tag>
+<tag>musculation</tag>
+<tag>sauna</tag>
+<tag>cours collectifs</tag>
+<tag>coaching</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>gym</tag>
+<tag>fitness</tag>
+<tag>fitness club</tag>
+<tag>cardio training</tag>
+<tag>discounts</tag>
+<tag>pilates</tag>
+<tag>zumba</tag>
+<tag>stretching</tag>
+<tag>abdo</tag>
+<tag>cardio</tag>
+<tag>bodybuilding</tag>
+<tag>sauna</tag>
+<tag>collective classes</tag>
+<tag>coaching</tag>
+<tag>personal trainer</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>gimnasio</tag>
+<tag>acondicionamiento físico</tag>
+<tag>entrenamiento cardiovascular</tag>
+<tag>reducciones</tag>
+<tag>pilates</tag>
+<tag>zumba</tag>
+<tag>stretching</tag>
+<tag>abdominales</tag>
+<tag>cardio</tag>
+<tag>musculación</tag>
+<tag>sauna</tag>
+<tag>clases en grupo</tag>
+<tag>entrenamiento personalizado</tag>
 </tags>
 </etablissement>
 <etablissement nom = "Kusmi Tea">
 <tags langue ="fr">
-<tag><tag>
+<tag>thé</tag>
+<tag>infussion</tag>
+<tag>mélanges de thés</tag>
+<tag>magasin</tag>
+<tag>théière</tag>
+<tag>tasse de thé</tag>
+<tag>infusseur</tag>
+<tag>accesoires de thé</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>tea</tag>
+<tag>infussion</tag>
+<tag>tea mix</tag>
+<tag>store</tag>
+<tag>tea-pot</tag>
+<tag>tea cup</tag>
+<tag>infuser</tag>
+<tag>tea accesories</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>té</tag>
+<tag>aromáticas</tag>
+<tag>infusiones</tag>
+<tag>tienda</tag>
+<tag>tetera</tag>
+<tag>tasas de té</tag>
+<tag>accesorios para té</tag>
 </tags>
 </etablissement>
 <etablissement nom = "L'Aparté">
 <tags langue ="fr">
-<tag><tag>
+<tag>salon de thé</tag>
+<tag>tartes</tag>
+<tag>desserts</tag>
+<tag>chocolat à l'ancien</tag>
+<tag>chocolat aux épices</tag>
+<tag>gâteau au chocolat</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>tea salon</tag>
+<tag>cakes</tag>
+<tag>desserts</tag>
+<tag>hot chocolate</tag>
+<tag>chocolate cake</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>salón de té</tag>
+<tag>tartas</tag>
+<tag>postres</tag>
+<tag>chocolate caliente</tag>
+<tag>pastel de chocolate</tag>
+<tag>ponqué de chocolate</tag>
 </tags>
 </etablissement>
 <etablissement nom = "L'Artiste Assoiffé">
 <tags langue ="fr">
-<tag><tag>
+<tag>bar</tag>
+<tag>café bar</tag>
+<tag>pintes</tag>
+<tag>bar de nuir</tag>
+<tag>jeux de societé</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>bar</tag>
+<tag>coffe bar</tag>
+<tag>beer</tag>
+<tag>night bar</tag>
+<tag>board games</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>bar</tag>
+<tag>café bar</tag>
+<tag>cerveza</tag>
+<tag>bar de noche</tag>
+<tag>juegos de mesa</tag>
 </tags>
 </etablissement>
 <etablissement nom = "Le capitole">
 <tags langue ="fr">
-<tag><tag>
+<tag>bureau de tabac</tag>
+<tag>presse</tag>
+<tag>recharges mobiles</tag>
+<tag>boisson gazeuse</tag>
+<tag>goûter</tag>
+<tag>cigarette</tag>
+<tag>magazine</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>tobacco stand</tag>
+<tag>press</tag>
+<tag>mobile recharge</tag>
+<tag>sodas</tag>
+<tag>cigars</tag>
+<tag>magazines</tag>
+<tag>sodas</tag>
+<tag>snacks</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>estanco</tag>
+<tag>cigarrería</tag>
+<tag>recargas de celular</tag>
+<tag>gaseosas</tag>
+<tag>botanas</tag>
+<tag>bocadillos</tag>
+<tag>cigarrillos</tag>
+<tag>revistas</tag>
 </tags>
 </etablissement>
 <etablissement nom = "Le Bottier Rennais">
 <tags langue ="fr">
-<tag><tag>
+<tag>artisan cordonnier</tag>
+<tag>cordonnier</tag>
+<tag>cordonnerie</tag>
+<tag>reproduction des clés</tag>
+<tag>réparation chaussure</tag>
+<tag>lacets</tag>
+<tag>cirage</tag>
+<tag>maroquinerie</tag>
+<tag>plaques professionnels</tag>
+<tag>plaques</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>shoemaker</tag>
+<tag>shoemaker artisan</tag>
+<tag>key reproduction</tag>
+<tag>kay copy</tag>
+<tag>shoelaces</tag>
+<tag>shoe polish</tag>
+<tag>leather goods</tag>
+<tag>professional plaques</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>zapatero</tag>
+<tag>zapatero artesano</tag>
+<tag>reproducción de llaves</tag>
+<tag>copia de llaves</tag>
+<tag>cordones</tag>
+<tag>lustrado de zapatos</tag>
+<tag>marroquinería</tag>
+<tag>placas conmemorativas</tag>
 </tags>
 </etablissement>
 <etablissement nom = "Le Tire Bouchon">
 <tags langue ="fr">
-<tag><tag>
+<tag>bar á vin</tag>
+<tag>carte de vins</tag>
+<tag>bistrot</tag>
+<tag>viande</tag>
+<tag>poisson</tag>
+<tag>tartines</tag>
+<tag>terrase</tag>
+<tag>végétarien</tag>
+<tag>dessert</tag>
+<tag>tarte</tag>
+<tag></tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>wine bar</tag>
+<tag>wine list</tag>
+<tag>bistrot</tag>
+<tag>meat</tag>
+<tag>fish</tag>
+<tag>toast</tag>
+<tag>terrace</tag>
+<tag>vegetarian</tag>
+<tag>desert</tag>
+<tag>cake</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>bar de vinos</tag>
+<tag>carta de vinos</tag>
+<tag>bistró</tag>
+<tag>carne</tag>
+<tag>pescado</tag>
+<tag>tostadas</tag>
+<tag>terraza</tag>
+<tag>vegetariano</tag>
+<tag>postre</tag>
+<tag>ponqué</tag>
 </tags>
 </etablissement>
 <etablissement nom = "Librairie Planète Io">
 <tags langue ="fr">
-<tag><tag>
+<tag>librairie</tag>
+<tag>conteuse</tag>
+<tag>rencontre d'auteur</tag>
+<tag>bande dessiné</tag>
+<tag>bande dessiné historique</tag>
+<tag>bande dessiné pour enfants</tag>
+<tag>biographie</tag>
+<tag>dictionnaire</tag>
+<tag>livre d'architecture</tag>
+<tag>livre d'histoire</tag>
+<tag>livre d'ocassion</tag>
+<tag>contes</tag>
+<tag>livre de cuisine</tag>
+<tag>livre de droit</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>library</tag>
+<tag>storyteller</tag>
+<tag>comic</tag>
+<tag>children comics</tag>
+<tag>historic comics</tag>
+<tag>biography</tag>
+<tag>dictionary</tag>
+<tag>architecture books</tag>
+<tag>history books</tag>
+<tag>second hand books</tag>
+<tag>tales</tag>
+<tag>kitchen book</tag>
+<tag>law book</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>librería</tag>
+<tag>cuentero</tag>
+<tag>encuentros con autores</tag>
+<tag>comic</tag>
+<tag>comic histórico</tag>
+<tag>comic para niños</tag>
+<tag>biografía</tag>
+<tag>diccionario</tag>
+<tag>libros de arquitectura</tag>
+<tag>libros de historia</tag>
+<tag>libros de segunda mano</tag>
+<tag>cuentos</tag>
+<tag>libros de cocina</tag>
+<tag>libros de derecho</tag>
 </tags>
 </etablissement>
 <etablissement nom = "Orin Gilles Luthier">
 <tags langue ="fr">
-<tag><tag>
+<tag>Violon</tag>
+<tag>Violoncelles</tag>
+<tag>Violon vente</tag>
+<tag>Violoncelles vente</tag>
+<tag>Violon fabrication</tag>
+<tag>Violoncelle fabrication</tag>
+<tag>Entretien violon</tag>
+<tag>Reglage violon</tag>
+<tag>Remechage d'archet</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>Violin</tag>
+<tag>Cello</tag>
+<tag>Violin sale</tag>
+<tag>Cello sale</tag>
+<tag>Violin fabrication</tag>
+<tag>Cello fabrication</tag>
+<tag>Violin reparation</tag>
+<tag>Violin setting</tag>
+<tag>Arc recovery</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>Violín</tag>
+<tag>Violonchelo</tag>
+<tag>Violín venta</tag>
+<tag>Violonchelo venta</tag>
+<tag>Violín fabricación</tag>
+<tag>Violonchelo Fabricación </tag>
+<tag>Reparación de violín</tag>
+<tag>Ajuste de violín</tag>
+<tag>Encerdado de arco</tag>
 </tags>
 </etablissement>
 <etablissement nom = "OCD">
 <tags langue ="fr">
-<tag><tag>
+<tag>cd</tag>
+<tag>vyniles</tag>
+<tag>blu-ray</tag>
+<tag>jeux-vidéo</tag>
+<tag>achat vente échange</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>cd</tag>
+<tag>vynils</tag>
+<tag>blu-ray</tag>
+<tag>video games</tag>
+<tag>buy sell exchange</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>cd</tag>
+<tag>discos de vinilo</tag>
+<tag>blu-ray</tag>
+<tag>videojuegos</tag>
+<tag>juegos de video</tag>
+<tag>compra venta intercambio</tag>
 </tags>
 </etablissement>
 <etablissement nom = "La Lupa">
 <tags langue ="fr">
-<tag><tag>
+<tag>pizzeria</tag>
+<tag>pizza</tag>
+<tag>pates</tag>
+<tag>rosé</tag>
+<tag>economique</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>pizza</tag>
+<tag>pasta</tag>
+<tag>pink wine</tag>
+<tag>low budget</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>pizzería</tag>
+<tag>pizza</tag>
+<tag>pasta</tag>
+<tag>vino rosado</tag>
+<tag>económico</tag>
 </tags>
 </etablissement>
 <etablissement nom = "Pressing des Lices">
 <tags langue ="fr">
-<tag><tag>
+<tag>laverie</tag>
+<tag>repassage</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>laundry store</tag>
+<tag>ironing</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>lavandería</tag>
+<tag>planchado</tag>
 </tags>
 </etablissement>
 <etablissement nom = "Quincaillerie Rennaise">
 <tags langue ="fr">
-<tag><tag>
+<tag>quincallerie</tag>
+<tag>vente outils</tag>
+<tag>location d'outils</tag>
+<tag>plumeaux à l'ancienne</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>hardware store</tag>
+<tag>tools</tag>
+<tag>tool hire</tag>
+<tag>clasic dusters</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>ferretería</tag>
+<tag>herramientas</tag>
+<tag>alquiler de herramientas</tag>
+<tag>plumero clásico</tag>
 </tags>
 </etablissement>
 <etablissement nom = "Le Khalifa">
 <tags langue ="fr">
-<tag><tag>
+<tag>restaurant</tag>
+<tag>resto</tag>
+<tag>couscous</tag>
+<tag>patisserie oriental</tag>
+<tag>thé</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>restaurant</tag>
+<tag>couscous</tag>
+<tag>eastern pastry</tag>
+<tag>tea</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>restaurante</tag>
+<tag>cuscús</tag>
+<tag>pastelería oriental</tag>
+<tag>té</tag>
 </tags>
 </etablissement>
 <etablissement nom = "Racine Exotique">
 <tags langue ="fr">
-<tag><tag>
+<tag>Superette</tag>
+<tag>Alimentation bébé</tag>
+<tag>Produits halal</tag>
+<tag>Produits orientaux</tag>
+<tag>Produits de beauté</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>Minimarket</tag>
+<tag>baby food</tag>
+<tag>halal products</tag>
+<tag>eastern products</tag>
+<tag>beauty products</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>Minimercado</tag>
+<tag>comida pra bebe</tag>
+<tag>productos halal</tag>
+<tag>productos orientales</tag>
+<tag>productos de belleza</tag>
 </tags>
 </etablissement>
 <etablissement nom = "La Taverne Grecque">
 <tags langue ="fr">
-<tag><tag>
+<tag>Restaurant</tag>
+<tag>Restaurant Grecque</tag>
+<tag>Viande</tag>
+<tag>Moussaka</tag>
+<tag>non fumeur</tag>
+<tag>grand budget</tag>
 </tags>
 <tags langue ="en">
-<tag><tag>
+<tag>Restaurant</tag>
+<tag>Greek restaurant</tag>
+<tag>meat</tag>
+<tag>moussaka</tag>
+<tag>non smoking</tag>
+<tag>big budget</tag>
 </tags>
 <tags langue ="es">
-<tag><tag>
+<tag>Restaurante</tag>
+<tag>Restaurante griego</tag>
+<tag>carne</tag>
+<tag>moussaka</tag>
+<tag>no fumadores</tag>
+<tag>gran presupuesto</tag>
 </tags>
 </etablissement>
 </parcours>
