@@ -1,16 +1,23 @@
 module Interface
 
-	def Interface.getRandomMagasin
+	#Permet d'obtenir un magasin aleatoire
+	def Interface.getRandomCommerce
 
-		y = Magasin.all().size()
-		randy = rand(1..y)
-		return Magasin.find(randy)
+		offset = rand(Commerce.count)
+		Commerce.offset(offset).select("id,location_type,vp_ne_lat,vp_ne_lng,vp_sw_lat,vp_sw_lng").first
 
 	end
 
-	def Interface.getAllMagasin
+	#retourne un magasin complet
+	def Interface.getSpecificCommerce
 
-		Magasin.all()
+		Commerce.first
+
+	end
+
+	def Interface.getAllCommerce
+
+		Commerce.all()
 
 	end
 

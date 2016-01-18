@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :magasins
-  get 'magasin/magasins'
+  # resources :magasins
+  # get 'magasin/magasins'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
