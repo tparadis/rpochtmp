@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+
+    <div id="page">
+      <%= render :partial => "/partials/page_head" %>
+      
+      <a href="map.erb">
+        <img src="/public/images/parlement.jpg" id="imageEtu" alt="" />
+      </a>
+      <a href="<%= url_for :controller => :Map, :action => :map %>">
+        <p id="parcoursEtu"> Parcours Etudiant </p>
+      </a>
+
+      <a href="map.erb">
+        <img src="/public/images/parlement.jpg" id="imageArty" alt="" />
+      </a>
+      <a href="<%= url_for :controller => :Map, :action => :map %>">
+        <p id="parcoursArty"> Parcours Arty </p>
+      </a>
+      
+      <a href="map.erb">
+        <img src="/public/images/parlement.jpg" id="imageGou" alt="" />
+      </a>
+      <a href="<%= url_for :controller => :Map, :action => :map %>">
+        <p id="parcoursGou"> Parcours Gourmand </p>
+      </a>
+      
+      <a href="map.erb">
+        <img src="/public/images/parlement.jpg" id="imageFam" alt="" />
+      </a>
+      <a href="<%= url_for :controller => :Map, :action => :map %>">
+        <p id="parcoursFam"> Parcours en famille </p>
+      </a>
+      
+    </div>
+
+  </body>
+</html>

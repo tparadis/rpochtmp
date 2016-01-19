@@ -1,0 +1,44 @@
+<div data-role="page" data-add-back-btn="false">
+
+  <div data-role="header" data-position="inline">
+    <h1><%= @personalisee.language %></h1>
+    <a href="<%= url_for :action => :index %>" class="ui-btn-left" data-icon="arrow-l" data-direction="reverse">
+      Back
+    </a>
+    <a href="<%= url_for :action => :edit, :id => @personalisee.object %>" class="ui-btn-right" data-icon="star">
+      Edit
+    </a>
+  </div>
+
+  <div data-role="content">
+    <ul data-role="listview">
+      
+          <li>
+            <div class="itemLabel">Language</div>
+            <div class="itemValue"><%= @personalisee.language %></div>
+          </li>
+      
+          <li>
+            <div class="itemLabel">Position</div>
+            <div class="itemValue"><%= @personalisee.position %></div>
+          </li>
+      
+          <li>
+            <div class="itemLabel">Tag1</div>
+            <div class="itemValue"><%= @personalisee.tag1 %></div>
+          </li>
+      
+          <li>
+            <div class="itemLabel">Tag2</div>
+            <div class="itemValue"><%= @personalisee.tag2 %></div>
+          </li>
+      
+          <li>
+            <div class="itemLabel">Tag3</div>
+            <div class="itemValue"><%= @personalisee.tag3 %></div>
+          </li>
+      
+    </ul>
+  </div>
+
+</div>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+
+    <div id="page">
+      <%= render :partial => "/partials/page_head" %>
+
+      <h2 id="titre">Application Rennes en poche</h2>
+      
+      <a href="finalParcours.erb">
+        <img src="/public/images/parlement.jpg" id="image" alt="" />
+      </a>
+      
+      <a href="<%= url_for :controller => :FinalParcours, :action => :final_parcours %>">
+        <p id="parcours"> Cr&eacuteer son propre parcours </p>
+      </a>
+      
+      <a href="parcoursPredef.erb">
+        <img src="/public/images/parlement.jpg" id="imagePredef" alt="" />
+      </a>
+      <a href="<%= url_for :controller => :ParcoursPredef, :action => :parcours_predef %>">
+      <p id="parcourspredef"> Parcours Th&eacutematique </p>
+      </a>
+
+    </div>
+
+  </body>
+</html>

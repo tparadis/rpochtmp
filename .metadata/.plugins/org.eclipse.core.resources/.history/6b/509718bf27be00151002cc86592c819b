@@ -1,0 +1,10 @@
+<div data-role="footer" data-position="fixed" id="aaa">
+  <div data-role="navbar" data-position="fixed">
+    <ul>
+      <li><a data-icon="back"> Retour </a></li>
+      <li><a data-icon="home" href="<%= url_for :controller => :Accueil, :action => :accueil %>">Accueil</a></li>
+      <li><a data-icon="star">Mon Profil</a></li>
+      <li><a data-icon="forward">Suivant</a></li>
+    </ul>
+  </div>
+</div>

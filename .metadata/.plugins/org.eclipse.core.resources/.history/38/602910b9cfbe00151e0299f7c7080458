@@ -1,0 +1,46 @@
+<div data-role="page">
+
+  <div data-role="header" data-position="inline">
+    <h1>Edit <%= @personalisee.language %></h1>
+    <a href="<%= url_for :action => :show, :id => @personalisee.object %>" class="ui-btn-left" data-icon="back" data-direction="reverse">
+      Cancel
+    </a>
+    <a href="<%= url_for :action => :delete, :id => @personalisee.object %>" class="ui-btn-right" data-icon="delete" data-direction="reverse">
+      Delete
+    </a>
+  </div>
+
+  <div data-role="content">
+    <form method="POST" action="<%= url_for :action => :update %>">
+      <input type="hidden" name="id" value="<%= @personalisee.object %>"/>
+      
+          <div data-role="fieldcontain">
+            <label for="personalisee[language]" class="fieldLabel">Language</label>
+            <input type="text" id="personalisee[language]" name="personalisee[language]" value="<%= @personalisee.language %>" <%= placeholder( "Language" ) %> />
+          </div>
+      
+          <div data-role="fieldcontain">
+            <label for="personalisee[position]" class="fieldLabel">Position</label>
+            <input type="text" id="personalisee[position]" name="personalisee[position]" value="<%= @personalisee.position %>" <%= placeholder( "Position" ) %> />
+          </div>
+      
+          <div data-role="fieldcontain">
+            <label for="personalisee[tag1]" class="fieldLabel">Tag1</label>
+            <input type="text" id="personalisee[tag1]" name="personalisee[tag1]" value="<%= @personalisee.tag1 %>" <%= placeholder( "Tag1" ) %> />
+          </div>
+      
+          <div data-role="fieldcontain">
+            <label for="personalisee[tag2]" class="fieldLabel">Tag2</label>
+            <input type="text" id="personalisee[tag2]" name="personalisee[tag2]" value="<%= @personalisee.tag2 %>" <%= placeholder( "Tag2" ) %> />
+          </div>
+      
+          <div data-role="fieldcontain">
+            <label for="personalisee[tag3]" class="fieldLabel">Tag3</label>
+            <input type="text" id="personalisee[tag3]" name="personalisee[tag3]" value="<%= @personalisee.tag3 %>" <%= placeholder( "Tag3" ) %> />
+          </div>
+      
+      <input type="submit" value="Update"/>
+    </form>
+  </div>
+
+</div>

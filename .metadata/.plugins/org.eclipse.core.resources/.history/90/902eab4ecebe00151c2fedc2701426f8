@@ -1,0 +1,36 @@
+
+<div data-role="page">
+<%= render :partial => "/partials/page_head" %>
+<div data-role="footer" data-position="fixed">
+  <div data-role="navbar" data-position="fixed">
+  <ul>
+  <li><a data-icon="back" data-role="button"  href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>" class="footer"> Magasins</a></li>
+  <li><a data-icon="home" data-role="button" href="<%= url_for :controller => :Accueil, :action => :accueil %>" class="footer">Accueil</a></li>
+  <li><a data-icon="star" class="footer">Mon Profil</a></li>
+<li><a data-icon="forward" class="ui-disabled" class="footer">&nbsp</a></li>
+  </ul>
+  </div>
+</div>
+<div
+<h1>Le Bistrot du quai</h1>
+  <img src=/app/coffeshops_330_220.png height=220 align="middle"/>
+  <p>This is the description of the coffe shop. This field may
+  contain important amount of text. So it is important that this
+  field is as long as possible to allow important information to be
+  shown correctly.</p> 
+  <p>Address: This is the address of the local.<br/>
+     Telephone:11-11-11-11-11<br/>
+     email: fakeemail@fake.com</p>
+
+        
+
+
+</div>
+
+
+   
+
+
+     
+    
+

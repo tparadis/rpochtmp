@@ -56,12 +56,4 @@ class FinalParcoursController < Rho::RhoController
     redirect :action => :index  
   end
   
-  def listemagasins
-    @magasin1 = @params['magasin1']
-    @magasin2 = @params['magasin2']
-    @magasin3 = @params['magasin3']
-    @magasin4 = @params['magasin4']
-    @magasin5 = @params['magasin5']
-    render :action => :final_parcours
-  end
 end

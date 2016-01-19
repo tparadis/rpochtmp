@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;rhomobile/app/Categories&apos;" deleteContents="false" description="Delete resource &apos;rhomobile/app/Categories&apos;" element1="/rhomobile/app/Categories" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1453222884009"/>
+</session>
