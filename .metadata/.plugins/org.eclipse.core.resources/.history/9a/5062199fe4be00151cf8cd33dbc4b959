@@ -14,25 +14,23 @@
       <h2 id="titre">Application Rennes en poche</h2>
 
         <ul id="menu">
-        
           <li>
             <a href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>">
-              <img src="/public/images/parlement.jpg" alt="" />
-            </a>      
+              <img src="/public/images/parlement.jpg" id="image" alt="" />
+            </a>
+      
             <a href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>">
-              <span class="lien">Cr&eacuteer son propre parcours</span>
+              Cr&eacuteer son propre parcours
             </a>
           </li>
-          
           <li>
             <a href="<%= url_for :controller => :ParcoursPredef, :action => :parcours_predef %>">
-              <img src="/public/images/parlement.jpg" alt="" />
+              <img src="/public/images/parlement.jpg" id="imagePredef" alt="" />
             </a>
             <a href="<%= url_for :controller => :ParcoursPredef, :action => :parcours_predef %>">
-              <span class="lien">Parcours Th&eacutematique</span>
+              Parcours Th&eacutematique
             </a>
-          </li>          
-         
+          </li>
         </ul>
 
     </div>

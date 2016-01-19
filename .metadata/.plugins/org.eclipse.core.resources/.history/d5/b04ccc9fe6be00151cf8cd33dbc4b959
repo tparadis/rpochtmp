@@ -15,34 +15,34 @@
       
         <li>               
           <a href="<%= url_for :controller => :Map, :action => :map %>">
-            <img src="/public/images/parlement.jpg" alt="" />
+            <img src="/public/images/parlement.jpg" id="imageEtu" alt="" />
           </a>
           <a href="<%= url_for :controller => :Map, :action => :map %>">
             <span class="lien">Parcours Etudiant</span>
           </a>
         </li>
-      
+
         <li>
           <a href="<%= url_for :controller => :Map, :action => :map %>">
-            <img src="/public/images/parlement.jpg" alt="" />
+            <img src="/public/images/parlement.jpg" id="imageArty" alt="" />
           </a>
           <a href="<%= url_for :controller => :Map, :action => :map %>">
             <span class="lien">Parcours Arty</span>
           </a>
         </li>
-      
+
         <li>          
           <a href="<%= url_for :controller => :Map, :action => :map %>">
-            <img src="/public/images/parlement.jpg" alt="" />
+            <img src="/public/images/parlement.jpg" id="imageGou" alt="" />
           </a>
           <a href="<%= url_for :controller => :Map, :action => :map %>">
             <span class="lien">Parcours Gourmand</span>
           </a>
         </li>
-      
+
         <li>      
           <a href="<%= url_for :controller => :Map, :action => :map %>">
-            <img src="/public/images/parlement.jpg" alt="" />
+            <img src="/public/images/parlement.jpg" id="imageFam" alt="" />
           </a>
           <a href="<%= url_for :controller => :Map, :action => :map %>">
             <span class="lien">Parcours en famille</span>

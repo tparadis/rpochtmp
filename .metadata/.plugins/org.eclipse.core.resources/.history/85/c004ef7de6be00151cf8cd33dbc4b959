@@ -17,7 +17,7 @@
         
           <li>
             <a href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>">
-              <img src="/public/images/parlement.jpg" alt="" />
+              <img src="/public/images/parlement.jpg" id="image" alt="" />
             </a>      
             <a href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>">
               <span class="lien">Cr&eacuteer son propre parcours</span>
@@ -26,13 +26,13 @@
           
           <li>
             <a href="<%= url_for :controller => :ParcoursPredef, :action => :parcours_predef %>">
-              <img src="/public/images/parlement.jpg" alt="" />
+              <img src="/public/images/parlement.jpg" id="imagePredef" alt="" />
             </a>
             <a href="<%= url_for :controller => :ParcoursPredef, :action => :parcours_predef %>">
               <span class="lien">Parcours Th&eacutematique</span>
             </a>
-          </li>          
-         
+          </li>
+          
         </ul>
 
     </div>
