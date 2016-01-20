@@ -20,8 +20,19 @@ class WelcomeController < ApplicationController
 			render json: {:size => @y.size(), :commerces => @y}
 		end
 		if params[:req] == "spec"
-			render json: { :commerce => Interface.getSpecificCommerce()}
+			render json: { :commerce => Interface.getSpecificCommerce}
 		end
+
+		if params[:req] == "rand"
+			render json: { :commerce => Interface.getRandomCommerce}
+		end
+		
+		if params[:req] == "predef"
+			@y = Interface.getParcoursPredefinis
+			render json: { :parcourspredefs => @y }
+		end
+
+
 	end
 
   end

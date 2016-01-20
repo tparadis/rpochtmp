@@ -11,14 +11,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160117082858) do
+ActiveRecord::Schema.define(version: 20160119193733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "commerces", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "commerces", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.integer  "line"
+    t.text     "siret"
+    t.text     "enseigne"
+    t.text     "rasoc"
+    t.date     "date_deb_act"
+    t.date     "date_rad"
+    t.text     "code_ape"
+    t.text     "label_ape"
+    t.text     "zone_ape"
+    t.text     "label_zone_ape"
+    t.text     "street_num"
+    t.text     "street_name"
+    t.text     "sort_street_name"
+    t.text     "city_code"
+    t.text     "city_label"
+    t.text     "epci2014"
+    t.text     "phone_num"
+    t.text     "fax_num"
+    t.text     "email"
+    t.text     "street_number"
+    t.text     "route"
+    t.text     "city"
+    t.text     "dptmt"
+    t.text     "region"
+    t.text     "country"
+    t.text     "postal_code"
+    t.float    "location_lat"
+    t.float    "location_lng"
+    t.text     "location_type"
+    t.text     "google_place_id"
+    t.float    "vp_ne_lat"
+    t.float    "vp_ne_lng"
+    t.float    "vp_sw_lat"
+    t.float    "vp_sw_lng"
+    t.datetime "db_add_date",      default: "now()",       null: false
+    t.text     "image",            default: "noimage.jpg"
+  end
+
+  create_table "parcours_predefinis", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "image"
+    t.uuid     "commerces",                array: true
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end
