@@ -10,7 +10,7 @@
     <div id="page">
       <%= render :partial => "/partials/page_head" %>
 
-      <div class="navmenu" data-role="collapsible-set" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+      <div class="navmenu" data-role="collapsible-set" data-icon="gear">
 
         <div data-role="collapsible" class="categorie">
 
@@ -305,6 +305,19 @@
       <div data-role="footer" data-position="fixed">
         <div data-role="navbar" data-position="fixed">
           <ul>
+            <li>
+              <a data-icon="back" data-role="button"
+                href="<%= url_for :controller => :Categories, :action => :categories %>"
+                class="footer"> Categories</a>
+            </li>
+            <li>
+              <a data-icon="home" data-role="button"
+                href="<%= url_for :controller => :Accueil, :action => :accueil %>"
+                class="footer">Accueil</a>
+            </li>
+            <li>
+              <a data-icon="star" href="#" class="footer">Mon Profil</a>
+            </li>
             <li>
               <a data-icon="forward"
                 href="<%= url_for :controller => :FinalParcours, :action => :final_parcours %>"

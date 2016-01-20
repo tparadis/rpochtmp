@@ -26,7 +26,7 @@
           
           <li>
             <a href="<%= url_for :controller => :ParcoursPredef, :action => :parcours_predef %>">
-              <img src="/public/images/opera.jpg" alt="" />
+              <img src="/public/images/parlement.jpg" alt="" />
             </a>
             <a href="<%= url_for :controller => :ParcoursPredef, :action => :parcours_predef %>">
               <span class="lien">Parcours Th&eacutematique</span>

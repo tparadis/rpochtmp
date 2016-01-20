@@ -41,7 +41,7 @@
           <ul>
             <li>
               <a data-icon="forward"
-                href="<%= url_for :controller => :Personalisee %>" class="footer">Parcours!</a>
+                href="<%= url_for :controller => :Personalisee %>">Parcours!</a>
             </li>
           </ul>
         </div>

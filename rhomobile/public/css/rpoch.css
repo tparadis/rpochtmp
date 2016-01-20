@@ -50,12 +50,13 @@ h2 {
 }
 
 .ui-collapsible-heading-toggle { /*mise en forme bouton deroulant*/
-	color: black;
+	color: rgb(68,52,52);
 	text-shadow:none;
 	background: rgb(255,165,57);
 	margin: 20px;
 	font-family: 'Comic sans ms', Arial, sans-serif;
 	border: none;
+	font-weight: normal;
 }
 
 .ui-collapsible-content .ui-listview{ /*ensemble des sous categories*/
@@ -104,10 +105,13 @@ h2 {
 
 #menu img{
 	width: 100px;
+	height: 60px;
 }
 
 .lien {
 	position: relative;
 	top: -20px;
 	color:rgb(68,52,52);
+	text-shadow: none;
+	font-family: 'Comic sans ms', Arial, sans-serif;
 }

@@ -10,7 +10,7 @@
     <div id="page">
       <%= render :partial => "/partials/page_head" %>
 
-      <div class="navmenu" data-role="collapsible-set" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+      <div class="navmenu" data-role="collapsible-set" data-collapsed-icon="arrow-r">
 
         <div data-role="collapsible" class="categorie">
 

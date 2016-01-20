@@ -15,7 +15,7 @@
       
         <li>               
           <a href="<%= url_for :controller => :Map, :action => :map %>">
-            <img src="/public/images/etudiant.jpg" alt="" />
+            <img src="/public/images/parlement.jpg" alt="" />
           </a>
           <a href="<%= url_for :controller => :Map, :action => :map %>">
             <span class="lien">Parcours Etudiant</span>
@@ -24,7 +24,7 @@
       
         <li>
           <a href="<%= url_for :controller => :Map, :action => :map %>">
-            <img src="/public/images/artiste.png" alt="" />
+            <img src="/public/images/parlement.jpg" alt="" />
           </a>
           <a href="<%= url_for :controller => :Map, :action => :map %>">
             <span class="lien">Parcours Arty</span>
@@ -42,7 +42,7 @@
       
         <li>      
           <a href="<%= url_for :controller => :Map, :action => :map %>">
-            <img src="/public/images/famille.jpg" alt="" />
+            <img src="/public/images/parlement.jpg" alt="" />
           </a>
           <a href="<%= url_for :controller => :Map, :action => :map %>">
             <span class="lien">Parcours en famille</span>
