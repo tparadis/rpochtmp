@@ -8,9 +8,6 @@
 
   <body> 
 
-    <script type="text/javascript" src="/DataTables/media/js/jquery.dataTables.min.js"></script>
-    <script src="/public/customjs/choixParcours.js"></script>
-    
     <div id="page">
     
       <%= render :partial => "/partials/page_head" %>
@@ -35,17 +32,15 @@
         </button>
       </a>
       <div id="results" />
+        <a href="<%= url_for :controller => :Personalisee %>">
+          <button>
+            Parcours!
+          </button>  
+        </a>          
 
-      <div data-role="footer" data-position="fixed">
-        <div data-role="navbar" data-position="fixed">
-          <ul>
-            <li>
-              <a data-icon="forward"
-                href="<%= url_for :controller => :Personalisee %>" class="footer">Parcours!</a>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
+    
+          <script type="text/javascript" src="/DataTables/media/js/jquery.dataTables.min.js"></script>
+          <script src="/public/customjs/choixParcours.js"></script>
   </body>
 </html>
