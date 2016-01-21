@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  get 'commerces/destroy'
+
+  get 'sscategorie/destroy'
+
+  get 'categorie/destroy'
+
+  get 'tag/destroy'
+
+  resources :tags
+  resources :sscategories
+  resources :categories
   resources :parcours_predefinis
   get 'parcours_predefini/index'
 
