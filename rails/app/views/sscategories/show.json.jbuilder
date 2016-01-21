@@ -1,1 +1,1 @@
-json.extract! @sscategory, :id, :nom, :created_at, :updated_at
+json.extract! @sscategory, :id, :nom, :catparent, :created_at, :updated_at

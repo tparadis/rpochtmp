@@ -4,7 +4,7 @@ class SscategoriesController < ApplicationController
   # GET /sscategories
   # GET /sscategories.json
   def index
-    @sscategories = Sscategorie.all
+    @sscategories = Sscategory.order('catparent')
   end
 
   # GET /sscategories/1
@@ -14,7 +14,7 @@ class SscategoriesController < ApplicationController
 
   # GET /sscategories/new
   def new
-    @sscategory = Sscategorie.new
+    @sscategory = Sscategory.new
   end
 
   # GET /sscategories/1/edit
@@ -24,11 +24,11 @@ class SscategoriesController < ApplicationController
   # POST /sscategories
   # POST /sscategories.json
   def create
-    @sscategory = Sscategorie.new(sscategory_params)
+    @sscategory = Sscategory.new(sscategory_params)
 
     respond_to do |format|
       if @sscategory.save
-        format.html { redirect_to @sscategory, notice: 'Sscategorie was successfully created.' }
+        format.html { redirect_to @sscategory, notice: 'Sscategory was successfully created.' }
         format.json { render :show, status: :created, location: @sscategory }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SscategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @sscategory.update(sscategory_params)
-        format.html { redirect_to @sscategory, notice: 'Sscategorie was successfully updated.' }
+        format.html { redirect_to @sscategory, notice: 'Sscategory was successfully updated.' }
         format.json { render :show, status: :ok, location: @sscategory }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class SscategoriesController < ApplicationController
   def destroy
     @sscategory.destroy
     respond_to do |format|
-      format.html { redirect_to sscategories_url, notice: 'Sscategorie was successfully destroyed.' }
+      format.html { redirect_to sscategories_url, notice: 'Sscategory was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,11 +64,11 @@ class SscategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sscategory
-      @sscategory = Sscategorie.find(params[:id])
+      @sscategory = Sscategory.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sscategory_params
-      params.require(:sscategorie).permit(:nom)
+      params.require(:sscategory).permit(:nom, :catparent)
     end
 end

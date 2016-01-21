@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  resources :sscategories
+  resources :categories
+  get 'categories/index'
+
+  get 'categories/new'
+
+  get 'categories/edit'
+
+  get 'categories/show'
+
+  get 'categories/destroy'
+
+  resources :categories_controllers
+  resources :categories
   get 'commerces/destroy'
 
   get 'sscategorie/destroy'

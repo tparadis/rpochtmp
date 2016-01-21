@@ -17,8 +17,8 @@ class SscategoriesControllerTest < ActionController::TestCase
   end
 
   test "should create sscategory" do
-    assert_difference('Sscategorie.count') do
-      post :create, sscategory: { nom: @sscategory.nom }
+    assert_difference('Sscategory.count') do
+      post :create, sscategory: { catparent: @sscategory.catparent, nom: @sscategory.nom }
     end
 
     assert_redirected_to sscategory_path(assigns(:sscategory))
@@ -35,12 +35,12 @@ class SscategoriesControllerTest < ActionController::TestCase
   end
 
   test "should update sscategory" do
-    patch :update, id: @sscategory, sscategory: { nom: @sscategory.nom }
+    patch :update, id: @sscategory, sscategory: { catparent: @sscategory.catparent, nom: @sscategory.nom }
     assert_redirected_to sscategory_path(assigns(:sscategory))
   end
 
   test "should destroy sscategory" do
-    assert_difference('Sscategorie.count', -1) do
+    assert_difference('Sscategory.count', -1) do
       delete :destroy, id: @sscategory
     end
 

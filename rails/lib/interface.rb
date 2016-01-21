@@ -1,5 +1,19 @@
 module Interface
 
+	#Fonctions sur la récupération des categories
+	def Interface.getCategories
+		Categorie.order('nom').select('id,nom')
+	end
+
+	def Interface.getSSCategories
+		Sscategorie.order('nom').select('id,nom,catparent')
+	end
+
+	def Interface.getTags
+		Tag.order('name').select('id,name')
+	end
+
+
 	#Permet d'obtenir un magasin aleatoire
 	def Interface.getRandomCommerce
 

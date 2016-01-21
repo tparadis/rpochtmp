@@ -18,7 +18,7 @@
 	<td><%= commerce.enseigne %></td>
         <td><%= link_to 'Show', commerce %></td>
         <td><%= link_to 'Edit', edit_commerce_path(commerce) %></td>
-        <td><%= link_to 'Destroy', commerce, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Destroy', commerce, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

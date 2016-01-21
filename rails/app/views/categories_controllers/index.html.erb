@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Categories Controllers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories_controllers.each do |categories_controller| %>
+      <tr>
+        <td><%= link_to 'Show', categories_controller %></td>
+        <td><%= link_to 'Edit', edit_categories_controller_path(categories_controller) %></td>
+        <td><%= link_to 'Destroy', categories_controller, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Categories controller', new_categories_controller_path %>

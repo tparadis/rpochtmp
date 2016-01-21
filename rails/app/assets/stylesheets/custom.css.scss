@@ -1,0 +1,14 @@
+td .button_to input[type=submit]{
+	background-color:rgba(0,0,0,0);
+	border:none;
+	cursor:pointer;
+	color:red;
+	outline:none;
+	margin:0;
+	padding:0;
+	text-decoration:underline;
+}
+td .button_to input[type=submit]:hover{
+	background-color:black;
+	color:white;
+}
