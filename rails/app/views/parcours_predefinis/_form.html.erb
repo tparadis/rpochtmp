@@ -27,7 +27,11 @@
     <%= f.label :commerces %><br>
     <%    
 	i = 1
-	nb = @parcours_predefini.commerces.size
+	if(@parcours_predefini.commerces != nil)
+		nb = @parcours_predefini.commerces.size()
+	else
+		nb = 0
+	end
 	
 	@val = '{'
 	if nb > 0

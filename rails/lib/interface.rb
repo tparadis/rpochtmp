@@ -10,7 +10,7 @@ module Interface
 	end
 
 	def Interface.getTags
-		Tag.order('name').select('id,name')
+		Tag.order('nom').select('id,nom')
 	end
 
 
@@ -22,9 +22,30 @@ module Interface
 
 	end
 
+	#Obtenir les coordonnees uniquement pour un ID de commerce
+	def Interface.getCommerceCoordByID(id)
+
+		Commerce.where(:id => id).select('id,enseigne,location_lat,location_lng,location_type,vp_ne_lat,vp_ne_lng,vp_sw_lat,vp_sw_lng').first
+
+	end
+
+	#Relatif aux commerces
 	def Interface.getParcoursPredefinis
 
 		ParcoursPredefini.all
+
+	end
+
+	def Interface.getPredefParNom(nom)
+
+		listid = ParcoursPredefini.where(:name => nom).first
+		ret = Array.new
+		i = 0
+		
+		listid.commerces.each do |com|
+			ret.push Commerce.where(:id => com).select('id,enseigne,location_lat,location_lng').first
+		end
+		ret
 
 	end
 

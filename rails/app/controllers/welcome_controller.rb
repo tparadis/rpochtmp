@@ -11,7 +11,9 @@ class WelcomeController < ApplicationController
 		if params[:req] == "path"
 			
 			if params.has_key?(:nombreMagasins) && params[:nombreMagasins].to_i > 0 
-				@y = Algo.getPath(params[:nombreMagasins].to_i)
+
+				@y = Algo.getPath(params[:nombreMagasins].to_i)				
+			
 			else	
 				@y = Algo.getPath(0)
 			end
@@ -19,7 +21,14 @@ class WelcomeController < ApplicationController
 		end
 
 		if params[:req] == "spec"
-			render json: { :commerce => Interface.getSpecificCommerce}
+			if params.has_key?(:id) && params.has_key?(:type) && params[:type] == "coord"
+
+					@y = Interface.getCommerceCoordByID(params[:id])
+					render json: { :commerce => @y }
+			else
+
+				render json: { :commerce => Interface.getSpecificCommerce}
+			end
 		end
 
 		if params[:req] == "rand"
@@ -27,8 +36,15 @@ class WelcomeController < ApplicationController
 		end
 		
 		if params[:req] == "predef"
-			@y = Interface.getParcoursPredefinis
-			render json: { :parcourspredefs => @y }
+
+			if params.has_key?(:nom) && params[:nom] != ""
+				@y = Interface.getPredefParNom(params[:nom])
+				render json: {:size => @y.size(), :magasins => @y }	
+			else			
+
+				@y = Interface.getParcoursPredefinis
+				render json: { :parcourspredefs => @y }
+			end
 		end
 
 		if params[:req] == "cat"

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :tags
+  resources :tags
+  resources :tags
   resources :sscategories
   resources :categories
   get 'categories/index'

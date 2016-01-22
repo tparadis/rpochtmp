@@ -80,10 +80,11 @@ ActiveRecord::Schema.define(version: 20160121175545) do
     t.string   "nom"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "catparent"
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string   "name"
+    t.string   "nom"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
