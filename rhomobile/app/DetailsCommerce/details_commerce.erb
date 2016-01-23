@@ -8,20 +8,31 @@
 
   <body>
   
-    <div id="page">
+    <div id="page" >
     <%= render :partial => "/partials/page_head" %>
-
-    <h1>Le Bistrot du quai</h1>
-      <img src="/app/coffeshops_330_220.png" />
-      
-      <p>This is the description of the coffe shop. This field may
-      contain important amount of text. So it is important that this
-      field is as long as possible to allow important information to be
-      shown correctly.</p> 
-      <p>Address: This is the address of the local.<br/>
-         Telephone:11-11-11-11-11<br/>
-         email: fakeemail@fake.com</p>
+    <!-- Cette page montre les details dún commerce. 
+        Cette variable contient l'id du commerce sohuaité'<%= $magasin_id%>   
+        TODO: La description affiché est de test on doit remplacer dans le controlleur
+        par la vraie description une fois la requete contienne ce champ.   
+    -->
     
+      <img style="max-width:100%;height: auto;" src=  <%= get_resposnse()["commerce"]["image"]%> />
+      
+      <p><%= get_resposnse()["commerce"]["enseigne"]%></p>
+      <p>Address:<%= get_resposnse()["commerce"]["street_num"]%>  <%= get_resposnse()["commerce"]["street_name"]%></p>
+      <p>Telephone:  <a href="tel:<%= get_resposnse()["commerce"]["phone_num"]%>"><%= get_resposnse()["commerce"]["phone_num"]%></a></p>
+      <p>Fax:<%= get_resposnse()["commerce"]["fax"]%></p>
+      <p>Email:<%= get_resposnse()["commerce"]["email"]%></p>
+      <form method="post" action="<%= url_for :action => :requette %>">
+      <input type="hidden" name="req" value="spec"/>
+      <input type="hidden" name="format" value="json"/>
+      <!-- data-role added to the listview -->
+        <br/>
+        <button type="submit" data-theme="a" name="submit" value="submit-value" class="ui-btn-hidden">Informations incorrectes?</button>
+  </form>      
+        
+      <p>Description:  <i><%= get_resposnse()["commerce"]["description"]%></i></p>
+        
     </div>
 
   </body>

@@ -1,5 +1,6 @@
 var listData = ['Coiffeur' , 'Magasins de chaussure' , 'Salle de massage' , 'Parfumerie' , 'Opticien'];
 var tabCoord;        
+var datar ="";
 
 function genererParcours(){
 	$.ajax({
@@ -10,11 +11,12 @@ function genererParcours(){
 		type : "GET",
 		async:false,
 		success: function(data){
+			datar = data;
 			var i = 0;
 			$("tbody").html("");
 			while (i < data.size)
 		    {
-		    	$("tbody").append("<tr><td>"+data.commerces[i].enseigne+"</td><td>test</td><td>test</td></tr>");
+		    	$("tbody").append("<tr><td>"+data.commerces[i].enseigne+"</td><td>test</td><td>test</td><td><a href=\"\#\" data-role=\"button\" onclick=\"call_ruby_method_via_ajax('requette',"+i+")\">D&eacutetails</a> </td></tr>");
 		    	i++;
 		    	// tabCoord[i] = new Array(data["commerces"][i]["location_lat"], data["commerces"][i]["location_lat"]);
 		    }
@@ -42,7 +44,11 @@ function addTags(){
 	
 }
 
-
+//Call ruby method via ajax
+function call_ruby_method_via_ajax(method_name,nCommerce){
+	//$.ajax({url:'/app/DetailsCommerce/'+method_name,type : "post",data:{ magasin_id: datar.commerces[nCommerce].id }});
+	$.get('/app/DetailsCommerce/'+method_name,{ magasin_id: datar.commerces[nCommerce].id });
+}
 function addSsCat(sscat) {
    	parcours.setItem(parcours.length, sscat);
 }

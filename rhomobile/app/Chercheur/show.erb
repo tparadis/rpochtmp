@@ -1,0 +1,29 @@
+<div data-role="page" data-add-back-btn="false">
+
+  <div data-role="header" data-position="inline">
+    <h1><%= @chercheur.tags %></h1>
+    <a href="<%= url_for :action => :index %>" class="ui-btn-left" data-icon="arrow-l" data-direction="reverse">
+      Back
+    </a>
+    <a href="<%= url_for :action => :edit, :id => @chercheur.object %>" class="ui-btn-right" data-icon="star">
+      Edit
+    </a>
+  </div>
+
+  <div data-role="content">
+    <ul data-role="listview">
+      
+          <li>
+            <div class="itemLabel">Tags</div>
+            <div class="itemValue"><%= @chercheur.tags %></div>
+          </li>
+      
+          <li>
+            <div class="itemLabel">Chercher</div>
+            <div class="itemValue"><%= @chercheur.chercher %></div>
+          </li>
+      
+    </ul>
+  </div>
+
+</div>
