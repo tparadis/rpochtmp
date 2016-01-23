@@ -1,52 +1,23 @@
-var listData = ['Coiffeur' , 'Magasins de chaussure' , 'Salle de massage' , 'Parfumerie' , 'Opticien'];                             
+var listData = ['Coiffeur' , 'Magasins de chaussure' , 'Salle de massage' , 'Parfumerie' , 'Opticien'];
 var tabCoord;        
-
-$(document).ready(function() {
-	$('#example').DataTable( {
-        "scrollY":        "200px",
-        "scrollCollapse": true,
-        "paging":         false
-    } );
-    var t = $('#example').DataTable();
-    var counter = 1;
-    
-    var numberOfListItems = listData.length;   			   
-    if(numberOfListItems != 0){
-    	for( var i =  0 ; i < numberOfListItems ; ++i){
-    		t.row.add( [
-            listData[i],
-            'test',
-            'test'
-        ] ).draw( false );
-    	}
-    }else{
-  	  alert("Vous n'avez choisis aucun magasin pour votre parcours.");
-    }
-} );
 
 function genererParcours(){
 	$.ajax({
 	    dataType: "json",
 	    contentType: "application/json",
 		url : "http://rpoch.istic.univ-rennes1.fr/api/",
-		data : {"req":"path","format":"json"}, //req = path indique que vous formulez une requete pour creer un parcours au backend
+		data : {"req":"path","format":"json","nombreMagasins":5}, //req = path indique que vous formulez une requete pour creer un parcours au backend
 		type : "GET",
 		async:false,
 		success: function(data){
-			var t = $('#example').DataTable();
-			t.clear().draw();
-			var tabCoord = new Array();
-			for(var i = 0 ; i < data["size"] ; ++i)
-			{
-				if(data["commerces"][i]["enseigne"] != null){
-					t.row.add( [
-						data["commerces"][i]["enseigne"],
-						'test',
-						'test'
-					] ).draw( false );
-				}
-				tabCoord[i] = new Array(data["commerces"][i]["location_lat"], data["commerces"][i]["location_lat"]);
-			}
+			var i = 0;
+			$("tbody").html("");
+			while (i < data.size)
+		    {
+		    	$("tbody").append("<tr><td>"+data.commerces[i].enseigne+"</td><td>test</td><td>test</td></tr>");
+		    	i++;
+		    	// tabCoord[i] = new Array(data["commerces"][i]["location_lat"], data["commerces"][i]["location_lat"]);
+		    }
 			setCookie(tabCoord, tabCoord, 2);
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown)
@@ -69,4 +40,9 @@ function afficherTags(nomMagasin){
 
 function addTags(){
 	
+}
+
+
+function addSsCat(sscat) {
+   	parcours.setItem(parcours.length, sscat);
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench version="2.0">
 <workbenchAdvisor/>
-<window height="860" maximized="true" width="800" x="0" y="0">
+<window height="860" maximized="true" width="800" x="681" y="-11">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -13,11 +13,12 @@
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="129" y="22"/>
 <coolItem id="org.eclipse.dltk.tcl.ui.debug.consoleActionSet" itemType="typeToolBarContribution" x="53" y="22"/>
 <coolItem id="org.eclipse.egit.ui.gitaction" itemType="typeToolBarContribution" x="207" y="22"/>
-<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="76" y="22"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="99" y="22"/>
 <coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="84" y="22"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.browser.editor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.dltk.ruby.ui.editor.RubyEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
@@ -32,72 +33,37 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
+<part id="4"/>
 <part id="2"/>
 <part id="3"/>
-<part id="4"/>
 <part id="5"/>
-<part id="6"/>
-<part id="7"/>
-<part id="8"/>
-<part id="9"/>
-<part id="10"/>
-<part id="11"/>
-<part id="12"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor id="rhogenwizard.editors.RubyEditor" name="accueil.erb" partName="accueil.erb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Accueil/accueil.erb" title="accueil.erb" tooltip="rhomobile/app/Accueil/accueil.erb" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/app/Accueil/accueil.erb"/>
-<editorState selectionHorizontalPixel="0" selectionLength="1" selectionOffset="1293" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="991" selectionTopPixel="41"/>
 </editor>
-<editor id="rhogenwizard.editors.RubyEditor" name="final_parcours.erb" partName="final_parcours.erb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/FinalParcours/final_parcours.erb" title="final_parcours.erb" tooltip="rhomobile/app/FinalParcours/final_parcours.erb" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="rhogenwizard.editors.RubyEditor" name="final_parcours.erb" partName="final_parcours.erb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/FinalParcours/final_parcours.erb" title="final_parcours.erb" tooltip="rhomobile/app/FinalParcours/final_parcours.erb" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/app/FinalParcours/final_parcours.erb"/>
-<editorState selectionHorizontalPixel="0" selectionLength="54" selectionOffset="1070" selectionTopPixel="386"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="515" selectionTopPixel="281"/>
 </editor>
-<editor id="org.eclipse.dltk.ruby.ui.editor.RubyEditor" name="final_parcours_controller.rb" partName="final_parcours_controller.rb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/FinalParcours/final_parcours_controller.rb" title="final_parcours_controller.rb" tooltip="rhomobile/app/FinalParcours/final_parcours_controller.rb" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/app/FinalParcours/final_parcours_controller.rb"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1501" selectionTopPixel="0"/>
+<editor id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" name="choixParcours.js" partName="choixParcours.js" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/public/customjs/choixParcours.js" title="choixParcours.js" tooltip="rhomobile/public/customjs/choixParcours.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/public/customjs/choixParcours.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="913" selectionTopPixel="176"/>
+</editor>
+<editor id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" name="accueil.js" partName="accueil.js" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/public/customjs/accueil.js" title="accueil.js" tooltip="rhomobile/public/customjs/accueil.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/public/customjs/accueil.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
 <editor id="rhogenwizard.editors.RubyEditor" name="sous_categories.erb" partName="sous_categories.erb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/SousCategories/sous_categories.erb" title="sous_categories.erb" tooltip="rhomobile/app/SousCategories/sous_categories.erb" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/app/SousCategories/sous_categories.erb"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="11261" selectionTopPixel="4400"/>
+<editorState selectionHorizontalPixel="0" selectionLength="13" selectionOffset="12756" selectionTopPixel="4811"/>
 </editor>
-<editor id="org.eclipse.dltk.ruby.ui.editor.RubyEditor" name="categories_controller.rb" partName="categories_controller.rb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Categories/categories_controller.rb" title="categories_controller.rb" tooltip="rhomobile/app/Categories/categories_controller.rb" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/app/Categories/categories_controller.rb"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="116"/>
-</editor>
-<editor id="org.eclipse.dltk.ruby.ui.editor.RubyEditor" name="details_commerce_controller.rb" partName="details_commerce_controller.rb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/DetailsCommerce/details_commerce_controller.rb" title="details_commerce_controller.rb" tooltip="rhomobile/app/DetailsCommerce/details_commerce_controller.rb" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/app/DetailsCommerce/details_commerce_controller.rb"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
-</editor>
-<editor id="rhogenwizard.editors.RubyEditor" name="details_commerce.erb" partName="details_commerce.erb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/DetailsCommerce/details_commerce.erb" title="details_commerce.erb" tooltip="rhomobile/app/DetailsCommerce/details_commerce.erb" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/app/DetailsCommerce/details_commerce.erb"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="880" selectionTopPixel="0"/>
-</editor>
-<editor id="rhogenwizard.editors.RubyEditor" name="map.erb" partName="map.erb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Map/map.erb" title="map.erb" tooltip="rhomobile/app/Map/map.erb" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/app/Map/map.erb"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="279" selectionTopPixel="0"/>
-</editor>
-<editor id="rhogenwizard.editors.RubyEditor" name="edit.erb" partName="edit.erb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/edit.erb" title="edit.erb" tooltip="rhomobile/app/Personalisee/edit.erb" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/app/Personalisee/edit.erb"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="7" selectionTopPixel="0"/>
-</editor>
-<editor id="rhogenwizard.editors.RubyEditor" name="index.erb" partName="index.erb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/index.erb" title="index.erb" tooltip="rhomobile/app/Personalisee/index.erb" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/app/Personalisee/index.erb"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="103" selectionTopPixel="0"/>
-</editor>
-<editor id="rhogenwizard.editors.RubyEditor" name="new.erb" partName="new.erb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/new.erb" title="new.erb" tooltip="rhomobile/app/Personalisee/new.erb" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/app/Personalisee/new.erb"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="7" selectionTopPixel="0"/>
-</editor>
-<editor id="rhogenwizard.editors.RubyEditor" name="show_result.erb" partName="show_result.erb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/show_result.erb" title="show_result.erb" tooltip="rhomobile/app/Personalisee/show_result.erb" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/app/Personalisee/show_result.erb"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3373" selectionTopPixel="690"/>
-</editor>
-<editor activePart="true" focus="true" id="rhogenwizard.editors.RubyEditor" name="show.erb" partName="show.erb" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/show.erb" title="show.erb" tooltip="rhomobile/app/Personalisee/show.erb" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/app/Personalisee/show.erb"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+<editor id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" name="finalParcours.js" partName="finalParcours.js" path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/public/customjs/finalParcours.js" title="finalParcours.js" tooltip="rhomobile/public/customjs/finalParcours.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rhomobile/public/customjs/finalParcours.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="189" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -170,7 +136,7 @@
 </presentation>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.21334173" ratioLeft="339" ratioRight="1250" relationship="2" relative="topLeft"/>
+<info part="org.eclipse.ui.editorss" ratio="0.28848642" ratioLeft="223" ratioRight="550" relationship="2" relative="topLeft"/>
 </mainWindow>
 </layout>
 </perspective>
@@ -178,176 +144,165 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/Accueil/accueil.erb"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/FinalParcours/final_parcours.erb"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.dltk.ruby.ui.editor.RubyEditor" path="/rhomobile/app/FinalParcours/final_parcours_controller.rb"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/SousCategories/sous_categories.erb"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.dltk.ruby.ui.editor.RubyEditor" path="/rhomobile/app/FinalParcours/final_parcours.rb"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/index.erb"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/layout.erb"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/FinalParcours/final_parcours.erb"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" path="/rhomobile/public/customjs/choixParcours"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" path="/rhomobile/public/customjs/choixParcours.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" path="/rhomobile/public/customjs/accueil.js"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/Accueil/accueil.erb"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/ParcoursPredef/parcours_predef.erb"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/Categories/categories.erb"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/DetailsCommerce/details_commerce.erb"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/Map/map.erb"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/SousCategories/sous_categories.erb"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/Personalisee/edit.erb"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/Personalisee/index.erb"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/FinalParcours/final_parcours.erb"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/Personalisee/new.erb"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/Personalisee/show_result.erb"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/Personalisee/show.erb"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" path="/rhomobile/app/SousCategories/sous_categories.erb"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" path="/rhomobile/public/customjs/finalParcours.js"/>
 </editors>
 <item historyLabel="final_parcours.erb" index="1">
+<position info="not_deleted" x="1129" y="0"/>
+</item>
+<item historyLabel="sous_categories.erb" index="0">
+<position info="not_deleted" x="9774" y="0"/>
+</item>
+<item historyLabel="choixParcours" index="2">
+<position info="not_deleted" x="1170" y="0"/>
+</item>
+<item historyLabel="sous_categories.erb" index="0">
+<position info="not_deleted" x="9774" y="0"/>
+</item>
+<item historyLabel="choixParcours" index="2">
+<position info="not_deleted" x="1453" y="0"/>
+</item>
+<item historyLabel="sous_categories.erb" index="0">
+<position info="not_deleted" x="9774" y="0"/>
+</item>
+<item historyLabel="choixParcours" index="2">
+<position info="not_deleted" x="1453" y="0"/>
+</item>
+<item historyLabel="final_parcours.erb" index="1">
+<position info="not_deleted" x="766" y="0"/>
+</item>
+<item historyLabel="choixParcours" index="2">
+<position info="not_deleted" x="1453" y="0"/>
+</item>
+<item historyLabel="choixParcours.js" index="3">
+<position info="not_deleted" x="1453" y="0"/>
+</item>
+<item historyLabel="accueil.js" index="4">
+<position info="not_deleted" x="69" y="0"/>
+</item>
+<item historyLabel="accueil.erb" index="5">
+<position info="not_deleted" x="528" y="102"/>
+</item>
+<item historyLabel="accueil.js" index="4">
+<position info="not_deleted" x="69" y="0"/>
+</item>
+<item historyLabel="accueil.js" index="4">
+<position info="not_deleted" x="67" y="0"/>
+</item>
+<item historyLabel="accueil.js" index="4">
+<position info="not_deleted" x="53" y="0"/>
+</item>
+<item historyLabel="accueil.erb" index="5">
+<position info="not_deleted" x="528" y="102"/>
+</item>
+<item historyLabel="final_parcours.erb" index="6">
+<position info="not_deleted" x="1017" y="57"/>
+</item>
+<item historyLabel="accueil.erb" index="5">
+<position info="not_deleted" x="991" y="0"/>
+</item>
+<item historyLabel="accueil.js" index="4">
+<position info="not_deleted" x="69" y="0"/>
+</item>
+<item historyLabel="final_parcours.erb" index="6">
+<position info="not_deleted" x="1017" y="57"/>
+</item>
+<item historyLabel="sous_categories.erb" index="7">
+<position info="not_deleted" x="9774" y="0"/>
+</item>
+<item historyLabel="final_parcours.erb" index="6">
+<position info="not_deleted" x="1017" y="57"/>
+</item>
+<item historyLabel="sous_categories.erb" index="7">
+<position info="not_deleted" x="9917" y="0"/>
+</item>
+<item historyLabel="final_parcours.erb" index="6">
+<position info="not_deleted" x="1017" y="57"/>
+</item>
+<item historyLabel="sous_categories.erb" index="7">
+<position info="not_deleted" x="13399" y="0"/>
+</item>
+<item historyLabel="choixParcours.js" index="3">
+<position info="not_deleted" x="1218" y="0"/>
+</item>
+<item historyLabel="choixParcours.js" index="3">
+<position info="not_deleted" x="1398" y="0"/>
+</item>
+<item historyLabel="choixParcours.js" index="3">
 <position/>
 </item>
-<item historyLabel="final_parcours_controller.rb" index="2">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="accueil.js" index="4">
+<position info="not_deleted" x="69" y="0"/>
 </item>
-<item historyLabel="final_parcours.rb" index="4">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="accueil.js" index="4">
+<position info="not_deleted" x="69" y="0"/>
 </item>
-<item historyLabel="final_parcours_controller.rb" index="2">
-<position info="not_deleted" x="1501" y="0"/>
+<item historyLabel="choixParcours.js" index="3">
+<position info="not_deleted" x="973" y="0"/>
 </item>
-<item historyLabel="final_parcours.erb" index="1">
-<position/>
+<item historyLabel="sous_categories.erb" index="7">
+<position info="not_deleted" x="13377" y="0"/>
 </item>
-<item historyLabel="accueil.erb" index="0">
-<position/>
+<item historyLabel="final_parcours.erb" index="6">
+<position info="not_deleted" x="1017" y="57"/>
 </item>
-<item historyLabel="final_parcours_controller.rb" index="2">
-<position info="not_deleted" x="1501" y="0"/>
+<item historyLabel="choixParcours.js" index="3">
+<position info="not_deleted" x="973" y="0"/>
 </item>
-<item historyLabel="sous_categories.erb" index="3">
-<position info="not_deleted" x="782" y="65"/>
+<item historyLabel="sous_categories.erb" index="7">
+<position info="not_deleted" x="12756" y="13"/>
 </item>
-<item historyLabel="accueil.erb" index="0">
-<position info="not_deleted" x="359" y="0"/>
+<item historyLabel="choixParcours.js" index="3">
+<position info="not_deleted" x="973" y="0"/>
 </item>
-<item historyLabel="final_parcours.erb" index="1">
-<position info="not_deleted" x="1920" y="0"/>
+<item historyLabel="finalParcours.js" index="8">
+<position info="not_deleted" x="194" y="0"/>
 </item>
-<item historyLabel="sous_categories.erb" index="3">
-<position info="not_deleted" x="782" y="65"/>
+<item historyLabel="choixParcours.js" index="3">
+<position info="not_deleted" x="973" y="0"/>
 </item>
-<item historyLabel="final_parcours.erb" index="1">
-<position info="not_deleted" x="284" y="0"/>
+<item historyLabel="finalParcours.js" index="8">
+<position info="not_deleted" x="194" y="0"/>
 </item>
-<item historyLabel="accueil.erb" index="0">
-<position info="not_deleted" x="359" y="0"/>
+<item historyLabel="final_parcours.erb" index="6">
+<position info="not_deleted" x="1017" y="57"/>
 </item>
-<item historyLabel="final_parcours.erb" index="1">
-<position info="not_deleted" x="99" y="0"/>
-</item>
-<item historyLabel="index.erb" index="5">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="layout.erb" index="6">
-<position info="not_deleted" x="3389" y="0"/>
-</item>
-<item historyLabel="final_parcours.erb" index="1">
-<position info="not_deleted" x="99" y="0"/>
-</item>
-<item historyLabel="layout.erb" index="6">
-<position info="not_deleted" x="3356" y="0"/>
-</item>
-<item historyLabel="final_parcours.erb" index="1">
-<position info="not_deleted" x="896" y="0"/>
-</item>
-<item historyLabel="layout.erb" index="6">
-<position info="not_deleted" x="2806" y="0"/>
-</item>
-<item historyLabel="final_parcours.erb" index="1">
-<position info="not_deleted" x="896" y="0"/>
-</item>
-<item historyLabel="choixParcours.js" index="7">
-<position info="not_deleted" x="398" y="42"/>
-</item>
-<item historyLabel="final_parcours.erb" index="1">
-<position info="not_deleted" x="896" y="0"/>
-</item>
-<item historyLabel="accueil.erb" index="8">
-<position info="not_deleted" x="608" y="0"/>
-</item>
-<item historyLabel="final_parcours.erb" index="1">
-<position info="not_deleted" x="500" y="0"/>
-</item>
-<item historyLabel="accueil.erb" index="8">
-<position info="not_deleted" x="699" y="0"/>
-</item>
-<item historyLabel="parcours_predef.erb" index="9">
-<position info="not_deleted" x="176" y="0"/>
-</item>
-<item historyLabel="accueil.erb" index="8">
-<position info="not_deleted" x="699" y="0"/>
-</item>
-<item historyLabel="final_parcours.erb" index="1">
-<position info="not_deleted" x="144" y="0"/>
-</item>
-<item historyLabel="categories.erb" index="10">
-<position info="not_deleted" x="370" y="0"/>
-</item>
-<item historyLabel="accueil.erb" index="8">
-<position info="not_deleted" x="699" y="0"/>
-</item>
-<item historyLabel="final_parcours.erb" index="1">
-<position info="not_deleted" x="1209" y="0"/>
-</item>
-<item historyLabel="details_commerce.erb" index="11">
-<position info="not_deleted" x="297" y="0"/>
-</item>
-<item historyLabel="final_parcours.erb" index="1">
-<position info="not_deleted" x="1209" y="0"/>
-</item>
-<item historyLabel="map.erb" index="12">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="sous_categories.erb" index="13">
-<position info="not_deleted" x="6368" y="0"/>
-</item>
-<item historyLabel="accueil.erb" index="8">
-<position info="not_deleted" x="1293" y="1"/>
-</item>
-<item historyLabel="sous_categories.erb" index="13">
-<position info="not_deleted" x="11261" y="0"/>
-</item>
-<item historyLabel="details_commerce.erb" index="11">
-<position info="not_deleted" x="10" y="0"/>
-</item>
-<item historyLabel="accueil.erb" index="8">
-<position info="not_deleted" x="1293" y="1"/>
-</item>
-<item historyLabel="final_parcours.erb" index="1">
-<position info="not_deleted" x="1209" y="0"/>
-</item>
-<item historyLabel="details_commerce.erb" index="11">
-<position info="not_deleted" x="10" y="0"/>
-</item>
-<item historyLabel="edit.erb" index="14">
-<position info="not_deleted" x="458" y="0"/>
-</item>
-<item historyLabel="index.erb" index="15">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="final_parcours.erb" index="16">
-<position info="not_deleted" x="1070" y="54"/>
-</item>
-<item historyLabel="edit.erb" index="14">
-<position info="not_deleted" x="7" y="0"/>
-</item>
-<item historyLabel="index.erb" index="15">
+<item historyLabel="choixParcours.js" index="3">
 <position info="not_deleted" x="103" y="0"/>
 </item>
-<item historyLabel="new.erb" index="17">
-<position info="not_deleted" x="7" y="0"/>
+<item historyLabel="finalParcours.js" index="8">
+<position info="not_deleted" x="194" y="0"/>
 </item>
-<item historyLabel="show_result.erb" index="18">
-<position info="not_deleted" x="3373" y="0"/>
+<item historyLabel="accueil.js" index="4">
+<position info="not_deleted" x="69" y="0"/>
 </item>
-<item active="true" historyLabel="show.erb" index="19">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="choixParcours.js" index="3">
+<position info="not_deleted" x="913" y="0"/>
+</item>
+<item historyLabel="finalParcours.js" index="8">
+<position info="not_deleted" x="194" y="0"/>
+</item>
+<item historyLabel="finalParcours.js" index="8">
+<position info="not_deleted" x="194" y="0"/>
+</item>
+<item historyLabel="final_parcours.erb" index="6">
+<position info="not_deleted" x="799" y="0"/>
+</item>
+<item historyLabel="finalParcours.js" index="8">
+<position info="not_deleted" x="189" y="0"/>
+</item>
+<item historyLabel="sous_categories.erb" index="7">
+<position info="not_deleted" x="12756" y="13"/>
+</item>
+<item active="true" historyLabel="final_parcours.erb" index="6">
+<position info="not_deleted" x="799" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -367,50 +322,50 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="show.erb" tooltip="rhomobile/app/Personalisee/show.erb">
-<persistable path="/rhomobile/app/Personalisee/show.erb"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" name="finalParcours.js" tooltip="rhomobile/public/customjs/finalParcours.js">
+<persistable path="/rhomobile/public/customjs/finalParcours.js"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="show_result.erb" tooltip="rhomobile/app/Personalisee/show_result.erb">
-<persistable path="/rhomobile/app/Personalisee/show_result.erb"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="sous_categories.erb" tooltip="rhomobile/app/SousCategories/sous_categories.erb">
+<persistable path="/rhomobile/app/SousCategories/sous_categories.erb"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="new.erb" tooltip="rhomobile/app/Personalisee/new.erb">
-<persistable path="/rhomobile/app/Personalisee/new.erb"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="index.erb" tooltip="rhomobile/app/Personalisee/index.erb">
-<persistable path="/rhomobile/app/Personalisee/index.erb"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="edit.erb" tooltip="rhomobile/app/Personalisee/edit.erb">
-<persistable path="/rhomobile/app/Personalisee/edit.erb"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="map.erb" tooltip="rhomobile/app/Map/map.erb">
-<persistable path="/rhomobile/app/Map/map.erb"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="details_commerce.erb" tooltip="rhomobile/app/DetailsCommerce/details_commerce.erb">
-<persistable path="/rhomobile/app/DetailsCommerce/details_commerce.erb"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="categories.erb" tooltip="rhomobile/app/Categories/categories.erb">
-<persistable path="/rhomobile/app/Categories/categories.erb"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" name="accueil.js" tooltip="rhomobile/public/customjs/accueil.js">
+<persistable path="/rhomobile/public/customjs/accueil.js"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="parcours_predef.erb" tooltip="rhomobile/app/ParcoursPredef/parcours_predef.erb">
 <persistable path="/rhomobile/app/ParcoursPredef/parcours_predef.erb"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" name="choixParcours.js" tooltip="rhomobile/public/customjs/choixParcours.js">
-<persistable path="/rhomobile/public/customjs/choixParcours.js"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="rpoch.css" tooltip="rhomobile/public/css/rpoch.css">
+<persistable path="/rhomobile/public/css/rpoch.css"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="layout.erb" tooltip="rhomobile/app/layout.erb">
 <persistable path="/rhomobile/app/layout.erb"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="index.erb" tooltip="rhomobile/app/index.erb">
-<persistable path="/rhomobile/app/index.erb"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" name="jquery.dataTables.min.js" tooltip="rhomobile/DataTables/media/js/jquery.dataTables.min.js">
+<persistable path="/rhomobile/DataTables/media/js/jquery.dataTables.min.js"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.dltk.ruby.ui.editor.RubyEditor" name="final_parcours.rb" tooltip="rhomobile/app/FinalParcours/final_parcours.rb">
-<persistable path="/rhomobile/app/FinalParcours/final_parcours.rb"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="home.erb" tooltip="rhomobile/app/Settings/home.erb">
+<persistable path="/rhomobile/app/Settings/home.erb"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.dltk.ruby.ui.editor.RubyEditor" name="details_commerce_controller.rb" tooltip="rhomobile/app/DetailsCommerce/details_commerce_controller.rb">
-<persistable path="/rhomobile/app/DetailsCommerce/details_commerce_controller.rb"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="index.erb" tooltip="rhomobile/app/Personalisee/index.erb">
+<persistable path="/rhomobile/app/Personalisee/index.erb"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.dltk.ruby.ui.editor.RubyEditor" name="categories_controller.rb" tooltip="rhomobile/app/Categories/categories_controller.rb">
-<persistable path="/rhomobile/app/Categories/categories_controller.rb"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="_page_head.erb" tooltip="rhomobile/app/partials/_page_head.erb">
+<persistable path="/rhomobile/app/partials/_page_head.erb"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.browser.editorSupport" name="index.html" tooltip="rhomobile/DataTables/examples/ajax/index.html">
+<persistable path="/rhomobile/DataTables/examples/ajax/index.html"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.dltk.javascript.ui.editor.JavascriptEditor" name="choixParcours.js" tooltip="rhomobile/public/customjs/choixParcours.js">
+<persistable path="/rhomobile/public/customjs/choixParcours.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="jquery.dataTables.min.css" tooltip="rhomobile/DataTables/media/css/jquery.dataTables.min.css">
+<persistable path="/rhomobile/DataTables/media/css/jquery.dataTables.min.css"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="final_parcours.erb" tooltip="rhomobile/app/FinalParcours/final_parcours.erb">
+<persistable path="/rhomobile/app/FinalParcours/final_parcours.erb"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="rhogenwizard.editors.RubyEditor" name="accueil.erb" tooltip="rhomobile/app/Accueil/accueil.erb">
+<persistable path="/rhomobile/app/Accueil/accueil.erb"/>
 </file>
 </mruList>
 </workbench>

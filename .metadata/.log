@@ -168,3 +168,191 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.eclipse.mylyn.tasks.ui 2 0 2016-01-20 10:10:36.977
 !MESSAGE No search provider was registed. Tasks search is not available.
+!SESSION 2016-01-20 17:05:05.166 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2016-01-20 17:05:29.852
+!MESSAGE No search provider was registed. Tasks search is not available.
+!SESSION 2016-01-21 19:09:10.488 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2016-01-21 19:09:40.573
+!MESSAGE No search provider was registed. Tasks search is not available.
+
+!ENTRY org.eclipse.ui 4 4 2016-01-21 19:20:42.864
+!MESSAGE Invalid preference page path: SSH2
+
+!ENTRY org.eclipse.ui 4 4 2016-01-21 19:21:07.656
+!MESSAGE Unable to instantiate help UI
+!SESSION 2016-01-22 10:59:34.976 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2016-01-22 11:00:02.554
+!MESSAGE No search provider was registed. Tasks search is not available.
+!SESSION 2016-01-22 12:43:09.216 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2016-01-22 12:43:35.315
+!MESSAGE No search provider was registed. Tasks search is not available.
+!SESSION 2016-01-22 16:08:57.995 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2016-01-22 16:09:39.943
+!MESSAGE No search provider was registed. Tasks search is not available.
+
+!ENTRY org.eclipse.dltk.ui 4 10001 2016-01-22 16:19:52.159
+!MESSAGE Internal Error
+!STACK 1
+org.eclipse.dltk.core.ModelException: Index out of bounds
+	at org.eclipse.dltk.internal.core.Openable.codeSelect(Openable.java:629)
+	at org.eclipse.dltk.internal.core.Openable.codeSelectAll(Openable.java:663)
+	at org.eclipse.dltk.internal.core.AbstractSourceModule.codeSelectAll(AbstractSourceModule.java:94)
+	at org.eclipse.dltk.internal.core.AbstractSourceModule.codeSelectAll(AbstractSourceModule.java:89)
+	at org.eclipse.dltk.internal.ui.actions.SelectionConverter.resolve(SelectionConverter.java:287)
+	at org.eclipse.dltk.internal.ui.actions.SelectionConverter.access$0(SelectionConverter.java:277)
+	at org.eclipse.dltk.internal.ui.actions.SelectionConverter$2CodeResolveRunnable.run(SelectionConverter.java:248)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+!SUBENTRY 1 org.eclipse.dltk.core 4 980 2016-01-22 16:19:52.174
+!MESSAGE Index out of bounds
+!SESSION 2016-01-22 19:32:19.770 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2016-01-22 19:33:17.275
+!MESSAGE No search provider was registed. Tasks search is not available.
+
+!ENTRY org.eclipse.ui.console 4 120 2016-01-22 19:33:41.879
+!MESSAGE Error logged from Console plug-in: 
+!STACK 0
+java.io.IOException: Document is closed
+	at org.eclipse.ui.internal.console.IOConsolePartitioner.streamAppended(IOConsolePartitioner.java:453)
+	at org.eclipse.ui.console.IOConsoleOutputStream.notifyParitioner(IOConsoleOutputStream.java:245)
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:240)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:225)
+	at org.eclipse.ui.console.MessageConsoleStream.print(MessageConsoleStream.java:56)
+	at org.eclipse.ui.console.MessageConsoleStream.println(MessageConsoleStream.java:81)
+	at rhogenwizard.ConsoleHelper$StreamImpl.println(ConsoleHelper.java:135)
+	at rhogenwizard.sdk.task.RubyExecTask$1.log(RubyExecTask.java:115)
+	at rhogenwizard.AsyncStreamReader.printToDisplayDevice(AsyncStreamReader.java:119)
+	at rhogenwizard.AsyncStreamReader.readCommandOutput(AsyncStreamReader.java:103)
+	at rhogenwizard.AsyncStreamReader.run(AsyncStreamReader.java:49)
+
+!ENTRY org.eclipse.ui.console 4 120 2016-01-22 19:33:41.911
+!MESSAGE Error logged from Console plug-in: 
+!STACK 0
+java.io.IOException: Output Stream is closed
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:230)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:225)
+	at org.eclipse.ui.console.MessageConsoleStream.print(MessageConsoleStream.java:56)
+	at org.eclipse.ui.console.MessageConsoleStream.println(MessageConsoleStream.java:81)
+	at rhogenwizard.ConsoleHelper$StreamImpl.println(ConsoleHelper.java:135)
+	at rhogenwizard.sdk.task.RubyExecTask$1.log(RubyExecTask.java:115)
+	at rhogenwizard.AsyncStreamReader.printToDisplayDevice(AsyncStreamReader.java:119)
+	at rhogenwizard.AsyncStreamReader.readCommandOutput(AsyncStreamReader.java:103)
+	at rhogenwizard.AsyncStreamReader.run(AsyncStreamReader.java:49)
+
+!ENTRY org.eclipse.ui.console 4 120 2016-01-22 19:33:41.914
+!MESSAGE Error logged from Console plug-in: 
+!STACK 0
+java.io.IOException: Output Stream is closed
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:230)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:225)
+	at org.eclipse.ui.console.MessageConsoleStream.print(MessageConsoleStream.java:56)
+	at org.eclipse.ui.console.MessageConsoleStream.println(MessageConsoleStream.java:81)
+	at rhogenwizard.ConsoleHelper$StreamImpl.println(ConsoleHelper.java:135)
+	at rhogenwizard.sdk.task.RubyExecTask$1.log(RubyExecTask.java:115)
+	at rhogenwizard.AsyncStreamReader.printToDisplayDevice(AsyncStreamReader.java:119)
+	at rhogenwizard.AsyncStreamReader.readCommandOutput(AsyncStreamReader.java:103)
+	at rhogenwizard.AsyncStreamReader.run(AsyncStreamReader.java:49)
+
+!ENTRY org.eclipse.ui.console 4 120 2016-01-22 19:33:41.918
+!MESSAGE Error logged from Console plug-in: 
+!STACK 0
+java.io.IOException: Output Stream is closed
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:230)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:225)
+	at org.eclipse.ui.console.MessageConsoleStream.print(MessageConsoleStream.java:56)
+	at org.eclipse.ui.console.MessageConsoleStream.println(MessageConsoleStream.java:81)
+	at rhogenwizard.ConsoleHelper$StreamImpl.println(ConsoleHelper.java:135)
+	at rhogenwizard.sdk.task.RubyExecTask$1.log(RubyExecTask.java:115)
+	at rhogenwizard.AsyncStreamReader.printToDisplayDevice(AsyncStreamReader.java:119)
+	at rhogenwizard.AsyncStreamReader.readCommandOutput(AsyncStreamReader.java:103)
+	at rhogenwizard.AsyncStreamReader.run(AsyncStreamReader.java:49)
+
+!ENTRY org.eclipse.ui.console 4 120 2016-01-22 19:33:41.921
+!MESSAGE Error logged from Console plug-in: 
+!STACK 0
+java.io.IOException: Output Stream is closed
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:230)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:225)
+	at org.eclipse.ui.console.MessageConsoleStream.print(MessageConsoleStream.java:56)
+	at org.eclipse.ui.console.MessageConsoleStream.println(MessageConsoleStream.java:81)
+	at rhogenwizard.ConsoleHelper$StreamImpl.println(ConsoleHelper.java:135)
+	at rhogenwizard.sdk.task.RubyExecTask$1.log(RubyExecTask.java:115)
+	at rhogenwizard.AsyncStreamReader.printToDisplayDevice(AsyncStreamReader.java:119)
+	at rhogenwizard.AsyncStreamReader.readCommandOutput(AsyncStreamReader.java:103)
+	at rhogenwizard.AsyncStreamReader.run(AsyncStreamReader.java:49)
+
+!ENTRY org.eclipse.ui.console 4 120 2016-01-22 19:33:41.924
+!MESSAGE Error logged from Console plug-in: 
+!STACK 0
+java.io.IOException: Document is closed
+	at org.eclipse.ui.internal.console.IOConsolePartitioner.streamAppended(IOConsolePartitioner.java:453)
+	at org.eclipse.ui.console.IOConsoleOutputStream.notifyParitioner(IOConsoleOutputStream.java:245)
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:240)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:225)
+	at org.eclipse.ui.console.MessageConsoleStream.print(MessageConsoleStream.java:56)
+	at rhogenwizard.ConsoleHelper$StreamImpl.print(ConsoleHelper.java:115)
+	at rhogenwizard.sdk.task.RubyExecTask.exec(RubyExecTask.java:100)
+	at rhogenwizard.sdk.task.RubyTask$1.run(RubyTask.java:41)
+	at java.lang.Thread.run(Unknown Source)
+!SESSION 2016-01-23 09:09:10.861 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2016-01-23 09:10:51.740
+!MESSAGE No search provider was registed. Tasks search is not available.
+!SESSION 2016-01-23 09:12:22.248 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2016-01-23 09:12:27.823
+!MESSAGE No search provider was registed. Tasks search is not available.
+!SESSION 2016-01-23 13:20:15.233 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2016-01-23 13:23:07.968
+!MESSAGE No search provider was registed. Tasks search is not available.
