@@ -1,0 +1,85 @@
+<%= form_for(@parcours_predefini) do |f| %>
+  <% if @parcours_predefini.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@parcours_predefini.errors.count, "error") %> prohibited this parcours_predefini from being saved:</h2>
+
+      <ul>
+      <% @parcours_predefini.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.text_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :commerces %><br>
+    <%    
+	i = 1
+	if(@parcours_predefini.commerces != nil)
+		nb = @parcours_predefini.commerces.size()
+	else
+		nb = 0
+	end
+	
+	@val = '{'
+	if nb > 0
+		@parcours_predefini.commerces.each do |com|
+			if com != nil
+				@val = @val + com
+				if nb != i
+					@val = @val + ','
+				end
+	   		end
+		end
+	end 
+	   @val = @val + '}'
+	%>
+	<%= f.text_field :commerces, :value => @val  %>	
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<script src="/static/js/jquery.js"></script>
+<script>
+$(document).ready(function(e)
+{
+	$('form').submit(function(e)
+	{
+		var valeur = prepareTable($("form input[id=parcours_predefini_commerces]").val());
+		$("form input[id=parcours_predefini_commerces]").val(valeur);
+	
+	});
+
+
+function prepareTable(txt)
+{
+	txt = txt.replace(/ /g, '');
+	txt = txt.replace(/\n/g,'');
+	if (txt.charAt(0) != '{')
+	{
+		txt = '{'+txt;
+	}
+	if(txt.charAt(txt.length) != '}')
+	{
+		txt = txt + '}';
+	} 
+
+	return txt;
+
+};
+
+})
+</script>

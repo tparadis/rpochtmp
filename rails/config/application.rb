@@ -26,10 +26,21 @@ module RPOCH
     # Chargement des modules dans lib
     config.autoload_paths += %W(#{config.root}/lib)
 
+    # comprend qu'il doit ignorer les /api des ses requetes
+    # parce qu'il ne se trouve pas à la racine du domaine
     config.relative_url_root = "/api"
     config.action_controller.relative_url_root = "/api"
     ENV['RAILS_RELATIVE_URL_ROOT']  = "/api"
     ENV['ROOT_URL']  = "/api"
+
+    #précise https lors de la generation d'urls
+    config.default_url_options = {
+        protocol: 'https'
+    }
+    config.action_controller.default_url_options = {
+        protocol: 'https'
+    }
+
 
 
   end

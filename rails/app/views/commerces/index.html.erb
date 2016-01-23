@@ -2,6 +2,9 @@
 
 <h1>Listing Commerces</h1>
 
+<%= link_to 'New Commerce', new_commerce_path %>
+
+
 <table>
   <thead>
     <tr>
@@ -10,8 +13,10 @@
   </thead>
 
   <tbody>
-    <% @commerces.each do |commerce| %>
+    <% @commerces.order('enseigne').each do |commerce| %>
       <tr>
+	<td><%= commerce.enseigne %></td>
+	<td><%= commerce.id %></td>
         <td><%= link_to 'Show', commerce %></td>
         <td><%= link_to 'Edit', edit_commerce_path(commerce) %></td>
         <td><%= link_to 'Destroy', commerce, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -22,4 +27,3 @@
 
 <br>
 
-<%= link_to 'New Commerce', new_commerce_path %>

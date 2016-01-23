@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nom:</strong>
+  <%= @sscategory.nom %>
+</p>
+
+<p>
+  <strong>Catparent:</strong>
+  <%= @sscategory.catparent %>
+</p>
+
+<%= link_to 'Edit', edit_sscategory_path(@sscategory) %> |
+<%= link_to 'Back', sscategories_path %>

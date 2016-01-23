@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @parcours_predefini.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @parcours_predefini.description %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @parcours_predefini.image %>
+</p>
+
+<p>
+  <strong>Commerces:</strong>
+  <%= @parcours_predefini.commerces %>
+</p>
+
+<%= link_to 'Edit', edit_parcours_predefini_path(@parcours_predefini) %> |
+<%= link_to 'Back', parcours_predefinis_path %>
