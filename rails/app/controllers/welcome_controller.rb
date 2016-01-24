@@ -46,7 +46,13 @@ class WelcomeController < ApplicationController
 				render json: { :parcourspredefs => @y }
 			end
 		end
-
+		
+		if params[:req] == "allcat"
+			i = Interface.getCategories
+			j = Interface.getSSCategories
+			k = Interface.getTags
+			render json: {:sizecat => i.size(), :sizesscat => j.size(), :sizetags => k.size(), :cat => i, :sscat => j, :tags => k  }		
+		end
 		if params[:req] == "cat"
 			@y = Interface.getCategories
 			render json: {:size => @y.size(), :categories => @y}

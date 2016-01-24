@@ -13,8 +13,9 @@
   </thead>
 
   <tbody>
-    <% @commerces.order('enseigne').each do |commerce| %>
+    <% @commerces.order('line').each do |commerce| %>
       <tr>
+	<td><%= commerce.line %></td>
 	<td><%= commerce.enseigne %></td>
 	<td><%= commerce.id %></td>
         <td><%= link_to 'Show', commerce %></td>

@@ -4,7 +4,7 @@ class SscategoriesController < ApplicationController
   # GET /sscategories
   # GET /sscategories.json
   def index
-    @sscategories = Sscategory.order('catparent')
+    @sscategories = Sscategory.order('nom')
   end
 
   # GET /sscategories/1
