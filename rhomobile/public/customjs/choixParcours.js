@@ -2,33 +2,32 @@ var listData = ['Coiffeur' , 'Magasins de chaussure' , 'Salle de massage' , 'Par
 var tabCoord;        
 var datar ="";
 
-$(document).ready(function() {
+function genererParcours(){
 	$.ajax({
-		dataType: "json",
-		contentType: "application/json",
-		url: "http://rpoch.istic.univ-rennes1.fr/api/",
-		data: {"req":"allcat","format":"json"},
-		type: "GET",
-		async: false,
-		success: function(data) {
-			for(var i = 0 ; i < data.sizecat ; i++) {
-				var courantCat = data.cat[i];
-				var listeSsCat = "listeSsCat"+i;
-				$("#navmenu").append("<div data-role='collapsible' class='categorie'><h3>"+courantCat.nom+"</h3><ul class='"+listeSsCat+"' data-role='listview' data-inset='true' data-icon='plus'></ul></div>");
-				for(var j = 0 ; j < data.sizesscat ; j++) {
-					var courantSsCat = data.sscat[j];
-					var nomCourant = courantSsCat.nom;
-					var lien = "href='/app/FinalParcours/final_parcours.erb'";
-					if (courantSsCat.catparent == courantCat.id) {
-						$("."+listeSsCat).append("<li><a "+lien+"  >"+nomCourant+"</a></li>");
-					}
-				}
-			}
+	    dataType: "json",
+	    contentType: "application/json",
+		url : "http://rpoch.istic.univ-rennes1.fr/api/",
+		data : {"req":"path","format":"json","nombreMagasins":5}, //req = path indique que vous formulez une requete pour creer un parcours au backend
+		type : "GET",
+		async:false,
+		success: function(data){
+			datar = data;
+			var i = 0;
+			$("tbody").html("");
+			while (i < data.size)
+		    {
+		    	$("tbody").append("<tr><td>"+data.commerces[i].enseigne+"</td><td>test</td><td>test</td><td><a href=\"\#\" data-role=\"button\" onclick=\"call_ruby_method_via_ajax('requette',"+i+")\">D&eacutetails</a> </td></tr>");
+		    	i++;
+		    	// tabCoord[i] = new Array(data["commerces"][i]["location_lat"], data["commerces"][i]["location_lat"]);
+		    }
+			setCookie(tabCoord, tabCoord, 2);
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown)
+		{
+			alert(textStatus +", " +errorThrown);
 		}
 	});
-});
-
-
+}
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -42,7 +41,7 @@ function afficherTags(nomMagasin){
 }
 
 function addTags(){
-
+	
 }
 
 //Call ruby method via ajax

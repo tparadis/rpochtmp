@@ -1,62 +1,17 @@
 Rails.application.routes.draw do
-  resources :tags
-  resources :tags
-  resources :tags
-  resources :sscategories
-  resources :categories
-  get 'categories/index'
 
-  get 'categories/new'
-
-  get 'categories/edit'
-
-  get 'categories/show'
-
-  get 'categories/destroy'
-
-  resources :categories_controllers
-  resources :categories
-  get 'commerces/destroy'
-
-  get 'sscategorie/destroy'
-
-  get 'categorie/destroy'
-
-  get 'tag/destroy'
+  root 'welcome#index'
 
   resources :tags
   resources :sscategories
   resources :categories
   resources :parcours_predefinis
-  get 'parcours_predefini/index'
-
-  get 'parcours_predefini/new'
-
-  get 'parcours_predefini/create'
-
-  get 'parcours_predefini/show'
-
-  get 'parcours_predefini/destroy'
-
-  get 'parcours_predefini/new'
-
-  get 'parcours_predefini/create'
-
-  get 'parcours_predefini/show'
-
-  get 'parcours_predefini/destroy'
-
-  # resources :magasins
-  # get 'magasin/magasins'
+  resources :commerces
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
-  resources :commerces
-  resources :parcours_predefini
-  #'parcoursPredefinis' is not a supported controller name. This can lead to potential routing problems. See http://guides.rubyonrails.org/routing.html#specifying-a-controller-to-use
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
