@@ -1,6 +1,32 @@
 $(document).ready(function() {
 	    for (var i=0; i < parcours.length; i++)
 	    {
-	    	$("tbody").append("<tr><td>"+parcours.getItem(i)+"</td><td>test</td><td>test</td></tr>");
+	    	$("tbody").append("<tr><td>"+parcours.getItem(i)+"</td><td>test</td><td>test</td><td>test</td></tr>");
 	    }
 });
+
+function genererParcours(){
+	$.ajax({
+	    dataType: "json",
+	    contentType: "application/json",
+		url : "http://rpoch.istic.univ-rennes1.fr/api/",
+		data : {"req":"path","format":"json","nombreMagasins":5}, //req = path indique que vous formulez une requete pour creer un parcours au backend
+		type : "GET",
+		async:false,
+		success: function(data){
+			var i = 0;
+			$("tbody").html("");
+			while (i < data.size)
+		    {
+		    	$("tbody").append("<tr><td>"+data.commerces[i].enseigne+"</td><td>test</td><td>test</td></tr>");
+		    	i++;
+		    	// tabCoord[i] = new Array(data["commerces"][i]["location_lat"], data["commerces"][i]["location_lat"]);
+		    }
+			//setCookie(tabCoord, tabCoord, 2);
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown)
+		{
+			alert(textStatus +", " +errorThrown);
+		}
+	});
+}

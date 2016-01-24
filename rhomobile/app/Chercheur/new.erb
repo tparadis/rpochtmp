@@ -1,0 +1,30 @@
+<div data-role="page">
+
+  <div data-role="header" data-position="inline">
+    <h1>New <%= @chercheur.title %></h1>
+    <a href="<%= url_for :action => :index %>" class="ui-btn-left" data-icon="back" data-direction="reverse">
+      Cancel
+    </a>
+  </div>
+
+  <div data-role="content">
+    <form method="POST" action="<%= url_for :action => :create %>">
+      <input type="hidden" name="id" value="<%= @chercheur.object %>"/>
+
+      
+          <div data-role="fieldcontain">
+            <label for="chercheur[tags]" class="fieldLabel">Tags</label>
+            <input type="text" id="chercheur[tags]" name="chercheur[tags]" <%= placeholder("Tags") %> />
+          </div>
+      
+          <div data-role="fieldcontain">
+            <label for="chercheur[chercher]" class="fieldLabel">Chercher</label>
+            <input type="text" id="chercheur[chercher]" name="chercheur[chercher]" <%= placeholder("Chercher") %> />
+          </div>
+      
+
+      <input type="submit" value="Create"/>
+    </form>
+  </div>
+
+</div>
