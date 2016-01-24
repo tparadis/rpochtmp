@@ -18,7 +18,7 @@ function genererParcours(){
 			$("tbody").html("");
 			while (i < data.size)
 		    {
-		    	$("tbody").append("<tr><td>"+data.commerces[i].enseigne+"</td><td>test</td><td>test</td><td>test</td></tr>");
+		    	$("tbody").append("<tr><td>"+data.commerces[i].enseigne+"</td><td>test</td><td>test</td></tr>");
 		    	i++;
 		    	// tabCoord[i] = new Array(data["commerces"][i]["location_lat"], data["commerces"][i]["location_lat"]);
 		    }
