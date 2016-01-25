@@ -16,9 +16,9 @@ $(document).ready(function() {
 				for(var j = 0 ; j < data.sizesscat ; j++) {
 					var courantSsCat = data.sscat[j];
 					var nomCourant = courantSsCat.nom;
-					var lien = "href='<%= url_for :controller => :FinalParcours, :action => :final_parcours %>'";
+					var lien = "href='/app/FinalParcours/final_parcours'";
 					if (courantSsCat.catparent == courantCat.id) {
-						$("."+listeSsCat).append("<li><a "+lien+" onclick=\"('"+nomCourant+"')\">"+nomCourant+"</a></li>");
+						$("."+listeSsCat).append("<li><a "+lien+" onclick=\"addSsCat('"+nomCourant+"')\">"+nomCourant+"</a></li>");
 					}
 				}
 			}
