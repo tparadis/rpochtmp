@@ -2,6 +2,16 @@ module Algo
 
   require "interface.rb"
 
+	#Permet d'obtenir un itineraire a partir de tags
+
+	def Algo.getTagsPath(coord_dep,coord_arr,dist_max, commerces)
+
+
+		y = ["1","2"]
+
+	end
+
+
 	#Permet d'obtenir un itineraire aleatoire
 
 	def Algo.getPath(nbMagasins)
@@ -18,7 +28,6 @@ module Algo
 			i = i + 1
 		end			
 		y	
-		#Interface.getAllCommerce()
 	end
 
 

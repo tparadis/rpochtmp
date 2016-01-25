@@ -14,6 +14,11 @@ class WelcomeController < ApplicationController
 
 				@y = Algo.getPath(params[:nombreMagasins].to_i)				
 			
+			elsif params.has_key?(:coord_dep)
+
+				@y = Algo.getTagsPath(params['coord_dep'], params['coord_arr'], params['dist_max'], params['commerces'])
+				render json: {:size => @y.size(), :commerces => @y} 	
+
 			else	
 				@y = Algo.getPath(0)
 			end
