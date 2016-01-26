@@ -38,8 +38,8 @@ module Interface
 	def Interface.getPredefParNom(nom)
 
 		listid = ParcoursPredefini.where(:name => nom).first
+
 		ret = Array.new
-		i = 0
 		
 		listid.commerces.each do |com|
 			ret.push Commerce.where(:id => com).select('id,enseigne,location_lat,location_lng').first

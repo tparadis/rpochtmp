@@ -4,11 +4,38 @@ module Algo
 
 	#Permet d'obtenir un itineraire a partir de tags
 
-	def Algo.getTagsPath(coord_dep,coord_arr,dist_max, commerces)
+	def Algo.getTagsPath(coord_dep_lat,coord_dep_lng,
+						 coord_arr_lat,coord_arr_lng,
+						 dist_max, commerces)
 
 
 		y = ["1","2"]
 
+	end
+
+	def Algo.getDynamicPath(coord_dep_lat,coord_dep_lng,
+						 	coord_arr_lat,coord_arr_lng,
+						 	dist_max, commerces)
+		# Constantes utiles à la conversion
+		# km <=> latitude et longitude
+		conv_lat = 110.574;
+		conv_lng = 111.320;
+
+		# On prend la moyenne entre les points de départ
+		# et d'arrivée du parcours :
+		coord_ref_lat = (coord_dep_lat+coord_arr_lat)/2;
+		coord_ref_lng = (coord_dep_lng+coord_arr_lng)/2;
+
+		# Calcul des limites dans lesquelles nous allons
+		# rechercher l'information dans la base de donnée :
+		tmp1 = (dist_max/conv_lat);
+		tmp2 = (dist_max / (conv_lng * Math.cos(coord_ref_lat)));
+		lat_max = coord_ref_lat + tmp1;
+		lat_min = coord_ref_lat - tmp1;
+		lng_max = coord_ref_lng + tmp2;
+		lng_min = coord_ref_lng - tmp2;
+
+		# travaux en cours !
 	end
 
 
