@@ -39,13 +39,19 @@ module Algo
 	end
 
 	def Algo.distLL(a_lat,a_lng,b_lat,b_lng)
-		d_lng = b_lng - a_lng;
-		dist_angulaire = Math.acos(
-							Math.sin(a_lat)*Math.sin(b_lat) +
-							Math.cos(a_lat)*Math.cos(b_lat)*Math.cos(d_lng)
-						)
-		# On retourne la distance en kilomètre : 
-		return ( dist_angulaire * 6378 )
+		r = 6371;
+		dLat = deg2rad(b_lat - a_lat);
+		dLon = deg2rad(b_lng - a_lng);
+		a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+			Math.cos(deg2rad(a_lat)) * Math.cos(deg2rad(b_lat)) *
+			Math.sin(dLon/2) * Math.sin(dLon/2);
+		c = 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+		d = r * c;
+		return d;
+	end
+
+	def Algo.deg2rad(deg)
+		return deg * (Math::PI/180)
 	end
 
 
