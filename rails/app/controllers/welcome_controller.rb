@@ -71,11 +71,17 @@ class WelcomeController < ApplicationController
 			@y = Interface.getTags
 			render json: {:size => @y.size(), :tags => @y}
 		end
-		# test 
+		# Debut test 
 		if params[:req] == "yolo"
 			@y = Interface.getComCT(13, 48.117, 48.11017, -1.6866, -1.676)
 			render json: { :tags => @y}
 		end
+		if params[:req] == "yolodist"
+			@y = Algo.distLL(params[:a_lat].to_f,params[:a_lng].to_f,params[:b_lat].to_f,params[:b_lng].to_f)
+			render json: { :tags => @y}
+		end
+
+		# Fin test
 
 	else
 

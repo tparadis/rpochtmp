@@ -38,6 +38,16 @@ module Algo
 		# travaux en cours !
 	end
 
+	def Algo.distLL(a_lat,a_lng,b_lat,b_lng)
+		d_lng = b_lng - a_lng;
+		dist_angulaire = Math.acos(
+							Math.sin(a_lat)*Math.sin(b_lat) +
+							Math.cos(a_lat)*Math.cos(b_lat)*Math.cos(d_lng)
+						)
+		# On retourne la distance en kilomètre : 
+		return ( dist_angulaire * 6378 )
+	end
+
 
 	#Permet d'obtenir un itineraire aleatoire
 
