@@ -71,9 +71,13 @@ class WelcomeController < ApplicationController
 			@y = Interface.getTags
 			render json: {:size => @y.size(), :tags => @y}
 		end
+
 		# Debut test 
 		if params[:req] == "yolo"
-			@y = Interface.getComCT(13, 48.117, 48.11017, -1.6866, -1.676)
+			@y = Algo.getDynamicPath(params[:coord_dep_lat].to_f,params[:coord_dep_lng].to_f,
+									 params[:coord_arr_lat].to_f,params[:coord_arr_lng].to_f,
+									 params[:dist_max].to_f, params[:commerces])
+			# @y = Interface.getComCT(13, 48.117, 48.11017, -1.6866, -1.676)
 			render json: { :tags => @y}
 		end
 		if params[:req] == "yolodist"

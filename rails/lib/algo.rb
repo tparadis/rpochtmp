@@ -35,9 +35,19 @@ module Algo
 		lng_max = coord_ref_lng + tmp2;
 		lng_min = coord_ref_lng - tmp2;
 
+		# tableau contenant la liste des tags par magasins :
+		tab_mags = []
+		commerces = eval(commerces)
+		commerces.each do |com|
+			tab_mags << Interface.getComCT(com, lat_max, lat_min,
+										   lng_max, lng_min)
+		end 
+		tab_mags
+
 		# travaux en cours !
 	end
 
+	# Calcule la distance en kilomètre entre deux coordonées.
 	def Algo.distLL(a_lat,a_lng,b_lat,b_lng)
 		r = 6371;
 		dLat = deg2rad(b_lat - a_lat);
@@ -51,7 +61,7 @@ module Algo
 	end
 
 	def Algo.deg2rad(deg)
-		return deg * (Math::PI/180)
+		return deg * (Math::PI/180);
 	end
 
 
