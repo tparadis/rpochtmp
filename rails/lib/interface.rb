@@ -38,13 +38,28 @@ module Interface
 	def Interface.getPredefParNom(nom)
 
 		listid = ParcoursPredefini.where(:name => nom).first
+
 		ret = Array.new
-		i = 0
 		
 		listid.commerces.each do |com|
 			ret.push Commerce.where(:id => com).select('id,enseigne,location_lat,location_lng').first
 		end
 		ret
+
+	end
+
+	# On retourne une liste de 10 commerces en fonction de leurs coordonées
+	# et de leurs tags :
+	def Interface.getComCT( nomTag, lat_max, lat_min,
+						    lng_max, lng_min )
+		
+		commercesTaggued = Commerce.where("tag0 = ? OR tag1 = ? OR tag2 = ? ",nomTag,nomTag,nomTag)
+		
+		commercesInCoord = commercesTaggued.where("location_lat <= ? AND location_lat >= ? AND 
+							     location_lng >= ? AND location_lng <= ?",
+								lat_max, lat_min, lng_max, lng_min).select('id,enseigne,location_lat,location_lng')
+		commercesInCoord
+				
 
 	end
 

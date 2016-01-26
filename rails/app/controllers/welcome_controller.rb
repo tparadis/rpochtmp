@@ -14,10 +14,9 @@ class WelcomeController < ApplicationController
 
 				@y = Algo.getPath(params[:nombreMagasins].to_i)				
 			
-			elsif params.has_key?(:coord_dep)
+			elsif params.has_key?(:coord_dep_lat)
 
-				@y = Algo.getTagsPath(params['coord_dep'], params['coord_arr'], params['dist_max'], params['commerces'])
-				render json: {:size => @y.size(), :commerces => @y} 	
+				@y = Algo.getTagsPath(params['coord_dep_lat'], params['coord_dep_lng'], params['coord_arr_lat'], params['coord_arr_lng'], params['dist_max'], params['commerces'])
 
 			else	
 				@y = Algo.getPath(0)
@@ -48,7 +47,7 @@ class WelcomeController < ApplicationController
 			else			
 
 				@y = Interface.getParcoursPredefinis
-				render json: { :parcourspredefs => @y }
+				render json: {:size => @y.size(), :parcourspredefs => @y }
 			end
 		end
 		
@@ -72,6 +71,21 @@ class WelcomeController < ApplicationController
 			@y = Interface.getTags
 			render json: {:size => @y.size(), :tags => @y}
 		end
+
+		# Debut test 
+		if params[:req] == "yolo"
+			@y = Algo.getDynamicPath(params[:coord_dep_lat].to_f,params[:coord_dep_lng].to_f,
+									 params[:coord_arr_lat].to_f,params[:coord_arr_lng].to_f,
+									 params[:dist_max].to_f, params[:commerces])
+			# @y = Interface.getComCT(13, 48.117, 48.11017, -1.6866, -1.676)
+			render json: { :tags => @y}
+		end
+		if params[:req] == "yolodist"
+			@y = Algo.distLL(params[:a_lat].to_f,params[:a_lng].to_f,params[:b_lat].to_f,params[:b_lng].to_f)
+			render json: { :tags => @y}
+		end
+
+		# Fin test
 
 	else
 
