@@ -18,30 +18,13 @@ $(document).ready(function() {
 					var nomCourant = courantSsCat.nom;
 					var lien = "href='/app/FinalParcours/final_parcours'";
 					if (courantSsCat.catparent == courantCat.id) {
-						$("."+listeSsCat).append("<li><a "+lien+" onclick=\"addSsCat('"+nomCourant+"')\">"+nomCourant+"</a></li>");
+						$("."+listeSsCat).append("<li><a "+lien+" onclick=\"addSsCat('"+nomCourant+"')\">"+nomCourant.replace(/\\/, "")+"</a></li>");
 					}
 				}
 			}
 		},
 	});
 });
-
-
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue.toString() + "; " + expires;
-}
-
-function afficherTags(nomMagasin){
-	document.write("je suis ici");
-}
-
-function addTags(){
-
-}
-
 
 //Call ruby method via ajax
 function call_ruby_method_via_ajax(method_name,nCommerce){

@@ -1,139 +1,187 @@
 <?xml version="1.0" encoding="ASCII"?>
-<cache:CacheIndex xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cache="http://eclipse.org/dltk/cache_model" lastIndex="146" environment="org.eclipse.dltk.core.environment.localEnvironment">
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/.gitignore" timestamp="1453148157381" lastAccessTime="1453190203513"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/.project" timestamp="1453148157386" lastAccessTime="1453190203513"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/.settings" timestamp="1453148157387" lastAccessTime="1453190203513"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/AndroidManifest.erb" timestamp="1453148157402" lastAccessTime="1453190203514"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/build.yml" timestamp="1453148157842" lastAccessTime="1453190203514"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/Live update setting" timestamp="1453148157405" lastAccessTime="1453190203515"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/README.md" timestamp="1453148157408" lastAccessTime="1453190203515"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/rhoconfig.txt" timestamp="1453148158355" lastAccessTime="1453190203515"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Settings/err_sync.erb" timestamp="1453148157498" lastAccessTime="1453277816544"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Settings/home.erb" timestamp="1453148157501" lastAccessTime="1453277816544"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Settings/index.erb" timestamp="1453148157502" lastAccessTime="1453277816544"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Settings/login.erb" timestamp="1453148157505" lastAccessTime="1453277816544"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Settings/reset.erb" timestamp="1453148157509" lastAccessTime="1453277816544"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Settings/wait.erb" timestamp="1453148157533" lastAccessTime="1453277816544"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/coffeshops_330_220.png" timestamp="1453148157645" lastAccessTime="1453190203497"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/helpers" timestamp="1453148157652" lastAccessTime="1453190204846">
-    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/29.idx"/>
-  </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/index.erb" timestamp="1453148157657" lastAccessTime="1453190203498"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/layout.erb" timestamp="1453148157670" lastAccessTime="1453190203498"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-568h@2x.png" timestamp="1453148157671" lastAccessTime="1453190203498"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-667h@2x.png" timestamp="1453148157673" lastAccessTime="1453190203499"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-736h@3x.png" timestamp="1453148157676" lastAccessTime="1453190203499"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-Landscape.png" timestamp="1453148157677" lastAccessTime="1453190203499"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-Landscape@2x.png" timestamp="1453148157681" lastAccessTime="1453190203499"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-LandscapeLeft.png" timestamp="1453148157683" lastAccessTime="1453190203499"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-LandscapeLeft@2x.png" timestamp="1453148157686" lastAccessTime="1453190203500"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-LandscapeRight.png" timestamp="1453148157687" lastAccessTime="1453190203500"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-LandscapeRight@2x.png" timestamp="1453148157691" lastAccessTime="1453190203500"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-Portrait.png" timestamp="1453148157692" lastAccessTime="1453190203500"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-Portrait@2x.png" timestamp="1453148157695" lastAccessTime="1453190203500"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-PortraitUpsideDown.png" timestamp="1453148157697" lastAccessTime="1453190203501"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-PortraitUpsideDown@2x.png" timestamp="1453148157700" lastAccessTime="1453190203501"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading.html" timestamp="1453148157703" lastAccessTime="1453190203501"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading.png" timestamp="1453148157705" lastAccessTime="1453190203501"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading@2x.png" timestamp="1453148157706" lastAccessTime="1453190203501"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/menu.erb" timestamp="1453148157709" lastAccessTime="1453190203502"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/souscategories.erb" timestamp="1453148157838" lastAccessTime="1453190203503"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile" timestamp="1453148249247" lastAccessTime="1453190204358">
-    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2355032405/37.idx"/>
-  </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Accueil/accueil.rb" timestamp="1453148157414" lastAccessTime="1453640527746">
-    <attributes name="indexed" location="2838196607/2721474432/71.idx"/>
-  </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Accueil/accueil_controller.rb" timestamp="1453148157417" lastAccessTime="1453640527743">
-    <attributes name="indexed" location="2838196607/2721474432/73.idx"/>
-  </entries>
+<cache:CacheIndex xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cache="http://eclipse.org/dltk/cache_model" lastIndex="226" environment="org.eclipse.dltk.core.environment.localEnvironment">
   <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Categories/categories.rb" timestamp="1453148157440" lastAccessTime="1453221150814">
     <attributes name="indexed" location="2838196607/606063938/81.idx"/>
   </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Map/map.rb" timestamp="1453148157488" lastAccessTime="1453640527744">
-    <attributes name="indexed" location="2838196607/2571183970/83.idx"/>
-  </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Map/map_controller.rb" timestamp="1453148157491" lastAccessTime="1453640527751">
-    <attributes name="indexed" location="2838196607/2571183970/79.idx"/>
-  </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/SousCategories/sous_categories.rb" timestamp="1453148157611" lastAccessTime="1453640527748">
-    <attributes name="indexed" location="2838196607/152057170/59.idx"/>
-  </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/SousCategories/sous_categories_controller.rb" timestamp="1453148157640" lastAccessTime="1453640527747">
-    <attributes name="indexed" location="2838196607/152057170/55.idx"/>
-  </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/application.rb" timestamp="1453148157643" lastAccessTime="1453640527746">
-    <attributes name="indexed" location="2838196607/2050572654/53.idx"/>
-  </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/helpers/application_helper.rb" timestamp="1453148157651" lastAccessTime="1453640527745">
-    <attributes name="indexed" location="2838196607/3220855134/77.idx"/>
-  </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/helpers/browser_helper.rb" timestamp="1453148157654" lastAccessTime="1453640527752">
-    <attributes name="indexed" location="2838196607/3220855134/57.idx"/>
-  </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/Rakefile" timestamp="1453148157411" lastAccessTime="1453640527752">
-    <attributes name="indexed" location="2838196607/2707563934/61.idx"/>
-  </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/SousCategories/sous_categories.erb" timestamp="1453151469067" lastAccessTime="1453190203506"/>
   <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/bin" timestamp="1453148249248" lastAccessTime="1453190203514"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/icon" timestamp="1453148157855" lastAccessTime="1453190203515"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/production" timestamp="1453148157859" lastAccessTime="1453190203515"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/public" timestamp="1453149775856" lastAccessTime="1453190203515"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/test" timestamp="1453148158438" lastAccessTime="1453190203516"/>
   <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Categories/categories.erb" timestamp="1453151398131" lastAccessTime="1453221150601"/>
   <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Categories/categories.erb~" timestamp="1453148157436" lastAccessTime="1453221150601"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Accueil/accueil.erb" timestamp="1453151078012" lastAccessTime="1453190203554"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Map/map.erb" timestamp="1453148157487" lastAccessTime="1453190203564"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/FinalParcours/final_parcours.rb" timestamp="1453047637376" lastAccessTime="1453640527747">
-    <attributes name="indexed" location="2838196607/3552443007/101.idx"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/Rakefile" timestamp="1453834156324" lastAccessTime="1453834392401">
+    <attributes name="indexed" location="2838196607/2707563934/193.idx"/>
   </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/FinalParcours/final_parcours.erb" timestamp="1453220412331" lastAccessTime="1453221150566"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/FinalParcours/final_parcours_controller.rb" timestamp="1453218415874" lastAccessTime="1453640527748">
-    <attributes name="indexed" location="2838196607/3552443007/107.idx"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile" timestamp="1453834157264" lastAccessTime="1453834392321">
+    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2355032405/147.idx"/>
   </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/ParcoursPredef/parcours_predef.rb" timestamp="1453221045000" lastAccessTime="1453640527744">
-    <attributes name="indexed" location="2838196607/437329301/115.idx"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Accueil/accueil.rb" timestamp="1453834156329" lastAccessTime="1453834392399">
+    <attributes name="indexed" location="2838196607/2721474432/215.idx"/>
   </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/ParcoursPredef/parcours_predef_controller.rb" timestamp="1453221045000" lastAccessTime="1453640527751">
-    <attributes name="indexed" location="2838196607/437329301/113.idx"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Accueil" timestamp="1453834156329" lastAccessTime="1453834392330">
+    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/149.idx"/>
   </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/ParcoursPredef/parcours_predef.erb" timestamp="1453221582539" lastAccessTime="1453223239332"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/personalisee.rb" timestamp="1453148488000" lastAccessTime="1453640527749">
-    <attributes name="indexed" location="2838196607/678230161/121.idx"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Accueil/accueil_controller.rb" timestamp="1453834156331" lastAccessTime="1453834392397">
+    <attributes name="indexed" location="2838196607/2721474432/207.idx"/>
   </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/personalisee_controller.rb" timestamp="1453200988000" lastAccessTime="1453640527750">
-    <attributes name="indexed" location="2838196607/678230161/123.idx"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Chercheur/chercheur.rb" timestamp="1453834156343" lastAccessTime="1453834392396">
+    <attributes name="indexed" location="2838196607/1890310594/183.idx"/>
   </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/edit.erb" timestamp="1453223507714" lastAccessTime="1453225888047"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/index.erb" timestamp="1453223556689" lastAccessTime="1453225888047"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/new.erb" timestamp="1453223563062" lastAccessTime="1453225888048"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/show.erb" timestamp="1453010046000" lastAccessTime="1453225888048"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/show_result.erb" timestamp="1453200918000" lastAccessTime="1453225888048"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Settings/controller.rb" timestamp="1453148157495" lastAccessTime="1453640527751">
-    <attributes name="indexed" location="2838196607/612635205/129.idx"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Chercheur" timestamp="1453834156359" lastAccessTime="1453834392319">
+    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/151.idx"/>
   </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Settings" timestamp="1453223227357" lastAccessTime="1453277816732">
-    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/133.idx"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Chercheur/chercheur_controller.rb" timestamp="1453834156346" lastAccessTime="1453834392396">
+    <attributes name="indexed" location="2838196607/1890310594/185.idx"/>
   </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/DetailsCommerce/details_commerce.erb" timestamp="1453639238689" lastAccessTime="1453640527427"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/DetailsCommerce" timestamp="1453639321153" lastAccessTime="1453640533509">
-    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/139.idx"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/DetailsCommerce/details_commerce.rb" timestamp="1453834156379" lastAccessTime="1453834392395">
+    <attributes name="indexed" location="2838196607/352851783/211.idx"/>
   </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Chercheur/chercheur.rb" timestamp="1453639238655" lastAccessTime="1453640533204"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Chercheur" timestamp="1453639296299" lastAccessTime="1453640533305">
-    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/141.idx"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/DetailsCommerce" timestamp="1453834156380" lastAccessTime="1453834392332">
+    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/153.idx"/>
   </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Chercheur/chercheur_controller.rb" timestamp="1453639238658" lastAccessTime="1453640533305"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/DetailsCommerce/details_commerce.rb" timestamp="1453639238691" lastAccessTime="1453640533407"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/DetailsCommerce/details_commerce_controller.rb" timestamp="1453639238695" lastAccessTime="1453640533509"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/RechercheTags/recherche_tags.rb" timestamp="1453639238791" lastAccessTime="1453640533818"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/RechercheTags" timestamp="1453639464009" lastAccessTime="1453640533918">
-    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/143.idx"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/DetailsCommerce/details_commerce_controller.rb" timestamp="1453834156380" lastAccessTime="1453834392392">
+    <attributes name="indexed" location="2838196607/352851783/221.idx"/>
   </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/RechercheTags/recherche_tags_controller.rb" timestamp="1453639238796" lastAccessTime="1453640533918"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/test/chercheur_spec.rb" timestamp="1453639239038" lastAccessTime="1453640534323"/>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/test" timestamp="1453639487608" lastAccessTime="1453640534524">
-    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/145.idx"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/FinalParcours/final_parcours.rb" timestamp="1453834156390" lastAccessTime="1453834392400">
+    <attributes name="indexed" location="2838196607/3552443007/217.idx"/>
   </entries>
-  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/test/personalisee_spec.rb" timestamp="1453639239040" lastAccessTime="1453640534423"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/FinalParcours" timestamp="1453834156391" lastAccessTime="1453834392331">
+    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/155.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/FinalParcours/final_parcours_controller.rb" timestamp="1453834156393" lastAccessTime="1453834392394">
+    <attributes name="indexed" location="2838196607/3552443007/219.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Map/map.rb" timestamp="1453834156406" lastAccessTime="1453834392402">
+    <attributes name="indexed" location="2838196607/2571183970/213.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Map" timestamp="1453834156409" lastAccessTime="1453834392329">
+    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/157.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Map/map_controller.rb" timestamp="1453834156408" lastAccessTime="1453834392393">
+    <attributes name="indexed" location="2838196607/2571183970/199.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/ParcoursPredef/parcours_predef.rb" timestamp="1453834156432" lastAccessTime="1453834392403">
+    <attributes name="indexed" location="2838196607/437329301/203.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/ParcoursPredef" timestamp="1453834156433" lastAccessTime="1453834392325">
+    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/159.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/personalisee.rb" timestamp="1453834156454" lastAccessTime="1453834392401">
+    <attributes name="indexed" location="2838196607/678230161/197.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee" timestamp="1453834156462" lastAccessTime="1453834392322">
+    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/161.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/personalisee_controller.rb" timestamp="1453834156457" lastAccessTime="1453834392398">
+    <attributes name="indexed" location="2838196607/678230161/175.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/RechercheTags/recherche_tags.rb" timestamp="1453834156473" lastAccessTime="1453834392396">
+    <attributes name="indexed" location="2838196607/861575523/223.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/RechercheTags" timestamp="1453834156474" lastAccessTime="1453834392333">
+    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/163.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/RechercheTags/recherche_tags_controller.rb" timestamp="1453834156477" lastAccessTime="1453834392397">
+    <attributes name="indexed" location="2838196607/861575523/191.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Settings/controller.rb" timestamp="1453834156481" lastAccessTime="1453834392395">
+    <attributes name="indexed" location="2838196607/612635205/225.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Settings" timestamp="1453834156520" lastAccessTime="1453834392333">
+    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/165.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/SousCategories/sous_categories.rb" timestamp="1453834156529" lastAccessTime="1453834392401">
+    <attributes name="indexed" location="2838196607/152057170/179.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/SousCategories" timestamp="1453834156530" lastAccessTime="1453834392320">
+    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/167.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/SousCategories/sous_categories_controller.rb" timestamp="1453834156532" lastAccessTime="1453834392394">
+    <attributes name="indexed" location="2838196607/152057170/189.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/application.rb" timestamp="1453834156535" lastAccessTime="1453834392394">
+    <attributes name="indexed" location="2838196607/2050572654/181.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app" timestamp="1453834156753" lastAccessTime="1453834392318">
+    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2707563934/169.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/helpers/application_helper.rb" timestamp="1453834156542" lastAccessTime="1453834392398">
+    <attributes name="indexed" location="2838196607/3220855134/205.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/helpers" timestamp="1453834156543" lastAccessTime="1453834392325">
+    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/171.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/helpers/browser_helper.rb" timestamp="1453834156545" lastAccessTime="1453834392399">
+    <attributes name="indexed" location="2838196607/3220855134/195.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/test/chercheur_spec.rb" timestamp="1453834156756" lastAccessTime="1453834392398">
+    <attributes name="indexed" location="2838196607/2269665231/187.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/test" timestamp="1453834156758" lastAccessTime="1453834392328">
+    <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/2050572654/173.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/test/personalisee_spec.rb" timestamp="1453834156757" lastAccessTime="1453834392402">
+    <attributes name="indexed" location="2838196607/2269665231/209.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/test/recherche_tags_spec.rb" timestamp="1453834156761" lastAccessTime="1453834392400">
+    <attributes name="indexed" location="2838196607/2269665231/177.idx"/>
+  </entries>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/edit.erb" timestamp="1453834156443" lastAccessTime="1453834392241"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/index.erb" timestamp="1453834156448" lastAccessTime="1453834392241"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/new.erb" timestamp="1453834156451" lastAccessTime="1453834392242"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/show.erb" timestamp="1453834156462" lastAccessTime="1453834392242"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Personalisee/show_result.erb" timestamp="1453834156463" lastAccessTime="1453834392242"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/SousCategories/sous_categories.erb" timestamp="1453834156526" lastAccessTime="1453834392247"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/coffeshops_330_220.png" timestamp="1453834156537" lastAccessTime="1453834392250"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/index.erb" timestamp="1453834156548" lastAccessTime="1453834392251"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/layout.erb" timestamp="1453834156558" lastAccessTime="1453834392251"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-568h@2x.png" timestamp="1453834156560" lastAccessTime="1453834392251"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-667h@2x.png" timestamp="1453834156562" lastAccessTime="1453834392251"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-736h@3x.png" timestamp="1453834156565" lastAccessTime="1453834392252"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-Landscape.png" timestamp="1453834156566" lastAccessTime="1453834392252"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-Landscape@2x.png" timestamp="1453834156569" lastAccessTime="1453834392252"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-LandscapeLeft.png" timestamp="1453834156571" lastAccessTime="1453834392252"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-LandscapeLeft@2x.png" timestamp="1453834156574" lastAccessTime="1453834392253"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-LandscapeRight.png" timestamp="1453834156575" lastAccessTime="1453834392253"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-LandscapeRight@2x.png" timestamp="1453834156579" lastAccessTime="1453834392253"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-Portrait.png" timestamp="1453834156581" lastAccessTime="1453834392254"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-Portrait@2x.png" timestamp="1453834156583" lastAccessTime="1453834392254"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-PortraitUpsideDown.png" timestamp="1453834156585" lastAccessTime="1453834392254"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading-PortraitUpsideDown@2x.png" timestamp="1453834156588" lastAccessTime="1453834392254"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading.html" timestamp="1453834156592" lastAccessTime="1453834392255"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading.png" timestamp="1453834156594" lastAccessTime="1453834392255"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/loading@2x.png" timestamp="1453834156595" lastAccessTime="1453834392255"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/menu.erb" timestamp="1453834156617" lastAccessTime="1453834392256"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/partials" timestamp="1453834156747" lastAccessTime="1453834392256"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/souscategories.erb" timestamp="1453834156753" lastAccessTime="1453834392257"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Chercheur/chercheur.erb" timestamp="1453834156339" lastAccessTime="1453834392259"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Chercheur/edit.erb" timestamp="1453834156351" lastAccessTime="1453834392259"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Chercheur/index.erb" timestamp="1453834156355" lastAccessTime="1453834392259"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Chercheur/new.erb" timestamp="1453834156358" lastAccessTime="1453834392259"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Chercheur/show.erb" timestamp="1453834156363" lastAccessTime="1453834392259"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/RechercheTags/recherche_tags.erb" timestamp="1453834156470" lastAccessTime="1453834392264"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/.gitignore" timestamp="1453834156302" lastAccessTime="1453834392266"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/.project" timestamp="1453834156306" lastAccessTime="1453834392267"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/.settings" timestamp="1453834156307" lastAccessTime="1453834392267"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/AndroidManifest.erb" timestamp="1453834156317" lastAccessTime="1453834392267"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/build.yml" timestamp="1453834156761" lastAccessTime="1453834392267"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/fr.inc" timestamp="1453834156766" lastAccessTime="1453834392267"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/icon" timestamp="1453834156784" lastAccessTime="1453834392267"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/Live update setting" timestamp="1453834156319" lastAccessTime="1453834392268"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/production" timestamp="1453834156789" lastAccessTime="1453834392268"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/public" timestamp="1453834157192" lastAccessTime="1453834392268"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/README.md" timestamp="1453834156321" lastAccessTime="1453834392268"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/rhoconfig.txt" timestamp="1453834157219" lastAccessTime="1453834392268"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/rhosimulator" timestamp="1453834157262" lastAccessTime="1453834392268"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/test" timestamp="1453834157268" lastAccessTime="1453834392268"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Map/map.erb" timestamp="1453834156402" lastAccessTime="1453834392274"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Map/parcours_etudiant.erb" timestamp="1453834156409" lastAccessTime="1453834392274"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/ParcoursPredef/parcours_etudiant.erb" timestamp="1453834156415" lastAccessTime="1453834392276"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/ParcoursPredef/parcours_predef.erb" timestamp="1453834156429" lastAccessTime="1453834392277"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Accueil/accueil.erb" timestamp="1453834156326" lastAccessTime="1453834392280"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/DetailsCommerce/details_commerce.erb" timestamp="1453834156376" lastAccessTime="1453834392283"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/FinalParcours/final_parcours.erb" timestamp="1453834156387" lastAccessTime="1453834392308"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Settings/err_sync.erb" timestamp="1453834156484" lastAccessTime="1453834392314"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Settings/home.erb" timestamp="1453834156486" lastAccessTime="1453834392314"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Settings/index.erb" timestamp="1453834156513" lastAccessTime="1453834392314"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Settings/login.erb" timestamp="1453834156516" lastAccessTime="1453834392314"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Settings/reset.erb" timestamp="1453834156519" lastAccessTime="1453834392314"/>
+  <entries path="C:/Users/Greg/Documents/RPOCH/rpoch/rhomobile/app/Settings/wait.erb" timestamp="1453834156522" lastAccessTime="1453834392315"/>
 </cache:CacheIndex>
