@@ -57,7 +57,7 @@ module Interface
 		
 		commercesInCoord = commercesTaggued.where("location_lat <= ? AND location_lat >= ? AND 
 							     location_lng >= ? AND location_lng <= ?",
-								lat_max, lat_min, lng_max, lng_min).select('id,enseigne,location_lat,location_lng')
+								lat_max, lat_min, lng_max, lng_min).select('id,enseigne,location_lat,location_lng').limit(15)
 		commercesInCoord
 				
 

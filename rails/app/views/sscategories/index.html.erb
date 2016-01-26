@@ -20,7 +20,7 @@
         <td><%= sscategory.catparent %></td>
         <td><%= link_to 'Show', sscategory %></td>
         <td><%= link_to 'Edit', edit_sscategory_path(sscategory) %></td>
-        <td><%= button_to 'Destroy', sscategory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', sscategory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
