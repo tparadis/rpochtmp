@@ -36,13 +36,51 @@ module Algo
 		lng_min = coord_ref_lng - tmp2;
 
 		# tableau contenant la liste des tags par magasins :
-		tab_mags = []
+		tab_mags = [];
+		tab_res = [];
 		commerces = eval(commerces)
 		commerces.each do |com|
 			tab_mags << Interface.getComCT(com, lat_max, lat_min,
-										   lng_max, lng_min)
+										   lng_max, lng_min);
 		end 
-		tab_mags
+
+		# Init du tableau de résultat :
+		tab_mags[0].each do |init|
+			tmp = []
+			test = distLL(coord_dep_lat, coord_dep_lng,
+						  init.location_lat, init.location_lng)
+			if test < dist_max
+				tmp << test
+				tmp << init
+				tab_res << tmp
+			end
+		end
+
+		first_round = true;
+		tab_mags.each do |list_mag|
+			list_mag.each do |mag|
+				tmp = [];
+				# dans le cas ou on parcours le premier arrêt :
+				if first_round
+					first_round = false;
+					test = distLL(coord_dep_lat, coord_dep_lng,
+								  init.location_lat, init.location_lng);
+					if test < dist_max
+						tmp << test;
+						tmp << mag;
+						tab_res << tmp;
+					end
+				else
+					tab_res_tmp = [];
+					tab_res.each do |res|
+					end
+				end
+			end
+		end
+
+		#tab_mags
+		tab_res
+
 
 		# travaux en cours !
 	end
