@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+<style>
+    #map {
+      width: 390px;
+      height: 530px;
+    }
+  </style>
+
+ 
+
+  <script type="text/javascript">
+function initialize() {
+   var locations = [];
+      var magasins_size = <%= get_resposnse()["size"]%>;
+        
+      var i;
+      for(i =0;i<magasins_size;i++)
+      { 
+        $.get('/app/ParcoursPredef/get_magasin_coord',{ magasin_number:i});
+          locations[i]=['<%=$magasin_name%>',0<%=$magasinlat%>,0<%=$magasinlng%>,i+1];
+      }
+      
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 14,
+      center: new google.maps.LatLng(48.112739, -1.681489),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }};
+  </script>
+        </head> 
+        <body>     
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfh64T7GInE-G0rPQ35PHjmPr1erbaJgg&signed_in=true&callback=initialize"
+          async defer></script>
+        
+          <div id="map"></div>
+</body>
+</html>

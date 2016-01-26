@@ -55,4 +55,57 @@ class ParcoursPredefController < Rho::RhoController
     @parcourspredef.destroy if @parcourspredef
     redirect :action => :index  
   end
+  
+  #Requete test
+  def requette_etudiant
+    if Rho::Network.hasNetwork
+      #Perform an HTTP GET request.
+            getProps = Hash.new
+            getProps['url'] = "http://rpoch.istic.univ-rennes1.fr/api/?req=predef&format=jsson&nom=etudiant"
+            getProps['headers'] = {"Content-Type" => "application/json"}
+            Rho::Network.get(getProps, url_for(:action => :get_callback))
+    else
+          show_popup("Reseau pas disponible")
+         end
+  end
+  
+  def show_popup(message)
+      Rho::Notification.showPopup({
+        :title => "Rennes en poche",
+        :message => message,
+        :buttons => ["OK"]
+      })
+    end
+    
+  def get_callback
+     if @params['status'] == "ok"
+       @@get_result = @params['body']
+       Rho::WebView.navigate(url_for(:action => :parcours_etudiant))
+         
+     else
+       show_popup("GET request Failed")
+     end
+   end
+
+ 
+
+  def get_resposnse
+    array = Rho::JSON.parse(@@get_result)
+    @@controlerarray = array
+    array
+  end
+  
+  
+  def get_magasin_coord
+    array = Rho::JSON.parse(@@get_result)
+    id_mag = @params['magasin_number']
+    $testn1=id_mag
+    id_mag=Integer(id_mag)
+    $magasinlng = @@controlerarray ["magasins"][id_mag]["location_lng"]
+    $magasinlat = @@controlerarray ["magasins"][id_mag]["location_lat"]
+    $magasin_name = @@controlerarray ["magasins"][id_mag]["enseigne"]
+
+    $testn2=id_mag
+   end
+  
 end

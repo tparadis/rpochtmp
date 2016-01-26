@@ -17,7 +17,7 @@
           <a href="<%= url_for :controller => :Map, :action => :map %>">
             <img src="http://rpoch.istic.univ-rennes1.fr/static/images/parcoursEtudiant.jpg" alt="" />
           </a>
-          <a href="http://rpoch.istic.univ-rennes1.fr/api/?req=predef&format=json&nom=etudiant">
+          <a href="<%= url_for :action => :requette_etudiant %>">
             <span class="lien">Parcours Etudiant</span>
           </a>
         </li>
