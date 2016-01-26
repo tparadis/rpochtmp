@@ -71,6 +71,11 @@ class WelcomeController < ApplicationController
 			@y = Interface.getTags
 			render json: {:size => @y.size(), :tags => @y}
 		end
+		# test 
+		if params[:req] == "yolo"
+			@y = Interface.getComCT(13, 48.117, 48.11017, -1.6866, -1.676)
+			render json: { :tags => @y}
+		end
 
 	else
 

@@ -48,6 +48,21 @@ module Interface
 
 	end
 
+	# On retourne une liste de 10 commerces en fonction de leurs coordonées
+	# et de leurs tags :
+	def Interface.getComCT( nomTag, lat_max, lat_min,
+						    lng_max, lng_min )
+		
+		commercesTaggued = Commerce.where("tag0 = ? OR tag1 = ? OR tag2 = ? ",nomTag,nomTag,nomTag)
+		
+		commercesInCoord = commercesTaggued.where("location_lat <= ? AND location_lat >= ? AND 
+							     location_lng >= ? AND location_lng <= ?",
+								lat_max, lat_min, lng_max, lng_min).select('id,enseigne,location_lat,location_lng')
+		commercesInCoord
+				
+
+	end
+
 	#retourne un magasin complet
 	def Interface.getSpecificCommerce
 
