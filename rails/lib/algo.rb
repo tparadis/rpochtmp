@@ -36,15 +36,62 @@ module Algo
 		lng_min = coord_ref_lng - tmp2;
 
 		# tableau contenant la liste des tags par magasins :
-		tab_mags = []
+		tab_mags = [];
+		tab_res = [];
 		commerces = eval(commerces)
 		commerces.each do |com|
-			tab_mags << Interface.getComCT(com, lat_max, lat_min,
-										   lng_max, lng_min)
+			id_com = Interface.getIdbyNum(com);
+			tab_mags << Interface.getComCT(id_com, lat_max, lat_min,
+										   lng_max, lng_min);
 		end 
-		tab_mags
 
-		# travaux en cours !
+		# Init du tableau de résultat :
+		tab_mags[0].each do |init|
+			tmp = []
+			test = distLL(coord_dep_lat, coord_dep_lng,
+						  init.location_lat, init.location_lng)
+			if test < dist_max
+				tmp << test
+				tmp << init
+				tab_res << tmp
+			end
+		end
+		# return tab_res
+		# Construisons à présent le chemin entre le premier magasin
+		# Et la destination finale :
+		tab_res_tmp = []
+		for indice in 1..commerces.length-1
+			tab_mags[indice].each do |mag|
+				tab_res.each do |prec|
+					precedent_lat = prec[prec.length-1].location_lat;
+					precedent_lng = prec[prec.length-1].location_lng;
+					test = distLL(precedent_lat, precedent_lng,
+								  mag.location_lat, mag.location_lng);
+					if (prec[0] + test) < dist_max
+						tmp = prec.clone;
+						tmp[0] += test;
+						tmp << mag;
+						tab_res_tmp << tmp;
+					end
+				end
+			end
+			tab_res = tab_res_tmp.clone
+			tab_res_tmp = []
+		end
+		# return tab_res
+		# Nous intégrons à présent le chemin final :
+		tab_final = []
+		tab_res.each do |fin|
+			precedent_lat = fin[fin.length-1].location_lat;
+			precedent_lng = fin[fin.length-1].location_lng;
+			test = distLL(precedent_lat, precedent_lng,
+						  coord_arr_lat, coord_arr_lng)
+			if (fin[0] + test) < dist_max
+				tab_final << fin
+			end
+		end
+		# return tab_final
+		return tab_final[0]
 	end
 
 	# Calcule la distance en kilomètre entre deux coordonées.
