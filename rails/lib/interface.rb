@@ -48,6 +48,10 @@ module Interface
 
 	end
 
+	def Interface.getIdbyNum( nomTag )
+		Sscategorie.where(:nom => nomTag).select('id').first
+	end
+
 	# On retourne une liste de 10 commerces en fonction de leurs coordonées
 	# et de leurs tags :
 	def Interface.getComCT( nomTag, lat_max, lat_min,
