@@ -84,6 +84,10 @@ class WelcomeController < ApplicationController
 			@y = Algo.distLL(params[:a_lat].to_f,params[:a_lng].to_f,params[:b_lat].to_f,params[:b_lng].to_f)
 			render json: { :tags => @y}
 		end
+		if params[:req] == "test_corr"
+			@y = Interface.getIdbyNum("Boucherie");
+			render json: { :tags => @y}
+		end
 
 		# Fin test
 
