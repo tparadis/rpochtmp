@@ -55,34 +55,41 @@ module Algo
 				tab_res << tmp
 			end
 		end
-
-		first_round = true;
-		tab_mags.each do |list_mag|
-			list_mag.each do |mag|
-				tmp = [];
-				# dans le cas ou on parcours le premier arrêt :
-				if first_round
-					first_round = false;
-					test = distLL(coord_dep_lat, coord_dep_lng,
-								  init.location_lat, init.location_lng);
-					if test < dist_max
-						tmp << test;
+		# return tab_res
+		# Construisons à présent le chemin entre le premier magasin
+		# Et la destination finale :
+		tab_res_tmp = []
+		for indice in 1..commerces.length-1
+			tab_mags[indice].each do |mag|
+				tab_res.each do |prec|
+					precedent_lat = prec[prec.length-1].location_lat;
+					precedent_lng = prec[prec.length-1].location_lng;
+					test = distLL(precedent_lat, precedent_lng,
+								  mag.location_lat, mag.location_lng);
+					if (prec[0] + test) < dist_max
+						tmp = prec.clone;
+						tmp[0] += test;
 						tmp << mag;
-						tab_res << tmp;
-					end
-				else
-					tab_res_tmp = [];
-					tab_res.each do |res|
+						tab_res_tmp << tmp;
 					end
 				end
 			end
+			tab_res = tab_res_tmp.clone
+			tab_res_tmp = []
 		end
-
-		#tab_mags
-		tab_res
-
-
-		# travaux en cours !
+		# return tab_res
+		# Nous intégrons à présent le chemin final :
+		tab_final = []
+		tab_res.each do |fin|
+			precedent_lat = fin[fin.length-1].location_lat;
+			precedent_lng = fin[fin.length-1].location_lng;
+			test = distLL(precedent_lat, precedent_lng,
+						  coord_arr_lat, coord_arr_lng)
+			if (fin[0] + test) < dist_max
+				tab_final << fin
+			end
+		end
+		return tab_final
 	end
 
 	# Calcule la distance en kilomètre entre deux coordonées.
