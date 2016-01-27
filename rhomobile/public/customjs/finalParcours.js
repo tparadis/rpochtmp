@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	    for (var i=0; i < parcours.length; i++)
+	    for (var i=0 ; i < parcours.length; i++)
 	    {
 	    	$("tbody").append("<tr><td>"+parcours.getItem(i)+"</td><td>test</td><td>test</td><td>test</td></tr>");
 	    }
@@ -13,23 +13,22 @@ function genererParcours(){
 	var dist_max = 10;
 	var tags = [];
 	for (var i = 0 ; i < parcours.length ; i++) {
-		tags.push(parcours[i]);
+		tags.push("\""+parcours[i]+"\"");
 	}
 
 	$.ajax({
 	    dataType: "json",
 	    contentType: "application/json",
 		url : "http://rpoch.istic.univ-rennes1.fr/api/",
-		data : {"req":"yolo","format":"json","coord_dep_lat":coord_dep_lat,"coord_dep_lng":coord_dep_lng,"coord_arr_lat":coord_arr_lat,"coord_arr_lng":coord_arr_lng,"dist_max":dist_max,"commerces":tags},
-		type : "POST",
-		async: true,
+		data : {"req":"yolo","format":"json","coord_dep_lat":coord_dep_lat,"coord_dep_lng":coord_dep_lng,"coord_arr_lat":coord_arr_lat,"coord_arr_lng":coord_arr_lng,"dist_max":dist_max,"commerces":"["+tags+"]"},
+		type : "GET",
+		async: false,
 		success: function(data){
 			var i = 0;
 			$("tbody").html("");
-			while (i < data.size)
+			for (var i = 1 ; i <= tags.length ; i++)
 		    {
-		    	$("tbody").append("<tr><td>"+data.commerces[i].enseigne+"</td><td>test</td><td>test</td><td>test</td></tr>");
-		    	i++;
+		    	$("tbody").append("<tr><td>"+data.tags[i].enseigne.toLowerCase()+"</td><td>test</td><td>test</td><td>test</td></tr>");
 		    }
 			
 		},

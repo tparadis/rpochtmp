@@ -1,0 +1,6 @@
+function init() {
+	parcours = localStorage;
+	parcours.clear;
+}
+//window.onload = init();
+

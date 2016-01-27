@@ -11,20 +11,41 @@
  
 
   <script type="text/javascript">
-function initialize() {
-   var locations = [];
-      var magasins_size = <%= get_resposnse()["size"]%>;
-        
-      var i;
-      for(i =0;i<magasins_size;i++)
-      { 
-        $.get('/app/ParcoursPredef/get_magasin_coord',{ magasin_number:i});
-          locations[i]=['<%=$magasin_name%>',0<%=$magasinlat%>,0<%=$magasinlng%>,i+1];
-      }
+  initialize();
+      function initialize() {
+      var locations = [];
       
-
+      
+      
+      var i;
+      $.ajax({
+          dataType: "json",
+          contentType: "application/json",
+          url : "http://rpoch.istic.univ-rennes1.fr/api/",
+          data : {"req":"predef","format":"json","nom":"<%= $typeparcours %>"},
+          type : "GET",
+          async: false,
+          success: function(data){
+              var i = 0;
+              var magasins_size = data.size;
+              
+              while (i < magasins_size)
+              {
+                  //alert([data.magasins[i].enseigne, data.magasins[i].location_lat,data.magasins[i].location_lng, i+1]);
+                  locations.push([data.magasins[i].enseigne+"  "+i, data.magasins[i].location_lat,data.magasins[i].location_lng, i+1]);
+                  i++;
+              }
+              
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown)
+          {
+              alert(textStatus +", " +errorThrown);
+          }
+      });
+   
+      
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 14,
+      zoom: 15,
       center: new google.maps.LatLng(48.112739, -1.681489),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
@@ -45,7 +66,8 @@ function initialize() {
           infowindow.open(map, marker);
         }
       })(marker, i));
-    }};
+      }
+}
   </script>
         </head> 
         <body>     

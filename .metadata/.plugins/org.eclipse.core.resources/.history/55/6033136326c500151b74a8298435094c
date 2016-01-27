@@ -1,0 +1,15 @@
+function init() {
+	parcours = localStorage;
+	reset();
+}
+//window.onload = init();
+
+function reset() {
+	var tmp = parcours.getItem(0);
+	if (tmp != null) {
+		parcours.clear();
+		parcours.setItem(0, tmp);
+	} else {
+		parcours.clear();
+	}
+}

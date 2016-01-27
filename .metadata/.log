@@ -407,3 +407,30 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.eclipse.mylyn.tasks.ui 2 0 2016-01-26 19:53:06.157
 !MESSAGE No search provider was registed. Tasks search is not available.
+!SESSION 2016-01-27 12:41:51.809 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2016-01-27 12:42:31.901
+!MESSAGE No search provider was registed. Tasks search is not available.
+!SESSION 2016-01-27 18:29:57.749 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2016-01-27 18:30:16.010
+!MESSAGE No search provider was registed. Tasks search is not available.
+!SESSION 2016-01-27 19:12:26.435 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2016-01-27 19:12:46.898
+!MESSAGE No search provider was registed. Tasks search is not available.

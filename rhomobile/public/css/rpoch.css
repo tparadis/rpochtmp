@@ -5,17 +5,23 @@ body{
 	padding:0;
 }
 
-#bouton_reglage{
+#bouton_reglage {
 	background: rgb(255,165,57); /*orange*/
 	color:black;
 	text-shadow:none;
 }
 
-#langue{
+.ui-btn-right {
+	width: 80px;
+}
+
+.ui-btn-right .ui-btn-inner, #lang {
 	background: rgb(255,165,57);
 	color: black;
 	text-shadow: none; /*ios*/
 }
+
+
 
 #header {
 	background: rgb(68,52,52); /*marron*/
