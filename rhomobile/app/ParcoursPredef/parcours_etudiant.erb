@@ -22,7 +22,7 @@
           dataType: "json",
           contentType: "application/json",
           url : "http://rpoch.istic.univ-rennes1.fr/api/",
-          data : {"req":"predef","format":"json","nom":"gourmand"},
+          data : {"req":"predef","format":"json","nom":"<%= $typeparcours %>"},
           type : "GET",
           async: false,
           success: function(data){
@@ -45,7 +45,7 @@
    
       
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 14,
+      zoom: 15,
       center: new google.maps.LatLng(48.112739, -1.681489),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });

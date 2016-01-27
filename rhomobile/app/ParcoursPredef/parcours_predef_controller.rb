@@ -58,47 +58,10 @@ class ParcoursPredefController < Rho::RhoController
   
   #Requete test
   def requette_etudiant
-    if Rho::Network.hasNetwork
-      #Perform an HTTP GET request.
-            getProps = Hash.new
-            getProps['url'] = "http://rpoch.istic.univ-rennes1.fr/api/?req=predef&format=json&nom=etudiant"
-            getProps['headers'] = {"Content-Type" => "application/json"}
-            Rho::Network.get(getProps, url_for(:action => :get_callback))
-    else
-          show_popup("Reseau pas disponible")
-         end
+    $typeparcours = @params['type_parcours']
+    Rho::WebView.navigate(url_for(:action => :parcours_etudiant))
   end
   
-  def show_popup(message)
-      Rho::Notification.showPopup({
-        :title => "Rennes en poche",
-        :message => message,
-        :buttons => ["OK"]
-      })
-    end
-    
-  def get_callback
-     if @params['status'] == "ok"
-       @@get_result = @params['body']
-       Rho::WebView.navigate(url_for(:action => :parcours_etudiant))
-         
-     else
-       show_popup("GET request Failed")
-     end
-   end
-
  
-
-  def get_resposnse
-    array = Rho::JSON.parse(@@get_result)
-    @@controlerarray = array
-    array
-  end
-  
-  
-  def get_magasin_coords
-    
-    @@get_result
-   end
   
 end
