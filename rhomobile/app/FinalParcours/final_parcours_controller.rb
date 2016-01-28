@@ -56,4 +56,8 @@ class FinalParcoursController < Rho::RhoController
     redirect :action => :index  
   end
   
+  def set_res_variable
+       $res_variable = @params['res_variable']
+   end
+  
 end

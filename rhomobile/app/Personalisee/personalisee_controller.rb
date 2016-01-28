@@ -58,46 +58,11 @@ class PersonaliseeController < Rho::RhoController
     redirect :action => :index  
   end
   
-  #Requete test
-  def requette
-    if Rho::Network.hasNetwork
-      #Perform an HTTP GET request.
-            getProps = Hash.new
-            getProps['url'] = "http://148.60.11.234/api/?req=path&format=json&nombreMagasins=21"
-            #getProps['url'] = "https://rpoch.istic.univ-rennes1.fr/api/?req=path&format=json&nombreMagasins=5"
-            getProps['headers'] = {"Content-Type" => "application/json"}
-            Rho::Network.get(getProps, url_for(:action => :get_callback))
-    else
-          show_popup("Reseau pas disponible")
-         end
-  end
-  
-  def show_popup(message)
-      Rho::Notification.showPopup({
-        :title => "Rennes en poche",
-        :message => message,
-        :buttons => ["OK"]
-      })
-    end
     
   def get_callback
-     if @params['status'] == "ok"
-       @@get_result = @params['body']
+       $parcours_perso = @params['parcours_perso']
        Rho::WebView.navigate(url_for(:action => :show_result))
-         
-     else
-       show_popup("GET request Failed")
-     end
    end
 
- 
-
-  def get_resposnse
-    array = Rho::JSON.parse(@@get_result)
-    commerces = array["commerces"]
-    $long = commerces.collect{|x| x["vp_ne_lng"]}
-    $lat = commerces.collect{|x| x["vp_ne_lng"]}
-    array
-  end
      
 end

@@ -32,6 +32,7 @@ function genererParcours(){
 		    	$("tbody").append("<tr><td>"+data.tags[i].enseigne.toLowerCase()+"</td><td>test</td><td>test</td><td>test</td></tr>");
 		    	res = res.concat(data.tags[i].location_lat,",", data.tags[i].location_lng,",", data.tags[i].enseigne,",");
 		    }
+		   $.get('/app/Personalisee/get_callback',{ parcours_perso: res });
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown)
 		{
