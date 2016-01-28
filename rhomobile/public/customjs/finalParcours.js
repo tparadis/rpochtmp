@@ -24,13 +24,14 @@ function genererParcours(){
 		type : "GET",
 		async: false,
 		success: function(data){
+			var res = "";
 			var i = 0;
 			$("tbody").html("");
 			for (var i = 1 ; i <= tags.length ; i++)
 		    {
 		    	$("tbody").append("<tr><td>"+data.tags[i].enseigne.toLowerCase()+"</td><td>test</td><td>test</td><td>test</td></tr>");
+		    	res = res.concat(data.tags[i].location_lat,",", data.tags[i].location_lng,",", data.tags[i].enseigne,",");
 		    }
-			
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown)
 		{
