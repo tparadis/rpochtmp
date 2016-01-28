@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="rhogenwizard.launcher.rhodesApp">
 <stringAttribute key="aemuname" value=""/>
-<stringAttribute key="aversion" value="4.4.2"/>
+<stringAttribute key="aversion" value=""/>
 <stringAttribute key="build" value="local"/>
 <booleanAttribute key="clean" value="true"/>
 <stringAttribute key="ipversion" value="ipad"/>

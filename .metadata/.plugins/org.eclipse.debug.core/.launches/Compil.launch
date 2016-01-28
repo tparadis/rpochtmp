@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="rhogenwizard.launcher.rhodesApp">
-<stringAttribute key="aemuname" value=""/>
-<stringAttribute key="aversion" value="4.4.2"/>
+<stringAttribute key="aemuname" value="android_403"/>
+<stringAttribute key="aversion" value="4.0.3"/>
 <stringAttribute key="build" value="local"/>
 <booleanAttribute key="clean" value="true"/>
 <stringAttribute key="ipversion" value="iphone"/>
@@ -9,5 +9,5 @@
 <stringAttribute key="project_name" value="rhomobile"/>
 <booleanAttribute key="rebuild" value="false"/>
 <booleanAttribute key="trace" value="true"/>
-<stringAttribute key="type_symulator" value="device"/>
+<stringAttribute key="type_symulator" value="simulator"/>
 </launchConfiguration>
