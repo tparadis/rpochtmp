@@ -18,7 +18,7 @@ $(document).ready(function() {
 					var nomCourant = courantSsCat.nom;
 					var lien = "href='/app/FinalParcours/final_parcours'";
 					if (courantSsCat.catparent == courantCat.id) {
-						$("."+listeSsCat).append("<li><a "+lien+" onclick=\"addSsCat('"+nomCourant+"')\" text=\""+nomCourant.replace(/\\/, "").toLowerCase()+"\"></a></li>");
+						$("."+listeSsCat).append("<li><a "+lien+" onclick=\"addSsCat('"+nomCourant+"')\" text=\""+nomCourant.replace(/\\/, "")+"\"></a></li>");
 					}
 				}
 			}

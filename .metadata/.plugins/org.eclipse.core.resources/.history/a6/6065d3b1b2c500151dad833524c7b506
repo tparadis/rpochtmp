@@ -12,13 +12,13 @@ $(document).ready(function() {
 			for(var i = 0 ; i < data.sizecat ; i++) {
 				var courantCat = data.cat[i];
 				var listeSsCat = "listeSsCat"+i;
-				$("#navmenu").append("<div data-role='collapsible' class='categorie'><h3 text=\""+courantCat.nom.toLowerCase()+"\"></h3><ul class='"+listeSsCat+"' data-role='listview' data-inset='true' data-icon='plus'></ul></div>");
+				$("#navmenu").append("<div data-role='collapsible' class='categorie'><h3 text=\""+courantCat.nom+"\"></h3><ul class='"+listeSsCat+"' data-role='listview' data-inset='true' data-icon='plus'></ul></div>");
 				for(var j = 0 ; j < data.sizesscat ; j++) {
 					var courantSsCat = data.sscat[j];
 					var nomCourant = courantSsCat.nom;
 					var lien = "href='/app/FinalParcours/final_parcours'";
 					if (courantSsCat.catparent == courantCat.id) {
-						$("."+listeSsCat).append("<li><a "+lien+" onclick=\"addSsCat('"+nomCourant+"')\" text=\""+nomCourant.replace(/\\/, "").toLowerCase()+"\"></a></li>");
+						$("."+listeSsCat).append("<li><a "+lien+" onclick=\"addSsCat('"+nomCourant+"')\" text=\""+nomCourant.replace(/\\/, "")+"\"></a></li>");
 					}
 				}
 			}
