@@ -14,7 +14,7 @@
       <ul id="menu">
       
         <li>               
-          <a href="<%= url_for :controller => :Map, :action => :map %>">
+          <a href="<%= url_for :action => :requette_etudiant ,:query=>{:type_parcours=>'etudiant'}%>">
             <img src="http://rpoch.istic.univ-rennes1.fr/static/images/parcoursEtudiant.jpg" alt="" />
           </a>
           <a href="<%= url_for :action => :requette_etudiant ,:query=>{:type_parcours=>'etudiant'}%>">
@@ -32,7 +32,7 @@
         </li>
       
         <li>          
-          <a href="<%= url_for :controller => :Map, :action => :map %>">
+          <a href="<%= url_for :action => :requette_etudiant ,:query=>{:type_parcours=>'gourmand'}%>">
             <img src="http://rpoch.istic.univ-rennes1.fr/static/images/parcoursGourmand.jpg" alt="" />
           </a>
           <a href="<%= url_for :action => :requette_etudiant ,:query=>{:type_parcours=>'gourmand'}%>">
@@ -41,7 +41,7 @@
         </li>
       
         <li>      
-          <a href="<%= url_for :controller => :Map, :action => :map %>">
+          <a href="<%= url_for :action => :requette_etudiant ,:query=>{:type_parcours=>'famille'}%>">
             <img src="http://rpoch.istic.univ-rennes1.fr/static/images/parcoursFamille.jpg" alt="" />
           </a>
           <a href="<%= url_for :action => :requette_etudiant ,:query=>{:type_parcours=>'famille'}%>">
