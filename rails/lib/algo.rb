@@ -13,6 +13,51 @@ module Algo
 
 	end
 
+	def Algo.getPath(coord_dep_lat,coord_dep_lng,
+						 	coord_arr_lat,coord_arr_lng,
+						 	dist_max, commerces)
+		# dans le premier algo -> parcours en largeur
+		# faisons à présent un parcours en profondeur
+		
+		# Constantes utiles à la conversion
+		# km <=> latitude et longitude
+		conv_lat = 110.574;
+		conv_lng = 111.320;
+
+		# On prend la moyenne entre les points de départ
+		# et d'arrivée du parcours :
+		coord_ref_lat = (coord_dep_lat + coord_arr_lat)/2;
+		coord_ref_lng = (coord_dep_lng + coord_arr_lng)/2;
+
+		# Calcul des limites dans lesquelles nous allons
+		# rechercher l'information dans la base de donnée :
+		tmp1 = (dist_max / conv_lat);
+		tmp2 = (dist_max / (conv_lng * Math.cos(coord_ref_lat)));
+		lat_max = coord_ref_lat + tmp1;
+		lat_min = coord_ref_lat - tmp1;
+		lng_max = coord_ref_lng + tmp2;
+		lng_min = coord_ref_lng - tmp2;
+
+		# tableau contenant la liste des tags par magasins :
+		tab_mags = [];
+		tab_res = [];
+		commerces = eval(commerces)
+		commerces.each do |com|
+			id_com = Interface.getIdbyNum(com);
+			tab_mags << Interface.getComCT(id_com, lat_max, lat_min,
+										   lng_max, lng_min);
+		end 
+
+		# dans un premier temps, il faut initialiser le parcours
+		# en fonction du point d'arrivée, et du premier commerce
+		# du parcours : 
+		
+		tab_res = []; 		# Tableau de résultat.
+		blacklist = []; 	# liste permettant de ne pas passer par le même
+							# commerce dans deux parcours proposés.
+
+	end
+
 	def Algo.getDynamicPath(coord_dep_lat,coord_dep_lng,
 						 	coord_arr_lat,coord_arr_lng,
 						 	dist_max, commerces)
@@ -44,6 +89,7 @@ module Algo
 			tab_mags << Interface.getComCT(id_com, lat_max, lat_min,
 										   lng_max, lng_min);
 		end 
+		# return tab_mags;
 
 		# Init du tableau de résultat :
 		tab_mags[0].each do |init|
@@ -130,8 +176,5 @@ module Algo
 		end			
 		y	
 	end
-
-
-
 
 end

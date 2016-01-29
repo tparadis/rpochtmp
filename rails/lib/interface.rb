@@ -1,5 +1,5 @@
 module Interface
-
+ 
 	#Fonctions sur la récupération des categories
 	def Interface.getCategories
 		Categorie.order('id').select('id,nom')
@@ -27,6 +27,7 @@ module Interface
 		Commerce.where(:id => id).select('id,enseigne,location_lat,location_lng,location_type,vp_ne_lat,vp_ne_lng,vp_sw_lat,vp_sw_lng').first
 
 	end
+
 
 	#Relatif aux commerces
 	def Interface.getParcoursPredefinis
@@ -57,11 +58,14 @@ module Interface
 	def Interface.getComCT( nomTag, lat_max, lat_min,
 						    lng_max, lng_min )
 		
+	
+		offset = rand(Commerce.count);
 		commercesTaggued = Commerce.where("tag0 = ? OR tag1 = ? OR tag2 = ? ",nomTag,nomTag,nomTag)
 		
 		commercesInCoord = commercesTaggued.where("location_lat <= ? AND location_lat >= ? AND 
 							     location_lng >= ? AND location_lng <= ?",
-								lat_max, lat_min, lng_max, lng_min).select('id,enseigne,location_lat,location_lng').limit(15)
+								lat_max, lat_min, lng_max, lng_min).select('id,enseigne,location_lat,location_lng').order("RANDOM()").limit(15)
+
 		commercesInCoord
 				
 

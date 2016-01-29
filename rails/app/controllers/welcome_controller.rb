@@ -3,7 +3,10 @@ class WelcomeController < ApplicationController
   require "algo.rb"
   require "interface.rb"
 
+
   def index
+
+	
 
   	params.require(:req)
 		
@@ -82,6 +85,7 @@ class WelcomeController < ApplicationController
 		end
 		if params[:req] == "yolodist"
 			@y = Algo.distLL(params[:a_lat].to_f,params[:a_lng].to_f,params[:b_lat].to_f,params[:b_lng].to_f)
+			#@y = Interface.getComCT("bio",-1.6,1.8,48,49) 
 			render json: { :tags => @y}
 		end
 		if params[:req] == "test_corr"
