@@ -94,6 +94,7 @@ module Algo
 		return tab_final[0]
 	end
 
+
 	# Calcule la distance en kilomètre entre deux coordonées.
 	def Algo.distLL(a_lat,a_lng,b_lat,b_lng)
 		r = 6371;
