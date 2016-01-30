@@ -13,9 +13,9 @@ module Algo
 
 	end
 
-	def Algo.getPath(coord_dep_lat,coord_dep_lng,
-						 	coord_arr_lat,coord_arr_lng,
-						 	dist_max, commerces)
+	def Algo.getNewPath(coord_dep_lat,coord_dep_lng,
+						coord_arr_lat,coord_arr_lng,
+						dist_max, commerces)
 		# dans le premier algo -> parcours en largeur
 		# faisons à présent un parcours en profondeur
 		
@@ -48,13 +48,68 @@ module Algo
 										   lng_max, lng_min);
 		end 
 
-		# dans un premier temps, il faut initialiser le parcours
-		# en fonction du point d'arrivée, et du premier commerce
-		# du parcours : 
+
+		tab_max = []; 		# stock la taille de chaque liste de commerces
+		tab_indice = []; 	# permet de savoir quels commerces ont été testés
+		tab_mags.each do |mag|
+			tab_max << mag.length()-1;
+			tab_indice << 0;
+		end
+
+		# dans un premier temps, bouclons jusque'a trouver un parcours :
+		while true
+			cpt = 0;
+			# Calculons la distance du parcours avant l'arrivée
+			for indice in 0..(tab_mags.length -1)
+				tmp_lat = tab_mags[indice][ tab_indice[indice] ].location_lat;
+				tmp_lng = tab_mags[indice][ tab_indice[indice] ].location_lng;
+				if indice == 0
+					cpt += distLL(coord_dep_lat, coord_dep_lng,
+						 		  ,tmp_lat, tmp_lng );
+				else
+					cpt += distLL(tmp_lat, tmp_lat,
+						 		  ,tmp_old_lat, tmp_old_lng );
+				end
+				tmp_lat_old = tmp_lat;
+				tmp_lng_old = tmp_lng;
+			end
+			# Ajoutons à présent la distance pour arriver à la fin du parcours :
+			cpt += distLL(tmp_old_lat, tmp_old_lng,
+						  coord_arr_lat,coord_arr_lng)
+
+			# le parcours généré à t'il la bonne longueur ?
+			if cpt <= dist_max
+				# succès : on retourne le parcours
+				res << cpt;
+				for indice in 0..(tab_mags.length -1)
+					res << tab_mags[indice][ tab_indice[indice] ];
+				end
+				return res;
+			end
+
+			# ici ==> le parcours ne convenait pas.
+			# mettons à jour le tableau des indices, et réitérons.
+	
+			degrad = false;
+			for indice in (tab_indice.length()-1).downto(0)
+				if indice == tab_indice.length()-1
+					if tab_indice[indice] == tab_max[indice]
+						degrad = true;
+						tab_indice[indice] = 0;
+					else
+						tab_indice[indice]+=1;
+					end
+				end
+
+			end
+
+		end
 		
-		tab_res = []; 		# Tableau de résultat.
-		blacklist = []; 	# liste permettant de ne pas passer par le même
-							# commerce dans deux parcours proposés.
+
+		# return tab_max
+
+
+		
 
 	end
 

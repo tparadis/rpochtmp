@@ -92,6 +92,12 @@ class WelcomeController < ApplicationController
 			@y = Interface.getIdbyNum("Boucherie");
 			render json: { :tags => @y}
 		end
+		if params[:req] == "new_path"
+			@y = Algo.getNewPath(params[:coord_dep_lat].to_f,params[:coord_dep_lng].to_f,
+									 params[:coord_arr_lat].to_f,params[:coord_arr_lng].to_f,
+									 params[:dist_max].to_f, params[:commerces])
+			render json: { :tags => @y}
+		end
 
 		# Fin test
 
