@@ -40,12 +40,13 @@ module Algo
 
 		# tableau contenant la liste des tags par magasins :
 		tab_mags = [];
-		tab_res = [];
 		commerces = eval(commerces)
 		commerces.each do |com|
 			id_com = Interface.getIdbyNum(com);
-			tab_mags << Interface.getComCT(id_com, lat_max, lat_min,
-										   lng_max, lng_min);
+			test = Interface.getComCT(id_com, lat_max, lat_min, lng_max, lng_min);
+			if not test.empty?
+				tab_mags << test;
+			end
 		end 
 
 
@@ -57,31 +58,49 @@ module Algo
 		end
 
 		# dans un premier temps, bouclons jusque'a trouver un parcours :
+		tmp_old_lat=0.0;
+		tmp_old_lng=0.0;
+		debug = [];
 		while true
 			cpt = 0;
+			blacklist = []; 	# éviter de donner le même magasin plusieurs fois
+								# dans un parcours
+			valid = true; 		# permet de savoir si le chemin n'est pas redondant
 			# Calculons la distance du parcours avant l'arrivée
-			for indice in 0..(tab_mags.length -1)
+			for indice in 0..(tab_mags.length() -1)
 				tmp_lat = tab_mags[indice][ tab_indice[indice] ].location_lat;
 				tmp_lng = tab_mags[indice][ tab_indice[indice] ].location_lng;
+
+				# On ajoute le nouveau magasin testé à la blacklist
+				if blacklist.include?(tab_mags[indice][ tab_indice[indice] ].id)
+					# et si il est déjà dedans -> on le précise grace au booléen 'valid'
+					# et on quitte la boucle
+					valid = false;
+					break;
+				end
+				# Sinon, on met à jour la blacklist
+				blacklist << tab_mags[indice][ tab_indice[indice] ].id;
+
 				if indice == 0
 					cpt += distLL(coord_dep_lat, coord_dep_lng,
-						 		  ,tmp_lat, tmp_lng );
+						 		  tmp_lat, tmp_lng );
 				else
-					cpt += distLL(tmp_lat, tmp_lat,
-						 		  ,tmp_old_lat, tmp_old_lng );
+					cpt += distLL(tmp_lat, tmp_lng,
+						 		  tmp_old_lat, tmp_old_lng );
 				end
-				tmp_lat_old = tmp_lat;
-				tmp_lng_old = tmp_lng;
+				tmp_old_lat = tmp_lat;
+				tmp_old_lng = tmp_lng;
 			end
 			# Ajoutons à présent la distance pour arriver à la fin du parcours :
 			cpt += distLL(tmp_old_lat, tmp_old_lng,
 						  coord_arr_lat,coord_arr_lng)
 
-			# le parcours généré à t'il la bonne longueur ?
-			if cpt <= dist_max
+			# le parcours généré à t'il la bonne longueur et est-il valide ?
+			if cpt <= dist_max and valid
 				# succès : on retourne le parcours
+				res = [];
 				res << cpt;
-				for indice in 0..(tab_mags.length -1)
+				for indice in 0..(tab_mags.length() -1)
 					res << tab_mags[indice][ tab_indice[indice] ];
 				end
 				return res;
@@ -99,18 +118,26 @@ module Algo
 					else
 						tab_indice[indice]+=1;
 					end
+				else
+					if degrad
+						if tab_indice[indice] == tab_max[indice]
+							if indice == 0
+								# Ici => aucuns parcours n'éxiste en respectant les critères
+								# de recherche précisés par l'utilisateur : 
+								# on retourne un tableau vide.
+								return [];
+							end
+							tab_indice[indice] = 0;
+						else
+							tab_indice[indice]+=1;
+							degrad = false;
+						end
+					end
 				end
-
 			end
 
-		end
-		
 
-		# return tab_max
-
-
-		
-
+		end # Fin boucle while
 	end
 
 	def Algo.getDynamicPath(coord_dep_lat,coord_dep_lng,
