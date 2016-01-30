@@ -8,7 +8,7 @@ body {
     width: inherit;
     font-family: "Droid", sans-serif;
     background: black;
-    color: black;
+    color: white;
 }
 
 h1 {
@@ -30,7 +30,7 @@ div.itemValue {
 .ui-btn a.ui-link-inherit {
     font-family: "Droid", sans-serif;
     background: black;
-    color: black;
+    color: white;
 }
 
 .ui-header h1 {
@@ -55,7 +55,7 @@ div.itemValue {
 .ui-bar-a {
 	border: 1px solid 		#2A2A2A;
 	background: 			#111111;
-	color: 					#000;
+	color: 					#ffffff;
 	font-weight: bold;
 	text-shadow: 0 -1px 1px #000000;
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #2B2B2B), color-stop(0.2, #585858), color-stop(1.0, #2B2B2B));
@@ -71,7 +71,7 @@ div.itemValue {
 */
 }
 .ui-bar-a .ui-link-inherit {
-	color: 					#000;
+	color: 					#fff;
 }
 .ui-bar-a .ui-link {
 	color: 					#7cc4e7;
@@ -80,7 +80,7 @@ div.itemValue {
 .ui-body-c {
 	border: 1px solid 		#2A2A2A;
 	background: 			#000;
-	color: 					#000;
+	color: 					#fff;
 	text-shadow: 0 1px 0 	#000;
 	font-weight: normal;
 /*
@@ -117,7 +117,7 @@ li.ui-btn-up-c {
     border: 1px solid 		#222;
     background: #000;
     font-weight: bold;
-    color: 					#000;
+    color: 					#fff;
     text-shadow: 0 -1px 1px #000;
 /*
     background: 			#333333;
@@ -143,11 +143,11 @@ li.ui-btn-up-c {
 */
 }
 .ui-btn-up-c a.ui-link-inherit {
-	color: 					#000;
+	color: 					#fff;
 }
 .ui-btn-hover-c {
     border: 1px solid 		#000;
-    background: 			#637279;
+    background: 			#f73923;
     font-weight: bold;
     color: 					#000;
     text-shadow: none;
@@ -170,7 +170,7 @@ li.ui-btn-up-c {
 }
 .ui-btn-down-c {
     border: 1px solid 		#000;
-    background: 			#637279;
+    background: 			#f76933;
     font-weight: bold;
     color: 					#000;
     text-shadow: none;
@@ -257,7 +257,7 @@ li.ui-btn-up-c {
     width: 100%;
     height: 60px;
 */
-    color: black;
+    color: white;
     background: url('/public/images/android/ic_menu_more.png') no-repeat center right;
 }
 

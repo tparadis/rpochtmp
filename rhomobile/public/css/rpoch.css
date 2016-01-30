@@ -145,8 +145,14 @@ h2 {
 
 #example th {
 	border: 1px solid black;
+	color: black;
+	font-weight: normal;
 }
 
 #example tr {
 	text-align: center;
+}
+
+#example td {
+	color: black;
 }

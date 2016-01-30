@@ -2282,6 +2282,30 @@ var EB = Rho;
     // === NewORM constants ===
 
     
+            NewORM.APP = 'app'; 
+    
+            NewORM.BULK_ONLY = 'bulk_only'; 
+    
+            NewORM.FIXED_SCHEMA = 'fixedSchema'; 
+    
+            NewORM.FULL_UPDATE = 'full_update'; 
+    
+            NewORM.INCREMENTAL = 'incremental'; 
+    
+            NewORM.LOCAL = 'local'; 
+    
+            NewORM.NONE = 'none'; 
+    
+            NewORM.OVERWRITE = 'overwrite'; 
+    
+            NewORM.PASS_THROUGH = 'pass_through'; 
+    
+            NewORM.PROPERTY_BAG = 'propertyBag'; 
+    
+            NewORM.SYNC = 'sync'; 
+    
+            NewORM.USER = 'user'; 
+    
 
 
 
@@ -2480,6 +2504,9 @@ var EB = Rho;
           // function(/* const rho::Vector<rho::String>& */ order_attrs, /* const rho::Vector<rho::String>& */ order_ops, /* optional function */ oResult)
         , { methodName: 'buildFindOrder', nativeName: 'buildFindOrder', valueCallbackIndex: 2 }
     
+          // function(/* const rho::Vector<rho::String>& */ order_attrs, /* const rho::Vector<rho::String>& */ order_ops, /* optional function */ oResult)
+        , { methodName: 'buildFindOrderString', nativeName: 'buildFindOrderString', valueCallbackIndex: 2 }
+    
           // function(/* const rho::String& */ what, /* const rho::Vector<rho::String>& */ conditions, /* optional function */ oResult)
         , { methodName: 'buildSimpleWhereCond', nativeName: 'buildSimpleWhereCond', valueCallbackIndex: 2 }
     
@@ -2519,6 +2546,38 @@ var EB = Rho;
 
     // === NewORMModel constants ===
 
+    
+            NewORMModel.ALL = 'all'; 
+    
+            NewORMModel.APP = 'app'; 
+    
+            NewORMModel.ASC = 'ASC'; 
+    
+            NewORMModel.BULK_ONLY = 'bulk_only'; 
+    
+            NewORMModel.COUNT = 'count'; 
+    
+            NewORMModel.DESC = 'DESC'; 
+    
+            NewORMModel.FIRST = 'first'; 
+    
+            NewORMModel.FIXED_SCHEMA = 'fixed_schema'; 
+    
+            NewORMModel.FULL_UPDATE = 'full_update'; 
+    
+            NewORMModel.INCREMENTAL = 'incremental'; 
+    
+            NewORMModel.LOCAL = 'local'; 
+    
+            NewORMModel.NONE = 'none'; 
+    
+            NewORMModel.OVERWRITE = 'overwrite'; 
+    
+            NewORMModel.PASS_THROUGH = 'pass_through'; 
+    
+            NewORMModel.SYNC = 'sync'; 
+    
+            NewORMModel.USER = 'user'; 
     
 
 
@@ -3989,6 +4048,17 @@ var EB = Rho;
             if(Object.prototype.toString.call(options.conditions) === '[object String]') {
                 select_arr = [select_arr];
             };
+
+            // 2) Normalize ORDER BY
+            var order_dir = options.orderdir || [];
+            var order_attr = options.order || [];
+            if(Object.prototype.toString.call(order_dir) === '[object String]'){
+                order_dir = [order_dir];
+            };
+            if(Object.prototype.toString.call(order_attr) === '[object String]'){
+                order_attr = [order_attr];
+            };
+            normalized_string_args['order'] = this.buildFindOrderString(order_attr, order_dir);
             normalized_string_args['op'] = options.op || 'AND';
             if(Object.prototype.toString.call(options.conditions) === '[object Object]'){
                 _found = this.findObjectsPropertyBagByCondHash(what, options.conditions, normalized_string_args, select_arr);
@@ -4024,9 +4094,12 @@ var EB = Rho;
     };
 
     Rho.NewORMModel.prototype.delete_all = function(options){
-        var conditions = options || {};
-        options = {};
-        options.conditions = conditions;
+
+        var options = options || {};
+
+        if(options.conditions == undefined){
+            options.conditions = {};
+        }
 
         if(this.fixed_schema) {
             var normalized_vector_args = {};
@@ -4035,7 +4108,7 @@ var EB = Rho;
             return this.deleteObjects(normalized_string_args,
                                       normalized_vector_args['quests']);
         } else { // property bag
-            normalized_string_args = {};
+            var normalized_string_args = {};
             var limitArgs = this.buildFindLimits("all", options);
             for (var property in limitArgs) {
                 normalized_string_args[property] = limitArgs[property];
@@ -4044,8 +4117,8 @@ var EB = Rho;
             if(Object.prototype.toString.call(options.conditions) === '[object Object]'){
                 return this.deleteObjectsPropertyBagByCondHash(options.conditions, normalized_string_args);
             } else { // the only other supported case is simple string (WHERE sql) or array (WHERE sql + quests)
-                conditions = options.conditions || [""];
-                quests = [];
+                var conditions = options.conditions || [""];
+                var quests = [];
                 if(Object.prototype.toString.call(options.conditions) === '[object Array]') {
                     quests = options.conditions.slice(1);
                     conditions = options.conditions[0];
@@ -4130,6 +4203,14 @@ var EB = Rho;
             },
             enumerable: false
         });
+		Object.defineProperty(this, 'update_attributes', {
+            value: function (newAttrs) {
+                var updatedAttrs = this._klass_model().updateObject(this.object, this, newAttrs);
+                for (var attrname in updatedAttrs) { this[attrname] = updatedAttrs[attrname]; }
+                return this;
+            },
+            enumerable: false
+        });
         Object.defineProperty(this, 'save', {
             value: function () {
                 var updatedAttrs = this._klass_model().saveObject(this.object, this);
@@ -4170,6 +4251,8 @@ var EB = Rho;
     };
 
     // Global initialization
+	if(Rho.NewORM.useNewOrm())
+	{
     console.log("Replacing Old Rho.ORM with new one!!!");
     Rho.ORM = Rho.NewORM;
     Rho.ORMHelper = Rho.NewORM;
@@ -4177,7 +4260,7 @@ var EB = Rho;
     Rho.ORM.dbConnection('local');
     Rho.ORM.dbConnection('user');
     Rho.ORM.dbConnection('app');
-
+	}
 
 })(Rho.jQuery, Rho, Rho.util);
 
