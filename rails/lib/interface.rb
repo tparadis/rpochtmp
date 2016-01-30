@@ -56,7 +56,7 @@ module Interface
 	# On retourne une liste de 10 commerces en fonction de leurs coordonées
 	# et de leurs tags :
 	def Interface.getComCT( nomTag, lat_max, lat_min,
-						    lng_max, lng_min )
+						    lng_max, lng_min, limit )
 		
 	
 		offset = rand(Commerce.count);
@@ -64,7 +64,7 @@ module Interface
 		
 		commercesInCoord = commercesTaggued.where("location_lat <= ? AND location_lat >= ? AND 
 							     location_lng >= ? AND location_lng <= ?",
-								lat_max, lat_min, lng_max, lng_min).select('id,enseigne,location_lat,location_lng').order("RANDOM()").limit(15)
+								lat_max, lat_min, lng_max, lng_min).select('id,enseigne,location_lat,location_lng').order("RANDOM()").limit(limit)
 
 		commercesInCoord
 				

@@ -41,9 +41,22 @@ module Algo
 		# tableau contenant la liste des tags par magasins :
 		tab_mags = [];
 		commerces = eval(commerces)
+
+		# Determinons le nombre de magasins que l'utilisateur veut visiter
+		# afin d'ajuster le nombre de magasins à prendre dans la bdd
+		limit = 0;
+		if commerces.length() > 10
+			limit = 3;
+		elsif commerces.length() > 6
+			limit = 5;
+		else
+			limit = 10;
+		end
+
+
 		commerces.each do |com|
 			id_com = Interface.getIdbyNum(com);
-			test = Interface.getComCT(id_com, lat_max, lat_min, lng_max, lng_min);
+			test = Interface.getComCT(id_com, lat_max, lat_min, lng_max, lng_min, limit);
 			if not test.empty?
 				tab_mags << test;
 			end
