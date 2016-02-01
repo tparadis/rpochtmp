@@ -12,7 +12,7 @@ body{
 }
 
 .ui-btn-right {
-	width: 80px;
+	width: 90px;
 }
 
 .ui-btn-right .ui-btn-inner, #lang {
@@ -20,8 +20,6 @@ body{
 	color: black;
 	text-shadow: none; /*ios*/
 }
-
-
 
 #header {
 	background: rgb(68,52,52); /*marron*/

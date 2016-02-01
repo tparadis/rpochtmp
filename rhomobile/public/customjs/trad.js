@@ -25,6 +25,10 @@ function getLanguage(){
 			$("div.ui-page-active #lang").parent().find(".ui-btn-text > span").text("EN");
 			$("div.ui-page-active #lang").val("en");
 		}
+		else if(defaultLanguage == "esp"){
+			$("div.ui-page-active #lang").parent().find(".ui-btn-text > span").text("ESP");
+			$("div.ui-page-active #lang").val("esp");
+		}
 	}
 	else{
 		defaultLanguage = "fr";
