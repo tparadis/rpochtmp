@@ -2,15 +2,15 @@ module Interface
  
 	#Fonctions sur la récupération des categories
 	def Interface.getCategories
-		Categorie.order('id').select('id,nom')
+		Categorie.order('id').select('id,reference,en,esp')
 	end
 
 	def Interface.getSSCategories
-		Sscategorie.order('catparent').select('id,nom,catparent')
+		Sscategorie.order('catparent').select('id,nom,catparent,en,esp')
 	end
 
 	def Interface.getTags
-		Tag.order('id').select('id,nom')
+		Tag.order('id')
 	end
 
 	#Permet d'obtenir un magasin aleatoire

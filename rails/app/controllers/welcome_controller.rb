@@ -77,7 +77,12 @@ class WelcomeController < ApplicationController
 
 		# Debut test 
 		if params[:req] == "yolo"
+=begin
 			@y = Algo.getDynamicPath(params[:coord_dep_lat].to_f,params[:coord_dep_lng].to_f,
+									 params[:coord_arr_lat].to_f,params[:coord_arr_lng].to_f,
+									 params[:dist_max].to_f, params[:commerces])
+=end
+			@y = Algo.getNewPath(params[:coord_dep_lat].to_f,params[:coord_dep_lng].to_f,
 									 params[:coord_arr_lat].to_f,params[:coord_arr_lng].to_f,
 									 params[:dist_max].to_f, params[:commerces])
 			# @y = Interface.getComCT(13, 48.117, 48.11017, -1.6866, -1.676)

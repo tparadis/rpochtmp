@@ -182,7 +182,7 @@ module Algo
 		commerces.each do |com|
 			id_com = Interface.getIdbyNum(com);
 			tab_mags << Interface.getComCT(id_com, lat_max, lat_min,
-										   lng_max, lng_min);
+										   lng_max, lng_min, 10);
 		end 
 		# return tab_mags;
 
