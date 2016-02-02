@@ -2,11 +2,11 @@ module Interface
  
 	#Fonctions sur la récupération des categories
 	def Interface.getCategories
-		Categorie.order('id').select('id,nom,reference,en,esp')
+		Categorie.order('id').select('id,nom,reference,en,esp,de')
 	end
 
 	def Interface.getSSCategories
-		Sscategorie.order('catparent').select('id,nom,catparent,en,esp')
+		Sscategorie.order('catparent').select('id,nom,catparent,en,esp,de')
 	end
 
 	def Interface.getTags
