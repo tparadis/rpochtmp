@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  resources :back_office
   resources :tags
   resources :sscategories
   resources :categories

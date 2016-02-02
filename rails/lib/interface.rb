@@ -84,4 +84,20 @@ module Interface
 
 	end
 
+	#
+	#Fonctions concernant le BACKOFFICE
+	#
+	def Interface.uuidexists?(uuid)
+		Commerce.where(:id => uuid).size() >= 1
+	end
 end
+
+
+
+
+
+
+
+
+
+
