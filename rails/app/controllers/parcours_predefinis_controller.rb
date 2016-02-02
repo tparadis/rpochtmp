@@ -1,4 +1,7 @@
 class ParcoursPredefinisController < ApplicationController
+  
+  include Admin
+  
   before_action :set_parcours_predefini, only: [:show, :edit, :update, :destroy]
 
   # GET /parcours_predefinis

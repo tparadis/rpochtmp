@@ -1,4 +1,7 @@
 class CommercesController < ApplicationController
+  
+  include Admin
+
   before_action :set_commerce, only: [:show, :edit, :update, :destroy]
 
   # GET /commerces

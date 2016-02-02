@@ -1,5 +1,10 @@
-class TagsController < Admin::AdminController
+class TagsController < ApplicationController
+  
+  include Admin
+
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
+
+
 
   # GET /tags
   # GET /tags.json

@@ -47,6 +47,8 @@ module Algo
 		limit = 0;
 		if commerces.length() > 10
 			limit = 3;
+			tronk = commerces.length();
+			commerces.pop(tronk-10);
 		elsif commerces.length() > 6
 			limit = 5;
 		else

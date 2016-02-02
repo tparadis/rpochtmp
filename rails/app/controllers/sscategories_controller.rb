@@ -1,4 +1,7 @@
 class SscategoriesController < ApplicationController
+  
+  include Admin
+  
   before_action :set_sscategory, only: [:show, :edit, :update, :destroy]
 
   # GET /sscategories
