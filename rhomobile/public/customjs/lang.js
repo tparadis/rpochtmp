@@ -44,6 +44,23 @@ var lang = {
 	"ajouterMagasin" : "A&ntildeadir una tienda",
 	"options" : "Opciones",
 	"parcoursThematique" : "Camino tem&aacutetico"
+	},
+	/**
+	 * 
+	 * Passage en allemand
+	 * 
+	 */
+	"de" : {
+	"rpoch" : "Rennes in der Tasche",
+	"rpochapp" : "Anwendung Rennes in der Tasche",
+	"creerParcours" : "Erstellen seinen eigenen Weg",
+	"votreParcours" : "Ihre Route",
+	"genererParcours" : "erzeugen Sie Ihre Route",
+	"lieu" : "Platz",
+	"go" : "GO!",
+	"ajouterMagasin" : "fügen Sie einen Shop",
+	"options" : "Optionen",
+	"parcoursThematique" : "Route Themenweg"
 	}
 }
 

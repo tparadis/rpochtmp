@@ -1,9 +1,23 @@
 $(document).ready(function() {
-	    for (var i=0 ; i < parcours.length; i++)
-	    {
-	    	$("tbody").append("<tr><td>"+parcours.getItem(i)+"</td><td>test</td><td>test</td><td>test</td></tr>");
-	    }
+	refresh();
 });
+
+function refresh() {
+	$("tbody").html("");
+    for (var i=0 ; i < parcours.length; i++)
+    {
+    	$("tbody").append("<tr><td>"+parcours.getItem(i)+"</td><td>test</td><td>test</td><td><button onclick='supprimerSsCat("+i+")'>X</button></td></tr>");
+    }
+}
+
+function supprimerSsCat(numLigne) {
+	parcours.removeItem(numLigne);
+	for(var i=numLigne ; i < parcours.length ; i++) {
+		parcours.setItem(i, parcours.getItem(i+1));
+	}
+	parcours.removeItem(parcours.length-1);
+	refresh();
+}
 
 function genererParcours(){
 	var coord_dep_lat = 48.110003;

@@ -154,3 +154,17 @@ h2 {
 #example td {
 	color: black;
 }
+
+td .ui-btn {
+	width: 30px;
+	height: 30px;
+	background: red;
+	border-radius: 30px;
+	border: 3px solid white;
+}
+
+td .ui-btn .ui-btn-text {
+	color: white;
+	text-shadow: none;
+	font-weight: bold;
+}

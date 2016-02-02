@@ -16,8 +16,10 @@ $(document).ready(function() {
 					var courantCatNom = courantCat.nom;
 				} else if(langue == 'en'){
 					var courantCatNom = courantCat.en;
-				} else {
+				} else if(langue == 'esp'){
 					var courantCatNom = courantCat.esp;
+				}else {
+					var courantCatNom = courantCat.de;
 				}
 				var listeSsCat = "listeSsCat"+i;
 				$("#navmenu").append("<div data-role='collapsible' class='categorie'><h3>"+courantCatNom+"</h3><ul class='"+listeSsCat+"' data-role='listview' data-inset='true' data-icon='plus'></ul></div>");
@@ -27,8 +29,10 @@ $(document).ready(function() {
 						var nomCourant = courantSsCat.nom;
 					} else if(langue == 'en'){
 						var nomCourant = courantSsCat.en;
-					} else {
+					} else if(langue == 'esp'){
 						var nomCourant = courantSsCat.esp;
+					} else {
+						var nomCourant = courantSsCat.de;
 					}
 					var lien = "href='/app/FinalParcours/final_parcours'";
 					if (courantSsCat.catparent == courantCat.id) {
