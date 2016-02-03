@@ -4,37 +4,26 @@
 
   <head>
     <meta charset="utf-8" />
+    
   </head>
 
   <body>
   
-    <div id="page" >
-    <%= render :partial => "/partials/page_head" %>
-    <!-- Cette page montre les details dún commerce. 
-        Cette variable contient l'id du commerce sohuaité'<%= $magasin_id%>   
-        TODO: La description affiché est de test on doit remplacer dans le controlleur
-        par la vraie description une fois la requete contienne ce champ.   
-    -->
+    <div id="page" style="overflow:hidden">
+    <!--<%= render :partial => "/partials/page_head" %>-->
     
-      <img style="max-width:100%;height: auto;" src=  <%= get_resposnse()["commerce"]["image"]%> />
-      
-      <p><%= get_resposnse()["commerce"]["enseigne"]%></p>
-      <p>Address:<%= get_resposnse()["commerce"]["street_num"]%>  <%= get_resposnse()["commerce"]["street_name"]%></p>
-      <p>Telephone:  <a href="tel:<%= get_resposnse()["commerce"]["phone_num"]%>"><%= get_resposnse()["commerce"]["phone_num"]%></a></p>
-      <p>Fax:<%= get_resposnse()["commerce"]["fax"]%></p>
-      <p>Email:<%= get_resposnse()["commerce"]["email"]%></p>
-      <form method="post" action="<%= url_for :action => :requette %>">
-      <input type="hidden" name="req" value="spec"/>
-      <input type="hidden" name="format" value="json"/>
-      <!-- data-role added to the listview -->
-        <br/>
-        <button type="submit" data-theme="a" name="submit" value="submit-value" class="ui-btn-hidden">Informations incorrectes?</button>
-  </form>      
-        
-      <p>Description:  <i><%= get_resposnse()["commerce"]["description"]%></i></p>
-        
+    <div id="imageCommerce">
+    
+    
+    </div> 
+    <div id="descrCommerce">
+    
+    <!-- Voir le detailsCommerce.js pour toutes les infos qui s inserent ici :) -->
+    
+    </div>
     </div>
 
+    <script type="text/javascript" charset="utf-8" src="/public/customjs/detailsCommerce.js"></script>
   </body>
 </html>
 
