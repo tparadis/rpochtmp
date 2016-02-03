@@ -18,6 +18,11 @@ class BackOfficeController < ApplicationController
   end
 
   def show
+  	if Interface.uuidexists?(@uuidEdition) == false
+		@uuidEdition = -1
+		redirect_to action: "index"
+	end
+
   end
 
   def edit

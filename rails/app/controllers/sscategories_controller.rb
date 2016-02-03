@@ -72,6 +72,6 @@ class SscategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sscategory_params
-      params.require(:sscategory).permit(:nom, :catparent, :en, :esp)
+      params.require(:sscategory).permit(:nom, :catparent, :en, :esp, :de, :jap, :ko)
     end
 end

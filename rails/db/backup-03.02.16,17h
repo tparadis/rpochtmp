@@ -54,7 +54,9 @@ CREATE TABLE categories (
     reference character varying,
     en text,
     esp text,
-    de text
+    de text,
+    ko text,
+    jap text
 );
 
 
@@ -449,7 +451,9 @@ CREATE TABLE sscategories (
     catparent integer,
     en text,
     esp text,
-    de text
+    de text,
+    ko text,
+    jap text
 );
 
 
@@ -543,16 +547,17 @@ ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclas
 -- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: rails
 --
 
-COPY categories (id, nom, created_at, updated_at, reference, en, esp, de) FROM stdin;
-7	Service	2016-01-20 18:36:44.281684	2016-02-01 12:06:07.615239	services	Services	Servicios	Abteilung
-13	Autres	2016-01-23 17:20:22.893217	2016-01-29 13:36:55.622273	magasins inclassables	Others	Otros	Sonstiges
-2	Hôtel	2016-01-20 18:35:42.684909	2016-02-01 20:17:25.766279	logement	Hotel	Hoteles	Hotel
-6	Culture	2016-01-20 18:36:35.287555	2016-01-29 13:38:15.874536	culturel	Culture	Cultura	Kultur
-8	Bar Café Restaurant	2016-01-20 18:58:04.623855	2016-02-01 20:17:33.330562	bar/cafes/restaurants	Bar Coffee Restaurant	Bar Café Restaurante	Bar Cafe Restaurant
-5	Hygiène	2016-01-20 18:36:24.993917	2016-02-01 20:16:40.206775	vendeurSpecialise	Healthcare	Higiene	Hygiene
-1	Alimentaire	2016-01-20 18:35:29.1725	2016-01-29 13:40:14.359863	nourriture	Groceries	Alimentación	Lebensmittel
-3	Équipement maison	2016-01-20 18:35:56.257433	2016-02-01 20:19:15.784192	mobilier	Housing	Mobiliario	Hauses Ausstattung
-4	Équipement personne	2016-01-20 18:36:11.876029	2016-02-01 20:19:29.747354	vetements Et Accesoires	Accessories	Ropa y accesorios	Ausrüstung Person
+COPY categories (id, nom, created_at, updated_at, reference, en, esp, de, ko, jap) FROM stdin;
+7	Service	2016-01-20 18:36:44.281684	2016-02-01 12:06:07.615239	services	Services	Servicios	Abteilung	\N	\N
+13	Autres	2016-01-23 17:20:22.893217	2016-01-29 13:36:55.622273	magasins inclassables	Others	Otros	Sonstiges	\N	\N
+2	Hôtel	2016-01-20 18:35:42.684909	2016-02-01 20:17:25.766279	logement	Hotel	Hoteles	Hotel	\N	\N
+6	Culture	2016-01-20 18:36:35.287555	2016-01-29 13:38:15.874536	culturel	Culture	Cultura	Kultur	\N	\N
+8	Bar Café Restaurant	2016-01-20 18:58:04.623855	2016-02-01 20:17:33.330562	bar/cafes/restaurants	Bar Coffee Restaurant	Bar Café Restaurante	Bar Cafe Restaurant	\N	\N
+5	Hygiène	2016-01-20 18:36:24.993917	2016-02-01 20:16:40.206775	vendeurSpecialise	Healthcare	Higiene	Hygiene	\N	\N
+1	Alimentaire	2016-01-20 18:35:29.1725	2016-01-29 13:40:14.359863	nourriture	Groceries	Alimentación	Lebensmittel	\N	\N
+3	Équipement maison	2016-01-20 18:35:56.257433	2016-02-01 20:19:15.784192	mobilier	Housing	Mobiliario	Hauses Ausstattung	\N	\N
+4	Équipement personne	2016-01-20 18:36:11.876029	2016-02-01 20:19:29.747354	vetements Et Accesoires	Accessories	Ropa y accesorios	Ausrüstung Person	\N	\N
+14		2016-02-03 12:20:49.665205	2016-02-03 12:20:49.665205				\N	\N	\N
 \.
 
 
@@ -560,7 +565,7 @@ COPY categories (id, nom, created_at, updated_at, reference, en, esp, de) FROM s
 -- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: rails
 --
 
-SELECT pg_catalog.setval('categories_id_seq', 13, true);
+SELECT pg_catalog.setval('categories_id_seq', 14, true);
 
 
 --
@@ -2117,90 +2122,90 @@ COPY schema_migrations (version) FROM stdin;
 -- Data for Name: sscategories; Type: TABLE DATA; Schema: public; Owner: rails
 --
 
-COPY sscategories (id, nom, created_at, updated_at, catparent, en, esp, de) FROM stdin;
-18	Chambres d\\'hôtes	2016-01-21 19:40:02.441841	2016-02-01 20:21:10.516472	2	Guest rooms	Habitaciones/posadas	Gasträume
-40	Parfumerie	2016-01-21 19:48:58.268442	2016-01-30 14:05:01.851546	4	Perfumery	Perfumería	"parfümerie"
-17	Fruits/Légumes	2016-01-21 19:39:12.890636	2016-02-01 20:31:40.445017	1	Fruits and vegetables	Verduras Frutas	Obst und gemüse
-16	Confiserie	2016-01-21 19:38:57.365826	2016-01-24 14:36:13.200258	1	Confectionery	Confitería	"confiserie"
-64	Papeterie	2016-01-23 15:05:38.028619	2016-01-24 14:43:08.112691	7	Stationery	Papelería	Briefpapier
-27	Bijouterie	2016-01-21 19:44:31.883859	2016-01-24 14:33:40.219213	4	Jewelry store	Joyería	Juwelier
-21	Chaussures	2016-01-21 19:43:14.929924	2016-01-24 14:35:32.591845	4	Shoes	Calzado	Die schuhe
-34	Banque	2016-01-21 19:46:18.834955	2016-01-24 14:33:17.67621	7	Bank	Banco	Vorlegten.
-89	Occasion	2016-01-25 20:05:28.708505	2016-01-25 20:05:28.708505	\N	Second Hand	Segunda mano	Gebraucht
-82	Cours particulier	2016-01-23 16:00:31.12981	2016-02-01 11:39:57.359516	7	Private lessons	Clases particulares	Privatunterricht
-15	Poissonnerie	2016-01-21 19:38:44.660964	2016-02-01 11:43:54.224024	1	Fish	Pescadería	Fisch
-93	Snack	2016-01-26 11:15:49.28587	2016-02-01 11:49:19.472659	8	Snack food	Pasabocas/Bocadillos	Snack-food-
-3	Cinéma	2016-01-21 18:58:18.024158	2016-02-01 20:22:12.359431	6	Cinema	Cine	Kino
-87	Équipement auto	2016-01-25 20:02:48.546078	2016-02-01 20:26:25.115624	\N	Car equipment	Accesorios para vehículos	Auto geräte
-54	Ethnique	2016-01-22 19:15:07.864414	2016-02-01 11:45:58.393453	8	Ethnic food	Cocina étnica	Ethno-food
-6	Crêperie	2016-01-21 19:08:01.362594	2016-02-01 20:24:27.402277	8	Creperie	Crepería	Crêperie
-37	Photographie	2016-01-21 19:47:01.502495	2016-01-24 14:43:36.06944	7	Photography	Fotografía	Fotografie
-5	Hôtel	2016-01-21 18:59:35.352248	2016-02-01 20:28:10.151936	2	Hotel	Hotel	Hotel
-88	Inconnu	2016-01-25 20:04:52.172757	2016-01-25 20:04:52.172757	\N	Unknown	Desconocido	Unbekannt
-62	Mixte	2016-01-23 14:51:28.026199	2016-01-24 14:42:00.266741	-1	Mixed	Mixto	Gemischt
-44	Médecin	2016-01-21 19:49:53.655682	2016-02-01 20:28:27.809186	5	Physician	Médico	Ärztin
-12	Boucherie	2016-01-21 19:37:42.846113	2016-01-24 14:34:03.379165	1	Butchery	Carnicería	Schlächterei
-4	Épicerie	2016-01-21 18:58:57.580268	2016-02-01 20:26:13.842834	1	Grocery store	Tienda de comestibles	Lebensmittelmarkt
-46	Fast food	2016-01-21 19:50:46.376466	2016-02-01 20:27:03.802896	8	Fast food	Comida rápida	Fast food
-45	Vétérinaire	2016-01-21 19:50:02.657404	2016-02-01 20:30:52.978605	5	Veterinary physician	Veterinaria	Tierarzt:
-24	Vêtement	2016-01-21 19:43:52.087807	2016-02-01 20:30:38.434175	4	Clothing	Ropa	Kleidung
-35	Postaux	2016-01-21 19:46:35.295852	2016-02-01 11:44:13.771606	7	Post office	Correos	Postfiliale
-73	Halal	2016-01-23 15:43:58.859216	2016-01-24 14:40:00.852024	1	Halal	Halal	Halal
-33	Monument	2016-01-21 19:45:58.740501	2016-01-24 14:42:07.702351	6	Monument	Monumento	Denkmal
-81	Collection	2016-01-23 15:58:38.069784	2016-02-01 11:51:21.346736	6	Collection	Coleccionables	Sammlung [ slug ]
-10	Galerie	2016-01-21 19:11:30.68294	2016-01-24 14:39:35.847738	6	Gallery	Galería	Galerie
-32	Musée	2016-01-21 19:45:45.193259	2016-02-01 20:28:41.396799	6	Museum	Museo	Museum
-9	Librairie	2016-01-21 19:10:47.785037	2016-01-24 14:41:01.136624	7	Bookstore	Librería	"buchhandlung"
-58	Femme	2016-01-23 14:48:20.716097	2016-01-24 14:39:02.765759	-1	Woman	Mujer	Frau
-47	Glacier	2016-01-21 19:51:03.259802	2016-02-01 11:49:45.837231	8	Ice cream shop	Heladería	Eiscreme
-49	Bar/Café	2016-01-21 19:51:32.713339	2016-02-01 20:20:37.856095	8	Bar / Cafe	Bar / Café	Bar cafe
-60	Enfant	2016-01-23 14:49:11.347932	2016-02-01 11:51:45.38047	-1	Children	Niños	Kinder
-71	Quincaillerie	2016-01-23 15:33:07.808589	2016-02-01 11:44:30.637045	13	Hardware	Ferretería	Hardware
-80	Lingerie	2016-01-23 15:58:11.744062	2016-01-24 14:41:09.332488	4	Lingerie	Ropa interior	Dessous
-56	Restaurant	2016-01-23 14:36:42.983035	2016-01-24 14:45:03.727519	8	Restaurant	Restaurante	Das restaurant
-52	Garagiste	2016-01-21 19:52:50.264201	2016-01-24 14:39:42.761255	7	Garage	Garaje	Garage
-100	Traiteur	2016-01-26 12:35:18.151767	2016-01-26 12:35:18.151767	8	Delicatessen	Delicatessen	Feinkost
-83	Meuble	2016-01-23 16:03:53.361448	2016-01-24 14:41:52.731592	3	Furniture	Mobiliario	Möbel
-63	Musique	2016-01-23 14:52:37.727126	2016-01-24 14:42:22.19726	6	Music	Música	Musik
-79	Vin	2016-01-23 15:57:27.260523	2016-01-24 14:46:52.06674	6	Wine	Vino	Der wein
-57	Maroquinerie	2016-01-23 14:47:15.028283	2016-01-24 14:41:22.957937	4	Leather Goods	Marroquinería	"lederwaren"
-94	Cigarette électronique	2016-01-26 11:20:25.075006	2016-02-01 20:21:53.500597	5	Electronic cigarette	Cigarrillo electrónico	Elektrische zigarette
-13	Boulangerie	2016-01-21 19:37:59.331381	2016-01-24 14:34:10.763094	1	Bakery	Panadería	Backwaren
-48	Internationnal	2016-01-21 19:51:15.54819	2016-02-01 11:45:00.137807	8	Internationnal	Internacional	Internationnal
-8	Kebab	2016-01-21 19:08:50.018809	2016-01-24 14:40:50.70908	8	Kebab	Kebab	Şiş kebap
-42	Tabac	2016-01-21 19:49:28.782095	2016-01-24 14:45:52.033425	5	Tobacco	Tabaco	Tabak
-50	Opérateur mobile	2016-01-21 19:52:06.951006	2016-02-01 20:29:05.802941	7	Mobile operator	Operador móvil	Mobilfunkbetreiber
-61	Sandwich	2016-01-23 14:50:09.312938	2016-01-24 14:45:23.179763	8	Sandwich	Sándwich	Sandwich
-53	Antiquité	2016-01-22 19:13:16.87778	2016-02-01 20:20:29.050221	6	Ancient history	Antigüedades	Altertum
-68	Informatique	2016-01-23 15:08:52.129757	2016-02-01 11:44:47.936552	13	IT	Informática	Italienisch
-7	Pizzeria	2016-01-21 19:08:20.978456	2016-01-30 14:04:43.604899	8	Pizzeria	Pizzería	Pizzeria
-69	Jeux	2016-01-23 15:11:23.592726	2016-01-30 14:02:58.70232	6	Gaming	Juego	Gaming
-85	Produits surgelés	2016-01-25 19:59:17.240545	2016-02-01 20:29:53.044405	1	Frozen products	Productos congelados	Tiefkühlprodukte
-66	Service	2016-01-23 15:06:20.811688	2016-02-01 11:45:29.86396	7	Services	Servicios	Services
-76	Commerce équitable	2016-01-23 15:48:38.709095	2016-02-01 20:24:01.873292	1	Fair trade	Comercio justo	Fairer handel
-75	Charcuterie	2016-01-23 15:48:10.285359	2016-01-24 14:35:24.435696	1	Cold meats	Embutidos	Aufschnitt
-36	Blanchisserie	2016-01-21 19:46:48.981221	2016-01-24 14:33:56.335666	7	Self-service laundry	Lavandería	Waschsalon
-67	Art	2016-01-23 15:08:29.999981	2016-02-01 11:35:07.505859	6	Art	Arte	Kunst.
-20	Décoration	2016-01-21 19:42:33.790503	2016-02-01 20:24:41.652583	3	Decoration	Decoración	Dekomaterial
-11	Pharmacie	2016-01-21 19:12:38.001915	2016-01-24 14:43:28.211496	7	Pharmacy	Farmacia	Apotheke
-84	Discothèque	2016-01-23 16:10:10.978951	2016-02-01 20:24:55.988233	13	Discotheque	Discoteca	Diskothek
-70	Textile	2016-01-23 15:24:02.687114	2016-02-01 11:50:15.756106	4	Textiles	Telas	Textilien
-19	Électroménager	2016-01-21 19:42:13.394027	2016-02-01 20:26:00.409366	3	Home appliance	Electrodomésticos	Haushaltsgerät
-59	Homme	2016-01-23 14:48:41.842093	2016-01-24 14:40:06.910979	-1	Man	Hombre	Mann
-77	Salon de thé	2016-01-23 15:50:57.347481	2016-02-01 20:30:02.74457	8	Tea Room	Salón de té	Tee raum
-14	Pâtisserie	2016-01-21 19:38:09.529139	2016-02-01 20:29:37.834787	1	Bakery	Panadería	Backwaren
-39	Soins de beauté	2016-01-21 19:48:49.687125	2016-02-01 20:30:14.250961	7	Beauty care	Cuidado de la belleza	Schönheitspflege
-65	Sport	2016-01-23 15:05:56.172007	2016-01-24 14:45:44.056159	6	Sport	Deporte	Sport
-78	Bio	2016-01-23 15:55:23.880014	2016-02-01 11:36:30.341846	1	Bio	Productos orgánicos	Über
-91	Végétarien	2016-01-26 08:42:57.023768	2016-02-01 20:30:27.322845	8	Vegetarianism	Vegetariano	Vegetarismus
-2	Coiffeur	2016-01-21 18:50:57.242613	2016-02-01 11:38:19.666468	7	Hairdresser	Peluquería	Friseur
-101	Cordonnerie	2016-01-26 18:25:20.352495	2016-02-01 11:39:33.103999	3	Shoemaker	Zapatería	Schuster
-41	Opticien	2016-01-21 19:49:06.316148	2016-02-01 11:46:21.022635	4	Optician	Óptica	Optiker
-30	Spectacle	2016-01-21 19:45:28.06856	2016-02-01 11:47:23.142435	6	Spectacles	Espectáculos	Brille
-55	Tatoo	2016-01-22 19:21:37.569569	2016-02-01 11:47:47.64191	4	Tatoo	Tatuajes	Tatoo
-51	Fleuriste	2016-01-21 19:52:31.26915	2016-02-01 11:48:01.063835	3	Florist	Floristería	"der blumenhändler"
-74	Luxe	2016-01-23 15:47:53.211774	2016-01-24 14:41:16.101533	13	Luxury	Lujo	Luxus
-72	Adulte	2016-01-23 15:39:48.956471	2016-02-01 11:34:27.081012	-1	Adult	Adultos	Erwachsener
+COPY sscategories (id, nom, created_at, updated_at, catparent, en, esp, de, ko, jap) FROM stdin;
+18	Chambres d\\'hôtes	2016-01-21 19:40:02.441841	2016-02-01 20:21:10.516472	2	Guest rooms	Habitaciones/posadas	Gasträume	\N	\N
+40	Parfumerie	2016-01-21 19:48:58.268442	2016-01-30 14:05:01.851546	4	Perfumery	Perfumería	"parfümerie"	\N	\N
+17	Fruits/Légumes	2016-01-21 19:39:12.890636	2016-02-01 20:31:40.445017	1	Fruits and vegetables	Verduras Frutas	Obst und gemüse	\N	\N
+16	Confiserie	2016-01-21 19:38:57.365826	2016-01-24 14:36:13.200258	1	Confectionery	Confitería	"confiserie"	\N	\N
+64	Papeterie	2016-01-23 15:05:38.028619	2016-01-24 14:43:08.112691	7	Stationery	Papelería	Briefpapier	\N	\N
+27	Bijouterie	2016-01-21 19:44:31.883859	2016-01-24 14:33:40.219213	4	Jewelry store	Joyería	Juwelier	\N	\N
+21	Chaussures	2016-01-21 19:43:14.929924	2016-01-24 14:35:32.591845	4	Shoes	Calzado	Die schuhe	\N	\N
+34	Banque	2016-01-21 19:46:18.834955	2016-01-24 14:33:17.67621	7	Bank	Banco	Vorlegten.	\N	\N
+89	Occasion	2016-01-25 20:05:28.708505	2016-01-25 20:05:28.708505	\N	Second Hand	Segunda mano	Gebraucht	\N	\N
+82	Cours particulier	2016-01-23 16:00:31.12981	2016-02-01 11:39:57.359516	7	Private lessons	Clases particulares	Privatunterricht	\N	\N
+15	Poissonnerie	2016-01-21 19:38:44.660964	2016-02-01 11:43:54.224024	1	Fish	Pescadería	Fisch	\N	\N
+93	Snack	2016-01-26 11:15:49.28587	2016-02-01 11:49:19.472659	8	Snack food	Pasabocas/Bocadillos	Snack-food-	\N	\N
+3	Cinéma	2016-01-21 18:58:18.024158	2016-02-01 20:22:12.359431	6	Cinema	Cine	Kino	\N	\N
+87	Équipement auto	2016-01-25 20:02:48.546078	2016-02-01 20:26:25.115624	\N	Car equipment	Accesorios para vehículos	Auto geräte	\N	\N
+54	Ethnique	2016-01-22 19:15:07.864414	2016-02-01 11:45:58.393453	8	Ethnic food	Cocina étnica	Ethno-food	\N	\N
+6	Crêperie	2016-01-21 19:08:01.362594	2016-02-01 20:24:27.402277	8	Creperie	Crepería	Crêperie	\N	\N
+37	Photographie	2016-01-21 19:47:01.502495	2016-01-24 14:43:36.06944	7	Photography	Fotografía	Fotografie	\N	\N
+5	Hôtel	2016-01-21 18:59:35.352248	2016-02-01 20:28:10.151936	2	Hotel	Hotel	Hotel	\N	\N
+88	Inconnu	2016-01-25 20:04:52.172757	2016-01-25 20:04:52.172757	\N	Unknown	Desconocido	Unbekannt	\N	\N
+62	Mixte	2016-01-23 14:51:28.026199	2016-01-24 14:42:00.266741	-1	Mixed	Mixto	Gemischt	\N	\N
+44	Médecin	2016-01-21 19:49:53.655682	2016-02-01 20:28:27.809186	5	Physician	Médico	Ärztin	\N	\N
+12	Boucherie	2016-01-21 19:37:42.846113	2016-01-24 14:34:03.379165	1	Butchery	Carnicería	Schlächterei	\N	\N
+4	Épicerie	2016-01-21 18:58:57.580268	2016-02-01 20:26:13.842834	1	Grocery store	Tienda de comestibles	Lebensmittelmarkt	\N	\N
+46	Fast food	2016-01-21 19:50:46.376466	2016-02-01 20:27:03.802896	8	Fast food	Comida rápida	Fast food	\N	\N
+45	Vétérinaire	2016-01-21 19:50:02.657404	2016-02-01 20:30:52.978605	5	Veterinary physician	Veterinaria	Tierarzt:	\N	\N
+24	Vêtement	2016-01-21 19:43:52.087807	2016-02-01 20:30:38.434175	4	Clothing	Ropa	Kleidung	\N	\N
+35	Postaux	2016-01-21 19:46:35.295852	2016-02-01 11:44:13.771606	7	Post office	Correos	Postfiliale	\N	\N
+73	Halal	2016-01-23 15:43:58.859216	2016-01-24 14:40:00.852024	1	Halal	Halal	Halal	\N	\N
+33	Monument	2016-01-21 19:45:58.740501	2016-01-24 14:42:07.702351	6	Monument	Monumento	Denkmal	\N	\N
+81	Collection	2016-01-23 15:58:38.069784	2016-02-01 11:51:21.346736	6	Collection	Coleccionables	Sammlung [ slug ]	\N	\N
+10	Galerie	2016-01-21 19:11:30.68294	2016-01-24 14:39:35.847738	6	Gallery	Galería	Galerie	\N	\N
+32	Musée	2016-01-21 19:45:45.193259	2016-02-01 20:28:41.396799	6	Museum	Museo	Museum	\N	\N
+9	Librairie	2016-01-21 19:10:47.785037	2016-01-24 14:41:01.136624	7	Bookstore	Librería	"buchhandlung"	\N	\N
+58	Femme	2016-01-23 14:48:20.716097	2016-01-24 14:39:02.765759	-1	Woman	Mujer	Frau	\N	\N
+47	Glacier	2016-01-21 19:51:03.259802	2016-02-01 11:49:45.837231	8	Ice cream shop	Heladería	Eiscreme	\N	\N
+49	Bar/Café	2016-01-21 19:51:32.713339	2016-02-01 20:20:37.856095	8	Bar / Cafe	Bar / Café	Bar cafe	\N	\N
+60	Enfant	2016-01-23 14:49:11.347932	2016-02-01 11:51:45.38047	-1	Children	Niños	Kinder	\N	\N
+71	Quincaillerie	2016-01-23 15:33:07.808589	2016-02-01 11:44:30.637045	13	Hardware	Ferretería	Hardware	\N	\N
+80	Lingerie	2016-01-23 15:58:11.744062	2016-01-24 14:41:09.332488	4	Lingerie	Ropa interior	Dessous	\N	\N
+56	Restaurant	2016-01-23 14:36:42.983035	2016-01-24 14:45:03.727519	8	Restaurant	Restaurante	Das restaurant	\N	\N
+52	Garagiste	2016-01-21 19:52:50.264201	2016-01-24 14:39:42.761255	7	Garage	Garaje	Garage	\N	\N
+100	Traiteur	2016-01-26 12:35:18.151767	2016-01-26 12:35:18.151767	8	Delicatessen	Delicatessen	Feinkost	\N	\N
+83	Meuble	2016-01-23 16:03:53.361448	2016-01-24 14:41:52.731592	3	Furniture	Mobiliario	Möbel	\N	\N
+63	Musique	2016-01-23 14:52:37.727126	2016-01-24 14:42:22.19726	6	Music	Música	Musik	\N	\N
+79	Vin	2016-01-23 15:57:27.260523	2016-01-24 14:46:52.06674	6	Wine	Vino	Der wein	\N	\N
+57	Maroquinerie	2016-01-23 14:47:15.028283	2016-01-24 14:41:22.957937	4	Leather Goods	Marroquinería	"lederwaren"	\N	\N
+94	Cigarette électronique	2016-01-26 11:20:25.075006	2016-02-01 20:21:53.500597	5	Electronic cigarette	Cigarrillo electrónico	Elektrische zigarette	\N	\N
+13	Boulangerie	2016-01-21 19:37:59.331381	2016-01-24 14:34:10.763094	1	Bakery	Panadería	Backwaren	\N	\N
+48	Internationnal	2016-01-21 19:51:15.54819	2016-02-01 11:45:00.137807	8	Internationnal	Internacional	Internationnal	\N	\N
+8	Kebab	2016-01-21 19:08:50.018809	2016-01-24 14:40:50.70908	8	Kebab	Kebab	Şiş kebap	\N	\N
+42	Tabac	2016-01-21 19:49:28.782095	2016-01-24 14:45:52.033425	5	Tobacco	Tabaco	Tabak	\N	\N
+50	Opérateur mobile	2016-01-21 19:52:06.951006	2016-02-01 20:29:05.802941	7	Mobile operator	Operador móvil	Mobilfunkbetreiber	\N	\N
+61	Sandwich	2016-01-23 14:50:09.312938	2016-01-24 14:45:23.179763	8	Sandwich	Sándwich	Sandwich	\N	\N
+53	Antiquité	2016-01-22 19:13:16.87778	2016-02-01 20:20:29.050221	6	Ancient history	Antigüedades	Altertum	\N	\N
+68	Informatique	2016-01-23 15:08:52.129757	2016-02-01 11:44:47.936552	13	IT	Informática	Italienisch	\N	\N
+7	Pizzeria	2016-01-21 19:08:20.978456	2016-01-30 14:04:43.604899	8	Pizzeria	Pizzería	Pizzeria	\N	\N
+69	Jeux	2016-01-23 15:11:23.592726	2016-01-30 14:02:58.70232	6	Gaming	Juego	Gaming	\N	\N
+85	Produits surgelés	2016-01-25 19:59:17.240545	2016-02-01 20:29:53.044405	1	Frozen products	Productos congelados	Tiefkühlprodukte	\N	\N
+66	Service	2016-01-23 15:06:20.811688	2016-02-01 11:45:29.86396	7	Services	Servicios	Services	\N	\N
+76	Commerce équitable	2016-01-23 15:48:38.709095	2016-02-01 20:24:01.873292	1	Fair trade	Comercio justo	Fairer handel	\N	\N
+75	Charcuterie	2016-01-23 15:48:10.285359	2016-01-24 14:35:24.435696	1	Cold meats	Embutidos	Aufschnitt	\N	\N
+36	Blanchisserie	2016-01-21 19:46:48.981221	2016-01-24 14:33:56.335666	7	Self-service laundry	Lavandería	Waschsalon	\N	\N
+67	Art	2016-01-23 15:08:29.999981	2016-02-01 11:35:07.505859	6	Art	Arte	Kunst.	\N	\N
+20	Décoration	2016-01-21 19:42:33.790503	2016-02-01 20:24:41.652583	3	Decoration	Decoración	Dekomaterial	\N	\N
+11	Pharmacie	2016-01-21 19:12:38.001915	2016-01-24 14:43:28.211496	7	Pharmacy	Farmacia	Apotheke	\N	\N
+84	Discothèque	2016-01-23 16:10:10.978951	2016-02-01 20:24:55.988233	13	Discotheque	Discoteca	Diskothek	\N	\N
+70	Textile	2016-01-23 15:24:02.687114	2016-02-01 11:50:15.756106	4	Textiles	Telas	Textilien	\N	\N
+19	Électroménager	2016-01-21 19:42:13.394027	2016-02-01 20:26:00.409366	3	Home appliance	Electrodomésticos	Haushaltsgerät	\N	\N
+59	Homme	2016-01-23 14:48:41.842093	2016-01-24 14:40:06.910979	-1	Man	Hombre	Mann	\N	\N
+77	Salon de thé	2016-01-23 15:50:57.347481	2016-02-01 20:30:02.74457	8	Tea Room	Salón de té	Tee raum	\N	\N
+14	Pâtisserie	2016-01-21 19:38:09.529139	2016-02-01 20:29:37.834787	1	Bakery	Panadería	Backwaren	\N	\N
+39	Soins de beauté	2016-01-21 19:48:49.687125	2016-02-01 20:30:14.250961	7	Beauty care	Cuidado de la belleza	Schönheitspflege	\N	\N
+65	Sport	2016-01-23 15:05:56.172007	2016-01-24 14:45:44.056159	6	Sport	Deporte	Sport	\N	\N
+78	Bio	2016-01-23 15:55:23.880014	2016-02-01 11:36:30.341846	1	Bio	Productos orgánicos	Über	\N	\N
+91	Végétarien	2016-01-26 08:42:57.023768	2016-02-01 20:30:27.322845	8	Vegetarianism	Vegetariano	Vegetarismus	\N	\N
+2	Coiffeur	2016-01-21 18:50:57.242613	2016-02-01 11:38:19.666468	7	Hairdresser	Peluquería	Friseur	\N	\N
+101	Cordonnerie	2016-01-26 18:25:20.352495	2016-02-01 11:39:33.103999	3	Shoemaker	Zapatería	Schuster	\N	\N
+41	Opticien	2016-01-21 19:49:06.316148	2016-02-01 11:46:21.022635	4	Optician	Óptica	Optiker	\N	\N
+30	Spectacle	2016-01-21 19:45:28.06856	2016-02-01 11:47:23.142435	6	Spectacles	Espectáculos	Brille	\N	\N
+55	Tatoo	2016-01-22 19:21:37.569569	2016-02-01 11:47:47.64191	4	Tatoo	Tatuajes	Tatoo	\N	\N
+51	Fleuriste	2016-01-21 19:52:31.26915	2016-02-01 11:48:01.063835	3	Florist	Floristería	"der blumenhändler"	\N	\N
+74	Luxe	2016-01-23 15:47:53.211774	2016-01-24 14:41:16.101533	13	Luxury	Lujo	Luxus	\N	\N
+72	Adulte	2016-01-23 15:39:48.956471	2016-02-03 16:39:07.147066	-1	Adult	Adultos	Erwachsener		
 \.
 
 
