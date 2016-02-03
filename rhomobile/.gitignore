@@ -2,6 +2,7 @@
 rholog.txt
 rholog-*
 sim-*
+*.localstorage
 
 # build output
 bin/

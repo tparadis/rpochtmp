@@ -7,7 +7,7 @@ class DetailsCommerceController < Rho::RhoController
   #<a href="<%= url_for :controller => :DetailsCommerce  , :action => :requette , :query => {:magasin_id => '002e4fae-28a8-463f-b064-cfff1f75635b'}  %>">
   # GET /DetailsCommerce
   def index
-    @detailscommerces = DetailsCommerce.find(:all)
+    #@detailscommerces = DetailsCommerce.find(:all)
     render :back => '/app'
   end
 
