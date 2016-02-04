@@ -12,26 +12,26 @@ $(document).ready(function() {
 			var url = "http://rpoch.istic.univ-rennes1.fr/static/images/";
 			$("#imageCommerce").append("<img src='"+url+data.commerce.image+"' />")
 			$("#descrCommerce #contenu").append("<span class='titre' >\""+data.commerce.enseigne+"\"</span><br/>");
-			$("#descrCommerce #contenu").append("<span class='descr'>"+(data.commerce.label_ape).toLowerCase()+"</span><br/>");
+			if(data.commerce.tag0 != null) 
+			{
+				var tag0 = getTextForIdTag(data.commerce.tag0)
+				$("#descrCommerce #contenu").append("<span class='descr'>"+tag0+"</span>");
+			}
+			if(data.commerce.tag1 != null) 
+			{
+				var tag1 = getTextForIdTag(data.commerce.tag1)
+				$("#descrCommerce #contenu").append("<span class='descr'>, "+tag1+"</span>");
+			}
+			if(data.commerce.tag2 != null) 
+			{
+				var tag2 = getTextForIdTag(data.commerce.tag2)
+				$("#descrCommerce #contenu").append("<span class='descr'>, "+tag2+"</span>");
+			}
+			
 			$("#descrCommerce #contenu").append("<br/><br/>");
 			$("#descrCommerce #contenu").append("<span class='others'>"+data.commerce.street_number+" "+data.commerce.route+"</span><br/>");
 			$("#descrCommerce #contenu").append("<span class='others'>Tel. "+data.commerce.phone_num+"</span><br/>");
 			
-			if(data.commerce.tag0 != null && data.commerce.tag1 != null && data.commerce.tag2 != 0)
-			{
-				$("#descrCommerce #contenu").append("<span class='others'>"+data.commerce.tag0+" "+data.commerce.tag1+" "+data.commerce.tag2+"</span><br/>");
-			}
-			else
-			{
-				$("#descrCommerce #contenu").append("<span class='others'>(magasin non class&eacute;)</span><br/><br/><br/>");
-			}
-			
-			
-			//Action
-			$("#imageCommerce").find('img').delay(0).animate({"opacity":"1"},700);
-			$("#descrCommerce span.titre").delay(0).animate({"margin-left":"0px","opacity":"1"},1000);
-			$("#descrCommerce span.descr").delay(400).animate({"margin-left":"0px","opacity":"1"},1000);
-			$("#descrCommerce span.others").delay(700).animate({"margin-left":"0px","opacity":"1"},1000);
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) {
 			alert(textStatus + ", " + errorThrown);
@@ -41,3 +41,44 @@ $(document).ready(function() {
 	
 
 });
+
+function getTextForIdTag(id)
+{
+	var res = "";
+	$.ajax({
+		dataType: "json",
+		contentType: "application/json",
+		url: "http://rpoch.istic.univ-rennes1.fr/api/",
+		data: { "req": "sscat", "format": "json", "id":id },
+		type: "GET",
+		async: false,
+		success: function(data) {
+			var lang = localStorage.getItem(0);
+			
+			switch (lang)
+			{
+				case "fr": 
+					res =  data.tag.nom;
+					break;
+				case "en":
+					res =  data.tag.en;
+					break;
+				case "de":
+					res = data.tag.de;
+					break;
+				case "ko":
+					res = data.tag.ko;
+					break;
+				case "ja":
+					res = data.tag.jap;
+					break;
+			}
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(textStatus + ", " + errorThrown);
+		}
+	});
+	
+	return res;
+}
+
