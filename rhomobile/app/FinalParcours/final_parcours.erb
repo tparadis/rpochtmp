@@ -17,10 +17,9 @@
       <table id="example">
         <thead>
           <tr>
-            <th>Lieu</th>
-            <th>Tags</th>
-            <th>Sup</th>
-            <th>Det</th>
+            <th>Magasins</th>
+            <th>D&eacute;tail</th>
+            <th>Supprimer</th>
           </tr>
         </thead>
         
@@ -40,6 +39,12 @@
         <a href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>">
           <button>
             Ajouter un magasin
+          </button>
+        </a>
+        
+        <a>
+          <button onclick="afficherParcours()">
+            GO !
           </button>
         </a>
       </div>

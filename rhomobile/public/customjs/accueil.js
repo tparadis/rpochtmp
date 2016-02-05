@@ -1,6 +1,5 @@
 function init() {
 	parcours = sessionStorage;
 	parcours.clear();
+	chargementCategories();
 }
-//window.onload = init();
-
