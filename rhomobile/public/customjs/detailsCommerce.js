@@ -1,10 +1,13 @@
 $(document).ready(function() {
 
+	//Récupère les parametres de l'URL
+	var id = sessionStorage.getItem("currentMagasin");
+	
 	$.ajax({
 		dataType: "json",
 		contentType: "application/json",
 		url: "http://rpoch.istic.univ-rennes1.fr/api/",
-		data: { "req": "spec", "format": "json", "id":"a24614d0-da2d-4916-a29f-c2fabc8a1264" },
+		data: { "req": "spec", "format": "json", "id":id },
 		type: "GET",
 		async: false,
 		success: function(data) {

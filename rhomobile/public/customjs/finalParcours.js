@@ -51,9 +51,40 @@ function genererParcours(){
 			$("tbody").html("");
 			for (var i = 1 ; i <= tags.length ; i++)
 		    {// remplacer la catégorie parent par l'id magasin
-		    	$("tbody").append("<tr class='mag"+i+"'><td>"+data.tags[i].enseigne.toLowerCase()+"</td><td><a href=\"/app/DetailsCommerce/details_commerce\"><button>i</button><a></td><td><button onclick='newMag("+i+")'>New mag</button></td></tr>");
+		    
+		    	//On ajoute la valeur id  de l'enseigne dans la sessionStorage
+		    	var elem = sessionStorage.getItem(i-1);
+		    	elem = JSON.parse(elem);
+		    	//Obligatoire si l'utilisateur a deja clique sur Generer un Parcours et qu'il veut remettre un autre magasin après
+		    	//Sinon les id s'ajoutent indéfiniments à la suite dans le meme tableau !
+		    	var id = data.tags[i].id;
+		    	if(elem.length <= 3)
+		    	{
+			    	
+			    	elem.push(data.tags[i].id);
+			    	id = data.tags[i].id;
+			    	sessionStorage[i-1] = JSON.stringify(elem);
+		    	}
+		    	
+		    	//On affiche sur la page
+		    	//On ajoute la classe (non utilisée en CSS) detailsButton pour distinguer les bouttons par l'action onclick()
+		    	$("tbody").append("<tr class='mag"+i+"'><td>"+data.tags[i].enseigne.toLowerCase()+"</td><td><a class='detailButton' name='"+id+"' href='/app/DetailsCommerce/details_commerce'><button>i</button><a></td><td><button onclick='newMag("+i+")'>New mag</button></td></tr>");
 		    	res = res.concat(data.tags[i].location_lat,",", data.tags[i].location_lng,",", data.tags[i].enseigne,",");
+		    	
+		    	//Ajout d'une action qui va ajouter à la sessionStorage
+		    	// currentMagasin => id
+		    	//Ceci est utile pour la transition de cette page à la page de Magasin spécifique
+		    	
+		    	
 		    }
+			
+		    //On récupère l'attribut nom (qui contient l'id du magasin) et on le stock dans la sessionStorage "currentMagasin"
+		    //Dans la page detailsCommerce.js, on enverra en Ajax la requete avec comme id la valeur de la sessionStorage 
+		    //Astucieux hein ? :p
+		    //En vrai ça marchait pas avec un passage de parametres classiques ?id= et tout...
+		    $('a.detailButton').on('click',function(e){
+	    		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
+	    	});
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown)
 		{
