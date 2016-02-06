@@ -26,5 +26,5 @@ function call_ruby_method_via_ajax(method_name,nCommerce){
 }
 function addSsCat(sscat) { 	
 	var tmp = JSON.parse(localStorage.getItem(sscat));
-	parcours.setItem(parcours.length, JSON.stringify(tmp));
+	sessionStorage.setItem(sessionStorage.length, JSON.stringify(tmp));
 }
