@@ -42,6 +42,8 @@ function getLanguage(){
 }
 
 function chargementCategories() {
+	localStorage.clear();
+	localStorage.setItem(0, defaultLanguage);
 	$.ajax({
 		dataType: "json",
 		contentType: "application/json",

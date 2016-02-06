@@ -2,6 +2,7 @@ $(document).ready(function() {
 
 	//Récupère les parametres de l'URL
 	var id = sessionStorage.getItem("currentMagasin");
+	sessionStorage.removeItem("currentMagasin");
 	
 	$.ajax({
 		dataType: "json",
