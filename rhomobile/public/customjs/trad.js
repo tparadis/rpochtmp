@@ -32,11 +32,16 @@ function getLanguage(){
 		else if(defaultLanguage == "de"){
 			$("div.ui-page-active #lang").parent().find(".ui-btn-text > span").text("DE");
 			$("div.ui-page-active #lang").val("de");
-		}
+		}/*
+		else if(defaultLanguage == "kr"){
+			$("div.ui-page-active #lang").parent().find(".ui-btn-text > span").text("KR");
+			$("div.ui-page-active #lang").val("kr");
+		}*/
 	}
 	else{
 		defaultLanguage = "fr";
 		localStorage.setItem(0, defaultLanguage);
+		
 	}
 }
 
@@ -45,6 +50,14 @@ function changeLanguage(){
 	localStorage.setItem(0, defaultLanguage);
 	location.reload();
 }
+
+function encode_utf8(s) {
+	  return unescape(encodeURIComponent(s));
+	}
+
+	function decode_utf8(s) {
+	  return decodeURIComponent(escape(s));
+	}
 
 function actualiserLanguage(){
 	getLanguage();

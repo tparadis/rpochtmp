@@ -2,6 +2,8 @@ $(document).ready(function() {
 	refresh();
 });
 
+var res = "";
+
 function refresh() {
 	$("tbody").html("");
     for (var i=0 ; i < parcours.length; i++)
@@ -11,7 +13,6 @@ function refresh() {
 }
 
 function supprimerSsCat(numLigne) {
-	parcours.removeItem(numLigne);
 	for(var i=numLigne ; i < parcours.length ; i++) {
 		parcours.setItem(i, parcours.getItem(i+1));
 	}
@@ -38,7 +39,6 @@ function genererParcours(){
 		type : "GET",
 		async: false,
 		success: function(data){
-			var res = "";
 			var i = 0;
 			$("tbody").html("");
 			for (var i = 1 ; i <= tags.length ; i++)
@@ -46,11 +46,14 @@ function genererParcours(){
 		    	$("tbody").append("<tr><td>"+data.tags[i].enseigne.toLowerCase()+"</td><td>test</td><td>test</td><td>test</td></tr>");
 		    	res = res.concat(data.tags[i].location_lat,",", data.tags[i].location_lng,",", data.tags[i].enseigne,",");
 		    }
-		   $.get('/app/Personalisee/get_callback',{ parcours_perso: res });
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown)
 		{
 			alert(textStatus +", " +errorThrown);
 		}
 	});
+}
+
+function afficherCarte(){
+	$.get('/app/Personalisee/get_callback',{ parcours_perso: res });	
 }

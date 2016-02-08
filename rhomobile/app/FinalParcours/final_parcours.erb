@@ -17,7 +17,7 @@
       <table id="example">
         <thead>
           <tr>
-            <th>Lieu</th>
+            <th text="lieu">Lieu</th>
             <th>Tags</th>
             <th>Sup</th>
             <th>Det</th>
@@ -31,15 +31,17 @@
       
       <div id="boutonsParcours">
         <a>
-          <button onclick="genererParcours()">
-            Generer le parcours
+          <button onclick="genererParcours()" text="genererParcours">
           </button>
         </a>
         
+        <a>
+          <button onclick="afficherCarte()" text="afficherCarte">
+          </button>
+        </a>
         
         <a href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>">
-          <button>
-            Ajouter un magasin
+          <button text="ajouterMagasin">
           </button>
         </a>
       </div>
