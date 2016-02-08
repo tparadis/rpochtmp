@@ -8,7 +8,8 @@ function refresh() {
 	$("tbody").html("");
     for (var i=0 ; i < parcours.length; i++)
     {
-    	$("tbody").append("<tr><td>"+parcours.getItem(i)+"</td><td>test</td><td>test</td><td><button onclick='supprimerSsCat("+i+")'>X</button></td></tr>");
+    	$("tbody").append("<tr><td>"+parcours.getItem(i)+"</td><td>test</td><td>test</td><td><a class='ui-btn' onclick='supprimerSsCat("+i+")'><span class='ui-btn-text'>X</span></a></td></tr>");
+    	
     }
 }
 
