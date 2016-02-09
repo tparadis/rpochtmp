@@ -21,8 +21,14 @@ api.send=function (params) {// requete vers l'api
 			authPassword : "pwd",
 			verifyPeerCertificate : false
 		});
-		console.log("Response body = ", JSON.parse(response.body));
-		return JSON.parse(response.body);
+		
+		try {
+			var json_res = JSON.parse(response.body);			
+		} catch (err) {
+			console.error("JSON parse error : ", response);
+		}
+		console.log("Response body = ", json_res);		
+		return json_res;
 	};
 
 api.getAllcat=function () { return api.send({ data: {"req":"allcat","format":"json"} }) }

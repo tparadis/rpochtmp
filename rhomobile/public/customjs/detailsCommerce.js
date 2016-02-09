@@ -4,32 +4,18 @@ $(document).ready(function() {
 	var id = sessionStorage.getItem("currentMagasin");
 	sessionStorage.removeItem("currentMagasin");
 	
-	$.ajax({
-		dataType: "json",
-		contentType: "application/json",
-		url: "http://rpoch.istic.univ-rennes1.fr/api/",
-		data: { "req": "spec", "format": "json", "id":id },
-		type: "GET",
-		async: false,
-		success: function(data) {
-			//Faire un truc
-			var url = "http://rpoch.istic.univ-rennes1.fr/static/images/";
-			$("#imageCommerce").append("<img src='"+url+data.commerce.image+"' />")
-			$("#descrCommerce #contenu").append("<span class='titre' >\""+data.commerce.enseigne+"\"</span><br/>");
-			afficheTags(data.tag0, data.tag1, data.tag2);
-			
-			$("#descrCommerce #contenu").append("<br/><br/>");
-			$("#descrCommerce #contenu").append("<span class='others'>"+data.commerce.street_number+" "+data.commerce.route+"</span><br/>");
-			$("#descrCommerce #contenu").append("<span class='others'>Tel. "+data.commerce.phone_num+"</span><br/>");
-			
-		},
-		error: function(XMLHttpRequest, textStatus, errorThrown) {
-			alert(textStatus + ", " + errorThrown);
-		}
-	});
+	var data = api.getCommDetail(id);
 	
+	//Faire un truc
+	var url = "http://rpoch.istic.univ-rennes1.fr/static/images/";
+	$("#imageCommerce").append("<img src='"+url+data.commerce.image+"' />")
+	$("#descrCommerce #contenu").append("<span class='titre' >\""+data.commerce.enseigne+"\"</span><br/>");
+	afficheTags(data.tag0, data.tag1, data.tag2);
+		
+	$("#descrCommerce #contenu").append("<br/><br/>");
+	$("#descrCommerce #contenu").append("<span class='others'>"+data.commerce.street_number+" "+data.commerce.route+"</span><br/>");
+	$("#descrCommerce #contenu").append("<span class='others'>Tel. "+data.commerce.phone_num+"</span><br/>");
 	
-
 });
 
 function afficheTags(tag0, tag1, tag2)

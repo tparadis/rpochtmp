@@ -1,7 +1,0 @@
-function init() {
-	parcours = new localStorage();
-	toto = localStorage();
-	parcours.clear();
-}
-//window.onload = init();
-

@@ -52,6 +52,7 @@ function chargementCategories() {
 		type: "GET",
 		async: false,
 		success: function(data) {
+			console.log(data);
 			var langue = localStorage.getItem(0);
 			localStorage.setItem('nbCat', data.sizecat);
 			localStorage.setItem('nbSsCat', data.sizesscat);

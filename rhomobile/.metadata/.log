@@ -1,0 +1,9 @@
+!SESSION 2016-02-09 15:10:55.971 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2016-02-09 15:11:01.384
+!MESSAGE No search provider was registed. Tasks search is not available.
