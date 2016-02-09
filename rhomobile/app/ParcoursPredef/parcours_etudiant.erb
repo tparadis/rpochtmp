@@ -1,79 +1,100 @@
 <!DOCTYPE html>
-<html> 
-<head> 
-<style>
+<html>
+<head>
+  <style>
     #map {
       width: 390px;
       height: 530px;
     }
   </style>
+  <script>
 
- 
 
-  <script type="text/javascript">
-  initialize();
-      function initialize() {
-      var locations = [];
-      
-      
-      
-      var i;
+  var locations = [];
+  var  magasins_size = 0;
+  var i = 0;
+  var lat=0;
+  var lng = 0;
+  
+
+
+    function initialize() {
+     // A changer avec le https 
       $.ajax({
-          dataType: "json",
-          contentType: "application/json",
-          url : "http://rpoch.istic.univ-rennes1.fr/api/",
-          data : {"req":"predef","format":"json","nom":"<%= $typeparcours %>"},
-          type : "GET",
-          async: false,
-          success: function(data){
-              var i = 0;
-              var magasins_size = data.size;
-              
-              while (i < magasins_size)
-              {
-                  //alert([data.magasins[i].enseigne, data.magasins[i].location_lat,data.magasins[i].location_lng, i+1]);
-                  locations.push([data.magasins[i].enseigne+"  "+i, data.magasins[i].location_lat,data.magasins[i].location_lng, i+1]);
-                  i++;
-              }
-              
-          },
-          error: function(XMLHttpRequest, textStatus, errorThrown)
-          {
-              alert(textStatus +", " +errorThrown);
-          }
-      });
-   
+                dataType: "json",
+                contentType: "application/json",
+                url : "http://rpoch.istic.univ-rennes1.fr/api/",
+                data : {"req":"predef","format":"json","nom":"<%= $typeparcours %>"},
+                type : "GET",
+                async: false,
+                success: function(data){
+                   var i = 0;
+                   magasins_size = data.size;
+                    
+                    while (i < magasins_size)
+                    {
+                        //alert([data.magasins[i].enseigne, data.magasins[i].location_lat,data.magasins[i].location_lng, i+1]);
+                        locations.push([data.magasins[i].enseigne+"  "+i, data.magasins[i].location_lat,data.magasins[i].location_lng, i+1]);
+                        i++;
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown)
+                {
+                    alert(textStatus +", " +errorThrown);
+                }
+            });
+            
+      var waypointsArray = [];
+                      
+      directionsService = new google.maps.DirectionsService;
+      directionsDisplay = new google.maps.DirectionsRenderer;
+      var mapCanvas = document.getElementById('map');
       
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 15,
-      center: new google.maps.LatLng(48.112739, -1.681489),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-
-    var infowindow = new google.maps.InfoWindow();
-
-    var marker, i;
-
-    for (i = 0; i < locations.length; i++) {  
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map
-      });
-
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker);
-        }
-      })(marker, i));
+      var mapOptions = {
+        center: new google.maps.LatLng(48.112739, -1.681489),
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
       }
-}
-  </script>
-        </head> 
-        <body>     
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfh64T7GInE-G0rPQ35PHjmPr1erbaJgg&signed_in=true&callback=initialize"
-          async defer></script>
-        
-          <div id="map"></div>
+      
+      var map = new google.maps.Map(mapCanvas, mapOptions)
+
+            for(var i = 1; i < magasins_size;i++ ){
+                lat = locations[i][1];
+                lng = locations[i][2];
+                waypointsArray.push({
+                  location:new google.maps.LatLng(lat, lng),
+                  stopover:true
+                });
+               
+        } 
+
+      //window.alert(waypointsArray[0]);
+      
+      directionsDisplay.setMap(map);
+      
+      var request = {
+          origin:new google.maps.LatLng(locations[0][1], locations[0][2]),
+          destination:new google.maps.LatLng(locations[waypointsArray.length][1],locations[waypointsArray.length][2]),
+          optimizeWaypoints: true,
+          waypoints: waypointsArray,
+          travelMode: google.maps.TravelMode.WALKING
+        };
+        directionsService.route(request, function(result, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(result);
+          }
+        });
+   }
+
+    </script>
+</head>
+<body>
+/* clé 1: AIzaSyBcpbC-OR2Xbq5JcUAOaDrEgoOGxN5St9w */
+/* clé 2: AIzaSyB52JIODDxNvBfg-lb8ap-MycusmKIxGs0 */ 
+
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB52JIODDxNvBfg-lb8ap-MycusmKIxGs0&callback=initialize">
+</script>
+  <div id="map"></div>
 </body>
 </html>
