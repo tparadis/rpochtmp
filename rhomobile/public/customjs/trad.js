@@ -44,14 +44,10 @@ function getLanguage(){
 function chargementCategories() {
 	localStorage.clear();
 	localStorage.setItem(0, defaultLanguage);
-	$.ajax({
-		dataType: "json",
-		contentType: "application/json",
-		url: "http://rpoch.istic.univ-rennes1.fr/api/",
-		data: {"req":"allcat","format":"json"},
-		type: "GET",
-		async: false,
-		success: function(data) {
+	
+	var data = api.getAllcat();
+	
+
 			console.log(data);
 			var langue = localStorage.getItem(0);
 			localStorage.setItem('nbCat', data.sizecat);
@@ -84,8 +80,6 @@ function chargementCategories() {
 				var keySsCat = 'sscat'+i;
 				localStorage.setItem(keySsCat, JSON.stringify(infoSsCat));
 			}
-		},
-	})
 }
 
 function changeLanguage(){

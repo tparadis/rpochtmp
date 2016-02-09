@@ -47,7 +47,6 @@ function genererParcours(){
 		tags.push(mag[0]);
 	}
 
-	
 		var data = api.genParcours(coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags);
 
 		res = "";
