@@ -17,11 +17,27 @@ api.send=function (params) {// requete vers l'api
 			url : protocol + "://" + address + "?" + data,
 			headers: { "Content-Type": "application/json" },
 			authType: "basic",
-			authUser : "application",
-			authPassword : "app404",
+			authUser : "user",
+			authPassword : "pwd",
 			verifyPeerCertificate : false
 		});
 		return response;
 	};
 
 api.getAllcat=function () { return api.send({ data: {"req":"allcat","format":"json"} }) }
+
+api.getCommDetail= function(id){ return api.send({ data: {"req":"spec","format":"json", "id":id} }) }
+
+api.genParcours = function (coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags) { 
+	return api.send({ data: {
+		"req":"yolo",
+		"format":"json",
+		"coord_dep_lat":coord_dep_lat,
+		"coord_dep_lng":coord_dep_lng,
+		"coord_arr_lat":coord_arr_lat,
+		"coord_arr_lng":coord_arr_lng,
+		"dist_max":dist_max,
+		"commerces":"["+tags+"]"
+	} }) }
+
+
