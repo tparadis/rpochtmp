@@ -3,7 +3,6 @@ var datar ="";
 $(document).ready(function() {
 	var nbCat = localStorage.getItem('nbCat');
 	var nbSsCat = localStorage.getItem('nbSsCat');
-	var lien = "href='/app/FinalParcours/final_parcours'";
 	for (var i = 0 ; i < nbCat ; i++) {
 		var keyCat = "cat"+i;
 		var categorie = JSON.parse(localStorage.getItem(keyCat));
@@ -13,10 +12,11 @@ $(document).ready(function() {
 			var keySsCat = 'sscat'+j;
 			var ssCategorie = JSON.parse(localStorage.getItem(keySsCat));
 			if (ssCategorie[2] == categorie[0]) {
-				$("."+listeSsCat).append("<li><a "+lien+" onclick=\"addSsCat('"+keySsCat+"')\">"+ssCategorie[1].replace(/\\/, "")+"</a></li>");
+				$("."+listeSsCat).append("<li><a onclick=\"addSsCat('"+keySsCat+"')\">"+ssCategorie[1].replace(/\\/, "")+"</a></li>");
 			}
 		}
 	}
+	actualiserMagasins();
 })
 
 //Call ruby method via ajax
@@ -27,4 +27,10 @@ function call_ruby_method_via_ajax(method_name,nCommerce){
 function addSsCat(sscat) { 	
 	var tmp = JSON.parse(localStorage.getItem(sscat));
 	sessionStorage.setItem(sessionStorage.length, JSON.stringify(tmp));
+	actualiserMagasins();
+}
+
+
+function actualiserMagasins(){
+	$(".cart #nb_magasins").text(sessionStorage.length);
 }

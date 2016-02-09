@@ -6,7 +6,8 @@ var lang = {
 	"votreParcours" : "Votre Parcours",
 	"genererParcours" : "G&eacuten&eacuterer le parcours",
 	"lieu" : "Lieu",
-	"go" : "GO!",
+	"magasin" : "&nbsp;Magasin(s)",
+	"afficherCarte" : "Afficher la carte",
 	"ajouterMagasin" : "Ajouter un magasin",
 	"options" : "Options",
 	"parcoursThematique" : "Parcours Th&eacutematique"
@@ -23,7 +24,8 @@ var lang = {
 	"votreParcours" : "Your path",
 	"genererParcours" : "Generate a new path",
 	"lieu" : "Place",
-	"go" : "GO!",
+	"magasin" : "&nbsp;Shop(s)",	
+	"afficherCarte" : "Show the map",
 	"ajouterMagasin" : "Add a new shop",
 	"options" : "Settings",
 	"parcoursThematique" : "Thematic Path"
@@ -40,7 +42,8 @@ var lang = {
 	"votreParcours" : "Su camino",
 	"genererParcours" : "Generar su camino",
 	"lieu" : "Lugar",
-	"go" : "GO!",
+	"magasin" : "&nbsp;Tienda(s)",	
+	"afficherCarte" : "Afficher la carte",
 	"ajouterMagasin" : "A&ntildeadir una tienda",
 	"options" : "Opciones",
 	"parcoursThematique" : "Camino tem&aacutetico"
@@ -57,11 +60,30 @@ var lang = {
 	"votreParcours" : "Ihre Route",
 	"genererParcours" : "erzeugen Sie Ihre Route",
 	"lieu" : "Platz",
-	"go" : "GO!",
-	"ajouterMagasin" : "f�gen Sie einen Shop",
+	"magasin" : "&nbsp;Speichert",	
+	"afficherCarte" : "Afficher la carte",
+	"ajouterMagasin" : "fÃ¼gen Sie einen Shop",
 	"options" : "Optionen",
 	"parcoursThematique" : "Route Themenweg"
-	}
+	}/*,
+	/**
+	 * 
+	 * Passage en coréen
+	 * 
+	 *
+	"kr" : {
+	"rpoch" : "주머니에 렌",
+	"rpochapp" : "주머니에 응용 렌",
+	"creerParcours" : "당신의 자신의 경로를 만들기",
+	"votreParcours" : "당신의 경로를",
+	"genererParcours" : "새 경로를 생성합니다",
+	"lieu" : "장소",
+	"go" : "가기!",
+	"ajouterMagasin" : "새로운 상점을 추가",
+	"options" : "설정",
+	"parcoursThematique" : "테마 경로"
+	}*/
+	
 }
 
 

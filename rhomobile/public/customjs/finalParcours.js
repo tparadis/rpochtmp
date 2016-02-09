@@ -16,7 +16,7 @@ function refresh() {
     	var magasin = JSON.parse(sessionStorage.getItem(i));
     	var id = magasin[2];
     	if (magasin.length == 3) {
-        	$("tbody").append("<tr><td>"+magasin[1]+"</td><td></td><td><button onclick='supprimerSsCat("+i+")'>X</button></td></tr>");
+        	$("tbody").append("<tr><td>"+magasin[1]+"</td><td></td><td><a class='ui-btn' onclick='supprimerSsCat("+i+")'><span class='ui-btn-text'>X</span></a></td></tr>");
     	} else {
     		$("tbody").append("<tr><td>"+magasin[3]+"</td><td><a class='detailButton' name='"+id+"' href='/app/DetailsCommerce/details_commerce'><button>i</button></a></td><td><button onclick='newMag("+i+")'>New mag</button></td></tr>");
     		ajoutDansRes();
@@ -28,15 +28,10 @@ function refresh() {
 }
 
 function supprimerSsCat(numLigne) {
-	var boucle = false;
-	sessionStorage.removeItem(numLigne);
 	for(var i=numLigne ; i < sessionStorage.length ; i++) {
 		sessionStorage.setItem(i, sessionStorage.getItem(i+1));
-		boucle = true;
 	}
-	if(boucle) {
-		sessionStorage.removeItem(sessionStorage.length-1);
-	}
+	sessionStorage.removeItem(sessionStorage.length-1);
 	refresh();
 }
 
