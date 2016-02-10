@@ -18,7 +18,7 @@ api.send=function (params) {// requete vers l'api
 			headers: { "Content-Type": "application/json" },
 			authType: "basic",
 			authUser : "application",
-			authPassword : "app404",
+			authPassword : "app404", 
 			verifyPeerCertificate : false
 		});
 		
