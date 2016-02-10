@@ -17,8 +17,8 @@ api.send=function (params) {// requete vers l'api
 			url : protocol + "://" + address + "?" + data,
 			headers: { "Content-Type": "application/json" },
 			authType: "basic",
-			authUser : "user",
-			authPassword : "pwd",
+			authUser : "application",
+			authPassword : "app404",
 			verifyPeerCertificate : false
 		});
 		console.log("Response body = ", JSON.parse(response.body));
