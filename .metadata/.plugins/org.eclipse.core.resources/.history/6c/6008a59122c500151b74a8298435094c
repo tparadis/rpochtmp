@@ -1,8 +1,0 @@
-<div data-role="header" data-position="fixed" id="header"> 
-  <h1 text="rpoch"></h1>
-    <a class="ui-btn-left" data-icon="gear" id="bouton_reglage" text="options">Options</a>
-    <select onchange="changeLanguage()" id="lang"> 
-        <option value="fr">FR</option>
-        <option value="en">EN</option>
-    </select>
-</div> 

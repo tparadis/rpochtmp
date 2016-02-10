@@ -48,47 +48,40 @@ function getLanguage(){
 function chargementCategories() {
 	localStorage.clear();
 	localStorage.setItem(0, defaultLanguage);
-	$.ajax({
-		dataType: "json",
-		contentType: "application/json",
-		url: "http://rpoch.istic.univ-rennes1.fr/api/",
-		data: {"req":"allcat","format":"json"},
-		type: "GET",
-		async: false,
-		success: function(data) {
-			var langue = localStorage.getItem(0);
-			localStorage.setItem('nbCat', data.sizecat);
-			localStorage.setItem('nbSsCat', data.sizesscat);
-			for(var i = 0 ; i < data.sizecat ; i++) {
-				var courantCat = data.cat[i];
-				switch (langue) {
-					case 'fr':
-						var courantCatNom = courantCat.nom;
-						break;
-					default:
-						var courantCatNom = courantCat[langue];
-						break;
-				}
-				var infoCat = [courantCat.id, courantCatNom];
-				var keyCat = 'cat'+i;
-				localStorage.setItem(keyCat, JSON.stringify(infoCat));				
-			}
-			for(var i = 0 ; i < data.sizesscat ; i++) {
-				var courantSsCat = data.sscat[i];
-				switch (langue) {
-					case 'fr':
-						var courantSsCatNom = courantSsCat.nom;
-						break;
-					default:
-						var courantSsCatNom = courantSsCat[langue];
-						break;
-				}
-				var infoSsCat = [courantSsCat.id, courantSsCatNom, courantSsCat.catparent];
-				var keySsCat = 'sscat'+i;
-				localStorage.setItem(keySsCat, JSON.stringify(infoSsCat));
-			}
-		},
-	})
+	
+	var data = api.getAllcat();
+
+	var langue = localStorage.getItem(0);
+	localStorage.setItem('nbCat', data.sizecat);
+	localStorage.setItem('nbSsCat', data.sizesscat);
+	for(var i = 0 ; i < data.sizecat ; i++) {
+		var courantCat = data.cat[i];
+		switch (langue) {
+			case 'fr':
+				var courantCatNom = courantCat.nom;
+				break;
+			default:
+				var courantCatNom = courantCat[langue];
+				break;
+		}
+		var infoCat = [courantCat.id, courantCatNom];
+		var keyCat = 'cat'+i;
+		localStorage.setItem(keyCat, JSON.stringify(infoCat));				
+	}
+	for(var i = 0 ; i < data.sizesscat ; i++) {
+		var courantSsCat = data.sscat[i];
+		switch (langue) {
+			case 'fr':
+				var courantSsCatNom = courantSsCat.nom;
+				break;
+			default:
+				var courantSsCatNom = courantSsCat[langue];
+				break;
+		}
+		var infoSsCat = [courantSsCat.id, courantSsCatNom, courantSsCat.catparent];
+		var keySsCat = 'sscat'+i;
+		localStorage.setItem(keySsCat, JSON.stringify(infoSsCat));
+		}
 }
 
 function changeLanguage(){

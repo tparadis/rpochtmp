@@ -42,56 +42,45 @@ function genererParcours(){
 		tags.push(mag[0]);
 	}
 
-	$.ajax({
-	    dataType: "json",
-	    contentType: "application/json",
-		url : "http://rpoch.istic.univ-rennes1.fr/api/",
-		data : {"req":"yolo","format":"json","coord_dep_lat":coord_dep_lat,"coord_dep_lng":coord_dep_lng,"coord_arr_lat":coord_arr_lat,"coord_arr_lng":coord_arr_lng,"dist_max":dist_max,"commerces":"["+tags+"]"},
-		type : "GET",
-		async: false,
-		success: function(data){
-			res = "";
-			$("tbody").html("");
-			for (var i = 1 ; i <= tags.length ; i++)
-		    {// remplacer la catégorie parent par l'id magasin
-		    	var tagCourant = data.tags[i];
-		    	//On ajoute la valeur id  de l'enseigne dans la sessionStorage
-		    	var elem = sessionStorage.getItem(i-1);
-		    	elem = JSON.parse(elem);
-		    	//Obligatoire si l'utilisateur a deja clique sur Generer un sessionStorage et qu'il veut remettre un autre magasin après
-		    	//Sinon les id s'ajoutent indéfiniments à la suite dans le meme tableau !
-		    	var id = tagCourant.id;
-		    	elem[2] = id;
-		    	elem.push(tagCourant.enseigne.toLowerCase());
-		    	elem.push(tagCourant.location_lat);
-		    	elem.push(tagCourant.location_lng);
-		    	sessionStorage.setItem(i-1, JSON.stringify(elem));
+		var data = api.genParcours(coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags);
+
+		res = "";
+		$("tbody").html("");
+		for (var i = 1 ; i <= tags.length ; i++)
+	    {// remplacer la catégorie parent par l'id magasin
+	    	var tagCourant = data.tags[i];
+	    	//On ajoute la valeur id  de l'enseigne dans la sessionStorage
+	    	var elem = sessionStorage.getItem(i-1);
+	    	elem = JSON.parse(elem);
+	    	//Obligatoire si l'utilisateur a deja clique sur Generer un sessionStorage et qu'il veut remettre un autre magasin après
+	    	//Sinon les id s'ajoutent indéfiniments à la suite dans le meme tableau !
+	    	var id = tagCourant.id;
+	    	elem[2] = id;
+	    	elem.push(tagCourant.enseigne.toLowerCase());
+	    	elem.push(tagCourant.location_lat);
+	    	elem.push(tagCourant.location_lng);
+	    	sessionStorage.setItem(i-1, JSON.stringify(elem));
+    	
+	    	//On affiche sur la page
+	    	//On ajoute la classe (non utilisée en CSS) detailsButton pour distinguer les bouttons par l'action onclick()
+	    	$("tbody").append("<tr class='mag"+(i-1)+"'><td>"+tagCourant.enseigne.toLowerCase()+"</td><td><a class='detailButton' name='"+id+"' href='/app/DetailsCommerce/details_commerce'><button>i</button></a></td><td><button onclick='newMag("+(i-1)+")'>New mag</button></td></tr>");
+	    	ajoutDansRes();
 	    	
-		    	//On affiche sur la page
-		    	//On ajoute la classe (non utilisée en CSS) detailsButton pour distinguer les bouttons par l'action onclick()
-		    	$("tbody").append("<tr class='mag"+(i-1)+"'><td>"+tagCourant.enseigne.toLowerCase()+"</td><td><a class='detailButton' name='"+id+"' href='/app/DetailsCommerce/details_commerce'><button>i</button></a></td><td><button onclick='newMag("+(i-1)+")'>New mag</button></td></tr>");
-		    	ajoutDansRes();
-		    	
-		    	//Ajout d'une action qui va ajouter à la sessionStorage
-		    	// currentMagasin => id
-		    	//Ceci est utile pour la transition de cette page à la page de Magasin spécifique
-		    	
-		    	
-		    }
-			
-		    //On récupère l'attribut nom (qui contient l'id du magasin) et on le stock dans la sessionStorage "currentMagasin"
-		    //Dans la page detailsCommerce.js, on enverra en Ajax la requete avec comme id la valeur de la sessionStorage 
-		    //Astucieux hein ? :p
-		    //En vrai ça marchait pas avec un passage de parametres classiques ?id= et tout...
-		    $('a.detailButton').on('click',function(e){
-	    		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
-	    	});
-		},
-		error: function(XMLHttpRequest, textStatus, errorThrown)
-		{
-			alert(textStatus +", " +errorThrown);
-		}
-	});
+	    	//Ajout d'une action qui va ajouter à la sessionStorage
+	    	// currentMagasin => id
+	    	//Ceci est utile pour la transition de cette page à la page de Magasin spécifique
+	    	
+	    	
+	    }
+		
+	    //On récupère l'attribut nom (qui contient l'id du magasin) et on le stock dans la sessionStorage "currentMagasin"
+	    //Dans la page detailsCommerce.js, on enverra en Ajax la requete avec comme id la valeur de la sessionStorage 
+	    //Astucieux hein ? :p
+	    //En vrai ça marchait pas avec un passage de parametres classiques ?id= et tout...
+	    $('a.detailButton').on('click',function(e){
+    		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
+    	});
+
 }
 
 function afficherParcours() {
@@ -101,14 +90,8 @@ function afficherParcours() {
 function newMag (i) {
 	var elem = JSON.parse(sessionStorage.getItem(i));
 	var tag = elem[0];
-	$.ajax({
-	    dataType: "json",
-	    contentType: "application/json",
-		url : "http://rpoch.istic.univ-rennes1.fr/api/",
-		data : {"req":"yolo","format":"json","coord_dep_lat":coord_dep_lat,"coord_dep_lng":coord_dep_lng,"coord_arr_lat":coord_arr_lat,"coord_arr_lng":coord_arr_lng,"dist_max":dist_max,"commerces":"["+tag+"]"},
-		type : "GET",
-		async: false,
-		success: function(data) {
+	var data = api.genParcours(coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tag);
+
 			var id = data.tags[1].id;
 			elem[2] = id;
 			elem[3] = data.tags[1].enseigne.toLowerCase();
@@ -121,12 +104,7 @@ function newMag (i) {
 	    		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
 	    	});
 		    refresh();
-		},
-		error: function(XMLHttpRequest, textStatus, errorThrown)
-		{
-			alert(textStatus +", " +errorThrown);
-		}
-	})
+		
 }
 
 function ajoutDansRes() {
