@@ -30,21 +30,17 @@
       
       <div id="boutonsParcours">
         <a>
-          <button onclick="genererParcours()">
-            Generer le parcours
-          </button>
-        </a>
-        
-        
-        <a href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>">
-          <button>
-            Ajouter un magasin
+          <button onclick="genererParcours()" text="genererParcours">
           </button>
         </a>
         
         <a>
-          <button onclick="afficherParcours()">
-            GO !
+          <button onclick="afficherParcours()" text="afficherCarte">
+          </button>
+        </a>
+        
+        <a href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>">
+          <button text="ajouterMagasin">
           </button>
         </a>
       </div>
