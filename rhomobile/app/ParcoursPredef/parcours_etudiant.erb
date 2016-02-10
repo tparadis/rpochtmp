@@ -9,7 +9,7 @@
   </style>
 
  
-
+<script src="/public/customjs/api.js"></script>
   <script type="text/javascript">
   initialize();
       function initialize() {
@@ -17,49 +17,30 @@
       
       
       
-      var i;
-      $.ajax({
-          dataType: "json",
-          contentType: "application/json",
-          url : "http://rpoch.istic.univ-rennes1.fr/api/",
-          data : {"req":"predef","format":"json","nom":"<%= $typeparcours %>"},
-          type : "GET",
-          async: false,
-          success: function(data){
-              var i = 0;
-              var magasins_size = data.size;
-              
-              while (i < magasins_size)
-              {
-                  //alert([data.magasins[i].enseigne, data.magasins[i].location_lat,data.magasins[i].location_lng, i+1]);
-                  locations.push([data.magasins[i].enseigne+"  "+i, data.magasins[i].location_lat,data.magasins[i].location_lng, i+1]);
-                  i++;
-              }
-              
-          },
-          error: function(XMLHttpRequest, textStatus, errorThrown)
-          {
-              alert(textStatus +", " +errorThrown);
-          }
-      });
-   
+
+      var data = api.getPredef("etudiant");
       
+                      var i = 0;
+                      var magasins_size = data.size;
+                      
+                      while (i < magasins_size)
+                      {
+                          //alert([data.magasins[i].enseigne, data.magasins[i].location_lat,data.magasins[i].location_lng, i+1]);
+                          locations.push([data.magasins[i].enseigne+"  "+i, data.magasins[i].location_lat,data.magasins[i].location_lng, i+1]);
+                          i++;
+                      }
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 15,
       center: new google.maps.LatLng(48.112739, -1.681489),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-
     var infowindow = new google.maps.InfoWindow();
-
     var marker, i;
-
     for (i = 0; i < locations.length; i++) {  
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
         map: map
       });
-
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
           infowindow.setContent(locations[i][0]);
@@ -71,7 +52,7 @@
   </script>
         </head> 
         <body>     
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfh64T7GInE-G0rPQ35PHjmPr1erbaJgg&signed_in=true&callback=initialize"
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcpbC-OR2Xbq5JcUAOaDrEgoOGxN5St9w&signed_in=true&callback=initialize"
           async defer></script>
         
           <div id="map"></div>

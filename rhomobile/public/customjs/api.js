@@ -35,6 +35,8 @@ api.getAllcat=function () { return api.send({ data: {"req":"allcat","format":"js
 
 api.getCommDetail= function(id){ return api.send({ data: {"req":"spec","format":"json", "id":id} }) }
 
+api.getPredef= function(typeP){ return api.send({data : {"req":"predef","format":"json","nom":typeP}}) }
+
 api.genParcours = function (coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags) { 
 	return api.send({ data: {
 		"req":"yolo",
