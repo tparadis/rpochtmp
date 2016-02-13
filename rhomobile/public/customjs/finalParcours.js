@@ -18,10 +18,11 @@ function refresh() {
     	if (magasin.length == 3) {
         	$("tbody").append("<tr><td>"+magasin[1]+"</td><td></td><td><a class='ui-btn' onclick='supprimerSsCat("+i+")'><span class='ui-btn-text'>X</span></a></td></tr>");
     	} else {
-    		$("tbody").append("<tr><td>"+magasin[3]+"</td><td><a class='detailButton' name='"+id+"' href='/app/DetailsCommerce/details_commerce'><button>i</button></a></td><td><button onclick='newMag("+i+")'>New mag</button></td></tr>");
+    		$("tbody").append("<tr><td>"+magasin[3]+"</td><td><a class='detailButton' name='"+id+"'><button>i</button></a></td><td><button onclick='newMag("+i+")'>New mag</button></td></tr>");
     		ajoutDansRes();
 		    $('a.detailButton').on('click',function(e){
 	    		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
+	    		afficheSpecificationMagasin();
 	    	});
     	}
     }
@@ -79,6 +80,7 @@ function genererParcours(){
 	    //En vrai ça marchait pas avec un passage de parametres classiques ?id= et tout...
 	    $('a.detailButton').on('click',function(e){
     		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
+    		afficheSpecificationMagasin();
     	});
 
 }

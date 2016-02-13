@@ -1,8 +1,39 @@
-$(document).ready(function() {
 
+//La magasin appelable de partout. Elle va permettre d'afficher un magasin
+//sans avoir à rediriger l'utilisateur en le forçant à refaire une requete GOOGLE API
+//Sur le long terme on passe d'environ 10 requetes api google à ... une !
+
+$(document).ready(function(e){
+	
+	checkIfImplemented();
+	$("#pageSpec").hide(0);
+	
+});
+
+function checkIfImplemented()
+{
+	if($("#pageSpec").length == 0)
+	{
+		//S'il n'y a pas les balises pour le rendu de notre page, on l'ajoute directement.
+		$("body").append("<div id='pageSpec'><div id='imageCommerce'></div><div id='descrCommerce'><div id='contenu'></div><br/><br/><img src='/public/images/backButton2.png' /></div></div>");
+	}
+}
+
+function afficheSpecificationMagasin()
+{
 	//Récupère les parametres de l'URL
+	
 	var id = sessionStorage.getItem("currentMagasin");
 	sessionStorage.removeItem("currentMagasin");
+	
+	
+	
+	//On vire les anciens résultats:
+	$("#imageCommerce").html("");
+	$("#descrCommerce #contenu").html("");
+	
+	//On check que les boutons "boutonsParcours" soient bien jartés
+	$("#boutonsParcours").hide();
 	
 	var data = api.getCommDetail(id);
 	
@@ -16,7 +47,14 @@ $(document).ready(function() {
 	$("#descrCommerce #contenu").append("<span class='others'>"+data.commerce.street_number+" "+data.commerce.route+"</span><br/>");
 	$("#descrCommerce #contenu").append("<span class='others'>Tel. "+data.commerce.phone_num+"</span><br/>");
 	
-});
+	$("#pageSpec").show(200);  
+	
+	$("#descrCommerce").find("img").on("click",function(e){
+			$("#pageSpec").hide(400);
+			$("#boutonsParcours").show(200);
+	});
+}
+
 
 function afficheTags(tag0, tag1, tag2)
 {
