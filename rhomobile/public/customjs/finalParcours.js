@@ -64,7 +64,7 @@ function genererParcours(){
     	
 	    	//On affiche sur la page
 	    	//On ajoute la classe (non utilisée en CSS) detailsButton pour distinguer les bouttons par l'action onclick()
-	    	$("tbody").append("<tr class='mag"+(i-1)+"'><td>"+tagCourant.enseigne.toLowerCase()+"</td><td><a class='detailButton' name='"+id+"' href='/app/DetailsCommerce/details_commerce'><button>i</button></a></td><td><button onclick='newMag("+(i-1)+")'>New mag</button></td></tr>");
+	    	$("tbody").append("<tr class='mag"+(i-1)+"'><td>"+tagCourant.enseigne.toLowerCase()+"</td><td><a class='detailButton' name='"+id+"'><button>i</button></a></td><td><button onclick='newMag("+(i-1)+")'>New mag</button></td></tr>");
 	    	ajoutDansRes();
 	    	
 	    	//Ajout d'une action qui va ajouter à la sessionStorage
@@ -101,7 +101,7 @@ function newMag (i) {
 			elem[5] = data.tags[1].location_lng;
 			sessionStorage.setItem(i, JSON.stringify(elem));
 			$(".mag"+i).html("");
-			$(".mag"+i).append("<td>"+data.tags[1].enseigne.toLowerCase()+"</td><td><a class='detailButton' name='"+id+"' href='/app/DetailsCommerce/details_commerce'><button>i</button></a></td><td><button onclick='newMag("+i+")'>New mag</button></td>");
+			$(".mag"+i).append("<td>"+data.tags[1].enseigne.toLowerCase()+"</td><td><a class='detailButton' name='"+id+"'><button>i</button></a></td><td><button onclick='newMag("+i+")'>New mag</button></td>");
 		    $('a.detailButton').on('click',function(e){
 	    		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
 	    	});
