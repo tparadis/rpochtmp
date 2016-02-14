@@ -19,15 +19,10 @@
 
 
     function initialize() {
-     // A changer avec le https 
-      $.ajax({
-                dataType: "json",
-                contentType: "application/json",
-                url : "http://rpoch.istic.univ-rennes1.fr/api/",
-                data : {"req":"predef","format":"json","nom":"<%= $typeparcours %>"},
-                type : "GET",
-                async: false,
-                success: function(data){
+      
+      var data = api.getParcEtu("<%= $typeparcours %>");
+      
+           
                    var i = 0;
                    magasins_size = data.size;
                     
@@ -37,28 +32,25 @@
                         locations.push([data.magasins[i].enseigne+"  "+i, data.magasins[i].location_lat,data.magasins[i].location_lng, i+1]);
                         i++;
                     }
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown)
-                {
-                    alert(textStatus +", " +errorThrown);
-                }
-            });
+               
             
       var waypointsArray = [];
                       
       directionsService = new google.maps.DirectionsService;
       directionsDisplay = new google.maps.DirectionsRenderer;
+    
       var mapCanvas = document.getElementById('map');
       
       var mapOptions = {
         center: new google.maps.LatLng(48.112739, -1.681489),
         zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        
       }
       
       var map = new google.maps.Map(mapCanvas, mapOptions)
 
-            for(var i = 1; i < magasins_size;i++ ){
+            for(var i = 1; i < magasins_size - 1;i++ ){
                 lat = locations[i][1];
                 lng = locations[i][2];
                 waypointsArray.push({
@@ -90,10 +82,10 @@
 </head>
 <body>
 <! clé 1: AIzaSyBcpbC-OR2Xbq5JcUAOaDrEgoOGxN5St9w >
-<! clé 2: AIzaSyB52JIODDxNvBfg-lb8ap-MycusmKIxGs0 >
-
+<! clé 2: AIzaSyB52JIODDxNvBfg-lb8ap-MycusmKIxGs0 > 
+<script src="/public/customjs/api.js"></script>
 <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB52JIODDxNvBfg-lb8ap-MycusmKIxGs0&callback=initialize">
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1QPnIpS_AFRyevXtfbSi-pxmu1GGQuEw&callback=initialize">
 </script>
   <div id="map"></div>
 </body>
