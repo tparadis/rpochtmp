@@ -26,7 +26,7 @@ var lang = {
 	"lieu" : "Place",
 	"magasin" : "&nbsp;Shop(s)",	
 	"afficherCarte" : "Show the map",
-	"ajouterMagasin" : "Add a new shop",
+	"ajouterMagasin" : "Add a new store",
 	"options" : "Settings",
 	"parcoursThematique" : "Thematic Path"
 	},
@@ -38,15 +38,15 @@ var lang = {
 	"esp" : {
 	"rpoch" : "Rennes en el bolsillo",
 	"rpochapp" : "Aplicaci&oacuten Rennes en el bolsillo",
-	"creerParcours" : "Crear su propio camino",
-	"votreParcours" : "Su camino",
-	"genererParcours" : "Generar su camino",
+	"creerParcours" : "Crea tu propia ruta",
+	"votreParcours" : "Tu ruta",
+	"genererParcours" : "Genera tu ruta",
 	"lieu" : "Lugar",
 	"magasin" : "&nbsp;Tienda(s)",	
-	"afficherCarte" : "Afficher la carte",
+	"afficherCarte" : "Mostrar el mapa",
 	"ajouterMagasin" : "A&ntildeadir una tienda",
 	"options" : "Opciones",
-	"parcoursThematique" : "Camino tem&aacutetico"
+	"parcoursThematique" : "Ruta tem&aacutetica"
 	},
 	/**
 	 * 

@@ -54,6 +54,19 @@ function chargementCategories() {
 	var langue = localStorage.getItem(0);
 	localStorage.setItem('nbCat', data.sizecat);
 	localStorage.setItem('nbSsCat', data.sizesscat);
+	var catAutresLangues = new Array();
+	var ssCatAutresLangues = new Array();
+	if(langue!= 'fr')
+	{
+		for(var i = 0 ; i < data.sizecat ; i++) {
+			catAutresLangues[i]=data.cat[i][langue];
+		}
+		catAutresLangues.sort();
+		for(var i = 0 ; i < data.sizesscat ; i++) {
+			ssCatAutresLangues[i]=data.sscat[i][langue];
+		}
+		ssCatAutresLangues.sort()
+	}
 	for(var i = 0 ; i < data.sizecat ; i++) {
 		var courantCat = data.cat[i];
 		switch (langue) {
@@ -61,7 +74,7 @@ function chargementCategories() {
 				var courantCatNom = courantCat.nom;
 				break;
 			default:
-				var courantCatNom = courantCat[langue];
+				var courantCatNom = catAutresLangues[i];
 				break;
 		}
 		var infoCat = [courantCat.id, courantCatNom];
@@ -75,7 +88,7 @@ function chargementCategories() {
 				var courantSsCatNom = courantSsCat.nom;
 				break;
 			default:
-				var courantSsCatNom = courantSsCat[langue];
+				var courantSsCatNom = ssCatAutresLangues[i];
 				break;
 		}
 		var infoSsCat = [courantSsCat.id, courantSsCatNom, courantSsCat.catparent];
