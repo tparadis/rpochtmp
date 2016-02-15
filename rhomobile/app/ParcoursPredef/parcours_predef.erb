@@ -10,50 +10,15 @@
 
     <div id="page">
       <%= render :partial => "/partials/page_head" %>
-
+      
       <ul id="menu">
-      
-        <li>               
-          <a href="<%= url_for :action => :requette_etudiant ,:query=>{:type_parcours=>'etudiant'}%>">
-            <img src="http://rpoch.istic.univ-rennes1.fr/static/images/parcoursEtudiant.jpg" alt="" />
-          </a>
-          <a href="<%= url_for :action => :requette_etudiant ,:query=>{:type_parcours=>'etudiant'}%>">
-            <span class="lien">Parcours Etudiant</span>
-          </a>
-        </li>
-      
-        <li>
-          <a href="<%= url_for :action => :requette_etudiant ,:query=>{:type_parcours=>'arty'}%>">
-            <img src="http://rpoch.istic.univ-rennes1.fr/static/images/parcoursArty.jpg" alt="" />
-          </a>
-          <a href="<%= url_for :action => :requette_etudiant ,:query=>{:type_parcours=>'arty'}%>">
-            <span class="lien">Parcours Arty</span>
-          </a>
-        </li>
-      
-        <li>          
-          <a href="<%= url_for :action => :requette_etudiant ,:query=>{:type_parcours=>'gourmand'}%>">
-            <img src="http://rpoch.istic.univ-rennes1.fr/static/images/parcoursGourmand.jpg" alt="" />
-          </a>
-          <a href="<%= url_for :action => :requette_etudiant ,:query=>{:type_parcours=>'gourmand'}%>">
-            <span class="lien">Parcours Gourmand</span>
-          </a>
-        </li>
-      
-        <li>      
-          <a href="<%= url_for :action => :requette_etudiant ,:query=>{:type_parcours=>'famille'}%>">
-            <img src="http://rpoch.istic.univ-rennes1.fr/static/images/parcoursFamille.jpg" alt="" />
-          </a>
-          <a href="<%= url_for :action => :requette_etudiant ,:query=>{:type_parcours=>'famille'}%>">
-            <span class="lien">Parcours en famille</span>
-          </a>
-        </li>
-        
+        <!-- pas de panique, tout est remis dans parcoursPredef.js -->
       </ul>
       
     </div>
     
     <script type="text/javascript" charset="utf-8" src="/public/customjs/trad.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/public/customjs/parcoursPredef.js"></script>
 
   </body>
 </html>

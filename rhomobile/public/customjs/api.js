@@ -37,6 +37,8 @@ api.getCommDetail= function(id){ return api.send({ data: {"req":"spec","format":
 
 api.getPredef= function(typeP){ return api.send({data : {"req":"predef","format":"json","nom":typeP}}) }
 
+api.getAllPredef= function(typeP){ return api.send({data : {"req":"predef","format":"json"}}) }
+
 api.genParcours = function (coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags) { 
 	return api.send({ data: {
 		"req":"yolo",
