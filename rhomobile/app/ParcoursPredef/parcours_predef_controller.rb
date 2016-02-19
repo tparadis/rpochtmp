@@ -62,6 +62,12 @@ class ParcoursPredefController < Rho::RhoController
     Rho::WebView.navigate(url_for(:action => :parcours_etudiant))
   end
   
+  def requette_description
+    $typeparcours = @params['type_parcours']
+    Rho::WebView.navigate(url_for(:action => :description))
+  end
+  
+  
  
   
 end
