@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <%= render :partial => "/partials/page_head" %></>
+
+     <div id="page">
+    
+      <h2 style="text-align: center" id="nompage">
+        Parcours 
+      </h2>
+       
+      <table id="liste_magasins">
+        <thead>
+          <tr>
+            <th>Magasins</th>
+            <th>D&eacute;tail</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+        </tbody>
+        
+      </table>
+       
+      <!-- boutton pour afficher la map -->
+      <input type="button" value="Affichage de la carte" onclick="javascript:location.href='/app/ParcoursPredef/requette_etudiant?type_parcours=<%=$typeparcours %>'">
+
+      
+   
+      </div>
+      
+
+      <script src="/public/customjs/api.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/public/customjs/trad.js"></script>
+      <script src="/public/customjs/detailsCommerce.js"></script>
+      <script>
+        var predefs = api.getAllPredef();
+        var adresseImg = "";
+        var parcoursChoisi = "<%= $typeparcours %>";
+        var data = api.getPredef(parcoursChoisi);
+        var i = 0;
+        var magasins_size = data.size;
+        var magasin_nom;
+        var id;
+        var lang = localStorage["0"];
+
+        //récupération de l'image associé au parcours sur le serveur
+        //Pour l'instant l'image récupérée est la même que celle utilisée pour décrire le parcours sur parcours_predef
+
+        while (i < predefs.size && adresseImg == "") {              
+          if (predefs.parcourspredefs[i].name == parcoursChoisi) {   
+            adresseImg = "http://rpoch.istic.univ-rennes1.fr/static/images/" +predefs.parcourspredefs[i].image; 
+            id = i;
+          }
+          else {
+            i++;
+          }
+        }
+        //affichage de l'image et de la description
+        $("table").before('<div style="text-align: center"><img src="'+adresseImg+'" alt="image"><p>'+predefs.parcourspredefs[id].description+'</p></div>');
+        //Nom du parcours
+        switch(lang){
+          case "fr": $("#nompage").text(predefs.parcourspredefs[id].fr); break;
+          case "en": $("#nompage").text(predefs.parcourspredefs[id].en); break;
+          case "de": $("#nompage").text(predefs.parcourspredefs[id].de); break;
+          case "esp": $("#nompage").text(predefs.parcourspredefs[id].esp); break;
+          case "ko": $("#nompage").text(predefs.parcourspredefs[id].ko); break;
+          case "jap": $("#nompage").text(predefs.parcourspredefs[id].jap); break;
+        }
+        
+        //liste des magasins du parcours 
+        i=0;
+        while (i < magasins_size){
+          magasin_nom = data.magasins[i].enseigne;
+          // on attache les magasins à la liste
+          $("tbody").append('<tr><td>'+magasin_nom+'</td><td><a class="detailButton" name='+predefs.parcourspredefs[id].commerces[id]+'><button>i</button></a></td></tr>');
+          $('a.detailButton').on('click',function(e){
+            sessionStorage.setItem("currentMagasin", $(this).attr('name'));
+            afficheSpecificationMagasin();
+          });
+          i++;
+        }
+      </script>
+
+  </body>
+</html>
