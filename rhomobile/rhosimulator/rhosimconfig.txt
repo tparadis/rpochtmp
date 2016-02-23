@@ -1,4 +1,4 @@
-rhodes_path='D:/Logiciel/RhoMobile/ruby/lib/ruby/gems/1.9.1/gems/rhodes-5.3.2'
+rhodes_path='C:/RhoMobileSuite5.2.2/ruby/lib/ruby/gems/1.9.1/gems/rhodes-5.2.2'
 app_version='1.0'
 app_name='rhomobile'
 reload_app_changes=0
@@ -6,4 +6,4 @@ debug_port=
 debug_host='127.0.0.1'
 platform='android'
 os_version='4.1.0'
-ext_path=D:/Logiciel/RhoMobile/ruby/lib/ruby/gems/1.9.1/gems/rhodes-5.3.2/lib/commonAPI/coreapi;D:/Logiciel/RhoMobile/ruby/lib/ruby/gems/1.9.1/gems/rhodes-5.3.2/lib/extensions/json;D:/Logiciel/RhoMobile/ruby/lib/ruby/gems/1.9.1/gems/rhoconnect-client-5.3.2/lib/../ext/rhoconnect-client;
+ext_path=C:/RhoMobileSuite5.2.2/ruby/lib/ruby/gems/1.9.1/gems/rhodes-5.2.2/lib/commonAPI/coreapi;C:/RhoMobileSuite5.2.2/ruby/lib/ruby/gems/1.9.1/gems/rhodes-5.2.2/lib/extensions/json;C:/RhoMobileSuite5.2.2/ruby/lib/ruby/gems/1.9.1/gems/rhoconnect-client-5.2.2/lib/../ext/rhoconnect-client;

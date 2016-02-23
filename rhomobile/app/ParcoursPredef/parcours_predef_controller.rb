@@ -62,6 +62,4 @@ class ParcoursPredefController < Rho::RhoController
     Rho::WebView.navigate(url_for(:action => :parcours_etudiant))
   end
   
- 
-  
 end
