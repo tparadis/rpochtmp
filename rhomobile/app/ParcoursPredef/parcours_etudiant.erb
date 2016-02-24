@@ -22,6 +22,8 @@
 <script src="/public/customjs/api.js"></script>
 <script src="/public/js/rhogeolocation.js"></script>
 <script src="/public/customjs/detailsCommerce.js"></script>
+<script src="/public/customjs/geoloc.js"></script>
+
   <script type="text/javascript">
   //initialize();
       function initialize() {
@@ -44,7 +46,7 @@
                           locations.push([data.magasins[i].enseigne+"  "+i, data.magasins[i].location_lat,data.magasins[i].location_lng, i+1, data.magasins[i].id]);
                           i++;
                       }
-    var map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
       zoom: 15,
       center: new google.maps.LatLng(48.112739, -1.681489),
       mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -68,18 +70,40 @@
         }
       })(marker, i));
       }
+      
+userMarker = new google.maps.Marker({
+     position: {lat: 48.111232, lng: -1.678671},
+     map: map,
+     icon: "http://rpoch.istic.univ-rennes1.fr/static/images/googlePos.png"
+   });
+   window.setInterval(function()
+   {
+      userMarker.setMap(null);
+      userMarker = new google.maps.Marker({
+          position: {lat: userlat, lng: userlong},
+          map: map,
+          icon: "http://rpoch.istic.univ-rennes1.fr/static/images/googlePos.png"
+        });
+     
+     
+     
+   }, 1200); 
+   //userMarker.setMap(null);
 }
+
   </script>
   
-        </head> 
-        <body>
+</head> 
+<body>
         
         <div id="parcours_predef" name="<%=$typeparcours %>" ></div>     
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcpbC-OR2Xbq5JcUAOaDrEgoOGxN5St9w&signed_in=true&callback=initialize"
           async defer></script>
         
           <div id="map"></div>
-<geolocation/>
-
+          <geolongitude></geolongitude>
+          <geolocation></geolocation>
+          <geolatitude></geolatitude>
+          
 </body>
 </html>
