@@ -15,7 +15,12 @@ function checkIfImplemented()
 	if($("#pageSpec").length == 0)
 	{
 		//S'il n'y a pas les balises pour le rendu de notre page, on l'ajoute directement.
-		$("body").append("<div id='pageSpec'><div id='imageCommerce'></div><div id='descrCommerce'><div id='contenu'></div><br/><br/><img src='/public/images/backButton2.png' /></div></div>");
+		$("body").append("<div id='pageSpec'><div id='imageCommerce'></div><div id='descrCommerce'><div id='contenu'></div><br/><br/><img id='back' src='/public/images/backButton2.png' />"+/***<img id='signaler' src='/public/images/signaler.png' />**/"</div></div>");
+		/****$("body").append("<div id='dialog' title='signaler'><fieldset><legend>Signalement :</legend><select id='select-signaler'><option value ='coordonnees-incorrectes'>Coordonnées incorrectes</option><option value ='horaires-incorrects'>Horaires incorrects</option><option value ='classification-incorrecte'>Classification incorrecte</option><option value ='magasin-fermer'>Magasin fermé</option><option value ='autre'>Autre</option></select><textarea rows='4' cols='50'>...</textarea></fieldset>	</div>");
+		$("#signaler").css({"width" : "50px", "margin-left": "70%"});
+		$("#signaler").on('click',function(e){
+			$("#dialog").dialog();
+	    });***/
 	}
 }
 
@@ -26,8 +31,8 @@ function afficheSpecificationMagasin()
 	var id = sessionStorage.getItem("currentMagasin");
 	sessionStorage.removeItem("currentMagasin");
 	
-	
-	
+	//On cache la page active 
+	$(".ui-page-active").hide();
 	//On vire les anciens résultats:
 	$("#imageCommerce").html("");
 	$("#descrCommerce #contenu").html("");
@@ -49,9 +54,11 @@ function afficheSpecificationMagasin()
 	
 	$("#pageSpec").show(200);  
 	
-	$("#descrCommerce").find("img").on("click",function(e){
+	$("#back").on("click",function(e){
 			$("#pageSpec").hide(400);
 			$("#boutonsParcours").show(200);
+			//On reaffiche la page active
+			$(".ui-page-active").show();			
 	});
 }
 
