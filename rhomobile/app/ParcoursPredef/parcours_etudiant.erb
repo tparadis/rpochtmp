@@ -78,16 +78,15 @@ userMarker = new google.maps.Marker({
    });
    window.setInterval(function()
    {
+     //var latlng = new google.maps.LatLng(userlat, userlong);
+     //marker.setPosition(latlng);
+     //Ne pas oublier de remplacer en cas de "Reading"
       userMarker.setMap(null);
       userMarker = new google.maps.Marker({
           position: {lat: userlat, lng: userlong},
           map: map,
           icon: "http://rpoch.istic.univ-rennes1.fr/static/images/googlePos.png"
-        });
-     
-     
-     
-   }, 1200); 
+    })}, 1200); 
    //userMarker.setMap(null);
 }
 
