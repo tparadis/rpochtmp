@@ -51,8 +51,18 @@
     });
     var infowindow = new google.maps.InfoWindow();
     var marker, i;
-    for (i = 0; i < locations.length; i++) {  
+     
+    for (i = 0; i < locations.length; i++) {
+      
+      
+      var image = {url:"/public/images/cat"+findCat(locations[i][4])+"_32.png",
+          size: new google.maps.Size(32, 32),
+          // The origin for this image is (0, 0).
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(16, 16)
+        };
       marker = new google.maps.Marker({
+        icon: image,
         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
         map: map
       });
@@ -62,6 +72,7 @@
           infowindow.open(map, marker);
           $("#marker").find("button").on("click",function(e){
             sessionStorage.setItem("currentMagasin",locations[i][4]);
+
             //window.location.replace("/app/DetailsCommerce/details_commerce");
             afficheSpecificationMagasin();
           });

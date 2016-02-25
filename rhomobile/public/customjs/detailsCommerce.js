@@ -34,7 +34,6 @@ function afficheSpecificationMagasin()
 	
 	//On check que les boutons "boutonsParcours" soient bien jartés
 	$("#boutonsParcours").hide();
-	
 	var data = api.getCommDetail(id);
 	
 	//Faire un truc
@@ -104,7 +103,23 @@ function findSSCat(id,t){
 	
 }
 
-
+//Finds the category number for a specific magazine
+function findCat(id){
+	var data = api.getCommDetail(id);
+	var nbSS = parseInt(localStorage.getItem("nbSsCat"));
+	var i = 0;
+	var tmp="";
+	while(i < nbSS)
+	{
+		tmp = JSON.parse(localStorage.getItem("sscat"+i));
+		if(data.commerce.tag0 == tmp[0])
+			return tmp[2];
+		i++;
+	}
+	return "";
+	
+	
+}
 
 
 
