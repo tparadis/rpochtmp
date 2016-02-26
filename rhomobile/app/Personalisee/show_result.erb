@@ -7,6 +7,7 @@
      height: 530px;
    }
  </style>
+<script src="/public/js/rhogeolocation.js"></script>
  <script>
  
  var waypointsArray =[];
@@ -39,6 +40,18 @@
        mapTypeId: google.maps.MapTypeId.ROADMAP
      }
      var map = new google.maps.Map(mapCanvas, mapOptions);
+     
+     userMarker = new google.maps.Marker({
+            position: {lat: getLat(), lng: getLong()},
+            map: map,
+            icon: "http://rpoch.istic.univ-rennes1.fr/static/images/googlePos.png"
+          });
+          
+          window.setInterval(function()
+          {
+            userMarker.setPosition({lat: getLat(), lng: getLong()});
+           },2000); 
+     
      for(i=0;i<points.length;i++)
        {
            switch (i%3){
@@ -66,12 +79,7 @@
                break;
            }
        }
-     
-       
-       
-       
  
-   
     var request = {
        origin:new google.maps.LatLng(points[0],points[1]),
            /*FIXME si le parcours a moins de deux points l'application va planter*/
@@ -101,7 +109,16 @@ infowindow.open(marker.get('map'), marker);
    </script>
 </head>
 <body>
+
+<geolongitude style="opacity:0;"></geolongitude>
+<geolocation style="opacity:0;"></geolocation>
+<geolatitude style="opacity:0;"></geolatitude>
+
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcpbC-OR2Xbq5JcUAOaDrEgoOGxN5St9w&signed_in=true&callback=initialize"
  async defer></script>  <div id="map"></div>
+ 
+
+<script src="/public/customjs/geoloc.js"></script>
 </body>
 </html>

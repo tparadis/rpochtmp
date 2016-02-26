@@ -72,22 +72,16 @@
       }
       
 userMarker = new google.maps.Marker({
-     position: {lat: 48.111232, lng: -1.678671},
+     position: {lat: getLat(), lng: getLong()},
      map: map,
      icon: "http://rpoch.istic.univ-rennes1.fr/static/images/googlePos.png"
    });
+   
    window.setInterval(function()
    {
-      userMarker.setMap(null);
-      userMarker = new google.maps.Marker({
-          position: {lat: userlat, lng: userlong},
-          map: map,
-          icon: "http://rpoch.istic.univ-rennes1.fr/static/images/googlePos.png"
-        });
-     
-   }, 1200);
+     userMarker.setPosition({lat: getLat(), lng: getLong()});
+    },2000); 
 }
-
   </script>
   
 </head> 
@@ -98,9 +92,9 @@ userMarker = new google.maps.Marker({
           async defer></script>
         
           <div id="map"></div>
-          <geolongitude></geolongitude>
-          <geolocation></geolocation>
-          <geolatitude></geolatitude>
+          <geolongitude style="opacity:0;"></geolongitude>
+          <geolocation style="opacity:0;"></geolocation>
+          <geolatitude style="opacity:0;"></geolatitude>
           
 </body>
 </html>
