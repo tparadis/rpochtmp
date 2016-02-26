@@ -7,14 +7,19 @@
   </head>
 
   <body>
-    <%= render :partial => "/partials/page_head" %></>
+  
+    <div id="page_descriptionPredef">
+      <%= render :partial => "/partials/page_head" %>
 
-     <div id="page">
+    
     
       <h2 style="text-align: center" id="nompage">
         Parcours 
       </h2>
        
+     <!-- boutton pour afficher la map -->
+     <input type="button" value="Affichage de la carte" onclick="javascript:location.href='/app/ParcoursPredef/requette_etudiant?type_parcours=<%=$typeparcours %>'">
+
       <table id="liste_magasins">
         <thead>
           <tr>
@@ -28,9 +33,7 @@
         
       </table>
        
-      <!-- boutton pour afficher la map -->
-      <input type="button" value="Affichage de la carte" onclick="javascript:location.href='/app/ParcoursPredef/requette_etudiant?type_parcours=<%=$typeparcours %>'">
-
+     
       
    
       </div>
