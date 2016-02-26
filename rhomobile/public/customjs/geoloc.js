@@ -6,42 +6,57 @@ $(document).ready(function(e){
 	userRealCoords = false;
 	defaultPos = [48.111232, -1.678671]; //L'opéra de Rennes
 	
-	getLongLat();
 	timerId = setTimeout(validCoordinates, 1000);
-	window.setInterval(computeValues, 1200);
+	
+	window.setInterval(function(){
+		userlat = setLat();
+		userlong = setLong();
+		//alert("lat:"+$("geolatitude").html()+" || "+userlat+", long:"+$("geolongitude").html()+" || "+userlong);
+	}, 2000);
 })
 
 
 
 //Fonctions de mise à jour automatiques
 //Si on détecte que les valeurs sont fausses, dans ce cas on va remplacer par les coords de l'Opéra
-function getLongLat()
+function getLat()
+{
+	return userlat;
+}
+
+function getLong()
+{
+	return userlong;
+}
+
+function setLat()
 {
 			
 	var v1 = $("geolatitude").html();
-	if (v1 == "Unavailable") {
-		userlat = defaultPos[0];
+	if (v1 == "Unavailable" || v1 == "Reading") {
+		v1 = defaultPos[0];
 		userRealCoords = false;
 	}
-
-	var v1 = $("geolongitude").html();
-	if (v1 == "Unavailable") {
-		userlong = defaultPos[1];
-		userRealCoords = false;
-	}
+	
+	return parseFloat(v1);
+	
 }
-
-
-function computeValues()
+function setLong()
 {
-	getLongLat();
-	console.log(userlat+", "+userlong);
+	var v1 = $("geolongitude").html();
+	if (v1 == "Unavailable" || v1 == "Reading") {
+		v1 = defaultPos[1];
+		userRealCoords = false;
+	}
+	
+	return parseFloat(v1);
 }
 
 function validCoordinates()
 {
-	getLongLat();
-	if(userlat == 0 || userlong == 0)
+	userlat = setLat();
+	userlong = setLong();
+	if(userlat == defaultPos[0] || userlong == defaultPos[1])
 	{
 		userRealCoords = false;
 		console.log("GEOLOCALISATION ERROR : Coordonnees non valides, on remplace!");
