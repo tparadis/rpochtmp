@@ -22,6 +22,7 @@
 <script src="/public/customjs/api.js"></script>
 <script src="/public/js/rhogeolocation.js"></script>
 <script src="/public/customjs/detailsCommerce.js"></script>
+<script src="/public/customjs/choixParcours.js"></script>
 <script src="/public/customjs/geoloc.js"></script>
 
   <script type="text/javascript">
@@ -42,7 +43,6 @@
                       
                       while (i < magasins_size)
                       {
-                          //alert([data.magasins[i].enseigne, data.magasins[i].location_lat,data.magasins[i].location_lng, i+1]);
                           locations.push([data.magasins[i].enseigne+"  "+i, data.magasins[i].location_lat,data.magasins[i].location_lng, i+1, data.magasins[i].id]);
                           i++;
                       }
@@ -55,9 +55,8 @@
     var marker, i;
      
     for (i = 0; i < locations.length; i++) {
-      
-      
-      var image = {url:"/public/images/cat"+findCat(locations[i][4])+"_32.png",
+      var ipath= findCatSubCat(locations[i][4]);
+      var image = {url:getImagePath(ipath.subcat,ipath.cat),
           size: new google.maps.Size(32, 32),
           // The origin for this image is (0, 0).
           origin: new google.maps.Point(0, 0),
@@ -83,22 +82,16 @@
       }
       
 userMarker = new google.maps.Marker({
-     position: {lat: 48.111232, lng: -1.678671},
+     position: {lat: getLat(), lng: getLong()},
      map: map,
      icon: "http://rpoch.istic.univ-rennes1.fr/static/images/googlePos.png"
    });
+   
    window.setInterval(function()
    {
-      userMarker.setMap(null);
-      userMarker = new google.maps.Marker({
-          position: {lat: userlat, lng: userlong},
-          map: map,
-          icon: "http://rpoch.istic.univ-rennes1.fr/static/images/googlePos.png"
-        });
-     
-   }, 1200);
+     userMarker.setPosition({lat: getLat(), lng: getLong()});
+    },2000); 
 }
-
   </script>
   
 </head> 
@@ -109,9 +102,9 @@ userMarker = new google.maps.Marker({
           async defer></script>
         
           <div id="map"></div>
-          <geolongitude></geolongitude>
-          <geolocation></geolocation>
-          <geolatitude></geolatitude>
+          <geolongitude style="opacity:0;"></geolongitude>
+          <geolocation style="opacity:0;"></geolocation>
+          <geolatitude style="opacity:0;"></geolatitude>
           
 </body>
 </html>

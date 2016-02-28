@@ -111,7 +111,7 @@ function findSSCat(id,t){
 }
 
 //Finds the category number for a specific magazine
-function findCat(id){
+function findCatSubCat(id){
 	var data = api.getCommDetail(id);
 	var nbSS = parseInt(localStorage.getItem("nbSsCat"));
 	var i = 0;
@@ -120,12 +120,15 @@ function findCat(id){
 	{
 		tmp = JSON.parse(localStorage.getItem("sscat"+i));
 		if(data.commerce.tag0 == tmp[0])
-			return tmp[2];
+		{	return {
+            "cat":tmp[2],
+            "subcat":tmp[0]}; 
+        }
 		i++;
 	}
-	return "";
-	
-	
+	return {
+        "cat":"",
+        "subcat":""}; 
 }
 
 
