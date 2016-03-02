@@ -26,6 +26,7 @@ function getLongLat()
 	else
 	{
 		userlat = parseFloat(v1);
+		defaultPos[0] = userlat;
 		userRealCoords = true;
 	}
 
@@ -38,6 +39,7 @@ function getLongLat()
 	{
 		userlong = parseFloat(v2);
 		userRealCoords = true;
+		defaultPos[1] = userlong;
 	}
 	//alert("lat: "+defaultPos[0]+", "+userlat+" :: long: "+defaultPos[1]+", "+userlong);
 }
