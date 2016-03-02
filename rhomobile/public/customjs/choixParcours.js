@@ -30,6 +30,18 @@ function call_ruby_method_via_ajax(method_name,nCommerce){
 function addSsCat(sscat) { 	
 	var tmp = JSON.parse(localStorage.getItem(sscat));
 	sessionStorage.setItem(sessionStorage.length, JSON.stringify(tmp));
+	
+	
+	  Rho.Notification.vibrate(500);
+	 
+	//toast message 
+	  $("<div class='ui-loader ui-overlay-shadow ui-body-e ui-corner-all' > Magasin Ajout&eacute</div>").css({ "display": "block", "opacity": 0.96, "": $(window).scrollTop() })
+	  .appendTo( $.mobile.pageContainer )
+	  .delay( 1000 )
+	  .fadeOut( 400, function(){
+	    $(this).remove();
+	  });
+	
 	actualiserMagasins();
 }
 
