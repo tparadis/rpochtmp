@@ -82,14 +82,14 @@
       }
       
 userMarker = new google.maps.Marker({
-     position: {lat: getLat(), lng: getLong()},
+     position: {lat: userlat, lng: userlong},
      map: map,
      icon: "http://rpoch.istic.univ-rennes1.fr/static/images/googlePos.png"
    });
    
    window.setInterval(function()
    {
-     userMarker.setPosition({lat: getLat(), lng: getLong()});
+     userMarker.setPosition({lat: userlat, lng: userlong});
     },2000); 
 }
   </script>
