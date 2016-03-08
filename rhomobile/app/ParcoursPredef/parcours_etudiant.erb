@@ -23,26 +23,25 @@
 <script src="/public/customjs/detailsCommerce.js"></script>
 <script src="/public/customjs/choixParcours.js"></script>
 <script>
+userlat = 0.0;
+userlong = 0.0;
 if(navigator.geolocation) {
-    
- userlat = 0.0;
- userlong = 0.0;
-  
-  window.setInterval(getPos, 3000);
-  var infopos = "Position déterminée :\n";
-    infopos += "Latitude : "+position.coords.latitude +"\n";
-    infopos += "Longitude: "+position.coords.longitude+"\n";
-    infopos += "Altitude : "+position.coords.altitude +"\n";
+
+  var userID = navigator.geolocation.watchPosition(getPos);
+  var infoPos = "";
+    infopos += "Latitude : " +userlat +"\n";
+    infopos += "Longitude: "+ userlong +"\n";
     alert(infopos);
   
 } else {
   // Pas de support, proposer une alternative ?
   userlat = 48.111232;
   userlong = -1.678671;
+  //alert("Geolocalisation impossible...");
   
 }
 
-function getPos()
+function getPos(position)
 {
     userlat = position.coords.latitude;
     userlong = position.coords.longitude;
