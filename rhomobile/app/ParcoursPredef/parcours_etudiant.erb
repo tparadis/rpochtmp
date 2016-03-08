@@ -20,10 +20,35 @@
 
  
 <script src="/public/customjs/api.js"></script>
-<script src="/public/js/rhogeolocation.js"></script>
 <script src="/public/customjs/detailsCommerce.js"></script>
 <script src="/public/customjs/choixParcours.js"></script>
-<script src="/public/customjs/geoloc.js"></script>
+<script>
+if(navigator.geolocation) {
+    
+ userlat = 0.0;
+ userlong = 0.0;
+  
+  window.setInterval(getPos, 3000);
+  var infopos = "Position déterminée :\n";
+    infopos += "Latitude : "+position.coords.latitude +"\n";
+    infopos += "Longitude: "+position.coords.longitude+"\n";
+    infopos += "Altitude : "+position.coords.altitude +"\n";
+    alert(infopos);
+  
+} else {
+  // Pas de support, proposer une alternative ?
+  userlat = 48.111232;
+  userlong = -1.678671;
+  
+}
+
+function getPos()
+{
+    userlat = position.coords.latitude;
+    userlong = position.coords.longitude;
+}
+
+</script>
 
 
   <script type="text/javascript">
