@@ -57,7 +57,7 @@
      
     for (i = 0; i < locations.length; i++) {
       var ipath= findCatSubCat(locations[i][4]);
-      var image = {url:getImagePath(ipath.subcat,ipath.cat),
+      var image = {url:localStorage.getItem("sscatimg"+ipath.subcat),
           size: new google.maps.Size(32, 32),
           // The origin for this image is (0, 0).
           origin: new google.maps.Point(0, 0),
@@ -82,7 +82,7 @@
       })(marker, i));
       }
       
-userMarker = new google.maps.Marker({
+    userMarker = new google.maps.Marker({
      position: {lat: userlat, lng: userlong},
      map: map,
      icon: "http://rpoch.istic.univ-rennes1.fr/static/images/googlePos.png"

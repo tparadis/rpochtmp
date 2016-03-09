@@ -17,22 +17,8 @@ function getAllElementsWithAttribute(attribute)
 function getLanguage(){	
 	if(localStorage.getItem(0)!=null){
 		defaultLanguage = localStorage.getItem(0);
-		if(defaultLanguage == "fr"){
-			$("div.ui-page-active #lang").parent().find(".ui-btn-text > span").text("FR");
-			$("div.ui-page-active #lang").val("fr");
-		}
-		else if(defaultLanguage == "en"){
-			$("div.ui-page-active #lang").parent().find(".ui-btn-text > span").text("EN");
-			$("div.ui-page-active #lang").val("en");
-		}
-		else if(defaultLanguage == "esp"){
-			$("div.ui-page-active #lang").parent().find(".ui-btn-text > span").text("ESP");
-			$("div.ui-page-active #lang").val("esp");
-		}
-		else if(defaultLanguage == "de"){
-			$("div.ui-page-active #lang").parent().find(".ui-btn-text > span").text("DE");
-			$("div.ui-page-active #lang").val("de");
-		}
+		$("div.ui-page-active #lang").parent().find(".ui-btn-text > span").text(defaultLanguage.toUpperCase());
+		$("div.ui-page-active #lang").val(defaultLanguage.toLowerCase());
 	}
 	else{
 		defaultLanguage = "fr";
@@ -55,41 +41,64 @@ function chargementCategories() {
 	if(langue!= 'fr')
 	{
 		for(var i = 0 ; i < data.sizecat ; i++) {
-			catAutresLangues[i]=data.cat[i][langue];
+			catAutresLangues.push({"cat":data.cat[i][langue],"i":data.cat[i].id});
 		}
-		catAutresLangues.sort();
 		for(var i = 0 ; i < data.sizesscat ; i++) {
-			ssCatAutresLangues[i]=data.sscat[i][langue];
+			ssCatAutresLangues.push({"scat":data.sscat[i][langue],"i":i,"catparent":data.sscat[i].catparent});
 		}
-		ssCatAutresLangues.sort()
+		catAutresLangues.sort(function(x,y){
+			return (x.cat === y.cat ? 0 : (x.cat > y.cat ? 1 :- 1));});
+		ssCatAutresLangues.sort(function(x,y){
+			return (x.scat === y.scat ? 0 : (x.scat > y.scat ? 1 :- 1));});
 	}
+	
 	for(var i = 0 ; i < data.sizecat ; i++) {
 		var courantCat = data.cat[i];
 		switch (langue) {
 			case 'fr':
 				var courantCatNom = courantCat.nom;
+				var catimg= courantCat.id;
 				break;
 			default:
-				var courantCatNom = catAutresLangues[i];
+				var courantCatNom = catAutresLangues[i].cat;
+				var catimg = catAutresLangues[i].i;
 				break;
 		}
-		var infoCat = [courantCat.id, courantCatNom];
+		var infoCat = [catimg, courantCatNom];
 		var keyCat = 'cat'+i;
-		localStorage.setItem(keyCat, JSON.stringify(infoCat));				
-	}
+		localStorage.setItem(keyCat, JSON.stringify(infoCat));
+		localStorage.setItem('catimg'+i,"/public/images/cat"+catimg+"_32.png");
+		}
+	
 	for(var i = 0 ; i < data.sizesscat ; i++) {
 		var courantSsCat = data.sscat[i];
 		switch (langue) {
 			case 'fr':
 				var courantSsCatNom = courantSsCat.nom;
+				var scatimg= courantSsCat.id;
+				var catparent = courantSsCat.catparent;
 				break;
 			default:
-				var courantSsCatNom = ssCatAutresLangues[i];
+				var courantSsCatNom = ssCatAutresLangues[i].scat;
+				var scatimg = data.sscat[ssCatAutresLangues[i].i].id;
+				var catparent = data.sscat[ssCatAutresLangues[i].i].catparent;
 				break;
 		}
-		var infoSsCat = [courantSsCat.id, courantSsCatNom, courantSsCat.catparent];
+		var infoSsCat = [scatimg, courantSsCatNom, catparent];
 		var keySsCat = 'sscat'+i;
 		localStorage.setItem(keySsCat, JSON.stringify(infoSsCat));
+		var filename;
+		var fullpath;
+		fullpath=Rho.RhoFile.join(Rho.Application.publicFolder, "/images/scat"+scatimg+"_32.png");
+					
+		if(Rho.RhoFile.exists(fullpath))
+		{
+			filename = "/public/images/scat"+scatimg+"_32.png";
+		}else
+		{
+			filename = "/public/images/cat"+catparent+"_32.png";
+		}
+		localStorage.setItem('sscatimg'+scatimg,filename);
 		}
 }
 
