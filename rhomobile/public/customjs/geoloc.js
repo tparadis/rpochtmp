@@ -1,71 +1,27 @@
 $(document).ready(function(e){
 	
-	//Ces deux variables sont utilisables depuis partout
-	userlat = 0; 
-	userlong = 0;
-	userRealCoords = false;
-	defaultPos = [48.111232, -1.678671]; //L'opéra de Rennes
+	userlat = 0.0;
+	userlong = 0.0;
 	
-	getLongLat();
-	timerId = setTimeout(validCoordinates, 1000);
-	window.setInterval(computeValues, 3000);
-})
+	//On teste si le navigateur supporte les Geolocation
+	if(navigator.geolocation) {
 
-
-
-//Fonctions de mise à jour automatiques
-//Si on détecte que les valeurs sont fausses, dans ce cas on va remplacer par les coords de l'Opéra
-function getLongLat()
-{
-			
-	var v1 = $("geolatitude").html();
-	if (v1 == "Unavailable" || v1 == "Reading") {
-		userlat = defaultPos[0];
-		userRealCoords = false;
-	}
-	else
-	{
-		userlat = parseFloat(v1);
-		defaultPos[0] = userlat;
-		userRealCoords = true;
-	}
-
-	var v2 = $("geolongitude").html();
-	if (v2 == "Unavailable" || v2 == "Reading") {
-		userlong = defaultPos[1];
-		userRealCoords = false;
-	}
-	else
-	{
-		userlong = parseFloat(v2);
-		userRealCoords = true;
-		defaultPos[1] = userlong;
-	}
-	//alert("lat: "+defaultPos[0]+", "+userlat+" :: long: "+defaultPos[1]+", "+userlong);
-}
-
-
-function computeValues()
-{
-	getLongLat();
-	console.log(userlat+", "+userlong);
-}
-
-function validCoordinates()
-{
-	getLongLat();
-	if(userlat == 0 || userlong == 0)
-	{
-		userRealCoords = false;
-		console.log("GEOLOCALISATION ERROR : Coordonnees non valides, on remplace!");
-	}
-	else
-	{
-		console.log("les coordonnees sont valides.");
-		userRealCoords = true;
+		//Utile pour maintenir ˆ jour la position par un appel rŽcurrent ˆ la fonction getPos
+	  var userID = navigator.geolocation.watchPosition(getPos);
+	  
+	} else {
+	  // Pas de support, on met l'utilisateur sur l'opŽra de Rennes
+	  alert("Geolocalisation impossible...");
+	  userlat = 48.111232;
+	  userlong = -1.678671;
+	  
 	}
 	
-	 clearTimeout(timerId);
+});
+
+//Actualise nos variables globales
+function getPos(position)
+{
+    userlat = position.coords.latitude;
+    userlong = position.coords.longitude;
 }
-
-

@@ -18,36 +18,10 @@
     }
 </style>
 
- 
+<script src="/public/customjs/geoloc.js"></script> 
 <script src="/public/customjs/api.js"></script>
 <script src="/public/customjs/detailsCommerce.js"></script>
 <script src="/public/customjs/choixParcours.js"></script>
-<script>
-userlat = 0.0;
-userlong = 0.0;
-if(navigator.geolocation) {
-
-  var userID = navigator.geolocation.watchPosition(getPos);
-  var infoPos = "";
-    infopos += "Latitude : " +userlat +"\n";
-    infopos += "Longitude: "+ userlong +"\n";
-    alert(infopos);
-  
-} else {
-  // Pas de support, proposer une alternative ?
-  userlat = 48.111232;
-  userlong = -1.678671;
-  //alert("Geolocalisation impossible...");
-  
-}
-
-function getPos(position)
-{
-    userlat = position.coords.latitude;
-    userlong = position.coords.longitude;
-}
-
-</script>
 
 
   <script type="text/javascript">
@@ -127,9 +101,6 @@ userMarker = new google.maps.Marker({
           async defer></script>
         
           <div id="map"></div>
-          <geolongitude style="opacity:0;"></geolongitude>
-          <geolocation style="opacity:0;"></geolocation>
-          <geolatitude style="opacity:0;"></geolatitude>
           
 <script src="/public/customjs/homebtn.js"></script>    
 </body>
