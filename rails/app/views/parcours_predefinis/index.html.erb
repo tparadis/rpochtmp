@@ -9,6 +9,12 @@
       <th>Description</th>
       <th>Image</th>
       <th>Commerces</th>
+	  <th>Fr</th>
+	  <th>En</th>
+	  <th>De</th>
+	  <th>Esp</th>
+
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,8 +25,13 @@
         <td><%= parcours_predefini.name %></td>
         <td><%= parcours_predefini.description %></td>
         <td><%= parcours_predefini.image %></td>
-        <td><%= parcours_predefini.commerces %></td>
-        <td><%= link_to 'Show', parcours_predefini %></td>
+		<td><%= parcours_predefini.commerces %></td> 
+        <td><%= parcours_predefini.fr %></td>
+		<td><%= parcours_predefini.en %></td>
+		<td><%= parcours_predefini.de %></td>
+		<td><%= parcours_predefini.esp %></td>
+
+		<td><%= link_to 'Show', parcours_predefini %></td>
         <td><%= link_to 'Edit', edit_parcours_predefini_path(parcours_predefini) %></td>
         <td><%= link_to 'Destroy', parcours_predefini, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

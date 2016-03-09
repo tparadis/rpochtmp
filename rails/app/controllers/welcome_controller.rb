@@ -32,6 +32,12 @@ class WelcomeController < ApplicationController
 
 					@y = Interface.getCommerceCoordByID(params[:id])
 					render json: { :commerce => @y }
+
+			elsif params.has_key?(:id)
+
+					@y = Interface.getCommerceByID(params[:id])
+					render json: { :commerce => @y}
+
 			else
 
 				render json: { :commerce => Interface.getSpecificCommerce}
@@ -65,7 +71,10 @@ class WelcomeController < ApplicationController
 			render json: {:size => @y.size(), :categories => @y}
 		end
 
-		if params[:req] == "sscat"
+		if params[:req] == "sscat" && params.has_key?(:id) && params[:id].to_i >0
+			@y = Interface.getSSCategorieByID(params[:id])
+			render json: {:tag => @y}
+		elsif params[:req] == "sscat"
 			@y = Interface.getSSCategories
 			render json: {:size => @y.size(), :sscategories => @y}
 		end
@@ -88,13 +97,27 @@ class WelcomeController < ApplicationController
 			# @y = Interface.getComCT(13, 48.117, 48.11017, -1.6866, -1.676)
 			render json: { :tags => @y}
 		end
-		if params[:req] == "yolodist"
-			@y = Algo.distLL(params[:a_lat].to_f,params[:a_lng].to_f,params[:b_lat].to_f,params[:b_lng].to_f)
-			#@y = Interface.getComCT("bio",-1.6,1.8,48,49) 
+
+		if params[:req] == "yolo_inter"
+			@y = Algo.getInterPath(params[:coord_dep_lat].to_f,params[:coord_dep_lng].to_f,
+									 params[:coord_arr_lat].to_f,params[:coord_arr_lng].to_f,
+									 params[:dist_max].to_f, params[:commerces])
 			render json: { :tags => @y}
 		end
+
+		if params[:req] == "yolodist"
+			# @y = Algo.distLL(params[:a_lat].to_f,params[:a_lng].to_f,params[:b_lat].to_f,params[:b_lng].to_f)
+			@y = Interface.getComLL(13, 48.117, 48.11017, -1.6866, -1.676,
+									params[:coord_dep_lat].to_f,params[:coord_arr_lat].to_f,
+									params[:coord_dep_lng].to_f,params[:coord_arr_lng].to_f,
+									10,4);
+			# render json: { :tags => @y}
+			render json: { :tags => @y }
+		end
 		if params[:req] == "test_corr"
-			@y = Interface.getIdbyNum("Boucherie");
+			# @y = Interface.getIdbyNum("Boucherie");
+			# Test sur la requête avec distLL ->
+			@y = 
 			render json: { :tags => @y}
 		end
 		if params[:req] == "new_path"

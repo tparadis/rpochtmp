@@ -1,7 +1,5 @@
 class ParcoursPredefinisController < ApplicationController
   
-  include Admin
-  
   before_action :set_parcours_predefini, only: [:show, :edit, :update, :destroy]
 
   # GET /parcours_predefinis
@@ -72,6 +70,6 @@ class ParcoursPredefinisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def parcours_predefini_params
-      params.require(:parcours_predefini).permit(:name, :description, :image, :commerces)
+      params.require(:parcours_predefini).permit(:name, :description, :image, :commerces, :en, :de, :esp, :fr)
     end
 end

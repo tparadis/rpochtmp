@@ -3,7 +3,7 @@ var readline = require('linebyline'),
 
 var http = require('https');
 var from = "fr";
-var dest = "de";
+var to = "bre";
 
 r1.on('line',function(line,lineCount,byteCount)
 {
@@ -11,13 +11,21 @@ r1.on('line',function(line,lineCount,byteCount)
 	{
 		
 		var tab = line.split(" | ");
-		var url = "https://glosbe.com/gapi/translate?from="+from+"&dest="+dest+"&format=json&phrase="+(tab[1]).toLowerCase();
+		tab[1] = tab[1].replace("\\'", " ");
+		tab[1] = tab[1].replace("'", " ");
+		tab[1] = tab[1].replace("\\", " ");
+		tab[1] = tab[1].replace("/", " ");
+		tab[1] = tab[1].replace('\/', ' ');
+		tab[1] = tab[1].replace(" d ", " ");
+		tab[1] = tab[1].replace("ô","o");
+		tab[1] = tab[1].replace("é","e");
+		tab[1] = tab[1].replace("ê", "e");
+		tab[1] = tab[1].replace("è", "e");
+		tab[1] = tab[1].replace(" ", "%20");
+		var url = "https://glosbe.com/gapi/translate?from="+from+"&dest="+to+"&format=json&phrase="+tab[1].toLowerCase();
 		var toen ="";
-		var toesp ="";
-
 		http.get(url,function(res){
 			
-			//var resp = JSON.parse(res);
 			var body = '';
 
 			res.on('data',function(chunk){
@@ -25,27 +33,23 @@ r1.on('line',function(line,lineCount,byteCount)
 			});
 			
 			res.on('end',function(){
+			console.log(url);
 				var resp = JSON.parse(body);
 				try{
-					
-					toen = resp.tuc[0].phrase.text;
+					toen = resp.result;
+					//var result = toen.charAt(0).toUpperCase() + toen.slice(1).toLowerCase();
 				}catch(ex){
-						
+					console.log('ERREURRRR :'+ex)	
 				}
-				console.log(
-					"update sscategories set de = '"+toen+"' where id="+tab[0]+";"
-				);
+				console.log("update sscategories set br = '"+toen+"' where id="+tab[0]+";");
 			});
+			
 
-
-		});
+		 }).on('error',function(e){
+			 
+			 console.log("Erreur");
+		 });
 		
-		
-
-		//process.stdout.write("update sscategories set fr = ");
-		//process.stdout.write("'"+tab[1]+"'");
-		//process.stdout.write("\n");
-
 	}
 
 });

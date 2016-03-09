@@ -1,13 +1,28 @@
 class TagsController < ApplicationController
   
-  include Admin
-
+  #include Admin
+  #require "admin.rb"
+  #before_action :set_tag, only: [:show, :edit, :update, :destroy]
+  before_action :deny_access, :unless => :connected
+  #before_action :isRoot?, :except => [:destroy]
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
-
-
-
   # GET /tags
   # GET /tags.json
+
+#connecting
+  def connected		
+		defined?(session[:privilege]) && (session[:privilege] == "administrateur" || session[:privilege] == "application")
+  end
+  def deny_access
+		head(403)
+		#redirect_to root_path
+  end
+  def isRoot?
+		session[:privilege] == "administrateur"
+  end
+
+
+#controller
   def index
     @tags = Tag.all
   end
