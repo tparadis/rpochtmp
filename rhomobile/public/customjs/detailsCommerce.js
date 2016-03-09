@@ -2,6 +2,7 @@
 //La magasin appelable de partout. Elle va permettre d'afficher un magasin
 //sans avoir à rediriger l'utilisateur en le forçant à refaire une requete GOOGLE API
 //Sur le long terme on passe d'environ 10 requetes api google à ... une !
+var id;
 
 $(document).ready(function(e){
 	
@@ -15,12 +16,15 @@ function checkIfImplemented()
 	if($("#pageSpec").length == 0)
 	{
 		//S'il n'y a pas les balises pour le rendu de notre page, on l'ajoute directement.
-		$("body").append("<div id='pageSpec'><div id='imageCommerce'></div><div id='descrCommerce'><div id='contenu'></div><br/><br/><img id='back' src='/public/images/backButton2.png' />"+/***<img id='signaler' src='/public/images/signaler.png' />**/"</div></div>");
-		/****$("body").append("<div id='dialog' title='signaler'><fieldset><legend>Signalement :</legend><select id='select-signaler'><option value ='coordonnees-incorrectes'>Coordonnées incorrectes</option><option value ='horaires-incorrects'>Horaires incorrects</option><option value ='classification-incorrecte'>Classification incorrecte</option><option value ='magasin-fermer'>Magasin fermé</option><option value ='autre'>Autre</option></select><textarea rows='4' cols='50'>...</textarea></fieldset>	</div>");
+		$("body").append("<div id='pageSpec'><div id='imageCommerce'></div><div id='descrCommerce'><div id='contenu'></div><br/><br/><img id='back' src='/public/images/backButton2.png' /><img id='signaler' src='/public/images/signaler.png' /></div></div>");
+		$("body").append("<div id='dialog' title='signaler'><fieldset><legend>Signalement :</legend><select id='select-signaler'><option value ='coordonnees-incorrectes'>Coordonn&eacute;es incorrectes</option><option value ='horaires-incorrects'>Horaires incorrects</option><option value ='classification-incorrecte'>Classification incorrecte</option><option value ='magasin-fermer'>Magasin ferm&eacute;</option><option value ='autre'>Autre</option></select><textarea rows='4' cols='40' id='textarea'>...</textarea><a id='email'><button>Envoyer</button></a></fieldset>	</div>");
 		$("#signaler").css({"width" : "50px", "margin-left": "70%"});
 		$("#signaler").on('click',function(e){
 			$("#dialog").dialog();
-	    });***/
+	    });
+		$("#email").on('click',function(e){
+			api.signaler(id, $("#select-signaler").val(), $("#textarea").val());
+	    });
 	}
 }
 
@@ -28,7 +32,7 @@ function afficheSpecificationMagasin()
 {
 	//Récupère les parametres de l'URL
 	
-	var id = sessionStorage.getItem("currentMagasin");
+	id = sessionStorage.getItem("currentMagasin");
 	sessionStorage.removeItem("currentMagasin");
 	
 	//On cache la page active 
@@ -39,6 +43,7 @@ function afficheSpecificationMagasin()
 	
 	//On check que les boutons "boutonsParcours" soient bien jartés
 	$("#boutonsParcours").hide();
+	
 	var data = api.getCommDetail(id);
 	
 	//Faire un truc
@@ -110,26 +115,7 @@ function findSSCat(id,t){
 	
 }
 
-//Finds the category number for a specific magazine
-function findCatSubCat(id){
-	var data = api.getCommDetail(id);
-	var nbSS = parseInt(localStorage.getItem("nbSsCat"));
-	var i = 0;
-	var tmp="";
-	while(i < nbSS)
-	{
-		tmp = JSON.parse(localStorage.getItem("sscat"+i));
-		if(data.commerce.tag0 == tmp[0])
-		{	return {
-            "cat":tmp[2],
-            "subcat":tmp[0]}; 
-        }
-		i++;
-	}
-	return {
-        "cat":"",
-        "subcat":""}; 
-}
+
 
 
 

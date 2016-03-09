@@ -4,7 +4,7 @@ $(document).ready(function(e){
 	var i =0;
 	var lang = localStorage["0"];
 	var txt = "";
-	//On va rÃ©cupÃ©rer et afficher dynamiquement les parcours sur la page
+	//On va récupérer et afficher dynamiquement les parcours sur la page
 	
 	while(i < data.size)
 	{
@@ -17,8 +17,6 @@ $(document).ready(function(e){
 			case "jap": txt = data.parcourspredefs[i].jap; break;
 		}
 		$('#parcours').append('<li><a href="/app/Description/requette_description?type_parcours='+data.parcourspredefs[i].name+'" ><img src="http://rpoch.istic.univ-rennes1.fr/static/images/'+data.parcourspredefs[i].image+'" alt="image" /></a><a href="/app/Description/requette_description?type_parcours='+data.parcourspredefs[i].name+'" ><span class="lien">'+txt+'</span></li>');
-		
-		
 		i++;
 	}
 	

@@ -31,6 +31,8 @@ api.send=function (params) {// requete vers l'api
 		return json_res;
 	};
 
+api.signaler = function(id, select, textarea) { return api.send({ data: {"req":"signaler","format":"json","magasin":id,"objet":select,"message":textarea} }) }	
+	
 api.getAllcat=function () { return api.send({ data: {"req":"allcat","format":"json"} }) }
 
 api.getCommDetail= function(id){ return api.send({ data: {"req":"spec","format":"json", "id":id} }) }
