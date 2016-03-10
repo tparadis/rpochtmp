@@ -114,6 +114,30 @@ function findSSCat(id,t){
 	
 	
 }
+//utilisé dans parcours etudiant
+//A modifier apres pour rendre le code plus lisible.
+function findCatSubCat(id){
+	    var data = api.getCommDetail(id);
+	     var nbSS = parseInt(localStorage.getItem("nbSsCat"));
+	     var i = 0;
+	     var tmp="";
+	     while(i < nbSS)
+	     {
+	         tmp = JSON.parse(localStorage.getItem("sscat"+i));
+	         if(data.commerce.tag0 == tmp[0])
+	         {    return {
+	             "cat":tmp[2],
+	             "subcat":tmp[0]}; 
+	         }
+	         i++;
+	     }
+	     return {
+	         "cat":"",
+	         "subcat":""}; 
+	         
+}
+	  
+
 
 
 
