@@ -1,6 +1,6 @@
 $(document).ready(function(e){
 	
-	window.setInterval("beginTest()", 2000);
+	window.setInterval("beginTest()", 5000);
 	
 	 appendOnce = false;
 	//On crée l'élément qui va "tout cacher" si le reseau n'est pas disponible
