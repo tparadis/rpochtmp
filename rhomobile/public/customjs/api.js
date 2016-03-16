@@ -31,6 +31,37 @@ api.send=function (params) {// requete vers l'api
 		return json_res;
 	};
 	
+	api.send2=function (params) {// requete vers le serveur de test deva
+		var protocol = "https";
+		var address = "rpoch.istic.univ-rennes1.fr/deva/";
+		var data = (function(data){
+			var _data = "";
+			for(var prop in data) {// passage des parametres en string
+				//console.log(prop,data[prop])
+				_data += encodeURI(prop + "=" + data[prop] + "&");
+				}return _data;
+			}(params.data))
+
+		console.log("url = ", protocol + "://" + address + "?" + data);
+
+		var response = Rho.Network.get({
+			url : protocol + "://" + address + "?" + data,
+			headers: { "Content-Type": "application/json" },
+			authType: "basic",
+			authUser : "application",
+			authPassword : "app404", 
+			verifyPeerCertificate : false
+		});
+		
+		try {
+			var json_res = JSON.parse(response.body);			
+		} catch (err) {
+			console.error("JSON parse error : ", response);
+		}
+		console.log("Response body = ", json_res);		
+		return json_res;
+	};
+	
 api.send_simple=function (params) {// requete vers l'api
 			var protocol = "https";
 			var address = "rpoch.istic.univ-rennes1.fr/api/";

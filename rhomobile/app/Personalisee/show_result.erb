@@ -25,10 +25,21 @@
  var lng = 0;
  var markerArray = [];
  var infowindowArray = [];
-   var L = [];
+ var L = [];
+ idArray = [];
+ listPos = [];
+ var currentInfoWindow;
    
   function initialize() {    
     var magasins=[];
+      
+    if(sessionStorage.getItem("currentMagasin") != null) {
+          sessionStorage.removeItem("currentMagasin");
+        }
+    if(sessionStorage.getItem("posRecuperer") != null) {
+          var valeurPosRecup = sessionStorage.getItem("posRecuperer");
+           sessionStorage.removeItem("posRecuperer");
+        }
     for (var i = 0 ; i < sessionStorage.length ; i++) {
         var magasin = JSON.parse(sessionStorage.getItem(i));
         var image = {url:localStorage.getItem("sscatimg"+magasin[0]),
@@ -37,8 +48,19 @@
           anchor: new google.maps.Point(16, 16)
         };         
         magasins.push({"image":image,"latitude":magasin[4],"longitude":magasin[5],"name":magasin[3],"id":magasin[2]});
+        idArray.push(magasin[2]);
+        if(valeurPosRecup != 1){
+          listPos.push(magasin[4]);
+          listPos.push(magasin[5]);
+          }
+          else{
+            listPos.push(0);
+            listPos.push(0);
+            }
       }
 
+     sessionStorage.setItem("posRecuperer", 1);
+     
      var directionsService = new google.maps.DirectionsService;
      var directionsDisplay = new google.maps.DirectionsRenderer;
      var mapCanvas = document.getElementById('map');
@@ -86,10 +108,15 @@
                           infowindow.setContent(magasins[i].name+'<div id="marker" name="'+magasins[i].id+'" ><button>information</button></div>');
                           infowindow.open(map, marker);
                           $("#marker").find("button").on("click",function(e){
+                            if(currentInfoWindow!= undefined){
+                                           currentInfoWindow.close();
+                                           }
+                                           currentInfoWindow = infowindow;
                             sessionStorage.setItem("currentMagasin",magasins[i].id);
                 
                             //window.location.replace("/app/DetailsCommerce/details_commerce");
                             afficheSpecificationMagasin();
+                            currentInfoWindow.close();
                           });
                         }
                       })(marker, i));
@@ -111,7 +138,34 @@
          }
        });
          directionsDisplay.setMap(map);
-       directionsDisplay.setOptions( { suppressMarkers: true } );  }  }  
+       directionsDisplay.setOptions( { suppressMarkers: true } );  } 
+         
+       setInterval("passerDevant()", 5000); 
+       }  
+       
+  function passerDevant(){
+      if(navigator.geolocation){
+        
+        navigator.geolocation.getCurrentPosition(showPosition);
+               function showPosition(position) {
+        
+       
+        
+        for(x=0; x < listPos.length; x += 2){ 
+         if (position.coords.latitude > listPos[x] - 0.0003 && position.coords.latitude < listPos[x] + 0.0003 && position.coords.longitude > listPos[x+1] - 0.0003 && position.coords.longitude < listPos[x+1] + 0.0003){
+              
+              //requête vers le serveur du test
+              api.send2({data : {"req":"visite_mag","id":idArray[x/2],"format":"json"}}); 
+              
+              
+              listPos[x]=0;
+              listPos[x+1]=0;
+              
+           }
+          }
+        }
+      }
+    }
 
    </script>
 </head>

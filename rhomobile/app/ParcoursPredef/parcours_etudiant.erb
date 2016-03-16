@@ -91,7 +91,36 @@
    {
      userMarker.setPosition({lat: userlat, lng: userlong});
     },2000); 
+    
+    setInterval("passerDevant()", 5000); 
 }
+    
+    function passerDevant(){
+  
+  
+        if(navigator.geolocation){
+        
+        navigator.geolocation.getCurrentPosition(showPosition);
+        function showPosition(position) {
+         
+        
+        
+        
+          for(x=0; x < listPos.length; x += 2){ 
+         if ((position.coords.latitude > listPos[x] - 0.0003 && position.coords.latitude < listPos[x] + 0.0003 && position.coords.longitude > listPos[x+1] - 0.0003 && position.coords.longitude < listPos[x+1] + 0.0003)){
+              
+              
+              // requête vers le serveur de test
+              api.send2({data : {"req":"visite_mag","id":data.magasins[x/2].id,"format":"json"}});
+              
+              listPos[x]=0;
+              listPos[x+1]=0;
+              
+             }
+          }
+        } 
+      }
+    }
   </script>
   
 </head> 
