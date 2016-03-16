@@ -21,7 +21,7 @@ function beginTest()
 {
 	//Dans le hashmap {} ci dessous, nous aurions pu mettre l'adresse du serveur pour la cle 'host'
 	//mais cela ne marche pas et renvoi toujours non connecté quelle que soit l'url!
-	Rho.Network.detectConnection({}, calledBack);
+	Rho.Network.detectConnection({host:"rpoch.istic.univ-rennes1.fr",detectionTimeout:1000, port:443}, calledBack);
 }
 
 function calledBack(params)
