@@ -23,8 +23,8 @@ function getLanguage(){
 	else{
 		defaultLanguage = "fr";
 		localStorage.setItem(0, defaultLanguage);
+		chargementCategories();		
 	}
-	chargementCategories();
 }
 
 function chargementCategories() {
@@ -109,6 +109,7 @@ function chargementCategories() {
 function changeLanguage(){
 	defaultLanguage = $("div.ui-page-active #lang").val();
 	localStorage.setItem(0, defaultLanguage);
+	chargementCategories();	
 	location.reload();
 }
 
