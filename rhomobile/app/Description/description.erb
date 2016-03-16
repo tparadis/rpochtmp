@@ -16,14 +16,15 @@
       </h2>
       
       <!-- boutton pour afficher la map -->
-     <input type="button" value="Affichage de la carte" onclick="javascript:location.href='/app/ParcoursPredef/requette_etudiant?type_parcours=<%=$typeparcours %>'">
+      <button onclick="javascript:location.href='/app/ParcoursPredef/requette_etudiant?type_parcours=<%=$typeparcours %>'" text="afficherCarte">
+      </button> 
 
        
       <table id="liste_magasins">
         <thead>
           <tr>
-            <th>Magasins</th>
-            <th>D&eacute;tail</th>
+            <th text="magasin"></th>
+            <th text="detail"></th>
           </tr>
         </thead>
         

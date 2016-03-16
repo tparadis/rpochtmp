@@ -10,7 +10,9 @@ var lang = {
 	"afficherCarte" : "Afficher la carte",
 	"ajouterMagasin" : "Ajouter un magasin",
 	"options" : "Options",
-	"parcoursThematique" : "Parcours Th&eacutematique"
+	"detail" : "D&eacute;tail",
+	"parcoursThematique" : "Parcours Th&eacutematique",
+	"supprimer" : "Supprimer"
 	},	
 	/**
 	 * 
@@ -28,7 +30,9 @@ var lang = {
 	"afficherCarte" : "Show the map",
 	"ajouterMagasin" : "Add a new store",
 	"options" : "Settings",
-	"parcoursThematique" : "Thematic Path"
+	"detail" : "Detail",
+	"parcoursThematique" : "Thematic Path",
+	"supprimer" : "Delete"
 	},
 	/**
 	 * 
@@ -46,7 +50,9 @@ var lang = {
 	"afficherCarte" : "Mostrar el mapa",
 	"ajouterMagasin" : "A&ntildeadir una tienda",
 	"options" : "Opciones",
-	"parcoursThematique" : "Ruta tem&aacutetica"
+	"detail" : "Detalle",	
+	"parcoursThematique" : "Ruta tem&aacutetica",
+	"supprimer" : "Eliminar"
 	},
 	/**
 	 * 
@@ -64,7 +70,9 @@ var lang = {
 	"afficherCarte" : "Afficher la carte",
 	"ajouterMagasin" : "fÃ¼gen Sie einen Shop",
 	"options" : "Optionen",
-	"parcoursThematique" : "Route Themenweg"
+	"detail" : "Detail",	
+	"parcoursThematique" : "Route Themenweg",
+	"supprimer" : "Entfernen"
 	}/*,
 	/**
 	 * 
