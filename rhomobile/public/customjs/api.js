@@ -30,8 +30,34 @@ api.send=function (params) {// requete vers l'api
 		console.log("Response body = ", json_res);		
 		return json_res;
 	};
+	
+api.send_simple=function (params) {// requete vers l'api
+			var protocol = "https";
+			var address = "rpoch.istic.univ-rennes1.fr/api/";
+			var data = (function(data){
+				var _data = "";
+				for(var prop in data) {// passage des parametres en string
+					//console.log(prop,data[prop])
+					_data += encodeURI(prop + "=" + data[prop] + "&");
+					}return _data;
+				}(params.data))
 
-api.signaler = function(id, select, textarea) { return api.send({ data: {"req":"signaler","format":"json","magasin":id,"objet":select,"message":textarea} }) }	
+			console.log("url = ", protocol + "://" + address + "?" + data);
+
+			var response = Rho.Network.get({
+				url : protocol + "://" + address + "?" + data,
+				headers: { "Content-Type": "application/json" },
+				authType: "basic",
+				authUser : "application",
+				authPassword : "app404", 
+				verifyPeerCertificate : false
+			});
+			
+			console.log("Response body = ", response.body);		
+			return response.body;
+		};
+
+api.signaler = function(id, sel, text) { return api.send_simple({ data: {"req":"signaler","format":"json","magasin":id,"objet":sel,"message":text} }) }	
 	
 api.getAllcat=function () { return api.send({ data: {"req":"allcat","format":"json"} }) }
 

@@ -23,7 +23,11 @@ function checkIfImplemented()
 			$("#dialog").dialog();
 	    });
 		$("#email").on('click',function(e){
-			api.signaler(id, $("#select-signaler").val(), $("#textarea").val());
+			var resultats = api.signaler(id, $("#select-signaler").val(), $("#textarea").val());
+			if(resultats == "ok"){
+				alert("Merci de votre signalement");
+			}
+			$("#dialog").hide();
 	    });
 	}
 }
