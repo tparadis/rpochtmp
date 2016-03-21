@@ -115,5 +115,47 @@ ActiveRecord::Schema.define(version: 20160309144124) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+ 
+  #BACK-OFFICE
+  create_table "promotions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "kbis"
+    t.string   "rid"
+    t.string   "siret"
+  end
+
+  add_index "promotions", ["user_id"], name: "index_promotions_on_user_id", using: :btree
+
+create_table "requests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "requests", ["user_id"], name: "index_requests_on_user_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "username"
+    t.string   "status"
+    t.string   "salt"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_foreign_key "promotions", "users"
+  add_foreign_key "requests", "users"
+
+
+
+
+
+
+
+
 
 end

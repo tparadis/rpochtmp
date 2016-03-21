@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
 	
 	#Accès lors de la demande d'une page
 	before_filter :auth_check#, :except => :index
-
 	private
 		def auth_check
 			authenticate_or_request_with_http_basic do |user,password|

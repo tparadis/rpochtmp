@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   #end
 
   #Routes pour le BACK-OFFICE
-  scope 'api/bo/' do
+  scope 'bo/' do
   	get '/', to: "session#new"
   	get     'home'    => 'main#index'
   	get     'help'    => 'main#help'
