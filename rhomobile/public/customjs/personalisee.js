@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
- <style>
-#map {
-    position:absolute;
-    top:0;
-    left:0;
-      width: 100%;
-      height: 100%;
-      color:black;
-    }
- </style>
-
-<script src="/public/customjs/detailsCommerce.js"></script>
-<script src="/public/customjs/choixParcours.js"></script>
-<script src="/public/customjs/geoloc.js"></script>
-<script src="/public/customjs/homebtn.js"></script>
-
- <script>
- 
- var waypointsArray =[];
+var waypointsArray =[];
  var i = 0;
  var lat=0;
  var lng = 0;
@@ -166,13 +145,3 @@
         }
       }
     }
-
-   </script>
-</head>
-<body>
-
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcpbC-OR2Xbq5JcUAOaDrEgoOGxN5St9w&signed_in=true&callback=initialize"
- async defer></script>  <div id="map"></div>
-</body>
-</html>

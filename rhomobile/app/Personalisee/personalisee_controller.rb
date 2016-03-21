@@ -57,11 +57,11 @@ class PersonaliseeController < Rho::RhoController
     @personalisee.destroy if @personalisee
     redirect :action => :index  
   end
-  
+
     
   def get_callback
        $parcours_perso = @params['parcours_perso']
-       Rho::WebView.navigate(url_for(:action => :show_result))
+       Rho::WebView.navigate(url_for(:action => :personalisee))
    end
 
      
