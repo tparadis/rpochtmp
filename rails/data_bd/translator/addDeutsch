@@ -1,9 +1,0 @@
-update categories set de = 'Abteilung' where id=  7;
-update categories set de = 'Sonstiges' where id= 13;
-update categories set de = 'Hotel' where id=  2;
-update categories set de = 'Kultur' where id=  6;
-update categories set de = 'Bar Cafe Restaurant' where id=  8;
-update categories set de = 'Hygiene' where id=  5;
-update categories set de = 'Lebensmittel' where id=  1;
-update categories set de = 'Hauses Ausstattung' where id=  3;
-update categories set de = 'Ausrüstung Person' where id=  4;
