@@ -1,0 +1,34 @@
+<div class="jumbotron">
+    <div class="container">
+        <h2> Liste des commerces vous appartenant: </h2>
+        <table id="shops" class="table table-bordered table-hover table-striped">
+            <tr>
+                <th>SIRET</th>
+                <th>Enseigne</th>
+                <th>Adresse</th>
+                <th>Catégorie 1</th>
+                <th>Catégorie 2</th>
+                <th>Catégorie 3</th>
+                <th>Catégorie 4</th>
+                <th>Catégorie 5</th>
+                <th>Description</th>
+                <th>Facebook</th>
+            </tr>
+            <% @shops.each do |shop| %>
+                <tr>
+                    <td><%= shop.siret %></td>
+                    <td><%= shop.enseigne %></td>
+                    <td><%= shop.street_num + " rue " + shop.street_name %></td>
+                    <td><%= Sscategorie.find_by(id: shop.tag0).nom if Sscategorie.find_by(id: shop.tag0) %></td>
+                    <td><%= Sscategorie.find_by(id: shop.tag1).nom if Sscategorie.find_by(id: shop.tag1) %></td>
+                    <td><%= Sscategorie.find_by(id: shop.tag2).nom if Sscategorie.find_by(id: shop.tag2) %></td>
+                    <td><%= Sscategorie.find_by(id: shop.tag3).nom if Sscategorie.find_by(id: shop.tag2) %></td>
+                    <td><%= Sscategorie.find_by(id: shop.tag4).nom if Sscategorie.find_by(id: shop.tag2) %></td>
+                    <td><%= shop.description %></td>
+                    <td><%= shop.facebook %></td>
+                    <td><%= link_to 'edit', edit_user_path(shop.user_id) %></td>
+                </tr>
+            <% end %>
+        </table>
+    </div>
+</div>

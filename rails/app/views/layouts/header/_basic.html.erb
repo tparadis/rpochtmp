@@ -1,0 +1,6 @@
+<li><%= button_to "Devenez commerçant!", new_promotion_path,
+        method: :get, class: 'btn btn-primary'%></li>
+<li><%= button_to current_user.username, current_user, method: :get,
+        class: 'btn' %></li>
+<li><%= button_to "Deconnexion", logout_path,
+    method: 'delete', class: 'btn btn-primary'%></li>

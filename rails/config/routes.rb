@@ -1,15 +1,38 @@
 Rails.application.routes.draw do
 
-  resources :resultats
-  resources :resultats
   root 'welcome#index'
+  #root "session#new"
 
-  resources :back_office
-  resources :tags
-  resources :sscategories
-  resources :categories
-  resources :parcours_predefinis
-  resources :commerces
+  scope 'api/' do
+  	get '/', to: "welcome#index"
+  	resources :tags
+  	resources :sscategories
+  	resources :categories
+  	resources :parcours_predefinis
+  	resources :commerces
+  	resources :users
+  	resources :promotions
+  	resources :resultats
+  end
+
+  #Routes pour le BACK-OFFICE
+  scope 'bo/' do
+  	get '/', to: "session#new"
+  	get     'home'    => 'main#index'
+  	get     'help'    => 'main#help'
+  	get     'about'   => 'main#about'
+  	get     'contact' => 'main#contact'
+  	get     'news'    => 'main#news'
+
+  	get    'signup'   => 'users#new'
+  	get    'login'    => 'sessions#new'
+  	post   'login'    => 'sessions#login'
+  	delete 'logout'   => 'sessions#logout'
+
+  	get   'promotions/new'
+  	post 'promotions/create'
+  	get 'promotions/accept/:id' => 'promotions#accept', as: "paccept"
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
