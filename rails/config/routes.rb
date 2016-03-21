@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
   #root "session#new"
 
-  scope 'api/' do
-  	get '/', to: "welcome#index"
+  #scope '/api' do
+  #	get '/', to: "welcome#index"
   	resources :tags
   	resources :sscategories
   	resources :categories
@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   	resources :users
   	resources :promotions
   	resources :resultats
-  end
+  #end
 
   #Routes pour le BACK-OFFICE
-  scope 'bo/' do
+  scope 'api/bo/' do
   	get '/', to: "session#new"
   	get     'home'    => 'main#index'
   	get     'help'    => 'main#help'
