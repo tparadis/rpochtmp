@@ -44,6 +44,18 @@ class WelcomeController < ApplicationController
 			end
 		end
 
+		#requete qui va permettre de signaler des trucs de la part d'un utilisateur
+		if params[:req] == "signaler"
+
+			if params.has_key?(:magasin) && params.has_key?(:objet) && params.has_key?(:message) && params["magasin"]!= "" && params["objet"] != "" && params["message"] != ""
+				
+				Resultat.new(:magasin => params["magasin"], :objet => params["objet"], :message => params["message"])	
+				render json: "ok"
+			else
+				render json: ""
+			end
+		end
+
 		if params[:req] == "rand"
 			render json: { :commerce => Interface.getRandomCommerce}
 		end
@@ -97,7 +109,6 @@ class WelcomeController < ApplicationController
 			# @y = Interface.getComCT(13, 48.117, 48.11017, -1.6866, -1.676)
 			render json: { :tags => @y}
 		end
-
 		if params[:req] == "yolo_inter"
 			@y = Algo.getInterPath(params[:coord_dep_lat].to_f,params[:coord_dep_lng].to_f,
 									 params[:coord_arr_lat].to_f,params[:coord_arr_lng].to_f,

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :resultats
+  resources :resultats
   root 'welcome#index'
 
   resources :back_office

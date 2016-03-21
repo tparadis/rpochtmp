@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Magasin:</strong>
+  <%= @resultat.magasin %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @resultat.type %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @resultat.message %>
+</p>
+
+<%= link_to 'Edit', edit_resultat_path(@resultat) %> |
+<%= link_to 'Back', resultats_path %>

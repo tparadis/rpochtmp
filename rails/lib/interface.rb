@@ -105,6 +105,51 @@ module Interface
 
 	end
 
+	def Interface.getComLL_opti( nomTag, lat_max, lat_min, lng_max, lng_min,
+							lat_dep, lat_arr, lng_dep, lng_arr, dist_max, limit )
+		offset = rand(Commerce.count);
+		commercesTaggued = Commerce.where("tag0 = ? OR tag1 = ? OR tag2 = ? ",nomTag,nomTag,nomTag);
+		# On commence par affiner la recherche : les resultats sont contenus dans un rectangle autour
+		# de la coordonée moyenne entre l'arrivée et le départ du parcours
+		commercesInCoord = commercesTaggued.where("location_lat <= ? AND location_lat >= ? AND 
+							     				   location_lng >= ? AND location_lng <= ?",
+												   lat_max, lat_min, lng_max, lng_min).select('id,enseigne,location_lat,location_lng').order("RANDOM()")
+		# à présent, on prend uniquement les étapes qui ne produisent pas une chemin plus grand que
+		# la distance maximale
+
+		res = [];
+		cpt = 0;
+		if commercesInCoord.empty?
+			return [];
+		end
+		commercesInCoord.each do |com|
+			partie1 = Algo.distLL(com.location_lat, com.location_lng, lat_dep, lng_dep);
+			partie2 = Algo.distLL(com.location_lat, com.location_lng, lat_arr, lng_arr);
+
+			# On test si la distance totale est inférieure à la distance maximale :
+			if ( partie1 + partie2 < dist_max )
+				# dans le cas ou l'on n'a pas encore atteint la limite :
+				if ( cpt < limit )
+					res << [com,partie1+partie2];
+					res.sort! {|a,b| a[1] <=> b[1]};
+					cpt += 1;
+				else
+					# sinon : si le nouveau magasin a un meilleur chemin :
+					if ( partie1+partie2 < res[res.length-1][1] )
+						res.pop;
+						# On l'ajoute au tableau de résultat
+						res << [com,partie1+partie2];
+						res.sort! {|a,b| a[1] <=> b[1]};
+					end
+				end
+			end
+		end
+		# On retourne uniquement la première partie du tableau :
+		res.map! {|a| a[0]};
+		return res;
+
+	end
+
 	#retourne un magasin complet
 	def Interface.getSpecificCommerce
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121175545) do
+ActiveRecord::Schema.define(version: 20160309144124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,11 @@ ActiveRecord::Schema.define(version: 20160121175545) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "reference"
+    t.text     "en"
+    t.text     "esp"
+    t.text     "de"
+    t.text     "ko"
+    t.text     "jap"
   end
 
   create_table "commerces", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
@@ -61,11 +66,16 @@ ActiveRecord::Schema.define(version: 20160121175545) do
     t.float    "vp_sw_lng"
     t.datetime "db_add_date",      default: "now()",       null: false
     t.text     "image",            default: "noimage.jpg"
-    t.integer  "category_id"
-    t.integer  "categorie_id"
+    t.integer  "tag0"
+    t.integer  "tag1"
+    t.integer  "tag2"
+    t.integer  "tag3"
+    t.integer  "tag4"
+    t.integer  "tag5"
+    t.text     "description"
+    t.text     "facebook"
+    t.integer  "nbvisites"
   end
-
-  add_index "commerces", ["categorie_id"], name: "index_commerces_on_categorie_id", using: :btree
 
   create_table "parcours_predefinis", force: :cascade do |t|
     t.string   "name"
@@ -74,6 +84,18 @@ ActiveRecord::Schema.define(version: 20160121175545) do
     t.uuid     "commerces",                array: true
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.text     "en"
+    t.text     "esp"
+    t.text     "de"
+    t.text     "fr"
+  end
+
+  create_table "resultats", force: :cascade do |t|
+    t.uuid     "magasin"
+    t.string   "type"
+    t.text     "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sscategories", force: :cascade do |t|
@@ -81,6 +103,11 @@ ActiveRecord::Schema.define(version: 20160121175545) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "catparent"
+    t.text     "en"
+    t.text     "esp"
+    t.text     "de"
+    t.text     "ko"
+    t.text     "jap"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -89,5 +116,4 @@ ActiveRecord::Schema.define(version: 20160121175545) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "commerces", "categories"
 end

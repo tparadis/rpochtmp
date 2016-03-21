@@ -48,14 +48,8 @@ module Algo
 		# Determinons le nombre de magasins que l'utilisateur veut visiter
 		# afin d'ajuster le nombre de magasins à prendre dans la bdd
 		limit = 0;
-		if commerces.length() > 10
-			# pour le moment, on n'accepte pas une requête
-			# de plus de 10 magasins intermédiaires.
-			tronk = commerces.length();
-			commerces.pop(tronk-10);
-		elsif commerces.length() > 7
-			limit = 3;
-		elsif commerces.length() > 5
+
+		if commerces.length() > 7
 			limit = 5;
 		else
 			limit = 10;
@@ -65,7 +59,7 @@ module Algo
 			# id_com = Interface.getIdbyNum(com);
 			# test = Interface.getComCT(id_com, lat_max, lat_min, lng_max, lng_min, limit);
 			# test = Interface.getComCT(com, lat_max, lat_min, lng_max, lng_min, limit);
-			test = Interface.getComLL(com, lat_max, lat_min, lng_max, lng_min, 
+			test = Interface.getComLL_opti(com, lat_max, lat_min, lng_max, lng_min, 
 									  coord_dep_lat, coord_arr_lat, coord_dep_lng, coord_arr_lng,
 									  dist_max,limit);
 			if not test.empty?
@@ -141,6 +135,14 @@ module Algo
 			end
 
 			# ici ==> le parcours ne convenait pas.
+			# vérifions que la requête ne prend pas trop de temps :
+			# les requêtes qui mettent plus de 0.5 secondes à
+			# s'éxecuter retourne automatiquement un tableau vide.
+			time_inter = Time.now;
+			if time_inter - start > 0.5
+				return [];
+			end
+
 			# mettons à jour le tableau des indices, et réitérons.
 	
 			degrad = false;
@@ -209,17 +211,7 @@ module Algo
 		# Determinons le nombre de magasins que l'utilisateur veut visiter
 		# afin d'ajuster le nombre de magasins à prendre dans la bdd
 		limit = 0;
-=begin
-		if commerces.length() > 10
-			# pour le moment, on n'accepte pas une requête
-			# de plus de 10 magasins intermédiaires.
-			tronk = commerces.length();
-			commerces.pop(tronk-10);
-		elsif commerces.length() > 8
-=end
-		if commerces.length() > 8
-			limit = 3;
-		elsif commerces.length() > 6
+		if commerces.length() > 7
 			limit = 5;
 		else
 			limit = 10;
@@ -230,7 +222,7 @@ module Algo
 			# id_com = Interface.getIdbyNum(com);
 			# test = Interface.getComCT(id_com, lat_max, lat_min, lng_max, lng_min, limit);
 			# test = Interface.getComCT(com, lat_max, lat_min, lng_max, lng_min, limit);
-			test = Interface.getComLL(com, lat_max, lat_min, lng_max, lng_min, 
+			test = Interface.getComLL_opti(com, lat_max, lat_min, lng_max, lng_min, 
 									  coord_dep_lat, coord_arr_lat, coord_dep_lng, coord_arr_lng,
 									  dist_max,limit);
 			if not test.empty?
@@ -298,6 +290,14 @@ module Algo
 			end
 
 			# ici ==> le parcours ne convenait pas.
+			# vérifions que la requête ne prend pas trop de temps :
+			# les requêtes qui mettent plus de 0.5 secondes à
+			# s'éxecuter retourne automatiquement un tableau vide.
+			time_inter = Time.now;
+			if time_inter - start > 0.50
+				return [];
+			end
+			
 			# mettons à jour le tableau des indices, et réitérons.
 	
 			degrad = false;
@@ -329,90 +329,6 @@ module Algo
 
 
 		end # Fin boucle while
-	end
-
-	# Implémentation de l'algo qui retourne les parcours dynamiques
-	# qui utilise un algo de parcours en largeur.
-	def Algo.getDynamicPath(coord_dep_lat,coord_dep_lng,
-						 	coord_arr_lat,coord_arr_lng,
-						 	dist_max, commerces)
-		# Constantes utiles à la conversion
-		# km <=> latitude et longitude
-		conv_lat = 110.574;
-		conv_lng = 111.320;
-
-		# On prend la moyenne entre les points de départ
-		# et d'arrivée du parcours :
-		coord_ref_lat = (coord_dep_lat + coord_arr_lat)/2;
-		coord_ref_lng = (coord_dep_lng + coord_arr_lng)/2;
-
-		# Calcul des limites dans lesquelles nous allons
-		# rechercher l'information dans la base de donnée :
-		tmp1 = (dist_max / conv_lat);
-		tmp2 = (dist_max / (conv_lng * Math.cos(coord_ref_lat)));
-		lat_max = coord_ref_lat + tmp1;
-		lat_min = coord_ref_lat - tmp1;
-		lng_max = coord_ref_lng + tmp2;
-		lng_min = coord_ref_lng - tmp2;
-
-		# tableau contenant la liste des tags par magasins :
-		tab_mags = [];
-		tab_res = [];
-		commerces = eval(commerces)
-		commerces.each do |com|
-			id_com = Interface.getIdbyNum(com);
-			tab_mags << Interface.getComCT(id_com, lat_max, lat_min,
-										   lng_max, lng_min, 10);
-		end 
-		# return tab_mags;
-
-		# Init du tableau de résultat :
-		tab_mags[0].each do |init|
-			tmp = []
-			test = distLL(coord_dep_lat, coord_dep_lng,
-						  init.location_lat, init.location_lng)
-			if test < dist_max
-				tmp << test
-				tmp << init
-				tab_res << tmp
-			end
-		end
-		# return tab_res
-		# Construisons à présent le chemin entre le premier magasin
-		# Et la destination finale :
-		tab_res_tmp = []
-		for indice in 1..commerces.length-1
-			tab_mags[indice].each do |mag|
-				tab_res.each do |prec|
-					precedent_lat = prec[prec.length-1].location_lat;
-					precedent_lng = prec[prec.length-1].location_lng;
-					test = distLL(precedent_lat, precedent_lng,
-								  mag.location_lat, mag.location_lng);
-					if (prec[0] + test) < dist_max
-						tmp = prec.clone;
-						tmp[0] += test;
-						tmp << mag;
-						tab_res_tmp << tmp;
-					end
-				end
-			end
-			tab_res = tab_res_tmp.clone
-			tab_res_tmp = []
-		end
-		# return tab_res
-		# Nous intégrons à présent le chemin final :
-		tab_final = []
-		tab_res.each do |fin|
-			precedent_lat = fin[fin.length-1].location_lat;
-			precedent_lng = fin[fin.length-1].location_lng;
-			test = distLL(precedent_lat, precedent_lng,
-						  coord_arr_lat, coord_arr_lng)
-			if (fin[0] + test) < dist_max
-				tab_final << fin
-			end
-		end
-		# return tab_final
-		return tab_final[0]
 	end
 
 
