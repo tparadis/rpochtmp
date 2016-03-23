@@ -1,6 +1,11 @@
 $(document).ready(function(e){
 	
-	window.setInterval("beginTest()", 5000);
+	//window.setInterval("beginTest()", 5000);
+	window.setInterval(function(){
+		var params = {};
+		params.connectionInformation = (api.testNetwork() ? "Connected" : "Problem");
+		calledBack(params);
+	}, 5000);
 	
 	 appendOnce = false;
 	//On crée l'élément qui va "tout cacher" si le reseau n'est pas disponible
@@ -43,6 +48,7 @@ function calledBack(params)
 	{
 		
 		console.log("serveur down ou pas de connection");
+		console.log("params : ", params);
 		if(appendOnce == false)
 		{
 			//Afficher un truc genre "pas internet"

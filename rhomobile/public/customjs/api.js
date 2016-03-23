@@ -87,6 +87,21 @@ api.send_simple=function (params) {// requete vers l'api
 			console.log("Response body = ", response.body);		
 			return response.body;
 		};
+		
+api.testNetwork = function() {
+	var protocol = "https";
+	var address = "rpoch.istic.univ-rennes1.fr/api/categories";	
+	var response = Rho.Network.get({
+		url : protocol + "://" + address,
+		headers: { "Content-Type": "application/json" },
+		authType: "basic",
+		authUser : "application",
+		authPassword : "app404", 
+		verifyPeerCertificate : false
+	});
+	
+	return response.http_error == "200";
+}
 
 api.signaler = function(id, sel, text) { return api.send_simple({ data: {"req":"signaler","format":"json","magasin":id,"objet":sel,"message":text} }) }	
 	
