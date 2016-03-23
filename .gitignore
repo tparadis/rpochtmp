@@ -10,9 +10,3 @@ sim-*
 bin/
 public/api/generated/
 .cbc
-rhomobile/rhosimulator/rholog.txt_pos
-rhomobile/public/images/scat75_32.png
-rhomobile/public/images/scat56_32.png
-rhomobile/public/images/scat49_32.png
-rhomobile/public/images/scat13_32.png
-rhomobile/public/images/scat12_32.png
