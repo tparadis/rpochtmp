@@ -35,8 +35,8 @@ function addSsCat(sscat) {
 	//toast message 
 	  $("<div class='ui-loader ui-overlay-shadow ui-body-e ui-corner-all' > Magasin Ajout&eacute</div>").css({ "display": "block", "opacity": 0.96, "": $(window).scrollTop() })
 	  .appendTo( $.mobile.pageContainer )
-	  .delay( 1000 )
-	  .fadeOut( 400, function(){
+	  .delay( 300 )
+	  .fadeOut( 300, function(){
 	    $(this).remove();
 	  });
 }
