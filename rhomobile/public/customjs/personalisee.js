@@ -70,7 +70,7 @@ var waypointsArray =[];
      {
                lat = magasins[i].latitude;
                lng = magasins[i].longitude;
-               if(i!=0&&i!=magasins.length-1)
+               if(i!=magasins.length-1)
                  {waypointsArray.push({
                                     location:new google.maps.LatLng(lat, lng),
                                     stopover:false
@@ -104,7 +104,7 @@ var waypointsArray =[];
     
     if(magasins.length>1)
      { var request = {
-       origin:new google.maps.LatLng(magasins[0].latitude,magasins[0].longitude),
+       origin:new google.maps.LatLng(userlat, userlong),
            /*FIXME si le parcours a moins de deux points l'application va planter*/
          destination:new google.maps.LatLng(magasins[magasins.length-1].latitude,magasins[magasins.length-1].longitude),
          optimizeWaypoints: true,
