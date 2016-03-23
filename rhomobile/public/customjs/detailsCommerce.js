@@ -4,6 +4,12 @@
 //Sur le long terme on passe d'environ 10 requetes api google à ... une !
 var id;
 
+var form_validate = {
+	  required: function (value) {
+	    return value.trim().length ? true : false;
+	  }
+};
+
 $(document).ready(function(e){
 	
 	checkIfImplemented();
@@ -16,19 +22,38 @@ function checkIfImplemented()
 	if($("#pageSpec").length == 0)
 	{
 		//S'il n'y a pas les balises pour le rendu de notre page, on l'ajoute directement.
-		$("body").append("<div id='pageSpec'><div id='imageCommerce'></div><div id='descrCommerce'><div id='contenu'></div><br/><br/><img id='back' src='/public/images/backButton2.png' /><img id='signaler' src='/public/images/signaler.png' /></div></div>");
-		$("body").append("<div id='dialog' title='signaler'><fieldset><legend>Signalement :</legend><select id='select-signaler'><option value ='coordonnees-incorrectes'>Coordonn&eacute;es incorrectes</option><option value ='horaires-incorrects'>Horaires incorrects</option><option value ='classification-incorrecte'>Classification incorrecte</option><option value ='magasin-fermer'>Magasin ferm&eacute;</option><option value ='autre'>Autre</option></select><textarea rows='4' cols='40' id='textarea'>...</textarea><a id='email'><button>Envoyer</button></a></fieldset>	</div>");
-		$("#signaler").css({"width" : "50px", "margin-left": "70%"});
-		$("#signaler").on('click',function(e){
-			$("#dialog").dialog();
-	    });
-		$("#email").on('click',function(e){
-			var resultats = api.signaler(id, $("#select-signaler").val(), $("#textarea").val());
-			if(resultats == "ok"){
-				alert("Merci de votre signalement");
-			}
-			$("#dialog").hide();
-	    });
+		$("body").append("<div id='pageSpec'><div id='imageCommerce'></div><div id='descrCommerce'><div id='contenu'></div><br/><br/><img id='back' src='/public/images/backButton2.png' /><img id='contact-us' src='/public/images/signaler.png' /></div></div>");
+		$("#contact-us").css({"width" : "50px", "margin-left": "70%"});
+		$("#contact-us").on("click", function (event) {
+		    event.stopPropagation()
+
+		    function onSubmit(event) {
+		      event.preventDefault();
+		      form = $(this);
+
+		      var subject = form.find("#contact-topic").val(),
+		      body = form.find("#contact-body").val();
+
+		      form.find("input, button").blur();
+		      if (!form_validate.required(subject)) {
+		        $("#contact-form .error").removeClass("hidden").text("Please select an topic.");
+		        form.find("select").focus();
+		        return;
+		      }
+
+		      $.dialog.close("contact-form");
+		      var resultats = api.signaler(id, subject, body);
+		 	  if(resultats == "ok"){
+		 		 $.dialog.alert("Thank you for contacting us.\nWe will get back to you soon.\n\nThis alert will automatically close in 2 seconds.").autoClose(2000);
+		 	  }
+		    }
+
+		    function open(dialog) {
+		      dialog.find("form").on("submit", onSubmit);
+		    }
+
+		    $.dialog.open("contact-form").onOpen(open);
+		  });
 	}
 }
 
