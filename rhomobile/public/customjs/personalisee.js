@@ -134,7 +134,7 @@ var waypointsArray =[];
          if (position.coords.latitude > listPos[x] - 0.0003 && position.coords.latitude < listPos[x] + 0.0003 && position.coords.longitude > listPos[x+1] - 0.0003 && position.coords.longitude < listPos[x+1] + 0.0003){
               
               //requête vers le serveur du test
-              api.send2({data : {"req":"visite_mag","id":idArray[x/2],"format":"json"}}); 
+              api.send2({data : {"req":"stats","id":idArray[x/2],"parcours":"personalise","format":"json"}}); 
               
               
               listPos[x]=0;

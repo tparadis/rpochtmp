@@ -7,7 +7,7 @@
       
       //On récupère le nom du parcours predefinis (il est caché dans la page dans le nom d une div ;) ). On fait appel à la requete traditionnelle. 
       
-      var parcoursChoisi = $("#parcours_predef").attr("name"); 
+      parcoursChoisi = $("#parcours_predef").attr("name"); // variable globale pour pouvoir la récuperer dans la fonction passerDevant()
       var data = api.getPredef(parcoursChoisi);
       
                       var i = 0;
@@ -68,7 +68,7 @@
 }
     
     function passerDevant(){
-  
+    
   
         if(navigator.geolocation){
         
@@ -83,7 +83,7 @@
               
               
               // requête vers le serveur de test
-              api.send2({data : {"req":"visite_mag","id":data.magasins[x/2].id,"format":"json"}});
+              api.send2({data : {"req":"stats","id":data.magasins[x/2].id,"parcours":parcoursChoisi,"format":"json"}});
               
               listPos[x]=0;
               listPos[x+1]=0;
