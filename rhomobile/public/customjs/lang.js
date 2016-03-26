@@ -12,7 +12,8 @@ var lang = {
 	"options" : "Options",
 	"detail" : "D&eacute;tail",
 	"parcoursThematique" : "Parcours Th&eacutematique",
-	"supprimer" : "Supprimer"
+	"supprimer" : "Supprimer",
+	"remplacer" : "Remplacer"
 	},	
 	/**
 	 * 
@@ -32,7 +33,8 @@ var lang = {
 	"options" : "Settings",
 	"detail" : "Detail",
 	"parcoursThematique" : "Thematic Path",
-	"supprimer" : "Delete"
+	"supprimer" : "Delete",
+	"remplacer" : "Replace"
 	},
 	/**
 	 * 
@@ -52,7 +54,8 @@ var lang = {
 	"options" : "Opciones",
 	"detail" : "Detalle",	
 	"parcoursThematique" : "Ruta tem&aacutetica",
-	"supprimer" : "Eliminar"
+	"supprimer" : "Eliminar",
+	"remplacer" : "Reemplazar"		
 	},
 	/**
 	 * 
@@ -68,30 +71,16 @@ var lang = {
 	"lieu" : "Platz",
 	"magasin" : "&nbsp;Speichert",	
 	"afficherCarte" : "Afficher la carte",
-	"ajouterMagasin" : "fÃ¼gen Sie einen Shop",
+	"ajouterMagasin" : "fügen Sie einen Shop",
 	"options" : "Optionen",
 	"detail" : "Detail",	
 	"parcoursThematique" : "Route Themenweg",
-	"supprimer" : "Entfernen"
-	}/*,
-	/**
-	 * 
-	 * Passage en coréen
-	 * 
-	 *
-	"kr" : {
-	"rpoch" : "주머니에 렌",
-	"rpochapp" : "주머니에 응용 렌",
-	"creerParcours" : "당신의 자신의 경로를 만들기",
-	"votreParcours" : "당신의 경로를",
-	"genererParcours" : "새 경로를 생성합니다",
-	"lieu" : "장소",
-	"go" : "가기!",
-	"ajouterMagasin" : "새로운 상점을 추가",
-	"options" : "설정",
-	"parcoursThematique" : "테마 경로"
-	}*/
+	"supprimer" : "Entfernen",
+	"remplacer" : "Ersetzen"
+	}
 	
 }
+
+
 
 
