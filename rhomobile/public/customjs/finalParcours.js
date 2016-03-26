@@ -15,20 +15,18 @@ function refresh() {
     {
     	var magasin = JSON.parse(sessionStorage.getItem(i));
     	var id = magasin[2];
-    	if (magasin.length == 3) {
-        	$("tbody").append("<tr><td>"+magasin[1]+"</td><td></td><td><button class='ui-btn' onclick='supprimerSsCat("+i+")'><span class='ui-btn-text'>X</span></button></td></tr>");
-    	} else {
-    		$("tbody").append("<tr><td>"+magasin[3]+"</td><td><button class='detailButton ui-btn' name='"+id+"'><span class='ui-btn-text'>i</span></button></td><td><button class='ui-btn' onclick='newMag("+i+")'><span class='ui-btn-text'>X</span></button></td></tr>");
+    	
+    		$("tbody").append("<tr><td>"+magasin[3]+"</td><td><button class='detailButton ui-btn' name='"+id+"'><span class='ui-btn-text'>i</span></button></td><td><button class='ui-btn' onclick='newMag("+i+")'><span class='ui-btn-text'>R</span></button></td><td><button class='ui-btn' onclick='supprimerMag("+i+")'><span class='ui-btn-text'>X</span></button></td></tr>");
     		ajoutDansRes();
 		    $('button.detailButton').on('click',function(e){
 	    		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
 	    		afficheSpecificationMagasin();
 	    	});
-    	}
+    	
     }
 }
 
-function supprimerSsCat(numLigne) {
+function supprimerMag(numLigne) {
 	for(var i=numLigne ; i < sessionStorage.length ; i++) {
 		sessionStorage.setItem(i, sessionStorage.getItem(i+1));
 	}
@@ -48,13 +46,13 @@ function genererParcours(){
 		res = "";
 		$("tbody").html("");
 		for (var i = 1 ; i <= tags.length ; i++)
-	    {// remplacer la catégorie parent par l'id magasin
+	    {// remplacer la catÃ©gorie parent par l'id magasin
 	    	var tagCourant = data.tags[i];
 	    	//On ajoute la valeur id  de l'enseigne dans la sessionStorage
 	    	var elem = sessionStorage.getItem(i-1);
 	    	elem = JSON.parse(elem);
-	    	//Obligatoire si l'utilisateur a deja clique sur Generer un sessionStorage et qu'il veut remettre un autre magasin après
-	    	//Sinon les id s'ajoutent indéfiniments à la suite dans le meme tableau !
+	    	//Obligatoire si l'utilisateur a deja clique sur Generer un sessionStorage et qu'il veut remettre un autre magasin aprÃ¨s
+	    	//Sinon les id s'ajoutent indÃ©finiments Ã  la suite dans le meme tableau !
 	    	var id = tagCourant.id;
 	    	elem[2] = id;
 	    	elem.push(tagCourant.enseigne.toLowerCase());
@@ -63,21 +61,20 @@ function genererParcours(){
 	    	sessionStorage.setItem(i-1, JSON.stringify(elem));
     	
 	    	//On affiche sur la page
-	    	//On ajoute la classe (non utilisée en CSS) detailsButton pour distinguer les bouttons par l'action onclick()
+	    	//On ajoute la classe (non utilisÃ©e en CSS) detailsButton pour distinguer les bouttons par l'action onclick()
 	    	$("tbody").append("<tr class='mag"+(i-1)+"'><td>"+tagCourant.enseigne.toLowerCase()+"</td><td><button class='detailButton ui-btn' name='"+id+"'><span class='ui-btn-text'>i</span></button></td><td><button class='ui-btn' onclick='newMag("+(i-1)+")'><span class='ui-btn-text'>X</span></button></td></tr>");
 	    	ajoutDansRes();
 	    	
-	    	//Ajout d'une action qui va ajouter à la sessionStorage
+	    	//Ajout d'une action qui va ajouter Ã  la sessionStorage
 	    	// currentMagasin => id
-	    	//Ceci est utile pour la transition de cette page à la page de Magasin spécifique
-	    	
+	    	//Ceci est utile pour la transition de cette page Ã  la page de Magasin spÃ©cifique
 	    	
 	    }
 		
-	    //On récupère l'attribut nom (qui contient l'id du magasin) et on le stock dans la sessionStorage "currentMagasin"
+	    //On rÃ©cupÃ¨re l'attribut nom (qui contient l'id du magasin) et on le stock dans la sessionStorage "currentMagasin"
 	    //Dans la page detailsCommerce.js, on enverra en Ajax la requete avec comme id la valeur de la sessionStorage 
 	    //Astucieux hein ? :p
-	    //En vrai ça marchait pas avec un passage de parametres classiques ?id= et tout...
+	    //En vrai Ã§a marchait pas avec un passage de parametres classiques ?id= et tout...
 	    $('button.detailButton').on('click',function(e){
     		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
     		afficheSpecificationMagasin();
@@ -95,7 +92,7 @@ function newMag (i) {
 	var elem = JSON.parse(sessionStorage.getItem(i));
 	var tag = elem[0];
 	var data = api.genParcours(coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tag);
-
+  
 			var id = data.tags[1].id;
 			elem[2] = id;
 			elem[3] = data.tags[1].enseigne.toLowerCase();
@@ -103,7 +100,7 @@ function newMag (i) {
 			elem[5] = data.tags[1].location_lng;
 			sessionStorage.setItem(i, JSON.stringify(elem));
 			$(".mag"+i).html("");
-			$(".mag"+i).append("<td>"+data.tags[1].enseigne.toLowerCase()+"</td><td><button class='detailButton ui-btn' name='"+id+"'><span class='ui-btn-text'>i</span></button></td><td><button class='ui-btn' onclick='newMag("+i+")'><span class='ui-btn-text'>X</span></button></td>");
+			$(".mag"+i).append("<td>"+data.tags[1].enseigne.toLowerCase()+"</td><td><button class='detailButton ui-btn' name='"+id+"'><span class='ui-btn-text'>i</span></button></td><td><button class='ui-btn' onclick='newMag("+i+")'><span class='ui-btn-text'>R</span></button></td><td><button class='ui-btn' onclick='supprimerMag("+i+")'><span class='ui-btn-text'>X</span></button></td>");
 		    $('button.detailButton').on('click',function(e){
 	    		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
 	    	});
