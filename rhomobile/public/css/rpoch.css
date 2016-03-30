@@ -288,3 +288,21 @@ ul.listSsCat > li > span {
     position: absolute;
 }
 
+.cat-title {
+    display: block;
+    text-align: center;
+}
+
+.categorie > h3 {
+    height: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+.categorie > h3 > img {
+    width: 60%;
+    height: 60%;
+    margin-left: 20%;
+    margin-top: 10%;
+    margin-right: 20%;
+}
