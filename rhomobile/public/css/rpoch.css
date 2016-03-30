@@ -1,202 +1,202 @@
 body{
-	width:100%;
-	height:100%;
-	margin:0;
-	padding:0;
-}
+     width:100%;
+     height:100%;
+     margin:0;
+     padding:0;
+ }
 
 #bouton_reglage {
-	background: rgb(255,165,57); /*orange*/
-	color:black;
-	text-shadow:none;
+    background: rgb(255,165,57); /*orange*/
+    color:black;
+    text-shadow:none;
 }
 
 .ui-btn-right {
-	width: 90px;
+    width: 90px;
 }
 
 .ui-btn-right .ui-btn-inner, #lang {
-	background: rgb(255,165,57);
-	color: black;
-	text-shadow: none; /*ios*/
+    background: rgb(255,165,57);
+    color: black;
+    text-shadow: none; /*ios*/
 }
 
 #header {
-	background: rgb(68,52,52); /*marron*/
-	height: 40px;
+    background: rgb(68,52,52); /*marron*/
+    height: 40px;
 }
 
 .footer {
-	background: rgb(68,52,52);
-	text-shadow:none;
-	text-align:center;
+    background: rgb(68,52,52);
+    text-shadow:none;
+    text-align:center;
 }
 
 h1 {
     color:white;
-	text-shadow:none;
+    text-shadow:none;
 }
 
 h2 {
-	margin-top: 20%;
-	font-size: 1.2em;
+    margin-top: 20%;
+    font-size: 1.2em;
 }
 
 .ui-collapsible-set { /*decalage bloc du haut*/
-	margin-top:60px;
+    margin-top:60px;
 }
 
 .ui-collapsible-set .ui-collapsible-inset { /*separation des categories*/
-	margin: 10px;
+    margin: 10px;
 }
 
 .ui-collapsible-heading { /*arrondi de la categorie*/
-	border-radius: 30px;
+    border-radius: 30px;
 }
 
 .ui-collapsible-heading-toggle { /*mise en forme bouton deroulant*/
-	color: rgb(68,52,52);
-	text-shadow:none;
-	background: rgb(255,165,57);
-	margin: 20px;
-	font-family: 'Open Sans', Arial, sans-serif;
-	border: none;
-	font-weight: normal;
+    color: rgb(68,52,52);
+    text-shadow:none;
+    background: rgb(255,165,57);
+    margin: 20px;
+    font-family: 'Open Sans', Arial, sans-serif;
+    border: none;
+    font-weight: normal;
 }
 
 .ui-collapsible-content .ui-listview{ /*ensemble des sous categories*/
-	box-shadow:none;
+    box-shadow:none;
 }
 
-.ui-listview .ui-btn{ /*fond bouton !!!*/ 
-	border:none;
-	margin:5px;
-	background:rgb(247,247,247);
+.ui-listview .ui-btn{ /*fond bouton !!!*/
+    border:none;
+    margin:5px;
+    background:rgb(247,247,247);
 }
 
 .ui-listview .ui-btn-inner { /*separation des sous categories*/
-	background: rgb(68,52,52);
-	border-radius: 30px;
+    background: rgb(68,52,52);
+    border-radius: 30px;
 }
 
 .ui-listview .ui-btn-text a{ /*mise en forme liste*/
-	color:white;
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
-	text-shadow:none;
+    color:white;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: normal;
+    text-shadow:none;
 }
 
 #titre{
-	color:rgb(68,52,52);
-	margin-top: 70px;
-	text-align: center;
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
+    color:rgb(68,52,52);
+    margin-top: 70px;
+    text-align: center;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: normal;
 }
 
 #page{
-	position:absolute;
-	top:0px;
-	left:0px;
-	width:100%;
-	height:100%;
-	background:rgb(247,247,247); /*fond clair*/
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    background:rgb(247,247,247); /*fond clair*/
 }
 
 #page_descriptionPredef{
-	color:black;
-	position:absolute;
-	top:0px;
-	left:0px;
-	width:100%;
-	height:100%;
-	background:rgb(247,247,247); /*fond clair*/
+    color:black;
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    background:rgb(247,247,247); /*fond clair*/
 }
 
 #menu li {
-	list-style-type: none;
-	margin-top:70px;
+    list-style-type: none;
+    margin-top:70px;
 }
 
 #parcours li {
-	list-style-type: none;
-	margin-top:70px;
+    list-style-type: none;
+    margin-top:70px;
 }
 
 #menu img{
-	width: 100px;
-	height: 60px;
+    width: 100px;
+    height: 60px;
 }
 
 #parcours img{
-	width: 100px;
-	height: 60px;
+    width: 100px;
+    height: 60px;
 }
 
 
 .lien {
-	position: relative;
-	top: -20px;
-	color:rgb(68,52,52);
-	text-shadow: none;
-	font-family: 'Open Sans', Arial, sans-serif;
+    position: relative;
+    top: -20px;
+    color:rgb(68,52,52);
+    text-shadow: none;
+    font-family: 'Open Sans', Arial, sans-serif;
 }
 
 #boutonsParcours .ui-btn {
-	background: rgb(68,52,52);
-	border-radius: 30px;
-	border: none;
+    background: rgb(68,52,52);
+    border-radius: 30px;
+    border: none;
 }
 
 #boutonsParcours .ui-btn .ui-btn-text {
-	color:white;
-	text-shadow: none;
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
+    color:white;
+    text-shadow: none;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: normal;
 }
 
 #example{
-	border: 1px solid black;
-	width:100%;
-	margin: 60px 0px 60px 0px;
-	border-collapse: collapse;
+    border: 1px solid black;
+    width:100%;
+    margin: 60px 0px 60px 0px;
+    border-collapse: collapse;
 }
 
 #example th {
-	border: 1px solid black;
-	color: black;
-	font-weight: normal;
+    border: 1px solid black;
+    color: black;
+    font-weight: normal;
 }
 
 #example tr {
-	text-align: center;
+    text-align: center;
 }
 
 #example td {
-	color: black;
+    color: black;
 }
 
 td .ui-btn {
-	width: 30px;
-	height: 30px;
-	background: red;
-	border-radius: 30px;
-	border: 3px solid white;
+    width: 30px;
+    height: 30px;
+    background: red;
+    border-radius: 30px;
+    border: 3px solid white;
 }
 
 td .ui-btn .ui-btn-text {
-	color: white;
-	text-shadow: none;
-	font-weight: bold;
+    color: white;
+    text-shadow: none;
+    font-weight: bold;
 }
 
 th, td {
-	padding: 5px;
-	border-bottom: 1px solid #ddd;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
 }
 
 tr:hover {
-	background-color:#f5f5f5
+    background-color:#f5f5f5
 }
 
 
@@ -212,31 +212,79 @@ tr:hover {
 
 
 
-
-
-
-.ui-collapsible-heading-toggle {
-color: #fff;
-text-shadow: none;
-background: #048B9a;
-margin: 20px;
-font-family: 'Open Sans', Arial, sans-serif;
-border: none;
-font-weight: normal;
+#navmenu {
 }
 
-.ui-collapsible-heading {
-border-radius: 0;
+.active.categorie {
+    background: #048B9a;
+    color: #fff;
 }
 
-.categorie.ui-collapsible.ui-collapsible-inset.ui-collapsible-collapsed {
-width: 40%;
-display: inline-block;
+.categorie {
+    color: #666;
+    text-shadow: none;
+    background: #FFF;
+    font-family: 'Open Sans', Arial, sans-serif;
+    border: none;
+    font-weight: normal;
+    /*display: table-cell;*/
+    display: inline-table;
+    margin: 1%;
+    width: 48%;
 }
 
-.ui-listview .ui-btn-inner {
-background: rgb(68,52,52);
-border-radius: 0;
+.collapsible-cat-container {
+    /*display: table !important;
+    padding-bottom: 10px;
+    width: 100%;*/
+}
+.collapsible-cat-container.active {
+    display: block;
 }
 
+.listSsCat {
+    display: none;
+}
+
+.active .listSsCat {
+    display: block;
+}
+
+ul.listSsCat  > li {
+    list-style: none;
+    background: #fff;
+    border: 1px solid #888;
+    height: 2em;
+    margin: .2em 2em;
+    color: #BBB;
+}
+
+.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li {
+    padding: 4px 2.5em;
+    display: block;
+}
+.ui-body-c .ui-link {
+    color: #2489CE;
+    font-weight: bold;
+}
+
+ul.listSsCat  > li > a {
+    padding: 0px 0.5em;
+}
+
+ul.active {
+    list-style-type: disc;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+}
+
+ul.listSsCat > li > span {
+    padding-left: 1em;
+    color: #048B9a;
+    padding-top: 4px;
+    position: absolute;
+}
 
