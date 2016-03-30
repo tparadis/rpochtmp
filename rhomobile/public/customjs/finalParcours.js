@@ -62,7 +62,7 @@ function genererParcours(){
     	
 	    	//On affiche sur la page
 	    	//On ajoute la classe (non utilisée en CSS) detailsButton pour distinguer les bouttons par l'action onclick()
-	    	$("tbody").append("<tr class='mag"+(i-1)+"'><td>"+tagCourant.enseigne.toLowerCase()+"</td><td><button class='detailButton ui-btn' name='"+id+"'><span class='ui-btn-text'>i</span></button></td><td><button class='ui-btn' onclick='newMag("+(i-1)+")'><span class='ui-btn-text'>X</span></button></td></tr>");
+	    	$("tbody").append("<tr class='mag"+(i-1)+"'><td>"+tagCourant.enseigne.toLowerCase()+"</td><td><button class='detailButton ui-btn' name='"+id+"'><span class='ui-btn-text'>i</span></button></td><td><button class='ui-btn' onclick='newMag("+i+")'><span class='ui-btn-text'>R</span></button></td><td><button class='ui-btn' onclick='supprimerMag("+i+")'><span class='ui-btn-text'>X</span></button></td></tr>");
 	    	ajoutDansRes();
 	    	
 	    	//Ajout d'une action qui va ajouter à la sessionStorage
