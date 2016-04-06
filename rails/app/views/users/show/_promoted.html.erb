@@ -12,19 +12,22 @@
 				<th>Catégorie 4</th>
                 <th>Description</th>
                 <th>Facebook</th>
+				<th>En solde</th>
+				<th>Actions</th>
             </tr>
             <% @shops.each do |shop| %>
                 <tr>
                     <td><%= shop.siret %></td>
                     <td><%= shop.enseigne %></td>
-                    <td><%= shop.street_num + " rue " + shop.street_name %></td>
+                    <td><%= shop.street_num + " " %><%=  shop.street_name.empty? ? " (rue inconnue)" : "rue " + shop.street_name %></td>
                     <td><%= Sscategorie.find_by(id: shop.tag0).nom if Sscategorie.find_by(id: shop.tag0) %></td>
                     <td><%= Sscategorie.find_by(id: shop.tag1).nom if Sscategorie.find_by(id: shop.tag1) %></td>
                     <td><%= Sscategorie.find_by(id: shop.tag2).nom if Sscategorie.find_by(id: shop.tag2) %></td>
                     <td><%= Sscategorie.find_by(id: shop.tag3).nom if Sscategorie.find_by(id: shop.tag3) %></td>
-                    <td><%= shop.description %></td>
+                    <td style="width:230px;"><pre style="color:inherit; border:initial;padding:initial;background-color:rgba(0,0,0,0);font-size:inherit;font-family:inherit; max-width:230px; overflow:auto;" ><%= shop.description %></pre></td>
                     <td><%= shop.facebook %></td>
-                    <td><%= link_to 'edit', edit_user_path(shop.user_id) %></td>
+					<td><%= shop.soldes ? "Oui" : "Non"  %>
+                    <td><%= link_to 'éditer', edit_user_path(shop.user_id) %></td>
                 </tr>
             <% end %>
         </table>

@@ -4,6 +4,8 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:updated, url: user_path(@user), method: :patch ) do |f| %>
       <%= render 'shared/error_messages' %>
+
+
 	  <% @tags = Sscategorie.all  %>
 
       <%= f.label 'Enseigne' %>
@@ -31,12 +33,20 @@
 	  <br/>
 
       <%= f.label 'Description' %>
-      <%= f.text_field :description, value: @shop.description, class: 'form-control' %>
+      <%= f.text_area :description, value: @shop.description, class: 'form-control' %>
 
       <%= f.label 'Facebook' %>
       <%= f.text_field :facebook, value: @shop.facebook, class: 'form-control' %>
 
+	  <%= f.label 'En solde ?' %><br/>
+	  <%= f.radio_button(:soldes, "1", {checked: @shop.soldes}) %>
+	  <%= f.label "Oui" %>
+	  <%= f.radio_button(:soldes, "0", {checked: !@shop.soldes}) %>
+	  <%= f.label "Non" %>
+
       <%= f.submit "Confirmer", class: 'btn-block btn btn-primary' %>
+
+
     <% end %>
 
   </div>
