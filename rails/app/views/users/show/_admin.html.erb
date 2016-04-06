@@ -7,6 +7,7 @@
                     <th>Catégorie 1</th>
                     <th>Catégorie 2</th>
                     <th>Catégorie 3</th>
+					<th>Catégorie 4</th>
                     <th>Commerçant</th>
                     <th>Editer</th>
                     <th>Détruire</th>
@@ -17,6 +18,7 @@
                         <td><%= Sscategorie.find_by(id: shop.tag0).nom if Sscategorie.find_by(id: shop.tag0) %></td>
                         <td><%= Sscategorie.find_by(id: shop.tag1).nom if Sscategorie.find_by(id: shop.tag1) %></td>
                         <td><%= Sscategorie.find_by(id: shop.tag2).nom if Sscategorie.find_by(id: shop.tag2) %></td>
+						<td><%= Sscategorie.find_by(id: shop.tag2).nom if Sscategorie.find_by(id: shop.tag2) %></td>
                         <td><%= User.find_by(id: shop.user_id).username unless !User.find_by(id: shop.user_id)%></td>
                         <td><%= link_to 'edit', edit_commerce_path(shop) %></td>
                         <td><%= link_to 'destroy', commerce_path(shop), method: :delete %></td>

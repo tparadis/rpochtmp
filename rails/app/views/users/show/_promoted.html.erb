@@ -9,8 +9,7 @@
                 <th>Catégorie 1</th>
                 <th>Catégorie 2</th>
                 <th>Catégorie 3</th>
-                <th>Catégorie 4</th>
-                <th>Catégorie 5</th>
+				<th>Catégorie 4</th>
                 <th>Description</th>
                 <th>Facebook</th>
             </tr>
@@ -22,8 +21,7 @@
                     <td><%= Sscategorie.find_by(id: shop.tag0).nom if Sscategorie.find_by(id: shop.tag0) %></td>
                     <td><%= Sscategorie.find_by(id: shop.tag1).nom if Sscategorie.find_by(id: shop.tag1) %></td>
                     <td><%= Sscategorie.find_by(id: shop.tag2).nom if Sscategorie.find_by(id: shop.tag2) %></td>
-                    <td><%= Sscategorie.find_by(id: shop.tag3).nom if Sscategorie.find_by(id: shop.tag2) %></td>
-                    <td><%= Sscategorie.find_by(id: shop.tag4).nom if Sscategorie.find_by(id: shop.tag2) %></td>
+                    <td><%= Sscategorie.find_by(id: shop.tag3).nom if Sscategorie.find_by(id: shop.tag3) %></td>
                     <td><%= shop.description %></td>
                     <td><%= shop.facebook %></td>
                     <td><%= link_to 'edit', edit_user_path(shop.user_id) %></td>

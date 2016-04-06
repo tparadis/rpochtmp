@@ -4,30 +4,37 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:updated, url: user_path(@user), method: :patch ) do |f| %>
       <%= render 'shared/error_messages' %>
+	  <% @tags = Sscategorie.all  %>
 
       <%= f.label 'Enseigne' %>
-      <%= f.text_field :enseigne, placeholder: @shop.enseigne, class: 'form-control' %>
+      <%= f.text_field :enseigne, value: @shop.enseigne, class: 'form-control' %>
 
       <%= f.label 'Numéro de rue' %>
-      <%= f.text_field :street_num, placeholder: @shop.street_num, class: 'form-control' %>
+      <%= f.text_field :street_num, value: @shop.street_num, class: 'form-control' %>
 
       <%= f.label 'Nom de rue' %>
-      <%= f.text_field :street_name, placeholder: @shop.street_name, class: 'form-control' %>
+      <%= f.text_field :street_name, value: @shop.street_name, class: 'form-control' %>
+	
+      <%= f.label 'Catégorie 1' %><br/>
+      <%= f.collection_select :tag0, @tags.order(:nom), :id, :nom, {:selected => @shop.tag0 || 0}   %>
+	  <br/>
 
-      <%= f.label 'Catégorie 1' %>
-      <%= f.text_field :tag0, placeholder: @shop.tag0, class: 'form-control' %>
+      <%= f.label 'Catégorie 2' %><br/>
+	  <%= f.collection_select :tag1, @tags.order(:nom), :id, :nom, {:selected => @shop.tag1 || 0}   %>	
+	  <br/>
 
-      <%= f.label 'Catégorie 2' %>
-      <%= f.text_field :tag1, placeholder: @shop.tag1, class: 'form-control' %>
-
-      <%= f.label 'Catégorie 3' %>
-      <%= f.text_field :tag2, placeholder: @shop.tag2, class: 'form-control' %>
+      <%= f.label 'Catégorie 3' %><br/>
+      <%= f.collection_select :tag2, @tags.order(:nom), :id, :nom, {:selected => @shop.tag2 || 0}   %>
+	  <br/>
+	  <%= f.label 'Catégorie 4' %><br/>
+      <%= f.collection_select :tag3, @tags.order(:nom), :id, :nom, {:selected => @shop.tag3 || 0}   %>
+	  <br/>
 
       <%= f.label 'Description' %>
-      <%= f.text_field :description, placeholder: @shop.description, class: 'form-control' %>
+      <%= f.text_field :description, value: @shop.description, class: 'form-control' %>
 
       <%= f.label 'Facebook' %>
-      <%= f.text_field :facebook, placeholder: @shop.facebook, class: 'form-control' %>
+      <%= f.text_field :facebook, value: @shop.facebook, class: 'form-control' %>
 
       <%= f.submit "Confirmer", class: 'btn-block btn btn-primary' %>
     <% end %>
