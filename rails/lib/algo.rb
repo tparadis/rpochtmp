@@ -331,6 +331,30 @@ module Algo
 		end # Fin boucle while
 	end
 
+	# Retourne une liste de magasins de même type, dans un rayon donné
+	def Algo.randList(coord_ref_lat,coord_ref_lng,
+					  dist_max, limit, tag )
+	# Dans un premier temps :  calcul des coordonnées qui encadre les magasins
+	# que l'on doit trouver :
+	
+	conv_lat = 110.574;
+	conv_lng = 111.320;
+
+	tmp1 = (dist_max / conv_lat);
+	tmp2 = (dist_max / (conv_lng * Math.cos(coord_ref_lat)));
+	lat_max = coord_ref_lat + tmp1;
+	lat_min = coord_ref_lat - tmp1;
+	lng_max = coord_ref_lng + tmp2;
+	lng_min = coord_ref_lng - tmp2;
+
+	# On prend une liste de 'limit' magasins dans ce rayon :
+	res = Interface.getComLL_opti(tag, lat_max, lat_min, lng_max, lng_min, 
+								   coord_ref_lat, coord_ref_lng, dist_max,limit);
+	return res;
+		
+
+	end
+
 
 	# Calcule la distance en kilomètre entre deux coordonées.
 	def Algo.distLL(a_lat,a_lng,b_lat,b_lng)

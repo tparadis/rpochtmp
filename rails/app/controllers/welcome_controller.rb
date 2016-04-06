@@ -49,7 +49,7 @@ class WelcomeController < ApplicationController
 
 			if params.has_key?(:magasin) && params.has_key?(:objet) && params.has_key?(:message) && params["magasin"]!= "" && params["objet"] != "" && params["message"] != ""
 				
-				Resultat.new(:magasin => params["magasin"], :objet => params["objet"], :message => params["message"])	
+				Resultat.new(:magasin => params["magasin"], :objet => params["objet"], :message => params["message"]).save
 				render json: "ok"
 			else
 				render json: ""

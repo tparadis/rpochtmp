@@ -13,6 +13,6 @@ class SessionsController < ApplicationController
 
     def logout
         log_out
-        redirect_to root_url
+        redirect_to '/api/bo/'
     end
 end

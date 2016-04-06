@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309144124) do
+ActiveRecord::Schema.define(version: 20160323092620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20160309144124) do
     t.float    "vp_ne_lng"
     t.float    "vp_sw_lat"
     t.float    "vp_sw_lng"
-    t.datetime "db_add_date",      default: "now()",       null: false
+    t.datetime "db_add_date",      default: '2016-03-21 14:01:36', null: false
     t.text     "image",            default: "noimage.jpg"
     t.integer  "tag0"
     t.integer  "tag1"
@@ -75,7 +75,10 @@ ActiveRecord::Schema.define(version: 20160309144124) do
     t.text     "description"
     t.text     "facebook"
     t.integer  "nbvisites"
+    t.integer  "user_id"
   end
+
+  add_index "commerces", ["user_id"], name: "index_commerces_on_user_id", using: :btree
 
   create_table "parcours_predefinis", force: :cascade do |t|
     t.string   "name"
@@ -89,6 +92,26 @@ ActiveRecord::Schema.define(version: 20160309144124) do
     t.text     "de"
     t.text     "fr"
   end
+
+  create_table "promotions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "kbis"
+    t.string   "rid"
+    t.string   "siret"
+  end
+
+  add_index "promotions", ["user_id"], name: "index_promotions_on_user_id", using: :btree
+
+  create_table "requests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "requests", ["user_id"], name: "index_requests_on_user_id", using: :btree
 
   create_table "resultats", force: :cascade do |t|
     t.uuid     "magasin"
@@ -110,32 +133,19 @@ ActiveRecord::Schema.define(version: 20160309144124) do
     t.text     "jap"
   end
 
+  create_table "stats", force: :cascade do |t|
+    t.uuid     "commerce"
+    t.datetime "date_visite"
+    t.string   "parcours"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string   "nom"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
- 
-  #BACK-OFFICE
-  create_table "promotions", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "kbis"
-    t.string   "rid"
-    t.string   "siret"
-  end
-
-  add_index "promotions", ["user_id"], name: "index_promotions_on_user_id", using: :btree
-
-create_table "requests", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "requests", ["user_id"], name: "index_requests_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -147,15 +157,15 @@ create_table "requests", force: :cascade do |t|
     t.datetime "updated_at",      null: false
   end
 
+  create_table "stats", force: :cascade do |t|
+    t.uuid     "commerce"
+    t.datetime "date_visite"
+    t.string   "parcours"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_foreign_key "commerces", "users"
   add_foreign_key "promotions", "users"
   add_foreign_key "requests", "users"
-
-
-
-
-
-
-
-
-
 end

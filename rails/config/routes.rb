@@ -10,14 +10,15 @@ Rails.application.routes.draw do
   	resources :categories
   	resources :parcours_predefinis
   	resources :commerces
-  	resources :users
-  	resources :promotions
   	resources :resultats
   #end
 
   #Routes pour le BACK-OFFICE
-  scope 'bo/' do
-  	get '/', to: "session#new"
+  scope '/bo' do
+  	
+  	resources :users
+  	resources :promotions
+  	get '/', to: "sessions#new"
   	get     'home'    => 'main#index'
   	get     'help'    => 'main#help'
   	get     'about'   => 'main#about'
@@ -28,6 +29,8 @@ Rails.application.routes.draw do
   	get    'login'    => 'sessions#new'
   	post   'login'    => 'sessions#login'
   	delete 'logout'   => 'sessions#logout'
+
+	get 'statistique/:id' => 'statistique#show', as: 'statistique'
 
   	get   'promotions/new'
   	post 'promotions/create'

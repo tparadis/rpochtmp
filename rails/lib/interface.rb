@@ -150,6 +150,36 @@ module Interface
 
 	end
 
+	# Pour retourner une liste de magasins se trouvant dans un rayon défini par la position
+	# de l'utilisateur et par la coordonnée du magasin
+	def Interface.getCom_client_pos( nomTag, lat_max, lat_min, lng_max, lng_min,
+							lat_ref, lng_ref, dist_max, limit )
+		offset = rand(Commerce.count);
+		commercesTaggued = Commerce.where("tag0 = ? OR tag1 = ? OR tag2 = ? ",nomTag,nomTag,nomTag);
+		# On commence par affiner la recherche : les resultats sont contenus dans un rectangle autour
+		# de la coordonée moyenne entre l'arrivée et le départ du parcours
+		commercesInCoord = commercesTaggued.where("location_lat <= ? AND location_lat >= ? AND 
+							     				   location_lng >= ? AND location_lng <= ?",
+												   lat_max, lat_min, lng_max, lng_min).select('id,enseigne,location_lat,location_lng').order("RANDOM()")
+		# à présent, on prend uniquement les étapes qui ne produisent pas une chemin plus grand que
+		# la distance maximale
+		res = [];
+		cpt = 0;
+		commercesInCoord.each do |com|
+
+			distance = Algo.distLL(com.location_lat, com.location_lng, lat_ref, lng_ref);
+			if( distance < dist_max )
+				res << com;
+				cpt += 1;
+				if cpt > limit
+					return res;
+				end
+			end
+		end
+		return res;
+
+	end
+
 	#retourne un magasin complet
 	def Interface.getSpecificCommerce
 
