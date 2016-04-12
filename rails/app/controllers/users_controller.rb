@@ -45,6 +45,9 @@ class UsersController < ApplicationController
         keys.each do |u|
             @shop.update_attribute(u, params[:updated][u])
         end
+
+		redirect_to user_url
+
     end
 
     private

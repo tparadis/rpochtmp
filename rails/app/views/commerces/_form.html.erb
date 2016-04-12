@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+	<% @tags = Sscategorie.all %>
+
 	<div class="field">
 		<%= f.label :enseigne %><br/>
 		<%= f.text_field :enseigne %>
@@ -165,27 +167,19 @@
 </div>
 <div class="field">
 	<%= f.label :tag0 %><br/>
-	<%= f.text_field :tag0 %>
+	<%= f.collection_select :tag0, @tags.order(:nom), :id, :nom, {:selected => @commerce.tag0 || 0}   %>
 </div>
 <div class="field">
 	<%= f.label :tag1 %><br/>
-	<%= f.text_field :tag1 %>
+	<%= f.collection_select :tag1, @tags.order(:nom), :id, :nom, {:selected => @commerce.tag1 || 0}   %>
 </div>
 <div class="field">
 	<%= f.label :tag2 %></br>
-	<%= f.text_field :tag2 %>
+	<%= f.collection_select :tag2, @tags.order(:nom), :id, :nom, {:selected => @commerce.tag2 || 0}   %>
 </div>
 <div class="field">
 	<%= f.label :tag3 %><br/>
-	<%= f.text_field :tag3 %>
-</div>
-<div class="field">
-	<%= f.label :tag4 %><br/>
-	<%= f.text_field :tag4 %>
-</div>
-<div class="field">
-	<%= f.label :tag5 %><br/>
-	<%= f.text_field :tag5 %>
+	<%= f.collection_select :tag3, @tags.order(:nom), :id, :nom, {:selected => @commerce.tag3 || 0}   %>
 </div>
 <div class="field">
 	<%= f.label :db_add_date %><br/>
