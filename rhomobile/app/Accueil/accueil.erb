@@ -1,37 +1,33 @@
 
 <script type="text/javascript" charset="utf-8" src="/public/customjs/connexionTester.js"></script>
   
-  <div id="page">
+  <div data-role="body" id="page">
   
      <%= render :partial => "/partials/page_head_index" %></>
-
-      <h2 id="titre" text="rpoch"></h2>
-      
-        <ul id="menu">
+     <%= render :partial => "/partials/page_foot_index" %></>
+     
+     <ion-view >
+     <div class="MenuAcc" >
+     
+       <div class="col col-50" align="center">
+       <a href="<%= url_for :controller => :ParcoursPredef, :action => :parcours_predef %>">
+        <img class="ImgAccPre">
+        </a>
+        </div>
         
-          <li>
-            <a href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>" onclick="init()">
-              <img src="http://rpoch.istic.univ-rennes1.fr/static/images/parcoursPersonnalise.jpg" alt="" />
-            </a>      
-            <a href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>" onclick="init()">
-              <span class="lien" text="creerParcours"></span>
-            </a>
-          </li>
-          
-          <li>
-            <a href="<%= url_for :controller => :ParcoursPredef, :action => :parcours_predef %>">
-              <img src="http://rpoch.istic.univ-rennes1.fr/static/images/parcoursThematique.jpg" alt="" />
-            </a>
-            <a href="<%= url_for :controller => :ParcoursPredef, :action => :parcours_predef %>">
-              <span class="lien" text="parcoursThematique"></span>
-            </a>
-          </li>  
-  
-        </ul>
+       <div class="col col-50" align="center">
+        <a href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>" onclick="init()">
+        <img class = "ImgAccPer">
+        </a>
+        </div>
+
+        
+        </div>
+        </ion-view>
+      
         
   </div>
 
 <script type="text/javascript" charset="utf-8" src="/public/customjs/api.js"></script>
 <script type="text/javascript" charset="utf-8" src="/public/customjs/trad.js"></script>
 <script type="text/javascript" charset="utf-8" src="/public/customjs/accueil.js"></script>
-

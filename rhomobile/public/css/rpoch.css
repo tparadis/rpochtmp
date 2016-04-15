@@ -1,4 +1,4 @@
-body{
+﻿body{
     width:100%;
     height:100%;
     margin:0;
@@ -15,21 +15,101 @@ body{
     width: 90px;
 }
 
-.ui-btn-right .ui-btn-inner, #lang {
-    background: rgb(255,165,57);
-    color: black;
-    text-shadow: none; /*ios*/
+ .ui-btn-inner, #lang {
+    color:black;
+	text-shadow: none; /*ios*/
+}
+
+.ui-select{
+margin-left: 0px
+}
+.ui-select .ui-btn-icon-right .ui-btn-inner, .ui-select .ui-li-has-count .ui-btn-inner {
+padding-right: 0px;
+}
+
+@media all and (min-width: 320px){
+	label.ui-select { display: inline-block;  width: 20%;  margin: 0 2% 0 0; }
+	.ui-select { width: 19%; display: inline-block; }
+}	
+
+.ui-btn-up-a{font-weight:700;color:#fff;text-shadow:0 1px 0 #111;background-image:n;background-image:-moz-linear-gradient(#444,#2d2d2d);background-image:-ms-linear-gradient(#444,#2d2d2d);background-image:-o-linear-gradient(#444,#2d2d2d);background-image:linear-gradient(#444,#2d2d2d)}
+
+.ui-icon{
+display:none;
 }
 
 #header {
-    background: rgb(68,52,52); /*marron*/
     height: 40px;
+    background-image: url("/app/header_plain.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+    border: none;
 }
 
-.footer {
-    background: rgb(68,52,52);
+.ImgAccPer{
+	content:url("/app/parcours_perso_fr.png");
+        width: auto;
+        height:50%;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+.ImgAccPre{
+	content:url("/app/parcours_predef_fr.png");
+        width: auto; 
+        height: 50%;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+.MenuAcc{
+    width: 100%;
+    height: 75%;
+    padding-top: 40px;
+    padding-bottom: 90px;
+    position: relative;
+    align:center;
+    border: none;
+}
+
+#footer {
+    background: rgb(255,255,255);
+    background-image:none;
     text-shadow:none;
-    text-align:center;
+    width: 100%;
+    border: none;
+}
+
+
+
+.footerimg1{
+     content:url("/app/footer_button_1.png");
+    width: 19%;
+}
+
+.footerimg2{
+     content:url("/app/footer_button_2.png");
+    width: 19%;
+    
+}
+
+.footerimg3{
+     content:url("/app/footer_button_3.png");
+    width: 19%;
+}
+
+
+
+.footerimg4 {
+    content:url("/app/footer_button_4.png");
+     width: 100%;
+}
+
+
+.footerimg5{
+     content:url("/app/footer_button_5.png");
+     width: 19%;
 }
 
 h1 {
