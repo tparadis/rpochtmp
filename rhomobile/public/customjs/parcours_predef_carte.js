@@ -1,4 +1,6 @@
   //initialize();
+  
+listPos = [];
       function initialize() {
       
       $("#pageSpec").hide(200);  
@@ -15,6 +17,8 @@
                       
                       while (i < magasins_size)
                       {
+                    	  listPos.push(data.magasins[i].location_lat);
+                          listPos.push(data.magasins[i].location_lng);
                           locations.push([data.magasins[i].enseigne+"  "+i, data.magasins[i].location_lat,data.magasins[i].location_lng, i+1, data.magasins[i].id]);
                           i++;
                       }
