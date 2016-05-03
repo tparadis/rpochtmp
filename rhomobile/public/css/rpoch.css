@@ -1,4 +1,9 @@
-﻿body{
+@font-face {
+    font-family: tradFont;
+    src: url("/public/fonts/tradFont.otf");
+}
+
+body{
     width:100%;
     height:100%;
     margin:0;
@@ -78,38 +83,66 @@ display:none;
     background-image:none;
     text-shadow:none;
     width: 100%;
+    height:59px;
     border: none;
+    margin:0;
+    padding:0;
+}
+#footer a {
+	position:relative;
+	float:left;
+	width:19%;
+	height:52px;
+	overflow:hidden;
+	margin:0;
+	padding:0;
+	margin-left:1%;
 }
 
-
-
-.footerimg1{
-     content:url("/app/footer_button_1.png");
-    width: 19%;
+#footer a img{
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
 }
 
-.footerimg2{
-     content:url("/app/footer_button_2.png");
-    width: 19%;
-    
+#grisement{
+	position:absolute;
+	left:0;
+	right:0;
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.5);
 }
 
-.footerimg3{
-     content:url("/app/footer_button_3.png");
-    width: 19%;
+.languageSelect{
+	position:absolute;
+	width:150px;
+	height:auto;
+	background-color:white;
+	margin-left:-75px;
+	border-bottom:2px solid blue;
 }
-
-
-
-.footerimg4 {
-    content:url("/app/footer_button_4.png");
-     width: 100%;
+.languageSelect .elem{
+	position:relative;
+	margin-top:15px;
+	width:100%;
+	top:10px;
+	height:50px;
+	color:black;
+	font-family:tradFont;
+	font-size:19px;
+	text-align:center;
 }
-
-
-.footerimg5{
-     content:url("/app/footer_button_5.png");
-     width: 19%;
+.languageSelect .elem .bordureBottom{
+	position:absolute;
+	height:2px;
+	bottom:10px;
+	width:20px;
+	left:50%;
+	margin-left:-10px;
+	background-color:blue;
 }
 
 h1 {
