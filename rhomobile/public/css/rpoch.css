@@ -6,6 +6,10 @@
     font-family: Rennes;
     src: url("/public/fonts/Rennes.otf");
 }
+@font-face {
+    font-family: sscat;
+    src: url("/public/fonts/CaviarDreamsBold.ttf");
+}
 
 
 body{
@@ -49,6 +53,8 @@ display:none;
 }
 
 #header {
+	position:fixed;
+	top:0;
     height: 50px;
     background-image: url("/app/header_plain.png");
     background-repeat: no-repeat;
@@ -86,6 +92,7 @@ display:none;
 
 #footer {
     background-color: #F6F7F6;
+    position:fixed;
     background-image:none;
     text-shadow:none;
     width: 100%;
@@ -94,6 +101,7 @@ display:none;
     margin:0;
     padding:0;
     border-top:1px solid grey;
+    bottom:0;
 }
 #footer a {
 	position:relative;
@@ -434,7 +442,11 @@ tr:hover {
 }
 
 
-
+.listSsCatText{
+	color:black;
+	text-decoration:none;
+	drop-shadow:none;
+}
 
 
 
@@ -511,6 +523,7 @@ font-variant: small-caps;
     /*display: table !important;
     padding-bottom: 10px;
     width: 100%;*/
+    
 }
 .collapsible-cat-container.active {
     display: table-row;
@@ -559,7 +572,8 @@ ul.active {
 
 ul.listSsCat > li > span {
     padding-left: 1em;
-    color: #048B9a;
+    color: black;
+    font-family:sscat;
     padding-top: 4px;
     position: absolute;
 }
@@ -567,6 +581,9 @@ ul.listSsCat > li > span {
 .cat-title {
     display: block;
     text-align: center;
+    font-family:tradFont;
+    color:black;
+    font-size:24px;
 }
 
 .categorie > h3 {

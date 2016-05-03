@@ -8,16 +8,18 @@
   </head>
 
   <body>
-    <div id="page">
+    <div id="page" style="height:auto">
+      <%= render :partial => "/partials/page_head_index" %></>
       <%= render :partial => "/partials/page_header_parcours_perso"  %>
 
       <div id="navmenu" data-role="collapsible-set" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
-        
                   
       
       </div>
       
     </div>
+
+   <%= render :partial => "/partials/page_foot_index" %></>
     <script src="/public/customjs/choixParcours.js"></script>
     <script type="text/javascript" charset="utf-8" src="/public/customjs/trad.js"></script>
   </body>

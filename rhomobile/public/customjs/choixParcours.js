@@ -7,13 +7,14 @@ $(document).ready(function () {
     var box = document.createElement("div");   box.className = "collapsible-cat-container";
     var cat_height = $("body").width() / 2;
     var list = "";
-    for (; i < nbCat; i++) {
+    for (i = 0; i < nbCat; i++) {
         var keyCat = "cat" + i;
         var categorie = JSON.parse(localStorage.getItem(keyCat));
         var catimg = localStorage.getItem("catimg" + i);
         var listeSsCat = "listeSsCat" + i;
         var string = "";
 
+        //Ajout de style à la categorie
         string += "<div id='cat-"+i+"' class='categorie' style='height: "+cat_height+"px;'>"
             + "<h3><img src=" + catimg + "  width=\"32\" height=\"32\">"
             + '<span class="cat-title">'
@@ -35,14 +36,14 @@ $(document).ready(function () {
                 filename = localStorage.getItem("sscatimg" + ssCategorie[0]);
                 list +=
                     "<li onclick=\"addSsCat('" + keySsCat + "')\">"
-                    + "<img src= " + filename + "  width=\"32\" height=\"32\">"
-                    + "<span class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "") + "</span></li>";
+                   // + "<img src= " + filename + "  width=\"32\" height=\"32\">"
+                    + "<span class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "").toUpperCase() + "</span></li>";
             }
         }
         list += "</ul>";
 
 
-//si i est impair, on ferme la div(box) ouverte precedemment
+        //si i est impair, on ferme la div(box) ouverte precedemment
         if (i % 2 == 1) {
             $("#navmenu")
                 .append(box)
@@ -52,9 +53,9 @@ $(document).ready(function () {
         }
 
 
-    }
+    }//fin for
 
-//si i on est sorti de la boucle sans fermer (et ajoutï¿½ le contenu) :
+    //si i on est sorti de la boucle sans fermer (et ajoutï¿½ le contenu) :
     if (i  == nbCat) {
         $("#navmenu")
             .append(box)
@@ -62,6 +63,7 @@ $(document).ready(function () {
     }
 
 
+    //Actions sur les catégories
     $(".categorie").click(function(e){
         console.log("clisck on ", this);
         $(".listSsCat").css("display", "none");

@@ -70,7 +70,7 @@ function chargementCategories() {
 			var infoCat = [catimg, courantCatNom];
 			var keyCat = 'cat'+i;
 			localStorage.setItem(keyCat, JSON.stringify(infoCat));
-			localStorage.setItem('catimg'+i,"/public/images/cat"+catimg+"_32.png");
+			localStorage.setItem('catimg'+i,"/public/images/cat"+catimg+"_256.png");
 			}
 		
 		for(var i = 0 ; i < data.sizesscat ; i++) {
