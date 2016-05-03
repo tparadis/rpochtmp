@@ -2,6 +2,11 @@
     font-family: tradFont;
     src: url("/public/fonts/tradFont.otf");
 }
+@font-face {
+    font-family: Rennes;
+    src: url("/public/fonts/Rennes.otf");
+}
+
 
 body{
     width:100%;
@@ -44,12 +49,14 @@ display:none;
 }
 
 #header {
-    height: 40px;
+    height: 50px;
     background-image: url("/app/header_plain.png");
     background-repeat: no-repeat;
+    background-color:grey;
     background-position: center;
     background-size: cover; 
     border: none;
+    border-bottom:1px solid grey;
 }
 
 .ImgAccPer{
@@ -71,15 +78,14 @@ display:none;
 .MenuAcc{
     width: 100%;
     height: 75%;
-    padding-top: 40px;
-    padding-bottom: 90px;
-    position: relative;
+    position: absolute;
     align:center;
     border: none;
+    top:60px;
 }
 
 #footer {
-    background: rgb(255,255,255);
+    background-color: #F6F7F6;
     background-image:none;
     text-shadow:none;
     width: 100%;
@@ -87,6 +93,7 @@ display:none;
     border: none;
     margin:0;
     padding:0;
+    border-top:1px solid grey;
 }
 #footer a {
 	position:relative;
@@ -108,21 +115,23 @@ display:none;
 }
 
 #grisement{
-	position:absolute;
+	position:fixed;
 	left:0;
 	right:0;
 	width:100%;
 	height:100%;
 	background-color:rgba(0,0,0,0.5);
+	z-index:20;
 }
 
 .languageSelect{
-	position:absolute;
+	position:fixed;
 	width:150px;
 	height:auto;
 	background-color:white;
 	margin-left:-75px;
-	border-bottom:2px solid blue;
+	border-bottom:2px solid #008B87;
+	z-index:20;
 }
 .languageSelect .elem{
 	position:relative;
@@ -142,8 +151,120 @@ display:none;
 	width:20px;
 	left:50%;
 	margin-left:-10px;
-	background-color:blue;
+	background-color:#008B87;
 }
+
+/*Ceci concerne l'affichage KDR des parcours predefinis ------------------------------------*/
+
+#topPredef {
+	position: relative;
+	width: 100%;
+	height: 180px;
+	background-image:url("/public/images/RpochTXT.PNG");
+	background-repeat: no-repeat;
+    background-color:white;
+    background-position: center;
+    background-size: cover; 
+    border: none;
+    overflow:hidden;
+	top: 40px;
+	left: 0;
+	margin:0;
+	padding:0;
+}
+
+#containerPredef{
+	position:absolute;
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+	top:220px;
+	z-index:10;
+	background-color:white;
+}
+
+#containerPredef .elem{
+	position:relative;
+	float:left;
+	width:50%;
+	background-color:white;
+	margin-top:15px;
+}
+#containerPredef .elem .container{
+	position:relative;
+	width:70%;
+	height:100%;
+	left:15%;
+}
+#containerPredef .elem .container img
+{
+	position:relative;
+	width:60%;
+	left:20%;
+	top:10%;
+	height:auto;
+	margin:0;
+	padding:0;
+}
+
+#containerPredef .elem .container span
+{
+	position:relative;
+	font-family: Rennes;
+	font-size:36px;	
+	color:black;
+	left:20%;
+	top:10px;
+	top:-10px;
+}
+#containerPredef .elem .container .nom
+{
+	position:relative;
+	font-family: tradFont;
+	width:100%;
+	text-align:center;
+	font-size:25px;	
+	color:black;
+	left:0;
+	margin-left:0;
+	top:-20px;
+}
+#containerPredef .elem .container div.bordure
+{
+	position:relative;
+	width:40%;
+	left:30%;
+	height:2px;
+	background-color:#008B87;
+	margin-top:-15px;
+
+}
+
+#containerPredef .elem .bordureDroite
+{
+	position:absolute;
+	margin:0;
+	top:0;
+	padding:0;
+	height:70%;
+	margin-top:15%;
+	width:1px;
+	right:0;
+	background-color:LightGrey;
+}
+
+#containerPredef .elem .bordureBottom
+{
+	position:absolute;
+	width:70%;
+	margin-left:15%;
+	height:1px;
+	bottom:0;
+	background-color:LightGrey;
+}
+
+/*Fin des parcours predefinis */
 
 h1 {
     color:white;
@@ -213,7 +334,7 @@ h2 {
     left:0px;
     width:100%;
     height:100%;
-    background:rgb(247,247,247); /*fond clair*/
+    background-color:white;
 }
 
 #page_descriptionPredef{

@@ -1,9 +1,9 @@
 <div data-role="footer" data-position="fixed" id="footer"> 
 <div class = "row">
-<a>
+<a href="<%= url_for :controller => :ParcoursPredef, :action => :parcours_predef %>">
         <img src="/app/footer_button_1.png" />
 </a>
-<a>
+<a href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>" onclick="init()">
         <img src="/app/footer_button_2.png" />
 </a>
 <a>
