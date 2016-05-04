@@ -1,22 +1,21 @@
 <div data-role="footer" data-position="fixed" id="footer"> 
-<div class = "row">
-<a href="<%= url_for :controller => :ParcoursPredef, :action => :parcours_predef %>">
-        <img src="/app/footer_button_1.png" />
-</a>
-<a href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>" onclick="init()">
-        <img src="/app/footer_button_2.png" />
-</a>
-<a>
-        <img src="/app/footer_button_3.png" />
-</a>
-<a name="btn4"> 
-  
-  <img src="/app/footer_button_4.png" />
-    
-</a>
-<a>
-        <img src="/app/footer_button_5.png" />  
-</a>
-</div>
-
+    <div class = "row">
+    <a name="predef" href="<%= url_for :controller => :ParcoursPredef, :action => :parcours_predef %>">
+             <img src="/public/images/svg/map.svg" />
+    </a>
+    <a name="perso" href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>">
+            <img src="/public/images/svg/parcours.svg" />
+    </a>
+    <a name="search">
+            <img src="/public/images/svg/search.svg" />
+    </a>
+    <a name="btn4"> 
+      
+            <img src="/public/images/svg/langue.svg" />
+        
+    </a>
+    <a name="params">
+            <img src="/public/images/svg/parametres.svg" />
+    </a>
+    </div>
 </div> 

@@ -13,7 +13,18 @@ $(document).ready(function () {
         var catimg = localStorage.getItem("catimg" + i);
         var listeSsCat = "listeSsCat" + i;
         var string = "";
-
+        var bordureDroite = "";
+        var bordureBottom = "";
+        
+        //Ajout de la bordure droite si nécessaire
+        if(i%2 == 0)
+        {
+        	bordureDroite = '<div class="bordureDroite"></div>';
+        }
+        if(nbCat - i > 1 && i != nbCat - 1)
+        {
+        	bordureBottom = '<div class="bordureBottom"></div>';
+        }
         //Ajout de style à la categorie
         string += "<div id='cat-"+i+"' class='categorie' style='height: "+cat_height+"px;'>"
             + "<h3><img src=" + catimg + "  width=\"32\" height=\"32\">"
@@ -21,9 +32,29 @@ $(document).ready(function () {
             + categorie[1]
             + '</span>'
             + "</h3>"
+			+ bordureDroite
+			+ bordureBottom
             + "</div>";
 
         $(box).append(string);
+        
+        //Mise à 100% pour la largeur de la derniere catégorie si elle est seule sur la dernière ligne
+        if(i == nbCat -1 && i%2 == 0)
+        {
+        	var last = $(box).find(".categorie:last");
+        	last.css("width", "100%");
+        	var firstWidth = $(box).find(".categorie:first").width();
+        	var newSize = 0.8*firstWidth;
+        	last.find("h3 img").css("width", newSize+"px");
+        	last.css("padding-bottom", "0px");
+        	last.css("margin-bottom", "0px");
+        	last.find("h3 img").css("height",newSize+"px");
+        	last.find("h3 img").css("margin-top","15px");
+        	//Un peu étrange mais ça ajuste l'icone du milieu, te poses pas de questions
+        	last.find("h3 img").css("margin-left",(newSize*1.65)+"px");
+        }
+        	
+
 
         list +="<ul id='" + listeSsCat + "' class='listSsCat' " +
             "data-icon='plus' style='display:none;'>";
@@ -37,7 +68,7 @@ $(document).ready(function () {
                 list +=
                     "<li onclick=\"addSsCat('" + keySsCat + "')\">"
                    // + "<img src= " + filename + "  width=\"32\" height=\"32\">"
-                    + "<span class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "").toUpperCase() + "</span></li>";
+                    + "<span class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "").toUpperCase() + "<span style='color: #008B87; font-size:24px'> +</span></span></li>";
             }
         }
         list += "</ul>";
@@ -86,6 +117,14 @@ $(document).ready(function () {
     });
 
     actualiserMagasins();
+    
+    //Ajout des animation sur les li
+    $("li").on("click",function(){
+    	
+    	$(this).animate({"background-color":"#008B87"}, 300).animate({"background-color":"white"}, 300);
+    	
+    });
+ 
 });
 
 //Call ruby method via ajax
@@ -97,17 +136,6 @@ function addSsCat(sscat) {
     var tmp = JSON.parse(localStorage.getItem(sscat));
     sessionStorage.setItem(sessionStorage.length, JSON.stringify(tmp));
     actualiserMagasins();
-    //toast message
-    $("<div class='ui-loader ui-overlay-shadow ui-body-e ui-corner-all' > Magasin Ajout&eacute</div>").css({
-            "display": "block",
-            "opacity": 0.96,
-            "": $(window).scrollTop()
-        })
-        .appendTo($.mobile.pageContainer)
-        .delay(300)
-        .fadeOut(300, function () {
-            $(this).remove();
-        });
 }
 
 

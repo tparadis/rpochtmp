@@ -31,7 +31,7 @@ function beginTest()
 
 function calledBack(params)
 {
-	console.log("polled");
+	//console.log("polled");
 	if(params.connectionInformation == "Connected")
 	{
 		if(appendOnce == true)
@@ -42,7 +42,7 @@ function calledBack(params)
 		}
 		
 		
-		console.log("connect");
+		//console.log("connect");
 	}
 	else
 	{

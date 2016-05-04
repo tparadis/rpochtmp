@@ -82,12 +82,14 @@ display:none;
 }
 
 .MenuAcc{
-    width: 100%;
-    height: 75%;
+    width: 90%;
+    height: 70%;
     position: absolute;
+    left:5%;
     align:center;
     border: none;
     top:60px;
+    overflow:hidden;
 }
 
 #footer {
@@ -112,14 +114,17 @@ display:none;
 	margin:0;
 	padding:0;
 	margin-left:1%;
+	border-radius:10px;
 }
 
 #footer a img{
 	position:absolute;
 	left:0;
 	top:0;
-	width:100%;
-	height:100%;
+	width:40%;
+	height:60%;
+	top:20%;
+	left:25%;
 }
 
 #grisement{
@@ -175,7 +180,7 @@ display:none;
     background-size: cover; 
     border: none;
     overflow:hidden;
-	top: 40px;
+	top: 0px;
 	left: 0;
 	margin:0;
 	padding:0;
@@ -448,58 +453,13 @@ tr:hover {
 	drop-shadow:none;
 }
 
-
-
-
-
-/*Import des polices d'ecriture
-pour les utiliser (exemple avec Playlist small-caps)
-font-family: Playlist;
-font-variant: small-caps;
-*/
-@font-face {
-    font-family: Playlist;
-    font-variant: normal;
-    src: url('../fonts/PlaylistScript.otf');
-}
-
-@font-face {
-    font-family: Playlist;
-    font-variant: small-caps;
-    src: url('../fonts/PlaylistScript.otf');
-}
-
-@font-face {
-    font-family: CaviarDreams;
-    font-variant: normal;
-    src: url('../fonts/CaviarDreams.ttf');
-}
-
-@font-face {
-    font-family: CaviarDreams;
-    font-weight: bold;
-    src: url('../fonts/CaviarDreamsBold.ttf');
-}
-
-@font-face {
-    font-family: MinionProRegular;
-    font-variant: normal;
-    src: url('../fonts/MinionProRegular.otf');
-}
-
-@font-face {
-    font-family: HelveticaNeue;
-    font-variant: normal;
-    src: url('../fonts/HelveticaNeue.ttf');
-}
-
 /* css additionnel pour le parours personalisÃ©*/
 #navmenu {
     display: table;
 }
 
 .active.categorie {
-    background: #048B9a;
+    
     color: #fff;
 }
 
@@ -516,6 +476,7 @@ font-variant: small-caps;
     margin: 3px;
     width: 48%;
     height: inherit;
+    position:relative;
 }
 
 .collapsible-cat-container {
@@ -525,6 +486,32 @@ font-variant: small-caps;
     width: 100%;*/
     
 }
+
+.categorie .bordureDroite
+{
+	position:absolute;
+	margin:0;
+	top:0;
+	margin-top:15%;
+	margin-right:-5px;
+	padding:0;
+	height:70%;
+	width:1px;
+	right:0;
+	background-color:LightGrey;
+}
+
+.categorie .bordureBottom
+{
+	position:absolute;
+	width:70%;
+	margin-left:15%;
+	height:1px;
+	bottom:0;
+	background-color:LightGrey;
+}
+
+
 .collapsible-cat-container.active {
     display: table-row;
 }
@@ -540,12 +527,12 @@ font-variant: small-caps;
 ul.listSsCat  > li {
     list-style: none;
     background: inherit;
-    border: 0 solid #888;
-    border-bottom-width: 1px;
     padding-bottom: 3px;
     height: 2em;
     margin: .2em 2em;
     color: #BBB;
+    text-align:center;
+    border-radius:10px;
 }
 
 .ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li {
@@ -575,15 +562,16 @@ ul.listSsCat > li > span {
     color: black;
     font-family:sscat;
     padding-top: 4px;
-    position: absolute;
+    position: relative;
 }
 
 .cat-title {
     display: block;
     text-align: center;
-    font-family:tradFont;
+    font-family:Rennes;
     color:black;
-    font-size:24px;
+    font-size:30px;
+    line-height:30px;
 }
 
 .categorie > h3 {
@@ -629,3 +617,81 @@ div.after-first-elem{
 .large-list-elem .after-first-elem {
     background: inherit;
 }
+
+/* La barre de recherche   */
+#searchbar{
+	position:fixed;
+	left:50%;
+	margin-left:-140px;
+	width:280px;
+	bottom:60px;
+	height:50px;
+	background-color:white;
+	border-bottom:2px solid #008B87;
+	z-index:21; /* le #grisement est à 20 */
+	font-family:Rennes;
+	text-align:center;
+	font-size:26px;
+}
+#searchbar span{
+	position:absolute;
+	width:100%;
+	left:0;
+	margin-top:2px;
+	border:none;
+}
+#searchbar input{
+	border:none;
+	outline: none;
+}
+#parametres
+{
+	position:fixed;
+	width:220px;
+	height:350px;
+	border-bottom:2px solid #008B87;
+	right:0;
+	bottom:60px;
+	background-color:white;
+	z-index:22;
+}
+#parametres .imgTop
+{
+	position:relative;
+	top:20px;
+	width:90%;
+	left:6%;
+	height:100px;
+	background-image: url("/public/images/rpochparameters.png");
+	background-size:cover;
+	margin-bottom:40px; 
+}
+#parametres .elem
+{
+	position:relative;
+	float:left;
+	width:100%;
+	height:30px;
+	text-align:center;
+	text-decoration:none;
+	color:black;
+	font-family:sscat;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -123,81 +123,14 @@ function actualiserLanguage(){
 	}
 }
 
-//Fonction qui va mettre le cadre des langues au bon emplacement
-//Et crée le menu si besoin
-function afficheBoxLanguages(){
-	var box = $("body").find(".languageSelect");
-	var langs = ["fr", "en", "esp", "de"];
-	var equiv = ["FRANCAIS", "ENGLISH", "SPANISH", "DEUTSCH"];
-	var i = 0;
-	var newLeft = ($("body").width()/5)*3 + 20;
-	var bordure = "";
-	if( $(".elem").length ==0 ){
-		for(i = 0; i < langs.length; i++)
-		{
-			if(i != langs.length -1 )
-			{	
-				bordure = '<div class="bordureBottom"></div>';
-			}
-			else
-			{
-				bordure = "";
-			}
-			
-			$(box).append('<div class="elem" name="'+langs[i]+'">'+equiv[i] + bordure + '</div>');
-			
-		}
-	}
-	$(".elem").on("click", function(){
-		changeLanguage($(this).attr('name'));
-	});
-	$(box).css("bottom", $("body").find("div[id='footer']").height() +"px");
-	$(box).css("left", newLeft + "px");
-	
-}
-function initiate(){
-	var nb = $(".languageSelect").length;
-	if(nb < 1){
-		$("body").append("<div id='grisement'></div>");
-		$('body').append('<div class="languageSelect"></div>');
-	}
-	$("#grisement").css("height", $("page").height - $("#footer").height() - $("header").height() +"px");
-	
-	$("#grisement").hide();
-	$(".languageSelect").hide();
-}
+
 
 window.onload = actualiserLanguage();
 $(document).ready(getLanguage);
 $(document).ready(function(e){
 	
-	var affiche = false;
-	initiate();
-	afficheBoxLanguages();
 	getLanguage();
-	$('a[name="btn4"]').on('click',function(){
-		if(affiche == false)
-		{
-			var newLeft = ($("body").width()/5)*3 + 20;
-			var box = $("body").find(".languageSelect");
-			$(box).css("bottom", $("body").find("div[id='footer']").height() +"px");
-			$(box).css("left", newLeft + "px");
-			$("#grisement").show();
-			$(".languageSelect").show();
-			affiche = true;
-		}
-		else
-		{
-			affiche = false;
-			$("#grisement").hide();
-			$(".languageSelect").hide();
-		}
-	});
-	$('#grisement').on('click',function(){
-			$("#grisement").hide();
-			$(".languageSelect").hide();
-			affiche = false;
-	});
+	
 	
 })
 

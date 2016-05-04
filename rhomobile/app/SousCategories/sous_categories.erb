@@ -1,26 +1,14 @@
-<!DOCTYPE html>
+<div id="page" data-role="page" style="height:auto;">
+<%= render :partial => "/partials/page_header_parcours_perso"  %>
+    <div data-role="content" style="height:auto; background-color:white; padding-bottom:50px;">
+           <div id="navmenu" data-role="collapsible-set" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d"> </div>
+           <div id="path" name="sscat"></div>
+    </div>   
 
-<html>
-
-  <head>
-    <meta charset="utf-8" />
-
-  </head>
-
-  <body>
-    <div id="page" style="height:auto">
-      <%= render :partial => "/partials/page_head_index" %></>
-      <%= render :partial => "/partials/page_header_parcours_perso"  %>
-
-      <div id="navmenu" data-role="collapsible-set" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
-                  
-      
-      </div>
-      
-    </div>
-
-   <%= render :partial => "/partials/page_foot_index" %></>
+    <%= render :partial => "/partials/page_foot_index" %>
+    
+    <script src="/public/customjs/color.js"></script>
     <script src="/public/customjs/choixParcours.js"></script>
     <script type="text/javascript" charset="utf-8" src="/public/customjs/trad.js"></script>
-  </body>
-</html>
+    
+</div>

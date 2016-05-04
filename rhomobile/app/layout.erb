@@ -39,18 +39,20 @@
                 $.mobile.loadingMessageDelay = 300; // in ms
 
                 // Uncomment these options in case of performance problem in pages transition
-                //$.mobile.defaultPageTransition = 'none';
-                //$.mobile.defaultDialogTransition = 'none';
-                //$.mobile.ajaxEnabled = false;
-                //$.mobile.pushStateEnabled = false;
-                //$.mobile.loadingMessageDelay = 50; // in ms
+                $.mobile.defaultPageTransition = 'none';
+                $.mobile.defaultDialogTransition = 'none';
+                $.mobile.ajaxEnabled = false;
+                $.mobile.pushStateEnabled = false;
+                $.mobile.loadingMessageDelay = 50; // in ms
             });
         </script>
-        <script type="text/javascript" charset="utf-8" src="/public/jqmobile/jquery.mobile-1.3.1.min.js"></script>
-        <script type="text/javascript" charset="utf-8" src="/public/js/jqmobile-patch.js"></script>
-        <script type="text/javascript" charset="utf-8" src="/public/customjs/lang.js"></script>
+         <script type="text/javascript" charset="utf-8" src="/public/jqmobile/jquery.mobile-1.3.1.min.js"></script>
+         <script type="text/javascript" charset="utf-8" src="/public/js/jqmobile-patch.js"></script>
         <script type="text/javascript" charset="utf-8" src="/public/customjs/api.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/public/customjs/lang.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/public/customjs/trad.js"></script>
         <script type="text/javascript" charset="utf-8" src="/public/customjs/dialog.js"></script>
+        
 
     <% end %>
 
@@ -61,18 +63,17 @@
     <% elsif Rho::System.getProperty('webviewFramework') =~ /^WEBKIT/ %>
         <link href="/public/css/re_webkit.css" type="text/css" rel="stylesheet"/>
     <% elsif Rho::System.getProperty('platform') == 'WINDOWS' %>
-	    <link href="/public/css/windows_mobile.css" type="text/css" rel="stylesheet"/>
+      <link href="/public/css/windows_mobile.css" type="text/css" rel="stylesheet"/>
     <% end %>
 
     <link href="/public/css/rpoch.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="/public/css/detailsCommerce.css">
 </head>
 
-<body data-platform="<%= Rho::System.getProperty('platform') %>">
-  
-    <%= @content %>
-    
-    
+<body data-platform="<%= Rho::System.getProperty('platform') %>">  
+    <%= @content %>   
+<script src="/public/customjs/footer.js"></script>
 </body>
+
 
 </html>

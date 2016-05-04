@@ -1,13 +1,11 @@
+<div id="page" data-role="page" data-url="<%= Rho::Application.startURI %>/">
+<%= render :partial => "/partials/page_header_parcours_perso"  %>
 
-<div data-role="page" data-url="<%= Rho::RhoConfig.start_path %>/">
-
-    
-  <div data-role="content">
-    
-
-    <%= render :file => "Accueil/accueil.erb"  %>
-
-  </div>
-
+    <div data-role="content">
+        <%= render :file => "Accueil/accueil.erb"  %>
+        <div id="path" name="main"></div>
+    </div>
+<%= render :partial => "/partials/page_foot_index" %>
+ 
+  
 </div>
-
