@@ -98,6 +98,15 @@ display:none;
 
 .Pannier{
     float: right;
+    margin-top:7px;
+    margin-right:7px;
+}
+#nb_magasins
+{
+	color:black;
+	font-size:30px;
+	font-family:Rennes;
+	top:0px;
 }
 
 .ImgAjoutMag{
