@@ -1,16 +1,5 @@
-<!DOCTYPE html>
 
-<html>
-
-  <head>
-    <meta charset="utf-8" />
-  </head>
-
-  <body>
-    
-   
-  
-    <div id="page">
+    <div id="page" data-role="page">
 
       <%= render :partial => "/partials/page_head" %>
 
@@ -30,17 +19,17 @@
         
       </table>
       
-      <div class = "fpouter">
+      <div class = "fpouter" style="height:200px">
        
 
        <div class="fpinner">
         <a href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>" >
-           <h3><img class = "ImgAjoutMag"/></h3>
+           <img class = "ImgAjoutMag"/>
         </a>
-        </div>
+       </div>
        <div class="fpinner">
        <a >
-         <h3><img onclick="afficherParcours()" class = "ImgBtnCarte"/></h3>
+         <img onclick="afficherParcours()" class = "ImgBtnCarte"/>
        </a>
        </div>
     </div>
@@ -50,6 +39,6 @@
   <script type="text/javascript" charset="utf-8" src="/public/customjs/trad.js"></script>
   <script src="/public/customjs/finalParcours.js"></script>
   <script src="/public/customjs/detailsCommerce.js"></script>
+  
+  </div>
     
-  </body>
-</html>

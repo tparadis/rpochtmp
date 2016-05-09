@@ -105,13 +105,13 @@ function afficheSpecificationMagasin()
 	
 	//Ajouter dynamiquement les affiliations aux liens
 	//des réseaux sociaux ci-dessous
+	//Modifier le comportement des boutons en fonction de l'action voulue !
 	var k = 0;
-	var socialsPictures = ["fb.svg", "instagram.svg", "email.svg"]
-	for (k = 0; k < 3; k++)
+	var socialsPictures = ["fb.svg", "instagram.svg", "email.svg", "warning.svg"];
+	for (k = 0; k < socialsPictures.length; k++)
 	{
 		$(".socialNetworks").append("<img src='/public/images/svg/"+socialsPictures[k]+"' />");
 	}
-	
 	//Ajustement pour le bas de la page
 	//$("#pageSpec").css("height", $("#pageSpec").height() + 50 + "px");
 	$("#pageSpec").show(0);  
@@ -125,7 +125,7 @@ function afficheSpecificationMagasin()
 }
 
 
-//Converti un id de tag en nom !
+//Converti un id de tag en nom  de catégorie (ex: cat7)
 function findSSCat(id,t){
 	
 	var nbSS = parseInt(localStorage.getItem("nbSsCat"));

@@ -87,12 +87,15 @@ function afficheTout()
 	{
 		$("body").append("<div id='searchbar'><span><form action='#' method='post'><input type='text' value='Rechercher un lieu' /></form></span></div>");
 	}
+
 	$("#searchbar").hide();
 	$("#grisement").hide();
 	$('a[name="search"]').on("click",function(){
 		
 		if(afficheLoupe == false)
 		{
+			//$("#searchbar form").html("");
+			//$("#searchbar form").append("<input type='text' value='Rechercher un lieu' />");
 			$("#searchbar").show();
 			$("#grisement").show();
 			afficheLoupe = true;
