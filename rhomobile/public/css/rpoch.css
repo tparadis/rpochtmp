@@ -10,6 +10,10 @@
     font-family: sscat;
     src: url("/public/fonts/CaviarDreamsBold.ttf");
 }
+@font-face {
+    font-family: descriptif;
+    src: url("/public/fonts/CaviarDreams.ttf");
+}
 
 
 body{
@@ -142,9 +146,9 @@ display:none;
 	width:150px;
 	height:auto;
 	background-color:white;
-	margin-left:-75px;
 	border-bottom:2px solid #008B87;
 	z-index:20;
+	right:45px;
 }
 .languageSelect .elem{
 	position:relative;

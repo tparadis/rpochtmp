@@ -10,7 +10,7 @@ class AppApplication < Rho::RhoApplication
     
     
     #To remove default toolbar uncomment next line:
-    #@@toolbar = nil
+    @@toolbar = nil
     super
 
 

@@ -21,9 +21,15 @@ function checkIfImplemented()
 {
 	if($("#pageSpec").length == 0)
 	{
-		//S'il n'y a pas les balises pour le rendu de notre page, on l'ajoute directement.
-		$("body").append("<div id='pageSpec'><div id='imageCommerce'></div><div id='descrCommerce'><div id='contenu'></div><br/><br/><img id='back' src='/public/images/backButton2.png' /><img id='contact-us' src='/public/images/signaler.png' /></div></div>");
-		$("#contact-us").css({"width" : "50px", "margin-left": "70%"});
+	
+	//S'il n'y a pas les balises pour le rendu de notre page, on l'ajoute directement.
+	$("body").append("<div id='pageSpec'>"
+		+ "<div id='close'></div>"
+		+ "<div id='topSpec'><div id='cadreImg'><img src='' /></div><div id='sscat'></div></div>"
+		+ "<div id='midSpec'></div>"
+		+ "<div id='botSpec'></div>"
+		+ "</div>");
+	$("#contact-us").css({"width" : "50px", "margin-left": "70%"});
 		$("#contact-us").on("click", function (event) {
 		    event.stopPropagation()
 
@@ -67,8 +73,10 @@ function afficheSpecificationMagasin()
 	//On cache la page active 
 	$(".ui-page-active").hide();
 	//On vire les anciens résultats:
-	$("#imageCommerce").html("");
-	$("#descrCommerce #contenu").html("");
+	$("#cadreImg").html("");
+	$("#midSpec").html("");
+	$("#botSpec").html("");
+	$("#sscat").html("");
 	
 	//On check que les boutons "boutonsParcours" soient bien jartés
 	$("#boutonsParcours").hide();
@@ -77,50 +85,45 @@ function afficheSpecificationMagasin()
 	
 	//Faire un truc
 	var url = "http://rpoch.istic.univ-rennes1.fr/static/images/";
-	$("#imageCommerce").append("<img src='"+url+data.commerce.image+"' />")
-	$("#descrCommerce #contenu").append("<span class='titre' >\""+data.commerce.enseigne+"\"</span><br/>");
-	afficheTags(data.commerce.tag0, data.commerce.tag1, data.commerce.tag2);
 	
-	$("#descrCommerce #contenu").append("<br/><br/>");
-	$("#descrCommerce #contenu").append("<span class='others'>"+data.commerce.street_number+" "+data.commerce.route+"</span><br/>");
-	$("#descrCommerce #contenu").append("<span class='others'>Tel. "+data.commerce.phone_num+"</span><br/>");
 	
-	$("#pageSpec").show(200);  
 	
-	$("#back").on("click",function(e){
-			$("#pageSpec").hide(400);
-			$("#boutonsParcours").show(200);
+	$("#cadreImg").append("<img src='"+url+data.commerce.image+"' />");
+	$("#sscat").append("<img src='/public/images/"+findSSCat(data.commerce.tag0,0)+"_256.png"+"' />");
+	
+	$("#midSpec").append("<div class='titre' >"+convertirEnLisible(data.commerce.enseigne)+"</div>");
+	$("#midSpec").append("<div class='addresse' >"+(data.commerce.street_number+" "+data.commerce.route).toUpperCase()+"</div>");
+	$("#midSpec").append("<div class='bordureBot'></div>");
+	$("#midSpec").append("<div class='description'>"+data.commerce.description+"</div>");
+	
+	$("#botSpec").append("<div class='horaires'>DU LUNDI AU VENDREDI<br/>8.30 - 15.30</div>");
+	$("#botSpec").append("<div class='bordureBot'></div>");
+	$("#botSpec").append("<div class='telephone'><img src='/public/images/svg/phone.svg' /> <span>"+data.commerce.phone_num+"</span></div>");
+	$("#botSpec").append("<div class='bordureBot'></div>");
+	$("#botSpec").append("<div class='website'>www.nowhere.net</div>");
+	$("#botSpec").append("<div class='socialNetworks'></div>");
+	
+	//Ajouter dynamiquement les affiliations aux liens
+	//des réseaux sociaux ci-dessous
+	var k = 0;
+	var socialsPictures = ["fb.svg", "instagram.svg", "email.svg"]
+	for (k = 0; k < 3; k++)
+	{
+		$(".socialNetworks").append("<img src='/public/images/svg/"+socialsPictures[k]+"' />");
+	}
+	
+	//Ajustement pour le bas de la page
+	//$("#pageSpec").css("height", $("#pageSpec").height() + 50 + "px");
+	$("#pageSpec").show(0);  
+	
+	$("#close").on("click",function(e){
+			$("#pageSpec").hide(0);
+			$("#boutonsParcours").show(0);
 			//On reaffiche la page active
 			$(".ui-page-active").show();			
 	});
 }
 
-
-function afficheTags(tag0, tag1, tag2)
-{
-	var t0 = "";
-	var t1 = "";
-	var t2 = ""; 
-	var temp;
-	
-	if(tag0 != null && tag0 >= 0)
-	{
-		t0 = findSSCat(tag0,0);
-	}
-	
-	if(tag1 != null && tag1 >= 0)
-	{
-		t1 = findSSCat(tag1,1);
-	}
-	if(tag2 != null && tag2 >= 0)
-	{
-		t2 = findSSCat(tag2,2);
-	}
-	
-	
-	$("#descrCommerce #contenu").append("<span class='descr'>"+t0+t1+t2+"</span>");
-	
-}
 
 //Converti un id de tag en nom !
 function findSSCat(id,t){
@@ -133,9 +136,8 @@ function findSSCat(id,t){
 		tmp = JSON.parse(localStorage.getItem("sscat"+i));
 		if(tmp[0] == id)
 		{
-			if(t >0)
-				tmp[1] = ", "+tmp[1];
-			return tmp[1];
+
+			return "cat"+tmp[2];
 		}
 		i++;
 	}
@@ -164,6 +166,23 @@ function findCatSubCat(id){
 	         "cat":"",
 	         "subcat":""}; 
 	         
+}
+
+
+function convertirEnLisible(texte)
+{
+	var words = texte.split(" ")
+	var i = 0;
+	var res = "";
+	for(i = 0; i < words.length; i++)
+	{
+		res += words[i].substring(0,1).toUpperCase();
+		res += words[i].substring(1).toLowerCase();
+		res += " ";
+	}
+	
+	return res;
+	
 }
 	  
 

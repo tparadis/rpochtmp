@@ -12,7 +12,6 @@ function updateFooter()
 
 	}
 
-	
 }
 function afficheTout()
 {
@@ -38,11 +37,10 @@ function afficheTout()
 	+'</div>');
 	
 	//Truc pour les langues du languageSelect
-	var box = $("body").find(".languageSelect");
+	var box = $(".languageSelect");
 	var langs = ["fr", "en", "esp", "de"];
 	var equiv = ["FRANCAIS", "ENGLISH", "SPANISH", "DEUTSCH"];
 	var i = 0;
-	var newLeft = ($("body").width()/5)*3 + 20;
 	var bordure = "";
 
 		for(i = 0; i < langs.length; i++)
@@ -66,7 +64,6 @@ function afficheTout()
 		changeLanguage($(this).attr('name'));
 	});
 	$(box).css("bottom", $("body").find("div[id='footer']").height() +"px");
-	$(box).css("left", newLeft + "px");
 	
 	$("#grisement").hide();
 	$("#parametres").hide();
@@ -82,10 +79,8 @@ function afficheTout()
 			$("a[name='btn4']").css("background-color", "#F6F7F6");
 	});
 	
-	var newLeft = ($("body").width()/5)*3 + 20;
 	var box = $("body").find(".languageSelect");
 	$(box).css("bottom", $("body").find("div[id='footer']").height() +"px");
-	$(box).css("left", newLeft + "px");
 
 	//Ajout d'une barre de recherche si elle n'existe pas deja
 	if($("#searchbar").length == 0)
@@ -119,6 +114,7 @@ function afficheTout()
 		
 	});
 	
+	//Le bouton des parametres
 	$('a[name="params"]').on("click",function(){
 			
 			if(afficheParams == false)
@@ -145,6 +141,7 @@ function afficheTout()
 			
 	});
 	
+	//Le bouton de traduction
 	$('a[name="btn4"]').on('click',function(){
 		if(afficheTrad == false)
 		{
@@ -169,5 +166,5 @@ function afficheTout()
 	
 }
 
-document.ready = afficheTout();
+window.onload = afficheTout();
 $(document).ready(updateFooter);
