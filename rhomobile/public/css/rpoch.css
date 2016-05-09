@@ -30,7 +30,7 @@ body{
 }
 
 .ui-btn-right {
-    width: 90px;
+    width: auto;
 }
 
  .ui-btn-inner, #lang {
@@ -94,6 +94,30 @@ display:none;
     border: none;
     top:60px;
     overflow:hidden;
+}
+
+.Pannier{
+    float: right;
+}
+
+.ImgAjoutMag{
+    content:url("/app/votre_parcours_fr.png");
+    width:180px;
+}
+
+.ImgBtnCarte{
+   content:url("/app/carte_btn_fr.png");
+   width:180px;
+}
+#fpouter
+{
+    width:100%;
+    text-align: center;
+}
+.fpinner
+{
+    display: inline-block;
+
 }
 
 #footer {
@@ -393,18 +417,11 @@ h2 {
     font-family: 'Open Sans', Arial, sans-serif;
 }
 
-#boutonsParcours .ui-btn {
-    background: rgb(68,52,52);
-    border-radius: 30px;
-    border: none;
+#boutonsParcours {
+display: table-row;
 }
 
-#boutonsParcours .ui-btn .ui-btn-text {
-    color:white;
-    text-shadow: none;
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-weight: normal;
-}
+
 
 #example{
     border: 1px solid black;

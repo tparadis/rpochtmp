@@ -30,23 +30,22 @@
         
       </table>
       
-      <div id="boutonsParcours">
+      <div class = "fpouter">
        
-        
-        <a>
-          <button onclick="afficherParcours()" text="afficherCarte">
-          </button>
-        </a>
-        
-        <a href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>">
-          <button text="ajouterMagasin">
-          </button>
-        </a>
-      </div>
 
+       <div class="fpinner">
+        <a href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>" >
+           <h3><img class = "ImgAjoutMag"/></h3>
+        </a>
+        </div>
+       <div class="fpinner">
+       <a >
+         <h3><img onclick="afficherParcours()" class = "ImgBtnCarte"/></h3>
+       </a>
+       </div>
     </div>
 
-
+<%= render :partial => "/partials/page_foot_index" %>
   <script src="/public/customjs/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="/public/customjs/trad.js"></script>
   <script src="/public/customjs/finalParcours.js"></script>
