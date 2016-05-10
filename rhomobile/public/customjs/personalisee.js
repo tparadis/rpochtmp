@@ -23,8 +23,13 @@ var waypointsArray =[];
         }
     for (var i = 0 ; i < sessionStorage.length ; i++) {
         var magasin = JSON.parse(sessionStorage.getItem(i));
-        var image = {url:localStorage.getItem("sscatimg"+magasin[0]),
-          size: new google.maps.Size(32, 32),
+        var categories = findCatSubCat(magasin[2]);
+        var urlimg ="/public/images/cat"+categories.cat+"_256.png";
+        var image = {
+        	
+          url: urlimg,
+       // url:localStorage.getItem("sscatimg"+magasin[0]),
+          scaledSize: new google.maps.Size(50, 50),
           origin: new google.maps.Point(0, 0),
           anchor: new google.maps.Point(16, 16)
         };         
@@ -90,9 +95,9 @@ var waypointsArray =[];
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
                         return function() {
                           
-                          infowindow.setContent(magasins[i].name+'<div id="marker" name="'+magasins[i].id+'" ><button>information</button></div>');
+                          infowindow.setContent(magasins[i].name+'<div id="marker" name="'+magasins[i].id+'" > <img class= "ImgBtnInfo" ></img></div>');
                           infowindow.open(map, marker);
-                          $("#marker").find("button").on("click",function(e){
+                          $("#marker").find("img").on("click",function(e){
                             if(currentInfoWindow!= undefined){
                                            currentInfoWindow.close();
                                            }
@@ -127,6 +132,27 @@ var waypointsArray =[];
          
        setInterval("passerDevant()", 5000); 
        }  
+       
+       function findCatSubCat(id){
+   	    var data = api.getCommDetail(id);
+   	     var nbSS = parseInt(localStorage.getItem("nbSsCat"));
+   	     var i = 0;
+   	     var tmp="";
+   	     while(i < nbSS)
+   	     {
+   	         tmp = JSON.parse(localStorage.getItem("sscat"+i));
+   	         if(data.commerce.tag0 == tmp[0])
+   	         {    return {
+   	             "cat":tmp[2],
+   	             "subcat":tmp[0]}; 
+   	         }
+   	         i++;
+   	     }
+   	     return {
+   	         "cat":"",
+   	         "subcat":""}; 
+   	         
+   }
        
        function passerDevant(){
     	       if(navigator.geolocation){
