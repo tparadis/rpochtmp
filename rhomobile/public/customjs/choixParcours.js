@@ -1,4 +1,5 @@
 var datar = "";
+var firstTime = true;
 
 $(document).ready(function () {
     var nbCat = localStorage.getItem('nbCat');
@@ -138,7 +139,17 @@ function addSsCat(sscat) {
     actualiserMagasins();
 }
 
-
 function actualiserMagasins() {
+	
+	//Petite animation pour dire qu'il faut cliquer sur le magasin
+	if(!firstTime)
+	{
+		$("#animationPlus").stop().animate({"bottom":"18px", "opacity":"1"},300).delay(500).animate({"bottom":"0px", "opacity":"0"},500);
+	}
+	else
+	{
+		$("#animationPlus").css("opacity","0");
+	}
+	firstTime = false;
     $(".cart #nb_magasins").text(sessionStorage.length);
 }
