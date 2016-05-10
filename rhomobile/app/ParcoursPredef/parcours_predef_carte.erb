@@ -1,33 +1,14 @@
-<!DOCTYPE html>
-<html> 
-<head> 
-<style>
-  html,body{
-    overflow:hidden;
-    width:100%;
-    height:100%;
-  }
-    #map {
-    position:absolute;
-    top:0;
-    left:0;
-      width: 100%;
-      height: 100%;
-      color:black;
-      
-    }
-</style>
 <script src="/public/customjs/geoloc.js"></script> 
 <script src="/public/customjs/api.js"></script>
 <script src="/public/customjs/detailsCommerce.js"></script>
 <script src="/public/customjs/choixParcours.js"></script>
 <script src="/public/customjs/homebtn.js"></script>
 <script src="/public/customjs/parcours_predef_carte.js"></script>
-<script src="/public/customjs/homebtn.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcpbC-OR2Xbq5JcUAOaDrEgoOGxN5St9w&signed_in=true&callback=initialize" async defer></script>   
-</head> 
-<body>  
+
     <div id="parcours_predef" name="<%=$typeparcours %>" ></div>
-    <div id="map"></div>
-</body>
-</html>
+    <div id="map" style="position:absolute;top:0;left:0;width: 100%;height: 100%;color:black;"></div>
+<script>
+  //Anciennement du CSS
+  $("html, body").css({"overflow":"hidden", "width":"100%", "height":"100%"});
+</script>
