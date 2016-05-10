@@ -8,34 +8,23 @@
 
   <body>
     <%= render :partial => "/partials/page_head" %>
+    <%= render :partial => "/partials/page_foot_index" %>
 
      <div id="page_descriptionPredef">
     
       <h2 style="text-align: center" id="nompage">
         Parcours 
       </h2>
-      
-      <!-- boutton pour afficher la map -->
-      <button onclick="javascript:location.href='/app/ParcoursPredef/requette_etudiant?type_parcours=<%=$typeparcours %>'" text="afficherCarte">
-      </button> 
-
-       
-      <table id="liste_magasins">
-        <thead>
-          <tr>
-            <th text="magasin"></th>
-            <th text="detail"></th>
-          </tr>
-        </thead>
-        
+  <div id="image" align="center">
+      <img  onclick="javascript:location.href='/app/ParcoursPredef/requette_etudiant?type_parcours=<%=$typeparcours %>'" class = "ImgBtnCarte "/>       
+    </div>
+      <table align="center" id="liste_magasins">
+                
         <tbody>
         </tbody>
         
       </table>
-       
-     
-      
-   
+          
       </div>
       
 
@@ -65,7 +54,8 @@
           }
         }
         //affichage de l'image et de la description
-        $("table").before('<div style="text-align: center"><img src="'+adresseImg+'" alt="image" style="height : 150px"><p>'+predefs.parcourspredefs[id].description+'</p></div>');
+      //  $("table").append('<div align="left" class="ImgParcoursPredef"><img src="'+adresseImg+'" alt="image" style="height :150px"></div>')
+        $("table").before('<div><p>'+predefs.parcourspredefs[id].description+'</p></div>');
         //Nom du parcours
         switch(localStorage.getItem(0)){
           case "fr": $("#nompage").text(predefs.parcourspredefs[id].fr); break;
@@ -81,7 +71,7 @@
         while (i < magasins_size){
           magasin_nom = data.magasins[i].enseigne;
           // on attache les magasins à la liste
-          $("tbody").append('<tr><td>'+magasin_nom+'</td><td><a class="detailButton" name='+predefs.parcourspredefs[id].commerces[i]+'><button>i</button></a></td></tr>');
+          $("tbody").append('<tr><td>'+magasin_nom+'</td><td><a class="detailButton" name='+predefs.parcourspredefs[id].commerces[i]+'><img class= "ImgBtnInfo" ></img></a></td></tr>');
           i++;
         }
         $('a.detailButton').each(function() {
