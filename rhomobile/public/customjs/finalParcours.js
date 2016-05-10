@@ -19,11 +19,12 @@ function refresh() {
     	
     		$("tbody").append("<tr><td class='listSsCatText' >"+magasin[3].toUpperCase()+"</td><td><img class=' detailButton ImgBtnInfo' name='"+id+"'></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
     		ajoutDansRes();
-		    $('img.detailButton').on('click',function(e){
-	    		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
-	    		afficheSpecificationMagasin();
-	    	});
+		   
     }
+    $('img.detailButton').on('click',function(e){
+		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
+		afficheSpecificationMagasin();
+	});
 }
 
 function supprimerMag(numLigne) {
@@ -72,16 +73,6 @@ function genererParcours(){
 	    	
 	    }
 		
-	    //On récupère l'attribut nom (qui contient l'id du magasin) et on le stock dans la sessionStorage "currentMagasin"
-	    //Dans la page detailsCommerce.js, on enverra en Ajax la requete avec comme id la valeur de la sessionStorage 
-	    //Astucieux hein ? :p
-	    //En vrai ça marchait pas avec un passage de parametres classiques ?id= et tout...
-	    $('img.detailButton').on('click',function(e){
-    		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
-    		afficheSpecificationMagasin();
-    	});
-	    
-	   // $("head").append($(document.createElement("link")).attr({rel:"stylesheet", type:"text/css", href:"/public/css/rpoch.css"}));
 
 }
 

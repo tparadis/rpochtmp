@@ -94,8 +94,8 @@ function afficheTout()
 		
 		if(afficheLoupe == false)
 		{
-			//$("#searchbar form").html("");
-			//$("#searchbar form").append("<input type='text' value='Rechercher un lieu' />");
+			$("#searchbar form").html("");
+			$("#searchbar form").append("<input type='text' value='Rechercher un lieu' />");
 			$("#searchbar").show();
 			$("#grisement").show();
 			afficheLoupe = true;
