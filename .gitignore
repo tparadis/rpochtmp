@@ -9,4 +9,5 @@ sim-*
 # build output
 bin/
 public/api/generated/
+rhomobile/rhosimulator/*
 .cbc
