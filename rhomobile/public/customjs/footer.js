@@ -28,13 +28,44 @@ function afficheTout()
 	//Menu du rouage
 	$("body").append('<div id="parametres">'
 	+'<div class="imgTop"></div>'
-	+'<div class="elem">ACCUEIL</div>'
-	+'<div class="elem">PARCOURS</div>'
-	+'<div class="elem">CATEGORIES</div>'
+	+'<div class="elem"><span name="accueil">ACCUEIL</span></div>'
+	+'<div class="elem"><span name="parcours">PARCOURS</span></div>'
+	+'<div class="elem"><span name="perso">CATEGORIES</span></div>'
 	+'<div class="elem">CARTE</div>'
 	+'<div class="elem">PARAMETRES</div>'
 	+'<div class="elem">CREDITS</div>'
 	+'</div>');
+	
+	//Actions sur les elem des parametres
+	$("#parametres .elem").on("click",function(){
+		
+		//Redirection vers la page demandee
+		var pageDem = $(this).find("span").attr("name");
+		var returnurl = "";
+		switch(pageDem)
+		{
+			
+			case "accueil" : 
+				returnurl = "/app"
+				break;
+			
+			case "parcours" :
+				returnurl = "/ParcoursPredef"
+				break;
+				
+			case "perso" :
+				returnurl = "/Personalisee"
+				break;
+			
+			default : ;
+			
+			
+		}
+		
+		window.location.replace(returnurl);
+		
+	});
+	
 	
 	//Truc pour les langues du languageSelect
 	var box = $(".languageSelect");
@@ -63,6 +94,7 @@ function afficheTout()
 	$(".elem").on("click", function(){
 		changeLanguage($(this).attr('name'));
 	});
+	
 	$(box).css("bottom", $("body").find("div[id='footer']").height() +"px");
 	
 	$("#grisement").hide();

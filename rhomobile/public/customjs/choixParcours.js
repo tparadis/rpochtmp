@@ -66,10 +66,16 @@ $(document).ready(function () {
                 var filename;
                 var fullpath;
                 filename = localStorage.getItem("sscatimg" + ssCategorie[0]);
-                list +=
-                    "<li onclick=\"addSsCat('" + keySsCat + "')\">"
+                list += "<li onclick=\"addSsCat('" + keySsCat + "')\">";
                    // + "<img src= " + filename + "  width=\"32\" height=\"32\">"
-                    + "<span class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "").toUpperCase() + "<span style='color: #008B87; font-size:24px'> +</span></span></li>";
+                try
+                {
+                	list += "<span class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "").toUpperCase() + "<span style='color: #008B87; font-size:24px'> +</span></span></li>";
+                }
+                catch(err)
+                {
+                	console.log("Erreur : "+err);
+                }
             }
         }
         list += "</ul>";

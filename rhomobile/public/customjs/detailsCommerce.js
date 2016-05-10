@@ -106,7 +106,6 @@ function afficheSpecificationMagasin()
 		try
 		{
 			icon = findSSCat(data.commerce.tag0,0) + "_256.png";
-			console.log(icon);
 		}
 		catch(err)
 		{
