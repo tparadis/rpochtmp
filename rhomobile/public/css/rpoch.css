@@ -15,6 +15,14 @@
     src: url("/public/fonts/CaviarDreams.ttf");
 }
 
+@font-face {
+    font-family: titre;
+    src: url("/public/fonts/PlaylistCaps.otf");
+}
+@font-face {
+    font-family: liste;
+    src: url("/public/fonts/MinionPro-Regular.otf");
+}
 
 body{
     width:100%;
@@ -153,6 +161,20 @@ span#nb_magasins
    content:url("/app/carte_btn_fr.png");
    width:180px;
 }
+.ImgBtnInfo{
+	content:url("/public/images/svg/oeil.svg");
+	width:30px;
+}
+.ImgBtnRemplacer{
+	content:url("/public/images/svg/actualiser.svg");
+	width:30px;
+}
+.ImgBtnSupprimer{
+	content:url("/public/images/svg/fermer.svg");
+	width:20px;
+}
+
+
 #fpouter
 {
     width:100%;
@@ -167,6 +189,7 @@ span#nb_magasins
     background-color:white;
 
 }
+
 
 #footer {
     background-color: #F6F7F6;
