@@ -53,23 +53,29 @@
           case "en": $("#nompage").text(predefs.parcourspredefs[id].en); break;
           case "de": $("#nompage").text(predefs.parcourspredefs[id].de); break;
           case "esp": $("#nompage").text(predefs.parcourspredefs[id].esp); break;
-          case "ko": $("#nompage").text(predefs.parcourspredefs[id].ko); break;
-          case "jap": $("#nompage").text(predefs.parcourspredefs[id].jap); break;
         }
         
         //liste des magasins du parcours 
         i=0;
-        while (i < magasins_size){
-          magasin_nom = data.magasins[i].enseigne;
-          // on attache les magasins à la liste
-          $("tbody").append('<tr><td>'+magasin_nom+'</td><td><a class="detailButton" name='+predefs.parcourspredefs[id].commerces[i]+'><img class= "ImgBtnInfo" ></img></a></td></tr>');
-          i++;
-        }
-        $('a.detailButton').each(function() {
-            $(this).on('click',function(e){
-              sessionStorage.setItem("currentMagasin", $(this).attr('name'));
-              afficheSpecificationMagasin();
+        if(magasins_size > 0)
+          {
+            while (i < magasins_size){
+              magasin_nom = data.magasins[i].enseigne;
+              // on attache les magasins à la liste
+              $("tbody").append('<tr><td>'+magasin_nom+'</td><td><a class="detailButton" name='+predefs.parcourspredefs[id].commerces[i]+'><img class= "ImgBtnInfo" ></img></a></td></tr>');
+              i++;
+            }
+            $('a.detailButton').each(function() {
+                 $(this).on('click',function(e){
+                     sessionStorage.setItem("currentMagasin", $(this).attr('name'));
+                     afficheSpecificationMagasin();
+                 });
             });
-        });
+          }
+          else
+          {
+            $("tbody").append('<tr><td>Parcours pas encore disponible, revenez bientot !<br><a style="text-align:center;text-decoration:none;box-shadow:none;" href="/app/ParcoursPredef/parcours_predef">Retour</a></td></tr>');
+          }
+        
       </script>
 

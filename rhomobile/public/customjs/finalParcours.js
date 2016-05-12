@@ -13,8 +13,17 @@ function refresh() {
     	var magasin = JSON.parse(sessionStorage.getItem(i));
     	var id = magasin[2];
     	
+    	try
+    	{
     		$("tbody").append("<tr><td class='listSsCatText' >"+magasin[3].toUpperCase()+"</td><td><img class=' detailButton ImgBtnInfo' name='"+id+"'></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
     		ajoutDansRes();
+    	}
+    	catch(err)
+    	{
+    		console.error("ERREUR : "+err);
+    		$("tbody").append("<tr><td>Aucun parcours disponible pour votre demande...<br><a href='/app/SousCategories/sous_categories' onclick='sessionStorage.clear();'>Recommencer</a></td></tr>");
+    		break;
+    	}
 		   
     }
     $('img.detailButton').on('click',function(e){
@@ -37,14 +46,13 @@ function genererParcours(){
 		var mag = JSON.parse(sessionStorage.getItem(i));
 		tags.push(mag[0]);
 	}
-
+	console.log("OOOOKKKKK");
 	var coord_dep_lat = localStorage.getItem("userlat");
 	var coord_dep_lng = localStorage.getItem("userlng");
 	var coord_arr_lat = localStorage.getItem("userlat");
 	var coord_arr_lng = localStorage.getItem("userlng");
 	
-		var data = api.genParcours(coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags);
-
+	var data = api.genParcours(coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags);
 		res = "";
 		$("tbody").html("");
 		for (var i = 1 ; i <= tags.length ; i++)
