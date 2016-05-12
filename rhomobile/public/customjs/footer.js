@@ -28,43 +28,12 @@ function afficheTout()
 	//Menu du rouage
 	$("body").append('<div id="parametres">'
 	+'<div class="imgTop"></div>'
-	+'<div class="elem"><span name="accueil" text="accueil"></span></div>'
-	+'<div class="elem"><span name="parcours" text="votreParcours"></span></div>'
-	+'<div class="elem"><span name="perso" text="detail" ></span></div>'
-	+'<div class="elem" text="carte"></div>'
-	+'<div class="elem" text="options"></div>'
-	+'<div class="elem" text="credits"></div>'
+
+	+'<div class="item" text="options"></div>'
+	+'<div class="item" text="credits"></div>'
 	+'</div>');
 	
-	//Actions sur les elem des parametres
-	$("#parametres .elem").on("click",function(){
-		
-		//Redirection vers la page demandee
-		var pageDem = $(this).find("span").attr("name");
-		var returnurl = "";
-		switch(pageDem)
-		{
-			
-			case "accueil" : 
-				returnurl = "/app"
-				break;
-			
-			case "parcours" :
-				returnurl = "/ParcoursPredef"
-				break;
-				
-			case "perso" :
-				returnurl = "/Personalisee"
-				break;
-			
-			default : ;
-			
-			
-		}
-		
-		window.location.replace(returnurl);
-		
-	});
+	
 	
 	
 	//Truc pour les langues du languageSelect
