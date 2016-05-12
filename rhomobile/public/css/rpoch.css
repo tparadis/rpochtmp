@@ -93,13 +93,32 @@ display:none;
         margin-left: auto;
         margin-right: auto;
 }
-
+.TxtParcoursPredef{
+	color:white;
+	font-family:sscat;
+	position:relative;
+    width:auto;
+    bottom:70px;
+    padding:0;
+    text-shadow:none;
+    
+}
 .ImgAccPre{
 	content:url("/app/parcours_predef_fr.png");
         width: auto; 
         height: 50%;
         margin-left: auto;
         margin-right: auto;
+        text-shadow:none;
+}
+.TxtParcoursPerso{
+	color:#008b87;
+	font-family:sscat;
+	position:relative;
+    width:auto;
+    bottom:70px;
+    padding:0;
+    text-shadow:none;
 }
 
 .MenuAcc{

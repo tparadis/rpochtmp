@@ -7,11 +7,11 @@ var lang = {
 	"genererParcours" : "G&eacuten&eacuterer le parcours",
 	"lieu" : "Lieu",
 	"magasin" : "&nbsp;Magasin(s)",
-	"afficherCarte" : "Afficher la carte",
+	"Carte" : "Carte",
 	"ajouterMagasin" : "Ajouter un magasin",
 	"options" : "Options",
 	"detail" : "D&eacute;tail",
-	"parcoursThematique" : "Parcours Th&eacutematique",
+	"parcoursPredef" : "Laissez-vous guider",
 	"supprimer" : "Supprimer"
 	},	
 	/**
@@ -27,11 +27,11 @@ var lang = {
 	"genererParcours" : "Generate a new path",
 	"lieu" : "Place",
 	"magasin" : "&nbsp;Shop(s)",	
-	"afficherCarte" : "Show the map",
+	"Carte" : "Show the map",
 	"ajouterMagasin" : "Add a new store",
 	"options" : "Settings",
 	"detail" : "Detail",
-	"parcoursThematique" : "Thematic Path",
+	"parcoursPredef" : "Thematic Path",
 	"supprimer" : "Delete"
 	},
 	/**
@@ -47,11 +47,11 @@ var lang = {
 	"genererParcours" : "Genera tu ruta",
 	"lieu" : "Lugar",
 	"magasin" : "&nbsp;Tienda(s)",	
-	"afficherCarte" : "Mostrar el mapa",
+	"Carte" : "Mostrar el mapa",
 	"ajouterMagasin" : "A&ntildeadir una tienda",
 	"options" : "Opciones",
 	"detail" : "Detalle",	
-	"parcoursThematique" : "Ruta tem&aacutetica",
+	"parcoursPredef" : "Ruta tem&aacutetica",
 	"supprimer" : "Eliminar"
 	},
 	/**
@@ -67,30 +67,13 @@ var lang = {
 	"genererParcours" : "erzeugen Sie Ihre Route",
 	"lieu" : "Platz",
 	"magasin" : "&nbsp;Speichert",	
-	"afficherCarte" : "Afficher la carte",
+	"Carte" : "Afficher la carte",
 	"ajouterMagasin" : "fÃ¼gen Sie einen Shop",
 	"options" : "Optionen",
 	"detail" : "Detail",	
-	"parcoursThematique" : "Route Themenweg",
+	"parcoursPredef" : "Route Themenweg",
 	"supprimer" : "Entfernen"
-	}/*,
-	/**
-	 * 
-	 * Passage en coréen
-	 * 
-	 *
-	"kr" : {
-	"rpoch" : "주머니에 렌",
-	"rpochapp" : "주머니에 응용 렌",
-	"creerParcours" : "당신의 자신의 경로를 만들기",
-	"votreParcours" : "당신의 경로를",
-	"genererParcours" : "새 경로를 생성합니다",
-	"lieu" : "장소",
-	"go" : "가기!",
-	"ajouterMagasin" : "새로운 상점을 추가",
-	"options" : "설정",
-	"parcoursThematique" : "테마 경로"
-	}*/
+	}
 	
 }
 
