@@ -7,12 +7,15 @@ var lang = {
 	"genererParcours" : "G&eacuten&eacuterer le parcours",
 	"lieu" : "Lieu",
 	"magasin" : "&nbsp;Magasin(s)",
-	"Carte" : "Carte",
+	"carte" : "Carte",
 	"ajouterMagasin" : "Ajouter un magasin",
 	"options" : "Options",
 	"detail" : "D&eacute;tail",
 	"parcoursPredef" : "Laissez-vous guider",
-	"supprimer" : "Supprimer"
+	"supprimer" : "Supprimer",
+	"accueil":"Accueil",
+	"credits":"Credits"
+	
 	},	
 	/**
 	 * 
@@ -23,16 +26,18 @@ var lang = {
 	"rpoch" : "Rennes in your pocket",
 	"rpochapp" : "Application Rennes in your pocket",
 	"creerParcours" : "Create your own path",
-	"votreParcours" : "Your path",
+	"votreParcours" : "Your Path",
 	"genererParcours" : "Generate a new path",
 	"lieu" : "Place",
 	"magasin" : "&nbsp;Shop(s)",	
-	"Carte" : "Show the map",
+	"carte" : "Map",
 	"ajouterMagasin" : "Add a new store",
 	"options" : "Settings",
 	"detail" : "Detail",
 	"parcoursPredef" : "Thematic Path",
-	"supprimer" : "Delete"
+	"supprimer" : "Delete",
+	"accueil":"Home",
+	"credits":"Credits"
 	},
 	/**
 	 * 
@@ -47,12 +52,14 @@ var lang = {
 	"genererParcours" : "Genera tu ruta",
 	"lieu" : "Lugar",
 	"magasin" : "&nbsp;Tienda(s)",	
-	"Carte" : "Mostrar el mapa",
+	"carte" : "Mostrar el mapa",
 	"ajouterMagasin" : "A&ntildeadir una tienda",
 	"options" : "Opciones",
 	"detail" : "Detalle",	
 	"parcoursPredef" : "Ruta tem&aacutetica",
-	"supprimer" : "Eliminar"
+	"supprimer" : "Eliminar",
+	"accueil":"Accueil",
+	"credits":"Credits"
 	},
 	/**
 	 * 
@@ -67,12 +74,14 @@ var lang = {
 	"genererParcours" : "erzeugen Sie Ihre Route",
 	"lieu" : "Platz",
 	"magasin" : "&nbsp;Speichert",	
-	"Carte" : "Afficher la carte",
+	"carte" : "Afficher la carte",
 	"ajouterMagasin" : "fÃ¼gen Sie einen Shop",
 	"options" : "Optionen",
 	"detail" : "Detail",	
 	"parcoursPredef" : "Route Themenweg",
-	"supprimer" : "Entfernen"
+	"supprimer" : "Entfernen",
+	"accueil":"Accueil",
+	"credits":"Credits"
 	}
 	
 }

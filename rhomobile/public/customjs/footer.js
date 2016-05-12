@@ -28,12 +28,12 @@ function afficheTout()
 	//Menu du rouage
 	$("body").append('<div id="parametres">'
 	+'<div class="imgTop"></div>'
-	+'<div class="elem"><span name="accueil">ACCUEIL</span></div>'
-	+'<div class="elem"><span name="parcours">PARCOURS</span></div>'
-	+'<div class="elem"><span name="perso">CATEGORIES</span></div>'
-	+'<div class="elem">CARTE</div>'
-	+'<div class="elem">PARAMETRES</div>'
-	+'<div class="elem">CREDITS</div>'
+	+'<div class="elem"><span name="accueil" text="accueil"></span></div>'
+	+'<div class="elem"><span name="parcours" text="votreParcours"></span></div>'
+	+'<div class="elem"><span name="perso" text="detail" ></span></div>'
+	+'<div class="elem" text="carte"></div>'
+	+'<div class="elem" text="options"></div>'
+	+'<div class="elem" text="credits"></div>'
 	+'</div>');
 	
 	//Actions sur les elem des parametres
