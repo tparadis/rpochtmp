@@ -1,8 +1,4 @@
-var coord_dep_lat = 48.110003;
-var coord_dep_lng = -1.679201;
-var coord_arr_lat = 48.110003;
-var coord_arr_lng = -1.679201;
-var dist_max = 10;
+var dist_max = 1000;
 var res ="";
 
 $(document).ready(function() {
@@ -42,18 +38,23 @@ function genererParcours(){
 		tags.push(mag[0]);
 	}
 
+	var coord_dep_lat = localStorage.getItem("userlat");
+	var coord_dep_lng = localStorage.getItem("userlng");
+	var coord_arr_lat = localStorage.getItem("userlat");
+	var coord_arr_lng = localStorage.getItem("userlng");
+	
 		var data = api.genParcours(coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags);
 
 		res = "";
 		$("tbody").html("");
 		for (var i = 1 ; i <= tags.length ; i++)
-	    {// remplacer la catégorie parent par l'id magasin
+	    {// remplacer la catï¿½gorie parent par l'id magasin
 	    	var tagCourant = data.tags[i];
 	    	//On ajoute la valeur id  de l'enseigne dans la sessionStorage
 	    	var elem = sessionStorage.getItem(i-1);
 	    	elem = JSON.parse(elem);
-	    	//Obligatoire si l'utilisateur a deja clique sur Generer un sessionStorage et qu'il veut remettre un autre magasin après
-	    	//Sinon les id s'ajoutent indéfiniments à la suite dans le meme tableau !
+	    	//Obligatoire si l'utilisateur a deja clique sur Generer un sessionStorage et qu'il veut remettre un autre magasin aprï¿½s
+	    	//Sinon les id s'ajoutent indï¿½finiments ï¿½ la suite dans le meme tableau !
 	    	var id = tagCourant.id;
 	    	elem[2] = id;
 	    	elem.push(tagCourant.enseigne.toLowerCase());
@@ -62,13 +63,13 @@ function genererParcours(){
 	    	sessionStorage.setItem(i-1, JSON.stringify(elem));
     	
 	    	//On affiche sur la page
-	    	//On ajoute la classe (non utilisée en CSS) detailsButton pour distinguer les bouttons par l'action onclick()
+	    	//On ajoute la classe (non utilisï¿½e en CSS) detailsButton pour distinguer les bouttons par l'action onclick()
 	    	$("tbody").append("<tr class='mag"+(i-1)+"'><td class='listSsCatText' >"+tagCourant.enseigne.toUpperCase()+"</td><td><img class=' detailButton ImgBtnInfo' name='"+id+"'></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
 	    	ajoutDansRes();
 	    	
-	    	//Ajout d'une action qui va ajouter à la sessionStorage
+	    	//Ajout d'une action qui va ajouter ï¿½ la sessionStorage
 	    	// currentMagasin => id
-	    	//Ceci est utile pour la transition de cette page à la page de Magasin spécifique
+	    	//Ceci est utile pour la transition de cette page ï¿½ la page de Magasin spï¿½cifique
 	    	
 	    	
 	    }
@@ -83,6 +84,12 @@ function afficherParcours() {
 function newMag (i) {
 	var elem = JSON.parse(sessionStorage.getItem(i));
 	var tag = elem[0];
+	
+	var coord_dep_lat = localStorage.getItem("userlat");
+	var coord_dep_lng = localStorage.getItem("userlng");
+	var coord_arr_lat = localStorage.getItem("userlat");
+	var coord_arr_lng = localStorage.getItem("userlng");
+	
 	var data = api.genParcours(coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tag);
 
 			var id = data.tags[1].id;

@@ -1,7 +1,5 @@
 $(document).ready(function(e){
-	
-	userlat = 0.0;
-	userlong = 0.0;
+
 	
 	//On teste si le navigateur supporte les Geolocation
 	if(navigator.geolocation) {
@@ -11,9 +9,9 @@ $(document).ready(function(e){
 	  
 	} else {
 	  // Pas de support, on met l'utilisateur sur l'opéra de Rennes
-	  alert("Geolocalisation impossible...");
-	  userlat = 48.111232;
-	  userlong = -1.678671;
+	  console.log("Geolocalisation impossible...");
+	  localStorage.setItem("userlat", "48.110003");
+	  localStorage.setItem("userlng", "-1.678671");
 	  
 	}
 	
@@ -22,6 +20,6 @@ $(document).ready(function(e){
 //Actualise nos variables globales
 function getPos(position)
 {
-    userlat = position.coords.latitude;
-    userlong = position.coords.longitude;
+	 localStorage.setItem("userlat", JSON.stringify(position.coords.latitude));
+	 localStorage.setItem("userlng", JSON.stringify(position.coords.longitude));
 }
