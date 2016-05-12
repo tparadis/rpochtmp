@@ -29,11 +29,15 @@ listPos = [];
     });
     var infowindow = new google.maps.InfoWindow();
     var marker, i;
-     
+    var currentInfoWindow;
+ 
+    
     for (i = 0; i < locations.length; i++) {
       var ipath= findCatSubCat(locations[i][4]);
-      var image = {url:localStorage.getItem("sscatimg"+ipath.subcat),
-          size: new google.maps.Size(32, 32),
+      var urlimg ="/public/images/cat"+ipath.cat+"_256.png";
+      var image = {
+    	  url: urlimg,
+          scaledSize: new google.maps.Size(50, 50),
           // The origin for this image is (0, 0).
           origin: new google.maps.Point(0, 0),
           anchor: new google.maps.Point(16, 16)
@@ -45,13 +49,19 @@ listPos = [];
       });
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(locations[i][0]+'<div id="marker" name="'+locations[i][4]+'" ><button>information</button></div>');
+          infowindow.setContent(locations[i][0]+'<div id="marker" name="'+locations[i][4]+'" ><img class= "ImgBtnInfo" ></img></div>');
           infowindow.open(map, marker);
-          $("#marker").find("button").on("click",function(e){
+          $("#marker").find("img").on("click",function(e){
+        	  if(currentInfoWindow!= undefined){
+                  currentInfoWindow.close();
+                  }
+                  currentInfoWindow = infowindow;
             sessionStorage.setItem("currentMagasin",locations[i][4]);
 
             //window.location.replace("/app/DetailsCommerce/details_commerce");
             afficheSpecificationMagasin();
+            currentInfoWindow.close();
+
           });
         }
       })(marker, i));
