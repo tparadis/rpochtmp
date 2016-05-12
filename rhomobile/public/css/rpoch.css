@@ -68,7 +68,7 @@ display:none;
 	position:fixed;
 	top:0;
     height: 50px;
-    background-image: url("/app/header_plain.png");
+    background-image: url("/public/images/header_plain.png");
     background-repeat: no-repeat;
     background-color:grey;
     background-position: center;
@@ -87,7 +87,7 @@ display:none;
 	
 }
 .ImgAccPer{
-	content:url("/app/parcours_perso_fr.png");
+	content:url("/public/images/parcours_perso_fr.png");
         width: auto;
         height:50%;
         margin-left: auto;
@@ -104,7 +104,7 @@ display:none;
     
 }
 .ImgAccPre{
-	content:url("/app/parcours_predef_fr.png");
+	content:url("/public/images/parcours_predef_fr.png");
         width: auto; 
         height: 50%;
         margin-left: auto;
@@ -183,12 +183,12 @@ span#nb_magasins
 }
 
 .ImgAjoutMag{
-    content:url("/app/votre_parcours_fr.png");
+    content:url("/public/images/votre_parcours_fr.png");
     width:180px;
 }
 
 .ImgBtnCarte{
-   content:url("/app/carte_btn_fr.png");
+   content:url("/public/images/carte_btn_fr.png");
    width:180px;
 }
 .ImgBtnInfo{
