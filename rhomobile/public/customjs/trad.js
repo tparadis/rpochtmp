@@ -90,18 +90,7 @@ function chargementCategories() {
 			var infoSsCat = [scatimg, courantSsCatNom, catparent];
 			var keySsCat = 'sscat'+i;
 			localStorage.setItem(keySsCat, JSON.stringify(infoSsCat));
-			var filename;
-			var fullpath;
-			fullpath=Rho.RhoFile.join(Rho.Application.publicFolder, "/images/scat"+scatimg+"_32.png");
-						
-			if(Rho.RhoFile.exists(fullpath))
-			{
-				filename = "/public/images/scat"+scatimg+"_32.png";
-			}else
-			{
-				filename = "/public/images/cat"+catparent+"_32.png";
-			}
-			localStorage.setItem('sscatimg'+scatimg,filename);
+			
 			}
 	}
 }
@@ -119,14 +108,15 @@ function actualiserLanguage(){
 	var l = tab.length;
 	for(var i = 0 ; i < l ; i++){
 		var ele = tab.pop();
-		ele.innerHTML = lang[defaultLanguage][ele.getAttribute("text")];
+		if(ele != null){
+			ele.innerHTML = lang[defaultLanguage][ele.getAttribute("text")];			
+		}
 	}
 }
 
 
 
 window.onload = actualiserLanguage();
-$(document).ready(getLanguage);
 $(document).ready(function(e){
 	
 	getLanguage();
