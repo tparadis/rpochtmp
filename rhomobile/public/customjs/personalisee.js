@@ -66,14 +66,14 @@ var waypointsArray =[];
 
      //Comment to test on rhosimulator
      userMarker = new google.maps.Marker({
-            position: {lat: userlat, lng: userlong},
+            position: {lat: Number(localStorage.getItem("userlat")), lng: Number(localStorage.getItem("userlng"))},
             map: map,
             icon: "http://rpoch.istic.univ-rennes1.fr/static/images/googlePos.png"
           });
           
           window.setInterval(function()
           {
-            userMarker.setPosition({lat: userlat, lng: userlong});
+            userMarker.setPosition({lat: Number(localStorage.getItem("userlat")), lng: Number(localStorage.getItem("userlng"))});
            },2000); 
      //Comment to test on rhosimulator
      var infowindow = new google.maps.InfoWindow();
@@ -115,7 +115,7 @@ var waypointsArray =[];
     
     if(magasins.length>1)
      { var request = {
-       origin:new google.maps.LatLng(userlat, userlong),
+       origin:new google.maps.LatLng(Number(localStorage.getItem("userlat")), Number(localStorage.getItem("userlng"))),
            /*FIXME si le parcours a moins de deux points l'application va planter*/
          destination:new google.maps.LatLng(magasins[magasins.length-1].latitude,magasins[magasins.length-1].longitude),
          optimizeWaypoints: true,
@@ -208,7 +208,7 @@ var waypointsArray =[];
     	             	     
     	             	     //affichage du premier parcours
     	             	     request = {
-    	             	         origin:new google.maps.LatLng(userlat, userlong),
+    	             	         origin:new google.maps.LatLng(Number(localStorage.getItem("userlat")), Number(localStorage.getItem("userlng"))),
     	             	           destination:new google.maps.LatLng(listPosBis[k],listPosBis[k+1]),
     	             	           optimizeWaypoints: true,
     	             	           waypoints: waypointsArray1,

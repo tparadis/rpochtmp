@@ -1,5 +1,6 @@
 var datar = "";
 var firstTime = true;
+var MAXMAGASINS = 8;
 
 $(document).ready(function () {
     var nbCat = localStorage.getItem('nbCat');
@@ -140,9 +141,12 @@ function call_ruby_method_via_ajax(method_name, nCommerce) {
     $.get('/app/DetailsCommerce/' + method_name, {magasin_id: datar.commerces[nCommerce].id});
 }
 function addSsCat(sscat) {
-    var tmp = JSON.parse(localStorage.getItem(sscat));
-    sessionStorage.setItem(sessionStorage.length, JSON.stringify(tmp));
-    actualiserMagasins();
+	if(sessionStorage.length < MAXMAGASINS)
+	{
+	    var tmp = JSON.parse(localStorage.getItem(sscat));
+	    sessionStorage.setItem(sessionStorage.length, JSON.stringify(tmp));
+	    actualiserMagasins();
+	}
 }
 
 function actualiserMagasins() {
@@ -152,10 +156,10 @@ function actualiserMagasins() {
 	{
 		$("#animationPlus").stop().animate({"bottom":"18px", "opacity":"1"},300).delay(500).animate({"bottom":"0px", "opacity":"0"},500);
 	}
-	else
+	else if(firstTime)
 	{
 		$("#animationPlus").css("opacity","0");
 	}
 	firstTime = false;
-    $(".cart #nb_magasins").text(sessionStorage.length);
+    $(".cart #nb_magasins").text(sessionStorage.length +"/"+MAXMAGASINS);
 }
