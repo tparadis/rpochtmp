@@ -330,6 +330,8 @@ span#nb_magasins
 	position:relative;
 	float:left;
 	width:50%;
+	min-height:201px;
+	height:50%;
 	background-color:white;
 	margin-top:15px;
 }
