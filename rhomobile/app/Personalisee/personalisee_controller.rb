@@ -61,8 +61,14 @@ class PersonaliseeController < Rho::RhoController
     
   def get_callback
        $parcours_perso = @params['parcours_perso']
+       $typeparcours = 'null'
        Rho::WebView.navigate(url_for(:action => :personalisee))
    end
 
+  #Requete test
+    def requette_etudiant
+      $typeparcours = @params['type_parcours']
+      Rho::WebView.navigate(url_for(:action => :personalisee))
+    end
      
 end

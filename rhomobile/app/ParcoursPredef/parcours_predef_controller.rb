@@ -56,10 +56,4 @@ class ParcoursPredefController < Rho::RhoController
     redirect :action => :index  
   end
   
-  #Requete test
-  def requette_etudiant
-    $typeparcours = @params['type_parcours']
-    Rho::WebView.navigate(url_for(:action => :parcours_predef_carte))
-  end
-  
 end
