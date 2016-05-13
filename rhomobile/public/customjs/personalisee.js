@@ -39,32 +39,30 @@ function initialize() {
 		var i = 0;
         var magasins_size = data.size;
         
-        console.log("magasins:"+magasins_size);
-        
         sessionStorage.clear();
         while (i < magasins_size)
         {
         	var infos = [];
         	var currentMG = data.magasins[i];
         	var infosAdditionnelle = api.getCommDetail(currentMG.id);
+        	
+        	
         	if(infosAdditionnelle != null)
         	{
         		var retFind = findCatSubCat(currentMG.id);
         		ssCatCache.push(retFind);
-        		infos.push(Number(infosAdditionnelle.tag0));
+        		infos.push(Number(infosAdditionnelle.commerce.tag0));
         		infos.push(retFind.subcat);
         		infos.push(currentMG.id);
-        		infos.push(infosAdditionnelle.enseigne);
+
+        		infos.push(infosAdditionnelle.commerce.enseigne);
         		infos.push(currentMG.location_lat);
         		infos.push(currentMG.location_lng);
         		sessionStorage.setItem(i, JSON.stringify(infos));
         	}
-        	//sessionStorage.setItem(i, JSON.stringify(data.magasins[i]));
-        	//console.log(sessionStorage.getItem(i));
+
             i++;
         }
-        
-        console.log("nb element ajoutes : "+i);
         
 	}
 	
