@@ -88,10 +88,9 @@ display:none;
 }
 .ImgAccPer{
 	content:url("/public/images/parcours_perso_fr.png");
-        width: auto;
+        width: 80%;
         height:50%;
-        margin-left: auto;
-        margin-right: auto;
+        
 }
 .TxtParcoursPredef{
 	color:white;
@@ -105,11 +104,10 @@ display:none;
 }
 .ImgAccPre{
 	content:url("/public/images/parcours_predef_fr.png");
-        width: auto; 
+        width: 80%; 
         height: 50%;
         margin-left: auto;
         margin-right: auto;
-        text-shadow:none;
 }
 .TxtParcoursPerso{
 	color:#008b87;
@@ -184,12 +182,14 @@ span#nb_magasins
 
 .ImgAjoutMag{
     content:url("/public/images/votre_parcours_fr.png");
-    width:180px;
+    width:150px;
 }
 
 .ImgBtnCarte{
    content:url("/public/images/carte_btn_fr.png");
-   width:180px;
+   width:150px;
+   position: absolute;
+   right: 15px;
 }
 .ImgBtnInfo{
 	content:url("/public/images/svg/oeil.svg");
@@ -216,6 +216,7 @@ span#nb_magasins
 {
     display: inline-block;
     height:auto;
+    width:auto;
     background-color:white;
 
 }
@@ -302,7 +303,7 @@ span#nb_magasins
 	position: relative;
 	width: 100%;
 	height: 180px;
-	background-image:url("/public/images/RpochTXT.PNG");
+	background-image:url("/public/images/RpochTXT.png");
 	background-repeat: no-repeat;
     background-color:white;
     background-position: center;
