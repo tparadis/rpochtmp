@@ -68,14 +68,14 @@ listPos = [];
       }
       
     userMarker = new google.maps.Marker({
-     position: {lat: userlat, lng: userlong},
+     position: {lat: localStorage.getItem("userlat")), lng: localStorage.getItem("userlng"))},
      map: map,
      icon: "http://rpoch.istic.univ-rennes1.fr/static/images/googlePos.png"
    });
    
    window.setInterval(function()
    {
-     userMarker.setPosition({lat: userlat, lng: userlong});
+     userMarker.setPosition({lat: localStorage.getItem("userlat")), lng: localStorage.getItem("userlng"))});
     },2000); 
     
     setInterval("passerDevant()", 5000); 
