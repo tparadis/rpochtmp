@@ -1,4 +1,4 @@
-var dist_max = 10;
+var dist_max = 1000;
 var res ="";
 
 $(document).ready(function() {
