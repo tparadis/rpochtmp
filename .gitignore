@@ -11,3 +11,4 @@ bin/
 public/api/generated/
 rhomobile/rhosimulator/*
 .cbc
+rhomobile/public/save.txt
