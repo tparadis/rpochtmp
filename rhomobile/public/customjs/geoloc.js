@@ -20,6 +20,24 @@ $(document).ready(function(e){
 //Actualise nos variables globales
 function getPos(position)
 {
-	 localStorage.setItem("userlat", JSON.stringify(position.coords.latitude));
-	 localStorage.setItem("userlng", JSON.stringify(position.coords.longitude));
+	if((position.coords.latitude != 0 && position.coords.longitude != 0) || (position.coords.latitude != -1 && position.coords.longitude != -1))
+	{
+		localStorage.setItem("userlat", JSON.stringify(position.coords.latitude));
+		localStorage.setItem("userlng", JSON.stringify(position.coords.longitude));
+	}
+	else
+	{
+		localStorage.setItem("userlat", "48.110003");
+		localStorage.setItem("userlng", "-1.678671");
+	}
 }
+
+
+
+
+
+
+
+
+
+
