@@ -188,7 +188,6 @@ span#nb_magasins
 .ImgBtnCarte{
    content:url("/public/images/carte_btn_fr.png");
    width:150px;
-   position: relative;
 }
 
 .ImgBtnInfo{
@@ -578,7 +577,7 @@ tr:hover {
 	drop-shadow:none;
 }
 
-/* css additionnel pour le parours personalisé*/
+/* css additionnel pour le parours personalisÃ©*/
 #navmenu {
     display: table;
 }
@@ -753,7 +752,7 @@ div.after-first-elem{
 	height:50px;
 	background-color:white;
 	border-bottom:2px solid #008B87;
-	z-index:21; /* le #grisement est � 20 */
+	z-index:21; /* le #grisement est à 20 */
 }
 #searchbar span{
 	position:absolute;
