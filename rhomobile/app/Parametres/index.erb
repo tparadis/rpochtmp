@@ -4,17 +4,58 @@
   
   <%= render :partial => "/partials/page_head_index"  %>
 
-  <div id="widget01">
-      <span>La distance maximale &agrave; parcourir &agrave; pieds (km)</span><br/><br/>
-      <div id="distMax">
-        <div id="slider" style="display: inline-block; width: 300px; height: 20px;"></div>
-        <div id="value" style="display: inline-block;"></div>
-      </div>
-  </div>
-
+  <script type="text/javascript">
+ 
+    var currentDist = localStorage.getItem("distMax");
+    if(currentDist != null)
+    {
+      document.getElementById("slider").value = currentDist;
+    }
+    else
+    {
+      document.getElementById("slider").value = 10;
+    }
+ 
+      </script>
+  <input id= "slider" type="range" min="0" max="50" step="5" onchange="showValue(this.value)" />
+  <span id="range">0</span>
+  
+  <script type="text/javascript">
+  function showValue(newValue)
+  {
+    document.getElementById("range").innerHTML=newValue;
+    sauvegardeEnFichier(Math.round(newValue));
+  }
+  
+  
+  function sauvegardeEnFichier(newValue)
+  {
+    var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.publicFolder,"save.txt"), Rho.RhoFile.OPEN_FOR_READ_WRITE);
+    var filename = Rho.RhoFile.join(Rho.Application.publicFolder, 'save.txt'); // build the path
+    var contents = Rho.RhoFile.read(filename); // read the file into a variable
+    
+    var debut = contents.split('\n');
+    var reecrire = "distMax:"+newValue;
+    var final = "";
+    var i = 1;
+    final += reecrire;
+    
+    for(i = 1; i < debut.size; i++)
+    {
+      final += debut[i];
+    }
+    
+    fichier.write(final);
+    
+    fichier.close();
+    
+    localStorage.setItem("distMax", Number(newValue));
+    
+  }
+  </script>
+  
     <%= render :partial => "/partials/page_foot_index" %>
     
    
     
 </div>
-  <script src="/public/customjs/params.js"></script>
