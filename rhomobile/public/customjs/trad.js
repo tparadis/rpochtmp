@@ -109,7 +109,13 @@ function actualiserLanguage(){
 	for(var i = 0 ; i < l ; i++){
 		var ele = tab.pop();
 		if(ele != null){
-			ele.innerHTML = lang[defaultLanguage][ele.getAttribute("text")];			
+			try
+			{
+				ele.innerHTML = lang[defaultLanguage][ele.getAttribute("text")];	
+			}catch(err)
+			{
+				console.log("Erreur : "+err);
+			}
 		}
 	}
 }

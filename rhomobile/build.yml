@@ -19,14 +19,15 @@ wp8:
   productid: "c2542400-a98e-0133-e763-0000da327cd9"
 android:
 #manifest_template: 'AndroidManifest.erb'
-  version: "4.1.0"
+  version: "4.4.2"
 # Note: in order to simplify debugging only app messages and system channels with priority informative and higher, and any errors are enabled by default
   logcatFilter: "APP:I StrictMode:I DEBUG:I *:E"
   capabilities:
     - gps
-wm: 
+  emulator: "AVD01"
 #sdk: "MC3000c50b (ARMV4I)"
 #sdk: "Windows Mobile 6.5.3 Professional DTK (ARMV4I)"
+wm: 
 win32:
   deployqt: 1
   deploymsvc: 1

@@ -14,7 +14,10 @@ var lang = {
 	"parcoursPredef" : "Laissez-vous guider",
 	"supprimer" : "Supprimer",
 	"accueil":"Accueil",
-	"credits":"Credits"
+	"credits":"Credits",
+	"cci":"Une idee de la CCI Rennes :",
+	"devs": "Developpee par :",
+	"design":"Design par :"
 	
 	},	
 	/**
@@ -37,7 +40,10 @@ var lang = {
 	"parcoursPredef" : "Thematic Path",
 	"supprimer" : "Delete",
 	"accueil":"Home",
-	"credits":"Credits"
+	"credits":"Credits",
+	"cci":"An idea of the CCI Rennes :",
+	"devs": "Developped by :",
+	"design":"Designed by :"
 	},
 	/**
 	 * 
@@ -59,7 +65,10 @@ var lang = {
 	"parcoursPredef" : "Ruta tem&aacutetica",
 	"supprimer" : "Eliminar",
 	"accueil":"Accueil",
-	"credits":"Credits"
+	"credits":"Credits",
+	"cci":"Una idea de la CCI Rennes :",
+	"devs": "Desarrollado por :",
+	"design":"graficos por :"
 	},
 	/**
 	 * 
@@ -81,7 +90,10 @@ var lang = {
 	"parcoursPredef" : "Route Themenweg",
 	"supprimer" : "Entfernen",
 	"accueil":"Accueil",
-	"credits":"Credits"
+	"credits":"Credits",
+	"cci":"Eine Idee der CCI Rennes",
+	"devs": "Entwickelt von :",
+	"design":"Grafiken von :"
 	}
 	
 }

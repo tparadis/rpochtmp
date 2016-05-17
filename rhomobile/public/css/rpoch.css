@@ -31,6 +31,21 @@ body{
     padding:0;
 }
 
+.credits
+{
+	background-color:white;
+	color:black;
+	height:120%;
+	padding:20px;
+}
+
+.credits #reals
+{
+	position:absolute;
+	top:70px;
+
+}
+
 #bouton_reglage {
     background: rgb(255,165,57); /*orange*/
     color:black;

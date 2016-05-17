@@ -34,6 +34,21 @@ function afficheTout()
 	+'</div>');
 	
 	
+	$("#parametres .item").on("click",function(){
+		
+		switch($(this).attr("text"))
+		{
+			case "credits" :
+				window.location.replace("/app/Credit");
+				break;
+				
+			case "options" :
+			window.location.replace("/app/Parametres");
+				break;
+			
+		}
+		
+	});
 	
 	
 	//Truc pour les langues du languageSelect
