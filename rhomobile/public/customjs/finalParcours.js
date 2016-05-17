@@ -8,6 +8,7 @@ $(document).ready(function() {
 
 function refresh() {
 	$("tbody").html("");
+	dist_max = getDistMax();
 	sessionStorage.removeItem("posRecuperer");
     for (var i=0 ; i < sessionStorage.length; i++)
     {
@@ -52,7 +53,7 @@ function genererParcours(){
 	var coord_dep_lng = localStorage.getItem("userlng");
 	var coord_arr_lat = localStorage.getItem("userlat");
 	var coord_arr_lng = localStorage.getItem("userlng");
-	
+	dist_max = getDistMax();
 	var data = api.genParcours(coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags);
 		res = "";
 		$("tbody").html("");

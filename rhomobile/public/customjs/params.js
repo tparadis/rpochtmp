@@ -1,10 +1,18 @@
 $(document).ready(function(){
 	
-	var slider = new Slider(document.getElementById('slider'), 0, 50);
+	var slider = new Slider(document.getElementById('slider'), 1, 50);
 	slider.onChange = function(value) {
 	    document.getElementById('value').textContent = Math.round(value);
 	};
-	slider.setValue(10);
+	var currentDist = localStorage.getItem("distMax");
+	if(currentDist != null)
+	{
+		slider.setValue(Number(currentDist));
+	}
+	else
+	{
+		slider.setValue(10);
+	}
 
 	function Slider(container, minValue, maxValue) {
 	    var slider = this;
@@ -15,7 +23,7 @@ $(document).ready(function(){
 	    var slideGroup = document.createElement('div');
 	    container.appendChild(slideGroup);
 	    slideGroup.style.position = 'relative';
-	    slideGroup.style.width = "100%";
+	    slideGroup.style.width = 
 	    slideGroup.style.height =
 	        '100%';
 	    
@@ -75,6 +83,7 @@ $(document).ready(function(){
 	        if (sliding) {
 	            sliding = false;
 	            startX = null;
+	            sauvegardeEnFichier(Math.round(value));
 	        }
 	    });
 	    
@@ -87,8 +96,48 @@ $(document).ready(function(){
 	    });
 	}
 	
-	
-	
+	//On affine la hauteur de la balise distanceMaximale
+	$("#widget01").css({"position":"absolute", "top": "70px"});
 	
 	
 });
+
+function sauvegardeEnFichier(newDist)
+{
+	var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.publicFolder,"save.txt"), Rho.RhoFile.OPEN_FOR_READ_WRITE);
+	var filename = Rho.RhoFile.join(Rho.Application.publicFolder, 'save.txt'); // build the path
+	var contents = Rho.RhoFile.read(filename); // read the file into a variable
+	
+	var debut = contents.split('\n');
+	var reecrire = "distMax:"+newDist;
+	var final = "";
+	var i = 1;
+	final += reecrire;
+	
+	for(i = 1; i < debut.size; i++)
+	{
+		final += debut[i];
+	}
+	
+	fichier.write(final);
+	
+	fichier.close();
+	
+	localStorage.setItem("distMax", Number(newDist));
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
