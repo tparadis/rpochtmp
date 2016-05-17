@@ -19,10 +19,11 @@ function initialize() {
 	if (sessionStorage.getItem("currentMagasin") != null) {
 		sessionStorage.removeItem("currentMagasin");
 	}
-	if (sessionStorage.getItem("posRecuperer") != null) {
-		var valeurPosRecup = sessionStorage.getItem("posRecuperer");
+	//if (sessionStorage.getItem("posRecuperer") != null) {
+	//	var valeurPosRecup = sessionStorage.getItem("posRecuperer");
+		var valeurPosRecup = 1;
 		sessionStorage.removeItem("posRecuperer");
-	}
+	//}
 	
 	magasins = [];
 
@@ -107,7 +108,7 @@ function initialize() {
 		}
 	}
 
-	sessionStorage.setItem("posRecuperer", 1);
+	//sessionStorage.setItem("posRecuperer", 1);
 
 	directionsService = new google.maps.DirectionsService;
 	directionsDisplay = new google.maps.DirectionsRenderer;

@@ -8,6 +8,7 @@ $(document).ready(function() {
 
 function refresh() {
 	$("tbody").html("");
+	sessionStorage.removeItem("posRecuperer");
     for (var i=0 ; i < sessionStorage.length; i++)
     {
     	var magasin = JSON.parse(sessionStorage.getItem(i));
