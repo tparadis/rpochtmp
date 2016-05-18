@@ -218,6 +218,11 @@ span#nb_magasins
 	width:20px;
 }
 
+.slider{
+	background-color: #008B87;
+	width: auto;
+}
+
 
 #fpouter
 {
@@ -310,6 +315,8 @@ span#nb_magasins
 	margin-left:-10px;
 	background-color:#008B87;
 }
+
+
 
 /*Ceci concerne l'affichage KDR des parcours predefinis ------------------------------------*/
 
