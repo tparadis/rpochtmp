@@ -3,7 +3,7 @@
 
      <div id="page_descriptionPredef" style="height:auto;padding-bottom:70px">
     
-      <h2 style="text-align: center" id="nompage">
+      <h2 style="text-align: center" id="nompage" class="nomParcours" >
         Parcours 
       </h2>
   <div id="image" align="center" onclick="javascript:location.href='/app/Personalisee/requette_etudiant?type_parcours=<%=$typeparcours %>'">
@@ -46,8 +46,8 @@
           }
         }
         //affichage de l'image et de la description
-      //  $("table").append('<div align="left" class="ImgParcoursPredef"><img src="'+adresseImg+'" alt="image" style="height :150px"></div>')
-        $("table").before('<div><p>'+predefs.parcourspredefs[id].description+'</p></div>');
+        //  $("table").append('<div align="left" class="ImgParcoursPredef"><img src="'+adresseImg+'" alt="image" style="height :150px"></div>')
+        $("table").before('<div><p align="center" class="description">'+predefs.parcourspredefs[id].description+'</p></div>');
         //Nom du parcours
         switch(localStorage.getItem(0)){
           case "fr": $("#nompage").text(predefs.parcourspredefs[id].fr); break;
@@ -63,7 +63,7 @@
             while (i < magasins_size){
               magasin_nom = data.magasins[i].enseigne;
               // on attache les magasins à la liste
-              $("tbody").append('<tr><td>'+magasin_nom+'</td><td><a class="detailButton" name='+predefs.parcourspredefs[id].commerces[i]+'><img class= "ImgBtnInfo" ></img></a></td></tr>');
+              $("tbody").append('<tr><td class="listeItem">'+magasin_nom+'</td><td><a class="detailButton" name='+predefs.parcourspredefs[id].commerces[i]+'><img class= "ImgBtnInfo" ></img></a></td></tr>');
               i++;
             }
             $('a.detailButton').each(function() {

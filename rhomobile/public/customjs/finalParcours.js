@@ -17,7 +17,7 @@ function refresh() {
     	
     	try
     	{
-    		$("tbody").append("<tr><td class='listSsCatText' >"+magasin[3].toUpperCase()+"</td><td><img class=' detailButton ImgBtnInfo' name='"+id+"'></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
+    		$("tbody").append("<tr><td class='listeItem' >"+magasin[3].toUpperCase()+"</td><td><img class=' detailButton ImgBtnInfo' name='"+id+"'></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
     		ajoutDansRes();
     	}
     	catch(err)
@@ -74,7 +74,7 @@ function genererParcours(){
     	
 	    	//On affiche sur la page
 	    	//On ajoute la classe (non utilis�e en CSS) detailsButton pour distinguer les bouttons par l'action onclick()
-	    	$("tbody").append("<tr class='mag"+(i-1)+"'><td class='listSsCatText' >"+tagCourant.enseigne.toUpperCase()+"</td><td><img class=' detailButton ImgBtnInfo' name='"+id+"'></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
+	    	$("tbody").append("<tr class='mag"+(i-1)+"'><td class='listeItem' >"+tagCourant.enseigne.toUpperCase()+"</td><td><img class=' detailButton ImgBtnInfo' name='"+id+"'></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
 	    	ajoutDansRes();
 	    	
 	    	//Ajout d'une action qui va ajouter � la sessionStorage

@@ -24,6 +24,8 @@
     src: url("/public/fonts/MinionPro-Regular.otf");
 }
 
+
+
 body{
     width:100%;
     height:100%;
@@ -112,7 +114,7 @@ display:none;
 	font-family:sscat;
 	position:relative;
     width:auto;
-    bottom:70px;
+    bottom:60px;
     padding:0;
     text-shadow:none;
     
@@ -129,11 +131,14 @@ display:none;
 	font-family:sscat;
 	position:relative;
     width:auto;
-    bottom:70px;
+    bottom:60px;
     padding:0;
     text-shadow:none;
 }
-
+.listeItem{
+	font-family:sscat;
+	text-shadow:none;
+}
 .MenuAcc{
     width: 90%;
     height: 70%;
@@ -204,7 +209,10 @@ span#nb_magasins
    content:url("/public/images/carte_btn_fr.png");
    width:150px;
 }
-
+.placementCarte{
+	position:relative;
+	left: 50px;
+}
 .ImgBtnInfo{
 	content:url("/public/images/svg/oeil.svg");
 	width:30px;
@@ -222,7 +230,17 @@ span#nb_magasins
 	background-color: #008B87;
 	width: auto;
 }
+.description{
+font-family:descriptif;
+    text-shadow:none;
+}
 
+.nomParcours{
+    font-family: tradFont;
+    text-shadow:none;
+   	font-size:36px;	
+    
+}
 
 #fpouter
 {
@@ -490,7 +508,6 @@ h2 {
     color:rgb(68,52,52);
     margin-top: 70px;
     text-align: center;
-    font-family: 'Open Sans', Arial, sans-serif;
     font-weight: normal;
 }
 
