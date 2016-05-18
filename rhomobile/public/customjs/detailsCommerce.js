@@ -117,7 +117,7 @@ function afficheSpecificationMagasin()
 		var descr = "";
 		try
 		{
-			descr = convertirEnLisible(data.commerce.description);
+			descr = data.commerce.description;
 			if(descr == null || descr == "" || descr == "null" || descr == " ")
 			{
 				descr = "(Aucune description disponible)";
@@ -139,7 +139,7 @@ function afficheSpecificationMagasin()
 		
 		$("#botSpec").append("<div class='horaires'>DU LUNDI AU VENDREDI<br/>8.30 - 15.30</div>");
 		$("#botSpec").append("<div class='bordureBot'></div>");
-		$("#botSpec").append("<div class='telephone'><img src='/public/images/svg/phone.svg' /> <span>"+data.commerce.phone_num+"</span></div>");
+		$("#botSpec").append("<div class='telephone'><img src='/public/images/svg/phone.svg' /> <span><a style='color:white' title='Call' href='wtai://wp/mc;"+data.commerce.phone_num+"'>"+data.commerce.phone_num+"</a></span></div>");
 		$("#botSpec").append("<div class='bordureBot'></div>");
 		$("#botSpec").append("<div class='website'>www.nowhere.net</div>");
 		$("#botSpec").append("<div class='socialNetworks'></div>");

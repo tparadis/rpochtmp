@@ -23,11 +23,10 @@ android:
 # Note: in order to simplify debugging only app messages and system channels with priority informative and higher, and any errors are enabled by default
   logcatFilter: "APP:I StrictMode:I DEBUG:I *:E"
   capabilities:
-    - gps
   emulator: "AVD01"
+wm: 
 #sdk: "MC3000c50b (ARMV4I)"
 #sdk: "Windows Mobile 6.5.3 Professional DTK (ARMV4I)"
-wm: 
 win32:
   deployqt: 1
   deploymsvc: 1
@@ -36,3 +35,6 @@ extensions:
 rhobundle:
   exclude_items:
     - thumb.db
+capabilities:
+  - gps
+  - phone

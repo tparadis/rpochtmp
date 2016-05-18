@@ -1,30 +1,29 @@
 @font-face {
     font-family: tradFont;
-    src: url("/public/fonts/tradFont.otf");
+    src: url('/public/fonts/tradfont-webfont.woff2') format('woff2'),
+         url('/public/fonts/tradfont-webfont.woff') format('woff'),
+         url("/public/fonts/tradFont.otf") format('truetype');
 }
 @font-face {
     font-family: Rennes;
-    src: url("/public/fonts/Rennes.otf");
+    src: url('/public/fonts/rennes-webfont.woff2') format('woff2'),
+         url('/public/fonts/rennes-webfont.woff') format('woff'),
+         url("/public/fonts/Rennes.otf") format('truetype');
+    
 }
 @font-face {
     font-family: sscat;
-    src: url("/public/fonts/CaviarDreamsBold.ttf");
+    src: url('/public/fonts/caviardreamsbold-webfont.woff2') format('woff2'),
+         url('/public/fonts/caviardreamsbold-webfont.woff') format('woff'),
+         url("/public/fonts/CaviarDreamsBold.otf") format('truetype');
+    
 }
 @font-face {
-    font-family: descriptif;
-    src: url("/public/fonts/CaviarDreams.ttf");
+    font-family: descriptif; 
+    src: url('/public/fonts/caviardreams-webfont.woff2') format('woff2'),
+         url('/public/fonts/caviardreams-webfont.woff') format('woff'),
+         url("/public/fonts/CaviarDreams.ttf") format('truetype');
 }
-
-@font-face {
-    font-family: titre;
-    src: url("/public/fonts/PlaylistCaps.otf");
-}
-@font-face {
-    font-family: liste;
-    src: url("/public/fonts/MinionPro-Regular.otf");
-}
-
-
 
 body{
     width:100%;
