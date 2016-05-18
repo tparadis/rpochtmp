@@ -70,5 +70,13 @@ class PersonaliseeController < Rho::RhoController
       $typeparcours = @params['type_parcours']
       Rho::WebView.navigate(url_for(:action => :personalisee))
     end
+    
+    def personalisee
+      render :back => 'callback:' + url_for(:action => :callback_alert)
+    end
+    
+    def callback_alert
+      Rho::WebView.executeJavaScript("backButton();")
+    end
      
 end
