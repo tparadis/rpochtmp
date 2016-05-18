@@ -182,8 +182,6 @@ module Algo
 						coord_arr_lat,coord_arr_lng,
 						dist_max, commerces)
 		start = Time.now;
-		# dans le premier algo -> parcours en largeur
-		# faisons à présent un parcours en profondeur
 		
 		# Constantes utiles à la conversion
 		# km <=> latitude et longitude
