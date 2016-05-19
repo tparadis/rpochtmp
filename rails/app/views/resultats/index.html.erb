@@ -15,7 +15,7 @@
   <tbody>
     <% @resultats.each do |resultat| %>
       <tr>
-        <td><%= resultat.magasin %></td>
+        <td><%= Commerce.select('enseigne').where(:id => resultat.magasin).first.enseigne %></td>
         <td><%= resultat.objet %></td>
         <td><%= resultat.message %></td>
         <td><%= link_to 'Show', resultat %></td>

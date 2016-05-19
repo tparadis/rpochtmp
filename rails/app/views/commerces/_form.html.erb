@@ -182,6 +182,19 @@
 	<%= f.collection_select :tag3, @tags.order(:nom), :id, :nom, {:selected => @commerce.tag3 || 0}   %>
 </div>
 <div class="field">
+	<%= f.label :image %><br/>
+	<%= f.text_field :image %>
+</div>
+<div class="field">
+	<%= f.label :instagram %><br/>
+	<%= f.text_field :instagram %>
+</div>
+<div class="field">
+	<%= f.label :website %><br/>
+	<%= f.text_field :website %>
+</div>
+
+<div class="field">
 	<%= f.label :db_add_date %><br/>
 	<%= f.text_field :db_add_date %> 
 </div>
