@@ -1,27 +1,28 @@
 @font-face {
     font-family: tradFont;
-    src: url("/public/fonts/tradFont.otf");
+    src: url('/public/fonts/tradfont-webfont.woff2') format('woff2'),
+         url('/public/fonts/tradfont-webfont.woff') format('woff'),
+         url("/public/fonts/tradFont.otf") format('truetype');
 }
 @font-face {
     font-family: Rennes;
-    src: url("/public/fonts/Rennes.otf");
+    src: url('/public/fonts/rennes-webfont.woff2') format('woff2'),
+         url('/public/fonts/rennes-webfont.woff') format('woff'),
+         url("/public/fonts/Rennes.otf") format('truetype');
+    
 }
 @font-face {
     font-family: sscat;
-    src: url("/public/fonts/CaviarDreamsBold.ttf");
+    src: url('/public/fonts/caviardreamsbold-webfont.woff2') format('woff2'),
+         url('/public/fonts/caviardreamsbold-webfont.woff') format('woff'),
+         url("/public/fonts/CaviarDreamsBold.otf") format('truetype');
+    
 }
 @font-face {
-    font-family: descriptif;
-    src: url("/public/fonts/CaviarDreams.ttf");
-}
-
-@font-face {
-    font-family: titre;
-    src: url("/public/fonts/PlaylistCaps.otf");
-}
-@font-face {
-    font-family: liste;
-    src: url("/public/fonts/MinionPro-Regular.otf");
+    font-family: descriptif; 
+    src: url('/public/fonts/caviardreams-webfont.woff2') format('woff2'),
+         url('/public/fonts/caviardreams-webfont.woff') format('woff'),
+         url("/public/fonts/CaviarDreams.ttf") format('truetype');
 }
 
 body{
@@ -112,7 +113,7 @@ display:none;
 	font-family:sscat;
 	position:relative;
     width:auto;
-    bottom:70px;
+    bottom:60px;
     padding:0;
     text-shadow:none;
     
@@ -129,11 +130,14 @@ display:none;
 	font-family:sscat;
 	position:relative;
     width:auto;
-    bottom:70px;
+    bottom:60px;
     padding:0;
     text-shadow:none;
 }
-
+.listeItem{
+	font-family:sscat;
+	text-shadow:none;
+}
 .MenuAcc{
     width: 90%;
     height: 70%;
@@ -204,7 +208,10 @@ span#nb_magasins
    content:url("/public/images/carte_btn_fr.png");
    width:150px;
 }
-
+.placementCarte{
+	position:relative;
+	left: 50px;
+}
 .ImgBtnInfo{
 	content:url("/public/images/svg/oeil.svg");
 	width:30px;
@@ -218,6 +225,21 @@ span#nb_magasins
 	width:20px;
 }
 
+.slider{
+	background-color: #008B87;
+	width: auto;
+}
+.description{
+font-family:descriptif;
+    text-shadow:none;
+}
+
+.nomParcours{
+    font-family: tradFont;
+    text-shadow:none;
+   	font-size:36px;	
+    
+}
 
 #fpouter
 {
@@ -310,6 +332,8 @@ span#nb_magasins
 	margin-left:-10px;
 	background-color:#008B87;
 }
+
+
 
 /*Ceci concerne l'affichage KDR des parcours predefinis ------------------------------------*/
 
@@ -483,7 +507,6 @@ h2 {
     color:rgb(68,52,52);
     margin-top: 70px;
     text-align: center;
-    font-family: 'Open Sans', Arial, sans-serif;
     font-weight: normal;
 }
 

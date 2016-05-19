@@ -13,7 +13,26 @@ var currentInfoWindow;
 var isPredef = false;
 ssCatCache = [];
 
+function backButton()
+{
+	var affiche = $("#pageSpec").is(":visible");
+
+	if(affiche)
+	{
+			$("#pageSpec").hide(0);
+			$("#boutonsParcours").show(0);
+			$(".ui-page-active").show();			
+	}
+	else
+	{
+		window.location.href = "/app/Personalisee/"
+	}
+}
+
+
 function initialize() {
+	//Prevent screen to sleep on this page
+	Rho.System.screenSleeping = false;
 	
 	//On cleane la sessionStorage d'elements indesirables
 	if (sessionStorage.getItem("currentMagasin") != null) {
