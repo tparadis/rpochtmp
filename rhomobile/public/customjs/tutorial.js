@@ -79,7 +79,7 @@ $(document).ready(function(){
 	tutoState = JSON.parse(Rho.RhoFile.read(filename));
 	
 	var pageName = location.pathname.split('/').slice(-1)[0]
-	
+	if(pageName == "index_erb.iseq") pageName = "index.erb";
 	//Le Switch des operations a effectuer pour le deroulement du tuto
 	switch(pageName)
 	{

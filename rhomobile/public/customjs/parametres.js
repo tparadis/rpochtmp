@@ -99,7 +99,7 @@ function reinitTutorial()
 {
 	try
 	{
-		var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.publicFolder, "firsttime.txt"), Rho.RhoFile.OPEN_FOR_READ_WRITE);
+		var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.publicFolder, "firsttime.txt"), Rho.RhoFile.OPEN_FOR_WRITE);
 		fichier.write("[1,1,1,1]");
 		fichier.close();
 		return "ok";

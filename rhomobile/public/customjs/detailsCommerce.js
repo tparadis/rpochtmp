@@ -23,7 +23,7 @@ function checkIfImplemented()
 	{
 	
 	//S'il n'y a pas les balises pour le rendu de notre page, on l'ajoute directement.
-	$("body").append("<div id='loaderDescr'><img src='/public/images/loader.gif' /></div>");
+	$("body").append("<div id='loaderDescr'><img src='/public/images/loading.gif' /></div>");
 	
 	$("body").append("<div id='pageSpec'>"
 		+ "<div id='close'></div>"
