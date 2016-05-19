@@ -20,6 +20,50 @@ $(document).ready(function() {
 	var res = (offsetBarre / max) * 100;
 	$("a[role='slider']").css("left", res + "%");
 
+	//Reinitialiser le tutorial
+	var msgFinal = "";
+	switch(localStorage.getItem("0"))
+	{
+		case "fr": msgFinal = "Relancer le tutoriel"; break;
+		case "en": msgFinal = "Restart tutorial"; break;
+		case "esp": msgFinal = "Tutorial de reinicio"; break;
+		case "de": msgFinal = "starten Sie das Tutorial"; break;
+				
+	}
+	$("a[name='reinittuto']").html(msgFinal);
+	
+	$("a[name='reinittuto']").on("click", function(){
+		var ret = reinitTutorial();
+		var msgFinal = "";
+		console.log("LOG "+ret)
+		switch(ret)
+		{
+			case "ok":
+				switch(localStorage.getItem("0"))
+				{
+					case "fr": msgFinal = "tutoriel actif"; break;
+					case "en": msgFinal = "active tutorial"; break;
+					case "esp": msgFinal = "tutorial activo"; break;
+					case "de": msgFinal = "aktiv Tutorial"; break;
+					
+				}
+				break;
+				
+			case "pasok":
+				switch(localStorage.getItem("0"))
+				{
+					case "fr": msgFinal = "impossible d'activer le tutoriel"; break;
+					case "en": msgFinal = "Could not activate tutorial"; break;
+					case "esp": msgFinal = "No se pudo activar el tutorial"; break;
+					case "de": msgFinal = "Konnte nicht Tutorial aktivieren"; break;
+					
+				}
+				break;
+		}
+		$("span.feedback").html(msgFinal);
+		
+	});
+	
 	
 	
 	$("a[role='slider']").on("mouseup",function(){
@@ -56,4 +100,22 @@ function sauvegardeEnFichier(newValue) {
 
 	localStorage.setItem("distMax", Number(newValue));
 
+}
+
+function reinitTutorial()
+{
+	try
+	{
+		var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.publicFolder, "firsttime.txt"), Rho.RhoFile.OPEN_FOR_READ_WRITE);
+		fichier.write("[1,1,1,1]");
+		fichier.close();
+		return "ok";
+	}
+	catch(err)
+	{
+		return "pasok";
+	}
+	
+	
+	return "ok";
 }

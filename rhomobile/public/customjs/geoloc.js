@@ -20,6 +20,7 @@ $(document).ready(function(e){
 //Actualise nos variables globales
 function getPos(position)
 {
+	console.log("lat = "+position.coords.latitude+", long = "+position.coords.longitude);
 	if((position.coords.latitude != 0 && position.coords.longitude != 0) || (position.coords.latitude != -1 && position.coords.longitude != -1))
 	{
 		localStorage.setItem("userlat", JSON.stringify(position.coords.latitude));

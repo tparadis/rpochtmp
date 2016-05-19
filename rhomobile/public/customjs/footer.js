@@ -1,7 +1,6 @@
 function updateFooter()
 {
 	var filename = $("#path:first").attr('name');
-	console.log(filename);
 	if (filename == "sscat") {
 		$("#footer a[name='perso'] img").attr('src', '/public/images/svg/parcoursHover.svg');
 
