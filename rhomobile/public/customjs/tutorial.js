@@ -76,7 +76,7 @@ $(document).ready(function(){
 	
 	//On recupere le tableau des etats d'avancement du tutoriel
 	var filename = Rho.RhoFile.join(Rho.Application.publicFolder, 'firsttime.txt');
-	var tutoState = JSON.parse(Rho.RhoFile.read(filename));
+	tutoState = JSON.parse(Rho.RhoFile.read(filename));
 	
 	var pageName = location.pathname.split('/').slice(-1)[0]
 	
@@ -88,7 +88,6 @@ $(document).ready(function(){
 			if (tutoState[0] == 1)
 			{
 				showTutorialMain();
-				tutoState[0] = 0;
 			}
 			break;
 		
@@ -97,7 +96,6 @@ $(document).ready(function(){
 			if (tutoState[2] == 1)
 			{
 				showTutorialPerso();
-				tutoState[2] = 0;
 			}
 			break;
 			
@@ -105,9 +103,9 @@ $(document).ready(function(){
 			if (tutoState[1] == 1)
 			{
 				showTutorialPredef();
-				tutoState[1] = 0;
 			}
 			break;
+			 
 			
 		default:
 			console.log("Pas de tutoriel pour cette page: "+pageName);
@@ -115,13 +113,7 @@ $(document).ready(function(){
 		
 	}
 	
-	//On sauvegarde l'état du tutoriel
-	var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.publicFolder, "firsttime.txt"), Rho.RhoFile.OPEN_FOR_READ_WRITE);
 	
-	//Penser a decommenter en dessous pour que les modifs de tutos soient prises en compte
-	fichier.write(JSON.stringify(tutoState));
-	
-	fichier.close();
 
 
 });
@@ -132,15 +124,21 @@ function showTutorialMain()
 	$("body").append("<div id='sampleWindow' style='bottom:70px; z-index:20;'><div class='persoW'>"
 	+"</div></div>");
 	$("#grisement").show();
+	var heightNew = $("body").height() - 100 ;
+	$("#grisement").css({"height":heightNew+"px", "margin-top":"52px"});
 	var elem = document.getElementsByClassName("persoW");
 	elem[0].innerHTML = tutoTrad[currentLang].footer;
 	$("#sampleWindow").css("height","auto");
 	$("#grisement").on("mousedown",function(){
 		$("#sampleWindow").hide(500);
+		tutoState[0] = 0;
+		writeCurrentState(tutoState);
 	});
 	$("#sampleWindow").on("mousedown",function(){
 		$("#grisement").hide();
 		$("#sampleWindow").hide(500);
+		tutoState[0] = 0;
+		writeCurrentState(tutoState);
 	});
 	
 }
@@ -155,10 +153,14 @@ function showTutorialPerso()
 	$("#sampleWindow").css("height","auto");
 	$("#grisement").on("mousedown",function(){
 		$("#sampleWindow").hide(500);
+		tutoState[2] = 0;
+		writeCurrentState(tutoState);
 	});
 	$("#sampleWindow").on("mousedown",function(){
 		$("#grisement").hide();
 		$("#sampleWindow").hide(500);
+		tutoState[2] = 0;
+		writeCurrentState(tutoState);
 	});
 	
 }
@@ -173,15 +175,28 @@ function showTutorialPredef()
 	$("#sampleWindow").css("height","auto");
 	$("#grisement").on("mousedown",function(){
 		$("#sampleWindow").hide(500);
+		tutoState[1] = 0;
+		writeCurrentState(tutoState);
 	});
 	$("#sampleWindow").on("mousedown",function(){
 		$("#grisement").hide();
 		$("#sampleWindow").hide(500);
+		tutoState[1] = 0;
+		writeCurrentState(tutoState);
 	});
 	
 }
 
-
+function writeCurrentState(state)
+{
+	//On sauvegarde l'état du tutoriel
+	var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.publicFolder, "firsttime.txt"), Rho.RhoFile.OPEN_FOR_READ_WRITE);
+	
+	//Penser a decommenter en dessous pour que les modifs de tutos soient prises en compte
+	fichier.write(JSON.stringify(tutoState));
+	
+	fichier.close();
+}
 
 
 
