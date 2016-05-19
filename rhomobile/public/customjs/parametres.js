@@ -86,13 +86,6 @@ function sauvegardeEnFichier(newValue) {
 
 	//var debut = contents.split('\n');
 	var reecrire = "distMax:" + newValue;
-	var size = fichier.size();
-	var i = 0;
-	for(i = 0; i < size; i++)
-	{
-		ret = fichier.write(' ');
-	}
-	fichier.seek(0);
 	var ret = fichier.write(reecrire);
 	console.log("Ecriture du fichier : "+ret);
 
