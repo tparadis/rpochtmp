@@ -97,6 +97,17 @@ function afficheTout()
 	var box = $("body").find(".languageSelect");
 	$(box).css("bottom", $("body").find("div[id='footer']").height() +"px");
 
+	//Truc pour ne pas supprimer le Grisement si le tuto était active
+	
+	var pageName = location.pathname.split('/').slice(-1)[0];
+	var grisVisible = getCurrentState(pageName);
+	if(grisVisible)
+	{
+		$("#grisement").show();
+	}
+	console.log("Gris visible : "+grisVisible);
+	
+	
 	//Ajout d'une barre de recherche si elle n'existe pas deja
 	if($("#searchbar").length == 0)
 	{
@@ -106,6 +117,8 @@ function afficheTout()
 	$("#searchbar").hide();
 	$("#grisement").hide();
 	$('a[name="search"]').on("click",function(){
+		
+		grisVisible = getCurrentState(pageName);
 		
 		if(afficheLoupe == false)
 		{
@@ -123,8 +136,11 @@ function afficheTout()
 		}
 		else
 		{
+			if(!grisVisible)
+			{
+				$("#grisement").hide();
+			}
 			
-			$("#grisement").hide();
 			$("#searchbar").hide();
 			afficheLoupe = false;
 		}
@@ -132,8 +148,11 @@ function afficheTout()
 		
 	});
 	
+	
 	//Le bouton des parametres
 	$('a[name="params"]').on("click",function(){
+		
+		grisVisible = getCurrentState(pageName);
 			
 			if(afficheParams == false)
 			{
@@ -149,8 +168,12 @@ function afficheTout()
 			}
 			else
 			{
+			
+				if(!grisVisible)
+				{
+					$("#grisement").hide();
+				}
 				
-				$("#grisement").hide();
 				$("#searchbar").hide();
 				$("#parametres").hide();
 				afficheParams = false;
@@ -161,9 +184,11 @@ function afficheTout()
 	
 	//Le bouton de traduction
 	$('a[name="btn4"]').on('click',function(){
+		
+		grisVisible = getCurrentState(pageName);
+		
 		if(afficheTrad == false)
-		{
-			
+		{	
 			$("#grisement").show();
 			$(".languageSelect").show();
 			$("a[name='btn4']").css("background-color", "#008b87");
@@ -176,13 +201,42 @@ function afficheTout()
 		else
 		{
 			afficheTrad = false;
-			$("#grisement").hide();
+			if(!grisVisible)
+			{
+				$("#grisement").hide();
+			}
 			$(".languageSelect").hide();
 			$("a[name='btn4']").css("background-color", "#F6F7F6");
 		}
 	});	
 	
 }
+
+function getCurrentState(page)
+{
+	var filename = Rho.RhoFile.join(Rho.Application.publicFolder, 'firsttime.txt'); // build the path
+	var contents = JSON.parse(Rho.RhoFile.read(filename)); // read the file into a variable
+	switch(page)
+	{
+		case "index.erb" :
+			if(contents[0] == 1) return true;
+			if(contents[0] == 0) return false;
+			break;
+			
+		case "parcours_predef" :
+			if(contents[1] == 1) return true;
+			if(contents[1] == 0) return false;
+			break;
+			
+		case "sous_categories" :
+			if(contents[2] == 1) return true;
+			if(contents[2] == 0) return false;
+			break;
+		
+		
+	}
+}
+
 
 window.onload = afficheTout();
 $(document).ready(updateFooter);
