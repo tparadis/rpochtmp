@@ -33,36 +33,7 @@ function checkIfImplemented()
 		+ "</div>");
 	$("#loaderDescr").hide();
 	$("#contact-us").css({"width" : "50px", "margin-left": "70%"});
-		$("#contact-us").on("click", function (event) {
-		    event.stopPropagation()
-
-		    function onSubmit(event) {
-		      event.preventDefault();
-		      form = $(this);
-
-		      var subject = form.find("#contact-topic").val(),
-		      body = form.find("#contact-body").val();
-
-		      form.find("input, button").blur();
-		      if (!form_validate.required(subject)) {
-		        $("#contact-form .error").removeClass("hidden").text("Please select an topic.");
-		        form.find("select").focus();
-		        return;
-		      }
-
-		      $.dialog.close("contact-form");
-		      var resultats = api.signaler(id, subject, body);
-		 	  if(resultats == "ok"){
-		 		 $.dialog.alert("Thank you for contacting us.\nWe will get back to you soon.\n\nThis alert will automatically close in 2 seconds.").autoClose(2000);
-		 	  }
-		    }
-
-		    function open(dialog) {
-		      dialog.find("form").on("submit", onSubmit);
-		    }
-
-		    $.dialog.open("contact-form").onOpen(open);
-		  });
+		
 	}
 }
 
@@ -139,7 +110,7 @@ function afficheSpecificationMagasin()
 		
 		$("#botSpec").append("<div class='horaires'>DU LUNDI AU VENDREDI<br/>8.30 - 15.30</div>");
 		$("#botSpec").append("<div class='bordureBot'></div>");
-		$("#botSpec").append("<div class='telephone'><img src='/public/images/svg/phone.svg' /> <span><a style='color:white' title='Call' href='te:"+data.commerce.phone_num+"'>"+data.commerce.phone_num+"</a></span></div>");
+		$("#botSpec").append("<div class='telephone'><img src='/public/images/svg/phone.svg' /> <span><a style='color:white' title='Call' href='tel:"+data.commerce.phone_num+"'>"+data.commerce.phone_num+"</a></span></div>");
 		$("#botSpec").append("<div class='bordureBot'></div>");
 		$("#botSpec").append("<div class='website'>www.nowhere.net</div>");
 		$("#botSpec").append("<div class='socialNetworks'></div>");
@@ -147,12 +118,56 @@ function afficheSpecificationMagasin()
 		//Ajouter dynamiquement les affiliations aux liens
 		//des réseaux sociaux ci-dessous
 		//Modifier le comportement des boutons en fonction de l'action voulue !
-		var k = 0;
-		var socialsPictures = ["fb.svg", "instagram.svg", "email.svg", "warning.svg"];
-		for (k = 0; k < socialsPictures.length; k++)
-		{
-			$(".socialNetworks").append("<img src='/public/images/svg/"+socialsPictures[k]+"' />");
+		
+		
+		if(data.commerce.facebook != ""){
+			$(".socialNetworks").append("<a href='"+data.commerce.facebook+"'><img src='/public/images/svg/fb.svg'/></a>");
 		}
+		if(data.commerce.instagram != ""){
+			$(".socialNetworks").append("<a href='"+data.commerce.instagram+"'> <img src='/public/images/svg/instagram.svg'/></a>");
+		}
+		if(data.commerce.email != ""){
+			$(".socialNetworks").append("<a href='mailto:theophile.paradis@gmail.com?subject=test'> <img src='/public/images/svg/email.svg'/></a>");
+		}
+		if(data.commerce.website != ""){
+			$(".socialNetworks").append("<a href='"+data.commerce.website+"'> <img src='/public/images/svg/oeil.svg'/></a>");
+		}
+		
+		
+		
+		$(".socialNetworks").append("<img id='contact-us' src='/public/images/svg/warning.svg' />");
+		
+		$("#contact-us").on("click", function (event) {
+		    event.stopPropagation()
+
+		    function onSubmit(event) {
+		      event.preventDefault();
+		      form = $(this);
+
+		      var subject = form.find("#contact-topic").val(),
+		      body = form.find("#contact-body").val();
+
+		      form.find("input, button").blur();
+		      if (!form_validate.required(subject)) {
+		        $("#contact-form .error").removeClass("hidden").text("Please select an topic.");
+		        form.find("select").focus();
+		        return;
+		      }
+
+		      $.dialog.close("contact-form");
+		      var resultats = api.signaler(id, subject, body);
+		 	  if(resultats == "ok"){
+		 		 $.dialog.alert("Thank you for contacting us.\nWe will get back to you soon.\n\nThis alert will automatically close in 2 seconds.").autoClose(2000);
+		 	  }
+		    }
+
+		    function open(dialog) {
+		      dialog.find("form").on("submit", onSubmit);
+		    }
+
+		    $.dialog.open("contact-form").onOpen(open);
+		  });
+		
 		//Ajustement pour le bas de la page
 		//$("#pageSpec").css("height", $("#pageSpec").height() + 50 + "px");
 		$("#pageSpec").show(0);  
@@ -233,14 +248,3 @@ function convertirEnLisible(texte)
 	
 }
 	  
-
-
-
-
-
-
-
-
-
-
-

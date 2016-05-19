@@ -1,6 +1,6 @@
 #sdk: "C:/RhoMobileSuite5.3.2/ruby/lib/ruby/gems/1.9.1/gems/rhodes-5.3.2"
 sdkversion: "5.3.2"
-name: "rhomobile"
+name: "Rennes en Poche"
 version: 1.0
 vendor: "rhomobile"
 build: "debug"
@@ -19,14 +19,15 @@ wp8:
   productid: "c2542400-a98e-0133-e763-0000da327cd9"
 android:
 #manifest_template: 'AndroidManifest.erb'
-  version: "4.4.2"
+  version: "4.1.0"
 # Note: in order to simplify debugging only app messages and system channels with priority informative and higher, and any errors are enabled by default
   logcatFilter: "APP:I StrictMode:I DEBUG:I *:E"
-  capabilities: 
+  capabilities:
+  emulator: "AVD01"
 wm: 
-win32:
 #sdk: "MC3000c50b (ARMV4I)"
 #sdk: "Windows Mobile 6.5.3 Professional DTK (ARMV4I)"
+win32:
   deployqt: 1
   deploymsvc: 1
 extensions:

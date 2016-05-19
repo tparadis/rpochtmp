@@ -37,20 +37,21 @@ body {
   text-align: center;
   background: #fff;
   box-shadow: 0 0 20px rgba(0,0,0,0.35);
+  z-index: 1000
 }
 .dialog h1 {
   text-align: center;
   font-weight: 100;
-  font-size: 2.6em;
+  font-size: 2.0em;
   margin: 0.555555em auto;
 }
 .dialog .form-group {
-  margin: 1.42857143em auto;
+  margin: 1.0em auto;
 }
 .dialog .toolbar {
-  margin: 2.85714286em -6em;
+  margin: 1.0em 1.0em;
   border-top: 1px solid #ededed;
-  padding-top: 2.6em;
+  padding-top: 1.0em;
 }
 .dialog .btn {
   padding: 6px 0;
@@ -71,7 +72,7 @@ body {
 
 @media (min-height: 240px) {
   .dialog {
-    top: 100px;
+    top: 30px;
   }
 }
 
@@ -83,13 +84,13 @@ body {
 
 @media (min-width: 568px) {
   .dialog {
-    top: 100px;
+    top: 50px;
   }
 }
 
 @media (min-width: 568px) and (min-height: 568px) {
   .dialog {
-    top: 140px;
+    top: 100px;
   }
 }
 
