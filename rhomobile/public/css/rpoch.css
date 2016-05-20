@@ -165,6 +165,36 @@ display:none;
 	font-size:19px;
 	text-align:center;
 }
+
+
+#warningWindow
+{
+	position:fixed;
+	width:90%;
+	height:60px;
+	left:2%;
+	background-color:#f1734e;
+	background-opacity:0.6;
+	border-radius:10px;
+	text-shadow:none;
+	color:white;
+	padding-top:10px;
+	padding-bottom:10px;
+	text-decoration:none;
+	box-shadow: 1px 3px 15px black;
+}
+
+.activgeo
+{
+	position:relative;
+	display:inline-block;
+	width:90%;
+	height:90%;
+	top:5%;
+	left:5%;
+}
+
+
 .Pannier{
     position:absolute;
     width:auto;

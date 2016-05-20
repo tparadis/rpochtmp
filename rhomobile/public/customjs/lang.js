@@ -27,7 +27,13 @@ var lang = {
 		+"<br/><span style='font-size:12px'>(Cliquez n'importe o&ugrave; pour fermer cette fenetre.)</span>",
 	
 	"footer" : "Bienvenue. Cette barre en bas vous permet de naviguer dans l'application. De gauche &agrave; droite : 'Les parcours pr&eacute;definis', 'Les parcours personnalis&eacute;s', 'rechercher', 'changer de langue', 'options'"
-		+"<br/><span style='font-size:12px'>(Cliquez n'importe o&ugrave; pour fermer cette fenetre.)</span>"
+		+"<br/><span style='font-size:12px'>(Cliquez n'importe o&ugrave; pour fermer cette fenetre.)</span>",
+	"activgeo":"Veuillez activez la geolocalisation"
+		+"<br/>Localisation par défaut: Opéra de Rennes"
+		+"<br/><span style='font-size:12px'>(Cliquez sur la fenetre pour la fermer.)</span>",
+	"probgeo":"Probléme geolocalisation"
+		+"<br/>Localisation par défaut: Opéra de Rennes"
+		+"<br/><span style='font-size:12px'>(Cliquez sur la fenetre pour la fermer.)</span>"
 	
 	},	
 	/**

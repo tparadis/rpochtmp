@@ -1,17 +1,19 @@
 $(document).ready(function(e){
 
+	localStorage.setItem("userlat", "48.1113531");
+	localStorage.setItem("userlng", "-1.6786842999999863");
 	
 	//On teste si le navigateur supporte les Geolocation
 	if(navigator.geolocation) {
-
-		//Utile pour maintenir � jour la position par un appel r�current � la fonction getPos
+			
+		//Utile pour maintenir a jour la position par un appel recurrent a la fonction getPos
 	  var userID = navigator.geolocation.watchPosition(getPos);
 	  
 	} else {
-	  // Pas de support, on met l'utilisateur sur l'op�ra de Rennes
+	  // Pas de support, on met l'utilisateur sur l'opera de Rennes
 	  console.log("Geolocalisation impossible...");
-	  localStorage.setItem("userlat", "48.110003");
-	  localStorage.setItem("userlng", "-1.678671");
+	  localStorage.setItem("userlat", "48.1113531");
+	  localStorage.setItem("userlng", "-1.6786842999999863");
 	  
 	}
 	
@@ -20,7 +22,6 @@ $(document).ready(function(e){
 //Actualise nos variables globales
 function getPos(position)
 {
-	console.log("lat = "+position.coords.latitude+", long = "+position.coords.longitude);
 	if((position.coords.latitude != 0 && position.coords.longitude != 0) || (position.coords.latitude != -1 && position.coords.longitude != -1))
 	{
 		localStorage.setItem("userlat", JSON.stringify(position.coords.latitude));
@@ -28,8 +29,9 @@ function getPos(position)
 	}
 	else
 	{
-		localStorage.setItem("userlat", "48.110003");
-		localStorage.setItem("userlng", "-1.678671");
+		
+		localStorage.setItem("userlat", "48.1113531");
+		localStorage.setItem("userlng", "-1.6786842999999863");
 	}
 }
 
