@@ -63,12 +63,12 @@
             while (i < magasins_size){
               magasin_nom = data.magasins[i].enseigne;
               // on attache les magasins à la liste
-              $("tbody").append('<tr><td class="listeItem">'+magasin_nom+'</td><td><a class="detailButton" name='+predefs.parcourspredefs[id].commerces[i]+'><img class= "ImgBtnInfo" ></img></a></td></tr>');
+              $("tbody").append('<tr class="detailButton" name='+predefs.parcourspredefs[id].commerces[i]+'><td class="listeItem">'+magasin_nom+'</td><td><a ><img class= "ImgBtnInfo" ></img></a></td></tr>');
               i++;
             }
-            $('a.detailButton').each(function() {
+            $('tr.detailButton').each(function() {
                  $(this).on('click',function(e){
-                     sessionStorage.setItem("currentMagasin", $(this).attr('name'));
+                    sessionStorage.setItem("currentMagasin", $(this).attr('name'));
                      afficheSpecificationMagasin();
                  });
             });
