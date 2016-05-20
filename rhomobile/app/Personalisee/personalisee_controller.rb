@@ -72,11 +72,12 @@ class PersonaliseeController < Rho::RhoController
     end
     
     def personalisee
-      render :back => 'callback:' + url_for(:action => :callback_alert)
+      render :action => :personalisee, :back => 'callback:' + url_for(:action => :callback_alert)
     end
     
     def callback_alert
-      Rho::WebView.executeJavaScript("backButton();")
+      Rho::WebView.executeJavaScript("backButton()")
+      return false
     end
      
 end

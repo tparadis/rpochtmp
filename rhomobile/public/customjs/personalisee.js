@@ -25,12 +25,32 @@ function backButton()
 	}
 	else
 	{
-		window.location.href = "/app/Personalisee/"
+		if($("#parcours_predef").attr("name") == "null")
+		{
+			window.location.replace("/app/Personalisee/personalisee");
+		}
+		else
+		{
+			sessionStorage.clear();
+			window.location.replace("/app/ParcoursPredef/parcours_predef");
+		}
 	}
+	
+	return false;
+	
 }
 
 
 function initialize() {
+	
+	$(document).bind('keydown', function(event) {
+		  if (event.keyCode == 27) {
+		    event.preventDefault();
+		    backButton();
+		  }
+		});
+	
+	
 	//Prevent screen to sleep on this page
 	Rho.System.screenSleeping = false;
 	
