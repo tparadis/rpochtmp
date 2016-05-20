@@ -71,7 +71,7 @@ function showTutorialMain()
 	$("#grisement").css("height","100%");
 	$("#grisement").show();
 	var elem = document.getElementsByClassName("persoW");
-	elem[0].innerHTML = tutoTrad[currentLang].footer;
+	elem[0].innerHTML = lang[currentLang].footer;
 	$("#sampleWindow").css("height","auto");
 	$("#grisement").on("mousedown",function(){
 		$("#sampleWindow").hide(500);
@@ -92,7 +92,7 @@ function showTutorialPerso()
 	$("body").append("<div id='sampleWindow' style='top:70px; z-index:20;'><div class='persoW'>"
 	+"</div></div>");
 	var elem = document.getElementsByClassName("persoW");
-	elem[0].innerHTML = tutoTrad[currentLang].persoTop;
+	elem[0].innerHTML = lang[currentLang].persoTop;
 	$("#grisement").show();
 	$("#sampleWindow").css("height","auto");
 	$("#grisement").on("mousedown",function(){
@@ -115,7 +115,7 @@ function showTutorialPredef()
 	+"</div></div>");
 	var elem = document.getElementsByClassName("persoW");
 	$("#grisement").show();
-	elem[0].innerHTML = tutoTrad[currentLang].description;
+	elem[0].innerHTML = lang[currentLang].description;
 	$("#sampleWindow").css("height","auto");
 	$("#grisement").on("mousedown",function(){
 		$("#sampleWindow").hide(500);

@@ -18,7 +18,7 @@ function afficheParcours(){
 		var newTop = $("#header").height() + $("#topPredef").height();
 		$("#containerPredef").css("top", newTop+"px");
 		coteElem = ($("#page").width()) /2 ;
-		$("#containerPredef").css("height", coteElem * (data.size /2 + moduloDataSize) + $("#footer").height() + 60 +"px");
+		$("#containerPredef").css({"top":"250px","height":"auto"});
 		//$("#page").css("width", $("#page").width() + 16 + "px");
 		while(i < data.size)
 		{
