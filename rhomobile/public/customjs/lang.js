@@ -17,7 +17,17 @@ var lang = {
 	"credits":"Credits",
 	"cci":"Une idee de la CCI Rennes :",
 	"devs": "Developpee par :",
-	"design":"Design par :"
+	"design":"Design par :",
+	"distanceMax":"Distance maximale à parcourir(km)",
+	"persoTop" : "Cliquez sur une categorie ci-dessous pour en afficher les tags.<br/> "
+		+"Ajoutez en plusieurs.<br/>Lorsque vous avez fini, cliquez sur l'icone en haut sur la droite pour continuer."
+		+"<br/><span style='font-size:12px'>(Cliquez n'importe o&ugrave; pour fermer cette fenetre.)</span>",
+	
+	"description" : "Ici, vous pouvez choisir un parcours predefinis par la CCI de Rennes."
+		+"<br/><span style='font-size:12px'>(Cliquez n'importe o&ugrave; pour fermer cette fenetre.)</span>",
+	
+	"footer" : "Bienvenue. Cette barre en bas vous permet de naviguer dans l'application. De gauche &agrave; droite : 'Les parcours pr&eacute;definis', 'Les parcours personnalis&eacute;s', 'rechercher', 'changer de langue', 'options'"
+		+"<br/><span style='font-size:12px'>(Cliquez n'importe o&ugrave; pour fermer cette fenetre.)</span>"
 	
 	},	
 	/**
@@ -43,7 +53,19 @@ var lang = {
 	"credits":"Credits",
 	"cci":"An idea of the CCI Rennes :",
 	"devs": "Developped by :",
-	"design":"Designed by :"
+	"design":"Designed by :",
+	"distanceMax":"Maximum Distance(km)",
+	"persoTop" : "Click on a category below to view tags. <br/> "
+		+ " Add several. <br/> When finished , click the icon at the top on the right to continue. "
+		+ " <br/><span style='font-size:12px'> ( Click anywhere to close this window. ) </span>",
+	
+	"description" : "Here you can choose a course predefined by the CCI of Rennes."
+		+ " <br/><span style='font-size:12px'> ( Click anywhere to close this window. ) </span>",
+	
+	"footer" : "Welcome. This bottom bar allows you to navigate through the application. From left to right: 'The predefined path', 'Custom path', 'search', 'change language', 'options'"
+		+ " <br/><span style='font-size:12px'> ( Click anywhere to close this window. ) </span>"
+	
+
 	},
 	/**
 	 * 
@@ -68,7 +90,18 @@ var lang = {
 	"credits":"Credits",
 	"cci":"Una idea de la CCI Rennes :",
 	"devs": "Desarrollado por :",
-	"design":"graficos por :"
+	"design":"graficos por :",
+	"distanceMax":"La máxima distancia (km)",
+	"persoTop" : "Haga clic en una categoria abajo para ver las etiquetas. <br/> "
+		+ " Anadir varios. <br/> Cuando haya terminado, haga clic en el icono en la parte superior a la derecha para continuar. "
+		+ " <br/><span style='font-size:12px'>( Haga clic en cualquier lugar y para cerrar esta ventana . ) </span >",
+
+	"description" : "Aqui se puede elegir un curso predefinido por el CCI de Rennes."
+		+ " <br/><span style='font-size:12px'>( Haga clic en cualquier lugar y para cerrar esta ventana . ) </span >",
+	
+	"footer" : "Bienvenido. Esta barra inferior le permite navegar a traves de la aplicacion. De izquierda a derecha: 'La ruta predefinida', 'Ruta personalizada ',' buscar ',' cambiar el idioma', 'Opciones'"
+		+ " <br/><span style='font-size:12px'>( Haga clic en cualquier lugar y para cerrar esta ventana . ) </span >"
+
 	},
 	/**
 	 * 
@@ -93,7 +126,18 @@ var lang = {
 	"credits":"Credits",
 	"cci":"Eine Idee der CCI Rennes",
 	"devs": "Entwickelt von :",
-	"design":"Grafiken von :"
+	"design":"Grafiken von :",
+	"distanceMax":"Der maximale Abstand (km)",
+	"persoTop" :"Klicken Sie auf eine der Kategorien -Tags anzuzeigen. <br/> "
+		+ "Add mehrere. <br/> Wenn Sie fertig sind , klicken Sie auf das Symbol an der Spitze auf der rechten Seite , um fortzufahren. "
+		+ " <br/><span style='font-size:12px'>(Klicken Sie irgendwo dieses Fenster zu schlieBen.) </span>",
+	
+	"description" : "Hier konnen Sie einen Kurs von der IHK von Rennes vorgegeben wahlen."
+		+ " <br/><span style='font-size:12px'>(Klicken Sie irgendwo dieses Fenster zu schlieBen.) </span>",
+	
+	"footer" : "Willkommen. Diese unteren Leiste konnen Sie durch die Anwendung zu navigieren. Von links nach rechts: 'Die vordefinierten Pfad ',' Custom Weg', 'suchen', 'Sprache andern', 'Optionen'"
+		+ " <br/><span style='font-size:12px'>(Klicken Sie irgendwo dieses Fenster zu schlieBen.) </span>"
+
 	}
 	
 }

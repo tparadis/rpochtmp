@@ -1,9 +1,3 @@
-body {
-  font: 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #777;
-  background: #fff;
-}
-
 .fade {
   opacity: 0;
   -webkit-transition: opacity .15s linear;
@@ -46,12 +40,10 @@ body {
   margin: 0.555555em auto;
 }
 .dialog .form-group {
-  margin: 1.0em auto;
+  margin: 0.2em auto;
 }
 .dialog .toolbar {
-  margin: 1.0em 1.0em;
-  border-top: 1px solid #ededed;
-  padding-top: 1.0em;
+  margin: 0.3em 0.3em;
 }
 .dialog .btn {
   padding: 6px 0;
@@ -72,7 +64,7 @@ body {
 
 @media (min-height: 240px) {
   .dialog {
-    top: 30px;
+    top: 20px;
   }
 }
 
