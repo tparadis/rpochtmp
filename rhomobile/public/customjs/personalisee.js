@@ -67,7 +67,7 @@ function initialize() {
 	//}
 	
 	magasins = [];
-	if(!navigator.geolocation){
+/*	if(!navigator.geolocation){
 		$("body").append("<div id='warningWindow' style='top:70px; z-index:20;'><div class='activgeo'>"
 	+"</div></div>");
 		var elem = document.getElementsByClassName("activgeo");
@@ -77,6 +77,7 @@ function initialize() {
 			$("#warningWindow").hide(500);
 		});	
 	}
+*/
 	
 	if( (navigator.geolocation) && (localStorage.getItem("userlat") = "48.1113531") && (localStorage.getItem("userlng") ="-1.6786842999999863")){
 		$("body").append("<div id='warningWindow' style='top:70px; z-index:20;'><div class='probgeo'>"
