@@ -13,3 +13,4 @@ rhomobile/rhosimulator/*
 .cbc
 rhomobile/public/save.txt
 rhomobile/public/firsttime.txt
+build.yml
