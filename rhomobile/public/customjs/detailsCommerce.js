@@ -107,12 +107,11 @@ function afficheSpecificationMagasin()
 		$("#midSpec").append("<div class='addresse' >"+(data.commerce.street_number+" "+data.commerce.route).toUpperCase()+"</div>");
 		$("#midSpec").append("<div class='bordureBot'></div>");
 		$("#midSpec").append("<div class='description'>"+descr+"</div>");
-		
-		$("#botSpec").append("<div class='horaires'>DU LUNDI AU VENDREDI<br/>8.30 - 15.30</div>");
+		$("#botSpec").append("<div class='horaires' style='text-shadow:none;'>DU LUNDI AU VENDREDI<br/>8.30 - 15.30</div>");
 		$("#botSpec").append("<div class='bordureBot'></div>");
-		$("#botSpec").append("<div class='telephone'><img src='/public/images/svg/phone.svg' /> <span><a style='color:white' title='Call' href='tel:"+data.commerce.phone_num+"'>"+data.commerce.phone_num+"</a></span></div>");
+		$("#botSpec").append("<div class='telephone'><img src='/public/images/svg/phone.svg' /> <span><a style='color:white;text-shadow:none;' title='Call' href='tel:"+data.commerce.phone_num+"'>"+data.commerce.phone_num+"</a></span></div>");
 		$("#botSpec").append("<div class='bordureBot'></div>");
-		$("#botSpec").append("<div class='website'>www.nowhere.net</div>");
+		$("#botSpec").append("<div class='website' style='text-shadow:none;'>www.nowhere.net</div>");
 		$("#botSpec").append("<div class='socialNetworks'></div>");
 		
 		//Ajouter dynamiquement les affiliations aux liens

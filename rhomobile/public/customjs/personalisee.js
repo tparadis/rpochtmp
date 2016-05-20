@@ -52,9 +52,9 @@ function initialize() {
 	+"</div></div>");
 		var elem = document.getElementsByClassName("activgeo");
 		elem[0].innerHTML = lang[currentLang].activgeo;
-		$("#sampleWindow").css("height","auto");
-		$("#sampleWindow").on("mousedown",function(){
-			$("#sampleWindow").hide(500);
+		$("#warningWindow").css("height","auto");
+		$("#warningWindow").on("mousedown",function(){
+			$("#warningWindow").hide(500);
 		});	
 	}
 	
