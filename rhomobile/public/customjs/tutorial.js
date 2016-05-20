@@ -121,9 +121,12 @@ function showTutorialMain()
 {	
 	$("body").append("<div id='sampleWindow' style='bottom:70px; z-index:20;'><div class='persoW'>"
 	+"</div></div>");
+	if($("#grisement").length == 0)
+	{
+		$("body").append("#grisement");
+	}
+	$("#grisement").css("height","100%");
 	$("#grisement").show();
-	var heightNew = $("body").height() - 100 ;
-	$("#grisement").css({"height":heightNew+"px", "margin-top":"52px"});
 	var elem = document.getElementsByClassName("persoW");
 	elem[0].innerHTML = tutoTrad[currentLang].footer;
 	$("#sampleWindow").css("height","auto");

@@ -4,11 +4,11 @@ $(document).ready(function(e){
 	//On teste si le navigateur supporte les Geolocation
 	if(navigator.geolocation) {
 
-		//Utile pour maintenir ˆ jour la position par un appel rŽcurrent ˆ la fonction getPos
+		//Utile pour maintenir ï¿½ jour la position par un appel rï¿½current ï¿½ la fonction getPos
 	  var userID = navigator.geolocation.watchPosition(getPos);
 	  
 	} else {
-	  // Pas de support, on met l'utilisateur sur l'opŽra de Rennes
+	  // Pas de support, on met l'utilisateur sur l'opï¿½ra de Rennes
 	  console.log("Geolocalisation impossible...");
 	  localStorage.setItem("userlat", "48.110003");
 	  localStorage.setItem("userlng", "-1.678671");
@@ -32,12 +32,6 @@ function getPos(position)
 		localStorage.setItem("userlng", "-1.678671");
 	}
 }
-
-
-
-
-
-
 
 
 
