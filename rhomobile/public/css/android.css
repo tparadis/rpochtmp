@@ -45,7 +45,6 @@ div.itemValue {
 .ui-header h1 {
     color: white;
     line-height: 25px;
-    text-shadow: 1px 1px 1px #000;
 }
 
 */
@@ -57,7 +56,6 @@ div.itemValue {
 	background: 			#111111;
 	color: 					#ffffff;
 	font-weight: bold;
-	text-shadow: 0 -1px 1px #000000;
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #2B2B2B), color-stop(0.2, #585858), color-stop(1.0, #2B2B2B));
 }
 .ui-bar-a,
@@ -81,7 +79,6 @@ div.itemValue {
 	border: 1px solid 		#2A2A2A;
 	background: 			#000;
 	color: 					#fff;
-	text-shadow: 0 1px 0 	#000;
 	font-weight: normal;
 /*
 	background: 			#222222;
@@ -118,7 +115,6 @@ li.ui-btn-up-c {
     background: #000;
     font-weight: bold;
     color: 					#fff;
-    text-shadow: 0 -1px 1px #000;
 /*
     background: 			#333333;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#555), to(#333));
@@ -131,14 +127,12 @@ li.ui-btn-up-c {
 	background: 			#333333;
 	font-weight: bold;
 	color: 					#000;
-	text-shadow: 0 -1px 1px #fff;
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, white), color-stop(0.5, #ccc), color-stop(1.0, #bdbebd));
 /*
 	border: 1px solid 		#222;
 	background: 			#333333;
 	font-weight: bold;
 	color: 					#fff;
-	text-shadow: 0 -1px 1px #000;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#555), to(#333));
 */
 }
@@ -151,7 +145,6 @@ li.ui-btn-up-c {
     font-weight: bold;
     color: 					#000;
     text-shadow: none;
-    /*text-shadow: 0 -1px 1px #fff;*/
 /*
     background: 			#F76922;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#F76922), to(#F73932));
@@ -161,7 +154,6 @@ li.ui-btn-up-c {
 	background: 			#444444;
 	font-weight: bold;
 	color: 					#fff;
-	text-shadow: 0 -1px 1px #000;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#666), to(#444));
 */
 }
@@ -174,7 +166,6 @@ li.ui-btn-up-c {
     font-weight: bold;
     color: 					#000;
     text-shadow: none;
-    /*text-shadow: 0 -1px 1px #fff;*/
 /*
     background-image: -webkit-gradient(linear, left top, left bottom, from(#F76922), to(#fadb4e));
 */
@@ -183,7 +174,6 @@ li.ui-btn-up-c {
 	background: 			#3d3d3d;
 	font-weight: bold;
 	color: 					#fff;
-	text-shadow: 0 -1px 1px #000;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#333), to(#5a5a5a));
 */
 }
@@ -192,7 +182,6 @@ li.ui-btn-up-c {
 	background: 			#3d3d3d;
 	font-weight: bold;
 	color: 					#fff;
-	text-shadow: 0 -1px 1px #000;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#333), to(#5a5a5a));
 }
 .ui-btn-down-c a.ui-link-inherit {

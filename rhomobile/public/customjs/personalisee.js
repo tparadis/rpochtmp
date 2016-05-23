@@ -8,7 +8,7 @@ var L = [];
 idArray = [];
 listPos = [];
 listPosBis = [];
-magParcouruMax = -1; // Le magasin le plus loin dans le parcours qui a �t� parcouru.
+magParcouruMax = -1; // Le magasin le plus loin dans le parcours qui a ete parcouru.
 var currentInfoWindow;
 var isPredef = false;
 ssCatCache = [];
