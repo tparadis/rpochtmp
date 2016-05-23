@@ -8,7 +8,7 @@ var L = [];
 idArray = [];
 listPos = [];
 listPosBis = [];
-magParcouruMax = -1; // Le magasin le plus loin dans le parcours qui a �t� parcouru.
+magParcouruMax = -1; // Le magasin le plus loin dans le parcours qui a ete parcouru.
 var currentInfoWindow;
 var isPredef = false;
 ssCatCache = [];
@@ -127,7 +127,7 @@ function initialize() {
 			categories = findCatSubCat(magasin[2]);
 		}
 		
-		var urlimg = "/public/images/cat" + categories.cat + "_256.png";
+		var urlimg = "/public/images/cat" + categories.cat + "_256.svg";
 		var image = {
 
 			url: urlimg,

@@ -76,11 +76,11 @@ function afficheSpecificationMagasin()
 		var icon = "";
 		try
 		{
-			icon = findSSCat(data.commerce.tag0,0) + "_256.png";
+			icon = findSSCat(data.commerce.tag0,0) + "_256.svg";
 		}
 		catch(err)
 		{
-			icon = "cat13_256.png";
+			icon = "cat13_256.svg";
 			console.log("Erreur: "+err);
 		}
 		
