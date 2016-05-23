@@ -1,11 +1,12 @@
 $(document).ready(function(e){
 
-	localStorage.setItem("userlat", "48.1113531");
-	localStorage.setItem("userlng", "-1.6786842999999863");
 	
 	//On teste si le navigateur supporte les Geolocation
 	if(navigator.geolocation) {
-			
+
+		localStorage.setItem("userlat", "48.1113531");
+		localStorage.setItem("userlng", "-1.6786842999999863");
+
 		//Utile pour maintenir a jour la position par un appel recurrent a la fonction getPos
 	  var userID = navigator.geolocation.watchPosition(getPos);
 	  
@@ -28,8 +29,7 @@ function getPos(position)
 		localStorage.setItem("userlng", JSON.stringify(position.coords.longitude));
 	}
 	else
-	{
-		
+	{		
 		localStorage.setItem("userlat", "48.1113531");
 		localStorage.setItem("userlng", "-1.6786842999999863");
 	}
