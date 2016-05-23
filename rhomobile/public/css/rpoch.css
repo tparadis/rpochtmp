@@ -840,10 +840,10 @@ div.after-first-elem{
 #searchbar input, .searchbar{
 	all:inherit;
 	border:none;
-	font-family:Rennes;
+	font-family:descriptif;
 	outline: none;
 	text-align:center;
-	font-size:26px;
+	font-size:20px;
 	background-color:white;
 	border:none;
 	box-shadow:none;

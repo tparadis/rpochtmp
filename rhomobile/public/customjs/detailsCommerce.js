@@ -119,17 +119,21 @@ function afficheSpecificationMagasin()
 		//Modifier le comportement des boutons en fonction de l'action voulue !
 		
 		
-		if(data.commerce.facebook != ""){
+		if(data.commerce.facebook != null){
+			if(data.commerce.facebook != "")	
 			$(".socialNetworks").append("<a onclick='Rho.System.openUrl(\""+data.commerce.facebook+"\")'><img src='/public/images/svg/fb.svg'/></a>");
 			
 		}
-		if(data.commerce.instagram != ""){
+		if(data.commerce.instagram != null){
+			if(data.commerce.instagram != "")
 			$(".socialNetworks").append("<a href='Rho.System.openUrl(\""+data.commerce.instagram+"\")'> <img src='/public/images/svg/instagram.svg'/></a>");
 		}
-		if(data.commerce.email != ""){
+		if(data.commerce.email != null){
+			if(data.commerce.email != "")
 			$(".socialNetworks").append("<a href='mailto:'"+data.commerce.email+"> <img src='/public/images/svg/email.svg'/></a>");
 		}
-		if(data.commerce.website != ""){
+		if(data.commerce.website != null){
+			if(data.commerce.website != "")
 			$(".socialNetworks").append("<a href='Rho.System.openUrl(\""+data.commerce.website+"\")'> <img src='/public/images/svg/oeil.svg'/></a>");
 		}
 		

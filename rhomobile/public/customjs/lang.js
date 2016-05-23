@@ -31,7 +31,7 @@ var lang = {
 	"activgeo":"Veuillez activez la geolocalisation"
 		+"<br/>Localisation par défaut: Opéra de Rennes"
 		+"<br/><span style='font-size:12px'>(Cliquez sur la fenetre pour la fermer.)</span>",
-	"probgeo":"Probléme geolocalisation"
+	"probgeo":"Probleme geolocalisation"
 		+"<br/>Localisation par défaut: Opéra de Rennes"
 		+"<br/><span style='font-size:12px'>(Cliquez sur la fenetre pour la fermer.)</span>"
 	
