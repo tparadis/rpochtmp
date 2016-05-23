@@ -15,13 +15,20 @@ ssCatCache = [];
 
 function backButton()
 {
-	if($("#parcours_predef").attr("name") != "null")
+	if($("#pageSpec").is(":visible"))
 	{
-		window.location.replace("/app/ParcoursPredef/parcours_predef");
+		location.reload();
 	}
 	else
 	{
-		window.location.replace("/app/SousCategories/sous_categories");
+		if($("#parcours_predef").attr("name") != "null")
+		{
+			window.location.replace("/app/ParcoursPredef/parcours_predef");
+		}
+		else
+		{
+			window.location.replace("/app/SousCategories/sous_categories");
+		}
 	}
 	
 }
