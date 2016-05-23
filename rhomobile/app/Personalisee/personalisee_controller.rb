@@ -3,9 +3,7 @@ require 'helpers/browser_helper'
 
 class PersonaliseeController < Rho::RhoController
   include BrowserHelper
-
-  
-  
+ 
   # GET /Personalisee
   def index
     @personalisees = Personalisee.find(:all)
@@ -72,12 +70,8 @@ class PersonaliseeController < Rho::RhoController
     end
     
     def personalisee
-      render :action => :personalisee, :back => 'callback:' + url_for(:action => :callback_alert)
+        render :back => 'javascript:backButton();'
     end
-    
-    def callback_alert
-      Rho::WebView.executeJavaScript("backButton()")
-      return false
-    end
+
      
 end

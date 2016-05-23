@@ -15,40 +15,19 @@ ssCatCache = [];
 
 function backButton()
 {
-	var affiche = $("#pageSpec").is(":visible");
-
-	if(affiche)
+	if($("#parcours_predef").attr("name") != "null")
 	{
-			$("#pageSpec").hide(0);
-			$("#boutonsParcours").show(0);
-			$(".ui-page-active").show();			
+		window.location.replace("/app/ParcoursPredef/parcours_predef");
 	}
 	else
 	{
-		if($("#parcours_predef").attr("name") == "null")
-		{
-			window.location.replace("/app/Personalisee/personalisee");
-		}
-		else
-		{
-			sessionStorage.clear();
-			window.location.replace("/app/ParcoursPredef/parcours_predef");
-		}
+		window.location.replace("/app/SousCategories/sous_categories");
 	}
-	
-	return false;
 	
 }
 
 
 function initialize() {
-	
-	$(document).bind('keydown', function(event) {
-		  if (event.keyCode == 27) {
-		    event.preventDefault();
-		    backButton();
-		  }
-		});
 	
 	
 	//Prevent screen to sleep on this page

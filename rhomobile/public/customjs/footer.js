@@ -3,12 +3,13 @@ function updateFooter()
 	var filename = $("#path:first").attr('name');
 	if (filename == "sscat") {
 		$("#footer a[name='perso'] img").attr('src', '/public/images/svg/parcoursHover.svg');
-
 	}
 
 	if (filename == "parcours_predef") {
 		$("#footer a[name='predef'] img").attr('src', '/public/images/svg/mapHover.svg');
-
+		$("#footer a[name='perso']").on("click"function(){
+			sessionStorage.clear();
+		});
 	}
 
 }
