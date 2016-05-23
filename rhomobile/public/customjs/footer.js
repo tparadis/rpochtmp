@@ -7,7 +7,7 @@ function updateFooter()
 
 	if (filename == "parcours_predef") {
 		$("#footer a[name='predef'] img").attr('src', '/public/images/svg/mapHover.svg');
-		$("#footer a[name='perso']").on("click"function(){
+		$("#footer a[name='perso']").on("click", function(){
 			sessionStorage.clear();
 		});
 	}

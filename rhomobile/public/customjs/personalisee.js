@@ -15,27 +15,20 @@ ssCatCache = [];
 
 function backButton()
 {
-	if($("#pageSpec").is(":visible"))
+	if($("#parcours_predef").attr("name") != "null")
 	{
-		location.reload();
+		window.location.replace("/app/ParcoursPredef/parcours_predef");
 	}
 	else
 	{
-		if($("#parcours_predef").attr("name") != "null")
-		{
-			window.location.replace("/app/ParcoursPredef/parcours_predef");
-		}
-		else
-		{
-			window.location.replace("/app/SousCategories/sous_categories");
-		}
+		window.location.replace("/app/SousCategories/sous_categories");
 	}
-	
+
 }
 
 
 function initialize() {
-	
+
 	
 	//Prevent screen to sleep on this page
 	Rho.System.screenSleeping = false;
