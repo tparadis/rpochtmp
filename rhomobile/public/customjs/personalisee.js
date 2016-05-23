@@ -8,7 +8,7 @@ var L = [];
 idArray = [];
 listPos = [];
 listPosBis = [];
-magParcouruMax = -1; // Le magasin le plus loin dans le parcours qui a été parcouru.
+magParcouruMax = -1; // Le magasin le plus loin dans le parcours qui a ï¿½tï¿½ parcouru.
 var currentInfoWindow;
 var isPredef = false;
 ssCatCache = [];
@@ -67,7 +67,7 @@ function initialize() {
 	//}
 	
 	magasins = [];
-/*	if(!navigator.geolocation){
+	if(!navigator.geolocation){
 		$("body").append("<div id='warningWindow' style='top:70px; z-index:20;'><div class='activgeo'>"
 	+"</div></div>");
 		var elem = document.getElementsByClassName("activgeo");
@@ -77,9 +77,9 @@ function initialize() {
 			$("#warningWindow").hide(500);
 		});	
 	}
-*/
+
 	
-	if( (navigator.geolocation) && (localStorage.getItem("userlat") = "48.1113531") && (localStorage.getItem("userlng") ="-1.6786842999999863")){
+	if( (navigator.geolocation) && (localStorage.getItem("userlat") == "48.1113531") && (localStorage.getItem("userlng")=="-1.6786842999999863")){
 		$("body").append("<div id='warningWindow' style='top:70px; z-index:20;'><div class='probgeo'>"
 	+"</div></div>");
 		var elem = document.getElementsByClassName("probgeo");
@@ -136,8 +136,8 @@ function initialize() {
 		var magasin = JSON.parse(sessionStorage.getItem(i));
 		var categories;
 		
-		//On gardait en mémoire dans ssCatCache au lieu de faire la requete 2 fois
-		//si le parcours était en predef
+		//On gardait en mï¿½moire dans ssCatCache au lieu de faire la requete 2 fois
+		//si le parcours ï¿½tait en predef
 		if(isPredef)
 		{
 			categories = ssCatCache[i];
@@ -291,7 +291,7 @@ function passerDevant() {
 					listPos[x + 1] = 0;
 					var x = 2;
 					//Grisement du chemin parcouru
-					if (x > magParcouruMax) { // si on repasse devant un magasin déjà parcouru, rien ne se passe.
+					if (x > magParcouruMax) { // si on repasse devant un magasin dï¿½jï¿½ parcouru, rien ne se passe.
 						directionsDisplay.setMap(null);
 						var waypointsArray1 = []
 						var waypointsArray2 = []
@@ -311,7 +311,7 @@ function passerDevant() {
 						}
 						l = k
 
-						// on construit le reste du chemin à parcourir
+						// on construit le reste du chemin ï¿½ parcourir
 						while (l < listPosBis.length) {
 							lat = listPosBis[l];
 							lng = listPosBis[l + 1];
