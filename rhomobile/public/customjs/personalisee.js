@@ -57,7 +57,7 @@ function initialize() {
 		});	
 	}
 
-	/*
+	
 	if( (navigator.geolocation) && (localStorage.getItem("userlat") == "48.1113531") && (localStorage.getItem("userlng")=="-1.6786842999999863")){
 		$("body").append("<div id='warningWindow' style='top:70px; z-index:20;'><div class='probgeo'>"
 	+"</div></div>");
@@ -68,7 +68,7 @@ function initialize() {
 			$("#warningWindow").hide(500);
 		});	
 	}
-	*/
+	
 	
 	//Si le parcours demande est un parcours predefinis
 	//On ajoute simplement les magasins de la requete dans la session_Storage
