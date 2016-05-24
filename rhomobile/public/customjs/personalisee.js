@@ -196,7 +196,7 @@ function initialize() {
 
 					infowindow.setContent(magasins[i].name + '<div id="marker" name="' + magasins[i].id + '" > <img class= "ImgBtnInfo" ></img></div>');
 					infowindow.open(map, marker);
-					$("#marker").find("img").on("click", function(e) {
+					$("#marker").on("click", function(e) {
 							if (currentInfoWindow != undefined) {
 								currentInfoWindow.close();
 							}
