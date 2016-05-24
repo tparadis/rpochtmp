@@ -126,7 +126,7 @@ function afficheSpecificationMagasin()
 		}
 		if(data.commerce.instagram != null){
 			if(data.commerce.instagram != "")
-			$(".socialNetworks").append("<a href='Rho.System.openUrl(\""+data.commerce.instagram+"\")'> <img src='/public/images/svg/instagram.svg'/></a>");
+			$(".socialNetworks").append("<a onclick='Rho.System.openUrl(\""+data.commerce.instagram+"\")'> <img src='/public/images/svg/instagram.svg'/></a>");
 		}
 		if(data.commerce.email != null){
 			if(data.commerce.email != "")
@@ -134,7 +134,7 @@ function afficheSpecificationMagasin()
 		}
 		if(data.commerce.website != null){
 			if(data.commerce.website != "")
-			$(".socialNetworks").append("<a href='Rho.System.openUrl(\""+data.commerce.website+"\")'> <img src='/public/images/svg/oeil.svg'/></a>");
+			$(".socialNetworks").append("<a onclick='Rho.System.openUrl(\""+data.commerce.website+"\")'> <img src='/public/images/svg/oeil.svg'/></a>");
 		}
 		
 		

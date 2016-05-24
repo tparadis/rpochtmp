@@ -14,10 +14,10 @@ rhobundle_zip_pwd = nil
 # log level
 # 0-trace, 1-info(app level), 2-warnings, 3-errors
 # for production set to 3
-MinSeverity  = 1 
+MinSeverity  = 3 
 
 # enable copy log messages to standard output, useful for debugging
-LogToOutput = 1
+LogToOutput = 0
 
 # '*' means all categories, otherwise list them : Cat1, Cat2 
 LogCategories = *
@@ -29,7 +29,7 @@ ExcludeLogCategories =
 MaxLogFileSize=50000
 
 # turn on local http server traces, off by default
-#net_trace = 0
+net_trace = 0
 
 # timeout of network requests in seconds (30 by default)
 #net_timeout = 60
@@ -73,7 +73,7 @@ sync_poll_interval=0
 #wm_show_statusbar = 1
 
 # disable screen rotation (enabled by default) - disable possible for ANDROID and iPhone ONLY
-#disable_screen_rotation = 1
+disable_screen_rotation = 1
 
 # disable close app when pressing back on home screen on blackberry
 #bb_disable_closebyback = 0
