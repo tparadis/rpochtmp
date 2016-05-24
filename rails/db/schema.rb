@@ -25,8 +25,6 @@ ActiveRecord::Schema.define(version: 20160323092620) do
     t.text     "en"
     t.text     "esp"
     t.text     "de"
-    t.text     "ko"
-    t.text     "jap"
   end
 
   create_table "commerces", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
@@ -70,10 +68,10 @@ ActiveRecord::Schema.define(version: 20160323092620) do
     t.integer  "tag1"
     t.integer  "tag2"
     t.integer  "tag3"
-    t.integer  "tag4"
-    t.integer  "tag5"
     t.text     "description"
     t.text     "facebook"
+	t.text     "instagram"
+	t.text     "website"
     t.integer  "nbvisites"
     t.integer  "user_id"
   end
@@ -91,6 +89,7 @@ ActiveRecord::Schema.define(version: 20160323092620) do
     t.text     "esp"
     t.text     "de"
     t.text     "fr"
+	t.boolean  "visible", 	  default: false
   end
 
   create_table "promotions", force: :cascade do |t|

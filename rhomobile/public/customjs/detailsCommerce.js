@@ -130,7 +130,7 @@ function afficheSpecificationMagasin()
 		}
 		if(data.commerce.email != null){
 			if(data.commerce.email != "")
-			$(".socialNetworks").append("<a href='mailto:'"+data.commerce.email+"> <img src='/public/images/svg/email.svg'/></a>");
+			$(".socialNetworks").append("<a href='mailto:"+data.commerce.email+"'> <img src='/public/images/svg/email.svg'/></a>");
 		}
 		if(data.commerce.website != null){
 			if(data.commerce.website != "")

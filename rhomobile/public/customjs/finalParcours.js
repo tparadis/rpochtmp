@@ -17,7 +17,7 @@ function refresh() {
     	
     	try
     	{
-    		$("tbody").append("<tr><td class='listeItem' >"+magasin[3].toUpperCase()+"</td><td><img class=' detailButton ImgBtnInfo' name='"+id+"'></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
+    		$("tbody").append("<tr class='detailButton'name='"+id+"' ><td class='listeItem' >"+magasin[3].toUpperCase()+"</td><td><img class='ImgBtnInfo' ></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
     		ajoutDansRes();
     	}
     	catch(err)
@@ -28,7 +28,7 @@ function refresh() {
     	}
 		   
     }
-    $('img.detailButton').on('click',function(e){
+    $('tr.detailButton').on('click',function(e){
 		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
 		afficheSpecificationMagasin();
 	});
