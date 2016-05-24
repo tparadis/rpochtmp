@@ -148,4 +148,47 @@ var lang = {
 	
 }
 
+var signalementLang = 
+{
+	
+	
+	"fr": ["Coordonnées incorrectes", "Horaires incorrects", "Classification incorrecte", "Magasin fermé", "Autres"],
+	
+	"en": ["Invalid address", "Incorrect time", "Incorrect classification", "Closed shop", "Others"], 
+
+	
+	"esp": ["Contacto no válido", "Hora incorrecta", "Clasificación incorrecta", "Tienda cerrada", "Otro"], 
+
+	
+	"de": ["Ungültigen Kontakt", "Falsche Zeit", "Falsche Klassifizierung", "Laden geschlossen", "Andere"]
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
