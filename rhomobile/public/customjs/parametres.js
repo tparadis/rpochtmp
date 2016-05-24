@@ -66,7 +66,7 @@ $(document).ready(function() {
 	
 	
 	
-	$("a[role='slider']").on("mouseup",function(){
+	$("body").on("mouseup",function(){
 		
 		
 		showValue(Number(document.getElementById("slider").value))
