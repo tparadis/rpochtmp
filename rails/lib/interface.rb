@@ -38,7 +38,7 @@ module Interface
 	#Relatif aux commerces
 	def Interface.getParcoursPredefinis
 
-		ParcoursPredefini.order("id ASC")
+		ParcoursPredefini.where(:visible => true).order("id ASC")
 
 	end
 

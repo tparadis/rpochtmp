@@ -70,6 +70,6 @@ class ParcoursPredefinisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def parcours_predefini_params
-      params.require(:parcours_predefini).permit(:name, :description, :image, :commerces, :en, :de, :esp, :fr)
+      params.require(:parcours_predefini).permit(:name, :description, :image, :commerces, :en, :de, :esp, :fr, :visible)
     end
 end
