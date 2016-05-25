@@ -161,7 +161,7 @@ function initialize() {
 
 	var mapOptions = {
 		center: new google.maps.LatLng(48.112739, -1.681489),
-		//zoom: 15,
+		zoom: 15,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	}
 	map = new google.maps.Map(mapCanvas, mapOptions);
