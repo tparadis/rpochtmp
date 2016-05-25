@@ -111,7 +111,11 @@ function afficheSpecificationMagasin()
 		$("#botSpec").append("<div class='bordureBot'></div>");
 		$("#botSpec").append("<div class='telephone'><img src='/public/images/svg/phone.svg' /> <span><a style='color:white;text-shadow:none;' title='Call' href='tel:"+data.commerce.phone_num+"'>"+data.commerce.phone_num+"</a></span></div>");
 		$("#botSpec").append("<div class='bordureBot'></div>");
-		$("#botSpec").append("<div class='website' style='text-shadow:none;'>www.nowhere.net</div>");
+		
+		if(data.commerce.website != null){
+			if(data.commerce.website != "")
+				$("#botSpec").append("<div class='website' style='text-shadow:none;'><a onclick='Rho.System.openUrl(\""+data.commerce.website+"\")'>"+data.commerce.website+"</a></div>");
+		}
 		$("#botSpec").append("<div class='socialNetworks'></div>");
 		
 		//Ajouter dynamiquement les affiliations aux liens
@@ -132,11 +136,6 @@ function afficheSpecificationMagasin()
 			if(data.commerce.email != "")
 			$(".socialNetworks").append("<a href='mailto:"+data.commerce.email+"'> <img src='/public/images/svg/email.svg'/></a>");
 		}
-		if(data.commerce.website != null){
-			if(data.commerce.website != "")
-			$(".socialNetworks").append("<a onclick='Rho.System.openUrl(\""+data.commerce.website+"\")'> <img src='/public/images/svg/oeil.svg'/></a>");
-		}
-		
 		
 		
 		$(".socialNetworks").append("<img id='contact-us' src='/public/images/svg/warning.svg' />");
