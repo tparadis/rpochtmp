@@ -10,7 +10,7 @@ api.send=function (params) {// requete vers l'api
 				_data += encodeURI(prop + "=" + data[prop] + "&");
 				}return _data;
 			}(params.data))
-
+		data = data.substring(0, data.length - 1);
 		console.log("url = ", protocol + "://" + address + "?" + data);
 
 		var response = Rho.Network.get({
@@ -113,7 +113,7 @@ api.getPredef= function(typeP){ return api.send({data : {"req":"predef","format"
 
 api.getAllPredef= function(typeP){ return api.send({data : {"req":"predef","format":"json"}}) }
 
-api.getAleatoire= function(tag){ return api.send({data : {"req":"aleatoire","format":"json", "tag":tag}}) }
+api.getAleatoire= function(tag,uuid){ return api.send({data : {"req":"aleatoire","format":"json", "tag":tag, "uuid":uuid}}) }
 
 api.genParcours = function (coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags) { 
 	return api.send({ data: {

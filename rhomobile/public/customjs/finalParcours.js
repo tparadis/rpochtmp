@@ -98,21 +98,27 @@ function afficherParcours() {
 function newMag(i) {
 	var elem = JSON.parse(sessionStorage.getItem(i));
 	var tag = elem[0];
-
-	var data = api.getAleatoire(tag)
-
-	var id = data.magasin.id;
-	elem[2] = id;
-	elem[3] = data.magasin.enseigne.toLowerCase();
-	elem[4] = data.magasin.location_lat;
-	elem[5] = data.magasin.location_lng;
-	sessionStorage.setItem(i, JSON.stringify(elem));
-	$(".mag" + i).html("");
-	$(".mag" + i).append("<td>" + data.magasin.enseigne.toLowerCase() + "</td><td><button class='detailButton ui-btn' name='" + id + "'><span class='ui-btn-text'>i</span></button></td><td><button class='ui-btn' onclick='newMag(" + i + ")'><span class='ui-btn-text'>X</span></button></td>");
-	$('img.detailButton').on('click', function(e) {
-			sessionStorage.setItem("currentMagasin", $(this).attr('name'));
+	var uuid = elem[2];
+	var data = api.getAleatoire(tag,uuid)
+	try
+	{
+		var id = data.magasin.id;
+		elem[2] = id;
+		elem[3] = data.magasin.enseigne.toLowerCase();
+		elem[4] = data.magasin.location_lat;
+		elem[5] = data.magasin.location_lng;
+		sessionStorage.setItem(i, JSON.stringify(elem));
+		$(".mag" + i).html("");
+		$(".mag" + i).append("<td>" + data.magasin.enseigne.toLowerCase() + "</td><td><button class='detailButton ui-btn' name='" + id + "'><span class='ui-btn-text'>i</span></button></td><td><button class='ui-btn' onclick='newMag(" + i + ")'><span class='ui-btn-text'>X</span></button></td>");
+		$('img.detailButton').on('click', function(e) {
+				sessionStorage.setItem("currentMagasin", $(this).attr('name'));
 		});
-	
+	}
+	catch(err)
+	{
+		console.log("Le serveur a du renvoyer null...");
+		console.warn("ERREUR: "+err);
+	}
 	refresh();
 
 
