@@ -165,7 +165,7 @@ function initialize() {
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	}
 	map = new google.maps.Map(mapCanvas, mapOptions);
-
+	directionsDisplay.setMap(map);
 	//Comment to test on rhosimulator
 	
 	var image = {
@@ -244,7 +244,7 @@ function initialize() {
 					directionsDisplay.setDirections(result);
 				}
 			});
-		directionsDisplay.setMap(map);
+		
 		directionsDisplay.setOptions({ suppressMarkers: true });
 	}
 

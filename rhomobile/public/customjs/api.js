@@ -113,6 +113,8 @@ api.getPredef= function(typeP){ return api.send({data : {"req":"predef","format"
 
 api.getAllPredef= function(typeP){ return api.send({data : {"req":"predef","format":"json"}}) }
 
+api.getAleatoire= function(tag){ return api.send({data : {"req":"aleatoire","format":"json", "tag":tag}}) }
+
 api.genParcours = function (coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags) { 
 	return api.send({ data: {
 		"req":"yolo",

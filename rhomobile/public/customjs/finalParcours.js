@@ -95,31 +95,29 @@ function afficherParcours() {
 	   $.get('/app/Personalisee/get_callback',{ parcours_perso: res });
 }
 
-function newMag (i) {
+function newMag(i) {
 	var elem = JSON.parse(sessionStorage.getItem(i));
 	var tag = elem[0];
-	
-	var coord_dep_lat = localStorage.getItem("userlat");
-	var coord_dep_lng = localStorage.getItem("userlng");
-	var coord_arr_lat = localStorage.getItem("userlat");
-	var coord_arr_lng = localStorage.getItem("userlng");
-	
-	var data = api.genParcours(coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tag);
 
-			var id = data.tags[1].id;
-			elem[2] = id;
-			elem[3] = data.tags[1].enseigne.toLowerCase();
-			elem[4] = data.tags[1].location_lat;
-			elem[5] = data.tags[1].location_lng;
-			sessionStorage.setItem(i, JSON.stringify(elem));
-			$(".mag"+i).html("");
-			$(".mag"+i).append("<td>"+data.tags[1].enseigne.toLowerCase()+"</td><td><button class='detailButton ui-btn' name='"+id+"'><span class='ui-btn-text'>i</span></button></td><td><button class='ui-btn' onclick='newMag("+i+")'><span class='ui-btn-text'>X</span></button></td>");
-		    $('img.detailButton').on('click',function(e){
-	    		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
-	    	});
-		    refresh();
-		
+	var data = api.getAleatoire(tag)
+
+	var id = data.magasin.id;
+	elem[2] = id;
+	elem[3] = data.magasin.enseigne.toLowerCase();
+	elem[4] = data.magasin.location_lat;
+	elem[5] = data.magasin.location_lng;
+	sessionStorage.setItem(i, JSON.stringify(elem));
+	$(".mag" + i).html("");
+	$(".mag" + i).append("<td>" + data.magasin.enseigne.toLowerCase() + "</td><td><button class='detailButton ui-btn' name='" + id + "'><span class='ui-btn-text'>i</span></button></td><td><button class='ui-btn' onclick='newMag(" + i + ")'><span class='ui-btn-text'>X</span></button></td>");
+	$('img.detailButton').on('click', function(e) {
+			sessionStorage.setItem("currentMagasin", $(this).attr('name'));
+		});
+	
+	refresh();
+
+
 }
+
 
 function ajoutDansRes() {
 	for (var i = 0 ; i < sessionStorage.length ; i++) {
