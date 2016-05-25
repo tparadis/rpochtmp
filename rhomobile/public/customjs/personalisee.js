@@ -132,7 +132,8 @@ function initialize() {
 
 			url: urlimg,
 			// url:localStorage.getItem("sscatimg"+magasin[0]),
-			scaledSize: new google.maps.Size(50, 50),
+			scaledSize: new google.maps.Size(40, 40),
+			size: new google.maps.Size(40, 40),
 			origin: new google.maps.Point(0, 0),
 			anchor: new google.maps.Point(16, 16)
 		};
@@ -166,10 +167,23 @@ function initialize() {
 	map = new google.maps.Map(mapCanvas, mapOptions);
 
 	//Comment to test on rhosimulator
+	
+	var image = {
+
+		url: "http://rpoch.istic.univ-rennes1.fr/static/images/googlePos.png",
+		// url:localStorage.getItem("sscatimg"+magasin[0]),
+		scaledSize: new google.maps.Size(50, 50),
+		size: new google.maps.Size(50, 50),
+		origin: new google.maps.Point(0, 0),
+		anchor: new google.maps.Point(25,25)
+	};
+	
+	
+	
 	userMarker = new google.maps.Marker({
 		position: { lat: Number(localStorage.getItem("userlat")), lng: Number(localStorage.getItem("userlng")) },
 		map: map,
-		icon: "http://rpoch.istic.univ-rennes1.fr/static/images/googlePos.png"
+		icon: image
 	});
 
 	window.setInterval(function() {
@@ -186,10 +200,13 @@ function initialize() {
 				stopover: false
 			});
 		}
+
 		var marker = new google.maps.Marker({
 				position: new google.maps.LatLng(magasins[i].latitude, magasins[i].longitude),
 				map: map,
-				icon: magasins[i].image
+				animation: google.maps.Animation.DROP,
+				icon: magasins[i].image,
+				
 			});
 		google.maps.event.addListener(marker, 'click', (function(marker, i) {
 				return function() {
@@ -232,6 +249,7 @@ function initialize() {
 	}
 
 	setInterval("passerDevant()", 5000);
+	
 }
 
 function findCatSubCat(id) {
