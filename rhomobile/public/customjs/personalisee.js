@@ -233,8 +233,23 @@ function initialize() {
 	if (magasins.length > 1) {
 		var request = {
 			origin: new google.maps.LatLng(Number(localStorage.getItem("userlat")), Number(localStorage.getItem("userlng"))),
-			/*FIXME si le parcours a moins de deux points l'application va planter*/
 			destination: new google.maps.LatLng(magasins[magasins.length - 1].latitude, magasins[magasins.length - 1].longitude),
+			optimizeWaypoints: true,
+			waypoints: waypointsArray,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(result, status) {
+				if (status == google.maps.DirectionsStatus.OK) {
+					directionsDisplay.setDirections(result);
+				}
+			});
+		
+		directionsDisplay.setOptions({ suppressMarkers: true });
+	}
+	else if (magasins.length == 1 ) {
+		var request = {
+			origin: new google.maps.LatLng(Number(localStorage.getItem("userlat")), Number(localStorage.getItem("userlng"))),
+			destination: new google.maps.LatLng(magasins[0].latitude, magasins[0].longitude),
 			optimizeWaypoints: true,
 			waypoints: waypointsArray,
 			travelMode: google.maps.TravelMode.WALKING
