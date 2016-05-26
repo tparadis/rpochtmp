@@ -316,8 +316,11 @@ function onChangeSearch()
 	if(prevRecherche == currentSearch)
 	{
 		clearInterval(timer);
+		
 		var request = $("#searchbar form input[type='text']").val();
-		var start = new Date().getTime();
+		if(request != "")
+		{
+			var start = new Date().getTime();
 		
 			//Affichage dynamique des resultats
 			var base = 100;
@@ -335,6 +338,7 @@ function onChangeSearch()
 			var end = new Date().getTime();
 			var time = end - start;
 			console.log('Execution time: ' + time);
+		}
 			
 	}
 	
