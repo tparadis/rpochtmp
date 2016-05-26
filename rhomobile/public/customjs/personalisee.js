@@ -230,7 +230,7 @@ function initialize() {
 	}
 	;
 
-	if (9 > magasins.length > 1) {
+	if ((magasins.length > 1) && (magasin.length < 9)) {
 		var request = {
 			origin: new google.maps.LatLng(Number(localStorage.getItem("userlat")), Number(localStorage.getItem("userlng"))),
 			destination: new google.maps.LatLng(magasins[magasins.length - 1].latitude, magasins[magasins.length - 1].longitude),
