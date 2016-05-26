@@ -1,3 +1,5 @@
+var prevRecherche = "";
+var timer;
 function updateFooter()
 {
 	var filename = $("#path:first").attr('name');
@@ -116,7 +118,7 @@ function afficheTout()
 	{
 		$("body").append("<div id='searchbar'><span><form action='#' method='post'><input type='text' value='Rechercher un lieu' /></form></span></div>");
 	}
-
+	
 	$("#searchbar").hide();
 	$("#grisement").hide();
 	$('a[name="search"]').on("click",function(){
@@ -140,59 +142,20 @@ function afficheTout()
 			
 			//affichage de la box de la loupe pour les suggestions de magasins
 			$("body").append("<div id='searchResult'></div>");
-			$("#searchbar form input[type='text']").on("input", function(){
-				
-				var request = $(this).val();
-				var start = new Date().getTime();
-				//Si la requete est vide
-				if(request != "")
-				{
-					request = request.replace('\'', ' ');
-					var ret = api.getSuggestion(request);
-					var i = 0;
-					var toShow = "<table>";
-					
-					//Reinit l'affichage
-					$("#searchResult").html("");
-					
-					if(ret.size > 0)
-					{
-						
-						for(i = 0; i < ret.size; i++)
-						{
-							toShow += "<tr style='opacity:0'><td colspan='3'>"+ret.magasins[i].enseigne+"</td><td style='text-align:center'><img width='20' height='20' src='/public/images/svg/oeil.svg' /></td></tr>";
-						}
-						
-					}
-					else
-					{
-						toShow += "<td>Aucun resultats.</td>"
-					}
-					
-					toShow += "</table>";
-					$("#searchResult").append(toShow);
-					
-					//Affichage dynamique des resultats
-					var base = 100;
-					var temps = 300;
-					$("#searchResult table tr").each(function(i){
-						
-						$(this).delay(base + (i* temps)).animate({"opacity":"1"}, 500);
-						
-					});
-					
-					
-					var end = new Date().getTime();
-					var time = end - start;
-					console.log('Execution time: ' + time);
-					
-					
-					
-				}
-				
-				
-				
+			$("#searchResult").html("<table><tr><td>Les magasins s'afficheront ici</td></tr></table>");
+			//Ajout de condition si c'est la premiere fois qu'il clique
+			$("#searchbar form input[type='text']").on("focus",function(){
+					$(this).val("");
 			});
+			
+			
+			//Affichage des resultats s'il y en a
+			$("#searchbar form input[type='text']").on("input", function(){
+				clearInterval(timer);
+				timer = setInterval('onChangeSearch()', 500);	
+					
+			});
+				
 		}
 		else
 		{
@@ -305,3 +268,88 @@ function getCurrentState(page)
 
 window.onload = afficheTout();
 $(document).ready(updateFooter);
+
+function showDescription(id)
+{
+	sessionStorage.removeItem("currentMagasin");
+	sessionStorage.setItem("currentMagasin", id);
+	afficheSpecificationMagasin();
+}
+
+function returnResults(request)
+{
+	//Si la requete est vide
+	if(request != "")
+	{
+		request = request.replace('\'', ' ');
+		var ret = api.getSuggestion(request);
+		var i = 0;
+		var toShow = "<table>";
+		
+		//Reinit l'affichage
+		$("#searchResult").html("");
+		
+		if(ret.size > 0)
+		{
+			
+			for(i = 0; i < ret.size; i++)
+			{
+				toShow += "<tr style='opacity:0' onclick='showDescription(\""+ret.magasins[i].id+"\")'><td colspan='3'>"+ret.magasins[i].enseigne+"</td><td style='text-align:center'><img width='20' height='20' src='/public/images/svg/oeil.svg' /></td></tr>";
+			}
+			
+		}
+		else
+		{
+			toShow += "<td>Aucun resultats.</td>"
+		}
+		
+		toShow += "</table>";
+		$("#searchResult").append(toShow);
+		
+	
+		}
+}
+
+function onChangeSearch()
+{
+	var currentSearch = $("#searchbar form input[type='text']").val(); 
+	if(prevRecherche == currentSearch)
+	{
+		clearInterval(timer);
+		var request = $("#searchbar form input[type='text']").val();
+		var start = new Date().getTime();
+		
+			//Affichage dynamique des resultats
+			var base = 100;
+			var temps = 300;
+			
+			returnResults(request);
+			
+			$("#searchResult table tr").each(function(i){
+				
+				$(this).delay(base + (i* temps)).animate({"opacity":"1"}, 500);
+				
+			});
+			
+			
+			var end = new Date().getTime();
+			var time = end - start;
+			console.log('Execution time: ' + time);
+			
+	}
+	
+	prevRecherche = currentSearch;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+

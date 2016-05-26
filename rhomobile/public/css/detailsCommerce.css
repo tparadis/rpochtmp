@@ -30,6 +30,7 @@
 	padding:0;
 	height:auto;
 	background-color:white;
+	z-index:1000;
 }
 
 /* La Box du TOP */
