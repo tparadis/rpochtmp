@@ -36,7 +36,7 @@ var lang = {
 		+"<br/><span style='font-size:12px'>(Cliquez sur la fenetre pour la fermer.)</span>",
 		
 	"probconnect": "Un probleme est survenu." ,
-	"reesayer":"Appuyer pour réessayer."
+	"reessayer":"Appuyer pour réessayer."
 		
 	},	
 	/**

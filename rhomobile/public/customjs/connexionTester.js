@@ -6,7 +6,7 @@ $(document).ready(function(e){
 	var params = {};
 		params.connectionInformation = (api.testNetwork() ? "Connected" : "Problem");
 		calledBack(params);
-	}, 5000);
+	}, 3000);
 	
 	 appendOnce = false;
 	 
@@ -16,8 +16,8 @@ $(document).ready(function(e){
 	balise = "<div id='noNetwork' style='position:fixed;top:0;left:0;width:100%;height:100%;background-color:black;z-index:1000;'>";
 	balise += "<div class='img-noInternet' style='position:relative;width:150px;height:150px;left:50%;margin-left:-75px;top:50%;margin-top:-75px;'>";
 	balise += "<img src='/public/images/noInternet.png' style='width150px;height:150px;' />";
-	balise += "<br/><span style='color:white; font-size:12px;' text='probconnect'></span>";
-	balise += "<br/><span style='color:white; font-size:12px;' text='reessayer' ></span>";
+	balise += "<br/><div style='color:white; font-size:12px;' text='probconnect'>Un probleme est survenu.</div>";
+	balise += "<br/><div style='color:white; font-size:12px' text='reessayer' >Appuyer pour réessayer.</div>";
 	balise += "</div></div>";
 	
 	$('body').append(balise);
