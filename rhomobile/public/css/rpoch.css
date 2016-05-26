@@ -42,7 +42,6 @@ body{
 	background-color:white;
 	color:black;
 	height:120%;
-	padding:20px;
 }
 
 .credits #reals
@@ -260,9 +259,14 @@ span#nb_magasins
 	width:20px;
 }
 
+
+.param{
+	position: relative;
+	left: 5%;
+}
 .slider{
 	background-color: #008B87;
-	width: auto;
+	width: 90%;
 }
 .description{
 font-family:descriptif;
