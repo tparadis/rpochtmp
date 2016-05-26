@@ -834,8 +834,8 @@ div.after-first-elem{
 }
 #searchbar span{
 	position:absolute;
-	width:100%;
-	left:0;
+	width:70%;
+	left:15%;
 	font-family:Rennes;
 	margin-top:2px;
 	border:none;
@@ -844,6 +844,7 @@ div.after-first-elem{
 }
 #searchbar input, .searchbar{
 	all:inherit;
+	width:100%;
 	border:none;
 	font-family:descriptif;
 	outline: none;

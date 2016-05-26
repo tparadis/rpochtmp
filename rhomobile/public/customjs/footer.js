@@ -96,7 +96,14 @@ function afficheTout()
 			afficheTrad = false;
 			afficheParams = false;
 			$("#parametres").hide();
-			$("#searchbar").hide();
+			$("#searchResult").hide(300, function(){
+				$(this).remove();
+			});
+			$("#searchbar").hide(300);
+			$('a[name="btn4"] img').attr("src", "/public/images/svg/langue.svg");
+			$('a[name="params"] img').attr("src", "/public/images/svg/parametres.svg");
+			$('a[name="search"] img').attr("src", "/public/images/svg/search.svg");
+			
 	});
 	
 	var box = $("body").find(".languageSelect");
@@ -145,14 +152,14 @@ function afficheTout()
 			$("#searchResult").html("<table><tr><td>Les magasins s'afficheront ici</td></tr></table>");
 			//Ajout de condition si c'est la premiere fois qu'il clique
 			$("#searchbar form input[type='text']").on("focus",function(){
-					$(this).val("");
+					if($(this).val() == "Rechercher un lieu") $(this).val("");
 			});
 			
 			
 			//Affichage des resultats s'il y en a
 			$("#searchbar form input[type='text']").on("input", function(){
 				clearInterval(timer);
-				timer = setInterval('onChangeSearch()', 500);	
+				timer = setInterval('onChangeSearch()', 300);	
 					
 			});
 				
@@ -163,6 +170,7 @@ function afficheTout()
 			{
 				$("#grisement").hide();
 			}
+			$('#searchResult').remove();
 			$('a[name="search"] img').attr("src", "/public/images/svg/search.svg");
 			$("#searchbar").hide();
 			afficheLoupe = false;
@@ -183,6 +191,7 @@ function afficheTout()
 			{
 				$("#searchbar").hide();
 				$("#parametres").show();
+				$('#searchResult').remove();
 				$("#grisement").show();
 				afficheParams = true;
 				afficheTrad = false;
@@ -200,6 +209,7 @@ function afficheTout()
 				
 				$("#searchbar").hide();
 				$("#parametres").hide();
+				$('#searchResult').remove();
 				afficheParams = false;
 				$('a[name="params"] img').attr("src", "/public/images/svg/parametres.svg");
 			}
@@ -219,6 +229,7 @@ function afficheTout()
 			$("#grisement").show();
 			$(".languageSelect").show();
 			afficheTrad = true;
+			$('#searchResult').remove();
 			$("#searchbar").hide();
 			$("#parametres").hide();
 			afficheLoupe = false;
@@ -234,6 +245,7 @@ function afficheTout()
 				$("#grisement").hide();
 			}
 			$(".languageSelect").hide();
+			$('#searchResult').remove();
 			$('a[name="btn4"] img').attr("src", "/public/images/svg/langue.svg");
 		}
 	});	
