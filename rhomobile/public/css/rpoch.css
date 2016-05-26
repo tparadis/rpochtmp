@@ -262,7 +262,8 @@ span#nb_magasins
 
 .param{
 	position: relative;
-	left: 5%;
+	left: 2%;
+	overflow: hidden;
 }
 .slider{
 	background-color: #008B87;

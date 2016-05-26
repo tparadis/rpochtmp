@@ -1,20 +1,23 @@
 $(document).ready(function(e){
+
 	
 	//window.setInterval("beginTest()", 5000);
 	window.setInterval(function(){
-		var params = {};
+	var params = {};
 		params.connectionInformation = (api.testNetwork() ? "Connected" : "Problem");
 		calledBack(params);
 	}, 5000);
 	
 	 appendOnce = false;
-	//On crée l'élément qui va "tout cacher" si le reseau n'est pas disponible
-	//le z-index élevé permet de mettre en premier plan cette page
+	 
+	//On cree l'element qui va "tout cacher" si le reseau n'est pas disponible
+	//le z-index eleve permet de mettre en premier plan cette page
 	
 	balise = "<div id='noNetwork' style='position:fixed;top:0;left:0;width:100%;height:100%;background-color:black;z-index:1000;'>";
 	balise += "<div class='img-noInternet' style='position:relative;width:150px;height:150px;left:50%;margin-left:-75px;top:50%;margin-top:-75px;'>";
 	balise += "<img src='/public/images/noInternet.png' style='width150px;height:150px;' />";
-	balise += "<br/><span style='color:white; font-size:12px;' >RPOCH a besoin d'internet</span>";
+	balise += "<br/><span style='color:white; font-size:12px;' text='probconnect'></span>";
+	balise += "<br/><span style='color:white; font-size:12px;' text='reessayer' ></span>";
 	balise += "</div></div>";
 	
 	$('body').append(balise);
@@ -32,21 +35,8 @@ function beginTest()
 function calledBack(params)
 {
 	//console.log("polled");
-	if(params.connectionInformation == "Connected")
+	if((params.connectionInformation == "Problem") )
 	{
-		if(appendOnce == true)
-		{
-			appendOnce = false;
-			Rho.Network.stopDetectingConnection(null);
-			window.location = "/app/";
-		}
-		
-		
-		//console.log("connect");
-	}
-	else
-	{
-		
 		console.log("serveur down ou pas de connection");
 		console.log("params : ", params);
 		if(appendOnce == false)
@@ -55,13 +45,27 @@ function calledBack(params)
 			appendOnce = true;
 			$("#noNetwork").show(200);
 			$("#page").hide(0);
+			$('#noNetwork').on("click", function(e) {
+				location.reload();	
+				});
 		}	
+		
 	}
+	else
+	{
+		
+		//console.log("connect");
+		if(appendOnce == true)
+		{
+			appendOnce = false;
+			Rho.Network.stopDetectingConnection(null);
+		}
+		
 	
 }
 
 
-/*
+
 //Va detecter si le reseau est disponible ou non
 function detectNetwork(){
 
@@ -78,22 +82,24 @@ function detectNetwork(){
 	}
 	else
 	{
-		//On crée l'élément qui va "tout cacher" si le reseau n'est pas disponible
-		//le z-index élevé permet de mettre en premier plan cette page
+		//On cree l'element qui va "tout cacher" si le reseau n'est pas disponible
+		//le z-index eleve permet de mettre en premier plan cette page
 		balise = "<div id='noNetwork' style='position:fixed;top:0;left:0;width:100%;height:100%;background-color:black;z-index:1000;'>";
 		balise += "<div class='img-noInternet' style='position:relative;width:150px;height:150px;left:50%;margin-left:-75px;top:50%;margin-top:-75px;'>";
 		balise += "<img src='/public/images/noInternet.png' style='width150px;height:150px;' />";
-		balise += "<br/><span style='color:white; font-size:12px;' >RPOCH a besoin d'internet</span>";
+		balise += "<br/><span style='color:white; font-size:12px;' onclick=''>RPOCH a besoin d'internet</span>";
 		balise += "</div></div>";
 		
-		if(appendOnce == false)
+		if(appendOnce == true)
 		{
 			//Afficher un truc genre "pas internet"
 			$('body').append(balise);
+			
+			
 			appendOnce = true;
 			$("#noNetwork").show(200);
 		}	
 	}
 }
-*/
+}
 

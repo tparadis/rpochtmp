@@ -33,8 +33,11 @@ var lang = {
 		+"<br/><span style='font-size:12px'>(Cliquez sur la fenetre pour la fermer.)</span>",
 	"probgeo":"Probleme geolocalisation"
 		+"<br/>Localisation par défaut: Opéra de Rennes"
-		+"<br/><span style='font-size:12px'>(Cliquez sur la fenetre pour la fermer.)</span>"
-	
+		+"<br/><span style='font-size:12px'>(Cliquez sur la fenetre pour la fermer.)</span>",
+		
+	"probconnect": "Un probleme est survenu." ,
+	"reesayer":"Appuyer pour réessayer."
+		
 	},	
 	/**
 	 * 
@@ -69,8 +72,9 @@ var lang = {
 		+ " <br/><span style='font-size:12px'> ( Click anywhere to close this window. ) </span>",
 	
 	"footer" : "Welcome. This bottom bar allows you to navigate through the application. From left to right: 'The predefined path', 'Custom path', 'search', 'change language', 'options'"
-		+ " <br/><span style='font-size:12px'> ( Click anywhere to close this window. ) </span>"
-	
+		+ " <br/><span style='font-size:12px'> ( Click anywhere to close this window. ) </span>",
+	"probconnect": "Un probleme est survenu." ,
+	"reesayer":"Appuyer pour réessayer."
 
 	},
 	/**
@@ -106,7 +110,9 @@ var lang = {
 		+ " <br/><span style='font-size:12px'>( Haga clic en cualquier lugar y para cerrar esta ventana . ) </span >",
 	
 	"footer" : "Bienvenido. Esta barra inferior le permite navegar a traves de la aplicacion. De izquierda a derecha: 'La ruta predefinida', 'Ruta personalizada ',' buscar ',' cambiar el idioma', 'Opciones'"
-		+ " <br/><span style='font-size:12px'>( Haga clic en cualquier lugar y para cerrar esta ventana . ) </span >"
+		+ " <br/><span style='font-size:12px'>( Haga clic en cualquier lugar y para cerrar esta ventana . ) </span >",
+	"probconnect": "Un probleme est survenu." ,
+	"reesayer":"Appuyer pour réessayer."
 
 	},
 	/**
@@ -142,8 +148,9 @@ var lang = {
 		+ " <br/><span style='font-size:12px'>(Klicken Sie irgendwo dieses Fenster zu schlieBen.) </span>",
 	
 	"footer" : "Willkommen. Diese unteren Leiste konnen Sie durch die Anwendung zu navigieren. Von links nach rechts: 'Die vordefinierten Pfad ',' Custom Weg', 'suchen', 'Sprache andern', 'Optionen'"
-		+ " <br/><span style='font-size:12px'>(Klicken Sie irgendwo dieses Fenster zu schlieBen.) </span>"
-
+		+ " <br/><span style='font-size:12px'>(Klicken Sie irgendwo dieses Fenster zu schlieBen.) </span>",
+	"probconnect": "Un probleme est survenu." ,
+	"reesayer":"Appuyer pour réessayer."
 	}
 	
 }
@@ -163,32 +170,4 @@ var signalementLang =
 	"de": ["Ungültigen Kontakt", "Falsche Zeit", "Falsche Klassifizierung", "Laden geschlossen", "Andere"]
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
