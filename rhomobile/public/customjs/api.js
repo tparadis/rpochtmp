@@ -115,6 +115,8 @@ api.getAllPredef= function(typeP){ return api.send({data : {"req":"predef","form
 
 api.getAleatoire= function(tag,uuid){ return api.send({data : {"req":"aleatoire","format":"json", "tag":tag, "uuid":uuid}}) }
 
+api.getSuggestion = function(txt){ return api.send({data: {"req":"suggestion", "format":"json", "deb":txt}}) }
+
 api.genParcours = function (coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags) { 
 	return api.send({ data: {
 		"req":"yolo",

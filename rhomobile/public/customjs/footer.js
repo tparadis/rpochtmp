@@ -138,6 +138,61 @@ function afficheTout()
 			$("#parametres").hide();
 			$('a[name="search"] img').attr("src", "/public/images/svg/searchHover.svg");
 			
+			//affichage de la box de la loupe pour les suggestions de magasins
+			$("body").append("<div id='searchResult'></div>");
+			$("#searchbar form input[type='text']").on("input", function(){
+				
+				var request = $(this).val();
+				var start = new Date().getTime();
+				//Si la requete est vide
+				if(request != "")
+				{
+					request = request.replace('\'', ' ');
+					var ret = api.getSuggestion(request);
+					var i = 0;
+					var toShow = "<table>";
+					
+					//Reinit l'affichage
+					$("#searchResult").html("");
+					
+					if(ret.size > 0)
+					{
+						
+						for(i = 0; i < ret.size; i++)
+						{
+							toShow += "<tr style='opacity:0'><td colspan='3'>"+ret.magasins[i].enseigne+"</td><td style='text-align:center'><img width='20' height='20' src='/public/images/svg/oeil.svg' /></td></tr>";
+						}
+						
+					}
+					else
+					{
+						toShow += "<td>Aucun resultats.</td>"
+					}
+					
+					toShow += "</table>";
+					$("#searchResult").append(toShow);
+					
+					//Affichage dynamique des resultats
+					var base = 100;
+					var temps = 300;
+					$("#searchResult table tr").each(function(i){
+						
+						$(this).delay(base + (i* temps)).animate({"opacity":"1"}, 500);
+						
+					});
+					
+					
+					var end = new Date().getTime();
+					var time = end - start;
+					console.log('Execution time: ' + time);
+					
+					
+					
+				}
+				
+				
+				
+			});
 		}
 		else
 		{
