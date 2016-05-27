@@ -916,7 +916,7 @@ div.after-first-elem{
 
 #searchResult
 {
-	position:absolute;
+	position:fixed;
 	width:100%;
 	height:100px;
 	background-color:white;
