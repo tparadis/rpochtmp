@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root 'welcome#index'
   #root "session#new"
 
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
   	get     'about'   => 'main#about'
   	get     'contact' => 'main#contact'
   	get     'news'    => 'main#news'
-
+  	get 	'statmap' => 'statmap#index'
   	get    'signup'   => 'users#new'
   	get    'login'    => 'sessions#new'
   	post   'login'    => 'sessions#login'
