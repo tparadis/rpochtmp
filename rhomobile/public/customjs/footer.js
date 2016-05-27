@@ -124,7 +124,7 @@ function afficheTout()
 	//Ajout d'une barre de recherche si elle n'existe pas deja
 	if($("#searchbar").length == 0)
 	{
-		$("body").append("<div id='searchbar'><span><form action='#' method='post'><input type='text' value='Rechercher un lieu' /></form></span></div>");
+		$("body").append("<div id='searchbar'><span style='top:5px'><form action='#' method='post'><input type='text' value='Rechercher un lieu' /></form></span></div>");
 	}
 	
 	$("#searchbar").hide();

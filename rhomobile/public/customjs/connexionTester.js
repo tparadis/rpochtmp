@@ -1,14 +1,6 @@
 $(document).ready(function(e){
 
-	
-	//window.setInterval("beginTest()", 5000);
-	window.setInterval(function(){
-	var params = {};
-		params.connectionInformation = (api.testNetwork() ? "Connected" : "Problem");
-		calledBack(params);
-	}, 3000);
-	
-	 appendOnce = false;
+
 	 
 	//On cree l'element qui va "tout cacher" si le reseau n'est pas disponible
 	//le z-index eleve permet de mettre en premier plan cette page
@@ -17,11 +9,23 @@ $(document).ready(function(e){
 	balise += "<div class='img-noInternet' style='position:relative;width:150px;height:150px;left:50%;margin-left:-75px;top:50%;margin-top:-75px;'>";
 	balise += "<img src='/public/images/noInternet.png' style='width150px;height:150px;' />";
 	balise += "<br/><div style='color:white; font-size:12px;' text='probconnect'>Un probleme est survenu.</div>";
-	balise += "<br/><div style='color:white; font-size:12px' text='reessayer' >Appuyer pour réessayer.</div>";
+	balise += "<br/><div style='color:white; font-size:12px' text='reessayer' >Appuyer pour r&eacuteessayer.</div>";
 	balise += "</div></div>";
 	
 	$('body').append(balise);
 	$("#noNetwork").hide(0);
+	
+	
+	var params = {};
+	params.connectionInformation = (api.testNetwork() ? "Connected" : "Problem");
+	calledBack(params);
+	
+	
+	window.setInterval(function(){
+		params = {};
+		params.connectionInformation = (api.testNetwork() ? "Connected" : "Problem");
+		calledBack(params);
+	}, 5000);
 	
 });
 
@@ -39,33 +43,28 @@ function calledBack(params)
 	{
 		console.log("serveur down ou pas de connection");
 		console.log("params : ", params);
-		if(appendOnce == false)
-		{
-			//Afficher un truc genre "pas internet"
-			appendOnce = true;
+		
 			$("#noNetwork").show(200);
 			$("#page").hide(0);
 			$('#noNetwork').on("click", function(e) {
-				location.reload();	
+				filename = $("#path:first").attr('name');
+				if(fileName == "main"){
+					window.location.reload(true);	
+				}else{
+					window.location.replace("/app");
+				}
 				});
-		}	
+			
+
 		
 	}
-	else
-	{
-		
-		//console.log("connect");
-		if(appendOnce == true)
-		{
-			appendOnce = false;
-			Rho.Network.stopDetectingConnection(null);
-		}
-		
-	
-}
+	else{
+		$("#page").show(200);
+		console.log("reload");
+	}
 
 
-
+/*
 //Va detecter si le reseau est disponible ou non
 function detectNetwork(){
 
@@ -101,5 +100,7 @@ function detectNetwork(){
 		}	
 	}
 }
+*/
+
 }
 

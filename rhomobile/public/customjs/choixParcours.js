@@ -104,13 +104,10 @@ $(document).ready(function () {
 
     //Actions sur les catégories
     $(".categorie").click(function(e){
-        console.log("clisck on ", this);
         $(".listSsCat").css("display", "none");
 
 
-        console.error("looking for ", "listeSsCat"+(this.id).split("-")[1]);
         var assoc_list = document.getElementById("listeSsCat"+(this.id).split("-")[1]);
-        console.warn("got ", assoc_list);
         var was_active = assoc_list.classList.contains("active");
         var parent = this.parentElement;
 
