@@ -3,6 +3,15 @@
     <div class="cart">
       
        <a class="Pannier" href="/app/FinalParcours/final_parcours" onclick="genererParcours()">
+       <div id="flechePannier"><img src="/public/images/arrowUp.png" /></div>
+
+       <script>
+        function animateArrow() {
+            $('#flechePannier').animate({'margin-top':'0px', 'opacity':'0.8'},750).animate({'margin-top':'10px', 'opacity':'0'},750, animateArrow); 
+        }
+        animateArrow()
+      
+</script>
             <div id="animationPlus">+</div>
             <img src="/public/images/svg/basket.svg"  width="32" height="32"> 
             <span id="nb_magasins">0</span></a>
