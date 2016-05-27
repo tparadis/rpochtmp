@@ -75,7 +75,7 @@ function initialize()
 		var marker = new google.maps.Marker({
 			position: latlng,
 			map: map,
-			title: donnees[i].enseigne,
+			title: donnees[i].enseigne+" : "+infos[currentId]+" visites",
 			animation: google.maps.Animation.DROP,
 			icon: imageIcon	
 		});
