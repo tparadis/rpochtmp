@@ -138,6 +138,23 @@ class WelcomeController < ApplicationController
 			render json: { :tags => @y}
 		end
 
+		#Requete qui permet d'avoir un magasin random selon un tag passe en parametre
+		#Aucune optimisation n'est prise en compte
+
+		if params[:req] == "aleatoire" && params.has_key?(:tag) && params[:tag] != "" && params.has_key?(:uuid) && params[:uuid] != ""
+			@y = Interface.getAleatoire(params[:tag], params[:uuid])
+
+			render json: {:magasin => @y}
+
+		end
+
+		#Permet d'afficher les suggestions de magasins dont l'enseigne contient deb
+		if params[:req] == "suggestion" && params[:deb] && params[:deb] != ""
+
+			@y = Interface.getSuggestion(params[:deb])
+			render json: {:size => @y.size, :magasins => @y }
+
+		end
 		# Fin test
 
 	else

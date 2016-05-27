@@ -205,6 +205,57 @@ module Interface
 	def Interface.uuidexists?(uuid)
 		Commerce.where(:id => uuid).size() >= 1
 	end
+
+	#Retourne un magasin aleatoire selon l'id, hors celui dont l'uuid est passé en parametres
+	#pour eviter les doublons
+	def Interface.getAleatoire(tag, uuid) 
+	
+		candidat = Commerce.where("(tag0 = ? OR tag1 = ? OR tag2 = ?) AND id != ?", tag, tag, tag, uuid).order("RANDOM()").first
+
+	end
+
+	#Retourne des magasins - 3 au max - dont l'enseigne contient deb
+	def Interface.getSuggestion(deb)
+=begin
+		candidats = Commerce.where("enseigne ILIKE ?", "%#{deb}%")
+		res = []
+		i = 0
+		while i < 3 do
+			if candidats[i] != nil
+				res.push(candidats[i])
+			end
+			i = i + 1
+		end
+
+		res
+=end
+	
+	candidats = Commerce.all
+	total = candidats.length
+	ret = []
+	i = 0
+	k = 0
+	while i < total do
+		
+
+		if candidats[i].enseigne.include? deb.upcase
+			ret.push(candidats[i])
+			k = k + 1
+		end
+
+		if k == 3
+			break
+		else
+			i = i + 1
+		end
+
+
+	end
+
+	ret
+
+	end
+
 end
 
 
