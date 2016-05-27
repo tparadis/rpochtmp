@@ -1,8 +1,9 @@
 var prevRecherche = "";
 var timer;
+var filename;
 function updateFooter()
 {
-	var filename = $("#path:first").attr('name');
+	filename = $("#path:first").attr('name');
 	if (filename == "sscat") {
 		$("#footer a[name='perso'] img").attr('src', '/public/images/svg/parcoursHover.svg');
 	}
@@ -312,7 +313,15 @@ function returnResults(request)
 			
 			for(i = 0; i < ret.size; i++)
 			{
-				toShow += "<tr style='opacity:0' onclick='showDescription(\""+ret.magasins[i].id+"\")'><td colspan='3'>"+ret.magasins[i].enseigne+"</td><td style='text-align:center'><img width='20' height='20' src='/public/images/svg/oeil.svg' /></td></tr>";
+				toShow += "<tr style='opacity:0'>"
+				+"<td colspan='3' onclick='showDescription(\""+ret.magasins[i].id+"\")' >"+ret.magasins[i].enseigne+"</td>"
+				+"<td style='text-align:center' onclick='showDescription(\""+ret.magasins[i].id+"\")'><img width='20' height='20' src='/public/images/svg/oeil.svg' /></td>";
+				
+				if($("img.ImgAjoutMag").size() != 0)
+				{
+					toShow += "<td style='text-align:center' onclick='addMagasinParcours(\""+ret.magasins[i].id+"\", "+ i +")' ><img width='20' height='20' src='/public/images/add.png' /></td>";
+				}
+				toShow += "</tr>";
 			}
 			
 		}
@@ -364,10 +373,77 @@ function onChangeSearch()
 	
 }
 
+function addMagasinParcours(id, i)
+{
+	
+	if(sessionStorage.length < 8)
+	{
+	
+		var ret = api.getCommDetail(id);
+		var tab = [];
+		try
+		{
+			var sscat = findSSCatString(ret.commerce.tag0);
+			tab.push(ret.commerce.tag0);
+			tab.push(sscat);
+			tab.push(id);
+			tab.push(ret.commerce.enseigne.toLowerCase());
+			tab.push(ret.commerce.location_lat);
+			tab.push(ret.commerce.location_lng);
+			sessionStorage.setItem(sessionStorage.length, JSON.stringify(tab));
+	
+			//Si le magasin est bien ajouté, on ajoute une couleur de fond au <td>
+			$("#searchResult tr:eq("+i+")").animate({"background-color": "#008b87"}, 1000);
+			$("#searchResult tr:eq("+i+")").animate({"color": "white"}, 1000);
+			
+			refreshFinalParcours();
+			
+			
+		}
+		catch(err)
+		{
+			console.log("Le serveur a du renvoyer null...");
+			console.warn("ERREUR: "+err);
+		}
+	}
+	
+}
 
 
+function refreshFinalParcours()
+{
+	
+		$("#example").html("");
+		dist_max = getDistMax();
+		sessionStorage.removeItem("posRecuperer");
+	    for (var i=0 ; i < sessionStorage.length; i++)
+	    {
+	    	var magasin = JSON.parse(sessionStorage.getItem(i));
+	    	var id = magasin[2];
+	    	
+	    	try
+	    	{
+	    		$("#example").append("<tr style='opacity:0' class='detailButton'name='"+id+"' ><td class='listeItem' >"+magasin[3].toUpperCase()+"</td><td><img class='ImgBtnInfo' ></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
+	    		ajoutDansRes();
+	    	}
+	    	catch(err)
+	    	{
+	    		console.error("ERREUR : "+err);
+	    		break;
+	    	}
+			   
+	    }
+	    $('#example tr.detailButton').on('click',function(e){
+			sessionStorage.setItem("currentMagasin", $(this).attr('name'));
+			afficheSpecificationMagasin();
+		});
+	    
+	    $("tbody tr").each(function(i){
+	    	
+	    	$(this).delay(i * 300).animate({"opacity":"1"}, 500);
 
-
+	    });
+}
 
 
 

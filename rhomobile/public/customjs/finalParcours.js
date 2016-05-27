@@ -13,21 +13,31 @@ function refresh() {
     for (var i=0 ; i < sessionStorage.length; i++)
     {
     	var magasin = JSON.parse(sessionStorage.getItem(i));
-    	var id = magasin[2];
-    	
-    	try
+    	if(magasin.length > 3)
     	{
-    		$("tbody").append("<tr class='detailButton'name='"+id+"' ><td class='listeItem' >"+magasin[3].toUpperCase()+"</td><td><img class='ImgBtnInfo' ></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
-    		ajoutDansRes();
-    	}
-    	catch(err)
-    	{
-    		console.error("ERREUR : "+err);
-    		$("tbody").append("<tr><td>Aucun parcours disponible pour votre demande...<br><a href='/app/SousCategories/sous_categories' onclick='sessionStorage.clear();'>Recommencer</a></td></tr>");
-    		break;
+	    	var id = magasin[2];
+	    	
+	    	try
+	    	{
+	    		$("tbody").append("<tr style='opacity:0' class='detailButton'name='"+id+"' ><td class='listeItem' >"+magasin[3].toUpperCase()+"</td><td><img class='ImgBtnInfo' ></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
+	    		ajoutDansRes();
+	    	}
+	    	catch(err)
+	    	{
+	    		console.error("ERREUR : "+err);
+	    		$("tbody").append("<tr><td>Aucun parcours disponible pour votre demande...<br><a href='/app/SousCategories/sous_categories' onclick='sessionStorage.clear();'>Recommencer</a></td></tr>");
+	    		break;
+	    	}
     	}
 		   
     }
+    
+    $("tbody tr").each(function(i){
+    	
+    	$(this).delay(i * 300).animate({"opacity":"1"}, 500);
+
+    });
+    
     $('tr.detailButton').on('click',function(e){
 		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
 		afficheSpecificationMagasin();
@@ -44,9 +54,15 @@ function supprimerMag(numLigne) {
 
 function genererParcours(){
 	var tags = [];
+	var idtags = [];
 	for (var i = 0 ; i < sessionStorage.length ; i++) {
 		var mag = JSON.parse(sessionStorage.getItem(i));
-		tags.push(mag[0]);
+		if(mag.length == 3)
+		{
+			tags.push(mag[0]);
+			idtags.push(i);
+		}
+		
 	}
 
 	var coord_dep_lat = localStorage.getItem("userlat");
@@ -65,28 +81,28 @@ function genererParcours(){
 	    {// remplacer la cat�gorie parent par l'id magasin
 	    	var tagCourant = data.tags[i];
 	    	//On ajoute la valeur id  de l'enseigne dans la sessionStorage
-	    	var elem = sessionStorage.getItem(i-1);
+	    	
+	    	var elem = sessionStorage.getItem(idtags[i-1]);
 	    	elem = JSON.parse(elem);
-	    	//Obligatoire si l'utilisateur a deja clique sur Generer un sessionStorage et qu'il veut remettre un autre magasin apr�s
-	    	//Sinon les id s'ajoutent ind�finiments � la suite dans le meme tableau !
-	    	var id = tagCourant.id;
-	    	elem[2] = id;
-	    	elem.push(tagCourant.enseigne.toLowerCase());
-	    	elem.push(tagCourant.location_lat);
-	    	elem.push(tagCourant.location_lng);
-	    	sessionStorage.setItem(i-1, JSON.stringify(elem));
-    	
-	    	//On affiche sur la page
-	    	//On ajoute la classe (non utilis�e en CSS) detailsButton pour distinguer les bouttons par l'action onclick()
-	    	$("tbody").append("<tr class='mag"+(i-1)+"'><td class='listeItem' >"+tagCourant.enseigne.toUpperCase()+"</td><td><img class=' detailButton ImgBtnInfo' name='"+id+"'></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
-	    	ajoutDansRes();
+
+		    	//Obligatoire si l'utilisateur a deja clique sur Generer un sessionStorage et qu'il veut remettre un autre magasin apr�s
+		    	//Sinon les id s'ajoutent ind�finiments � la suite dans le meme tableau !
+		    	var id = tagCourant.id;
+		    	elem[2] = id;
+		    	elem.push(tagCourant.enseigne.toLowerCase());
+		    	elem.push(tagCourant.location_lat);
+		    	elem.push(tagCourant.location_lng);
+		    	sessionStorage.setItem(idtags[i-1], JSON.stringify(elem));
 	    	
-	    	//Ajout d'une action qui va ajouter � la sessionStorage
-	    	// currentMagasin => id
-	    	//Ceci est utile pour la transition de cette page � la page de Magasin sp�cifique
-	    	
-	    	
-	    }
+		    	//On affiche sur la page
+		    	//On ajoute la classe (non utilis�e en CSS) detailsButton pour distinguer les bouttons par l'action onclick()
+		    	$("tbody").append("<tr class='mag"+(idtags[i-1])+"'><td class='listeItem' >"+tagCourant.enseigne.toUpperCase()+"</td><td><img class=' detailButton ImgBtnInfo' name='"+id+"'></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
+		    	ajoutDansRes();
+		    	
+		    	//Ajout d'une action qui va ajouter � la sessionStorage
+		    	// currentMagasin => id
+		    	//Ceci est utile pour la transition de cette page � la page de Magasin sp�cifique
+	    	}
 		
 
 }

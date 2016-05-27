@@ -211,6 +211,28 @@ function findSSCat(id,t){
 	
 	
 }
+
+//Convertir en chaine de catégorie
+function findSSCatString(id){
+	
+	var nbSS = parseInt(localStorage.getItem("nbSsCat"));
+	var i = 0;
+	var tmp;
+	while(i < nbSS)
+	{
+		tmp = JSON.parse(localStorage.getItem("sscat"+i));
+		if(tmp[0] == id)
+		{
+
+			return tmp[1];
+		}
+		i++;
+	}
+	return "";
+	
+	
+}
+
 //utilisé dans parcours etudiant
 //A modifier apres pour rendre le code plus lisible.
 function findCatSubCat(id){
