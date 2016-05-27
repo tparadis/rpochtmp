@@ -163,6 +163,12 @@ function afficheTout()
 					
 			});
 				
+			//Annuler la validation du formulaire
+			$("#searchbar form").on("submit", function(){	
+					return false;
+			});
+			
+			
 		}
 		else
 		{
@@ -337,7 +343,7 @@ function onChangeSearch()
 			//Affichage dynamique des resultats
 			var base = 100;
 			var temps = 300;
-			
+			request = request.replace(/  +/g, ' ');
 			returnResults(request);
 			
 			$("#searchResult table tr").each(function(i){
