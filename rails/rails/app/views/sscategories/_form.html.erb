@@ -1,0 +1,46 @@
+<%= form_for(@sscategory) do |f| %>
+  <% if @sscategory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sscategory.errors.count, "error") %> prohibited this sscategory from being saved:</h2>
+
+      <ul>
+      <% @sscategory.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nom %><br>
+    <%= f.text_field :nom %>
+  </div>
+  <div class="field">
+    <%= f.label :catparent %><br>
+    <%= f.text_field :catparent %>
+  </div>
+	<div class="field">
+    <%= f.label :en %><br>
+    <%= f.text_field :en %>
+  </div>
+	<div class="field">
+    <%= f.label :esp %><br>
+    <%= f.text_field :esp %>
+  </div>
+  <div class="field">
+    <%= f.label :de %><br>
+    <%= f.text_field :de %>
+  </div>
+  <div class="field">
+    <%= f.label :ko %><br>
+    <%= f.text_field :ko %>
+  </div>
+  <div class="field">
+    <%= f.label :jap %><br>
+    <%= f.text_field :jap %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

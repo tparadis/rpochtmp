@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Parcours Predefinis</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th>Commerces</th>
+	  <th>Fr</th>
+	  <th>En</th>
+	  <th>De</th>
+	  <th>Esp</th>
+	  <th>Visible</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parcours_predefinis.each do |parcours_predefini| %>
+      <tr>
+        <td><%= parcours_predefini.name %></td>
+        <td><%= parcours_predefini.description %></td>
+        <td><%= parcours_predefini.image %></td>
+		<td><%= parcours_predefini.commerces %></td> 
+        <td><%= parcours_predefini.fr %></td>
+		<td><%= parcours_predefini.en %></td>
+		<td><%= parcours_predefini.de %></td>
+		<td><%= parcours_predefini.esp %></td>
+		<td><%= parcours_predefini.visible %></td>
+		<td><%= link_to 'Show', parcours_predefini %></td>
+        <td><%= link_to 'Edit', edit_parcours_predefini_path(parcours_predefini) %></td>
+        <td><%= link_to 'Destroy', parcours_predefini, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Parcours predefini', new_parcours_predefini_path %>

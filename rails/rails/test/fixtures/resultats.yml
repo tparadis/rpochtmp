@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  magasin: 
+  type: 
+  message: MyText
+
+two:
+  magasin: 
+  type: 
+  message: MyText

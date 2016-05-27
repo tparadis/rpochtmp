@@ -1,0 +1,8 @@
+<li><%= button_to "Statistiques", statmap_path,
+	method: :get, class: 'btn btn-info' %></li>
+<li><%= button_to "Requêtes", promotions_path,
+    method: :get, class: 'btn btn-info' %></li>
+<li><%= button_to current_user.username, current_user,
+    method: :get, class: 'btn btn-primary' %></li>
+<li><%= button_to "Deconnexion", logout_path,
+    method: 'delete', class: 'btn btn-primary'%></li>
