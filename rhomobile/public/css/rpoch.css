@@ -935,6 +935,28 @@ div.after-first-elem{
 	height:90%;
 }
 
+
+#flecheParcours
+{
+	position:relative;
+	margin:0;
+	padding:0;
+	left:250px;
+	bottom:150px;
+	width:50px;
+	height:50px;
+	opacity:0.8;
+}
+
+#flecheParcours img
+{
+	margin:0;
+	padding:0;
+	width:90%;
+	height:90%;
+}
+
+
 #searchResult
 {
 	position:fixed;

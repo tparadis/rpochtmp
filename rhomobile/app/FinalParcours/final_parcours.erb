@@ -13,7 +13,7 @@
         
       </table>
       
-      <div class = "fpouter" style="height:250px">
+   <div class = "fpouter" style="height:250px">
        
 
        <div class="fpinner">
@@ -26,9 +26,18 @@
        <a  onclick="afficherParcours()">
          <img  class = "ImgBtnCarte placementCarte"/>
            <div text="carte" align="center" class= "TxtParcoursPerso placementCarte"> </div>
-       </a>
+            
+            </a>
        </div>
-    </div>
+   </div>
+             <div id="flecheParcours"><img src="/public/images/arrowUp.png" /></div>
+                
+                         <script>
+                                 function animateArrow() {
+                                     $('#flecheParcours').animate({'margin-top':'0px', 'opacity':'0.8'},750).animate({'margin-top':'10px', 'opacity':'0'},750, animateArrow); 
+                                 }
+                                 animateArrow()
+                         </script>
 
 <%= render :partial => "/partials/page_foot_index" %>
 </div>
