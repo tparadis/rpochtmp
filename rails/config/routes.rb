@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   root 'welcome#index'
   #root "session#new"
 
@@ -20,6 +21,10 @@ Rails.application.routes.draw do
   	resources :users
   	resources :promotions
   	get '/', to: "sessions#new"
+	get 	'accounts' => 'accounts#index'
+	post 	'accounts/edituser'
+	get 	'users/edituser/:id' => 'users#edituser', :as => :edituser
+	patch 	'users/updateuser/:id' => 'users#updateuser', :as => :updateuser
   	get     'home'    => 'main#index'
   	get     'help'    => 'main#help'
   	get     'about'   => 'main#about'

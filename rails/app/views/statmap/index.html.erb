@@ -75,7 +75,7 @@ function initialize()
 		var marker = new google.maps.Marker({
 			position: latlng,
 			map: map,
-			title: donnees[i].enseigne,
+			title: donnees[k].enseigne+" : "+infos[currentId]+" visites",
 			animation: google.maps.Animation.DROP,
 			icon: imageIcon	
 		});
@@ -88,7 +88,7 @@ function initialize()
 		i++;	
 	}
 
-	$("span").html("Repartition des utilisateurs dans Rennes pour "+nb+" statistiques.");
+	$("span").html("Repartition des utilisateurs dans Rennes pour "+k+" statistiques (pour "+nb+" magasins).");
 
 	
 }
