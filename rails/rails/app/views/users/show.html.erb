@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="jumbotron">
+        <% case @user.status %>
+        <% when 'admin' %>
+            <%= render 'users/show/admin' %>
+        <% when 'promoted' %>
+            <%= render 'users/show/promoted' %>
+        <% else %>
+            <%= render 'users/show/basic' %>
+        <% end %>
+    </div>
+</div>

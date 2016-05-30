@@ -1,0 +1,33 @@
+<%= form_for(@parcours_predefini) do |f| %>
+  <% if @parcours_predefini.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@parcours_predefini.errors.count, "error") %> prohibited this parcours_predefini from being saved:</h2>
+
+      <ul>
+      <% @parcours_predefini.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.text_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :commerces %><br>
+    <%= f.text_field :commerces %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

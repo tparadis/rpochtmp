@@ -1,0 +1,2 @@
+module SscategorieHelper
+end

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Resultats</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Magasin</th>
+      <th>Objet</th>
+      <th>Message</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resultats.each do |resultat| %>
+      <tr>
+        <td><%= Commerce.select('enseigne').where(:id => resultat.magasin).first.enseigne %></td>
+        <td><%= resultat.objet %></td>
+        <td><%= resultat.message %></td>
+        <td><%= link_to 'Show', resultat %></td>
+        <td><%= link_to 'Edit', edit_resultat_path(resultat) %></td>
+        <td><%= button_to 'Destroy', resultat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Resultat', new_resultat_path %>

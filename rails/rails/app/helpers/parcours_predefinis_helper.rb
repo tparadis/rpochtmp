@@ -1,0 +1,2 @@
+module ParcoursPredefinisHelper
+end
