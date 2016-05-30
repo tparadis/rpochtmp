@@ -47,7 +47,7 @@ function calledBack(params)
 			$("#noNetwork").show(200);
 			$("#page").hide(0);
 			$('#noNetwork').on("click", function(e) {
-				filename = $("#path:first").attr('name');
+				fileName = $("#path:first").attr('name');
 				if(fileName == "main"){
 					window.location.reload(true);	
 				}else{
@@ -57,10 +57,6 @@ function calledBack(params)
 			
 
 		
-	}
-	else{
-		$("#page").show(200);
-		console.log("reload");
 	}
 
 
