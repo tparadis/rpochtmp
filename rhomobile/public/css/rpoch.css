@@ -965,6 +965,7 @@ div.after-first-elem{
 	background-color:white;
 	top:52px;
 	z-index:30;
+	
 }
 #searchResult table
 {
@@ -980,6 +981,7 @@ div.after-first-elem{
 	margin:0;
 	font-size:15px;
 	font-family:descriptif;
+	text-shadow:none;
 }
 
 

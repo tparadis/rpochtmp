@@ -29,7 +29,6 @@ function refresh() {
 	    		break;
 	    	}
     	}
-		   
     }
     
     $("tbody tr").each(function(i){
@@ -42,6 +41,12 @@ function refresh() {
 		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
 		afficheSpecificationMagasin();
 	});
+    if((sessionStorage.length < 1)){
+    	  $('#carte').hide(0);
+    	  $('#flecheParcours').hide(0);
+    	 }else{
+    	   $('#nbmag').hide(0);
+    	 }
 }
 
 function supprimerMag(numLigne) {

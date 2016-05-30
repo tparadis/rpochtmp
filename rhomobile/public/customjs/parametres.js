@@ -83,7 +83,8 @@ function sauvegardeEnFichier(newValue) {
 	var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.publicFolder, "save.txt"), Rho.RhoFile.OPEN_FOR_WRITE);
 	var filename = Rho.RhoFile.join(Rho.Application.publicFolder, 'save.txt'); // build the path
 	var contents = Rho.RhoFile.read(filename); // read the file into a variable
-
+	if(newValue == 0)
+		newValue = 1;
 	//var debut = contents.split('\n');
 	var reecrire = "distMax:" + newValue;
 	var ret = fichier.write(reecrire);

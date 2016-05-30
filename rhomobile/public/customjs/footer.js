@@ -443,6 +443,17 @@ function refreshFinalParcours()
 	    	$(this).delay(i * 300).animate({"opacity":"1"}, 500);
 
 	    });
+	    if((sessionStorage.length < 1)){
+	    	  $('#carte').hide(0);
+	    	  $('#flecheParcours').hide(0); 
+	    	  $('#nbmag').show(200);
+	    	 }else{
+	    	   $('#nbmag').hide(0);
+	    	   $('#carte').show(200);
+	    	   $('#flecheParcours').show(200);
+	    	   
+	    	   
+	    	 }
 }
 
 

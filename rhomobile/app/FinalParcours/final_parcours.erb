@@ -4,8 +4,8 @@
 
       <%= render :partial => "/partials/page_head_index" %>
 
-      <h2 id="titre" class="nomParcours" text="votreParcours"> </h2>
-      
+      <h2 id="titre" class="nomParcours" text="votreParcours"></h2>
+      <div id="nbmag" align="center" style="color:black" class="listeItem" text="magInsuffisant"></div>
       <table id="example">
               
         <tbody>
@@ -22,12 +22,11 @@
            <div text="votreParcours" align="center" class= "TxtParcoursPerso"> </div>
         </a>
        </div>
-       <div class="fpinner">
+       <div id="carte" class="fpinner">
        <a  onclick="afficherParcours()">
          <img  class = "ImgBtnCarte placementCarte"/>
            <div text="carte" align="center" class= "TxtParcoursPerso placementCarte"> </div>
-            
-            </a>
+          </a>
        </div>
    </div>
              <div id="flecheParcours"><img src="/public/images/arrowUp.png" /></div>
