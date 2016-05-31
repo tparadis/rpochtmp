@@ -13,10 +13,10 @@
 
 	<% @tags = Sscategorie.all %>
 
-	<div class="field">
-		<%= f.label :enseigne %><br/>
-		<%= f.text_field :enseigne %>
-	</div>
+<div class="field">
+	<%= f.label :enseigne %><br/>
+	<%= f.text_field :enseigne %>
+</div>
 <div class="field">
 	<%= f.label :id %><br/>
 	<%= f.text_field :id %> 
@@ -30,21 +30,10 @@
 	<%= f.text_field :siret %> 
 </div>
 <div class="field">
-	<%= f.label :enseigne%><br/>
-	<%= f.text_field :enseigne%> 
-</div>
-<div class="field">
 	<%= f.label :rasoc %><br/>
 	<%= f.text_field :rasoc %> 
 </div>
-<div class="field">
-	<%= f.label :description %><br/>
-	<%= f.text_field :description %>
-</div>
-<div class="field">
-	<%= f.label :facebook %><br/>
-	<%= f.text_field :facebook %>
-</div>
+
 <div class="field">
 	<%= f.label :date_deb_act %><br/>
 	<%= f.text_field :date_deb_act %> 
@@ -92,18 +81,6 @@
 <div class="field">
 	<%= f.label :epci2014 %><br/>
 	<%= f.text_field :epci2014 %> 
-</div>
-<div class="field">
-	<%= f.label :phone_num %><br/>
-	<%= f.text_field :phone_num %> 
-</div>
-<div class="field">
-	<%= f.label :fax_num %><br/>
-	<%= f.text_field :fax_num %> 
-</div>
-<div class="field">
-	<%= f.label :email %><br/>
-	<%= f.text_field :email %> 
 </div>
 <div class="field">
 	<%= f.label :street_number %><br/>
@@ -165,6 +142,37 @@
 	<%= f.label :vp_sw_lng %><br/>
 	<%= f.text_field :vp_sw_lng %> 
 </div>
+
+<div class="field">
+	<%= f.label :description %><br/>
+	<%= f.text_field :description %>
+</div>
+<div class="field">
+	<%= f.label :phone_num %><br/>
+	<%= f.text_field :phone_num %> 
+</div>
+<div class="field">
+	<%= f.label :website %><br/>
+	<%= f.text_field :website %>
+</div>
+<div class="field">
+	<%= f.label :email %><br/>
+	<%= f.text_field :email %> 
+</div>
+
+<div class="field">
+	<%= f.label :facebook %><br/>
+	<%= f.text_field :facebook %>
+</div>
+<div class="field">
+	<%= f.label :instagram %><br/>
+	<%= f.text_field :instagram %>
+</div>
+
+<div class="field">
+	<%= f.label :fax_num %><br/>
+	<%= f.text_field :fax_num %> 
+</div>
 <div class="field">
 	<%= f.label :tag0 %><br/>
 	<%= f.collection_select :tag0, @tags.order(:nom), :id, :nom, {:selected => @commerce.tag0 || 0}   %>
@@ -184,14 +192,6 @@
 <div class="field">
 	<%= f.label :image %><br/>
 	<%= f.text_field :image %>
-</div>
-<div class="field">
-	<%= f.label :instagram %><br/>
-	<%= f.text_field :instagram %>
-</div>
-<div class="field">
-	<%= f.label :website %><br/>
-	<%= f.text_field :website %>
 </div>
 
 <div class="field">

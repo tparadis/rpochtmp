@@ -9,12 +9,16 @@ module SessionsHelper
     end
 
     def current_user?(user)
-        current_user == user
+        @current_user == user
     end
 
     def logged_in?
         !current_user.nil?
     end
+
+	def is_admin?
+		logged_in? && @current_user.status == 'admin'
+	end
 
     def log_out
         session.delete(:user_id)
@@ -27,17 +31,23 @@ module SessionsHelper
             redirect_to login_url
         end
     end
-
+	
+	def authenticate_user!
+		if logged_in?
+			redirect_to user_path(session[:user_id])
+		end
+	end
+	
     def authorized
         @user = User.find(params[:id])
-        unless @user == current_user
+        unless @current_user == @user
             flash[:danger] = "Droits insuffisants."
             redirect_to root_url
         end
     end
 
     def require_admin
-        unless logged_in? && current_user.status == 'admin'
+        unless logged_in? && @current_user.status == 'admin'
             flash[:danger] = "Droits insuffisants."
             redirect_to root_url
         end

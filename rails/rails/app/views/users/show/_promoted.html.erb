@@ -11,7 +11,10 @@
                 <th>Catégorie 3</th>
 				<th>Catégorie 4</th>
                 <th>Description</th>
+				<th>Website</th>
+				<th>Telephone</th>
                 <th>Facebook</th>
+				<th>Instagram</th>
 				<th>En solde</th>
 				<th>Actions</th>
             </tr>
@@ -25,7 +28,10 @@
                     <td><%= Sscategorie.find_by(id: shop.tag2).nom if Sscategorie.find_by(id: shop.tag2) %></td>
                     <td><%= Sscategorie.find_by(id: shop.tag3).nom if Sscategorie.find_by(id: shop.tag3) %></td>
                     <td style="width:230px;"><pre style="color:inherit; border:initial;padding:initial;background-color:rgba(0,0,0,0);font-size:inherit;font-family:inherit; max-width:230px; overflow:auto;" ><%= shop.description %></pre></td>
-                    <td><%= shop.facebook %></td>
+                    <td><%= shop.website %></td>
+					<td><%= shop.phone_num %></td>
+					<td><%= shop.facebook %></td>
+					<td><%= shop.instagram %></td>
 					<td><%= shop.soldes ? "Oui" : "Non"  %>
                     <td><%= link_to 'éditer', edit_user_path(shop.user_id) %></td>
                 </tr>

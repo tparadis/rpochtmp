@@ -8,15 +8,10 @@
 
 	  <% @tags = Sscategorie.all  %>
 
-      <%= f.label 'Enseigne' %>
-      <%= f.text_field :enseigne, value: @shop.enseigne, class: 'form-control' %>
-
-      <%= f.label 'Numéro de rue' %>
-      <%= f.text_field :street_num, value: @shop.street_num, class: 'form-control' %>
-
-      <%= f.label 'Nom de rue' %>
-      <%= f.text_field :street_name, value: @shop.street_name, class: 'form-control' %>
-	
+      <%= f.label 'Description' %>
+      <%= f.text_area :description, value: @shop.description, class: 'form-control' %>
+	  <br/>
+	 
       <%= f.label 'Catégorie 1' %><br/>
       <%= f.collection_select :tag0, @tags.order(:nom), :id, :nom, {:selected => @shop.tag0 || 0}   %>
 	  <br/>
@@ -32,11 +27,22 @@
       <%= f.collection_select :tag3, @tags.order(:nom), :id, :nom, {:selected => @shop.tag3 || 0}   %>
 	  <br/>
 
-      <%= f.label 'Description' %>
-      <%= f.text_area :description, value: @shop.description, class: 'form-control' %>
-
       <%= f.label 'Facebook' %>
       <%= f.text_field :facebook, value: @shop.facebook, class: 'form-control' %>
+	  
+	  <%= f.label 'Instagram' %>
+      <%= f.text_field :instagram, value: @shop.instagram, class: 'form-control' %>
+	 
+	  <%= f.label 'Website' %>
+      <%= f.text_field :website, value: @shop.website, class: 'form-control' %>
+	 
+	  <%= f.label 'Telephone' %>
+      <%= f.text_field :phone_num, value: @shop.phone_num, class: 'form-control' %>
+	 
+	 <%= f.label 'Image' %>
+     <%= f.text_field :image, value: @shop.image, class: 'form-control' %>
+     <%= f.file_field :image, value: @shop.image, class: 'form-control' %>
+	  
 
 	  <%= f.label 'En solde ?' %><br/>
 	  <%= f.radio_button(:soldes, "1", {checked: @shop.soldes}) %>
@@ -44,10 +50,13 @@
 	  <%= f.radio_button(:soldes, "0", {checked: !@shop.soldes}) %>
 	  <%= f.label "Non" %>
 
+
       <%= f.submit "Confirmer", class: 'btn-block btn btn-primary' %>
 
 
-    <% end %>
+
+ <% end %>
+
 
   </div>
 </div>

@@ -1,17 +1,13 @@
 Rails.application.routes.draw do
 
 
+
   root 'welcome#index'
   #root "session#new"
 
   #scope '/api' do
   #	get '/', to: "welcome#index"
-  	resources :tags
-  	resources :sscategories
-  	resources :categories
-  	resources :parcours_predefinis
-  	resources :commerces
-  	resources :resultats
+  	#resources :commerces
   #end
 
   #Routes pour le BACK-OFFICE
@@ -19,17 +15,27 @@ Rails.application.routes.draw do
   	
   	resources :users
   	resources :promotions
+	resources :categories
+	resources :sscategories
+	resources :resultats
+	resources :parcours_predefinis
+	resources :commerces
   	get '/', to: "sessions#new"
+	get 	'accounts' => 'accounts#index'
+	post 	'accounts/edituser'
+	get 	'users/edituser/:id' => 'users#edituser', :as => :edituser
+	patch 	'users/updateuser/:id' => 'users#updateuser', :as => :updateuser
   	get     'home'    => 'main#index'
   	get     'help'    => 'main#help'
   	get     'about'   => 'main#about'
   	get     'contact' => 'main#contact'
   	get     'news'    => 'main#news'
   	get 	'statmap' => 'statmap#index'
-  	get    'signup'   => 'users#new'
-  	get    'login'    => 'sessions#new'
-  	post   'login'    => 'sessions#login'
-  	delete 'logout'   => 'sessions#logout'
+  	get     'signup'   => 'users#new'
+	get	    'resultats' => 'resultats#index'
+  	get     'login'    => 'sessions#new'
+  	post    'login'    => 'sessions#login'
+  	delete  'logout'   => 'sessions#logout'
 
 	get 'statistique/:id' => 'statistique#show', as: 'statistique'
 

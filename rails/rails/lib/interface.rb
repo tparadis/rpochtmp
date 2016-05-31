@@ -216,19 +216,6 @@ module Interface
 
 	#Retourne des magasins - 3 au max - dont l'enseigne contient deb
 	def Interface.getSuggestion(deb)
-=begin
-		candidats = Commerce.where("enseigne ILIKE ?", "%#{deb}%")
-		res = []
-		i = 0
-		while i < 3 do
-			if candidats[i] != nil
-				res.push(candidats[i])
-			end
-			i = i + 1
-		end
-
-		res
-=end
 	
 	candidats = Commerce.all
 	total = candidats.length
@@ -255,6 +242,39 @@ module Interface
 	ret
 
 	end
+
+	#Retourne des magasins - indice au max - dont l'enseigne contient deb
+	def Interface.getSuggestionIndice(deb, indice)
+	
+	candidats = Commerce.all
+	total = candidats.length
+	ret = []
+	i = 0
+	k = 0
+	while i < total do
+		
+
+		if candidats[i].enseigne.include? deb.upcase
+			ret.push(candidats[i])
+			k = k + 1
+		end
+
+		if k == indice
+			break
+		else
+			i = i + 1
+		end
+
+
+	end
+
+	ret
+
+	end
+
+
+
+
 
 end
 

@@ -11,8 +11,6 @@
 	  <th>En</th>
 	  <th>Esp</th>
 	  <th>De</th>
-	  <th>Ko</th>
-	  <th>Jap</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,11 +24,9 @@
 		<td><%= category.en %></td>
 		<td><%= category.esp %></td>
 		<td><%= category.de %></td>
-		<td><%= category.ko %></td>
-		<td><%= category.jap %></td>
-        <td><%= link_to 'Show', category %></td>
+        <td><%= link_to 'Show', category_path(category) %></td>
         <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', categories_path(category),  method: :delete %></td>
       </tr>
     <% end %>
   </tbody>

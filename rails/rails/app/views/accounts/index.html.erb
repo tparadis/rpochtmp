@@ -1,0 +1,30 @@
+<h1>Comptes utilisateurs</h1>
+
+
+<table class="table tabled-bordered tabl-hover table-striped">
+<thead>
+<tr>
+	<th>Email</th>
+	<th>Username</th>
+	<th>Status</th>
+	<th>Actions</th>
+	<th></th>
+</tr>
+</thead>
+
+<% @UsersAll.each do |u|   %>
+	<tr>
+		<td><%= u.email %></td>
+		<td><%= u.username %></td>
+		<td><%= u.status %></td>
+		<td>	<%= link_to 'Modifier', :controller => 'users', :action => 'edituser', :id => u.id  %></td>
+		<td>	<%= button_to 'Supprimer', u, method: :delete, data:{confirm:"Etes vous sur ?"} %></td>
+		</td>
+	</tr>
+<% end %>
+</table>
+
+<br/>
+
+<%= link_to 'Creer Utilisateur', new_user_path %>
+

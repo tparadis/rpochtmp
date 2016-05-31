@@ -8,7 +8,11 @@ class WelcomeController < ApplicationController
 
 	
 
-  	params.require(:req)
+  	#params.require(:req)
+
+	if !params.has_key?(:req)
+		redirect_to 'https://rpoch.istic.univ-rennes1.fr/api/bo'
+	end
 		
 	if request.headers["CONTENT_TYPE"] == "application/json" || (params.has_key?(:format) && params[:format]=="json")
 		if params[:req] == "path"
@@ -148,8 +152,12 @@ class WelcomeController < ApplicationController
 
 		end
 
-		#Permet d'afficher les suggestions de magasins dont l'enseigne contient deb
-		if params[:req] == "suggestion" && params[:deb] && params[:deb] != ""
+		if params[:req] == "suggestion" && params.has_key?(:deb) && params.has_key?(:indice) && params[:indice] != "" && params["deb"] != ""
+			@y = Interface.getSuggestionIndice(params[:deb], params[:indice].to_i)
+			render json: {:size => @y.size, :magasins => @y }
+
+
+		elsif params[:req] == "suggestion" && params.has_key?(:deb) && params[:deb] != ""
 
 			@y = Interface.getSuggestion(params[:deb])
 			render json: {:size => @y.size, :magasins => @y }
