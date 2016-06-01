@@ -32,7 +32,7 @@ module SessionsHelper
         end
     end
 	
-	def authenticate_user!
+	def already_logged
 		if logged_in?
 			redirect_to user_path(session[:user_id])
 		end

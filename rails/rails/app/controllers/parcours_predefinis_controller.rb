@@ -1,6 +1,6 @@
 class ParcoursPredefinisController < ApplicationController
   
-  before_action :set_parcours_predefini, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /parcours_predefinis
   # GET /parcours_predefinis.json
@@ -11,15 +11,17 @@ class ParcoursPredefinisController < ApplicationController
   # GET /parcours_predefinis/1
   # GET /parcours_predefinis/1.json
   def show
+  	@parcours_predefini = ParcoursPredefini.find(params[:id])
   end
 
   # GET /parcours_predefinis/new
   def new
-    @parcours_predefini = ParcoursPredefini.new
+    @parcours_predefinis = ParcoursPredefini.new
   end
 
   # GET /parcours_predefinis/1/edit
   def edit
+  	@parcours_predefini = ParcoursPredefini.find(params[:id])
   end
 
   # POST /parcours_predefinis
@@ -41,6 +43,7 @@ class ParcoursPredefinisController < ApplicationController
   # PATCH/PUT /parcours_predefinis/1
   # PATCH/PUT /parcours_predefinis/1.json
   def update
+  	@parcours_predefini = ParcoursPredefini.find(params[:id])
     respond_to do |format|
       if @parcours_predefini.update(parcours_predefini_params)
         format.html { redirect_to @parcours_predefini, notice: 'Parcours predefini was successfully updated.' }

@@ -1,6 +1,6 @@
 class CommercesController < ApplicationController
   
-  before_action :set_commerce, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /commerces
   # GET /commerces.json
@@ -11,6 +11,7 @@ class CommercesController < ApplicationController
   # GET /commerces/1
   # GET /commerces/1.json
   def show
+  	@commerce = Commerce.find(params[:id])
   end
 
   # GET /commerces/new
@@ -20,6 +21,7 @@ class CommercesController < ApplicationController
 
   # GET /commerces/1/edit
   def edit
+  	@commerce = Commerce.find(params[:id])
   end
 
   # POST /commerces
@@ -42,6 +44,7 @@ class CommercesController < ApplicationController
   # PATCH/PUT /commerces/1.json
   def update
     respond_to do |format|
+		@commerce = Commerce.find(params[:id])
       if @commerce.update(commerce_params)
         format.html { redirect_to @commerce, notice: 'Commerce was successfully updated.' }
         format.json { render :show, status: :ok, location: @commerce }

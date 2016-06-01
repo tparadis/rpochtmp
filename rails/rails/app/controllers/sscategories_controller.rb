@@ -1,6 +1,6 @@
 class SscategoriesController < ApplicationController
   
-  before_action :set_sscategory, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /sscategories
   # GET /sscategories.json
@@ -11,6 +11,7 @@ class SscategoriesController < ApplicationController
   # GET /sscategories/1
   # GET /sscategories/1.json
   def show
+  	@sscategory = Sscategory.find(params[:id])
   end
 
   # GET /sscategories/new
@@ -20,6 +21,7 @@ class SscategoriesController < ApplicationController
 
   # GET /sscategories/1/edit
   def edit
+  	@sscategory = Sscategory.find(params[:id])
   end
 
   # POST /sscategories
@@ -41,6 +43,7 @@ class SscategoriesController < ApplicationController
   # PATCH/PUT /sscategories/1
   # PATCH/PUT /sscategories/1.json
   def update
+  	@sscategory = Sscategory.find(params[:id])
     respond_to do |format|
       if @sscategory.update(sscategory_params)
         format.html { redirect_to @sscategory, notice: 'Sscategory was successfully updated.' }

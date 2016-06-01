@@ -60,7 +60,7 @@
 			if com != nil
 				@val = @val + com
 				if nb != i
-					@val = @val + ','
+					@val = @val + ',<br/>'
 				end
 	   		end
 		end
@@ -77,6 +77,11 @@
 <script>
 $(document).ready(function(e)
 {
+
+	var currentValeur = $('form textarea[id=parcours_predefini_commerces]').val();
+
+	$('form textarea[id=parcours_predefini_commerces]').val(currentValeur.replace(/<br\/>/g, '\n'));
+
 	$('form').submit(function(e)
 	{
 		var valeur = prepareTable($("form textarea[id=parcours_predefini_commerces]").val());
@@ -99,9 +104,10 @@ function prepareTable(txt)
 	}
 	
 	txt = txt.replace(/,}/g, '');
-	if(txt.charAt(txt.length) == ',')
+	while(txt.charAt(txt.length-1) == ',' || txt.charAt(txt.length-1) == '\n')
+	{
 		txt = txt.substring(0, txt.length -1);
-
+	}
 	if(txt.charAt(txt.length) != '}')
 	{
 		txt = txt + '}';
