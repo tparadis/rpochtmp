@@ -41,7 +41,6 @@ function calledBack(params)
 	//console.log("polled");
 	if((params.connectionInformation == "Problem") )
 	{
-		console.log("serveur down ou pas de connection");
 		console.log("params : ", params);
 		
 			$("#noNetwork").show(200);
@@ -55,12 +54,13 @@ function calledBack(params)
 				}
 				});
 			
-
+		
 		
 	}
+}
 
 
-/*
+
 //Va detecter si le reseau est disponible ou non
 function detectNetwork(){
 
@@ -96,7 +96,7 @@ function detectNetwork(){
 		}	
 	}
 }
-*/
 
-}
+
+
 

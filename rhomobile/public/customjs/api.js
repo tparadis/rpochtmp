@@ -90,7 +90,7 @@ api.send_simple=function (params) {// requete vers l'api
 		
 api.testNetwork = function() {
 	var protocol = "https";
-	var address = "rpoch.istic.univ-rennes1.fr/api/categories";	
+	var address = "rpoch.istic.univ-rennes1.fr/static/";	
 	var response = Rho.Network.get({
 		url : protocol + "://" + address,
 		headers: { "Content-Type": "application/json" },
