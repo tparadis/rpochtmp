@@ -182,7 +182,50 @@
 	<%= @commerce.db_add_date %>
 </p>
 
-
+<div id='updated_image' value='<%= @commerce.image %>'></div>
 
 <%= link_to 'Edit', edit_commerce_path(@commerce) %> |
 <%= link_to 'Back', commerces_path %>
+
+<script src="/static/js/jquery.js"></script>
+<script>
+
+$(document).ready(function(){
+
+	//Affichage de l'image du magasin en question
+
+	var fichier = basename($("#updated_image").attr("value"));
+
+	$("body").append("<div id='apercu' style='position:fixed;right:5px;top:60px; width: 200px; height: auto;border:1px solid black;background-color:white;'>"
+	+ "<span>Votre image :</span>"
+	+ "<img src=\"https://rpoch.istic.univ-rennes1.fr/static/images/"+fichier+" \" style='width:100%; height:auto; margin-top:10px'/>"
+	+ "</div>");
+	
+	$("#apercu").on("mouseover", function(){
+		
+		$(this).stop().animate({"width":"800px"}, 200);	
+		
+	})
+
+	$("#apercu").on("mouseleave", function(){
+		
+		$(this).stop().animate({"width":"200px"}, 200);	
+		
+	})
+
+
+
+
+	
+});
+
+function basename(str){
+	
+	return new String(str).substring(str.lastIndexOf('/') + 1);
+		
+}
+
+</script>
+
+
+
