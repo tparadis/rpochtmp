@@ -3,6 +3,8 @@
 //sans avoir à rediriger l'utilisateur en le forçant à refaire une requete GOOGLE API
 //Sur le long terme on passe d'environ 10 requetes api google à ... une !
 var id;
+var http = "http://"
+var https = "https://"
 var descraffiche = false;
 var form_validate = {
 	  required: function (value) {
@@ -116,7 +118,15 @@ function afficheSpecificationMagasin()
 			
 			if(data.commerce.website != null){
 				if(data.commerce.website != "")
-					$("#botSpec").append("<div class='website' style='text-shadow:none;'><a onclick='Rho.System.openUrl(\""+data.commerce.website+"\")'>"+data.commerce.website+"</a></div>");
+					if(data.commerce.website.indexOf(http) > -1 || data.commerce.website.indexOf(https) > -1 ){
+						$("#botSpec").append("<div class='website' style='text-shadow:none;'><a onclick='Rho.System.openUrl(\""+data.commerce.website+"\")'>"+data.commerce.website+"</a></div>");
+					}else{
+						tmp = http+data.commerce.website;
+						$("#botSpec").append("<div class='website' style='text-shadow:none;'><a onclick='Rho.System.openUrl(\""+tmp+"\")'>"+data.commerce.website+"</a></div>");
+
+					}
+					
+				
 			}
 			$("#botSpec").append("<div class='socialNetworks'></div>");
 			
