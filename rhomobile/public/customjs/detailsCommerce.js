@@ -65,7 +65,7 @@ function afficheSpecificationMagasin()
 			//Si l'image est à null
 			try
 			{
-				$("#cadreImg").append("<img src='"+url+data.commerce.image+"' />");
+				$("#cadreImg").append("<img src='"+url+basename(data.commerce.image.url)+"' />");
 				
 			}
 			catch(err)
@@ -277,4 +277,17 @@ function convertirEnLisible(texte)
 	return res;
 	
 }
+
+//Retourne le nom de fichier et son extension associé à l'URL passée en paramètres
+//Reutiliser la fonction avec les lignes commentées pour avoir le nom de fichier seulement
+function basename(str)
+{
+	   var base = new String(str).substring(str.lastIndexOf('/') + 1); 
+	    //if(base.lastIndexOf(".") != -1)       
+	    //    base = base.substring(0, base.lastIndexOf("."));
+	   return base;
+}
+
+
+
 	  
