@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   #Routes pour le BACK-OFFICE
   scope '/bo' do
   	
+  	resources :tokens
   	resources :users
   	resources :promotions
 	resources :categories
@@ -36,6 +37,8 @@ Rails.application.routes.draw do
   	get     'login'    => 'sessions#new'
   	post    'login'    => 'sessions#login'
   	delete  'logout'   => 'sessions#logout'
+	get 	'tokens/changemdp' => 'tokens#changemdp', :as => :changemdp
+	post    'tokens/reinit' => 'tokens#reinit', :as => :reinit
 
 	get 'statistique/:id' => 'statistique#show', as: 'statistique'
 

@@ -8,6 +8,7 @@ before_filter :already_logged, :except => [:logout]
         user = User.find_by(email: params[:session][:email].downcase)
         if user && user.authenticate(params[:session][:password])
             log_in user
+			session[:mailToken] = ""
             redirect_to user
         else
             flash.now[:danger] = "Email ou mot de passe invalide."

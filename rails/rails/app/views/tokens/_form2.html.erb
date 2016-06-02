@@ -1,0 +1,13 @@
+<%= form_tag(controller: "tokens", action: "reinit", method: "post") do  %>
+
+	<%= label_tag(:valeur, "Token")  %><br/>
+	<%= text_field_tag(:valeur) %><br/><br/>
+
+	<%= label_tag(:password, "Mot de Passe") %><br/>
+	<%= password_field_tag(:password) %><br/>
+	<%= label_tag(:password_confirmation, "Réecrire le mot de passe") %><br/>
+	<%= password_field_tag(:password_confirmation) %><br/><br/>
+
+	<%= submit_tag("Réinitialiser") %>
+
+<% end %>
