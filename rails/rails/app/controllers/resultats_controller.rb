@@ -56,6 +56,7 @@ class ResultatsController < ApplicationController
   # DELETE /resultats/1
   # DELETE /resultats/1.json
   def destroy
+  	@resultat = Resultat.find(params[:id])
     @resultat.destroy
     respond_to do |format|
       format.html { redirect_to resultats_url, notice: 'Resultat was successfully destroyed.' }

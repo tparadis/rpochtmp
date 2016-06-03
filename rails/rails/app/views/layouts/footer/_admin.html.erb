@@ -76,7 +76,7 @@ function onChangeSearch()
 					{
 						affiche += '<tr style="border:1px solid black; height:29px; opacity:0">';
 						affiche += '<td>'+rep.magasins[i].enseigne+'</td>';
-						affiche += '<td><a href="/api/bo/commerces/'+rep.magasins[i].id+'">Voir</a></td>';
+						affiche += '<td><a href="/api/bo/commerces/'+rep.magasins[i].id+'">Voir</a></td><td><a href="/api/bo/commerces/'+rep.magasins[i].id+'/edit">Editer</a> </td>';
 						
 						//Affichage du bouton add si on est sur les parcours predefinis
 						if(isOnPredef == 1)
