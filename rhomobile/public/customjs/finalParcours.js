@@ -31,13 +31,14 @@ function refresh() {
     	}
     }
     
+    
     $("#example tbody tr").each(function(i){
     	
     	$(this).delay(i * 300).animate({"opacity":"1"}, 500);
 
     });
     
-    $('example tbody tr.detailButton').on('click',function(e){
+    $('#example tbody tr.detailButton').on('click',function(e){
 		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
 		afficheSpecificationMagasin();
 	});
