@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 
 function refresh() {
-	$("tbody").html("");
+	$("#example tbody").html("");
 	dist_max = getDistMax();
 	sessionStorage.removeItem("posRecuperer");
     for (var i=0 ; i < sessionStorage.length; i++)
@@ -19,25 +19,25 @@ function refresh() {
 	    	
 	    	try
 	    	{
-	    		$("tbody").append("<tr style='opacity:0' class='detailButton'name='"+id+"' ><td class='listeItem' >"+magasin[3].toUpperCase()+"</td><td><img class='ImgBtnInfo' ></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
+	    		$("#example tbody").append("<tr style='opacity:0' class='detailButton'name='"+id+"' ><td class='listeItem' >"+magasin[3].toUpperCase()+"</td><td><img class='ImgBtnInfo' ></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
 	    		ajoutDansRes();
 	    	}
 	    	catch(err)
 	    	{
 	    		console.error("ERREUR : "+err);
-	    		$("tbody").append("<tr><td>Aucun parcours disponible pour votre demande...<br><a href='/app/SousCategories/sous_categories' onclick='sessionStorage.clear();'>Recommencer</a></td></tr>");
+	    		$("#example tbody").append("<tr><td>Aucun parcours disponible pour votre demande...<br><a href='/app/SousCategories/sous_categories' onclick='sessionStorage.clear();'>Recommencer</a></td></tr>");
 	    		break;
 	    	}
     	}
     }
     
-    $("tbody tr").each(function(i){
+    $("#example tbody tr").each(function(i){
     	
     	$(this).delay(i * 300).animate({"opacity":"1"}, 500);
 
     });
     
-    $('tr.detailButton').on('click',function(e){
+    $('example tbody tr.detailButton').on('click',function(e){
 		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
 		afficheSpecificationMagasin();
 	});
