@@ -50,6 +50,7 @@ function commercesFichierCourrant(workbook)
 	//On recupere les informations du fichier xlsx
 	//et on les ajoutent dans une variable commerce que l'on ajoutera
 	//à un tableau de commerces contenant tous ces "commerce" 
+	//si le champ enseigne n'est pas rempli, on met la RASOC (Raison Sociale)
 	try
 	{
 		while(typeof feuille['A'+i] != "undefined")
@@ -58,32 +59,22 @@ function commercesFichierCourrant(workbook)
 			var commerceCourrant = {};
 			var num_line = i;
 
-			var siret = feuille["A"+i].v;
-			var rasoc = feuille["C"+i].v;
-			//Si l'enseigne n'est pas renseigné, on met le rasoc
-			try
-			{
-				var enseigne = feuille["B"+i].v;
-			}
-			catch(err)
-			{
-				var enseigne = rasoc	
-			}
-
-			//TODO verifier TOUS les champs !
-		    var date_debut_act = convertToDate(feuille["D"+i].v);	;
-			var date_rad = typeof feuille["E"+i] == "undefined" ? "" : convertToDate(feuille["E"+i].v);
-			var code_ape = feuille["F"+i].v;
-			var label_ape = feuille["G"+i].v;
-			var zone_ape = feuille["H"+i].v;
-			var label_zone_ape = feuille["I"+i].v;
-			var street_num = typeof feuille["J"+i] == "undefined" ? "" : feuille["J"+i].v;
-			var street_name = feuille["K"+i].v;
-			var city = feuille["L"+i].v;
-			var city_label = feuille["M"+i].v;
-			var phone_num = typeof feuille["N"+i] == "undefined" ? "" : feuille["N"+i].v;
-			var email = typeof feuille["O"+i] == "undefined" ? "" : feuille["O"+i].v; 
-			var activite = typeof feuille["P"+i] == "undefined" ? "" : feuille["P"+i].v;
+			var siret          = typeof feuille["A"+i] == "undefined" ? "" : feuille["A"+i].v;
+			var rasoc          = typeof feuille["C"+i] == "undefined" ? "" : feuille["C"+i].v;
+			var enseigne       = typeof feuille["B"+i] == "undefined" ? rasoc : feuille["B"+i].v;
+		    var date_debut_act = typeof feuille["D"+i] == "undefined" ? "" : convertToDate(feuille["D"+i].v);;
+			var date_rad       = typeof feuille["E"+i] == "undefined" ? "" : convertToDate(feuille["E"+i].v);
+			var code_ape       = typeof feuille["F"+i] == "undefined" ? "" : feuille["F"+i].v;
+			var label_ape      = typeof feuille["G"+i] == "undefined" ? "" : feuille["G"+i].v;
+			var zone_ape       = typeof feuille["H"+i] == "undefined" ? "" : feuille["H"+i].v;
+			var label_zone_ape = typeof feuille["I"+i] == "undefined" ? "" : feuille["I"+i].v;
+			var street_num     = typeof feuille["J"+i] == "undefined" ? "" : feuille["J"+i].v;
+			var street_name    = typeof feuille["K"+i] == "undefined" ? "" : feuille["K"+i].v;
+			var city           = typeof feuille["L"+i] == "undefined" ? "" : feuille["L"+i].v;
+			var city_label     = typeof feuille["M"+i] == "undefined" ? "" : feuille["M"+i].v;
+			var phone_num      = typeof feuille["N"+i] == "undefined" ? "" : feuille["N"+i].v;
+			var email          = typeof feuille["O"+i] == "undefined" ? "" : feuille["O"+i].v; 
+			var activite       = typeof feuille["P"+i] == "undefined" ? "" : feuille["P"+i].v;
 
 
 
