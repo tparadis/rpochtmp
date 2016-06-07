@@ -278,12 +278,12 @@ module Algo
 			if cpt <= dist_max and valid
 				# succès : on retourne le parcours
 				res = [];
-				res << cpt;
+				#res << cpt;
 				for indice in 0..(tab_mags.length() -1)
 					res << tab_mags[indice][ tab_indice[indice] ];
 				end
 				finish = Time.now;
-				res << finish - start;
+				#res << finish - start;
 				return res;
 			end
 
