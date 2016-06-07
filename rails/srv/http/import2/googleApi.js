@@ -56,6 +56,8 @@ function getAllCoords(current, newCom)
 	{
 		console.warn("Certains magasins n'ont pu être traités ! ");	
 	}
+
+	return current;
 }
 
 
@@ -277,7 +279,7 @@ function metAJourCoords(i, d, current, newTab)
 	newTab[current[i].num_line].vp_ne_lat       = d.geometry.viewport.northeast.lat;
 	newTab[current[i].num_line].vp_ne_lng       = d.geometry.viewport.northeast.lng;
 	newTab[current[i].num_line].vp_sw_lat       = d.geometry.viewport.southwest.lat;
-	newTab[current[i].num_line].vp_sw_lat       = d.geometry.viewport.southwest.lat;
+	newTab[current[i].num_line].vp_sw_lng       = d.geometry.viewport.southwest.lng;
 	
 	return newTab;
 }

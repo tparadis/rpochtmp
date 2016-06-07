@@ -54,14 +54,15 @@ function lancerParse(evt)
 		//A partir d'ici nous avons dans commercesBDD tous les commeres
 		//présent dans la BDD actuelle, et dans commercesNew 
 		//les commerces présents dans le fichier xlsx
-
-		addNewValuesToCurrentObjectBDD(commercesBDD, commercesNew, nbElements);	
-		
+		commercesNew = addNewValuesToCurrentObjectBDD(commercesBDD, commercesNew, nbElements);	
+	    	
 		//Appel à Google maps
-		getAllCoords(commercesNew, nouveauxCommerces);
+		commercesNew = getAllCoords(commercesNew, nouveauxCommerces);
 
+		//Affichage
+		displayTable(nouveauxCommerces);
 
-
+		console.log(commercesNew)
 
 
 	}//fin onloadend
@@ -267,7 +268,6 @@ function addNewValuesToCurrentObjectBDD(bdd,current, nb)
 		
 		i++;	
 	}
-	displayTable(nouveauxCommerces);
 	//console.log(nouveauxCommerces.length);
 	//console.log(nouveauxCommerces)
 
@@ -276,7 +276,7 @@ function addNewValuesToCurrentObjectBDD(bdd,current, nb)
 	var time = end - start;
 	console.log("fini en : "+time+" ms");
 		
-	
+	return current;	
 }
 
 //Permet d'afficher les resultats de certaines erreurs dans la petite balise prévue à cet effet
@@ -307,6 +307,7 @@ function displayTable(current)
 
 	str = "<table style='table-layout:fixed'><tbody  style='position:abolute;left:0;top:0;width:100%'>";
 	var tags = ["tag0", "tag1", "tag2", "tag3"];
+	var champsEditables = ["description","website","email","facebook","instagram","fax_num"];
 	var v = 0;
 	var strsscats = "";
 
@@ -335,12 +336,14 @@ function displayTable(current)
 				str += "<select id='"+i+"' name='"+champsA[k]+"'>"
 				str += strsscats;	
 				str += "</select>";
-							}
+			}
+			else if(inArray(champsA[k], champsEditables))
+			{
+				str += champsA[k]+":<br/> <input type='text' id='"+i+"' name='"+champsA[k]+"' /> "		
+			}
 			else
 			{
-				
-				str += current[i][champsA[k]];
-			
+				str += champsA[k]+":<br/>"+current[i][champsA[k]];		
 			}
 
 			str+= "</td>";
@@ -354,10 +357,16 @@ function displayTable(current)
 	$("body").append(str);
 	$("select").on('change', function()
 	{
-		current[$(this).attr('id')][$(this).attr('name')] = $(this).find("option:selected").attr("value");	
+		commercesNew[current[$(this).attr('id')].num_line][$(this).attr('name')] = $(this).find("option:selected").attr("value");	
 		console.log(current[$(this).attr('id')]);
 
 	});
+	$("input[type='text']").on("keyup paste change click input",function(e){
+		var val = $(this).val();
+		console.log(current[$(this).attr('id')])
+		commercesNew[current[$(this).attr('id')].num_line][$(this).attr('name')] = val;
+		console.log(commercesNew)
+	})
 
 }
 
