@@ -10,7 +10,7 @@ function refresh() {
 	$("#example tbody").html("");
 	dist_max = getDistMax();
 	sessionStorage.removeItem("posRecuperer");
-    for (var i=0 ; i < sessionStorage.length; i++)
+    for (var i = 0 ; i < sessionStorage.length; i++)
     {
     	var magasin = JSON.parse(sessionStorage.getItem(i));
     	if(magasin.length > 3)
@@ -80,26 +80,35 @@ function genererParcours(){
 	var coord_arr_lng = localStorage.getItem("userlng");
 	dist_max = getDistMax();
 	
+	
+	var start = new Date().getTime();
+	console.log(""+start);
 	var data = api.genParcours(coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags);
+	var end = new Date().getTime();
+	var time = end - start;
+	Rho.Log.error('Execution time: ' + time,"APP");
+	console.log(""+time);	
+	
+	
 		res = "";
 		$("tbody").html("");
-		for (var i = 1 ; i <= tags.length ; i++)
+		for (var i = 0 ; i < tags.length ; i++)
 	    {// remplacer la cat�gorie parent par l'id magasin
+
 	    	var tagCourant = data.tags[i];
 	    	//On ajoute la valeur id  de l'enseigne dans la sessionStorage
-	    	
-	    	var elem = sessionStorage.getItem(idtags[i-1]);
+	    	var elem = sessionStorage.getItem(idtags[i]);
 	    	elem = JSON.parse(elem);
 
 		    	//Obligatoire si l'utilisateur a deja clique sur Generer un sessionStorage et qu'il veut remettre un autre magasin apr�s
 		    	//Sinon les id s'ajoutent ind�finiments � la suite dans le meme tableau !
 		    	var id = tagCourant.id;
 		    	elem[2] = id;
+		    	
 		    	elem.push(tagCourant.enseigne.toLowerCase());
 		    	elem.push(tagCourant.location_lat);
 		    	elem.push(tagCourant.location_lng);
-		    	sessionStorage.setItem(idtags[i-1], JSON.stringify(elem));
-	    	
+		    	sessionStorage.setItem(idtags[i], JSON.stringify(elem));
 		    	//On affiche sur la page
 		    	//On ajoute la classe (non utilis�e en CSS) detailsButton pour distinguer les bouttons par l'action onclick()
 		    	$("tbody").append("<tr class='mag"+(idtags[i-1])+"'><td class='listeItem' >"+tagCourant.enseigne.toUpperCase()+"</td><td><img class=' detailButton ImgBtnInfo' name='"+id+"'></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
@@ -109,7 +118,9 @@ function genererParcours(){
 		    	// currentMagasin => id
 		    	//Ceci est utile pour la transition de cette page � la page de Magasin sp�cifique
 	    	}
-		
+	    	
+	    	
+	    	window.location.replace("/app/FinalParcours/final_parcours");
 
 }
 
