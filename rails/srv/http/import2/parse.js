@@ -55,10 +55,10 @@ function lancerParse(evt)
 		//présent dans la BDD actuelle, et dans commercesNew 
 		//les commerces présents dans le fichier xlsx
 
-
 		addNewValuesToCurrentObjectBDD(commercesBDD, commercesNew, nbElements);	
-
-
+		
+		//Appel à Google maps
+		getAllCoords(commercesNew, nouveauxCommerces);
 
 
 
@@ -126,9 +126,6 @@ function commercesFichierCourrant(workbook)
 			var phone_num      = typeof feuille["N"+i] == "undefined" ? "" : feuille["N"+i].v;
 			var email          = typeof feuille["O"+i] == "undefined" ? "" : feuille["O"+i].v; 
 			var activite       = typeof feuille["P"+i] == "undefined" ? "" : feuille["P"+i].v;
-
-
-
 
 
 			//On complete notre tableau associative pour le commerce
@@ -271,8 +268,8 @@ function addNewValuesToCurrentObjectBDD(bdd,current, nb)
 		i++;	
 	}
 	displayTable(nouveauxCommerces);
-	console.log(nouveauxCommerces.length);
-	//console.log(current)
+	//console.log(nouveauxCommerces.length);
+	//console.log(nouveauxCommerces)
 
 
 	var end = new Date().getTime();

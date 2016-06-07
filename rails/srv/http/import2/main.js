@@ -6,7 +6,9 @@ $(document).ready(function(){
 
 	document.getElementById("files").addEventListener("change", readFile, false);
 	$("#error").hide();
-	getCoords(9, "rue de Brest");
+	$("#fondNoir").hide();
+	$("#askDiv").hide();
+	getCoords(9, "rue vasselot");
 
 	
 })
