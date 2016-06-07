@@ -4,7 +4,10 @@ $(document).ready(function(){
 	 *  C'est ici que sera initié la fonction de Parse du document
 	 */
 
-document.getElementById("files").addEventListener("change", readFile, false);
+	document.getElementById("files").addEventListener("change", readFile, false);
+	$("#error").hide();
+	getCoords(9, "rue de Brest");
+
 	
 })
 
