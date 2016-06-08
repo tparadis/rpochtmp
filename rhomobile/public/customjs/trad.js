@@ -92,7 +92,10 @@ function chargementCategories() {
 			localStorage.setItem(keySsCat, JSON.stringify(infoSsCat));
 			
 			}
+		
 	}
+			 localStorage.setItem("userlat", "48.1113531");
+			 localStorage.setItem("userlng", "-1.6786842999999863");
 }
 
 function changeLanguage(newLang){
