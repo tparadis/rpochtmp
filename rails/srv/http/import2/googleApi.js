@@ -244,7 +244,6 @@ function metAJourCoords(i, d, current, newTab)
 	var num = d.address_components[0].long_name;
 	//On essaye de caster num en Int car Google 
 	//net met pas au meme endroit les éléments de ses réponses !
-	
 	if(!isNaN(num)) //Si c'est un nombre
 	{
 		newTab[current[i].num_line].street_number    = num;

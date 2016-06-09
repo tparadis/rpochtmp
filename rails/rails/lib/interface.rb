@@ -43,7 +43,13 @@ module Interface
 
 	end
 
+	#permet l'obtenton d'un commerce par son nom
+	def Interface.getCommerceByNom(nom)
 
+		Commerce.where(:enseigne => nom).select('id,enseigne,tag0,tag1,tag2,tag3,email,facebook,description,image,instagram,website').first
+
+	end
+	
 	#Relatif aux commerces
 	def Interface.getParcoursPredefinis
 

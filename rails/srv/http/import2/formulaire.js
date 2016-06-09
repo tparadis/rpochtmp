@@ -62,6 +62,77 @@ function recupereFormNew()
 	
 }
 
+//Permet de modifier les commerces que nous avions deja
+function modifyAll(old)
+{
+	
+	console.log(old[0]);
+	
+	
+	
+}
+
+//Permet la suppression de commerces depuis un tableau
+function supprimerCommerces(tab)
+{
+	
+	var i = tab.length - 2;
+/*
+	$.ajax(
+	{
+		url:"/api/bo/commerces/"+tab[i].id,	
+		method:"DELETE",
+		success:function(data)
+		{
+			console.log("supprimé")	
+		}
+		
+	})
+	
+*/
+	console.log(i+": "+tab[i].enseigne+", "+tab[i].id)
+
+	
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

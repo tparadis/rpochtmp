@@ -32,7 +32,13 @@ class WelcomeController < ApplicationController
 		end
 
 		if params[:req] == "spec"
-			if params.has_key?(:id) && params.has_key?(:type) && params[:type] == "coord"
+			if params.has_key?(:nom) && params[:nom] != ""
+
+				#Retourne les infos du magasin en se basant sur le nom
+				@y = Interface.getCommerceByNom(params[:nom])
+				render json: {:commerce => @y}
+
+			elsif params.has_key?(:id) && params.has_key?(:type) && params[:type] == "coord"
 
 					@y = Interface.getCommerceCoordByID(params[:id])
 					render json: { :commerce => @y }

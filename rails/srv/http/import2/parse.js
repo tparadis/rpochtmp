@@ -3,6 +3,7 @@ var nbElements = 0;
 var commercesNew;
 var champs = ["num_line", "siret", "enseigne", "rasoc", "date_debut_act", "date_rad", "code_ape", "label_ape", "zone_ape", "label_zone_ape", "street_num", "street_name", "city_code", "city_label", "phone_num", "email", "activite"];
 var champsA = ["id", "sort_street_name", "epci2014", "street_number", "route", "city", "dptmt", "region", "country", "postal_code", "location_lat", "location_lng", "google_place_id", "vp_ne_lat", "vp_ne_lng", "vp_sw_lat", "vp_sw_lng", "description", "website", "email", "facebook", "instagram", "fax_num", "tag0", "tag1", "tag2", "tag3", "image", "db_add_date"];
+var champsHits = ["tag0","tag1","tag2","tag3","email","website", "description", "website", "fax_num"];
 var nouveauxCommerces = []; //liste des nouveaux commerces
 var toRemoveCommerces = []; //liste des commerces à supprimer
 
@@ -57,7 +58,8 @@ function lancerParse(evt)
 		toRemoveCommerces = getCommercesToRemove(commercesBDD, commercesNew); //Liste des commerces à supprimer
 
 		commercesNew = addNewValuesToCurrentObjectBDD(commercesBDD, commercesNew); //Liste des commerces existants mise à jour		
-		
+			
+		console.log(nouveauxCommerces.length);
 		console.log(toRemoveCommerces.length+" magasins marqués à supprimer")
 
 		//Appel à Google maps
@@ -69,8 +71,29 @@ function lancerParse(evt)
 		//Test pour l'ajout d'un nouveau commerce
 		//TODO faire ceci lorsque l'utilisateur VALIDE
 		//LEs MODIFICATIONS :D
-		//createAllNew(nouveauxCommerces);
+		$("body").prepend("<div id='validation'><input type='submit' value='Valider les modifications' name='validation' /></div>");
+		
+		//On ajoute l'action lorsque les modifications sont effectuées
+		$("#validation input[name='validation']").on("mouseup", function()
+		{
+			var c = confirm("Ces données vont être ajoutées à la base de donnée");
+	
+			if(c)
+			{
+				var old = extractVieuxMagasins(commercesNew, nouveauxCommerces);	
+				modifyAll(old);
+				
+			}
+			else
+			{	
+				console.log("L'utilisateur souhaite continuer les modifications");	
+			}
 
+
+		});
+		
+		//createAllNew(nouveauxCommerces);
+		//supprimerCommerces(toRemoveCommerces)
 
 
 	}//fin onloadend
@@ -90,6 +113,7 @@ function commercesFichierCourrant(workbook)
 	var feuille = workbook.Sheets["Feuil1"];
 	var commerces = [];
 	var i = 1;
+	var l = 0;
 	var offset = 0;
 
 	//On ajuste l'indice i pour qu'il tombe sur le premier siret réel
@@ -105,6 +129,7 @@ function commercesFichierCourrant(workbook)
 		i++;	
 	}
 	offset = i;
+	l = 0;
 	console.log("Le fichier commence à l'indice "+i);
 
 
@@ -116,53 +141,57 @@ function commercesFichierCourrant(workbook)
 	{
 		while(typeof feuille['A'+i] != "undefined")
 		{
-
-			var commerceCourrant = {};
-			var num_line = i;
-			var siret          = typeof feuille["A"+i] == "undefined" ? "" : feuille["A"+i].v;
-			var rasoc          = typeof feuille["C"+i] == "undefined" ? "" : feuille["C"+i].v;
-			var enseigne       = typeof feuille["B"+i] == "undefined" ? rasoc : feuille["B"+i].v;
-		    var date_debut_act = typeof feuille["D"+i] == "undefined" ? "" : convertToDate(feuille["D"+i].v);;
-			var date_rad       = typeof feuille["E"+i] == "undefined" ? "" : convertToDate(feuille["E"+i].v);
-			var code_ape       = typeof feuille["F"+i] == "undefined" ? "" : feuille["F"+i].v;
-			var label_ape      = typeof feuille["G"+i] == "undefined" ? "" : feuille["G"+i].v;
-			var zone_ape       = typeof feuille["H"+i] == "undefined" ? "" : feuille["H"+i].v;
-			var label_zone_ape = typeof feuille["I"+i] == "undefined" ? "" : feuille["I"+i].v;
-			var street_num     = typeof feuille["J"+i] == "undefined" ? "" : feuille["J"+i].v;
-			var street_name    = typeof feuille["K"+i] == "undefined" ? "" : feuille["K"+i].v;
-			var city_code           = typeof feuille["L"+i] == "undefined" ? "" : feuille["L"+i].v;
-			var city_label     = typeof feuille["M"+i] == "undefined" ? "" : feuille["M"+i].v;
-			var phone_num      = typeof feuille["N"+i] == "undefined" ? "" : feuille["N"+i].v;
-			var email          = typeof feuille["O"+i] == "undefined" ? "" : feuille["O"+i].v; 
-			var activite       = typeof feuille["P"+i] == "undefined" ? "" : feuille["P"+i].v;
-
-
-			//On complete notre tableau associative pour le commerce
-			//des valeurs nouvellement crées
-			commerceCourrant["num_line"] = num_line - offset;
-			commerceCourrant["siret"] = siret;
-			commerceCourrant["enseigne"] = enseigne;
-			commerceCourrant["rasoc"] = rasoc;
-			commerceCourrant["date_debut_act"] = date_debut_act;
-			commerceCourrant["date_rad"] = date_rad;
-			commerceCourrant["code_ape"] = code_ape;
-			commerceCourrant["label_ape"] = label_ape;
-			commerceCourrant["zone_ape"] = zone_ape;
-			commerceCourrant["label_zone_ape"] = label_zone_ape;
-			commerceCourrant["street_num"] = street_num;
-			commerceCourrant["street_name"] = street_name;
-			commerceCourrant["city_code"] = city_code;
-			commerceCourrant["city_label"] = city_label;
-			commerceCourrant["phone_num"] = phone_num;
-			commerceCourrant["email"] = email;
-			commerceCourrant["activite"] = activite;
-			var k = 0;
-			while(k < champsA.length)
+			if(typeof feuille["E"+i] == "undefined")
 			{
-				commerceCourrant[champsA[k]] = "";
-				k++;
+				var commerceCourrant = {};
+				var num_line = l;
+				var siret          = typeof feuille["A"+i] == "undefined" ? "" : feuille["A"+i].v;
+				var rasoc          = typeof feuille["C"+i] == "undefined" ? "" : feuille["C"+i].v;
+				var enseigne       = typeof feuille["B"+i] == "undefined" ? rasoc : feuille["B"+i].v;
+				var date_debut_act = typeof feuille["D"+i] == "undefined" ? "" : convertToDate(feuille["D"+i].v);;
+				var date_rad       = typeof feuille["E"+i] == "undefined" ? "" : convertToDate(feuille["E"+i].v);
+				var code_ape       = typeof feuille["F"+i] == "undefined" ? "" : feuille["F"+i].v;
+				var label_ape      = typeof feuille["G"+i] == "undefined" ? "" : feuille["G"+i].v;
+				var zone_ape       = typeof feuille["H"+i] == "undefined" ? "" : feuille["H"+i].v;
+				var label_zone_ape = typeof feuille["I"+i] == "undefined" ? "" : feuille["I"+i].v;
+				var street_num     = typeof feuille["J"+i] == "undefined" ? "" : feuille["J"+i].v;
+				var street_name    = typeof feuille["K"+i] == "undefined" ? "" : feuille["K"+i].v;
+				var city_code           = typeof feuille["L"+i] == "undefined" ? "" : feuille["L"+i].v;
+				var city_label     = typeof feuille["M"+i] == "undefined" ? "" : feuille["M"+i].v;
+				var phone_num      = typeof feuille["N"+i] == "undefined" ? "" : feuille["N"+i].v;
+				var email          = typeof feuille["O"+i] == "undefined" ? "" : feuille["O"+i].v; 
+				var activite       = typeof feuille["P"+i] == "undefined" ? "" : feuille["P"+i].v;
+
+
+				//On complete notre tableau associative pour le commerce
+				//des valeurs nouvellement crées
+				commerceCourrant["num_line"] = l;
+				commerceCourrant["siret"] = siret;
+				commerceCourrant["enseigne"] = enseigne;
+				commerceCourrant["rasoc"] = rasoc;
+				commerceCourrant["date_debut_act"] = date_debut_act;
+				commerceCourrant["date_rad"] = date_rad;
+				commerceCourrant["code_ape"] = code_ape;
+				commerceCourrant["label_ape"] = label_ape;
+				commerceCourrant["zone_ape"] = zone_ape;
+				commerceCourrant["label_zone_ape"] = label_zone_ape;
+				commerceCourrant["street_num"] = street_num;
+				commerceCourrant["street_name"] = street_name;
+				commerceCourrant["city_code"] = city_code;
+				commerceCourrant["city_label"] = city_label;
+				commerceCourrant["phone_num"] = phone_num;
+				commerceCourrant["email"] = email;
+				commerceCourrant["activite"] = activite;
+				var k = 0;
+				while(k < champsA.length)
+				{
+					commerceCourrant[champsA[k]] = "";
+					k++;
+				}
+				commerces.push(commerceCourrant);
+				l++;
 			}
-			commerces.push(commerceCourrant);
+			
 			i++	
 			
 		}
@@ -245,7 +274,7 @@ function addNewValuesToCurrentObjectBDD(bdd,current)
 		else
 		{
 			
-			while(j < bdd.length)
+			while(j < bdd.length && !trouve)
 			{
 				//Si on l'a trouvé dans les anciens :
 				if(siret == bdd[j].siret)	
@@ -275,11 +304,12 @@ function addNewValuesToCurrentObjectBDD(bdd,current)
 					}
 				}
 				
-				j++;
-				if(!trouve && j >=bdd.length)
-				{
-					nouveauxCommerces.push(current[i]);
-				}
+				j++	
+			}
+			if(!trouve)
+			{
+				nouveauxCommerces.push(current[i]);
+				trouve = false;
 			}
 		}
 		
@@ -290,7 +320,7 @@ function addNewValuesToCurrentObjectBDD(bdd,current)
 	var end = new Date().getTime();
 	var time = end - start;
 	console.log("fini en : "+time+" ms");
-		
+	console.log(nouveauxCommerces.length)	
 	return current;	
 }
 
@@ -324,19 +354,46 @@ function displayTable(current)
 	var tags = ["tag0", "tag1", "tag2", "tag3"];
 	var champsEditables = ["description","website","email","facebook","instagram","fax_num"];
 	var v = 0;
-	var strsscats = "";
+	var hits = 0;
+	var miss = 0;
+	var infos;
+	var hit = false;
 
-	//preparation de l'affichage des sscategories (c'est plus rapide de le garder 
-	//dans un string que de le refaire à chaque fois
-	for(v = 0; v < sscats.size; v++)
-	{
-		strsscats += "<option value='"+sscats.sscategories[v].id+"'>"+sscats.sscategories[v].nom+"</option>";
-					
-	}
-
+	
 	for(i = 0; i < current.length; i++)
 	{
 		str += "<tr>";
+		hit = false;
+
+		//On vérifie que nous n'avons pas déja des valeur prédefinies
+		//Si par exemple le nom est le meme mais que seul le siret a changé...
+		//En effet, ce dernier est marqué à supprimer et comme nouveau bien que des infos
+		//peuvent le compléter
+		
+		$.ajax({
+			url:"/api/?req=spec&nom="+current[i].enseigne+"&format=json",
+			dataType:"json",
+			async:false,
+			success:function(data)
+			{
+				//On teste si data n'est pas null !
+				if(data.commerce != null)
+				{
+					hits++;
+					infos = data.commerce;
+					hit = true;
+				}
+				else
+				{
+					miss++;	
+				}
+			}
+			
+		});
+
+		if(hit) console.log(infos)
+
+
 		for(k = 0; k < champs.length; k ++)
 		{
 			str += "<td style='border:1px solid black;font-size:12px'>";	
@@ -348,13 +405,35 @@ function displayTable(current)
 			str += "<td style='border:1px solid black;font-size:12px'>";	
 			if(inArray(champsA[k], tags))
 			{
+				//Generation de champs pour les tags
+				//C'est normal qu'il y ait des suggestions pour les nouveaux commerces !
+				//en fait on va chercher s'il existait deja une enseigne du meme nom, on récupere les infos basiques (tags, mail, facebook, instagram...)
+				//et on les ajoutent automatiquemnt au nouveau commerce de meme nom. C'est plus homogène par la suite mais il est
+				//toujours possible de modifier ces champs, à la main !
+
 				str += "<select id='"+i+"' name='"+champsA[k]+"'>"
-				str += strsscats;	
-				str += "</select>";
+				var strsscats = "";
+				var sel = -1;
+				if(hit)
+				{
+					sel = infos[champsA[k]];
+				}
+				else
+				{
+					sel = 0;	
+				}
+				for(v = 0; v < sscats.size; v++)
+				{
+					strsscats += "<option value='"+sscats.sscategories[v].id+"' "+(sel == sscats.sscategories[v].id ? 'selected' : '')+" >"+sscats.sscategories[v].nom+"</option>";			
+				}	
+					str += strsscats+"</select>";
 			}
 			else if(inArray(champsA[k], champsEditables))
 			{
-				str += champsA[k]+":<br/> <input type='text' id='"+i+"' name='"+champsA[k]+"' /> "		
+				//Les champs input text
+				var c = (hit ? infos[champsA[k]] : '');
+				if(c == null || c == "null") c = ""
+				str += champsA[k]+":<br/> <input type='text' id='"+i+"' name='"+champsA[k]+"' value='"+(hit ? infos[champsA[k]] : '')+"' /> "		
 			}
 			else
 			{
@@ -367,6 +446,7 @@ function displayTable(current)
 
 		str+="</tr>";
 	}
+	console.log("hits : "+hits+", miss : "+miss)
 	str += "</tbody></table>";
 	$("#proposeImport").hide();
 	$("body").append(str);
@@ -381,6 +461,12 @@ function displayTable(current)
 		console.log(current[$(this).attr('id')])
 		commercesNew[current[$(this).attr('id')].num_line][$(this).attr('name')] = val;
 		console.log(commercesNew)
+	})
+	$("input[type='text']").each(function(e){
+		if($(this).val() == "null" || $(this).val() == "undefined")
+		{
+			$(this).val("");	
+		}
 	})
 
 }
@@ -442,8 +528,40 @@ function getCommercesToRemove(commercesBDD, commercesNew)
 }
 
 
+//Récupère les anciens magasins déja présent dans la bdd
+function extractVieuxMagasins(commercesNew, nouveauxCommerces)
+{
+	var i = 0;
+	var j = 0;
+	var ret = commercesNew;
+
+	while (i < nouveauxCommerces.length)
+	{
+		j = 0;
+		
+		while(j < commercesNew.length)
+		{
+			if(nouveauxCommerces[i].siret == commercesNew[j].siret)
+			{
+				ret.splice(j,1);
+				break;
+				
+			}
+		
 
 
+			j++
+		}
+		
+		
+		
+		i++;
+	}
+	
+	
+	return ret;	
+	
+}
 
 
 

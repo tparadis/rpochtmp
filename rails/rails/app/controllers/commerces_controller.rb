@@ -1,7 +1,7 @@
 class CommercesController < ApplicationController
   
   before_action :require_admin, only: [:index, :show, :edit, :update, :destroy]
-
+	skip_before_action :verify_authenticity_token
   # GET /commerces
   # GET /commerces.json
   def index

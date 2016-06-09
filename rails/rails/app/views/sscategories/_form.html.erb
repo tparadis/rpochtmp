@@ -15,10 +15,15 @@
     <%= f.label :nom %><br>
     <%= f.text_field :nom %>
   </div>
+  
+  <% @cat = Categorie.all %>
+  
   <div class="field">
     <%= f.label :catparent %><br>
-    <%= f.text_field :catparent %>
+    <%= f.collection_select :catparent, @cat.order(:nom), :id, :nom, {:selected => @sscategory.catparent || -1}   %>
   </div>
+  
+  
 	<div class="field">
     <%= f.label :en %><br>
     <%= f.text_field :en %>
