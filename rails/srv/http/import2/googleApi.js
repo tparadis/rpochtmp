@@ -15,7 +15,8 @@ function getAllCoords(current, newCom)
 {
 	
 	var i = 0;
-
+	//console.log(current)
+	//console.log(newCom)
 	while( i < newCom.length)
 	{
 		//Recupère l'adresse

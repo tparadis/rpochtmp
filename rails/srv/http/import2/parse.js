@@ -3,8 +3,8 @@ var nbElements = 0;
 var commercesNew;
 var champs = ["num_line", "siret", "enseigne", "rasoc", "date_debut_act", "date_rad", "code_ape", "label_ape", "zone_ape", "label_zone_ape", "street_num", "street_name", "city_code", "city_label", "phone_num", "email", "activite"];
 var champsA = ["id", "sort_street_name", "epci2014", "street_number", "route", "city", "dptmt", "region", "country", "postal_code", "location_lat", "location_lng", "google_place_id", "vp_ne_lat", "vp_ne_lng", "vp_sw_lat", "vp_sw_lng", "description", "website", "email", "facebook", "instagram", "fax_num", "tag0", "tag1", "tag2", "tag3", "image", "db_add_date"];
-var nouveauxCommerces = [];
-
+var nouveauxCommerces = []; //liste des nouveaux commerces
+var toRemoveCommerces = []; //liste des commerces à supprimer
 
 
 function lancerParse(evt)
@@ -54,19 +54,22 @@ function lancerParse(evt)
 		//A partir d'ici nous avons dans commercesBDD tous les commeres
 		//présent dans la BDD actuelle, et dans commercesNew 
 		//les commerces présents dans le fichier xlsx
-		commercesNew = addNewValuesToCurrentObjectBDD(commercesBDD, commercesNew, nbElements);	
+		toRemoveCommerces = getCommercesToRemove(commercesBDD, commercesNew); //Liste des commerces à supprimer
+
+		commercesNew = addNewValuesToCurrentObjectBDD(commercesBDD, commercesNew); //Liste des commerces existants mise à jour		
+		
+		console.log(toRemoveCommerces.length+" magasins marqués à supprimer")
 
 		//Appel à Google maps
-		console.log(nouveauxCommerces.length)
-		commercesNew = getAllCoords(commercesNew, nouveauxCommerces);
+		commercesNew = getAllCoords(commercesNew, nouveauxCommerces); //Permet de mettre à jour les nouveaux commerces
 
 		//Affichage
-		displayTable(nouveauxCommerces);
+		displayTable(nouveauxCommerces); //Permet la modification des nouveaux commerces
 
 		//Test pour l'ajout d'un nouveau commerce
 		//TODO faire ceci lorsque l'utilisateur VALIDE
 		//LEs MODIFICATIONS :D
-		createAllNew(nouveauxCommerces);
+		//createAllNew(nouveauxCommerces);
 
 
 
@@ -213,9 +216,9 @@ function convertToTwoNumbersDate(d)
 }
 
 //Fonction qui va ajouter les nouveaux elements dans l'Objet de BDD courrant si les champs
-//ne sont pas nulls
-//on se base sur le siret
-function addNewValuesToCurrentObjectBDD(bdd,current, nb)
+//ne sont pas nulls, on se base sur le siret
+//Mets également à jour le tableau nouceauxCommerces
+function addNewValuesToCurrentObjectBDD(bdd,current)
 {
 	
 	console.log( "Il y a : "+(current.length - bdd.length) + " lignes différentes" );
@@ -234,48 +237,54 @@ function addNewValuesToCurrentObjectBDD(bdd,current, nb)
 		var trouve = false;
 		j = 0;
 		k = 0;
-
-		while(j < bdd.length)
+		if(current[i].date_dat != null)
 		{
-			//Si on l'a trouvé dans les anciens :
-			if(siret == bdd[j].siret)	
-			{
-				trouve = true;
-				while(k < champs.length)
-				{
-					var champsCurrent = champs[k]
-					if(current[i][champsCurrent] == "")
-					{
-						//Si le champ de la nouvelle base est nul, on met l'ancien 	
-						if(bdd[j][champsCurrent] != "" && bdd[j][champsCurrent] != null) current[i][champsCurrent] = bdd[j][champsCurrent];
-						
-					}
-				
-					k++;
-				}
-				k = 0;
-				//on ajoute les champs non "basiques"
-				while(k < champsA.length)
-				{
-					if ( bdd[j][champsA[k]] != null && bdd[j][champsA[k]] != "")
-					{
-						current[i][champsA[k]]	= bdd[j][champsA[k]]
-					}
-					k++;
-				}
-			}
+			//on le supprime de la base s'il a une date_rad
+			current.splice(i, 1);	
+		}
+		else
+		{
 			
-			j++;
-			if(!trouve && j >=bdd.length)
+			while(j < bdd.length)
 			{
-				nouveauxCommerces.push(current[i]);
+				//Si on l'a trouvé dans les anciens :
+				if(siret == bdd[j].siret)	
+				{
+					trouve = true;
+					while(k < champs.length)
+					{
+						var champsCurrent = champs[k]
+						if(current[i][champsCurrent] == "")
+						{
+							//Si le champ de la nouvelle base est nul, on met l'ancien 	
+							if(bdd[j][champsCurrent] != "" && bdd[j][champsCurrent] != null) current[i][champsCurrent] = bdd[j][champsCurrent];
+							
+						}
+					
+						k++;
+					}
+					k = 0;
+					//on ajoute les champs non "basiques"
+					while(k < champsA.length)
+					{
+						if ( bdd[j][champsA[k]] != null && bdd[j][champsA[k]] != "")
+						{
+							current[i][champsA[k]]	= bdd[j][champsA[k]]
+						}
+						k++;
+					}
+				}
+				
+				j++;
+				if(!trouve && j >=bdd.length)
+				{
+					nouveauxCommerces.push(current[i]);
+				}
 			}
 		}
 		
 		i++;	
 	}
-	//console.log(nouveauxCommerces.length);
-	//console.log(nouveauxCommerces)
 
 
 	var end = new Date().getTime();
@@ -376,6 +385,7 @@ function displayTable(current)
 
 }
 
+//vérifie si le needle est dans le tableau arr
 function inArray(needle, arr)
 {
 	var i = 0;
@@ -388,6 +398,72 @@ function inArray(needle, arr)
 	return false;
 	
 }
+
+//Récupère la liste des commerces qui sont à supprimer
+function getCommercesToRemove(commercesBDD, commercesNew)
+{
+	var ret = [];
+	var i = 0;
+	var j = 0;
+	
+	while(i < commercesBDD.length)
+	{
+	    var	trouve = false;
+		var daterad = false;
+		j = 0;
+		while(j < commercesNew.length)
+		{
+			
+			if(commercesBDD[i].siret == commercesNew[j].siret)
+			{
+				//Le magasin existe dans la nouvelle base, on passe
+				trouve = true;
+				break;
+			}
+			else if(commercesBDD[i].date_rad != null)
+			{
+				daterad = true;
+				break;
+			}
+			j++;
+			
+		}
+		if(trouve == false || daterad)
+		{
+			//Si c'est à faux, on l'ajoute à notre tableau de retour	
+			ret.push(commercesBDD[i]);
+		}
+		
+		i++;	
+	}
+	
+	return ret;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
