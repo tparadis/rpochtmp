@@ -5,7 +5,8 @@ class CommercesController < ApplicationController
   # GET /commerces
   # GET /commerces.json
   def index
-    @commerces = Commerce.all
+  	@commerces = Commerce.all
+	@shops = Commerce.all
   end
 
   # GET /commerces/1
@@ -58,6 +59,7 @@ class CommercesController < ApplicationController
   # DELETE /commerces/1
   # DELETE /commerces/1.json
   def destroy
+  	@commerce = Commerce.find(params[:id])
     @commerce.destroy
     respond_to do |format|
       format.html { redirect_to commerces_url, notice: 'Commerce was successfully destroyed.' }

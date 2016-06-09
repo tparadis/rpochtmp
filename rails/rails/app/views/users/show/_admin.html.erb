@@ -15,7 +15,7 @@
 				<th>En solde</th>
 				<th>Actions</th>
             </tr>
-            <% @shops.each do |shop| %>
+            <% @shops.order('enseigne').each do |shop| %>
                 <tr>
                     <td><%= shop.siret %></td>
                     <td><%= shop.enseigne %></td>

@@ -55,14 +55,19 @@ function lancerParse(evt)
 		//présent dans la BDD actuelle, et dans commercesNew 
 		//les commerces présents dans le fichier xlsx
 		commercesNew = addNewValuesToCurrentObjectBDD(commercesBDD, commercesNew, nbElements);	
-	    	
+
 		//Appel à Google maps
+		console.log(nouveauxCommerces.length)
 		commercesNew = getAllCoords(commercesNew, nouveauxCommerces);
 
 		//Affichage
 		displayTable(nouveauxCommerces);
 
-		console.log(commercesNew)
+		//Test pour l'ajout d'un nouveau commerce
+		//TODO faire ceci lorsque l'utilisateur VALIDE
+		//LEs MODIFICATIONS :D
+		createAllNew(nouveauxCommerces);
+
 
 
 	}//fin onloadend
@@ -177,6 +182,7 @@ function commercesFichierCourrant(workbook)
 
 }
 
+	
 //Converti la date du format 13/1/2010 en une date 2010-1-13
 function convertToDate(date)
 {

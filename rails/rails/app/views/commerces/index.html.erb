@@ -1,43 +1,36 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Commerces</h1>
-
-<%= link_to 'New Commerce', new_commerce_path %>
-
-
-<table>
-  <thead>
-    <tr>
-	<th>line</th>
-	<th>enseigne</th>
-	<th>website</th>
-	<th>instagram</th>
-	<th>facebook</th>
-	<th>mail</th>
-	<th>descr</th>
-	<th>id</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @commerces.order('line').each do |commerce| %>
-      <tr>
-	<td><%= commerce.line %></td>
-	<td><%= commerce.enseigne %></td>
-	<td><%= commerce.website %></td>
-	<td><%= commerce.instagram %></td>
-	<td><%= commerce.facebook %></td>
-	<td><%= commerce.email %></td>
-	<td><%= commerce.description %></td>
-	<td><%= commerce.id %></td>
-        <td><%= link_to 'Show', commerce %></td>
-        <td><%= link_to 'Edit', edit_commerce_path(commerce) %></td>
-        <td><%= link_to 'Destroy', commerce, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
+<div class="jumbotron">
+    <div class="container">
+        <h2> Liste des commerces vous appartenant: </h2>
+        <table id="shops" class="table table-bordered table-hover table-striped">
+            <tr>
+                <th>SIRET</th>
+                <th>Enseigne</th>
+                <th>Adresse</th>
+                <th>Catégorie 1</th>
+                <th>Catégorie 2</th>
+                <th>Catégorie 3</th>
+				<th>Catégorie 4</th>
+                <th>Description</th>
+                <th>Facebook</th>
+				<th>En solde</th>
+				<th>Actions</th>
+            </tr>
+            <% @shops.order('enseigne').each do |shop| %>
+                <tr>
+                    <td><%= shop.siret %></td>
+                    <td><%= shop.enseigne %></td>
+                    <td> <%= shop.street_num.nil? ? "" : shop.street_num %> 
+					<%= shop.street_name.nil? ? "rue inconnue" : shop.street_name %> </td>
+                    <td><%= Sscategorie.find_by(id: shop.tag0).nom if Sscategorie.find_by(id: shop.tag0) %></td>
+                    <td><%= Sscategorie.find_by(id: shop.tag1).nom if Sscategorie.find_by(id: shop.tag1) %></td>
+                    <td><%= Sscategorie.find_by(id: shop.tag2).nom if Sscategorie.find_by(id: shop.tag2) %></td>
+                    <td><%= Sscategorie.find_by(id: shop.tag3).nom if Sscategorie.find_by(id: shop.tag3) %></td>
+                    <td style="width:230px;"><pre style="color:inherit; border:initial;padding:initial;background-color:rgba(0,0,0,0);font-size:inherit;font-family:inherit; max-width:230px; overflow:auto;" ><%= shop.description %></pre></td>
+                    <td><%= shop.facebook %></td>
+					<td><%= shop.soldes ? "Oui" : "Non"  %>
+                    <td><%= link_to 'éditer', edit_commerce_path(shop) %><br/><%= link_to 'supprimer', commerce_path(shop), method: :delete %></td>
+                </tr>
+            <% end %>
+        </table>
+    </div>
+</div>

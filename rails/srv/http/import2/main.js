@@ -8,8 +8,6 @@ $(document).ready(function(){
 	$("#error").hide();
 	$("#fondNoir").hide();
 	$("#askDiv").hide();
-	getCoords(9, "rue vasselot");
-
 	
 })
 

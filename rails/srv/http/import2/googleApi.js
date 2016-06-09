@@ -21,7 +21,7 @@ function getAllCoords(current, newCom)
 		//Recupère l'adresse
 		var address = newCom[i].street_name;
 		var num = newCom[i].street_num;
-		alert(num, newCom[i].line);
+		//alert(num, newCom[i].line);
 		var returned;
 		currentC = newCom[i].enseigne;
 		if(address == "LES HALLES CENTRALES")
@@ -39,7 +39,6 @@ function getAllCoords(current, newCom)
 			//On met à jour les champs concernés
 			current = metAJourCoords(i, returned, newCom, current);
 
-
 		}
 		//On affiche le %age dans la div
 		$("#purcent").html((i/newCom.length).toFixed(2) * 100 +1+ " %");
@@ -51,7 +50,7 @@ function getAllCoords(current, newCom)
 	//On vérifie que les magasins ont bien tous des coordonnées
 	checkifok(current)
 
-	console.log(resStats[0] + " magasins traités avec succès : 100% ");	
+	console.log(resStats[0] + " magasins traités avec succès");	
 	if(resStats[i] < newCom.length )
 	{
 		console.warn("Certains magasins n'ont pu être traités ! ");	
@@ -67,9 +66,7 @@ function getCoords(num, adr, nb)
 {
 	if(adr == "") return [];	
 
-	//On ajoute une exception pour l'addresse "DE BRETAGNE", Google cherait en Bretagne
-	//au lieu de place de Bretagne...
-	adr = exception(adr);
+	adr = exception(adr); //On ajoute des infos sur les adresses si besoin est !
 	var addr = convertiEnAdresseGoogle(num, adr);
 	
 	var req = "https://maps.googleapis.com/maps/api/geocode/json?";
@@ -159,7 +156,7 @@ function getCoords(num, adr, nb)
 				}
 				else if(toTest == data.results[0].formatted_address)
 				{
-					console.log("Impossible de relever l'adresse exacte pour l'adrese: "+adr);
+					console.log("Impossible de relever l'adresse exacte pour l'adrese: "+num+", "+adr);
 					resStats[2] += 1;
 				}
 				else
@@ -287,10 +284,15 @@ function metAJourCoords(i, d, current, newTab)
 //Permet d'ajouter des exceptions aux Adresses
 //car il arrive que Google retourne une formatted_address completement fausse
 //si on fait sans
+//Bien sur, on l'ajoute s'il n'existe QUE une place OU une rue, sinon ça ajouterait des ambiguité
 function exception(adr)
 {
-	if(adr == "DE BRETAGNE") adr = "PLACE DE BRETAGNE";
-	if(adr == "SAINT HELIER") adr = "RUE SAINT HELIER";
+	var except = false;
+	if(adr == "DE BRETAGNE"){ adr = "PLACE DE BRETAGNE"; except = true;}
+	if(adr == "SAINT HELIER"){ adr = "RUE SAINT HELIER"; except = true;}
+	if(adr == "DU GUESCLIN"){ adr = "RUE DUGUESCLIN"; except = true;} //Du gueslin est en 1 seul mot ici, Google Maps préfère
+
+	if(except) console.log("Exception d'adresse => modification")
 
 	return adr;
 

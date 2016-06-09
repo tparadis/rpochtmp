@@ -8,7 +8,16 @@ module Interface
 	end
 
 	def Interface.getSSCategories
-		Sscategorie.order('nom').select('id,nom,catparent,en,esp,de')
+		#Sscategorie.order('nom').select('id,nom,catparent,en,esp,de')
+		sscats = Sscategorie.order('nom').select('id,nom,catparent,en,esp,de')
+		sscatsRet = []
+		sscats.each do |s|
+			if Commerce.where('tag0 = ?',s.id).count > 0
+				sscatsRet.push(s)
+			end
+		end		
+		sscatsRet
+
 	end
 
 	def Interface.getTags
