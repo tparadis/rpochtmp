@@ -65,12 +65,79 @@ function recupereFormNew()
 //Permet de modifier les commerces que nous avions deja
 function modifyAll(old)
 {
-	
+	var nbModif = 0;
 	console.log(old[0]);
+
+	//On récupère la structure du formulaire edit
+
+	$.ajax
+	({
+		url:"/api/bo/commerces/"+old[0].id+"/edit",		
+		async:false,
+		method:"GET",
+		dataType:"HTML",
+		success: function(data)
+		{
+			pageFull = data;
+			console.log("Recupération de la page EDIT Réussie");
+		},
+		error: function(err)
+		{
+			console.log("Erreur lors de la récupération de la page EDIT: "+err);
+			throw new Error("Impossible de relever la page EDIT")
+		}
+		
+	});
+
+	//On crée un formulaire temporaire sur la page
+	var domPage = document.createElement("div");
+	domPage.innerHTML = pageFull;
+	var domForm = domPage.getElementsByTagName("form");
+	var formObj = jQuery(domForm).serializeObject();
 	
+	//Boucle de mise à jours
+	var i = 0;
+	while(i < old.length)
+	{
+			for(key in formObj.commerce)
+			{
+				//Petites modifications d'alias + ajout dans l'objet formObj des propriétés
+				formObj.commerce[key] = old[i][key];	
+				formObj.commerce.line = old[i].num_line;
+				formObj.commerce.date_deb_act = old[i].date_debut_act;
+				formObj.commerce.location_type = "ROOFTOP";
+			}
+			console.log(formObj)
+
+			var url = "/api/bo/commerces/"+old[i].id; //adresse complete
+			
+			$.ajax({
+				url:url,
+				method:"PATCH",
+				data:formObj,
+				async:true,
+				dataType:"html",
+				error:function(XMLHttpRequest, textStatus, errorThrown)
+				{
+					console.log("Erreur: "+errorThrown+", "+textStatus)		
+				},
+				complete:function()
+				{
+					console.log(i+": "+old[i].enseigne+" modifié");	
+					nbModif++;
+				}
+
+			})
+
+		i++;
+	}
+
+	console.log(nbModif+" magasins édités avec succès")
 	
 	
 }
+
+
 
 //Permet la suppression de commerces depuis un tableau
 function supprimerCommerces(tab)

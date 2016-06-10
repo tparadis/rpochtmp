@@ -4,7 +4,7 @@ module Interface
  
 	#Fonctions sur la récupération des categories
 	def Interface.getCategories
-		Categorie.order('nom').select('id,nom,reference,en,esp,de')
+		Categorie.where(:visible => true).order('nom')
 	end
 
 	def Interface.getSSCategories

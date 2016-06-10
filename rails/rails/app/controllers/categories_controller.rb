@@ -43,7 +43,8 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1
   # PATCH/PUT /categories/1.json
   def update
-    respond_to do |format|
+    respond_to do |format| 
+	@category = Categorie.find(params[:id])
       if @category.update(category_params)
         format.html { redirect_to @category, notice: 'Categorie was successfully updated.' }
         format.json { render :show, status: :ok, location: @category }
@@ -72,6 +73,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:categorie).permit(:nom, :reference, :en, :esp, :de)
+      params.require(:categorie).permit(:nom, :reference, :en, :esp, :de, :visible)
     end
 end

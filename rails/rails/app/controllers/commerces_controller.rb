@@ -1,5 +1,6 @@
 class CommercesController < ApplicationController
   
+
   before_action :require_admin, only: [:index, :show, :edit, :update, :destroy]
 	skip_before_action :verify_authenticity_token
   # GET /commerces
@@ -47,7 +48,7 @@ class CommercesController < ApplicationController
     respond_to do |format|
 		@commerce = Commerce.find(params[:id])
       if @commerce.update(commerce_params)
-        format.html { redirect_to @commerce, notice: 'Commerce was successfully updated.' }
+        format.html { redirect_to action: :show,  notice: 'Commerce was successfully updated.' }
         format.json { render :show, status: :ok, location: @commerce }
       else
         format.html { render :edit }
@@ -76,6 +77,6 @@ class CommercesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def commerce_params
       #params[:commerce]
-	params.require(:commerce).permit(:id, :line, :siret, :enseigne, :rasoc, :date_deb_act, :date_rad, :code_ape, :label_ape, :zone_ape, :label_zone_ape, :street_num, :sort_street_name, :city_code, :city_label, :epci2014, :phone_num, :fax_num, :email, :street_number, :route, :city, :dptmt, :region, :country, :postal_code, :location_lat, :location_lng, :location_type, :google_place_id, :vp_ne_lat, :vp_ne_lng, :vp_sw_lat, :vp_sw_lng, :db_add_date, :image, :tag0, :tag1, :tag2, :tag3, :description, :facebook, :soldes, :instagram, :website)
+	params.require(:commerce).permit(:id, :line, :siret, :enseigne, :rasoc, :date_deb_act, :date_rad, :code_ape, :label_ape, :zone_ape, :label_zone_ape, :street_num, :sort_street_name, :city_code, :city_label, :epci2014, :phone_num, :fax_num, :email, :street_number, :route, :city, :dptmt, :region, :country, :postal_code, :location_lat, :location_lng, :location_type, :google_place_id, :vp_ne_lat, :vp_ne_lng, :vp_sw_lat, :vp_sw_lng, :db_add_date, :image, :tag0, :tag1, :tag2, :tag3, :description, :facebook, :soldes, :instagram, :website, :street_name)
     end
 end

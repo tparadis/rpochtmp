@@ -167,7 +167,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   json
-  passenger
+  passenger (>= 5.0.25)
   pg
   rack-cors
   rails (= 4.2.4)
