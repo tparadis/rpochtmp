@@ -34,7 +34,7 @@ class CommercesController < ApplicationController
     respond_to do |format|
       if @commerce.save
         format.html { redirect_to @commerce, notice: 'Commerce was successfully created.' }
-        format.json { render :show, status: :created, location: @commerce }
+        format.json {:done}
       else
         format.html { render :new }
         format.json { render json: @commerce.errors, status: :unprocessable_entity }
@@ -48,13 +48,18 @@ class CommercesController < ApplicationController
     respond_to do |format|
 		@commerce = Commerce.find(params[:id])
       if @commerce.update(commerce_params)
-        format.html { redirect_to action: :show,  notice: 'Commerce was successfully updated.' }
-        format.json { render :show, status: :ok, location: @commerce }
+      	 	format.html { redirect_to commerces_path, action: :index,  notice: 'Commerce was successfully updated.' }
+       	 	format.json { render :done }
       else
         format.html { render :edit }
         format.json { render json: @commerce.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+
+  #Controller spécial pour la MAJ depuis JS
+  def done
   end
 
   # DELETE /commerces/1

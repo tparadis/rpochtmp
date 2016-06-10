@@ -82,6 +82,7 @@ function lancerParse(evt)
 			{
 				var old = extractVieuxMagasins(commercesNew, nouveauxCommerces);	
 				modifyAll(old);
+				createAllNew(nouveauxCommerces)
 				
 			}
 			else
@@ -425,7 +426,7 @@ function displayTable(current)
 				for(v = 0; v < sscats.size; v++)
 				{
 					strsscats += "<option value='"+sscats.sscategories[v].id+"' "+(sel == sscats.sscategories[v].id ? 'selected' : '')+" >"+sscats.sscategories[v].nom+"</option>";			
-				}	
+				}
 					str += strsscats+"</select>";
 			}
 			else if(inArray(champsA[k], champsEditables))
@@ -453,14 +454,20 @@ function displayTable(current)
 	$("select").on('change', function()
 	{
 		commercesNew[current[$(this).attr('id')].num_line][$(this).attr('name')] = $(this).find("option:selected").attr("value");	
-		console.log(current[$(this).attr('id')]);
+		//On ajoute aux nouveaux commerces la modification
+		var index = $(this).closest("tr").index();
+		nouveauxCommerces[index][$(this).attr('name')] = $(this).find("option:selected").attr("value");
+		console.log(nouveauxCommerces[index]);
 
 	});
 	$("input[type='text']").on("keyup paste change click input",function(e){
 		var val = $(this).val();
-		console.log(current[$(this).attr('id')])
 		commercesNew[current[$(this).attr('id')].num_line][$(this).attr('name')] = val;
-		console.log(commercesNew)
+		
+		//On ajoute aux nouveaux commerces la modification
+		var index = $(this).closest("tr").index();
+		nouveauxCommerces[index][$(this).attr('name')] = val;
+		console.log(nouveauxCommerces[index]);
 	})
 	$("input[type='text']").each(function(e){
 		if($(this).val() == "null" || $(this).val() == "undefined")
@@ -468,6 +475,13 @@ function displayTable(current)
 			$(this).val("");	
 		}
 	})
+	for(var j = 0; j < nouveauxCommerces.length; j++)
+	{
+		nouveauxCommerces[j]["tag0"] = $("tr:eq("+j+")").find("select[name='tag0'] option:selected").attr("value");
+		nouveauxCommerces[j]["tag1"] = $("tr:eq("+j+")").find("select[name='tag1'] option:selected").attr("value");
+		nouveauxCommerces[j]["tag2"] = $("tr:eq("+j+")").find("select[name='tag2'] option:selected").attr("value");
+		nouveauxCommerces[j]["tag3"] = $("tr:eq("+j+")").find("select[name='tag3'] option:selected").attr("value");
+	}
 
 }
 

@@ -12,19 +12,36 @@ function createAllNew(tabNew)
 {
 	
 	var formObj = recupereFormNew();
-	var champsForm = formObj.commerce;
-
+	var nbAdd = 0;
 	var commerce = tabNew[0];
 	//console.log(tabNew[0]);
 	//console.log(champsForm);	
 	var i = 0;
-	for(i = 0; i < champsNew.length; i++)
+	for(key in formObj)
 	{
-		champsForm[champsNew[i]] = commerce[champsNew[i]];
+		formObj.commerce[key] = tabNew[i][key];	
 	}
-	console.log(commerce)
-	console.log(champsForm)
+	formObj.commerce.line = tabNew[i].num_line;
+	formObj.commerce.date_deb_act = tabNew[i].date_debut_act;
+	formObj.commerce.location_type = "ROOFTOP";
+
+	$.ajax({
 	
+		url:"/api/bo/commerces",
+		async:false,
+		method:"POST",
+		data:formObj,
+		dataType:"json",
+		complete:function()
+		{
+			console.log(tabNew[i].enseigne+" crée")
+			nbAdd++;
+		}
+	
+	
+	})
+	console.log(nbAdd+" commerces ajoutés");
+
 }
 
 
@@ -103,10 +120,13 @@ function modifyAll(old)
 			{
 				//Petites modifications d'alias + ajout dans l'objet formObj des propriétés
 				formObj.commerce[key] = old[i][key];	
-				formObj.commerce.line = old[i].num_line;
-				formObj.commerce.date_deb_act = old[i].date_debut_act;
-				formObj.commerce.location_type = "ROOFTOP";
 			}
+
+			formObj.commerce.line = old[i].num_line;
+			formObj.commerce.date_deb_act = old[i].date_debut_act;
+			formObj.commerce.location_type = "ROOFTOP";
+
+
 			console.log(formObj)
 
 			var url = "/api/bo/commerces/"+old[i].id; //adresse complete
@@ -115,8 +135,8 @@ function modifyAll(old)
 				url:url,
 				method:"PATCH",
 				data:formObj,
-				async:true,
-				dataType:"html",
+				async:false,
+				dataType:"json",
 				error:function(XMLHttpRequest, textStatus, errorThrown)
 				{
 					console.log("Erreur: "+errorThrown+", "+textStatus)		

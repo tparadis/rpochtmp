@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   #Routes pour le BACK-OFFICE
   scope '/bo' do
-  	
+  
   	resources :tokens
   	resources :users
   	resources :promotions
