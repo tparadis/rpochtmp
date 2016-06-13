@@ -107,7 +107,9 @@ api.signaler = function(id, sel, text) { return api.send_simple({ data: {"req":"
 	
 api.statMag = function(id){ return api.send({ data: { "req": "stats", "id": id, "format": "json" } })}
 
-api.statCat = function(idcat){ return api.send({ data: { "req": "statSSCat", "idcat": idcat, "format": "json" } })}
+api.statSSCat = function(idcat){ return api.send({ data: { "req": "statSSCat", "idcat": idcat, "format": "json" } })}
+
+api.statCat = function(idcat){ return api.send({ data: { "req": "statCat", "idcat": idcat, "format": "json" } })}
 
 api.getAllcat=function () { return api.send({ data: {"req":"allcat","format":"json"} }) }
 

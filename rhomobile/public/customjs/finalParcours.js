@@ -67,7 +67,8 @@ function genererParcours(){
 		{
 			tags.push(mag[0]);
 			idtags.push(i);
-			var data =	api.statCat(mag[0]);
+			var data =	api.statSSCat(mag[0]);
+			var dataa = api.statCat(mag[2]);
 		}
 		
 	}
