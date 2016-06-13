@@ -105,6 +105,10 @@ api.testNetwork = function() {
 
 api.signaler = function(id, sel, text) { return api.send_simple({ data: {"req":"signaler","format":"json","magasin":id,"objet":sel,"message":text} }) }	
 	
+api.statMag = function(id){ return api.send({ data: { "req": "stats", "id": id, "format": "json" } })}
+
+api.statCat = function(idcat){ return api.send({ data: { "req": "statSSCat", "idcat": idcat, "format": "json" } })}
+
 api.getAllcat=function () { return api.send({ data: {"req":"allcat","format":"json"} }) }
 
 api.getCommDetail= function(id){ return api.send({ data: {"req":"spec","format":"json", "id":id} }) }

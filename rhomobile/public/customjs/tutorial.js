@@ -62,6 +62,8 @@ $(document).ready(function(){
 //Les fonction qui vont afficher le tutoriel a l'ecran
 function showTutorialMain()
 {	
+	  var r = confirm("Veuillez activer la localisation \nSi vous n'activez pas la localisation l'application se positionnera sur l'opera de Rennes ");
+
 	$("body").append("<div id='sampleWindow' style='bottom:70px; z-index:20;'><div class='persoW'>"
 	+"</div></div>");
 	if($("#grisement").length == 0)

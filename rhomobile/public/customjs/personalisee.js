@@ -116,8 +116,8 @@ function initialize() {
 		var magasin = JSON.parse(sessionStorage.getItem(i));
 		var categories;
 		
-		//On gardait en m�moire dans ssCatCache au lieu de faire la requete 2 fois
-		//si le parcours �tait en predef
+		//On gardait en memoire dans ssCatCache au lieu de faire la requete 2 fois
+		//si le parcours etait en predef
 		if(isPredef)
 		{
 			categories = ssCatCache[i];
@@ -299,12 +299,12 @@ function passerDevant() {
 				if (position.coords.latitude > listPos[x] - 0.0003 && position.coords.latitude < listPos[x] + 0.0003 && position.coords.longitude > listPos[x + 1] - 0.0003 && position.coords.longitude < listPos[x + 1] + 0.0003) {
 
 					//Statistiques
-					api.send2({ data: { "req": "stats", "id": idArray[x / 2], "parcours": "personalise", "format": "json" } });
+					api.send({ data: { "req": "stats", "id": idArray[x / 2], "parcours": "personalise", "format": "json" } });
 					listPos[x] = 0;
 					listPos[x + 1] = 0;
 					var x = 2;
 					//Grisement du chemin parcouru
-					if (x > magParcouruMax) { // si on repasse devant un magasin d�j� parcouru, rien ne se passe.
+					if (x > magParcouruMax) { // si on repasse devant un magasin deja parcouru, rien ne se passe.
 						directionsDisplay.setMap(null);
 						var waypointsArray1 = []
 						var waypointsArray2 = []
@@ -324,7 +324,7 @@ function passerDevant() {
 						}
 						l = k
 
-						// on construit le reste du chemin � parcourir
+						// on construit le reste du chemin a parcourir
 						while (l < listPosBis.length) {
 							lat = listPosBis[l];
 							lng = listPosBis[l + 1];
