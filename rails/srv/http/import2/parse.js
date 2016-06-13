@@ -80,9 +80,11 @@ function lancerParse(evt)
 	
 			if(c)
 			{
+				//Attention à bien respecter cet ordre : modification, creation, suppression
 				var old = extractVieuxMagasins(commercesNew, nouveauxCommerces);	
 				modifyAll(old);
 				createAllNew(nouveauxCommerces)
+				supprimerCommerces(toRemoveCommerces)
 				
 			}
 			else
@@ -94,7 +96,6 @@ function lancerParse(evt)
 		});
 		
 		//createAllNew(nouveauxCommerces);
-		//supprimerCommerces(toRemoveCommerces)
 
 
 	}//fin onloadend
@@ -342,7 +343,7 @@ function displayTable(current)
 
 	//Requete pour recuperer les sscategories
 	$.ajax({
-		url:"/api/?req=sscat&format=json",
+		url:"/api/?req=sscatAll&format=json",
 		dataType:"json",
 		async:false,
 		success:function(data){sscats = data}

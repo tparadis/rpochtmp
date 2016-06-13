@@ -121,11 +121,11 @@ function getCoords(num, adr, nb)
 					}
 					else if(indices.length == 2)
 					{
-						//il y a encore trop de choix, demander le resultat par une POP-UP ?	
+						//il y a encore trop de choix, demander le resultat par une fenetre "confirm"	
 						console.log("Adresse incertaine : "+ adr+" (on prend le resultat le plus pertinent parmis les choix de retour)");
 						var ret = proposeChoix("placeRue", currentC);
-						//On a reçu true pour Place, false pour Rue
 						
+						//On a reçu true pour Place, false pour Rue
 						resStats[0] += 1;
 						if(ret)
 						{

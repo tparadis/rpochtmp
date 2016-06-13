@@ -28,7 +28,7 @@
                     <td style="width:230px;"><pre style="color:inherit; border:initial;padding:initial;background-color:rgba(0,0,0,0);font-size:inherit;font-family:inherit; max-width:230px; overflow:auto;" ><%= shop.description %></pre></td>
                     <td><%= shop.facebook %></td>
 					<td><%= shop.soldes ? "Oui" : "Non"  %>
-                    <td><%= link_to 'éditer', edit_commerce_path(shop) %><br/><%= link_to 'supprimer', commerce_path(shop), method: :delete %></td>
+                    <td><%= link_to 'éditer', edit_commerce_path(shop) %><br/><%= button_to 'supprimer', commerce_path(shop), method: :delete %></td>
                 </tr>
             <% end %>
         </table>

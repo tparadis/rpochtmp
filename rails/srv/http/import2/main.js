@@ -8,6 +8,13 @@ $(document).ready(function(){
 	$("#error").hide();
 	$("#fondNoir").hide();
 	$("#askDiv").hide();
+
+	//Eviter de quitter la page:
+	$(window).bind("beforeunload", function(e)
+	{
+		return "ATTENTION: Etes vous sur de vouloir quitter la page ?"
+	});
+
 	
 })
 

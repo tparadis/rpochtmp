@@ -34,7 +34,7 @@ class CommercesController < ApplicationController
     respond_to do |format|
       if @commerce.save
         format.html { redirect_to @commerce, notice: 'Commerce was successfully created.' }
-        format.json {:done}
+        format.json {head :no_content}
       else
         format.html { render :new }
         format.json { render json: @commerce.errors, status: :unprocessable_entity }

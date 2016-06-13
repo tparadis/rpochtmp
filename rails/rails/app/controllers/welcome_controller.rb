@@ -101,6 +101,11 @@ class WelcomeController < ApplicationController
 			render json: {:size => @y.size(), :sscategories => @y}
 		end
 
+		if params[:req] == "sscatAll"
+			@y = Sscategory.order("nom").all
+			render json: {:size => @y.size(), :sscategories => @y}
+		end
+
 		if params[:req] == "tags"
 			@y = Interface.getTags
 			render json: {:size => @y.size(), :tags => @y}

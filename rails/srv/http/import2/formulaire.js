@@ -14,32 +14,38 @@ function createAllNew(tabNew)
 	var formObj = recupereFormNew();
 	var nbAdd = 0;
 	var commerce = tabNew[0];
-	//console.log(tabNew[0]);
-	//console.log(champsForm);	
 	var i = 0;
-	for(key in formObj)
+	
+	console.log("AJOUT DES NOUVEAUX MAGASINS");
+	
+	while (i < tabNew.length)
 	{
-		formObj.commerce[key] = tabNew[i][key];	
+			for(key in formObj.commerce)
+			{
+				if(key != "db_add_date") //On garde la valeur du formulaire
+					formObj.commerce[key] = tabNew[i][key];	
+			}
+			formObj.commerce.line = tabNew[i].num_line;
+			formObj.commerce.date_deb_act = tabNew[i].date_debut_act;
+			formObj.commerce.location_type = "ROOFTOP";
+			formObj._method = "POST";
+			$.ajax({
+			
+				url:"/api/bo/commerces",
+				async:false,
+				method:"POST",
+				data:formObj,
+				dataType:"json",
+				complete:function()
+				{
+					console.log(tabNew[i].enseigne+" crée ("+tabNew[i].siret+")");
+					nbAdd++;
+				}
+			
+			
+			})
+		i++;
 	}
-	formObj.commerce.line = tabNew[i].num_line;
-	formObj.commerce.date_deb_act = tabNew[i].date_debut_act;
-	formObj.commerce.location_type = "ROOFTOP";
-
-	$.ajax({
-	
-		url:"/api/bo/commerces",
-		async:false,
-		method:"POST",
-		data:formObj,
-		dataType:"json",
-		complete:function()
-		{
-			console.log(tabNew[i].enseigne+" crée")
-			nbAdd++;
-		}
-	
-	
-	})
 	console.log(nbAdd+" commerces ajoutés");
 
 }
@@ -163,10 +169,13 @@ function modifyAll(old)
 function supprimerCommerces(tab)
 {
 	
-	var i = tab.length - 2;
-/*
-	$.ajax(
+	var i = 0;
+	while(i < tab.length)
 	{
+
+
+		$.ajax(
+		{
 		url:"/api/bo/commerces/"+tab[i].id,	
 		method:"DELETE",
 		success:function(data)
@@ -174,10 +183,13 @@ function supprimerCommerces(tab)
 			console.log("supprimé")	
 		}
 		
-	})
+		})
+
+		console.log(i+": "+tab[i].enseigne+", "+tab[i].id)
+		i++;
+	}
 	
-*/
-	console.log(i+": "+tab[i].enseigne+", "+tab[i].id)
+
 
 	
 
