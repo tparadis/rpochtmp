@@ -10,6 +10,7 @@ function refresh() {
 	$("#example tbody").html("");
 	dist_max = getDistMax();
 	sessionStorage.removeItem("posRecuperer");
+	var prob = true;
     for (var i = 0 ; i < sessionStorage.length; i++)
     {
     	var magasin = JSON.parse(sessionStorage.getItem(i));
@@ -21,13 +22,19 @@ function refresh() {
 	    	{
 	    		$("#example tbody").append("<tr style='opacity:0' class='detailButton'name='"+id+"' ><td class='listeItem' >"+magasin[3].toUpperCase()+"</td><td><img class='ImgBtnInfo' ></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
 	    		ajoutDansRes();
-	    	}
+	    		prob = false;
+ 	    	}
 	    	catch(err)
 	    	{
 	    		console.error("ERREUR : "+err);
 	    		$("#example tbody").append("<tr><td>Aucun parcours disponible pour votre demande...<br><a href='/app/SousCategories/sous_categories' onclick='sessionStorage.clear();'>Recommencer</a></td></tr>");
+	    		prob = true; 
 	    		break;
 	    	}
+    	}else{
+    		$("#example tbody").append("<tr><td>Aucun parcours disponible pour votre demande...<br><a href='/app/SousCategories/sous_categories' onclick='sessionStorage.clear();'>Recommencer</a></td></tr>");
+    		prob = true; 
+    		break;
     	}
     }
     
@@ -42,12 +49,14 @@ function refresh() {
 		sessionStorage.setItem("currentMagasin", $(this).attr('name'));
 		afficheSpecificationMagasin();
 	});
-    if((sessionStorage.length < 1)){
+    if(prob){
     	  $('#carte').hide(0);
     	  $('#flecheParcours').hide(0);
-    	 }else{
-    	   $('#nbmag').hide(0);
-    	 }
+    	 
+    }
+    if((sessionStorage.length > 1)){
+		  $('#nbmag').hide(0);
+	  }
 }
 
 function supprimerMag(numLigne) {
@@ -94,8 +103,11 @@ function genererParcours(){
 	
 		res = "";
 		$("tbody").html("");
+		if (data.tags.length > 0){
+			
+		
 		for (var i = 0 ; i < tags.length ; i++)
-	    {// remplacer la cat�gorie parent par l'id magasin
+	    {// remplacer la categorie parent par l'id magasin
 
 	    	var tagCourant = data.tags[i];
 	    	//On ajoute la valeur id  de l'enseigne dans la sessionStorage
@@ -103,7 +115,7 @@ function genererParcours(){
 	    	elem = JSON.parse(elem);
 
 		    	//Obligatoire si l'utilisateur a deja clique sur Generer un sessionStorage et qu'il veut remettre un autre magasin apr�s
-		    	//Sinon les id s'ajoutent ind�finiments � la suite dans le meme tableau !
+		    	//Sinon les id s'ajoutent indefiniments a la suite dans le meme tableau !
 		    	var id = tagCourant.id;
 		    	elem[2] = id;
 		    	
@@ -113,19 +125,15 @@ function genererParcours(){
 		    	sessionStorage.setItem(idtags[i], JSON.stringify(elem));
 		    	//On affiche sur la page
 		    	//On ajoute la classe (non utilis�e en CSS) detailsButton pour distinguer les bouttons par l'action onclick()
-		    	$("tbody").append("<tr class='mag"+(idtags[i-1])+"'><td class='listeItem' >"+tagCourant.enseigne.toUpperCase()+"</td><td><img class=' detailButton ImgBtnInfo' name='"+id+"'></img></td><td><img class='ImgBtnRemplacer' onclick='newMag("+i+")'></img></td><td><img class='ImgBtnSupprimer' onclick='supprimerMag("+i+")'></img></td></tr>");
-		    	ajoutDansRes();
-		    	
+		    
 		    	//Ajout d'une action qui va ajouter � la sessionStorage
 		    	// currentMagasin => id
-		    	//Ceci est utile pour la transition de cette page � la page de Magasin sp�cifique
+		    	//Ceci est utile pour la transition de cette page a la page de Magasin specifique
 	    	}
-	    	
-	    	
-	    	window.location.replace("/app/FinalParcours/final_parcours");
-
-}
-
+	    }
+	    window.location.replace("/app/FinalParcours/final_parcours");
+	    
+	 }
 function afficherParcours() {
 	   $.get('/app/Personalisee/get_callback',{ parcours_perso: res });
 }
