@@ -33,6 +33,8 @@ function lancerParse(evt)
 	reader.onloadend = function(e)
 	{
 		console.log("Recupération des infos des commerces");	
+		$("#purcent span").text("0%");
+		$("#etape").text("Récupération des informations serveur")
 		var start = new Date().getTime();
 		$.ajax({
 			url:"/api/bo/commerces.json",
@@ -50,6 +52,7 @@ function lancerParse(evt)
 
 		});
 		var end = new Date().getTime();
+		$("#purcent span").text("100%");
 		console.log ("Requete executée en "+(end - start)+" ms");
 
 		//A partir d'ici nous avons dans commercesBDD tous les commeres
@@ -59,7 +62,6 @@ function lancerParse(evt)
 
 		commercesNew = addNewValuesToCurrentObjectBDD(commercesBDD, commercesNew); //Liste des commerces existants mise à jour		
 			
-		console.log(nouveauxCommerces.length);
 		console.log(toRemoveCommerces.length+" magasins marqués à supprimer")
 
 		//Appel à Google maps
@@ -69,8 +71,6 @@ function lancerParse(evt)
 		displayTable(nouveauxCommerces); //Permet la modification des nouveaux commerces
 
 		//Test pour l'ajout d'un nouveau commerce
-		//TODO faire ceci lorsque l'utilisateur VALIDE
-		//LEs MODIFICATIONS :D
 		$("body").prepend("<div id='validation'><input type='submit' value='Valider les modifications' name='validation' /></div>");
 		
 		//On ajoute l'action lorsque les modifications sont effectuées
@@ -83,8 +83,16 @@ function lancerParse(evt)
 				//Attention à bien respecter cet ordre : modification, creation, suppression
 				var old = extractVieuxMagasins(commercesNew, nouveauxCommerces);	
 				modifyAll(old);
-				createAllNew(nouveauxCommerces)
-				supprimerCommerces(toRemoveCommerces)
+				createAllNew(nouveauxCommerces);
+				supprimerCommerces(toRemoveCommerces);
+
+				//TODO Suppression des magasins dans les parcours predefinis + en informer l'utilisateur
+				console.log("----- Suppression des magasins inexistants dans les Parcours Predefinis -----")
+				supprimerDansPredef(toRemoveCommerces, nouveauxCommerces);
+
+
+
+
 				
 			}
 			else
@@ -322,7 +330,6 @@ function addNewValuesToCurrentObjectBDD(bdd,current)
 	var end = new Date().getTime();
 	var time = end - start;
 	console.log("fini en : "+time+" ms");
-	console.log(nouveauxCommerces.length)	
 	return current;	
 }
 
@@ -364,7 +371,10 @@ function displayTable(current)
 	
 	for(i = 0; i < current.length; i++)
 	{
-		str += "<tr>";
+		if(i % 2 == 0)
+			str += "<tr>";
+		else
+			str += "<tr style='background-color:Bisque'>";
 		hit = false;
 
 		//On vérifie que nous n'avons pas déja des valeur prédefinies
@@ -512,27 +522,30 @@ function getCommercesToRemove(commercesBDD, commercesNew)
 	    var	trouve = false;
 		var daterad = false;
 		j = 0;
-		while(j < commercesNew.length)
+		if(commercesBDD[i].enseigne != "LES HALLES")
 		{
-			
-			if(commercesBDD[i].siret == commercesNew[j].siret)
+			while(j < commercesNew.length)
 			{
-				//Le magasin existe dans la nouvelle base, on passe
-				trouve = true;
-				break;
+				
+				if(commercesBDD[i].siret == commercesNew[j].siret)
+				{
+					//Le magasin existe dans la nouvelle base, on passe
+					trouve = true;
+					break;
+				}
+				else if(commercesBDD[i].date_rad != null)
+				{
+					daterad = true;
+					break;
+				}
+				j++;
+				
 			}
-			else if(commercesBDD[i].date_rad != null)
+			if(trouve == false || daterad)
 			{
-				daterad = true;
-				break;
+				//Si c'est à faux, on l'ajoute à notre tableau de retour	
+				ret.push(commercesBDD[i]);
 			}
-			j++;
-			
-		}
-		if(trouve == false || daterad)
-		{
-			//Si c'est à faux, on l'ajoute à notre tableau de retour	
-			ret.push(commercesBDD[i]);
 		}
 		
 		i++;	

@@ -8,6 +8,7 @@
       <th>Id</th>
       <th>Nom</th>
       <th>Reference</th>
+	  <th>Statistique</th>
 	  <th>En</th>
 	  <th>Esp</th>
 	  <th>De</th>
@@ -21,6 +22,7 @@
 	<td><%= category.id %></td>
         <td><%= category.nom %></td>
         <td><%= category.reference %></td>
+		<td><%= ((category.stat.to_f / @max).to_f * 100).round %>% (<%= category.stat  %> clicks)</td>
 		<td><%= category.en %></td>
 		<td><%= category.esp %></td>
 		<td><%= category.de %></td>

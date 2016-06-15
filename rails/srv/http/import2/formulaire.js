@@ -89,7 +89,6 @@ function recupereFormNew()
 function modifyAll(old)
 {
 	var nbModif = 0;
-	console.log(old[0]);
 
 	//On récupère la structure du formulaire edit
 
@@ -120,6 +119,7 @@ function modifyAll(old)
 	
 	//Boucle de mise à jours
 	var i = 0;
+	var requests = [];
 	while(i < old.length)
 	{
 			for(key in formObj.commerce)
@@ -133,15 +133,15 @@ function modifyAll(old)
 			formObj.commerce.location_type = "ROOFTOP";
 
 
-			console.log(formObj)
+			//console.log(formObj)
 
 			var url = "/api/bo/commerces/"+old[i].id; //adresse complete
 			
-			$.ajax({
+			requests.push($.ajax({
 				url:url,
 				method:"PATCH",
 				data:formObj,
-				async:false,
+				async:true,
 				dataType:"json",
 				error:function(XMLHttpRequest, textStatus, errorThrown)
 				{
@@ -149,17 +149,20 @@ function modifyAll(old)
 				},
 				complete:function()
 				{
-					console.log(i+": "+old[i].enseigne+" modifié");	
+					//console.log(i+": "+old[i].enseigne+" modifié");	
 					nbModif++;
 				}
 
-			})
-
+			}))
+		console.log( Math.round(((i / old.length) * 100))+"%"  )
 		i++;
 	}
+	console.info("Les modifications sont en cours, le resultat arrive un peu apres...")
+	$.when.apply($,requests).done(function(res){
+		console.log(nbModif+" magasins ont bien été édités")	;
+		return true;
+	});
 
-	console.log(nbModif+" magasins édités avec succès")
-	
 	
 }
 
@@ -168,8 +171,9 @@ function modifyAll(old)
 //Permet la suppression de commerces depuis un tableau
 function supprimerCommerces(tab)
 {
-	
+	console.log("SUPPRESSION DES COMMERCES INEXISTANTS")	
 	var i = 0;
+	var k = 0;
 	while(i < tab.length)
 	{
 
@@ -180,16 +184,27 @@ function supprimerCommerces(tab)
 		method:"DELETE",
 		success:function(data)
 		{
-			console.log("supprimé")	
+			k++;
+		},
+		error:function(err)
+		{
+			k++;	
 		}
 		
 		})
 
-		console.log(i+": "+tab[i].enseigne+", "+tab[i].id)
 		i++;
 	}
+	if(i == 0) {
+		i = 1; 
+		k = 1; //On évite la division par zéro
+		console.log(0+" commerces supprimés ("+ ((k/i).toFixed(2)*100) +")%");
+	}
+	else
+	{
+		console.log(k+" commerces supprimés ("+ ((k/i).toFixed(2)*100) +")%");
+	}
 	
-
 
 	
 

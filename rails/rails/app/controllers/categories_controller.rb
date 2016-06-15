@@ -6,6 +6,12 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Categorie.all
+	
+	#on calcule le max des vues
+	@max = Categorie.sum(:stat).to_i
+	if @max == 0
+		@max = 1
+	end
   end
 
   # GET /categories/1

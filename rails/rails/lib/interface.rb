@@ -23,11 +23,30 @@ module Interface
 	def Interface.getTags
 		Tag.order('id')
 	end
-
+	
 	def Interface.getSSCategorieByID(lid)
 		Sscategorie.where(:id => lid).first
 	end
 
+	def Interface.incrStatMag(id)
+		@y = Commerce.where(:id => id).first
+		@y.increment!(:nbvisite)
+		@y.save
+	end
+	
+	def Interface.incrStatSSCat(id)
+		@y = Sscategorie.where(:id => id).first
+		@y.increment!(:stat)
+		@y.save
+	end
+
+	def Interface.incrStatCat(id)
+		@y = Categorie.where(:id => id).first
+		@y.increment!(:stat)
+		@y.save
+	end
+
+	
 	#Permet d'obtenir un magasin aleatoire
 	def Interface.getRandomCommerce
 
