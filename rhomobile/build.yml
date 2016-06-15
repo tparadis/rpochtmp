@@ -1,7 +1,7 @@
 #sdk: "C:/RhoMobileSuite5.3.2/ruby/lib/ruby/gems/1.9.1/gems/rhodes-5.3.2"
 sdkversion: "5.3.2"
 name: "Rennes en Poche"
-version: "0.7"
+version: "0.7.1"
 vendor: "rhomobile"
 build: "debug"
 applog: "rholog.txt"
