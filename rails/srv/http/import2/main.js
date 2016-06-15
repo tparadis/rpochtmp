@@ -7,7 +7,6 @@ $(document).ready(function(){
 	document.getElementById("files").addEventListener("change", readFile, false);
 	$("#error").hide();
 	$("#fondNoir").hide();
-	$("#askDiv").hide();
 
 	//Eviter de quitter la page:
 	$(window).bind("beforeunload", function(e)
@@ -32,6 +31,7 @@ function validExtension (str)
 	return true;
 }
 
+//Permet de lire le fichier XLSX fourni
 function readFile(file)	{
 			console.log("debut");
 
@@ -62,6 +62,6 @@ function readFile(file)	{
 			
 
 			return false;
-	}
+}
 
 

@@ -101,14 +101,14 @@ class WelcomeController < ApplicationController
 			render json: {:size => @y.size(), :sscategories => @y}
 		end
 
-		if params[:req] == "sscatAll"
-			@y = Sscategory.order("nom").all
-			render json: {:size => @y.size(), :sscategories => @y}
-		end
-
 		if params[:req] == "tags"
 			@y = Interface.getTags
 			render json: {:size => @y.size(), :tags => @y}
+		end
+
+		if params[:req] == "sscatAll"
+			@y = Sscategory.order("nom").all
+			render json: {:size => @y.size(), :sscategories => @y}
 		end
 
 		# Debut test 
@@ -176,6 +176,19 @@ class WelcomeController < ApplicationController
 		end
 		# Fin test
 
+		if params[:req] == "stats" && params.has_key?(:id) && params[:id] != ""
+			@y = Interface.incrStatMag(params[:id])
+			render json: "ok"
+		end
+		
+		if params[:req] == "statSSCat" && params.has_key?(:idcat) && params[:idcat] != ""
+			@y = Interface.incrStatSSCat(params[:idcat])
+			render json: {:status => "ok"}
+		end
+		if params[:req] == "statCat" && params.has_key?(:idcat) && params[:idcat] != ""
+			@y = Interface.incrStatCat(params[:idcat])
+			render json: {:status => "ok"}
+		end
 	else
 
 		@y = Algo.getPath(0)

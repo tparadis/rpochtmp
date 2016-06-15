@@ -47,7 +47,7 @@ class ParcoursPredefinisController < ApplicationController
     respond_to do |format|
       if @parcours_predefini.update(parcours_predefini_params)
         format.html { redirect_to @parcours_predefini, notice: 'Parcours predefini was successfully updated.' }
-        format.json { render :show, status: :ok, location: @parcours_predefini }
+        format.json { head :no_content }
       else
         format.html { render :edit }
         format.json { render json: @parcours_predefini.errors, status: :unprocessable_entity }

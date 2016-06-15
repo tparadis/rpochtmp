@@ -6,6 +6,11 @@ class SscategoriesController < ApplicationController
   # GET /sscategories.json
   def index
     @sscategories = Sscategory.order('nom')
+	#on calcule le max des vues
+	@max = Sscategory.sum(:stat).to_i
+	if @max == 0
+		@max = 1
+	end
   end
 
   # GET /sscategories/1

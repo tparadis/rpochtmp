@@ -42,7 +42,7 @@ function getAllCoords(current, newCom)
 
 		}
 		//On affiche le %age dans la div
-		$("#purcent").html((i/newCom.length).toFixed(2) * 100 +1+ " %");
+		//$("#purcent span").html((i/newCom.length).toFixed(2) * 100 +1+ " %");
 
 		i++;
 

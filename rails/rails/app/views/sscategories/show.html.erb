@@ -7,7 +7,7 @@
 
 <p>
   <strong>Catparent:</strong>
-  <%= @sscategory.catparent %>
+  <%= Categorie.find(@sscategory.catparent.to_i).nom %>
 </p>
 <p>
   <strong>En:</strong>
