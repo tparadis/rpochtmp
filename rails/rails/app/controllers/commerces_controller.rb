@@ -69,7 +69,7 @@ class CommercesController < ApplicationController
     @commerce.destroy
     respond_to do |format|
       format.html { redirect_to commerces_url, notice: 'Commerce was successfully destroyed.' }
-      format.json { head :no_content }
+      format.json { render :done }
     end
   end
 
