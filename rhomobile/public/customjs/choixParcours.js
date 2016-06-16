@@ -71,7 +71,7 @@ $(document).ready(function () {
                    // + "<img src= " + filename + "  width=\"32\" height=\"32\">"
                 try
                 {
-                	list += "<span class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "").toUpperCase() + "<span style='color: #008B87; font-size:24px'> +</span></span></li>";
+                	list += "<span class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "").toUpperCase()+"</span></li>";
                 }
                 catch(err)
                 {
