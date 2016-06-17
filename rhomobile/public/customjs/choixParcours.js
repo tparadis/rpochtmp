@@ -1,6 +1,6 @@
 var datar = "";
 var firstTime = true;
-var MAXMAGASINS = 8;
+var MAXMAGASINS = 30;
 
 $(document).ready(function () {
     var nbCat = localStorage.getItem('nbCat');
@@ -158,5 +158,5 @@ function actualiserMagasins() {
 		$("#animationPlus").css("opacity","0");
 	}
 	firstTime = false;
-    $(".cart #nb_magasins").text(sessionStorage.length +"/"+MAXMAGASINS);
+    $(".cart #nb_magasins").text(sessionStorage.length);
 }
