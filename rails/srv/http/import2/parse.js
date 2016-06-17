@@ -177,7 +177,7 @@ function commercesFichierCourrant(workbook)
 				var num_line = l;
 				var siret          = typeof feuille["A"+i] == "undefined" ? "" : feuille["A"+i].v;
 				var rasoc          = typeof feuille["C"+i] == "undefined" ? "" : feuille["C"+i].v;
-				var enseigne       = typeof feuille["B"+i] == "undefined" ? rasoc : feuille["B"+i].v;
+				var enseigne       = typeof feuille["B"+i] == "undefined" ? "" : feuille["B"+i].v;
 				var date_debut_act = typeof feuille["D"+i] == "undefined" ? "" : convertToDate(feuille["D"+i].v);;
 				var date_rad       = typeof feuille["E"+i] == "undefined" ? "" : convertToDate(feuille["E"+i].v);
 				var code_ape       = typeof feuille["F"+i] == "undefined" ? "" : feuille["F"+i].v;
@@ -323,9 +323,11 @@ function addNewValuesToCurrentObjectBDD(bdd,current)
 						k++;
 					}
 					k = 0;
+
 					//on ajoute les champs non "basiques"
 					while(k < champsA.length)
 					{
+							
 						if ( bdd[j][champsA[k]] != null && bdd[j][champsA[k]] != "")
 						{
 							current[i][champsA[k]]	= bdd[j][champsA[k]]
@@ -443,9 +445,18 @@ function displayTable(current)
 		
 		for(k = 0; k < champs.length; k ++)
 		{
-			str += "<td style='border:1px solid black;font-size:12px'>";	
-			str += current[i][champs[k]];
-			str+= "</td>";
+			if(champs[k] != 'enseigne')
+			{
+				str += "<td style='border:1px solid black;font-size:12px'>";	
+				str += current[i][champs[k]];
+				str+= "</td>";
+			}
+			else
+			{
+				str += "<td style='border:1px solid black;font-size:12px' > ";	
+				str += "<input type='text' id='"+i+"' name='enseigne' value='"+(hit ? infos.enseigne : current[i].enseigne)+"' />";
+				str += "</td>";
+			}
 		}
 		for(k = 0; k < champsA.length; k++)
 		{
@@ -512,7 +523,6 @@ function displayTable(current)
 		//On ajoute aux nouveaux commerces la modification
 		var index = $(this).closest("tr").index();
 		nouveauxCommerces[index][$(this).attr('name')] = val;
-		console.log(nouveauxCommerces[index]);
 	})
 	$("input[type='text']").each(function(e){
 		if($(this).val() == "null" || $(this).val() == "undefined")
