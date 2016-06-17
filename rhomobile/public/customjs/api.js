@@ -123,6 +123,8 @@ api.getAleatoire= function(tag,uuid){ return api.send({data : {"req":"aleatoire"
 
 api.getSuggestion = function(txt){ return api.send({data: {"req":"suggestion", "format":"json", "deb":txt}}) }
 
+api.getHorraires = function(id){return api.send({data: {"req":"suggestion", "format":"json", "id":id}})}
+
 api.genParcours = function (coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags) { 
 	return api.send({ data: {
 		"req":"yolo",

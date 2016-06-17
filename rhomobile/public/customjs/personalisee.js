@@ -211,7 +211,7 @@ function initialize() {
 		google.maps.event.addListener(marker, 'click', (function(marker, i) {
 				return function() {
 
-					infowindow.setContent(magasins[i].name + '<div id="marker" name="' + magasins[i].id + '" > <img class= "ImgBtnInfo" ></img></div>');
+					infowindow.setContent(magasins[i].name + '<div id="marker" name="' + magasins[i].id + '" > <img class= "ImgBtnInfo" ></img></div><div id="go"><button>GO</button></div>');
 					infowindow.open(map, marker);
 					$("#marker").on("click", function(e) {
 							if (currentInfoWindow != undefined) {
@@ -224,44 +224,33 @@ function initialize() {
 							afficheSpecificationMagasin();
 							currentInfoWindow.close();
 						});
+					
+					$("#go").on("click", function(e) {
+						if (currentInfoWindow != undefined) {
+							currentInfoWindow.close();
+						}
+						
+						var request = {
+							origin: new google.maps.LatLng(Number(localStorage.getItem("userlat")), Number(localStorage.getItem("userlng"))),
+							destination: new google.maps.LatLng(magasins[i].latitude, magasins[i].longitude),
+							travelMode: google.maps.TravelMode.WALKING
+							};
+							directionsService.route(request, function(result, status) {
+							if (status == google.maps.DirectionsStatus.OK) {
+								directionsDisplay.setDirections(result);
+							}
+			});
+		
+		directionsDisplay.setOptions({ suppressMarkers: true });						
+
+						
+					});
+					
 				}
 			})(marker, i));
 		//attachMessage(marker, magasins[i].name);
 	}
 	;
-
-	if ((magasins.length > 1) && (magasin.length < 9)) {
-		var request = {
-			origin: new google.maps.LatLng(Number(localStorage.getItem("userlat")), Number(localStorage.getItem("userlng"))),
-			destination: new google.maps.LatLng(magasins[magasins.length - 1].latitude, magasins[magasins.length - 1].longitude),
-			optimizeWaypoints: true,
-			waypoints: waypointsArray,
-			travelMode: google.maps.TravelMode.WALKING
-		};
-		directionsService.route(request, function(result, status) {
-				if (status == google.maps.DirectionsStatus.OK) {
-					directionsDisplay.setDirections(result);
-				}
-			});
-		
-		directionsDisplay.setOptions({ suppressMarkers: true });
-	}
-	else if (magasins.length == 1 ) {
-		var request = {
-			origin: new google.maps.LatLng(Number(localStorage.getItem("userlat")), Number(localStorage.getItem("userlng"))),
-			destination: new google.maps.LatLng(magasins[0].latitude, magasins[0].longitude),
-			optimizeWaypoints: true,
-			waypoints: waypointsArray,
-			travelMode: google.maps.TravelMode.WALKING
-		};
-		directionsService.route(request, function(result, status) {
-				if (status == google.maps.DirectionsStatus.OK) {
-					directionsDisplay.setDirections(result);
-				}
-			});
-		
-		directionsDisplay.setOptions({ suppressMarkers: true });
-	}
 
 	setInterval("passerDevant()", 5000);
 	
@@ -300,88 +289,7 @@ function passerDevant() {
 
 					//Statistiques
 					api.send({ data: { "req": "stats", "id": idArray[x / 2], "parcours": "personalise", "format": "json" } });
-					listPos[x] = 0;
-					listPos[x + 1] = 0;
-					var x = 2;
-					//Grisement du chemin parcouru
-					if (x > magParcouruMax) { // si on repasse devant un magasin deja parcouru, rien ne se passe.
-						directionsDisplay.setMap(null);
-						var waypointsArray1 = []
-						var waypointsArray2 = []
-						var k = 0
-						var l = 0
-						// on construit le chemin parcouru
-						while (k < x) {
-							lat = listPosBis[k];
-							lng = listPosBis[k + 1];
-							if (k != magasins.length - 1) {
-								waypointsArray1.push({
-									location: new google.maps.LatLng(lat, lng),
-									stopover: false
-								});
-							}
-							k = k + 2;
-						}
-						l = k
-
-						// on construit le reste du chemin a parcourir
-						while (l < listPosBis.length) {
-							lat = listPosBis[l];
-							lng = listPosBis[l + 1];
-							if (l != magasins.length - 1) {
-								waypointsArray2.push({
-									location: new google.maps.LatLng(lat, lng),
-									stopover: false
-								});
-							}
-							l = l + 2;
-						}
-
-						//affichage du premier parcours
-						request = {
-							origin: new google.maps.LatLng(Number(localStorage.getItem("userlat")), Number(localStorage.getItem("userlng"))),
-							destination: new google.maps.LatLng(listPosBis[k], listPosBis[k + 1]),
-							optimizeWaypoints: true,
-							waypoints: waypointsArray1,
-							travelMode: google.maps.TravelMode.WALKING
-						};
-						directionsService.route(request, function(result, status) {
-								if (status == google.maps.DirectionsStatus.OK) {
-									directionsDisplay.setDirections(result);
-								}
-							});
-
-						directionsDisplay.setOptions({ suppressMarkers: true, preserveViewport: true });
-						directionsDisplay.setOptions({
-							polylineOptions: {
-								strokeColor: "grey"
-							}
-						});
-
-						//affichage du second parcours
-						directionsService2 = new google.maps.DirectionsService;
-						directionsDisplay2 = new google.maps.DirectionsRenderer;
-
-						request = {
-							origin: new google.maps.LatLng(listPosBis[k], listPosBis[k + 1]),
-							destination: new google.maps.LatLng(magasins[magasins.length - 1].latitude, magasins[magasins.length - 1].longitude),
-							optimizeWaypoints: true,
-							waypoints: waypointsArray2,
-							travelMode: google.maps.TravelMode.WALKING
-						};
-						directionsService2.route(request, function(result, status) {
-								if (status == google.maps.DirectionsStatus.OK) {
-									directionsDisplay2.setDirections(result);
-								}
-							});
-
-						directionsDisplay2.setOptions({ suppressMarkers: true, preserveViewport: true });
-
-						directionsDisplay.setMap(map);
-						directionsDisplay2.setMap(map);
-						magParcouruMax = x;
-					}
-
+					
 				}
 			}
 		}
