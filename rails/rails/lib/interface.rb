@@ -70,6 +70,10 @@ module Interface
 		infos["minute"] = minute
 		infos["continu"] = continu
 		infos["ouvert"] = ouvert
+		infos["horairesok"] = false
+		if horaire.to_s != '{}' 
+			infos["horairesok"] = true
+		end
 		if continu
 			infos["horaires"] = [ret[0],ret[1], ret[6], ret[7]]
 		else

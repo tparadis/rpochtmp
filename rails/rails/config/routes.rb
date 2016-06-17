@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
 
-  root 'welcome#index'
+    root 'welcome#index'
   #root "session#new"
 
   #scope '/api' do
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   #Routes pour le BACK-OFFICE
   scope '/bo' do
   
+  	resources :blacklists
   	resources :tokens
   	resources :users
   	resources :promotions

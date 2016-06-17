@@ -11,22 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160601122235) do
+ActiveRecord::Schema.define(version: 20160617115606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
-  create_table "categories", force: :cascade do |t|
-    t.string   "nom"
+  create_table "blacklists", force: :cascade do |t|
+    t.string   "siret"
+    t.string   "enseigne"
+    t.string   "rasoc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "nom"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "reference"
     t.text     "en"
     t.text     "esp"
     t.text     "de"
     t.text     "ko"
     t.text     "jap"
+    t.boolean  "visible",    default: true
+    t.integer  "stat",       default: 0
   end
 
   create_table "commerces", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
@@ -77,6 +87,7 @@ ActiveRecord::Schema.define(version: 20160601122235) do
     t.boolean  "soldes",                       default: false
     t.string   "website",          limit: 255
     t.string   "instagram",        limit: 255
+    t.json     "horaires",                     default: {}
   end
 
   add_index "commerces", ["user_id"], name: "index_commerces_on_user_id", using: :btree
@@ -125,14 +136,15 @@ ActiveRecord::Schema.define(version: 20160601122235) do
 
   create_table "sscategories", force: :cascade do |t|
     t.string   "nom"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "catparent"
     t.text     "en"
     t.text     "esp"
     t.text     "de"
     t.text     "ko"
     t.text     "jap"
+    t.integer  "stat",       default: 0
   end
 
   create_table "stats", force: :cascade do |t|
