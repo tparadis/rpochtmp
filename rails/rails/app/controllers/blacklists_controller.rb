@@ -30,7 +30,7 @@ class BlacklistsController < ApplicationController
     respond_to do |format|
       if @blacklist.save
         format.html { redirect_to @blacklist, notice: 'Blacklist was successfully created.' }
-        format.json { render :show, status: :created, location: @blacklist }
+        format.json {head :no_content}
       else
         format.html { render :new }
         format.json { render json: @blacklist.errors, status: :unprocessable_entity }
