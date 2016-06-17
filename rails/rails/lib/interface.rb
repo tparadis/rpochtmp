@@ -89,6 +89,10 @@ module Interface
 		minute = Time.new.min.to_i
 		ouvert = false
 
+		if tab[0] == tab[2] && tab[1] == tab[3]
+			return false
+		end
+
 		if heure > tab[0] && heure < tab[2]
 				ouvert = true
 		elsif heure == tab[0]

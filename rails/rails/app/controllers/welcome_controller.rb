@@ -74,7 +74,7 @@ class WelcomeController < ApplicationController
 		if params[:req] == "ouvert" && params.has_key?(:id) && params[:id] != ""
 		
 			@y = Interface.ouvertAuj?(params[:id])
-			render json: {:ouvert => @y}
+			render json: @y
 
 		end
 
