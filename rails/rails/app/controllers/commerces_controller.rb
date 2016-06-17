@@ -1,6 +1,7 @@
 class CommercesController < ApplicationController
   
   #before_action :own_shop, only:[:edit, :update]
+  before_action :current_user
   #before_action :require_admin, only: [:index, :show, :edit, :update, :destroy]
   before_action :require_admin_promo, only: [:index, :show, :edit, :update, :destroy]
 	skip_before_action :verify_authenticity_token
@@ -52,6 +53,7 @@ class CommercesController < ApplicationController
       if @commerce.update(commerce_params)
       	 	if @current_user.status == 'admin'
 				format.html { redirect_to commerces_path, action: :index,  notice: 'Commerce was successfully updated.' }
+				format.json {head :no_content}
 			elsif @current_user.status == 'promoted'
 				format.html { redirect_to user_path(@current_user.id), action: :index,  notice: 'Commerce was successfully updated.' }
 			else

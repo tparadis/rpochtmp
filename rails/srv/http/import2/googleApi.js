@@ -15,14 +15,12 @@ function getAllCoords(current, newCom)
 {
 	
 	var i = 0;
-	//console.log(current)
-	//console.log(newCom)
+	
 	while( i < newCom.length)
 	{
 		//Recupère l'adresse
 		var address = newCom[i].street_name;
 		var num = newCom[i].street_num;
-		//alert(num, newCom[i].line);
 		var returned;
 		currentC = newCom[i].enseigne;
 		if(address == "LES HALLES CENTRALES")

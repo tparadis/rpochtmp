@@ -29,21 +29,29 @@ function createAllNew(tabNew)
 			formObj.commerce.date_deb_act = tabNew[i].date_debut_act;
 			formObj.commerce.location_type = "ROOFTOP";
 			formObj._method = "POST";
-			$.ajax({
+			if(!dansArray(blackListNew, tabNew[i].siret))
+			{
+				
+				$.ajax({
 			
-				url:"/api/bo/commerces",
-				async:false,
-				method:"POST",
-				data:formObj,
-				dataType:"json",
-				complete:function()
-				{
-					console.log(tabNew[i].enseigne+" crée ("+tabNew[i].siret+")");
-					nbAdd++;
-				}
+					url:"/api/bo/commerces",
+					async:false,
+					method:"POST",
+					data:formObj,
+					dataType:"json",
+					complete:function()
+					{
+						console.log(tabNew[i].enseigne+" crée ("+tabNew[i].siret+")");
+						nbAdd++;
+					}
 			
 			
-			})
+				})
+			}
+			else
+			{
+				console.log("omission d'un commerce blacklisté...")	
+			}
 		i++;
 	}
 	console.log(nbAdd+" commerces ajoutés");
@@ -134,9 +142,8 @@ function modifyAll(old)
 
 
 			//console.log(formObj)
-
 			var url = "/api/bo/commerces/"+old[i].id; //adresse complete
-			
+			if(!dansArrayJSON(blacklist, old[i].siret) && !dansArray(blackListNew, old[i].siret))	
 			requests.push($.ajax({
 				url:url,
 				method:"PATCH",
@@ -182,6 +189,8 @@ function supprimerCommerces(tab)
 		{
 		url:"/api/bo/commerces/"+tab[i].id,	
 		method:"DELETE",
+		dataType:"json",
+		async:false,
 		success:function(data)
 		{
 			k++;
@@ -213,8 +222,35 @@ function supprimerCommerces(tab)
 }
 
 
+function dansArray(tab, siret)
+{
 
+	for(k = 0; k < tab.length; k++)
+	{
+		if(tab[k] == siret)
+		{
+			return true;	
+		}
+	}
 
+	return false;	
+}
+function dansArrayJSON(tab, siret)
+{
+
+	for(k = 0; k < tab.length; k++)
+	{
+		if(tab[k].siret == siret)
+		{
+			return true;	
+		}
+	}
+
+	return false;
+
+	
+	
+}
 
 
 

@@ -6,6 +6,8 @@ var champsA = ["id", "sort_street_name", "epci2014", "street_number", "route", "
 var champsHits = ["tag0","tag1","tag2","tag3","email","website", "description", "website", "fax_num"];
 var nouveauxCommerces = []; //liste des nouveaux commerces
 var toRemoveCommerces = []; //liste des commerces à supprimer
+var blacklist; //La Blacklist
+var blackListNew = []; //La liste des nouveaux commerces blacklistés
 
 
 function lancerParse(evt)
@@ -52,6 +54,24 @@ function lancerParse(evt)
 
 		});
 		var end = new Date().getTime();
+		
+		//Ici, on récupère la blacklist des commerces
+		console.log("Récupération de la BlackList")
+		$.ajax({
+			url:"/api/bo/blacklists.json",
+			dataType: "json",
+			async:false,
+			methode:"GET",
+			success:function(data, textstatus, request){
+				blacklist = data;
+			},
+			error:function(request, status, error)
+			{
+				showError("Une erreur s'est produite pendant la récuperation des informations de la BDD. <br/>Etes-vous bien connecté au Back-Office en mode administateur ?");
+				throw new Error("Erreur "+error);
+			}
+
+		});
 		$("#purcent span").text("100%");
 		console.log ("Requete executée en "+(end - start)+" ms");
 
@@ -260,7 +280,7 @@ function convertToTwoNumbersDate(d)
 function addNewValuesToCurrentObjectBDD(bdd,current)
 {
 	
-	console.log( "Il y a : "+(current.length - bdd.length) + " lignes différentes" );
+	console.log( "Il y a : "+(current.length + 1 - bdd.length) + " lignes différentes" );
 
 	var i = 0;
 	var j = 0;
@@ -318,7 +338,18 @@ function addNewValuesToCurrentObjectBDD(bdd,current)
 			}
 			if(!trouve)
 			{
-				nouveauxCommerces.push(current[i]);
+				//On teste s'il n'est pas dans la blacklist
+				var bl = false;
+				for(var b = 0; b < blacklist.length; b++)
+				{
+					if (blacklist[b].siret == current[i].siret)
+					{
+						console.log("(blacklisté)")
+						bl = true;
+					}
+				}
+				if(!bl)
+					nouveauxCommerces.push(current[i]);
 				trouve = false;
 			}
 		}
@@ -405,7 +436,11 @@ function displayTable(current)
 
 		if(hit) console.log(infos)
 
-
+		//Bouton de BlackList
+		//Si on clique dessus, on ajoute son SIRET dans un tableau temporaire
+		//et on ne l'uploadera pas par la suite
+		str += "<td  style='border:1px solid black;font-size:12px' ><input name='blist' type='button' value ='Blacklister'/></td>"
+		
 		for(k = 0; k < champs.length; k ++)
 		{
 			str += "<td style='border:1px solid black;font-size:12px'>";	
@@ -468,7 +503,6 @@ function displayTable(current)
 		//On ajoute aux nouveaux commerces la modification
 		var index = $(this).closest("tr").index();
 		nouveauxCommerces[index][$(this).attr('name')] = $(this).find("option:selected").attr("value");
-		console.log(nouveauxCommerces[index]);
 
 	});
 	$("input[type='text']").on("keyup paste change click input",function(e){
@@ -486,6 +520,12 @@ function displayTable(current)
 			$(this).val("");	
 		}
 	})
+	
+	//Actions sur la blacklist
+	$("tr input[name='blist']").on("click", function(e){
+		toBlacklist($(this).closest("tr").index());	
+	});	
+
 	for(var j = 0; j < nouveauxCommerces.length; j++)
 	{
 		nouveauxCommerces[j]["tag0"] = $("tr:eq("+j+")").find("select[name='tag0'] option:selected").attr("value");
@@ -591,7 +631,73 @@ function extractVieuxMagasins(commercesNew, nouveauxCommerces)
 	
 }
 
+//La fonction qui va blacklister les nouveaux commerces
+function toBlacklist(i)
+{
+	var nom = $("table tr:eq("+i+") td:eq(3)").text()
+	var siret = $("table tr:eq("+i+") td:eq(2)").text()
+	var rasoc = $("table tr:eq("+i+") td:eq(4)").text()
+	var c = confirm("Voulez-vous vraiment Mettre en liste noire le commerce : "+nom+" ?");
+	
+	if(c) //Si l'utilisateur a choisi oui
+	{
+		var pageFull;
+		//La sentence est prononcée	
+		$.ajax
+		({
+			url:"/api/bo/blacklists/new",		
+			async:false,
+			method:"GET",
+			dataType:"HTML",
+			success: function(data)
+			{
+				pageFull = data;
+			},
+			error: function(err)
+			{
+				console.log("Erreur lors de la récupération de la page NEW: "+err);
+				throw new Error("Impossible de relever la page NEW")
+			}
+			
+		});
 
+		//On crée un formulaire temporaire sur la page
+		var domPage = document.createElement("div");
+		domPage.innerHTML = pageFull;
+		var domForm = domPage.getElementsByTagName("form");
+		var formObj = jQuery(domForm).serializeObject();
+
+		formObj._method = "POST"
+		formObj.blacklist.enseigne = nom;
+		formObj.blacklist.siret = siret;
+		formObj.blacklist.rasoc = rasoc;
+
+		$.ajax
+		({
+			url:"/api/bo/blacklists",
+			method:"POST",
+			data:formObj,
+			async:false,
+			dataType:"json",
+			success:function()
+			{
+				alert("Commerce ajouté à la liste noire.")
+				console.info("commerce Blacklisté")	
+			},
+			error:function()
+			{
+				console.log("Erreur, impossible de l'ajouter !")	
+			}
+			
+		})
+
+		
+		blackListNew.push(siret);
+		$("table tr:eq("+i+") input[name='blist']").attr("disabled", "disabled")
+		$("table tr:eq("+i+") ").animate({"background-color":"rgb(100,100,100)"}, 400);
+
+	}
+}
 
 
 
