@@ -70,6 +70,14 @@ class WelcomeController < ApplicationController
 			render json: { :commerce => Interface.getRandomCommerce}
 		end
 		
+		#requete sur les horaires
+		if params[:req] == "ouvert" && params.has_key?(:id) && params[:id] != ""
+		
+			@y = Interface.ouvertAuj?(params[:id])
+			render json: {:ouvert => @y}
+
+		end
+
 		if params[:req] == "predef"
 
 			if params.has_key?(:nom) && params[:nom] != ""

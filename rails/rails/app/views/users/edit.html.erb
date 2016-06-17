@@ -49,6 +49,10 @@
 	  <%= f.radio_button(:soldes, "0", {checked: !@shop.soldes}) %>
 	  <%= f.label "Non" %>
 
+	  <div id="horaires">
+	  <label for="updated_horaires">Horaires</label><br/>
+	  <%= f.hidden_field :horaires, :value =>  @shop.horaires  %>
+	  </div>
 
       <%= f.submit "Confirmer", class: 'btn-block btn btn-primary' %>
 
@@ -60,6 +64,7 @@
   </div>
 </div>
 <script src="/static/js/jquery.js"></script>
+<script src="/static/js/horaires.js"></script>
 <script>
 
 $(document).ready(function(){

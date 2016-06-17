@@ -19,6 +19,90 @@ module Interface
 		sscatsRet
 
 	end
+	
+	#requetes sur les horaires
+	def Interface.ouvertAuj?(id)
+
+		#ci-dessous sont les variables qui seront retournees
+		continu = false
+		heure = Time.new.hour.to_i
+		minute = Time.new.min.to_i
+		ouvert = false
+		infos = {}
+
+
+		days = ["lundi","mardi","mercredi","jeudi","vendredi","samedi","dimanche"]
+		indice = Date.today.wday - 1
+		if indice < 0
+			indice = 6
+		end
+		jour = days[indice]
+		horaire = Commerce.find_by(id: id).horaires
+		ret = []
+		reg = Regexp.new(jour)
+
+		#on récupère les horaires qui nous intéressent
+		horaire.each do |h|
+			if h[0] =~ reg
+				ret.push(h[1].to_i)
+			end
+		end	
+
+		#on teste si le commerce est ouvert en continu
+		if ret[2] == ret[4] && ret[3] == ret[5]
+			continu = true
+		end
+
+
+		#on teste si l'heure courant est dans l'intervalle
+		#pour un intervalle continu ou non
+		if continu 				
+			ouvert = Interface.checkInterval([ret[0], ret[1], ret[6], ret[7]])
+		else
+			ouvert = (Interface.checkInterval([ret[0], ret[1], ret[2], ret[3]]) || Interface.checkInterval([ret[4], ret[5], ret[6], ret[7]]))
+		end
+
+
+
+		#Ajout des infos au tableau de retour
+		infos["jour"] = jour
+		infos["heure"] = heure
+		infos["minute"] = minute
+		infos["continu"] = continu
+		infos["ouvert"] = ouvert
+		if continu
+			infos["horaires"] = [ret[0],ret[1], ret[6], ret[7]]
+		else
+			infos["horaires"] = ret
+		end
+
+		#on retourne infos
+		infos
+
+
+	end
+
+	#vérifie que l'heure est bien dans l'intervalle passé en paramètre
+	def Interface.checkInterval(tab)
+
+		heure = Time.new.hour.to_i
+		minute = Time.new.min.to_i
+		ouvert = false
+
+		if heure > tab[0] && heure < tab[2]
+				ouvert = true
+		elsif heure == tab[0]
+			if minute >= tab[1]
+				ouvert = true
+			end
+		elsif heure == tab[2]
+			if minute < tab[3]
+				ouvert = true
+			end
+		end
+		
+		ouvert
+	end
 
 	def Interface.getTags
 		Tag.order('id')

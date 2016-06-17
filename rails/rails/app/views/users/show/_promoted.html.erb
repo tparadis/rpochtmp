@@ -1,6 +1,9 @@
 <div class="jumbotron">
     <div class="container">
         <h2> Liste des commerces vous appartenant: </h2>
+		<br/>
+		<td><%= link_to 'Mes statistiques', statistique_path(@user) %></td>
+		<br/><br/>
         <table id="shops" class="table table-bordered table-hover table-striped">
             <tr>
                 <th>SIRET</th>
@@ -16,7 +19,6 @@
                 <th>Facebook</th>
 				<th>Instagram</th>
 				<th>En solde</th>
-				<th>Actions</th>
             </tr>
             <% @shops.each do |shop| %>
                 <tr>
@@ -33,11 +35,10 @@
 					<td><%= shop.facebook %></td>
 					<td><%= shop.instagram %></td>
 					<td><%= shop.soldes ? "Oui" : "Non"  %>
-                    <td><%= link_to 'éditer', edit_user_path(shop.user_id) %></td>
                 </tr>
+				 <th><%= link_to 'Éditer', edit_commerce_path(shop.id) %></th>
             <% end %>
         </table>
-		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-		<td><%= link_to 'Mes statistiques', statistique_path(@user) %></td>
+		
     </div>
 </div>
