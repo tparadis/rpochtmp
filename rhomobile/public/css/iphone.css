@@ -104,8 +104,7 @@ h1 {
 	border: 1px solid 		#B3B3B3;
 	color: 					#333333;
 	text-shadow: 0 1px 0 	#fff;
-	background: 			#f0f0f0;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ddd));
+	background: 			white;
 }
 .ui-body-c,
 .ui-body-c input,
@@ -348,7 +347,7 @@ div.itemValue {
 
 .ui-content {
     min-height: 480px;
-    background-image: url(../images/pinstripes.png);
+    background-color:white;
 }
 
 .ui-header .ui-title {
