@@ -220,6 +220,11 @@ display:none;
 	position:relative;
 	float:left;
 }
+.animTransfert{
+	position:relative;
+	color: #008B87;
+	font-size:24px;
+}
 span#nb_magasins
 {
 	position:relative;

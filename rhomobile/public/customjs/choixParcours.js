@@ -55,8 +55,6 @@ $(document).ready(function () {
         	//Un peu étrange mais ça ajuste l'icone du milieu, te poses pas de questions
         	last.find("h3 img").css("margin-left",(newSize*1.65)+"px");
         }
-        	
-
 
         list +="<ul id='" + listeSsCat + "' class='listSsCat' " +
             "data-icon='plus' style='display:none;'>";
@@ -71,7 +69,7 @@ $(document).ready(function () {
                    // + "<img src= " + filename + "  width=\"32\" height=\"32\">"
                 try
                 {
-                	list += "<span class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "").toUpperCase()+"</span></li>";
+                	list += "<span class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "").toUpperCase()+ "<span class='animTransfert'> +</span></span></li>";
                 }
                 catch(err)
                 {
@@ -80,7 +78,6 @@ $(document).ready(function () {
             }
         }
         list += "</ul>";
-
 
         //si i est impair, on ferme la div(box) ouverte precedemment
         if (i % 2 == 1) {
@@ -91,21 +88,18 @@ $(document).ready(function () {
             box = document.createElement("div");   box.className = "collapsible-cat-container";
         }
 
-
     }//fin for
 
-    //si i on est sorti de la boucle sans fermer (et ajoutï¿½ le contenu) :
+    //si i on est sorti de la boucle sans fermer (et ajoute le contenu) :
     if (i  == nbCat) {
         $("#navmenu")
             .append(box)
             .append( list );
     }
 
-
     //Actions sur les catégories
     $(".categorie").click(function(e){
         $(".listSsCat").css("display", "none");
-
 
         var assoc_list = document.getElementById("listeSsCat"+(this.id).split("-")[1]);
         var was_active = assoc_list.classList.contains("active");
@@ -127,7 +121,9 @@ $(document).ready(function () {
     $("li").on("click",function(){
     	
     	$(this).animate({"background-color":"#008B87"}, 300).animate({"background-color":"white"}, 300);
-    	
+    
+    	$(this.getElementsByClassName("animTransfert")).stop().animate({"bottom":"700px","left":"200px", "opacity":"0"},1500).animate({"bottom":"0px","left":"0px", "opacity":"0"},50).animate({"opacity":"1"},500);
+
     });
  
 });
@@ -137,6 +133,7 @@ function call_ruby_method_via_ajax(method_name, nCommerce) {
     //$.ajax({url:'/app/DetailsCommerce/'+method_name,type : "post",data:{ magasin_id: datar.commerces[nCommerce].id }});
     $.get('/app/DetailsCommerce/' + method_name, {magasin_id: datar.commerces[nCommerce].id});
 }
+
 function addSsCat(sscat) {
 	if(sessionStorage.length < MAXMAGASINS)
 	{
@@ -147,11 +144,11 @@ function addSsCat(sscat) {
 }
 
 function actualiserMagasins() {
-	
 	//Petite animation pour dire qu'il faut cliquer sur le magasin
 	if(!firstTime)
 	{
 		$("#animationPlus").stop().animate({"bottom":"18px", "opacity":"1"},300).delay(500).animate({"bottom":"0px", "opacity":"0"},500);
+		
 	}
 	else if(firstTime)
 	{

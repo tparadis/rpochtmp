@@ -121,9 +121,11 @@ api.getAllPredef= function(typeP){ return api.send({data : {"req":"predef","form
 
 api.getAleatoire= function(tag,uuid){ return api.send({data : {"req":"aleatoire","format":"json", "tag":tag, "uuid":uuid}}) }
 
-api.getSuggestion = function(txt){ return api.send({data: {"req":"suggestion", "format":"json", "deb":txt}}) }
+api.getSuggestion = function(txt){ return api.send({data: {"req":"suggestion", "format":"json", "deb":txt}})}
 
 api.getHorraires = function(id){return api.send({data: {"req":"suggestion", "format":"json", "id":id}})}
+
+api.addNote =  function(com,idtel,idcom,note){return api.send({data: {"req":"addNote", "format":"json", "commentaire":com ,"idtel":idtel, "commerce": idcom, "note": note}})}
 
 api.genParcours = function (coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags) { 
 	return api.send({ data: {

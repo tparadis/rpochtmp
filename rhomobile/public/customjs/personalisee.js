@@ -127,7 +127,7 @@ function initialize() {
 			categories = findCatSubCat(magasin[2]);
 		}
 		
-		var urlimg = "/public/images/cat" + categories.cat + "_256.svg";
+		var urlimg = "/public/images/cat" + categories.cat + "_256_2.png";
 		var image = {
 
 			url: urlimg,
@@ -135,7 +135,7 @@ function initialize() {
 			scaledSize: new google.maps.Size(30, 30),
 			size: new google.maps.Size(30, 30),
 			origin: new google.maps.Point(0, 0),
-			anchor: new google.maps.Point(16, 16)
+			anchor: new google.maps.Point(25, 25)
 		};
 		magasins.push({ "image": image, "latitude": magasin[4], "longitude": magasin[5], "name": magasin[3], "id": magasin[2] });
 		idArray.push(magasin[2]);
