@@ -102,7 +102,7 @@ api.testNetwork = function() {
 	
 	return response.http_error == "200";
 }
-
+//signalement
 api.signaler = function(id, sel, text) { return api.send_simple({ data: {"req":"signaler","format":"json","magasin":id,"objet":sel,"message":text} }) }	
 	
 api.statMag = function(id){ return api.send({ data: { "req": "stats", "id": id, "format": "json" } })}
@@ -121,9 +121,10 @@ api.getAllPredef= function(typeP){ return api.send({data : {"req":"predef","form
 
 api.getAleatoire= function(tag,uuid){ return api.send({data : {"req":"aleatoire","format":"json", "tag":tag, "uuid":uuid}}) }
 
+//pour la loupe
 api.getSuggestion = function(txt){ return api.send({data: {"req":"suggestion", "format":"json", "deb":txt}})}
 
-api.getHorraires = function(id){return api.send({data: {"req":"suggestion", "format":"json", "id":id}})}
+api.getHorraires = function(id){return api.send({data: {"req":"ouvert", "format":"json", "id":id}})}
 
 api.addNote =  function(com,idtel,idcom,note){return api.send({data: {"req":"addNote", "format":"json", "commentaire":com ,"idtel":idtel, "commerce": idcom, "note": note}})}
 

@@ -104,14 +104,39 @@ function afficheSpecificationMagasin()
 				descr = "(Aucune description disponible)";
 				console.log("Erreur: "+err);
 			}
-			
+			var hor = "";
+			try{
+				var time = api.getHorraires(data.commerce.id);
+				if(time.horairesok){
+					if(time.ouvert){
+						if (time.continu){
+							var min1 =((time.horaires[1]==0)? " - ": time.horaires[1]+" - ");
+							var min2 =((time.horaires[3]==0)? "": time.horaires[3]+" ");
+							hor = time.horaires[0] +"H "+ min1 +time.horaires[2] +"H " + min2; 
+							console.log(hor);
+						}else {
+							var min1 =((time.horaires[1]==0)? "": time.horaires[1]+"  ");
+							var min2 =((time.horaires[3]==0)? "": time.horaires[3]+" - ");
+							var min3 =((time.horaires[5]==0)? "": time.horaires[5]+"  ");
+							var min4 =((time.horaires[7]==0)? "": time.horaires[7]);
+							hor = time.horaires[0] +"H "+min1 +" "+ time.horaires[2] +"H " +min2 + time.horaires[4] +"H "+min3 +" "+ time.horaires[6] +"H " +min4; 
+						}
+					}else{
+						hor = "Fermé Aujourd'hui"
+					}
+				}else{
+					hor ="Horaires non renseignes"
+				}
+			}catch(err){
+				console.log("Erreur: "+err);
+			}
 			$("#sscat").append("<img src='/public/images/"+icon+"' />");
 			
 			$("#midSpec").append("<div class='titre' >"+convertirEnLisible(data.commerce.enseigne)+"</div>");
 			$("#midSpec").append("<div class='addresse' >"+(data.commerce.street_number+" "+data.commerce.route).toUpperCase()+"</div>");
 			$("#midSpec").append("<div class='bordureBot'></div>");
 			$("#midSpec").append("<div class='description'>"+descr+"</div>");
-			$("#botSpec").append("<div class='horaires' style='text-shadow:none;'>DU LUNDI AU VENDREDI<br/>8.30 - 15.30</div>");
+			$("#botSpec").append("<div class='horaires' style='text-shadow:none;'>"+hor+"</div>");
 			$("#botSpec").append("<div class='bordureBot'></div>");
 			$("#botSpec").append("<div class='telephone'><img src='/public/images/svg/phone.svg' /> <span><a style='color:white;text-shadow:none;' title='Call' href='tel:"+data.commerce.phone_num+"'>"+data.commerce.phone_num+"</a></span></div>");
 			$("#botSpec").append("<div class='bordureBot'></div>");
