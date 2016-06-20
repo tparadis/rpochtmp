@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  note: 1
+  commerce: 
+  commentaire: MyString
+  idtel: MyString
+
+two:
+  note: 1
+  commerce: 
+  commentaire: MyString
+  idtel: MyString

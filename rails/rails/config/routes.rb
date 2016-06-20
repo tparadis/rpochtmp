@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
-
-
-    root 'welcome#index'
-  #root "session#new"
+  root 'welcome#index'
 
   #scope '/api' do
   #	get '/', to: "welcome#index"
@@ -12,7 +9,7 @@ Rails.application.routes.draw do
 
   #Routes pour le BACK-OFFICE
   scope '/bo' do
-  
+  	resources :notes
   	resources :blacklists
   	resources :tokens
   	resources :users

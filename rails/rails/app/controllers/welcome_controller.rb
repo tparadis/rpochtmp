@@ -197,6 +197,12 @@ class WelcomeController < ApplicationController
 			@y = Interface.incrStatCat(params[:idcat])
 			render json: {:status => "ok"}
 		end
+
+		#Requete pour les appréciations
+		if params[:req] == "addNote" && params.has_key?(:commentaire) && params.has_key?(:idtel) && params[:idtel] != "" && params.has_key?(:commerce) && params.has_key?(:note) 
+			@y = Interface.addNote(params[:note], params[:commerce], params[:commentaire], params[:idtel])
+			render json: @y
+		end
 	else
 
 		@y = Algo.getPath(0)

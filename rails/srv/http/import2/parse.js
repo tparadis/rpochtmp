@@ -644,7 +644,7 @@ function extractVieuxMagasins(commercesNew, nouveauxCommerces)
 //La fonction qui va blacklister les nouveaux commerces
 function toBlacklist(i)
 {
-	var nom = $("table tr:eq("+i+") td:eq(3)").text()
+	var nom = $("table tr:eq("+i+") td:eq(3)").find("input").val()
 	var siret = $("table tr:eq("+i+") td:eq(2)").text()
 	var rasoc = $("table tr:eq("+i+") td:eq(4)").text()
 	var c = confirm("Voulez-vous vraiment Mettre en liste noire le commerce : "+nom+" ?");

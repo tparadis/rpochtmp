@@ -2,6 +2,61 @@ module Interface
 
 	require "algo.rb"
  
+	#Requete pour ajouter des notes, commentaires
+	def Interface.addNote(note, commerce, commentaire, idtel)
+	
+		#variabes de retour
+		status = false
+		error = "Aucune erreur"
+		ret = {}
+
+
+		#on s'assure qu'il n'a jamais commenté ce magasin
+		prev = Note.select("idtel, commerce").where("idtel = ? AND commerce = ?", idtel, commerce).first
+		begin
+			exist = Commerce.where("id = ?", commerce).first
+			if prev.nil? && !exist.nil?
+
+				if !(note.to_i > 5) && !(note.to_i < 0) 
+					#On prépare la sauvegarde
+					@note = Note.new
+					@note.idtel = idtel
+					@note.commentaire = commentaire
+					@note.commerce = commerce
+					@note.note = note
+
+					if @note.save
+						status = true	
+					else
+						error = "Impossible de sauvegarder la note"
+					end
+
+
+				else
+					error = "Erreur, la note n'est pas comprise entre 0 et 5"
+				end
+
+
+			else
+				status = false
+				error = "Erreur, l'utilisateur a deja commenté"
+			end
+
+		rescue
+			
+			error = "Erreur, l'UUID passé n'est pas valide"
+		
+		end
+
+		#On retourne le résultat
+		ret["status"] = status
+		ret["error"] = error
+		ret
+
+	end
+
+
+
 	#Fonctions sur la récupération des categories
 	def Interface.getCategories
 		Categorie.where(:visible => true).order('nom')
