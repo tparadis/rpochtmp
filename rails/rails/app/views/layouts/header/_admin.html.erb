@@ -1,6 +1,8 @@
-<li><%= button_to "Blacklist", blacklists_path,
+<li><%= button_to "MàJ", "/import",
 	method: :get, class: 'btn btn-info' %></li>
-<li><%= button_to "Tokens", tokens_path,
+<li><%= button_to "Appréciations", notes_path,
+	method: :get, class: 'btn btn-info' %></li>
+<li><%= button_to "Blacklist", blacklists_path,
 	method: :get, class: 'btn btn-info' %></li>
 <li><%= button_to "Parcours", parcours_predefinis_path,
 	method: :get, class: 'btn btn-info' %></li>
@@ -14,9 +16,7 @@
 	method: :get, class: 'btn btn-info' %></li>
 <li><%= button_to "Statistiques", statmap_path,
 	method: :get, class: 'btn btn-info' %></li>
-<li><%= button_to "Requête", promotions_path,
-    method: :get, class: 'btn btn-info' %></li>
-<li><%= button_to current_user.username, current_user,
+<li><%= button_to "Commerces", current_user,
     method: :get, class: 'btn btn-primary' %></li>
 <li><%= button_to "Deconnexion", logout_path,
     method: 'delete', class: 'btn btn-primary'%></li>

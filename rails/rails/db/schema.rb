@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617115606) do
+ActiveRecord::Schema.define(version: 20160620072145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,15 @@ ActiveRecord::Schema.define(version: 20160617115606) do
   end
 
   add_index "commerces", ["user_id"], name: "index_commerces_on_user_id", using: :btree
+
+  create_table "notes", force: :cascade do |t|
+    t.integer  "note"
+    t.string     "commerce"
+    t.text   "commentaire"
+    t.string   "idtel"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "parcours_predefinis", force: :cascade do |t|
     t.string   "name"
