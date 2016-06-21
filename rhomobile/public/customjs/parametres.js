@@ -1,7 +1,8 @@
 $(document).ready(function() {
 
 	//On descend un peu la fenetre
-	$("div[data-role='page']").css("margin-top", "30px")
+	$("div[data-role='page']").css("margin-top", "30px");
+	$("div[data-role='page']").css("overflow", "hidden");
 	
 	
 	var currentDist = localStorage.getItem("distMax");

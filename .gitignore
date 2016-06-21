@@ -11,7 +11,7 @@ bin/
 public/api/generated/
 rhomobile/rhosimulator/*
 .cbc
-rhomobile/public/save.txt
-rhomobile/public/firsttime.txt
+rhomobile/app/save.txt
+rhomobile/app/firsttime.txt
 */build.yml
 */rhoapi-modules.js
