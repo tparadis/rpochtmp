@@ -69,7 +69,19 @@ class WelcomeController < ApplicationController
 		if params[:req] == "rand"
 			render json: { :commerce => Interface.getRandomCommerce}
 		end
-		
+		#Obtenir les textes des tutoriaux
+		if params[:req] == "tutos" && params.has_key?(:page)
+
+			@y = Tuto.where("page = ?", params[:page]).first
+			render json: @y
+
+		elsif params[:req] == "tutos"
+			@y = Tuto.all
+			render json: @y
+		end
+
+
+
 		#requete sur les horaires
 		if params[:req] == "ouvert" && params.has_key?(:id) && params[:id] != ""
 		

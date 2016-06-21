@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   #Routes pour le BACK-OFFICE
   scope '/bo' do
+	resources :tutos
   	resources :notes
   	resources :blacklists
   	resources :tokens
