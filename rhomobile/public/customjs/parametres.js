@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+	//On descend un peu la fenetre
+	$("div[data-role='page']").css("margin-top", "30px")
+	
+	
 	var currentDist = localStorage.getItem("distMax");
 	if (currentDist != null) {
 		document.getElementById("slider").value = currentDist;
