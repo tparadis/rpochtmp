@@ -5,7 +5,17 @@ $(document).ready(function(){
 	if(localStorage.getItem("distMax") == null)
 	{
 		//Pas besoin de fermer le fichier
-		var filename = Rho.RhoFile.join(Rho.Application.appBundleFolder, 'save.txt') // build the path
+		if(!Rho.RhoFile.exists(Rho.RhoFile.join(Rho.Application.userFolder, 'save.txt')))
+		{
+			var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.userFolder, 'save.txt'), Rho.RhoFile.OPEN_FOR_READ_WRITE);
+			fichier.write("distMax:6")
+		}
+		if(!Rho.RhoFile.exists(Rho.RhoFile.join(Rho.Application.userFolder, 'firsttime.txt')))
+		{
+			var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.userFolder, 'firsttime.txt'), Rho.RhoFile.OPEN_FOR_READ_WRITE);
+			fichier.write("[1,1,1,1]")
+		}
+		var filename = Rho.RhoFile.join(Rho.Application.userFolder, 'save.txt') // build the path
 		var contents = Rho.RhoFile.read(filename) // read the file into a variable
 		
 		var distMax = contents.split(":");
