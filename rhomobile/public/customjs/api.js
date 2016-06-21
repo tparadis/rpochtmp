@@ -126,6 +126,10 @@ api.getSuggestion = function(txt){ return api.send({data: {"req":"suggestion", "
 
 api.getHorraires = function(id){return api.send({data: {"req":"ouvert", "format":"json", "id":id}})}
 
+api.nouveau = function(){return api.send({data: {"req":"new", "format":"json"}})}
+
+api.userExists = function(id){return api.send({data: {"req":"userExists", "format":"json", "id":id}})}
+
 api.addNote =  function(com,idtel,idcom,note){return api.send({data: {"req":"addNote", "format":"json", "commentaire":com ,"idtel":idtel, "commerce": idcom, "note": note}})}
 
 api.genParcours = function (coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags) { 
