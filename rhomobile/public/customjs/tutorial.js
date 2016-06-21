@@ -18,7 +18,7 @@ $(document).ready(function(){
 	
 	
 	//On recupere le tableau des etats d'avancement du tutoriel
-	var filename = Rho.RhoFile.join(Rho.Application.publicFolder, 'firsttime.txt');
+	var filename = Rho.RhoFile.join(Rho.Application.appBundleFolder, 'firsttime.txt');
 	tutoState = JSON.parse(Rho.RhoFile.read(filename));
 	
 	var pageName = location.pathname.split('/').slice(-1)[0]
@@ -136,7 +136,7 @@ function showTutorialPredef()
 function writeCurrentState(state)
 {
 	//On sauvegarde l'état du tutoriel
-	var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.publicFolder, "firsttime.txt"), Rho.RhoFile.OPEN_FOR_READ_WRITE);
+	var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.appBundleFolder, "firsttime.txt"), Rho.RhoFile.OPEN_FOR_READ_WRITE);
 	
 	//Penser a decommenter en dessous pour que les modifs de tutos soient prises en compte
 	fichier.write(JSON.stringify(tutoState));

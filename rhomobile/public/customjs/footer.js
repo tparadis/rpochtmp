@@ -261,7 +261,7 @@ function afficheTout()
 
 function getCurrentState(page)
 {
-	var filename = Rho.RhoFile.join(Rho.Application.publicFolder, 'firsttime.txt'); // build the path
+	var filename = Rho.RhoFile.join(Rho.Application.appBundleFolder, 'firsttime.txt'); // build the path
 	var contents = JSON.parse(Rho.RhoFile.read(filename)); // read the file into a variable
 	switch(page)
 	{

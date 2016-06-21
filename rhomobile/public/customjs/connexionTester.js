@@ -1,3 +1,4 @@
+/* 
 $(document).ready(function(e){
 
 
@@ -97,6 +98,6 @@ function detectNetwork(){
 	}
 }
 
-
+*/
 
 

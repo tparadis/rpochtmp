@@ -4,8 +4,8 @@ $(document).ready(function() {
 	if (currentDist != null) {
 		document.getElementById("slider").value = currentDist;
 	} else {
-		var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.publicFolder, "save.txt"), Rho.RhoFile.OPEN_FOR_READ_WRITE);
-		var filename = Rho.RhoFile.join(Rho.Application.publicFolder, 'save.txt'); // build the path
+		var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.appBundleFolder, "save.txt"), Rho.RhoFile.OPEN_FOR_READ_WRITE);
+		var filename = Rho.RhoFile.join(Rho.Application.appBundleFolder, 'save.txt'); // build the path
 		var contents = Rho.RhoFile.read(filename); // read the file into a variable
 
 		var debut = contents.split('\n');
@@ -80,8 +80,8 @@ function showValue(newValue) {
 }
 
 function sauvegardeEnFichier(newValue) {
-	var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.publicFolder, "save.txt"), Rho.RhoFile.OPEN_FOR_WRITE);
-	var filename = Rho.RhoFile.join(Rho.Application.publicFolder, 'save.txt'); // build the path
+	var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.appBundleFolder, "save.txt"), Rho.RhoFile.OPEN_FOR_WRITE);
+	var filename = Rho.RhoFile.join(Rho.Application.appBundleFolder, 'save.txt'); // build the path
 	var contents = Rho.RhoFile.read(filename); // read the file into a variable
 	if(newValue == 0)
 		newValue = 1;
@@ -100,7 +100,7 @@ function reinitTutorial()
 {
 	try
 	{
-		var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.publicFolder, "firsttime.txt"), Rho.RhoFile.OPEN_FOR_WRITE);
+		var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.appBundleFolder, "firsttime.txt"), Rho.RhoFile.OPEN_FOR_WRITE);
 		fichier.write("[1,1,1,1]");
 		fichier.close();
 		return "ok";
