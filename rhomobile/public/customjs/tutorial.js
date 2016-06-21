@@ -139,7 +139,7 @@ function writeCurrentState(state)
 	var fichier = new Rho.RhoFile(Rho.RhoFile.join(Rho.Application.userFolder, "firsttime.txt"), Rho.RhoFile.OPEN_FOR_READ_WRITE);
 	
 	//Penser a decommenter en dessous pour que les modifs de tutos soient prises en compte
-	fichier.write(JSON.stringify(tutoState));
+	fichier.write(JSON.stringify(state).replace(/\"/g, ''));
 	
 	fichier.close();
 }
