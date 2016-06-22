@@ -80,7 +80,30 @@ class WelcomeController < ApplicationController
 			render json: @y
 		end
 
+		#Recuperer un uuid d'identifiant
+		if params[:req] == "new"
 
+
+			@y = Phoneid.new
+			@y.info = "utilisateur réel"
+			if !@y.save
+				
+				render json: {:code => "error"}
+
+			end
+			
+			render json: @y
+
+
+
+		end
+
+		if params[:req] == "userExists" && params.has_key?(:id)
+
+			@y = Phoneid.find_by(id: params[:id])
+			render json: !@y.blank?
+		
+		end
 
 		#requete sur les horaires
 		if params[:req] == "ouvert" && params.has_key?(:id) && params[:id] != ""

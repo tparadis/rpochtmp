@@ -26,6 +26,7 @@ function createAllNew(tabNew)
 					formObj.commerce[key] = tabNew[i][key];	
 			}
 			formObj.commerce.line = tabNew[i].num_line;
+			formObj.commerce.enseigne = tabNew[i].enseigne.toUpperCase();
 			formObj.commerce.date_deb_act = tabNew[i].date_debut_act;
 			formObj.commerce.location_type = "ROOFTOP";
 			formObj._method = "POST";

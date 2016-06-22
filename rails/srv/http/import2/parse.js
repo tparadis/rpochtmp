@@ -54,7 +54,16 @@ function lancerParse(evt)
 
 		});
 		var end = new Date().getTime();
+	
+		//On prépare le serveur pour l'ajout de nouvelles images
+		$.ajax({
 		
+			url:"/uploadImages/init.php"
+			
+		})
+
+
+
 		//Ici, on récupère la blacklist des commerces
 		console.log("Récupération de la BlackList")
 		$.ajax({
@@ -110,6 +119,13 @@ function lancerParse(evt)
 				console.log("----- Suppression des magasins inexistants dans les Parcours Predefinis -----")
 				supprimerDansPredef(toRemoveCommerces, nouveauxCommerces);
 
+				//On demande au serveur d'ajouter les images (on contourne la gem carrierwave)
+
+				$.ajax({
+					
+					url:"/uploadImages/update.php"
+					
+				})
 
 
 
@@ -185,12 +201,13 @@ function commercesFichierCourrant(workbook)
 				var zone_ape       = typeof feuille["H"+i] == "undefined" ? "" : feuille["H"+i].v;
 				var label_zone_ape = typeof feuille["I"+i] == "undefined" ? "" : feuille["I"+i].v;
 				var street_num     = typeof feuille["J"+i] == "undefined" ? "" : feuille["J"+i].v;
-				var street_name    = typeof feuille["K"+i] == "undefined" ? "" : feuille["K"+i].v;
-				var city_code           = typeof feuille["L"+i] == "undefined" ? "" : feuille["L"+i].v;
-				var city_label     = typeof feuille["M"+i] == "undefined" ? "" : feuille["M"+i].v;
-				var phone_num      = typeof feuille["N"+i] == "undefined" ? "" : feuille["N"+i].v;
-				var email          = typeof feuille["O"+i] == "undefined" ? "" : feuille["O"+i].v; 
-				var activite       = typeof feuille["P"+i] == "undefined" ? "" : feuille["P"+i].v;
+				var type_voie      = typeof feuille["K"+i] == "undefined" ? "" : feuille["K"+i].v;
+				var street_name    = typeof feuille["L"+i] == "undefined" ? "" : feuille["L"+i].v;
+				var city_code      = typeof feuille["M"+i] == "undefined" ? "" : feuille["M"+i].v;
+				var city_label     = typeof feuille["N"+i] == "undefined" ? "" : feuille["N"+i].v;
+				var phone_num      = typeof feuille["O"+i] == "undefined" ? "" : feuille["O"+i].v;
+				var email          = typeof feuille["P"+i] == "undefined" ? "" : feuille["P"+i].v; 
+				var activite       = typeof feuille["Q"+i] == "undefined" ? "" : feuille["Q"+i].v;
 
 
 				//On complete notre tableau associative pour le commerce
@@ -206,7 +223,7 @@ function commercesFichierCourrant(workbook)
 				commerceCourrant["zone_ape"] = zone_ape;
 				commerceCourrant["label_zone_ape"] = label_zone_ape;
 				commerceCourrant["street_num"] = street_num;
-				commerceCourrant["street_name"] = street_name;
+				commerceCourrant["street_name"] = type_voie +" "+street_name;
 				commerceCourrant["city_code"] = city_code;
 				commerceCourrant["city_label"] = city_label;
 				commerceCourrant["phone_num"] = phone_num;
@@ -454,7 +471,7 @@ function displayTable(current)
 			else
 			{
 				str += "<td style='border:1px solid black;font-size:12px' > ";	
-				str += "<input type='text' id='"+i+"' name='enseigne' value='"+(hit ? infos.enseigne : current[i].enseigne)+"' />";
+				str += "<input type='text' id='"+i+"' name='enseigne' value='"+(hit ? infos.enseigne.toUpperCase() : current[i].enseigne.toUpperCase())+"' />";
 				str += "</td>";
 			}
 		}
@@ -493,6 +510,16 @@ function displayTable(current)
 				if(c == null || c == "null") c = ""
 				str += champsA[k]+":<br/> <input type='text' id='"+i+"' name='"+champsA[k]+"' value='"+(hit ? infos[champsA[k]] : '')+"' /> "		
 			}
+			else if(champsA[k] == "image")
+			{
+				str += "image: <br/>";
+				str += "<form methor='POST' action='#' enctype='multiplart/form-data' id='image'>";
+				str += "<input type='hidden' name='titre' />";
+				str += "<input type='hidden' name='num_line' />";
+				str += "<input type='file' name='image' id='"+i+"' /><input type='submit' value='ok' />";
+				str += "</form>";
+
+			}
 			else
 			{
 				str += champsA[k]+":<br/>"+current[i][champsA[k]];		
@@ -508,6 +535,67 @@ function displayTable(current)
 	str += "</tbody></table>";
 	$("#proposeImport").hide();
 	$("body").append(str);
+	
+	//Actions sur les images
+	//Il n'y a pas trop de sécurité coté JS, tout est coté Serveur
+	
+	$("form[id='image'").on("submit",function(e){
+		var index = $(this).closest("tr").index();
+		var num_line = $("tr:eq("+index+") td:eq(1)").text();// En cas d'ajout de TD, merci de le faire après !
+		var titre = $("tr:eq("+index+") td:eq(3)").find("input").val();// En cas d'ajout de TD, merci de le faire après !	
+		e.preventDefault();
+			
+		if(titre == "")
+		{
+			alert("Veuillez renseigner un nom d'enseigne avant d'envoyer l'image !")	
+		}
+		else if($(this).find("input[name='image']").val() == "")
+		{	
+			alert("Il faut choisir une image en cliquant sur le bouton 'parcourir'");	
+		}
+		else
+		{
+
+			//On rempli les champs hidden du formulaire
+			$(this).find("input[name='titre']").val(titre);
+			$(this).find("input[name='num_line']").val(num_line);
+
+
+			var formData = new FormData($(this)[0]);
+
+			//On procède à l'envoi
+			$.ajax({
+				url:'/uploadImages/send.php',
+				type:'POST',
+				data:formData,
+				async:false,
+				success:function(data)
+				{
+					console.log("Le serveur a retourné: "+data)
+					if(data == "pasok")
+					{
+						alert("une erreure interne est survenue...")	
+					}
+					else
+					{
+						nouveauxCommerces[index]["image"] = data;	
+						console.log(nouveauxCommerces[index]);
+					}
+				},
+				cache:false,
+				contentType:false,
+				processData:false
+			
+			})
+			
+		}
+
+		return false;
+			
+	})
+
+
+
 	$("select").on('change', function()
 	{
 		commercesNew[current[$(this).attr('id')].num_line][$(this).attr('name')] = $(this).find("option:selected").attr("value");	
@@ -626,12 +714,8 @@ function extractVieuxMagasins(commercesNew, nouveauxCommerces)
 				
 			}
 		
-
-
 			j++
 		}
-		
-		
 		
 		i++;
 	}
