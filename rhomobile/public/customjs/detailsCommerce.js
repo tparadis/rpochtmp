@@ -139,7 +139,60 @@ function afficheSpecificationMagasin()
 			$("#botSpec").append("<div class='horaires' style='text-shadow:none;'>"+hor+"</div>");
 			$("#botSpec").append("<div class='bordureBot'></div>");
 			$("#botSpec").append("<div class='telephone'><img src='/public/images/svg/phone.svg' /> <span><a style='color:white;text-shadow:none;' title='Call' href='tel:"+data.commerce.phone_num+"'>"+data.commerce.phone_num+"</a></span></div>");
+			$("#botSpec").append("<div id ='com' class='commentaires'> laissez un commentaire </div>");			
 			$("#botSpec").append("<div class='bordureBot'></div>");
+		
+			var comment = false;	
+			
+			$("#com").on("click", function () {
+				if(!comment){
+					comment = true;
+				$("#pageSpec").append("<div id='commentWindow' style='top:70px; z-index:10000000000;'><div class=''>"
+				+"<span class='star-rating'>"
+				+" <input type='radio' name='rating' value='1'><i></i>"
+				+" <input type='radio' name='rating' value='2'><i></i>"
+				+" <input type='radio' name='rating' value='3'><i></i>"
+				+"<input type='radio' name='rating' value='4'><i></i>"
+				+"<input type='radio' name='rating' value='5'><i></i>"
+				+"</span>"
+				+"<strong id='note' class='choice'></strong></div></div>");
+					
+				$("#commentWindow").append("<textarea id='com-body' name='com-body' placeholder='Commentaires' class='form-control' rows='5'></textarea>");
+
+				$(':radio').change(
+				  function(){
+				    $('.choice').text( this.value);
+				  } 
+				);
+				
+				$("#commentWindow").append("<button id='cancel' class='btn btn-default cancel' >Annuler</button>");
+				$("#commentWindow").append("<button id='send'class='btn btn-primary' >Envoyer</button>");
+			
+				$("#send").on("click", function(){
+					console.log("click");
+					var com = "" +document.getElementById("com-body").value.toString();
+					console.log(com);
+					var idtel = getPhoneid();
+					var idshop = data.commerce.id;
+					var note = document.getElementById("note").innerHTML;
+					api.addNote(com,idtel,idshop,note);
+					console.log("envoi");
+					$("#commentWindow").hide();
+					}
+				);
+				
+				$("#cancel").on("click", function(){
+					$("#commentWindow").hide();
+					}
+				);
+				
+					$("#commentWindow").css("height","auto");
+				}
+				else{
+					$("#commentWindow").show();
+				}
+			  });
+
 			
 			if(data.commerce.website != null){
 				if(data.commerce.website != "")

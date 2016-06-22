@@ -130,7 +130,7 @@ api.nouveau = function(){return api.send({data: {"req":"new", "format":"json"}})
 
 api.userExists = function(id){return api.send({data: {"req":"userExists", "format":"json", "id":id}})}
 
-api.addNote =  function(com,idtel,idcom,note){return api.send({data: {"req":"addNote", "format":"json", "commentaire":com ,"idtel":idtel, "commerce": idcom, "note": note}})}
+api.addNote =  function(com,idtel,idshop,note){return api.send({data: {"req":"addNote", "format":"json", "commentaire":com ,"idtel":idtel, "commerce": idshop, "note": note}})}
 
 api.getAllTutos = function(){return api.send({data: {"req":"tutos", "format":"json"}})}
 
