@@ -66,13 +66,13 @@ SELECT pg_catalog.setval('blacklists_id_seq', 62, true);
 COPY categories (id, nom, created_at, updated_at, reference, en, esp, de, ko, jap, visible, stat) FROM stdin;
 15	cache	2016-06-09 09:51:18.037083	2016-06-13 11:30:59.990632	cache	cache	cache	cache	\N	\N	f	0
 13	Autres	2016-01-23 17:20:22.893217	2016-06-22 12:49:05.606316	magasins inclassables	Others	Otros	Sonstiges	\N	\N	t	15
-8	Bar Café Restaurant	2016-01-20 18:58:04.623855	2016-06-22 12:43:04.016069	bar/cafes/restaurants	Bar Coffee Restaurant	Bar Café Restaurante	Bar Cafe Restaurant	\N	\N	t	110
-5	Hygiène	2016-01-20 18:36:24.993917	2016-06-20 07:43:32.471847	vendeurSpecialise	Healthcare	Higiene	Hygiene	\N	\N	t	1
-7	Service	2016-01-20 18:36:44.281684	2016-06-20 07:43:34.070414	services	Services	Servicios	Abteilung	\N	\N	t	16
+8	Bar Café Restaurant	2016-01-20 18:58:04.623855	2016-06-22 12:53:13.301278	bar/cafes/restaurants	Bar Coffee Restaurant	Bar Café Restaurante	Bar Cafe Restaurant	\N	\N	t	111
+5	Hygiène	2016-01-20 18:36:24.993917	2016-06-22 12:53:27.289572	vendeurSpecialise	Healthcare	Higiene	Hygiene	\N	\N	t	2
+3	Équipement maison	2016-01-20 18:35:56.257433	2016-06-22 12:53:49.299572	mobilier	Housing	Mobiliario	Hauses Ausstattung	\N	\N	t	8
+7	Service	2016-01-20 18:36:44.281684	2016-06-22 12:53:49.689561	services	Services	Servicios	Abteilung	\N	\N	t	17
+4	Équipement personne	2016-01-20 18:36:11.876029	2016-06-22 12:54:13.558394	vetements Et Accesoires	Accessories	Ropa y accesorios	Ausrüstung Person	\N	\N	t	87
 1	Alimentaire	2016-01-20 18:35:29.1725	2016-06-22 12:43:44.188945	nourriture	Groceries	Alimentación	Lebensmittel	\N	\N	t	523
-4	Équipement personne	2016-01-20 18:36:11.876029	2016-06-22 12:48:50.989893	vetements Et Accesoires	Accessories	Ropa y accesorios	Ausrüstung Person	\N	\N	t	86
 6	Culture	2016-01-20 18:36:35.287555	2016-06-22 12:48:52.56992	culturel	Culture	Cultura	Kultur	\N	\N	t	7
-3	Équipement maison	2016-01-20 18:35:56.257433	2016-06-22 12:48:53.612292	mobilier	Housing	Mobiliario	Hauses Ausstattung	\N	\N	t	6
 \.
 
 
@@ -1666,7 +1666,6 @@ COPY sscategories (id, nom, created_at, updated_at, catparent, en, esp, de, ko, 
 3	Cinéma	2016-01-21 18:58:18.024158	2016-02-01 20:22:12.359431	6	Cinema	Cine	Kino	\N	\N	0
 54	Ethnique	2016-01-22 19:15:07.864414	2016-02-01 11:45:58.393453	8	Ethnic food	Cocina étnica	Ethno-food	\N	\N	0
 37	Photographie	2016-01-21 19:47:01.502495	2016-01-24 14:43:36.06944	7	Photography	Fotografía	Fotografie	\N	\N	0
-44	Médecin	2016-01-21 19:49:53.655682	2016-02-01 20:28:27.809186	5	Physician	Médico	Ärztin	\N	\N	0
 45	Vétérinaire	2016-01-21 19:50:02.657404	2016-02-01 20:30:52.978605	5	Veterinary physician	Veterinaria	Tierarzt:	\N	\N	0
 35	Postaux	2016-01-21 19:46:35.295852	2016-02-01 11:44:13.771606	7	Post office	Correos	Postfiliale	\N	\N	0
 73	Halal	2016-01-23 15:43:58.859216	2016-01-24 14:40:00.852024	1	Halal	Halal	Halal	\N	\N	0
@@ -1699,9 +1698,9 @@ COPY sscategories (id, nom, created_at, updated_at, catparent, en, esp, de, ko, 
 57	Maroquinerie	2016-01-23 14:47:15.028283	2016-06-22 12:43:44.474486	4	Leather Goods	Marroquinería	"lederwaren"	\N	\N	1
 24	Vêtement	2016-01-21 19:43:52.087807	2016-06-22 12:48:50.730234	4	Clothing	Ropa	Kleidung	\N	\N	8
 13	Boulangerie	2016-01-21 19:37:59.331381	2016-06-22 07:22:40.185882	1	Bakery	Panadería	Backwaren	\N	\N	117
+47	Glacier	2016-01-21 19:51:03.259802	2016-06-22 12:53:13.057368	8	Ice cream shop	Heladería	Eiscreme	\N	\N	4
 50	Opérateur mobile	2016-01-21 19:52:06.951006	2016-06-15 12:21:40.225024	7	Mobile operator	Operador móvil	Mobilfunkbetreiber	\N	\N	13
 48	Internationnal	2016-01-21 19:51:15.54819	2016-06-17 11:58:22.113535	8	Internationnal	Internacional	Internationnal	\N	\N	2
-21	Chaussures	2016-01-21 19:43:14.929924	2016-06-16 12:46:44.130117	4	Shoes	Calzado	Die schuhe	\N	\N	75
 75	Charcuterie	2016-01-23 15:48:10.285359	2016-06-22 07:18:25.529889	1	Cold meats	Embutidos	Aufschnitt	\N	\N	34
 78	Bio	2016-01-23 15:55:23.880014	2016-06-22 12:49:04.880715	13	Bio	Productos orgánicos	Über			10
 81	Collection	2016-01-23 15:58:38.069784	2016-06-22 12:48:51.250529	6	Collection	Coleccionables	Sammlung [ slug ]	\N	\N	1
@@ -1713,25 +1712,26 @@ COPY sscategories (id, nom, created_at, updated_at, catparent, en, esp, de, ko, 
 8	Kebab	2016-01-21 19:08:50.018809	2016-06-17 09:30:19.51207	8	Kebab	Kebab	Şiş kebap	\N	\N	1
 6	Crêperie	2016-01-21 19:08:01.362594	2016-06-22 10:39:47.386811	8	Creperie	Crepería	Crêperie	\N	\N	69
 94	Cigarette électronique	2016-01-26 11:20:25.075006	2016-06-20 07:43:32.033585	5	Electronic cigarette	Cigarrillo electrónico	Elektrische zigarette	\N	\N	1
-36	Blanchisserie	2016-01-21 19:46:48.981221	2016-06-20 07:43:32.807177	7	Self-service laundry	Lavandería	Waschsalon	\N	\N	1
+21	Chaussures	2016-01-21 19:43:14.929924	2016-06-22 12:54:13.299777	4	Shoes	Calzado	Die schuhe	\N	\N	76
 52	Garagiste	2016-01-21 19:52:50.264201	2016-06-20 07:43:33.672023	7	Garage	Garaje	Garage	\N	\N	1
 49	Bar/Café	2016-01-21 19:51:32.713339	2016-06-20 14:44:41.298967	8	Bar / Cafe	Bar / Café	Bar cafe	\N	\N	29
-47	Glacier	2016-01-21 19:51:03.259802	2016-06-22 10:39:47.839007	8	Ice cream shop	Heladería	Eiscreme	\N	\N	2
+44	Médecin	2016-01-21 19:49:53.655682	2016-06-22 12:53:26.99184	5	Physician	Médico	Ärztin	\N	\N	1
 61	Sandwich	2016-01-23 14:50:09.312938	2016-06-22 12:43:03.775739	8	Sandwich	Sándwich	Sandwich	\N	\N	2
 33	Monument	2016-01-21 19:45:58.740501	2016-06-22 12:43:43.38739	6	Monument	Monumento	Denkmal	\N	\N	1
 16	Confiserie	2016-01-21 19:38:57.365826	2016-06-22 12:43:43.938217	1	Confectionery	Confitería	"confiserie"	\N	\N	35
 68	Informatique	2016-01-23 15:08:52.129757	2016-06-22 12:49:05.390344	13	IT	Informática	Italienisch	\N	\N	2
 63	Musique	2016-01-23 14:52:37.727126	2016-06-22 12:48:51.790702	6	Music	Música	Musik	\N	\N	1
 65	Sport	2016-01-23 15:05:56.172007	2016-06-22 12:48:52.309876	6	Sport	Deporte	Sport	\N	\N	1
-19	Électroménager	2016-01-21 19:42:13.394027	2016-06-22 12:48:52.810626	3	Home appliance	Electrodomésticos	Haushaltsgerät	\N	\N	2
+36	Blanchisserie	2016-01-21 19:46:48.981221	2016-06-22 12:53:49.489256	7	Self-service laundry	Lavandería	Waschsalon	\N	\N	2
+19	Électroménager	2016-01-21 19:42:13.394027	2016-06-22 12:53:49.097391	3	Home appliance	Electrodomésticos	Haushaltsgerät	\N	\N	3
 89	Occasion	2016-01-25 20:05:28.708505	2016-06-09 12:38:34.481992	7	Second Hand	Segunda mano	Gebraucht	\N	\N	0
 91	Végétarien	2016-01-26 08:42:57.023768	2016-02-01 20:30:27.322845	8	Vegetarianism	Vegetariano	Vegetarismus	\N	\N	0
 2	Coiffeur	2016-01-21 18:50:57.242613	2016-02-01 11:38:19.666468	7	Hairdresser	Peluquería	Friseur	\N	\N	0
-101	Cordonnerie	2016-01-26 18:25:20.352495	2016-02-01 11:39:33.103999	3	Shoemaker	Zapatería	Schuster	\N	\N	0
 41	Opticien	2016-01-21 19:49:06.316148	2016-02-01 11:46:21.022635	4	Optician	Óptica	Optiker	\N	\N	0
 30	Spectacle	2016-01-21 19:45:28.06856	2016-02-01 11:47:23.142435	6	Spectacles	Espectáculos	Brille	\N	\N	0
 55	Tatoo	2016-01-22 19:21:37.569569	2016-02-01 11:47:47.64191	4	Tatoo	Tatuajes	Tatoo	\N	\N	0
 72	Adulte	2016-01-23 15:39:48.956471	2016-06-09 12:34:43.748147	15	Adult	Adultos	Erwachsener			0
+101	Cordonnerie	2016-01-26 18:25:20.352495	2016-06-22 12:53:47.618377	3	Shoemaker	Zapatería	Schuster	\N	\N	1
 87	Auto	2016-01-25 20:02:48.546078	2016-06-15 08:56:41.789493	7	Car equipment	Accesorios para vehículos	Auto geräte	\N	\N	0
 102	Divers	2016-06-15 09:00:00.830753	2016-06-15 09:01:47.133156	13	Diverse	Vario	Verschiedene	\N	\N	0
 0	(Sans catégories)	2016-01-21 00:00:00	2016-06-14 09:54:20.987354	15				\N	\N	0
