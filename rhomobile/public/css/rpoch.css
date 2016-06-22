@@ -184,22 +184,6 @@ display:none;
 }
 
 
-#commentWindow
-{
-	position:fixed;
-	width:90%;
-	height:150px;
-	left:2%;
-	background-color:#4DCE7D;
-	background-opacity:0.6;
-	border-radius:10px;
-	text-shadow:none;
-	color:white;
-	padding-top:5px;
-	padding-bottom:10px;
-	text-decoration:none;
-	box-shadow: 1px 3px 15px black;
-}
 .activgeo
 {
 	position:relative;
@@ -682,7 +666,7 @@ tr:hover {
 	drop-shadow:none;
 }
 
-/* css additionnel pour le parours personalisÃ©*/
+/* css additionnel pour le parours personalise*/
 #navmenu {
     display: table;
 }

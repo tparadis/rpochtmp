@@ -130,6 +130,7 @@ function afficheSpecificationMagasin()
 			}catch(err){
 				console.log("Erreur: "+err);
 			}
+			
 			$("#sscat").append("<img src='/public/images/"+icon+"' />");
 			
 			$("#midSpec").append("<div class='titre' >"+convertirEnLisible(data.commerce.enseigne)+"</div>");
@@ -139,23 +140,41 @@ function afficheSpecificationMagasin()
 			$("#botSpec").append("<div class='horaires' style='text-shadow:none;'>"+hor+"</div>");
 			$("#botSpec").append("<div class='bordureBot'></div>");
 			$("#botSpec").append("<div class='telephone'><img src='/public/images/svg/phone.svg' /> <span><a style='color:white;text-shadow:none;' title='Call' href='tel:"+data.commerce.phone_num+"'>"+data.commerce.phone_num+"</a></span></div>");
-			$("#botSpec").append("<div id ='com' class='commentaires'> laissez un commentaire </div>");			
 			$("#botSpec").append("<div class='bordureBot'></div>");
+			
+			
 		
-			var comment = false;	
+
+			
+			if(data.commerce.website != null){
+				if(data.commerce.website != "")
+					if(data.commerce.website.indexOf(http) > -1 || data.commerce.website.indexOf(https) > -1 ){
+						$("#botSpec").append("<div class='website' style='text-shadow:none;'><a onclick='Rho.System.openUrl(\""+data.commerce.website+"\")'>"+data.commerce.website+"</a></div>");
+					}else{
+						tmp = http+data.commerce.website;
+						$("#botSpec").append("<div class='website' style='text-shadow:none;'><a onclick='Rho.System.openUrl(\""+tmp+"\")'>"+data.commerce.website+"</a></div>");
+
+					}
+					
+				
+			}
+			
+			$("#botSpec").append("<div class='bordureBot'></div>");
+			$("#botSpec").append("<div id ='com' class='commentaire'>laissez un commentaire</div>");
+			
+	var comment = false;	
 			
 			$("#com").on("click", function () {
 				if(!comment){
 					comment = true;
-				$("#pageSpec").append("<div id='commentWindow' style='top:70px; z-index:10000000000;'><div class=''>"
-				+"<span class='star-rating'>"
-				+" <input type='radio' name='rating' value='1'><i></i>"
-				+" <input type='radio' name='rating' value='2'><i></i>"
-				+" <input type='radio' name='rating' value='3'><i></i>"
-				+"<input type='radio' name='rating' value='4'><i></i>"
-				+"<input type='radio' name='rating' value='5'><i></i>"
-				+"</span>"
-				+"<strong id='note' class='choice'></strong></div></div>");
+				$("#pageSpec").append("<div id='commentWindow' style='top:70px; z-index:1000000; text-align:center;'><div class=''>"
+					+"<ul> "
+					+" <li><input type='radio' id='f-option' name='selector' value='1'><label for='f-option'></label><div class='check'><i></i></div></li> "
+					+" <li><input type='radio' id='s-option' name='selector' value='2'><label for='s-option'></label><div class='check'><div class='inside'><i></i></div></div></li>"
+					+" <li><input type='radio' id='g-option' name='selector' value='3'><label for='g-option'></label><div class='check'><div class='inside'><i></i></div></div></li>"
+					+" <li><input type='radio' id='h-option' name='selector' value='4'><label for='h-option'></label><div class='check'><div class='inside'><i></i></div></div></li>"
+					+" <li><input type='radio' id='t-option' name='selector' value='5'><label for='t-option'></label><div class='check'><div class='inside'><i></i></div></div></li>"
+					+"</ul><div><strong id='note' class='choice'></strong></div>");
 					
 				$("#commentWindow").append("<textarea id='com-body' name='com-body' placeholder='Commentaires' class='form-control' rows='5'></textarea>");
 
@@ -165,8 +184,9 @@ function afficheSpecificationMagasin()
 				  } 
 				);
 				
-				$("#commentWindow").append("<button id='cancel' class='btn btn-default cancel' >Annuler</button>");
-				$("#commentWindow").append("<button id='send'class='btn btn-primary' >Envoyer</button>");
+				$("#commentWindow").append("<div><button id='cancel' class='btn btn-default cancel' >Annuler</button>"
+					+"<button id='send' class='btn btn-primary' >Envoyer</button></div>");
+				
 			
 				$("#send").on("click", function(){
 					console.log("click");
@@ -192,21 +212,9 @@ function afficheSpecificationMagasin()
 					$("#commentWindow").show();
 				}
 			  });
-
 			
-			if(data.commerce.website != null){
-				if(data.commerce.website != "")
-					if(data.commerce.website.indexOf(http) > -1 || data.commerce.website.indexOf(https) > -1 ){
-						$("#botSpec").append("<div class='website' style='text-shadow:none;'><a onclick='Rho.System.openUrl(\""+data.commerce.website+"\")'>"+data.commerce.website+"</a></div>");
-					}else{
-						tmp = http+data.commerce.website;
-						$("#botSpec").append("<div class='website' style='text-shadow:none;'><a onclick='Rho.System.openUrl(\""+tmp+"\")'>"+data.commerce.website+"</a></div>");
-
-					}
-					
-				
-			}
-			$("#botSpec").append("<div class='socialNetworks'></div>");
+			
+$("#botSpec").append("<div class='socialNetworks'></div>");
 			
 			//Ajouter dynamiquement les affiliations aux liens
 			//des réseaux sociaux ci-dessous
@@ -226,7 +234,6 @@ function afficheSpecificationMagasin()
 				if(data.commerce.email != "")
 				$(".socialNetworks").append("<a href='mailto:"+data.commerce.email+"'> <img src='/public/images/svg/email.svg'/></a>");
 			}
-			
 			
 			$(".socialNetworks").append("<img id='contact-us' src='/public/images/svg/warning.svg' />");
 			
