@@ -172,7 +172,7 @@ function initialize() {
 
 		url: "http://rpoch.istic.univ-rennes1.fr/static/images/googlePos.png",
 		// url:localStorage.getItem("sscatimg"+magasin[0]),
-		scaledSize: new google.maps.Size(50, 50),
+		scaledSize: new google.maps.Size(30, 30),
 		size: new google.maps.Size(50, 50),
 		origin: new google.maps.Point(0, 0),
 		anchor: new google.maps.Point(25,25)

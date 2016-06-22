@@ -169,11 +169,11 @@ function afficheSpecificationMagasin()
 					comment = true;
 				$("#pageSpec").append("<div id='commentWindow' style='top:70px; z-index:1000000; text-align:center;'><div class=''>"
 					+"<ul> "
-					+" <li><input type='radio' id='f-option' name='selector' value='1'><label for='f-option'></label><div class='check'><i></i></div></li> "
-					+" <li><input type='radio' id='s-option' name='selector' value='2'><label for='s-option'></label><div class='check'><div class='inside'><i></i></div></div></li>"
-					+" <li><input type='radio' id='g-option' name='selector' value='3'><label for='g-option'></label><div class='check'><div class='inside'><i></i></div></div></li>"
-					+" <li><input type='radio' id='h-option' name='selector' value='4'><label for='h-option'></label><div class='check'><div class='inside'><i></i></div></div></li>"
-					+" <li><input type='radio' id='t-option' name='selector' value='5'><label for='t-option'></label><div class='check'><div class='inside'><i></i></div></div></li>"
+					+" <li class='comlist' ><input type='radio' id='1-option' name='selector' value='1'><label for='1-option' id='1-label' ></label><div class='check'></div></li> "
+					+" <li class='comlist' ><input type='radio' id='2-option' name='selector' value='2'><label for='2-option'></label><div class='check'><div class='inside'></div></div></li>"
+					+" <li class='comlist' ><input type='radio' id='3-option' name='selector' value='3'><label for='3-option'></label><div class='check'><div class='inside'></div></div></li>"
+					+" <li class='comlist' ><input type='radio' id='4-option' name='selector' value='4'><label for='4-option'></label><div class='check'><div class='inside'></div></div></li>"
+					+" <li class='comlist' ><input type='radio' id='5-option' name='selector' value='5'><label for='5-option'></label><div class='check'><div class='inside'></div></div></li>"
 					+"</ul><div><strong id='note' class='choice'></strong></div>");
 					
 				$("#commentWindow").append("<textarea id='com-body' name='com-body' placeholder='Commentaires' class='form-control' rows='5'></textarea>");
@@ -181,6 +181,7 @@ function afficheSpecificationMagasin()
 				$(':radio').change(
 				  function(){
 				    $('.choice').text( this.value);
+				  
 				  } 
 				);
 				
