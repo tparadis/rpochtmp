@@ -137,6 +137,26 @@ api.getAllTutos = function(){return api.send({data: {"req":"tutos", "format":"js
 //accueil predef select perso
 api.getTuto = function(page){return api.send({data: {"req":"tutos", "format":"json", "page":page}})}
 
+api.randomNew = function(ids){return api.send({data: {"req":"randomNew","format":"json","tags":ids}})}
+
+api.getAleatoireR= function(tag,uuid){ return api.send({data : {"req":"aleatoireR","format":"json", "tags":tag, "uuid":uuid}}) }
+
+
+//commerces est un tableau et tags un tableau de tableau
+api.genParcours2 = function (coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, commerces,tags) { 
+	return api.send({ data: {
+		"req":"yoloR",
+		"format":"json",
+		"coord_dep_lat":coord_dep_lat,
+		"coord_dep_lng":coord_dep_lng,
+		"coord_arr_lat":coord_arr_lat,
+		"coord_arr_lng":coord_arr_lng,
+		"dist_max":dist_max,
+		"commerces":"["+commerces+"]",
+		"tags":"["+tags+"]"
+	} }) }
+
+
 api.genParcours = function (coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags) { 
 	return api.send({ data: {
 		"req":"yolo",
