@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621140459) do
+ActiveRecord::Schema.define(version: 20160623112608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20160621140459) do
     t.string   "website",          limit: 255
     t.string   "instagram",        limit: 255
     t.json     "horaires",                     default: {}
+    t.boolean  "ssmenu"
   end
 
   add_index "commerces", ["user_id"], name: "index_commerces_on_user_id", using: :btree
@@ -115,7 +116,7 @@ ActiveRecord::Schema.define(version: 20160621140459) do
     t.boolean  "visible",     default: false
   end
 
-  create_table "phoneids", id: :uuid, default: nil, force: :cascade do |t|
+  create_table "phoneids", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

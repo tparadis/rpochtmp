@@ -1,13 +1,220 @@
 module Interface
 
 	require "algo.rb"
- 
+
+
+	#requete qui rend un commerce aléatoire
+	def Interface.randomNew(tags)
+
+
+		#on Remplace par mixte 
+		hasMixte =  false;
+		homme = false
+		femme = false
+		tags.each_with_index do |t,i|
+			if t == 59
+				homme = true
+			
+			elsif t == 58
+				femme = true
+				
+			#pour eviter de chercher dans un tag vide
+			elsif t == 0
+				tags[i] = tags[0]
+			end
+		end
+		#On remplace homme et femme par mixte
+		if homme && femme
+			tags.each_with_index do |t,i|
+				if t == 59 || t == 58
+					tags[i] = 62
+				end
+			end
+		end
+
+		#On vérifie que la taille est bonne
+		if tags.length < 1 || tags.length > 4
+
+			return nil
+
+		end
+
+		#on ajuste la taille du tableau pour la requete
+		while tags.length < 4 do
+			tags.push(tags[0])
+		end
+		
+
+		commerce = Commerce.where("(tag0 = ? OR tag1 = ? OR tag2 = ? OR tag3 = ?) AND (tag0 = ? OR tag1 = ? OR tag2 = ? OR tag3 = ?) AND (tag0 = ? OR tag1 = ? OR tag2 = ? OR tag3 = ?) AND (tag0 = ? OR tag1 = ? OR tag2 = ? OR tag3 = ?)",tags[0],tags[0],tags[0],tags[0],tags[1],tags[1],tags[1],tags[1],tags[2],tags[2],tags[2],tags[2],tags[3],tags[3],tags[3],tags[3]).order("Random()").first
+
+		#Tableau de retour
+		if !commerce.nil?
+			infos = {}
+			infos["id"] = commerce.id
+			infos["enseigne"] = commerce.enseigne
+			infos["location_lat"] = commerce.location_lat
+			infos["location_lng"] = commerce.location_lng
+			infos["image"] = commerce.image
+			infos["tags"] = [commerce.tag0,commerce.tag1,commerce.tag2,commerce.tag3]
+			infos["tagsSent"] = tags
+			infos
+		else
+			nil
+		end
+
+	end
+
+	def Interface.randomNewR(tags,uuid)
+
+
+		#on Remplace par mixte 
+		homme = false
+		femme = false
+		tags.each_with_index do |t,i|
+			if t == 59
+				homme = true
+			
+			elsif t == 58
+				femme = true
+				
+			#pour eviter de chercher dans un tag vide
+			elsif t == 0
+				tags[i] = tags[0]
+			end
+		end
+		#On remplace homme et femme par mixte
+		if homme && femme
+			tags.each_with_index do |t,i|
+				if t == 59 || t == 58
+					tags[i] = 62
+				end
+			end
+		end
+
+		#On vérifie que la taille est bonne
+		if tags.length < 1 || tags.length > 4
+
+			return nil
+
+		end
+
+		#on ajuste la taille du tableau pour la requete
+		while tags.length < 4 do
+			tags.push(tags[0])
+		end
+		
+
+		commerce = Commerce.where("id != ? AND (tag0 = ? OR tag1 = ? OR tag2 = ? OR tag3 = ?) AND (tag0 = ? OR tag1 = ? OR tag2 = ? OR tag3 = ?) AND (tag0 = ? OR tag1 = ? OR tag2 = ? OR tag3 = ?) AND (tag0 = ? OR tag1 = ? OR tag2 = ? OR tag3 = ?)",uuid,tags[0],tags[0],tags[0],tags[0],tags[1],tags[1],tags[1],tags[1],tags[2],tags[2],tags[2],tags[2],tags[3],tags[3],tags[3],tags[3]).order("Random()").first
+
+		#Tableau de retour
+		if !commerce.nil?
+			infos = {}
+			infos["id"] = commerce.id
+			infos["enseigne"] = commerce.enseigne
+			infos["location_lat"] = commerce.location_lat
+			infos["location_lng"] = commerce.location_lng
+			infos["image"] = commerce.image
+			infos["tags"] = [commerce.tag0,commerce.tag1,commerce.tag2,commerce.tag3]
+			infos["tagsSent"] = tags
+			infos
+		else
+			nil
+		end
+
+	end
+
+
+
+
+
+	#requete qui remplace le commerce si necessaire
+	def Interface.replace_if_necessary(comm,tags)
+
+		comm.each_with_index do |c, i|
+			while tags[i].length < 4
+				tags[i].push(tags[i][0])
+			end
+			valide = Interface.verifie_valide(c,tags[i])
+			if !valide 
+				
+				comTemp = Interface.randomNew(tags[i])
+				
+				if !comTemp.blank?
+					comm[i] = comTemp
+				end
+			end
+		end
+
+
+	end
+
+	def Interface.verifie_valide(c,tags)
+
+		femme = false
+		homme = false
+		ctags = []
+
+		ct0 = Commerce.where("id = ?", c.id).first.tag0
+		ct1 = Commerce.where("id = ?", c.id).first.tag1
+		ct2 = Commerce.where("id = ?", c.id).first.tag2
+		ct3 = Commerce.where("id = ?", c.id).first.tag3
+
+		ctags.push([ct0,ct1,ct2,ct3])
+
+
+		tags.each_with_index do |t,i|
+			if t == 59
+				homme = true
+			
+			elsif t == 58
+				femme = true
+				
+			#pour eviter de chercher dans un tag vide
+			elsif t == 0
+				tags[i] = tags[0]
+			end
+		end
+		#On remplace homme et femme par mixte
+		if homme && femme
+			tags.each_with_index do |t,i|
+				if t == 59 || t == 58
+					tags[i] = 62
+				end
+			end
+		end
+
+		#On teste pour savoir si le magasin correspond bien 
+		convient = true
+		trouve = false
+		res = [false,false,false,false]
+
+		tags.each_with_index do |t,i|
+			
+			trouve = false
+
+			ctags.each_with_index do |c,j|
+				if !c.nil? 	
+					if c == t
+						trouve = true
+					end
+				end
+
+			end
+
+			convient = trouve && convient
+
+		end		
+
+		convient
+
+	end
+
 	#Requete pour ajouter des notes, commentaires
 	def Interface.addNote(note, commerce, commentaire, idtel)
 	
 		#variabes de retour
 		status = false
-		error = "Aucune erreur"
+		error = "Merci pour votre commentaire."
 		ret = {}
 
 
@@ -28,7 +235,7 @@ module Interface
 					if @note.save
 						status = true	
 					else
-						error = "Impossible de sauvegarder la note"
+						error = "Impossible de sauvegarder la note, problème interne au serveur..."
 					end
 
 
@@ -39,7 +246,7 @@ module Interface
 
 			else
 				status = false
-				error = "Erreur, l'utilisateur a deja commenté"
+				error = "Vous avez déja commenté ce commerce"
 			end
 
 		rescue
@@ -394,6 +601,21 @@ module Interface
 		candidat = Commerce.where("(tag0 = ? OR tag1 = ? OR tag2 = ?) AND id != ?", tag, tag, tag, uuid).order("RANDOM()").first
 
 	end
+	def Interface.getAleatoireR(tags, uuid) 
+	
+		i = 0
+		max = 5
+		candidat = nil
+		loop do
+			i = i + 1
+			candidat = randomNewR(tags, uuid)
+			break if candidat.nil? || i == max 
+		end
+
+		candidat
+
+	end
+
 
 	#Retourne des magasins - 3 au max - dont l'enseigne contient deb
 	def Interface.getSuggestion(deb)

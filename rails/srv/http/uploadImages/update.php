@@ -29,7 +29,7 @@
 		$trouve = false;
 		//print $file;
 		$ext = pathinfo($file, PATHINFO_EXTENSION);
-		if($ext != "" && in_array($ext, $allowed))
+		if($ext != "" && in_array($ext, $allowed) && $file != 'googlePos.png')
 		{
 			$req = pg_query("SELECT image from commerces where image != 'noimage.jpg'");
 			while($row = pg_fetch_row($req))

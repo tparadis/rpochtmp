@@ -104,6 +104,17 @@ class WelcomeController < ApplicationController
 			render json: !@y.blank?
 		
 		end
+		
+		#Retourne un magasin Random lorsque l'utilisateur veut un magasin avec des tags précis
+		if params[:req] == "randomNew" && params.has_key?(:tags)
+
+			tags = eval(params[:tags])
+
+			@y = Interface.randomNew(tags)
+			render json: @y	
+
+		end
+
 
 		#requete sur les horaires
 		if params[:req] == "ouvert" && params.has_key?(:id) && params[:id] != ""
@@ -112,6 +123,11 @@ class WelcomeController < ApplicationController
 			render json: @y
 
 		end
+
+
+
+
+
 
 		if params[:req] == "predef"
 
@@ -154,19 +170,34 @@ class WelcomeController < ApplicationController
 			render json: {:size => @y.size(), :sscategories => @y}
 		end
 
-		# Debut test 
+		# Debut test
+		# On rajoute un parametre pour avoir des items plus précis !
 		if params[:req] == "yolo"
-=begin
-			@y = Algo.getDynamicPath(params[:coord_dep_lat].to_f,params[:coord_dep_lng].to_f,
-									 params[:coord_arr_lat].to_f,params[:coord_arr_lng].to_f,
-									 params[:dist_max].to_f, params[:commerces])
-=end
+			
 			@y = Algo.getNewPath(params[:coord_dep_lat].to_f,params[:coord_dep_lng].to_f,
 									 params[:coord_arr_lat].to_f,params[:coord_arr_lng].to_f,
 									 params[:dist_max].to_f, params[:commerces])
-			# @y = Interface.getComCT(13, 48.117, 48.11017, -1.6866, -1.676)
+			
+			#@y = Interface.replace_if_necessary(@y)	
+
+			
 			render json: { :tags => @y}
+
 		end
+
+		if params[:req] == "yoloR"
+			
+			@y = Algo.getNewPath(params[:coord_dep_lat].to_f,params[:coord_dep_lng].to_f,
+									 params[:coord_arr_lat].to_f,params[:coord_arr_lng].to_f,
+									 params[:dist_max].to_f, params[:commerces])
+			
+			@y = Interface.replace_if_necessary(@y,eval(params[:tags]))	
+			
+			render json: { :tags => @y}
+
+		end
+
+
 		if params[:req] == "yolo_inter"
 			@y = Algo.getInterPath(params[:coord_dep_lat].to_f,params[:coord_dep_lng].to_f,
 									 params[:coord_arr_lat].to_f,params[:coord_arr_lng].to_f,
@@ -205,6 +236,14 @@ class WelcomeController < ApplicationController
 			render json: {:magasin => @y}
 
 		end
+
+		if params[:req] == "aleatoireR" && params.has_key?(:tags) && params[:tags] != "" && params.has_key?(:uuid) && params[:uuid] != ""
+			@y = Interface.getAleatoireR(eval(params[:tags]), params[:uuid])
+
+			render json: {:magasin => @y}
+
+		end
+
 
 		if params[:req] == "suggestion" && params.has_key?(:deb) && params.has_key?(:indice) && params[:indice] != "" && params["deb"] != ""
 			@y = Interface.getSuggestionIndice(params[:deb], params[:indice].to_i)

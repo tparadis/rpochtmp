@@ -5,15 +5,15 @@
     <%= form_for(:updated, url: user_path(@user), method: :patch ) do |f| %>
       <%= render 'shared/error_messages' %>
 
-
 	  <% @tags = Sscategorie.all  %>
+	  
 
       <%= f.label 'Description' %>
       <%= f.text_area :description, value: @shop.description, class: 'form-control' %>
 	  <br/>
 	 
       <%= f.label 'Catégorie 1' %><br/>
-      <%= f.collection_select :tag0, @tags.order(:nom), :id, :nom, {:selected => @shop.tag0 || 0}   %>
+      <%= f.collection_select :tag0, @tags0.order(:nom), :id, :nom, {:selected => @shop.tag0 || 0}   %>
 	  <br/>
 
       <%= f.label 'Catégorie 2' %><br/>
