@@ -1,7 +1,7 @@
 
 //La magasin appelable de partout. Elle va permettre d'afficher un magasin
-//sans avoir à rediriger l'utilisateur en le forçant à refaire une requete GOOGLE API
-//Sur le long terme on passe d'environ 10 requetes api google à ... une !
+//sans avoir Ã  rediriger l'utilisateur en le forÃ§ant Ã  refaire une requete GOOGLE API
+//Sur le long terme on passe d'environ 10 requetes api google Ã  ... une !
 var id;
 var http = "http://"
 var https = "https://"
@@ -42,7 +42,7 @@ function checkIfImplemented()
 function afficheSpecificationMagasin()
 {
 	
-	//Récupère les parametres de l'URL
+	//RÃ©cupÃ¨re les parametres de l'URL
 	if(descraffiche == false)
 	{
 		$("#loaderDescr").show(400, function(){
@@ -51,20 +51,20 @@ function afficheSpecificationMagasin()
 			
 			//On cache la page active 
 			$(".ui-page-active").hide();
-			//On vire les anciens résultats:
+			//On vire les anciens rÃ©sultats:
 			$("#cadreImg").html("");
 			$("#midSpec").html("");
 			$("#botSpec").html("");
 			$("#sscat").html("");
 			
-			//On check que les boutons "boutonsParcours" soient bien jartés
+			//On check que les boutons "boutonsParcours" soient bien jartÃ©s
 			$("#boutonsParcours").hide();
 			var data = api.getCommDetail(id);
 			
 			//Faire un truc
 			var url = "http://rpoch.istic.univ-rennes1.fr/static/images/";
 			
-			//Si l'image est à null
+			//Si l'image est Ã  null
 			try
 			{
 				$("#cadreImg").append("<img src='"+url+basename(data.commerce.image.url)+"' />");
@@ -76,7 +76,7 @@ function afficheSpecificationMagasin()
 				console.log("Erreur: "+err);
 			}
 			
-			//Si le tag0 n'est pas renseigné
+			//Si le tag0 n'est pas renseignÃ©
 			var icon = "";
 			try
 			{
@@ -88,7 +88,7 @@ function afficheSpecificationMagasin()
 				console.log("Erreur: "+err);
 			}
 			
-			//Si le texte de description n'est pas renseigné
+			//Si le texte de description n'est pas renseignÃ©
 			var descr = "";
 			try
 			{
@@ -96,7 +96,7 @@ function afficheSpecificationMagasin()
 				if(descr == null || descr == "" || descr == "null" || descr == " ")
 				{
 					descr = "(Aucune description disponible)";
-					console.log("champ de description non renseigné");
+					console.log("champ de description non renseignÃ©");
 				}
 			}
 			catch(err)
@@ -122,7 +122,7 @@ function afficheSpecificationMagasin()
 							hor = time.horaires[0] +"H "+min1 +" "+ time.horaires[2] +"H " +min2 + time.horaires[4] +"H "+min3 +" "+ time.horaires[6] +"H " +min4; 
 						}
 					}else{
-						hor = "Fermé Aujourd'hui"
+						hor = "FermÃ© Aujourd'hui"
 					}
 				}else{
 					hor ="Horaires non renseignes"
@@ -162,13 +162,13 @@ function afficheSpecificationMagasin()
 			$("#botSpec").append("<div class='bordureBot'></div>");
 			$("#botSpec").append("<div id ='com' class='commentaire'>laissez un commentaire</div>");
 			
-	var comment = false;	
+			var comment = false;	
 			
 			$("#com").on("click", function () {
 				if(!comment){
 					comment = true;
-				$("#pageSpec").append("<div id='commentWindow' style='top:70px; z-index:1000000; text-align:center;'><div class=''>"
-					+"<ul> "
+				$("#pageSpec").append("<div id='commentWindow' style='top:70px; z-index:1000000; text-align:center;'></div>");
+				$("#commentWindow").append("<div><ul>"
 					+" <li class='comlist' ><input type='radio' id='1-option' name='selector' value='1'><label for='1-option' id='1-label' ></label><div class='check'></div></li> "
 					+" <li class='comlist' ><input type='radio' id='2-option' name='selector' value='2'><label for='2-option'></label><div class='check'><div class='inside'></div></div></li>"
 					+" <li class='comlist' ><input type='radio' id='3-option' name='selector' value='3'><label for='3-option'></label><div class='check'><div class='inside'></div></div></li>"
@@ -190,21 +190,32 @@ function afficheSpecificationMagasin()
 				
 			
 				$("#send").on("click", function(){
-					console.log("click");
-					var com = "" +document.getElementById("com-body").value.toString();
-					console.log(com);
-					var idtel = getPhoneid();
-					var idshop = data.commerce.id;
 					var note = document.getElementById("note").innerHTML;
-					api.addNote(com,idtel,idshop,note);
-					console.log("envoi");
-					$("#commentWindow").hide();
-					}
+					console.log("note"+note);
+					if(note > 1){
+						var com = "" +document.getElementById("com-body").value.toString();
+						var idtel = getPhoneid();
+						var idshop = data.commerce.id;
+						
+						var res = api.addNote(com,idtel,idshop,note);
+						
+						
+						removeElem("pageSpec","commentWindow");
+						$("#pageSpec").append("<div id='commentWindow' style='top:70px; z-index:1000000; text-align:center;'></div>");
+						$("#commentWindow").append(res.error);
+						
+						setTimeout(function(){removeElem("pageSpec","commentWindow")},2000);
+						comment = false;
+						}
+					}	
 				);
 				
 				$("#cancel").on("click", function(){
-					$("#commentWindow").hide();
+					removeElem("pageSpec","commentWindow");
+					comment = false;
 					}
+				
+					
 				);
 				
 					$("#commentWindow").css("height","auto");
@@ -218,7 +229,7 @@ function afficheSpecificationMagasin()
 $("#botSpec").append("<div class='socialNetworks'></div>");
 			
 			//Ajouter dynamiquement les affiliations aux liens
-			//des réseaux sociaux ci-dessous
+			//des rÃ©seaux sociaux ci-dessous
 			//Modifier le comportement des boutons en fonction de l'action voulue !
 			
 			
@@ -277,9 +288,14 @@ $("#botSpec").append("<div class='socialNetworks'></div>");
 			$("#close").on("click",function(e){
 					$("#pageSpec").hide(0);
 					$("#boutonsParcours").show(0);
+					if(comment == true){
+					removeElem("pageSpec","commentWindow");
+					comment = false;
+					}
 					//On reaffiche la page active
 					$(".ui-page-active").show();
 					descraffiche = false;
+					
 			});
 			
 			
@@ -292,7 +308,7 @@ $("#botSpec").append("<div class='socialNetworks'></div>");
 }
 
 
-//Converti un id de tag en nom  de catégorie (ex: cat7)
+//Converti un id de tag en nom  de catÃ©gorie (ex: cat7)
 function findSSCat(id,t){
 	
 	var nbSS = parseInt(localStorage.getItem("nbSsCat"));
@@ -313,7 +329,7 @@ function findSSCat(id,t){
 	
 }
 
-//Convertir en chaine de catégorie
+//Convertir en chaine de catÃ©gorie
 function findSSCatString(id){
 	
 	var nbSS = parseInt(localStorage.getItem("nbSsCat"));
@@ -334,7 +350,7 @@ function findSSCatString(id){
 	
 }
 
-//utilisé dans parcours etudiant
+//utilisÃ© dans parcours etudiant
 //A modifier apres pour rendre le code plus lisible.
 function findCatSubCat(id){
 	    var data = api.getCommDetail(id);
@@ -356,7 +372,12 @@ function findCatSubCat(id){
 	         "subcat":""}; 
 	         
 }
+function removeElem(container,elem){
+	var child = document.getElementById(elem);
+	var parent = document.getElementById(container);
+	parent.removeChild(child);
 
+}
 
 function convertirEnLisible(texte)
 {
@@ -374,8 +395,8 @@ function convertirEnLisible(texte)
 	
 }
 
-//Retourne le nom de fichier et son extension associé à l'URL passée en paramètres
-//Reutiliser la fonction avec les lignes commentées pour avoir le nom de fichier seulement
+//Retourne le nom de fichier et son extension associÃ© Ã  l'URL passÃ©e en paramÃ¨tres
+//Reutiliser la fonction avec les lignes commentÃ©es pour avoir le nom de fichier seulement
 function basename(str)
 {
 	   var base = new String(str).substring(str.lastIndexOf('/') + 1); 
