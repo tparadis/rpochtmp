@@ -14,7 +14,7 @@ function refresh() {
     for (var i = 0 ; i < sessionStorage.length; i++)
     {
     	var magasin = JSON.parse(sessionStorage.getItem(i));
-    	if(magasin.length > 3)
+    	if(magasin.length > 4)
     	{
 	    	var id = magasin[2];
 	    	
@@ -72,7 +72,7 @@ function genererParcours(){
 	var idtags = [];
 	for (var i = 0 ; i < sessionStorage.length ; i++) {
 		var mag = JSON.parse(sessionStorage.getItem(i));
-		if(mag.length == 3)
+		if(mag.length == 4)
 		{
 			tags.push(mag[0]);
 			idtags.push(i);

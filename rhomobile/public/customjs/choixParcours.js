@@ -9,6 +9,7 @@ $(document).ready(function () {
     var box = document.createElement("div");   box.className = "collapsible-cat-container";
     var cat_height = $("body").width() / 2;
     var list = "";
+    var listR = [2,21,24,70,80];
     for (i = 0; i < nbCat; i++) {
         var keyCat = "cat" + i;
         var categorie = JSON.parse(localStorage.getItem(keyCat));
@@ -65,17 +66,37 @@ $(document).ready(function () {
                 var filename;
                 var fullpath;
                 filename = localStorage.getItem("sscatimg" + ssCategorie[0]);
-                list += "<li onclick=\"addSsCat('" + keySsCat + "')\">";
+                if(ssCategorie[3]){
+                	list += "<li onclick= showSsList()>";
+                }else{
+                	list += "<li onclick=\"addSsCat('" + keySsCat + "')\">";
+                }
                    // + "<img src= " + filename + "  width=\"32\" height=\"32\">"
                 try
                 {
-                	list += "<span class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "").toUpperCase()+ "<span class='animTransfert'> +</span></span></li>";
+                	if(ssCategorie[3]){
+
+                		list += "<span class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "").toUpperCase()
+						+ "<select id="+ssCategorie[1]+"> "
+	                	+"<option value="+ssCategorie[0]+">  </option>"
+	                	+"<option value='62'> Mixte </option>"
+						+"<option value='59'> Homme </option>"
+						+"<option value='58'> Femme </option>"
+						+"<option value='60'> Enfant </option>"
+						+"</select>"
+						+"<button onclick=\"addSsCat('" + keySsCat + "')\"></button>"
+						+"<span class='animTransfert'> + </span></span></li>";
+					
+	                }else{
+	                	list += "<span class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "").toUpperCase()+"<span class='animTransfert' > + </span></span></li>";
+	                }
                 }
                 catch(err)
                 {
                 	console.log("Erreur : "+err);
                 }
             }
+            
         }
         list += "</ul>";
 
@@ -85,7 +106,8 @@ $(document).ready(function () {
                 .append(box)
                 .append( list );
             list = "";
-            box = document.createElement("div");   box.className = "collapsible-cat-container";
+            box = document.createElement("div");  
+            box.className = "collapsible-cat-container";
         }
 
     }//fin for
@@ -122,7 +144,7 @@ $(document).ready(function () {
     	
     	$(this).animate({"background-color":"#008B87"}, 300).animate({"background-color":"white"}, 300);
     
-    	$(this.getElementsByClassName("animTransfert")).stop().animate({"bottom":"700px","left":"200px", "opacity":"0"},1500).animate({"bottom":"0px","left":"0px", "opacity":"0"},50).animate({"opacity":"1"},500);
+    	$(this.getElementsByClassName("animTransfert")).stop().animate({"opacity":"1"},500).animate({"bottom":"700px","left":"200px","size":"50px", "opacity":"0"},1500).animate({"bottom":"0px","left":"0px", "opacity":"0"},50);
 
     });
  
@@ -137,10 +159,19 @@ function call_ruby_method_via_ajax(method_name, nCommerce) {
 function addSsCat(sscat) {
 	if(sessionStorage.length < MAXMAGASINS)
 	{
-	    var tmp = JSON.parse(localStorage.getItem(sscat));
+		var tmp = JSON.parse(localStorage.getItem(sscat));
+	    console.log(tmp);
+	    if(tmp[3]){
+	    	tmp += ","+document.getElementById(tmp[1]).value;
+	    }
+	    console.log(tmp);
 	    sessionStorage.setItem(sessionStorage.length, JSON.stringify(tmp));
 	    actualiserMagasins();
 	}
+}
+
+function showSsList(){
+	
 }
 
 function actualiserMagasins() {

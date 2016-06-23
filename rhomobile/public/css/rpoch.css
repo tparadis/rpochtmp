@@ -225,6 +225,7 @@ display:none;
 	position:relative;
 	color: #008B87;
 	font-size:24px;
+	opacity:0;
 }
 span#nb_magasins
 {

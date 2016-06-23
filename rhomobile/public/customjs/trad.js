@@ -80,14 +80,17 @@ function chargementCategories() {
 					var courantSsCatNom = courantSsCat.nom;
 					var scatimg= courantSsCat.id;
 					var catparent = courantSsCat.catparent;
+					var ssmenu = courantSsCat.ssmenu;
 					break;
 				default:
 					var courantSsCatNom = ssCatAutresLangues[i].scat;
 					var scatimg = data.sscat[ssCatAutresLangues[i].i].id;
 					var catparent = data.sscat[ssCatAutresLangues[i].i].catparent;
+					var ssmenu = data.sscat[ssCatAutresLangues[i].i].ssmenu;
+
 					break;
 			}
-			var infoSsCat = [scatimg, courantSsCatNom, catparent];
+			var infoSsCat = [scatimg, courantSsCatNom, catparent,ssmenu];
 			var keySsCat = 'sscat'+i;
 			localStorage.setItem(keySsCat, JSON.stringify(infoSsCat));
 			
