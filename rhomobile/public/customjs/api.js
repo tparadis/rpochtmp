@@ -139,11 +139,19 @@ api.getTuto = function(page){return api.send({data: {"req":"tutos", "format":"js
 
 api.randomNew = function(ids){return api.send({data: {"req":"randomNew","format":"json","tags":ids}})}
 
-api.getAleatoireR= function(tag,uuid){ return api.send({data : {"req":"aleatoireR","format":"json", "tags":tag, "uuid":uuid}}) }
+api.getAleatoireR= function(tag,uuid){
+	var tabTag = parseTags(tag,"alea");
+	return api.send({data : {
+	"req":"aleatoireR",
+	"format":"json",
+	"tags":tabTag,
+	"uuid":uuid
+	}}) }
 
 
 //commerces est un tableau et tags un tableau de tableau
 api.genParcours2 = function (coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, commerces,tags) { 
+	var tabTag = parseTags(tags,"gen");
 	return api.send({ data: {
 		"req":"yoloR",
 		"format":"json",
@@ -153,7 +161,7 @@ api.genParcours2 = function (coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_
 		"coord_arr_lng":coord_arr_lng,
 		"dist_max":dist_max,
 		"commerces":"["+commerces+"]",
-		"tags":"["+tags+"]"
+		"tags":tabTag
 	} }) }
 
 
@@ -168,5 +176,37 @@ api.genParcours = function (coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_a
 		"dist_max":dist_max,
 		"commerces":"["+tags+"]"
 	} }) }
+
+function parseTags(tags,type){
+	var res ="";	
+	var tmp;
+	console.log(tags.length);
+	
+	for (var i = 0 ; i < tags.length  ; i++){
+		if(type == "alea"){
+			console.log("ici");
+			tmp = JSON.parse(tags[i]);
+			res += "["+tmp+"]";
+		}else{
+			if(tags[i].length == 1){
+				console.log("ici");
+				tmp = JSON.parse(tags[i]);
+				res += "["+tmp+"]";
+			}else{
+				console.log("here");
+				tmp = JSON.parse(tags[i][0]);
+				tmp2 = JSON.parse(tags[i][1]);
+				res += "["+tmp+","+ tmp2 + "]";
+			}
+		}
+		if(i != tags.length-1){
+			res += ",";
+		}
+		
+		console.log("done " + res);
+	}
+	res = "["+res+"]";
+	return res
+}
 
 

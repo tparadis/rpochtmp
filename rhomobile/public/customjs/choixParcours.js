@@ -165,7 +165,7 @@ function addSsCat(sscat) {
     	tags.push(tmp[0]);
 
     	if(tmp[3]){
-	    	tags.push(document.getElementById(tmp[1]).value);
+	    	tags.push(parseInt(document.getElementById(tmp[1]).value));
 	    }
 		tmp.push(tags);	
 	    console.log(tmp);

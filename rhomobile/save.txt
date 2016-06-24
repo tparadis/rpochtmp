@@ -1,1 +1,1 @@
-distMax:67
+distMax:37

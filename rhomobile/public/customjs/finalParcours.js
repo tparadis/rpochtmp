@@ -10,6 +10,7 @@ function refresh() {
 	$("#example tbody").html("");
 	dist_max = getDistMax();
 	sessionStorage.removeItem("posRecuperer");
+	sessionStorage.removeItem("currentMagasin");
 	var prob = true;
     for (var i = 0 ; i < sessionStorage.length; i++)
     {
@@ -68,13 +69,16 @@ function supprimerMag(numLigne) {
 }
 
 function genererParcours(){
+	var commerces = [];
 	var tags = [];
 	var idtags = [];
 	for (var i = 0 ; i < sessionStorage.length ; i++) {
 		var mag = JSON.parse(sessionStorage.getItem(i));
-		if(mag.length == 4)
+		if(mag.length == 5)
 		{
-			tags.push(mag[0]);
+			commerces.push(mag[0]);
+			tags.push(mag[4]);
+			console.log(mag[4]);
 			idtags.push(i);
 			var data =	api.statSSCat(mag[0]);
 			var dataa = api.statCat(mag[2]);
@@ -94,7 +98,7 @@ function genererParcours(){
 	
 	var start = new Date().getTime();
 	console.log(""+start);
-	var data = api.genParcours(coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, tags);
+	var data = api.genParcours2(coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, commerces,tags);
 	var end = new Date().getTime();
 	var time = end - start;
 	Rho.Log.error('Execution time: ' + time,"APP");
@@ -117,18 +121,17 @@ function genererParcours(){
 		    	//Obligatoire si l'utilisateur a deja clique sur Generer un sessionStorage et qu'il veut remettre un autre magasin apr�s
 		    	//Sinon les id s'ajoutent indefiniments a la suite dans le meme tableau !
 		    	var id = tagCourant.id;
+		    	var tmp = elem.pop();
+		    	elem.pop();
 		    	elem[2] = id;
 		    	
 		    	elem.push(tagCourant.enseigne.toLowerCase());
 		    	elem.push(tagCourant.location_lat);
 		    	elem.push(tagCourant.location_lng);
+		    	elem.push(tmp)
 		    	sessionStorage.setItem(idtags[i], JSON.stringify(elem));
-		    	//On affiche sur la page
-		    	//On ajoute la classe (non utilis�e en CSS) detailsButton pour distinguer les bouttons par l'action onclick()
-		    
-		    	//Ajout d'une action qui va ajouter � la sessionStorage
-		    	// currentMagasin => id
-		    	//Ceci est utile pour la transition de cette page a la page de Magasin specifique
+		    	
+		    	
 	    	}
 	    }
 	    window.location.replace("/app/FinalParcours/final_parcours");
@@ -140,9 +143,9 @@ function afficherParcours() {
 
 function newMag(i) {
 	var elem = JSON.parse(sessionStorage.getItem(i));
-	var tag = elem[0];
+	var tag = elem[6];
 	var uuid = elem[2];
-	var data = api.getAleatoire(tag,uuid)
+	var data = api.getAleatoireR(tag,uuid)
 	try
 	{
 		var id = data.magasin.id;
@@ -151,11 +154,7 @@ function newMag(i) {
 		elem[4] = data.magasin.location_lat;
 		elem[5] = data.magasin.location_lng;
 		sessionStorage.setItem(i, JSON.stringify(elem));
-		$(".mag" + i).html("");
-		$(".mag" + i).append("<td>" + data.magasin.enseigne.toLowerCase() + "</td><td><button class='detailButton ui-btn' name='" + id + "'><span class='ui-btn-text'>i</span></button></td><td><button class='ui-btn' onclick='newMag(" + i + ")'><span class='ui-btn-text'>X</span></button></td>");
-		$('img.detailButton').on('click', function(e) {
-				sessionStorage.setItem("currentMagasin", $(this).attr('name'));
-		});
+	
 	}
 	catch(err)
 	{
