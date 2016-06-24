@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   	get     'contact' => 'main#contact'
   	get     'news'    => 'main#news'
   	get 	'statmap' => 'statmap#index'
+	get 	'newcomm' => 'users#newcomm', :as => :newcomm
+	post    'createcomm'   => 'users#createcomm', :as => :createcomm
   	get     'signup'   => 'users#new'
 	get	    'resultats' => 'resultats#index'
   	get     'login'    => 'sessions#new'

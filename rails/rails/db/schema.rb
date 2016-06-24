@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623112608) do
+ActiveRecord::Schema.define(version: 20160623113934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,7 +88,6 @@ ActiveRecord::Schema.define(version: 20160623112608) do
     t.string   "website",          limit: 255
     t.string   "instagram",        limit: 255
     t.json     "horaires",                     default: {}
-    t.boolean  "ssmenu"
   end
 
   add_index "commerces", ["user_id"], name: "index_commerces_on_user_id", using: :btree
@@ -161,6 +160,7 @@ ActiveRecord::Schema.define(version: 20160623112608) do
     t.text     "ko"
     t.text     "jap"
     t.integer  "stat",       default: 0
+    t.boolean  "ssmenu"
   end
 
   create_table "stats", force: :cascade do |t|

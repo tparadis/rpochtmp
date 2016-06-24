@@ -12,6 +12,7 @@
 	  <th>Esp</th>
 	  <th>De</th>
 	  <th>Stat</th> 
+	  <th>Sous-menu</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,6 +27,7 @@
 		<td><%= sscategory.esp %></td>
 		<td><%= sscategory.de %></td>
 		<td><%= ((sscategory.stat.to_f / @max).to_f * 100).round %>% (<%= sscategory.stat  %> clicks)</td> 
+		<td><%= sscategory.ssmenu %></td>
         <td><%= link_to 'Show', sscategory %></td>
         <td><%= link_to 'Edit', edit_sscategory_path(sscategory) %></td>
         <td><%= link_to 'Destroy', sscategory, method: :delete, data: { confirm: 'Are you sure?' } %></td>

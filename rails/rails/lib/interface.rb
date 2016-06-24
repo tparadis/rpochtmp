@@ -134,15 +134,33 @@ module Interface
 			while tags[i].length < 4
 				tags[i].push(tags[i][0])
 			end
-			valide = Interface.verifie_valide(c,tags[i])
-			if !valide 
+			#valide = Interface.verifie_valide(c,tags[i])
+			#if !valide 
 				
-				comTemp = Interface.randomNew(tags[i])
-				
-				if !comTemp.blank?
-					comm[i] = comTemp
+				comTemp = Interface.randomNewR(tags[i],c.id)
+				diff = true
+				max_essais = 5
+				j = 0
+				k = 0
+				while j < max_essais
+
+
+					if !comTemp.blank?
+						while k < i
+							diff = diff && (c != comTemp["id"])
+							k = k + 1
+						end
+					end
+
+					if diff
+						comm[i] = comTemp
+						j = max_essais
+					else
+						comTemp = Interface.randomNewR(tags[i],c.id)
+					end
+					j = j + 1	
 				end
-			end
+			#end
 		end
 
 
@@ -271,7 +289,7 @@ module Interface
 
 	def Interface.getSSCategories
 		#Sscategorie.order('nom').select('id,nom,catparent,en,esp,de')
-		sscats = Sscategorie.order('nom').select('id,nom,catparent,en,esp,de')
+		sscats = Sscategorie.order('nom')
 		sscatsRet = []
 		sscats.each do |s|
 			if Commerce.where('tag0 = ?',s.id).count > 0
