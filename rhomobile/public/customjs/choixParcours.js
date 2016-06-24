@@ -161,9 +161,13 @@ function addSsCat(sscat) {
 	{
 		var tmp = JSON.parse(localStorage.getItem(sscat));
 	    console.log(tmp);
-	    if(tmp[3]){
-	    	tmp += ","+document.getElementById(tmp[1]).value;
+	    var tags =[];
+    	tags.push(tmp[0]);
+
+    	if(tmp[3]){
+	    	tags.push(document.getElementById(tmp[1]).value);
 	    }
+		tmp.push(tags);	
 	    console.log(tmp);
 	    sessionStorage.setItem(sessionStorage.length, JSON.stringify(tmp));
 	    actualiserMagasins();
