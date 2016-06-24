@@ -1,0 +1,128 @@
+html,body
+{
+	margin:0;
+	padding:0;
+	width:100%;
+	height:100%;
+	background-color:grey;
+}
+body
+{
+	overflow-y:scroll;
+	overflow-x:hidden;
+}
+#container
+{
+	position:relative;
+	float:left;
+	top:0;
+	height:100%;
+	width:100%;
+	background-color:white;
+	border-bottom:1px solid black;
+}
+#page
+{
+	position:absolute;
+	left:48%;
+	width:600px;
+	height:80%;
+	top:10%;
+	padding-left:2%;
+	padding-right:2%;
+	margin-left:-300px;
+	background-color:white;	
+	text-align:center;
+}
+.page01
+{
+	box-shadow:0px 5px 10px black;		
+}
+
+.c01 img
+{
+	width:110%;
+	heigth:110%;
+	margin-left:-10%;
+	margin-top:-5%;
+}
+img.fond01
+{
+	opacity:1;	
+}
+form input
+{
+	width:200px;
+	height:50px;	
+}
+input[type='text'], input[type='password']
+{
+	border:none;
+	border-bottom:1px solid gray;
+	transition:all 0.3s;
+	padding-left:20px;
+	outline:none;
+}
+input[type='text']:focus, input[type='password']:focus
+{
+	padding-left:35px;
+	
+}
+input#mail
+{
+	background-image:url("images/mail.png");
+	background-size:15px 15px;
+	background-repeat:no-repeat;
+	background-position:left center;	
+	color:gray;
+}
+input#uuid
+{
+	background-image:url("images/id-card.png");
+	background-size:15px 15px;
+	background-repeat:no-repeat;
+	background-position:left center;
+	color:gray;
+}
+input[type="password"]
+{
+	background-image:url("images/key.png");
+	background-size:15px 15px;
+	background-repeat:no-repeat;
+	background-position:left center;
+}
+input[type="submit"]
+{
+	background-color:#008b87;	
+	color:white;
+	border:none;
+}
+input[type="submit"]:hover
+{
+	background-color:#007d79;
+}
+#loader
+{
+	position:absolute;
+	width:50px;
+	height50px;
+	left:50%;
+	top:50%;
+	margin-left:-25px;
+	margin-top:-25px;
+}
+#loader img
+{
+	width:50px;
+	height:50px;
+}
+h4
+{
+	font-weight:400;		
+}
+.container2
+{
+	background-image:url("images/cci.png");
+	background-size:30px 30px;
+}
+
