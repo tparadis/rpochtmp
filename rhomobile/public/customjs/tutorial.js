@@ -73,7 +73,8 @@ function showTutorialMain()
 	$("#grisement").css("height","100%");
 	$("#grisement").show();
 	var elem = document.getElementsByClassName("persoW");
-	elem[0].innerHTML = lang[currentLang].footer;
+	var text = getTextTuto("footer", currentLang);
+	elem[0].innerHTML = text;
 	$("#sampleWindow").css("height","auto");
 	$("#grisement").on("mousedown",function(){
 		$("#sampleWindow").hide(500);
@@ -94,7 +95,8 @@ function showTutorialPerso()
 	$("body").append("<div id='sampleWindow' style='top:70px; z-index:20;'><div class='persoW'>"
 	+"</div></div>");
 	var elem = document.getElementsByClassName("persoW");
-	elem[0].innerHTML = lang[currentLang].persoTop;
+	var text = getTextTuto("footer", currentLang);
+	elem[0].innerHTML = text;
 	$("#grisement").show();
 	$("#sampleWindow").css("height","auto");
 	$("#grisement").on("mousedown",function(){
@@ -117,7 +119,8 @@ function showTutorialPredef()
 	+"</div></div>");
 	var elem = document.getElementsByClassName("persoW");
 	$("#grisement").show();
-	elem[0].innerHTML = lang[currentLang].description;
+	var text = getTextTuto("footer", currentLang);
+	elem[0].innerHTML = text;
 	$("#sampleWindow").css("height","auto");
 	$("#grisement").on("mousedown",function(){
 		$("#sampleWindow").hide(500);
@@ -131,6 +134,15 @@ function showTutorialPredef()
 		writeCurrentState(tutoState);
 	});
 	
+}
+
+function getTextTuto(page, lang)
+{
+	var text = "";
+	data = api.getTextTuto(page);
+	if(data[lang] == "") text = data["fr"];
+	else text = data[lang];
+	return text;
 }
 
 function writeCurrentState(state)
