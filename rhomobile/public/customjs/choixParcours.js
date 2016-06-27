@@ -67,7 +67,7 @@ $(document).ready(function () {
                 var fullpath;
                 filename = localStorage.getItem("sscatimg" + ssCategorie[0]);
                 if(ssCategorie[3]){
-                	list += "<li onclick= showSsList()>";
+                	list += "<li id='li"+ssCategorie[0]+"'  class='options' onclick=\"showSel('sel" + ssCategorie[0] +"')\">";
                 }else{
                 	list += "<li onclick=\"addSsCat('" + keySsCat + "')\">";
                 }
@@ -76,19 +76,23 @@ $(document).ready(function () {
                 {
                 	if(ssCategorie[3]){
 
-                		list += "<span class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "").toUpperCase()
-						+ "<select id="+ssCategorie[1]+"> "
-	                	+"<option value="+ssCategorie[0]+">  </option>"
+                		list += "<span  class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "").toUpperCase()
+						+"<span id='anim"+ssCategorie[0]+"' class='animTransfert'> + </span></span>"
+						+"<div id='sel"+ssCategorie[0]+"' class='ssList'>"
+						+"<select id='val"+ssCategorie[0]+"'> "
+	                	+"<option value="+ssCategorie[0]+"></option>"
 	                	+"<option value='62'> Mixte </option>"
 						+"<option value='59'> Homme </option>"
 						+"<option value='58'> Femme </option>"
 						+"<option value='60'> Enfant </option>"
 						+"</select>"
 						+"<button onclick=\"addSsCat('" + keySsCat + "')\"></button>"
-						+"<span class='animTransfert'> + </span></span></li>";
+						+"</div></li>";
+
 					
+
 	                }else{
-	                	list += "<span class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "").toUpperCase()+"<span class='animTransfert' > + </span></span></li>";
+	                	list += "<span class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "").toUpperCase()+"<span id='anim"+ssCategorie[0]+"' class='animTransfert' > + </span></span></li>";
 	                }
                 }
                 catch(err)
@@ -96,10 +100,9 @@ $(document).ready(function () {
                 	console.log("Erreur : "+err);
                 }
             }
-            
         }
         list += "</ul>";
-
+       
         //si i est impair, on ferme la div(box) ouverte precedemment
         if (i % 2 == 1) {
             $("#navmenu")
@@ -135,6 +138,7 @@ $(document).ready(function () {
             assoc_list.style.display = "block";
             this.classList.add("active");
         }
+        hideAll();
     });
 
     actualiserMagasins();
@@ -143,12 +147,26 @@ $(document).ready(function () {
     $("li").on("click",function(){
     	
     	$(this).animate({"background-color":"#008B87"}, 300).animate({"background-color":"white"}, 300);
-    
-    	$(this.getElementsByClassName("animTransfert")).stop().animate({"opacity":"1"},500).animate({"bottom":"700px","left":"200px","size":"50px", "opacity":"0"},1500).animate({"bottom":"0px","left":"0px", "opacity":"0"},50);
+    	
 
     });
  
 });
+
+function showSel(id){
+	
+	hideAll();
+	$(document.getElementById(id)).show(10);
+}
+
+function  hideAll(){
+	
+	$(document.getElementById("sel21")).hide();
+	$(document.getElementById("sel80")).hide();
+	$(document.getElementById("sel70")).hide();
+	$(document.getElementById("sel24")).hide();
+	$(document.getElementById("sel2")).hide();
+}
 
 //Call ruby method via ajax
 function call_ruby_method_via_ajax(method_name, nCommerce) {
@@ -165,17 +183,15 @@ function addSsCat(sscat) {
     	tags.push(tmp[0]);
 
     	if(tmp[3]){
-	    	tags.push(parseInt(document.getElementById(tmp[1]).value));
+	    	tags.push(parseInt(document.getElementById("val"+tmp[0]).value));
 	    }
 		tmp.push(tags);	
 	    console.log(tmp);
 	    sessionStorage.setItem(sessionStorage.length, JSON.stringify(tmp));
 	    actualiserMagasins();
+	    
+	    $(document.getElementById("anim"+tmp[0])).stop().animate({"opacity":"1"},500).animate({"bottom":"700px","left":"200px","size":"50px", "opacity":"0"},1500).animate({"bottom":"0px","left":"0px", "opacity":"0"},50);
 	}
-}
-
-function showSsList(){
-	
 }
 
 function actualiserMagasins() {

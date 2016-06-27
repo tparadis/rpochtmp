@@ -184,6 +184,7 @@ display:none;
 }
 
 
+
 .activgeo
 {
 	position:relative;
@@ -383,6 +384,12 @@ font-family:descriptif;
 	left:50%;
 	margin-left:-10px;
 	background-color:#008B87;
+}
+
+.ssList{
+	position: relative;
+	bottom: 38px;
+	left: 100px;
 }
 
 
