@@ -120,7 +120,7 @@ display:none;
     bottom:60px;
     padding:0;
     text-shadow:none;
-    
+    text-align:center;
 }
 .ImgAccPre{
 	content:url("/public/images/parcours_predef_fr.png");
@@ -129,13 +129,26 @@ display:none;
         margin-left: auto;
         margin-right: auto;
 }
+
+
+
 .TxtParcoursPerso{
 	position:absolute;
 	color:#008B87;
-	bottom:60px;
+	left:80px;
+	bottom:20px;
 	font-family:sscat;
     padding:0;
     text-shadow:none;
+}
+
+.TxtParcoursPerso2{
+	position: relative;
+	color: #008B87;
+	bottom: 50px;
+	font-family: sscat;
+	padding: 0;
+	text-shadow: none;
 }
 .listeItem{
 	font-family:sscat;
@@ -247,11 +260,9 @@ span#nb_magasins
 
 .ImgBtnCarte{
    content:url("/public/images/carte_btn_fr.png");
-   width:90%;
+   width:150px;
 }
-.placementCarte{
-	position:relative;
-}
+
 .ImgBtnInfo{
 	content:url("/public/images/svg/oeil.svg");
 	width:30px;
