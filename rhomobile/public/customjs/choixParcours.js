@@ -78,17 +78,17 @@ $(document).ready(function () {
 
                 		list += "<span  class='listSsCatText'>" + ssCategorie[1].replace(/\\/, "").toUpperCase()
 						+"<span id='anim"+ssCategorie[0]+"' class='animTransfert'> + </span></span>"
+						+"</li>"
 						+"<div id='sel"+ssCategorie[0]+"' class='ssList'>"
 						+"<select id='val"+ssCategorie[0]+"'> "
-	                	+"<option value="+ssCategorie[0]+"></option>"
+	                	+"<option value="+ssCategorie[0]+">Categorie</option>"
 	                	+"<option value='62'> Mixte </option>"
 						+"<option value='59'> Homme </option>"
 						+"<option value='58'> Femme </option>"
 						+"<option value='60'> Enfant </option>"
 						+"</select>"
-						+"<button onclick=\"addSsCat('" + keySsCat + "')\"></button>"
-						+"</div></li>";
-
+						+"<button class='addcat' onclick=\"addSsCat('" + keySsCat + "')\">+</button>"
+						+"</div>";
 					
 
 	                }else{
@@ -190,7 +190,7 @@ function addSsCat(sscat) {
 	    sessionStorage.setItem(sessionStorage.length, JSON.stringify(tmp));
 	    actualiserMagasins();
 	    
-	    $(document.getElementById("anim"+tmp[0])).stop().animate({"opacity":"1"},500).animate({"bottom":"700px","left":"200px","size":"50px", "opacity":"0"},1500).animate({"bottom":"0px","left":"0px", "opacity":"0"},50);
+	    $(document.getElementById("anim"+tmp[0])).stop().animate({"opacity":"1"},500).animate({"bottom":"700px","left":"200px","size":"50px", "opacity":"0"},2000).animate({"bottom":"0px","left":"0px", "opacity":"0"},50);
 	}
 }
 
