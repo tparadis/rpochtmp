@@ -12,6 +12,7 @@ public/api/generated/
 rhomobile/rhosimulator/*
 .cbc
 rhomobile/app/save.txt
+rhomobile/phoneid.txt
 rhomobile/app/firsttime.txt
 */build.yml
 */rhoapi-modules.js

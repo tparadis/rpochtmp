@@ -238,71 +238,6 @@
   height: 100px;
 }
 
-ul li input[type=radio]{
-  position: absolute;
-  visibility: hidden;
-}
-
-ul label{
-  display: block;
-  position: relative;
-  font-weight: 250;
-  font-size: 1.35em;
-  padding: 25px 25px 25px 25px;
-  margin: 10px auto;
-  height: 30px;
-  z-index: 9;
-  cursor: pointer;
-  -webkit-transition: all 0.25s linear;
-}
-
-ul li:hover label{
-	color: #FFFFFF;
-}
-
-ul li .check{
-  display: block;
-  position: absolute;
-  border: 5px solid #AAAAAA;
-  border-radius: 100%;
-  height: 25px;
-  width: 25px;
-  top: 30px;
-  left: 20px;
-	z-index: 5;
-	transition: border .25s linear;
-	-webkit-transition: border .25s linear;
-}
-
-ul li:hover .check {
-  border: 5px solid #FFFFFF;
-}
-
-ul li .check::before {
-  display: block;
-  position: absolute;
-  content: '';
-  border-radius: 100%;
-  height: 15px;
-  width: 15px;
-  top: 5px;
-  left: 5px;
-  margin: auto;
-  transition: background 0.25s linear;
-  -webkit-transition: background 0.25s linear;
-}
-
-input[type=radio]:checked ~ .check {
-  border: 5px solid #0DFF92;
-}
-
-input[type=radio]:checked ~ .check::before{
-  background: #0DFF92;
-}
-
-input[type=radio]:checked ~ label{
-  color: #0DFF92;
-}
 
 
 #commentWindow
@@ -310,13 +245,44 @@ input[type=radio]:checked ~ label{
 	position:fixed;
 	width:90%;
 	left:2%;
-	background-color:#0099cc;
+	background-color:#008B87;
+	top:70px; 
+	text-align:center;
+	z-index:1000000;
 	background-opacity:0.6;
-	border-radius:10px;
 	text-shadow:none;
 	color:white;
 	padding-top:5px;
 	padding-bottom:10px;
 	text-decoration:none;
-	box-shadow: 1px 3px 15px black;
+	box-shadow: 1px 0px 30px black;
+}
+#commentWindow ul
+{
+	padding:0;
+}
+#commentWindow li
+{
+	left:0;
+	margin-left:8%;
+	width:32px;
+	height:32px;
+}
+#commentWindow input[type=checkbox]
+{
+	border:1px solid red;
+	width:100%;
+	height:100%;
+	margin-left:45%;
+	opacity:0;
+}
+#commentWindow .checkWrap
+{
+	width:64px;
+	height:64px;
+	background-image:url("/public/images/starnot.png");
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	background-position:0px 0px;
+	
 }

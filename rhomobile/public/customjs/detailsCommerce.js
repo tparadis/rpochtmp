@@ -160,6 +160,9 @@ function afficheSpecificationMagasin()
 			}
 			
 			$("#botSpec").append("<div class='bordureBot'></div>");
+			
+			
+			//DEBUT "LAISSEZ UN COMMENTAIRE"
 			$("#botSpec").append("<div id ='com' class='commentaire'>laissez un commentaire</div>");
 			
 			var comment = false;	
@@ -167,32 +170,85 @@ function afficheSpecificationMagasin()
 			$("#com").on("click", function () {
 				if(!comment){
 					comment = true;
-				$("#pageSpec").append("<div id='commentWindow' style='top:70px; z-index:1000000; text-align:center;'></div>");
-				$("#commentWindow").append("<div><ul>"
-					+" <li class='comlist' ><input type='radio' id='1-option' name='selector' value='1'><label for='1-option' id='1-label' ></label><div class='check'></div></li> "
-					+" <li class='comlist' ><input type='radio' id='2-option' name='selector' value='2'><label for='2-option'></label><div class='check'><div class='inside'></div></div></li>"
-					+" <li class='comlist' ><input type='radio' id='3-option' name='selector' value='3'><label for='3-option'></label><div class='check'><div class='inside'></div></div></li>"
-					+" <li class='comlist' ><input type='radio' id='4-option' name='selector' value='4'><label for='4-option'></label><div class='check'><div class='inside'></div></div></li>"
-					+" <li class='comlist' ><input type='radio' id='5-option' name='selector' value='5'><label for='5-option'></label><div class='check'><div class='inside'></div></div></li>"
-					+"</ul><div><strong id='note' class='choice'></strong></div>");
+					var note = 0;
+				$("#pageSpec").append("<div id='commentWindow'></div>");
+				$("#commentWindow").append("<div style='float:left;width:100%' ><ul>"
+					+" <li class='comlist' ><div class='checkWrap'><input type='checkbox' name='selector' value='1'></div></li> "
+					+" <li class='comlist' ><div class='checkWrap'><input type='checkbox' name='selector' value='2'></div></li>"
+					+" <li class='comlist' ><div class='checkWrap'><input type='checkbox' name='selector' value='3'></div></li>"
+					+" <li class='comlist' ><div class='checkWrap'><input type='checkbox' name='selector' value='4'></div></li>"
+					+" <li class='comlist' ><div class='checkWrap'><input type='checkbox' name='selector' value='5'></div></li>"
+					+"</ul>");
 					
-				$("#commentWindow").append("<textarea id='com-body' name='com-body' placeholder='Commentaires' class='form-control' rows='5'></textarea>");
-
-				$(':radio').change(
-				  function(){
-				    $('.choice').text( this.value);
-				  
-				  } 
-				);
+				$("#commentWindow").append("<textarea id='com-body' name='com-body' style='float:left;width:100%;margin-top:45px' placeholder='Commentaires' class='form-control' rows='5'></textarea>");
 				
 				$("#commentWindow").append("<div><button id='cancel' class='btn btn-default cancel' >Annuler</button>"
 					+"<button id='send' class='btn btn-primary' >Envoyer</button></div>");
 				
+				//On ajuste le centre de la div
+				var wdth = $("#commentWindow").width();
+				$("#commentWindow").css("left", "50%");
+				$("#commentWindow").css("margin-left", "-"+(wdth/2)+"px");
+				
+				//Actions sur les étoiles
+				$(".checkWrap").on("click",function(e)
+				{
+					var index = $(this).closest("li").index();
+					note = 0;
+					
+					
+					
+					if($(this).find("input[type='checkbox']").is(":checked") == false && index == 0)
+					{
+						note = 0;
+						$(this).find("input[type='checkbox']").prop('checked',false);
+						$(this).closest(".checkWrap").css('background-image','url("/public/images/starnot.png")');
+						$("#commentWindow input[type='checkbox']").each(function(){
+							$(this).prop('checked',false);
+							$(this).closest(".checkWrap").css('background-image','url("/public/images/starnot.png")');
+						})
+					}
+					else
+					{
+						//ANIMATION DE DISPARITION
+						$("#commentWindow input[type='checkbox']").each(function(i){
+							
+							$(this).closest(".checkWrap").stop().delay(i * 100).animate({"opacity":"0","width":"32px","height":"32px"},300,'swing');
+							
+						});
+						
+						//ANIMATION D'APPARITION
+						$(this).closest(".checkWrap").promise().done(function(){
+							$("#commentWindow input[type='checkbox']").each(function(i){
+								
+								$(this).closest(".checkWrap").css({"opacity":"0"});
+								
+								if($(this).closest("li").index() <= index)
+								{
+									$(this).prop('checked',true);
+									$(this).closest(".checkWrap").css('background-image','url("/public/images/star.png")');
+								}
+								else
+								{
+									$(this).prop('checked',false);
+									$(this).closest(".checkWrap").css('background-image','url("/public/images/starnot.png")');
+									
+								}
+								$(this).closest(".checkWrap").css({"width":"32px","height":"32px"});
+								$(this).closest(".checkWrap").stop().delay(i * 150).animate({"opacity":"1","width":"64px","height":"64px"}, 300)
+							})
+						})
+						note = index + 1;
+					}
+					
+					console.log(note)
+
+						
+				})
 			
 				$("#send").on("click", function(){
-					var note = document.getElementById("note").innerHTML;
-					console.log("note"+note);
-					if(note > 1){
+					console.log("note" + note);
+					if(note >= 0 ){
 						var com = "" +document.getElementById("com-body").value.toString();
 						var idtel = getPhoneid();
 						var idshop = data.commerce.id;
