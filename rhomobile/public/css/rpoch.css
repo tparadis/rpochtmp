@@ -130,11 +130,10 @@ display:none;
         margin-right: auto;
 }
 .TxtParcoursPerso{
-	color:#008b87;
+	position:absolute;
+	color:#008B87;
+	bottom:60px;
 	font-family:sscat;
-	position:relative;
-    width:auto;
-    bottom:60px;
     padding:0;
     text-shadow:none;
 }
@@ -243,16 +242,15 @@ span#nb_magasins
 
 .ImgAjoutMag{
     content:url("/public/images/votre_parcours_fr.png");
-    width:150px;
+    width:90%;
 }
 
 .ImgBtnCarte{
    content:url("/public/images/carte_btn_fr.png");
-   width:150px;
+   width:90%;
 }
 .placementCarte{
 	position:relative;
-	left: 50px;
 }
 .ImgBtnInfo{
 	content:url("/public/images/svg/oeil.svg");
@@ -296,20 +294,33 @@ font-family:descriptif;
 
 #fpouter
 {
+	
     width:100%;
+    height:100px;
+    padding:0;
+    margin:0;
     text-align: center;
-    margin:auto;
     background-color:white;
+    clear:both;
 }
 .fpinner
 {
-    display: inline-block;
-    height:auto;
-    width:auto;
+	position:relative;
+	float:left;
+    height:100%;
+    text-align:center;
+    width:45%;
     background-color:white;
-
+    margin-left:2%;
 }
-
+.fpinner a
+{
+	position:absolute;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+}
 
 #footer {
     background-color: #F6F7F6;
