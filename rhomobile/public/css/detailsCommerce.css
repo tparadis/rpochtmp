@@ -238,7 +238,23 @@
   height: 100px;
 }
 
-
+#horaireWindow
+{
+	position:fixed;
+	width:90%;
+	left:2%;
+	background-color:#008B87;
+	top:70px; 
+	text-align:center;
+	z-index:1000000;
+	background-opacity:0.6;
+	text-shadow:none;
+	color:white;
+	padding-top:5px;
+	padding-bottom:10px;
+	text-decoration:none;
+	box-shadow: 1px 0px 30px black;
+}
 
 #commentWindow
 {

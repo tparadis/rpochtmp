@@ -104,25 +104,15 @@ function afficheSpecificationMagasin()
 				descr = "(Aucune description disponible)";
 				console.log("Erreur: "+err);
 			}
+			
 			var hor = "";
 			try{
 				var time = api.getHorraires(data.commerce.id);
 				if(time.horairesok){
 					if(time.ouvert){
-						if (time.continu){
-							var min1 =((time.horaires[1]==0)? " - ": time.horaires[1]+" - ");
-							var min2 =((time.horaires[3]==0)? "": time.horaires[3]+" ");
-							hor = time.horaires[0] +"H "+ min1 +time.horaires[2] +"H " + min2; 
-							console.log(hor);
-						}else {
-							var min1 =((time.horaires[1]==0)? "": time.horaires[1]+"  ");
-							var min2 =((time.horaires[3]==0)? "": time.horaires[3]+" - ");
-							var min3 =((time.horaires[5]==0)? "": time.horaires[5]+"  ");
-							var min4 =((time.horaires[7]==0)? "": time.horaires[7]);
-							hor = time.horaires[0] +"H "+min1 +" "+ time.horaires[2] +"H " +min2 + time.horaires[4] +"H "+min3 +" "+ time.horaires[6] +"H " +min4; 
-						}
+						hor =	timeString(time);
 					}else{
-						hor = "Fermé Aujourd'hui"
+						hor = "Ferme Aujourd'hui"
 					}
 				}else{
 					hor ="Horaires non renseignes"
@@ -143,8 +133,26 @@ function afficheSpecificationMagasin()
 			$("#botSpec").append("<div class='bordureBot'></div>");
 			
 			
-		
-
+				//POP UP "HORRAIRES"
+			$(".horaires").on("click", function () {
+				if(time.horairesok){
+					$("#pageSpec").append("<div id='horaireWindow'></div>");
+					var week = time.semaine;
+					
+					$("#horaireWindow").append("<div class='horaires' style='text-shadow:none;'>Lundi :"+weekString(week.lundi)+"</div>");
+					$("#horaireWindow").append("<div class='horaires' style='text-shadow:none;'>Mardi :"+weekString(week.mardi)+"</div>");
+					$("#horaireWindow").append("<div class='horaires' style='text-shadow:none;'>Mercredi :"+weekString(week.mercredi)+"</div>");
+					$("#horaireWindow").append("<div class='horaires' style='text-shadow:none;'>Jeudi :"+weekString(week.jeudi)+"</div>");
+					$("#horaireWindow").append("<div class='horaires' style='text-shadow:none;'>Vendredi :"+weekString(week.vendredi)+"</div>");
+					$("#horaireWindow").append("<div class='horaires' style='text-shadow:none;'>Samedi :"+weekString(week.samedi)+"</div>");
+					$("#horaireWindow").append("<div class='horaires' style='text-shadow:none;'>Dimanche :"+weekString(week.dimanche)+"</div>");
+				}
+				$("#horaireWindow").on("click", function(){	
+					removeElem("pageSpec","horaireWindow");
+				});
+			});
+			
+			
 			
 			if(data.commerce.website != null){
 				if(data.commerce.website != "")
@@ -361,6 +369,41 @@ $("#botSpec").append("<div class='socialNetworks'></div>");
 		descraffiche = true;
 	}
 	
+}
+
+function weekString(day){
+	var res ;
+	if(!(day[0] == day[6] && day[0] == 0)){
+		if(day[2] == day[4] && day[3] == day[5]){
+			var min1 =((day[1]==0)? " - ": day[1]+" - ");
+			var min2 =((day[5]==0)? "": day[5]+"  ");
+			res = day[0] +"H "+min1 +" "+ day[4] +"H " +min2;
+		}else{
+			var min1 =((day[1]==0)? "": day[1]+"  ");
+			var min2 =((day[3]==0)? "": day[3]+" - ");
+			var min3 =((day[5]==0)? "": day[5]+"  ");
+			var min4 =((day[7]==0)? "": day[7]);
+			res = day[0] +"H "+min1 +" "+ day[2] +"H " +min2 + day[4] +"H "+min3 +" "+ day[6] +"H " +min4; 
+		}
+	}else{
+		res =  "Ferme"; 
+	}
+	return res;
+}
+function timeString(time){
+	var res;
+	if (time.continu){
+		var min1 =((time.horaires[1]==0)? " - ": time.horaires[1]+" - ");
+		var min2 =((time.horaires[3]==0)? "": time.horaires[3]+" ");
+		res = time.horaires[0] +"H "+ min1 +time.horaires[2] +"H " + min2; 
+	}else {
+		var min1 =((time.horaires[1]==0)? "": time.horaires[1]+"  ");
+		var min2 =((time.horaires[3]==0)? "": time.horaires[3]+" - ");
+		var min3 =((time.horaires[5]==0)? "": time.horaires[5]+"  ");
+		var min4 =((time.horaires[7]==0)? "": time.horaires[7]);
+		res = time.horaires[0] +"H "+min1 +" "+ time.horaires[2] +"H " +min2 + time.horaires[4] +"H "+min3 +" "+ time.horaires[6] +"H " +min4; 
+	}
+	return res;
 }
 
 
