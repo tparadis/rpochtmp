@@ -5,7 +5,6 @@ $(document).ready(function() {
 	refresh();
 });
 
-
 function refresh() {
 	$("#example tbody").html("");
 	dist_max = getDistMax();

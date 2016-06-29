@@ -76,7 +76,7 @@ function afficheSpecificationMagasin()
 				console.log("Erreur: "+err);
 			}
 			
-			//Si le tag0 n'est pas renseigné
+			//Si le tag0 n'est pas renseigne
 			var icon = "";
 			try
 			{
@@ -88,7 +88,7 @@ function afficheSpecificationMagasin()
 				console.log("Erreur: "+err);
 			}
 			
-			//Si le texte de description n'est pas renseigné
+			//Si le texte de description n'est pas renseigne
 			var descr = "";
 			try
 			{
@@ -96,7 +96,7 @@ function afficheSpecificationMagasin()
 				if(descr == null || descr == "" || descr == "null" || descr == " ")
 				{
 					descr = "(Aucune description disponible)";
-					console.log("champ de description non renseigné");
+					console.log("champ de description non renseigne");
 				}
 			}
 			catch(err)
@@ -127,6 +127,19 @@ function afficheSpecificationMagasin()
 			$("#midSpec").append("<div class='addresse' >"+(data.commerce.street_number+" "+data.commerce.route).toUpperCase()+"</div>");
 			$("#midSpec").append("<div class='bordureBot'></div>");
 			$("#midSpec").append("<div class='description'>"+descr+"</div>");
+			
+			//Affichage de la note
+			$("#midSpec").append("<div class='note'><ul class='noteList'></ul></div>");
+			for(var d = 0; d < data.commerce.note.charAt(0); d++){
+				$(".noteList").append("<li class='notelist' ><div class='checkNote'><input type='hidden' disabled='disabled' name='selector' checked></div></li>");
+			}
+			for(var d = data.commerce.note.charAt(0) ; d < 5; d++){
+				$(".noteList").append("<li class='notelist' ><div class='checkPasNote'><input type='hidden' disabled='disabled' name='selector'></div></li>");
+			}
+			
+			
+			
+			
 			$("#botSpec").append("<div class='horaires' style='text-shadow:none;'>"+hor+"</div>");
 			$("#botSpec").append("<div class='bordureBot'></div>");
 			$("#botSpec").append("<div class='telephone'><img src='/public/images/svg/phone.svg' /> <span><a style='color:white;text-shadow:none;' title='Call' href='tel:"+data.commerce.phone_num+"'>"+data.commerce.phone_num+"</a></span></div>");
@@ -171,7 +184,7 @@ function afficheSpecificationMagasin()
 			
 			
 			//DEBUT "LAISSEZ UN COMMENTAIRE"
-			$("#botSpec").append("<div id ='com' class='commentaire'>laissez un commentaire</div>");
+			$("#botSpec").append("<div id ='com' class='commentaire'>Notez ce magasin</div>");
 			
 			var comment = false;	
 			
@@ -188,10 +201,10 @@ function afficheSpecificationMagasin()
 					+" <li class='comlist' ><div class='checkWrap'><input type='checkbox' name='selector' value='5'></div></li>"
 					+"</ul>");
 					
-				$("#commentWindow").append("<textarea id='com-body' name='com-body' style='float:left;width:100%;margin-top:45px' placeholder='Commentaires' class='form-control' rows='5'></textarea>");
+				//$("#commentWindow").append("<textarea id='com-body' name='com-body' style='float:left;width:100%;margin-top:45px' placeholder='Commentaires' class='form-control' rows='5'></textarea>");
 				
-				$("#commentWindow").append("<div><button id='cancel' class='btn btn-default cancel' >Annuler</button>"
-					+"<button id='send' class='btn btn-primary' >Envoyer</button></div>");
+				$("#commentWindow").append("<div><button id='cancel' class='btn btn-default cancel' style='margin-top: 45px' >Annuler</button>"
+					+"<button id='send' class='btn btn-primary' style='margin-top: 45px'>Envoyer</button></div>");
 				
 				//On ajuste le centre de la div
 				var wdth = $("#commentWindow").width();
@@ -249,15 +262,14 @@ function afficheSpecificationMagasin()
 						note = index + 1;
 					}
 					
-					console.log(note)
 
 						
 				})
 			
 				$("#send").on("click", function(){
-					console.log("note" + note);
 					if(note >= 0 ){
-						var com = "" +document.getElementById("com-body").value.toString();
+						var com = "" ;
+						//com += document.getElementById("com-body").value.toString();
 						var idtel = getPhoneid();
 						var idshop = data.commerce.id;
 						
