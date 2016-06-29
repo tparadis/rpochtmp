@@ -151,10 +151,11 @@ function afficheSpecificationMagasin()
 			$("#botSpec").append("<div class='telephone'><img src='/public/images/svg/phone.svg' /> <span><a style='color:white;text-shadow:none;' title='Call' href='tel:"+data.commerce.phone_num+"'>"+data.commerce.phone_num+"</a></span></div>");
 			$("#botSpec").append("<div class='bordureBot'></div>");
 			
-			
+			var affHor = false;
 				//POP UP "HORRAIRES"
 			$(".horaires").on("click", function () {
-				if(time.horairesok){
+				
+				if(time.horairesok && !affHor){
 					$("#pageSpec").append("<div id='horaireWindow'></div>");
 					var week = time.semaine;
 					
@@ -165,9 +166,16 @@ function afficheSpecificationMagasin()
 					$("#horaireWindow").append("<div class='horaires' style='text-shadow:none;'>Vendredi :"+weekString(week.vendredi)+"</div>");
 					$("#horaireWindow").append("<div class='horaires' style='text-shadow:none;'>Samedi :"+weekString(week.samedi)+"</div>");
 					$("#horaireWindow").append("<div class='horaires' style='text-shadow:none;'>Dimanche :"+weekString(week.dimanche)+"</div>");
+					affHor = true;
 				}
+				//On ajuste le centre de la div
+				var wdth = $("#horaireWindow").width();
+				$("#horaireWindow").css("left", "50%");
+				$("#horaireWindow").css("margin-left", "-"+(wdth/2)+"px");
+				
 				$("#horaireWindow").on("click", function(){	
 					removeElem("pageSpec","horaireWindow");
+					affHor = false;
 				});
 			});
 			
@@ -395,7 +403,7 @@ function weekString(day){
 		if(day[2] == day[4] && day[3] == day[5]){
 			var min1 =((day[1]==0)? " - ": day[1]+" - ");
 			var min2 =((day[5]==0)? "": day[5]+"  ");
-			res = day[0] +"H "+min1 +" "+ day[4] +"H " +min2;
+			res = day[0] +"H "+min1 +" "+ day[6] +"H " +min2;
 		}else{
 			var min1 =((day[1]==0)? "": day[1]+"  ");
 			var min2 =((day[3]==0)? "": day[3]+" - ");
