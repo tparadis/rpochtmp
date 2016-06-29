@@ -133,10 +133,9 @@ display:none;
 
 
 .TxtParcoursPerso{
-	position:absolute;
+	position:relative;
 	color:#008B87;
-	left:80px;
-	bottom:20px;
+	 bottom:60px;
 	font-family:sscat;
     padding:0;
     text-shadow:none;

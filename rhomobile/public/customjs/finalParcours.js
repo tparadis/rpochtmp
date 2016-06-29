@@ -97,7 +97,9 @@ function genererParcours(){
 	
 	var start = new Date().getTime();
 	console.log(""+start);
+	
 	var data = api.genParcours2(coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, commerces,tags);
+	var data2 = api.genParcours(coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, commerces);
 	var end = new Date().getTime();
 	var time = end - start;
 	Rho.Log.error('Execution time: ' + time,"APP");
@@ -111,8 +113,12 @@ function genererParcours(){
 		
 		for (var i = 0 ; i < tags.length ; i++)
 	    {// remplacer la categorie parent par l'id magasin
-
-	    	var tagCourant = data.tags[i];
+	    	var tagCourant
+	    	if(data.tags[i] != null){
+	    		 tagCourant= data.tags[i];
+	    	}else{
+	    		tagCourant= data2.tags[i];
+	    	}
 	    	//On ajoute la valeur id  de l'enseigne dans la sessionStorage
 	    	var elem = sessionStorage.getItem(idtags[i]);
 	    	elem = JSON.parse(elem);
