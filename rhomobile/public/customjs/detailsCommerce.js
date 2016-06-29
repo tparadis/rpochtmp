@@ -67,7 +67,13 @@ function afficheSpecificationMagasin()
 			//Si l'image est à null
 			try
 			{
-				$("#cadreImg").append("<img src='"+url+basename(data.commerce.image.url)+"' />");
+				console.log(data.commerce.image.url)
+				var currentImg = url+basename(data.commerce.image.url)
+				if(data.commerce.image.url.indexOf("categories/") >= 0)
+				{
+					currentImg = url+"categories/"+basename(data.commerce.image.url);
+				}
+				$("#cadreImg").append("<img src='"+currentImg+"' />");
 				
 			}
 			catch(err)
