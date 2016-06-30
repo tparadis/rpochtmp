@@ -54,20 +54,20 @@
 		nb = 0
 	end
 	
-	@val = '{'
+	@val = ''
 	if nb > 0
 		@parcours_predefini.commerces.each do |com|
 			if com != nil
 				@val = @val + com
 				if nb != i
-					@val = @val + ','
+					@val = @val + ',<br/>'
 				end
 	   		end
 		end
 	end 
-	   @val = @val + '}'
+	   @val = @val + ''
 	%>
-	<%= f.text_field :commerces, :value => @val, :size => '70'  %>	
+	<%= f.text_area :commerces, :value => @val, :rows => '20', :cols => '70'  %>	
   </div>
   <div class="actions">
     <%= f.submit %>
@@ -77,25 +77,36 @@
 <script>
 $(document).ready(function(e)
 {
+
+	var currentValeur = $('form textarea[id=parcours_predefini_commerces]').val();
+
+	$('form textarea[id=parcours_predefini_commerces]').val(currentValeur.replace(/<br\/>/g, '\n'));
+
 	$('form').submit(function(e)
 	{
-		var valeur = prepareTable($("form input[id=parcours_predefini_commerces]").val());
-		$("form input[id=parcours_predefini_commerces]").val(valeur);
+		var valeur = prepareTable($("form textarea[id=parcours_predefini_commerces]").val());
+		$("form textarea[id=parcours_predefini_commerces]").val(valeur);
 	
 	});
 
 
 function prepareTable(txt)
 {
-	txt = txt.replace(/ /g, '');
-	txt = txt.replace(/\n/g,'');
-	txt = txt.replace(/{/g, '');
-	txt = txt.replace(/}/g, '');
-	txt = txt.replace(/"/g, '');
-	txt = txt.replace(/'/g, '');
+	txt = txt.replace(/ +/g, '');
+	txt = txt.replace(/\n+/g,'');
+	txt = txt.replace(/{+/g, '');
+	txt = txt.replace(/}+/g, '');
+	txt = txt.replace(/"+/g, '');
+	txt = txt.replace(/'+/g, '');
 	if (txt.charAt(0) != '{')
 	{
 		txt = '{'+txt;
+	}
+	
+	txt = txt.replace(/,}/g, '');
+	while(txt.charAt(txt.length-1) == ',' || txt.charAt(txt.length-1) == '\n')
+	{
+		txt = txt.substring(0, txt.length -1);
 	}
 	if(txt.charAt(txt.length) != '}')
 	{

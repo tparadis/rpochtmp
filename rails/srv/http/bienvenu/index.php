@@ -21,15 +21,13 @@
 
 		<div id="page" class="page01">
 
-			<h4>Munissez-vous de votre identifiant que vous avez reçu par courrier et de votre adresse mail. On s'occupe du reste.</h4><br/><br/>
-
-			<form action="#" method="POST">
-				<input type="text" name="mail" id="mail" value="Votre e-mail"/><br/>
-				<input type="password" name="pass1" id="pass1"/><br/>
-				<input type="password" name="pass2" id="pass2"/><br/>
-				<input type="text" name="uuid" id="uuid" value="Identifiant"/><br/><br/>
-				<input type="submit" value="Inscrivez-moi">
-			</form>
+			<h4>Munissez-vous de votre identifiant que vous avez reçu par courrier, on s'occupe du reste.</h4><br/><br/>
+			<div id="forms">
+				<form action="#" method="POST" name="step1">
+					<input type="text" name="uuid" id="uuid" value="Identifiant"/><br/><br/>
+					<input type="submit" value="Continuer">
+				</form>
+			</div>
 			<div id="loader"><img src="images/squares.gif" /></div>
 
 		</div>

@@ -22,14 +22,6 @@
 	<%= @commerce.rasoc %>
 </p>
 <p>
-	<strong>description:</strong>
-	<%= @commerce.description %>
-</p>
-<p>
-	<strong>facebook:</strong>
-	<%= @commerce.facebook %>
-</p>
-<p>
 	<strong>date_deb_act:</strong>
 	<%= @commerce.date_deb_act %>
 </p>
@@ -166,6 +158,18 @@
 	<%= @commerce.tag3 %>
 </p>
 <p>
+	<strong>description:</strong>
+	<%= @commerce.description %>
+</p>
+<p>
+	<strong>facebook:</strong>
+	<%= @commerce.facebook %>
+</p>
+<p>
+	<strong>utilisateur:</strong>
+	<%= (!@commerce.user_id.nil? ? User.where("id = ?", @commerce.user_id).first.email : User.where("id = 3").first.email) %>
+</p>
+<p>
 	<strong>image:</strong>
 	<%= @commerce.image %>
 </p>
@@ -178,11 +182,60 @@
 	<%= @commerce.website %>
 </p>
 <p>
+	<strong>phone_num:</strong>
+	<%= @commerce.phone_num %>
+</p>
+<p>
 	<strong>db_add_date:</strong>
 	<%= @commerce.db_add_date %>
 </p>
 
-
+<div id='updated_image' value='<%= @commerce.image %>'></div>
 
 <%= link_to 'Edit', edit_commerce_path(@commerce) %> |
 <%= link_to 'Back', commerces_path %>
+
+<script src="/static/js/jquery.js"></script>
+<script>
+
+$(document).ready(function(){
+
+	$("p:first").css("margin-top","50px")
+
+	//Affichage de l'image du magasin en question
+
+	var fichier = basename($("#updated_image").attr("value"));
+
+	$("body").append("<div id='apercu' style='position:fixed;right:5px;top:60px; width: 200px; height: auto;border:1px solid black;background-color:white;'>"
+	+ "<span>Votre image :</span>"
+	+ "<img src=\"https://rpoch.istic.univ-rennes1.fr/static/images/"+fichier+" \" style='width:100%; height:auto; margin-top:10px'/>"
+	+ "</div>");
+	
+	$("#apercu").on("mouseover", function(){
+		
+		$(this).stop().animate({"width":"800px"}, 200);	
+		
+	})
+
+	$("#apercu").on("mouseleave", function(){
+		
+		$(this).stop().animate({"width":"200px"}, 200);	
+		
+	})
+
+
+
+
+	
+});
+
+function basename(str){
+	
+	return new String(str).substring(str.lastIndexOf('/') + 1);
+		
+}
+
+</script>
+
+
+

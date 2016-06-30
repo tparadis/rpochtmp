@@ -1,5 +1,5 @@
 class ResultatsController < ApplicationController
-  before_action :set_resultat, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /resultats
   # GET /resultats.json
@@ -10,6 +10,7 @@ class ResultatsController < ApplicationController
   # GET /resultats/1
   # GET /resultats/1.json
   def show
+  	@resultat = Resultat.find(params[:id])
   end
 
   # GET /resultats/new
@@ -19,6 +20,7 @@ class ResultatsController < ApplicationController
 
   # GET /resultats/1/edit
   def edit
+  	@resultat = Resultat.find(params[:id])
   end
 
   # POST /resultats
@@ -54,6 +56,7 @@ class ResultatsController < ApplicationController
   # DELETE /resultats/1
   # DELETE /resultats/1.json
   def destroy
+  	@resultat = Resultat.find(params[:id])
     @resultat.destroy
     respond_to do |format|
       format.html { redirect_to resultats_url, notice: 'Resultat was successfully destroyed.' }

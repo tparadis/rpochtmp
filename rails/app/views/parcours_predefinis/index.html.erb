@@ -1,14 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Parcours Predefinis</h1>
+<h1>Parcours Predefinis</h1>
 
-<table>
+<table class="table tabled-bordered tabl-hover table-striped"> 
   <thead>
     <tr>
       <th>Name</th>
       <th>Description</th>
       <th>Image</th>
       <th>Commerces</th>
+	  <th>Nombre</th>
 	  <th>Fr</th>
 	  <th>En</th>
 	  <th>De</th>
@@ -21,11 +22,22 @@
 
   <tbody>
     <% @parcours_predefinis.each do |parcours_predefini| %>
+	<% i = 0 %>
       <tr>
         <td><%= parcours_predefini.name %></td>
         <td><%= parcours_predefini.description %></td>
         <td><%= parcours_predefini.image %></td>
-		<td><%= parcours_predefini.commerces %></td> 
+		<td style="text-align:left">
+		
+			<% mags = parcours_predefini.commerces %>
+			
+			<% mags.each do |m| %>
+				<%= Commerce.find_by(id: m).enseigne %><br/>
+				<% i = i + 1 %>
+			<% end %>
+		
+		</td>
+		<td><%= i %></td>
         <td><%= parcours_predefini.fr %></td>
 		<td><%= parcours_predefini.en %></td>
 		<td><%= parcours_predefini.de %></td>

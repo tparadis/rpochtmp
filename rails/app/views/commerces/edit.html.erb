@@ -3,5 +3,10 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @commerce %> |
-<%= link_to 'Back', commerces_path %>
+
+<% if @current_user.status == 'admin' %>
+	<%= link_to 'Détail', @commerce %> |
+	<%= link_to 'Retour', commerces_path %>
+<% else %>
+	<%= link_to 'Retour', user_path(@current_user.id) %>
+<% end %>

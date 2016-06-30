@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+    <head lang="fr">
+        <meta charset="UTF-8">
+        <title>rpoch</title>
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="stylesheet" type="text/css" href="/static/style/main.css">
+        <link rel="stylesheet" type="text/css" href="/static/style/dropzone.css">
+        <script type="application/javascript" src="/static/js/jquery.js"></script>
+        <script type="application/javascript" src="/static/js/dropzone.js"></script>
+        <script type="application/javascript">
+            $(function() {
+                $("#api-submit").click(_request);
+                var _respZone = $("#api-response").find(".api-form");
+
+                testPorts();
+                setInterval(checkStatus, 5000);
+
+                $("#refresh-ports").click(function(){
+                    testPorts();
+                });
+
+                function _request() {
+                    var _port = $("#api-port").find(":checked").val()
+                    _respZone.text("Sending request...").css("color","inherit");
+                    var _inputText = $("#api-form").val();
+                    if(_inputText == "") {
+                        _respZone.text("Requête vide").css("color","#f81");
+                        return;
+                    }
+                    try {
+                        //var _request = (JSON.stringify(JSON.parse(_inputText)));
+                        var _request = _inputText;
+                    } catch (err) {
+                        console.warn(err);
+                        _respZone.text("JSON parsing/stringify erreur : " + err).css("color","#f81");
+                        return;
+                    }
+
+                    $.ajax({
+                        url: _port + "/" + _request,
+                        type: "GET",
+                        data: {},
+                        dataType: "application/json",
+                        success: function (response) {
+                            var resp = (response);
+                            _respZone.text(resp).css("color","inherit");
+                        },
+                        error: function (xhr, status) {
+                            console.log(xhr)
+                            if (xhr.status == 200) {
+                                var resp ;
+                                try{
+                                    resp = JSON.parse(xhr.responseText);
+                                    _respZone.text(JSON.stringify(resp));
+                                } catch (err) {
+                                    resp = xhr.responseText;
+                                    _respZone.html(resp);
+                                }
+                                _respZone.css("color","inherit");
+                            }
+                            else{
+                                _respZone.text("Erreur serveur : " + xhr.status + " (" + xhr.statusText + ")").css("color","#f00");
+                                //_respZone.html(xhr.responseText);
+                                console.warn(status, xhr);
+                            }
+                        }
+                    });
+                }
+
+                function testPorts() {
+                    checkPortOpen("api");
+                    checkPortOpen("deva");
+                    checkPortOpen("devb");
+                    checkPortOpen("devc");
+                }
+
+                function checkPortOpen(address) {
+                    var _e = $("#status-"+address);
+                    _e.attr("class","");
+                    $.ajax({
+                        url: address + "/",
+                        type: "GET",
+                        dataType: "json",
+                        success: function (response) {
+                            _e.attr("class", "online");
+                        },
+                        error: function (xhr, status) {
+                            if (xhr.status != 502) {
+                                _e.attr("class", "online");
+                            }
+                            else {
+                                _e.attr("class", "offline");
+                            }
+                            console.warn(status, xhr);
+                        }
+                    });
+                }
+
+                function checkStatus() {
+                    var _e = _respZone;
+                    $.ajax({
+                        url: "/status",
+                        type: "GET",
+                        dataType: "json",
+                        success: function (response) {
+                            _e.text(response);
+                        },
+                        error: function (xhr, status) {
+                            if (xhr.status == 200) {
+                                var _numbers = xhr.responseText.match(/[0-9]+/g);
+                                _numbers.forEach(function(e,i){$("#status"+i).text(e)});
+                                _e.text();
+                                window.tmp =xhr.responseText;
+                            }
+                            else {
+                                _e.text("Erreur serveur : " + xhr.status + " (" + xhr.statusText + ")")
+                            }
+                            console.warn(status, xhr);
+                        }
+                    });
+                }
+            });
+
+
+        </script>
+    </head>
+    <body>
+        <div id="content">
+            <h3>Salut Rpoch !</h3>
+            <hr>
+            <div class="container">
+                <table>
+                    <tr>
+                        <td>
+                            <div>
+                                <p>Quelques liens pour découvrir :</p>
+                                <ul class="desc">
+                                    <li><div class="title">L'API</div>
+                                        <div class="desc">L'addresse <a href="api/">api/</a> reçoit et renvoie les informations du serveur rails (backend) de l'application.</div>
+                                    </li>
+                                    <li><div class="title">Les fichiers statiques</div>
+                                        <div class="desc">Les fichiers contenus dans <a href="static">static/</a> seront envoyés à la demande par le serveur nginx</div>
+                                    </li>
+                                    <li><div class="title">État des ports :<div class="refresh-butt" id="refresh-ports"></div></div>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <div class="desc"><a href="api/">api/</a></div>
+                                                </td>
+                                                <td>(3000)</td>
+                                                <td>
+                                                    : <span id="status-api"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="desc"><a href="deva/">deva/</a></div>
+                                                </td>
+                                                <td>(3001)</td>
+                                                <td>
+                                                    : <span id="status-deva"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="desc"><a href="devb/">devb/</a></div>
+                                                </td>
+                                                <td>(3002)</td>
+                                                <td>
+                                                    : <span id="status-devb"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="desc"><a href="devc/">devc/</a></div>
+                                                </td>
+                                                <td>(3003)</td>
+                                                <td>
+                                                    : <span id="status-devc"></span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="hr"><div></div></td>
+                        <td>
+                            <div>
+                                <ul class="desc">
+                                    <li class="important"><div class="title">Configuration de l'application :</div>
+                                        <div class="desc">Solution <a href="http://stackoverflow.com/questions/27761278/rails-relative-url-doesnt-adjust-links">ici</a> et
+                                            un peu <a href="http://guides.rubyonrails.org/configuring.html#deploy-to-a-subdirectory-relative-url-root">ici</a> aussi.</div>
+                                        <div class="desc">Ajouter dans application.rb: <br><code>
+                                            config.relative_url_root = "/devc"<br>
+                                            config.action_controller.relative_url_root = "/devc"<br>
+                                            ENV['RAILS_RELATIVE_URL_ROOT']  = "/devc"<br>
+                                            ENV['ROOT_URL']  = "/devc"
+                                        </code></div>
+                                        <div class="desc">Ajouter dans config.ru : <br><code>
+                                            map '/devc' do<br>
+                                            run Rails.application<br>
+                                            end<br>
+                                            #précise https lors de la generation d'urls<br>
+                                            config.default_url_options = {<br>
+                                            protocol: 'https'}<br>
+                                            config.action_controller.default_url_options = {<br>
+                                            protocol: 'https'}<br>
+                                        </code></div>
+                                        <!--<div class="desc">Pour NGINX : <br><code>
+                                            location /devc/ {<br>
+                                            proxy_pass http://127.0.0.1:3003/devc/;<br>
+                                            sub_filter_once off;<br>
+                                            }
+                                        </code></div>-->
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="hr"><div></div></td>
+                        <td>
+                            <div>
+                                <ul class="desc">
+                                    <li><div class="title">Exemple de requêtes pour le serveur</div>
+                                        <div class="desc">Toutes les requetes envoyées depuis cette page doivent contenir
+                                            <code>format=json</code>, par exemple : <code>req=spec&format=json</code></div>
+                                    </li>
+                                    <li><div class="title">Authentification :</div>
+                                        <div class="desc"><b>Bientot : </b>Trois niveaux d'authentification :<ol>
+                                            <li>
+                                                upload, API, web & fichiers
+                                            </li>
+                                            <li>
+                                                API, web & fichiers
+                                            </li>
+                                            <li>
+                                                web & fichiers
+                                            </li>
+                                        </ol>
+                                        </div>
+                                    </li>
+                                    <li><div class="title">État du serveur :</div>
+                                        <table>
+                                            <tr><td><span>Connexions</span></td>
+                                                <td><span>actives :</span></td>
+                                                <td><span id="status0">X</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="desc">Serveur : </div>
+                                                </td>
+                                                <td>
+                                                    <div class="desc">accepts</div>
+                                                </td>
+                                                <td>
+                                                    <div class="desc">handled</div>
+                                                </td>
+                                                <td>
+                                                    <div class="desc">requests</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                            <tr>
+                                                <td>
+
+                                                </td>
+                                                <td>
+                                                    <span id="status1">X</span>
+                                                </td>
+                                                <td>
+                                                    <span id="status2">X</span>
+                                                </td>
+                                                <td>
+                                                    <span id="status3">X</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="desc">Reading : </div>
+                                                </td>
+                                                <td><span id="status4">X</span><span class="desc"> Writing</span></td>
+                                                <td><span id="status5">X</span><span class="desc"> Waiting</span></td>
+                                            </tr>
+                                        </table>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="hr"><div></div></td>
+                        <td>
+                            <div class="dropzone-container">
+                                <form action="/upload/" class="dropzone"></form>
+                            </div>
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+            <hr><p>Sur une carte  :</p>
+            <div>Tous les commerces : <a href="/map.html">ici</a></div>
+            <div>La requête <code>req=path&format=json</code> : <a href="/path.html">ici</a></div>
+            <hr>
+            <div id="api-sender">
+                <p>Envoyer des requêtes à l'api :</p>
+                <table>
+                    <tr>
+                        <td>
+                            <div class="api-zone">
+                                <textarea id="api-form"  class="api-form" placeholder="Requête"></textarea>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="api-response" class="api-zone">
+                                <div class="api-form" ></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="api-submit" type="button" value="Envoyer">
+                        </td>
+                        <td>
+                            <div id="api-port">Envoyer à :
+                                <input type="radio" name="group2" value="api" checked> api |
+                                <input type="radio" name="group2" value="deva"> deva |
+                                <input type="radio" name="group2" value="devb"> devb |
+                                <input type="radio" name="group2" value="devc"> devc
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

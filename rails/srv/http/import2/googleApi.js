@@ -307,7 +307,6 @@ function checkifok(current)
 	{
 		if(current[i].location_lat == "" || typeof current[i].location_lat == "undefined" || current[i].location_lng == "" || typeof current[i].location_lng == "undefined")
 		{
-			if (!dansArrayJSON(blacklist, current[i].siret))
 			tab.push(current[i]);	
 		}
 		
@@ -319,22 +318,7 @@ function checkifok(current)
 	
 }
 
-function dansArrayJSON(tab, siret)
-{
 
-	for(k = 0; k < tab.length; k++)
-	{
-		if(tab[k].siret == siret)
-		{
-			return true;	
-		}
-	}
-
-	return false;
-
-	
-	
-}
 
 
 

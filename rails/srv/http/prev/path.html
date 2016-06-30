@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        html, body { height: 100%; margin: 0; padding: 0; }
+        #map { height: 100%; }
+    </style>
+    <script type="application/javascript" src="static/js/jquery.js"></script>
+</head>
+<body>
+<div id="map"></div>
+<script type="text/javascript">
+
+        var map;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 48.112, lng: -1.685},
+                zoom: 14
+            });
+            $(function() {
+            $.ajax({
+                url: "https://rpoch.istic.univ-rennes1.fr/api/?req=path&format=json",
+                type: "GET",
+                dataType: "application/json",
+                success: function (response) {
+                    console.log(response);
+                },
+                error: function (xhr, status) {
+                    if (xhr.status == 200) {
+                        var _markers = JSON.parse(xhr.responseText);
+                        var flightPlanCoordinates = [];
+                        _markers = _markers.commerces;
+                        console.log(_markers);
+                        _markers.forEach(function (e, i) {
+                            $("#status" + i).text(e);
+                            var _coords = {lat:e.location_lat,lng:e.location_lng};
+                            flightPlanCoordinates.push(_coords);
+                            var _icon;
+                            if(i == 0) _icon = "http://www.google.com/mapfiles/dd-start.png";
+                            else if (i + 1 == _markers.length) _icon = "http://www.google.com/mapfiles/dd-end.png";
+                            new google.maps.Marker({
+                                position: _coords,
+                                map: map,
+                                icon : _icon,
+                                title: e.enseigne
+                            });
+                        });
+                        console.warn(flightPlanCoordinates);
+                        var flightPath = new google.maps.Polyline({
+                            path: flightPlanCoordinates,
+                            geodesic: true,
+                            strokeColor: '#00f',
+                            strokeOpacity: 1.0,
+                            strokeWeight: 2
+                        });
+
+                        flightPath.setMap(map);
+
+                        window.tmp = xhr.responseText;
+                    }
+                    else {
+                        console.log("Erreur serveur : " + xhr.status + " (" + xhr.statusText + ")")
+                    }
+                    console.warn(status, xhr);
+                }
+            });
+            });    }
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnWR-gv9aq6L9e9bN8L6xunVOLastIf8k&callback=initMap">
+</script>
+</body>
+</html>

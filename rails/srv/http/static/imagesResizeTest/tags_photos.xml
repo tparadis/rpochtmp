@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parcours>
+<etablissement nom = "Al diwan">
+<tags langue ="fr">
+<tag>restaurant<tag>
+<tag>resto<tag>
+<tag>liban<tag>
+<tag>libanais<tag>
+<tag>cuisine libanais<tag>
+<tag>taboulé<tag>
+<tag>grillades<tag>
+<tag>caviar d'aubergines<tag>
+<tag>boeuf<tag>
+<tag>boulettes de boeuf<tag>
+<tag>végétarien<tag>
+<tag>cuisine végétarienne<tag>
+</tags>
+<tags langue ="en">
+<tag>restaurant<tag>
+<tag>lebanon<tag>
+<tag>libanese<tag>
+<tag>lebanaise cuisine<tag>
+<tag>meat<tag>
+<tag>vegetarian<tag>
+<tag>vegetarian cuisine<tag>
+</tags>
+<tags langue ="es">
+<tag>restaurante<tag>
+<tag>líbano<tag>
+<tag>libanés<tag>
+<tag>cocina libanesa<tag>
+<tag>tabule<tag>
+<tag>grillades<tag>
+<tag>caviar de berenjena<tag>
+<tag>carne de res<tag>
+<tag>albóndigas de res<tag>
+<tag>vegetariano<tag>
+<tag>cocina vegetariana<tag>
+</tags>
+</etablissement>
+<etablissement nom = "Augustin">
+<tags langue ="fr">
+<tag>boulangerie<tag>
+<tag>patisserie<tag>
+<tag>pain<tag>
+<tag>baguette<tag>
+<tag>pain d'olives<tag>
+<tag>pain au chocolat<tag>
+<tag>pain tomates basilique<tag>
+<tag>brioche<tag>
+<tag>sandwich<tag>
+
+</tags>
+<tags langue ="en">
+<tag>bakery<tag>
+<tag>baguette<tag>
+<tag>olive bread<tag>
+<tag>chocolate bread<tag>
+<tag>sandwich<tag>
+</tags>
+<tags langue ="es">
+<tag>panadería<tag>
+<tag>pastelería<tag>
+<tag>pan<tag>
+<tag>baguette<tag>
+<tag>pan de olivas<tag>
+<tag>pan de chocolate<tag>
+<tag>sandwich<tag>
+</tags>
+</etablissement>
+<etablissement nom = "Bahon-Rault">
+<tags langue ="fr">
+<tag>papeterie<tag>
+<tag>imprimerie<tag>
+<tag>imprimer<tag>
+<tag>matériel scolaire<tag>
+<tag>fournitures scolaires<tag>
+<tag>bureau<tag>
+<tag>fourniture bureau<tag>
+<tag>matériel art<tag>
+<tag>matériel art graphique<tag>
+<tag>matériel art plastique<tag>
+<tag>cartouches recyclés<tag>
+<tag>recyclage de cartouches<tag>
+</tags>
+<tags langue ="en">
+<tag>school supplys<tag>
+<tag>materials graphic arts<tag>
+<tag>materials plastic arts<tag>
+<tag>office supplies<tag>
+<tag>recycled cartridges<tag>
+</tags>
+<tags langue ="es">
+<tag>papelería<tag>
+<tag>impresión<tag>
+<tag>material escolar<tag>
+<tag>material de oficina<tag>
+<tag>material artes gráficas<tag>
+<tag>material artes plásticas<tag>
+<tag>reciclaje de cartuchos<tag>
+</tags>
+</etablissement>
+<etablissement nom = "Le bonhomme de Bois">
+<tags langue ="fr">
+<tag>cadeaux enfants<tag>
+<tag>maison de poupées<tag>
+<tag>maisons de poupées<tag>
+<tag>train en bois<tag>
+<tag>jouet<tag>
+<tag>jouets<tag>
+<tag>jouets traditionnel<tag>
+</tags>
+<tags langue ="en">
+<tag>children gifts<tag>
+<tag>doll house<tag>
+<tag>doll houses<tag>
+<tag>wood train<tag>
+<tag>toy<tag>
+<tag>toys<tag>
+<tag>traditional toys<tag>
+</tags>
+<tags langue ="es">
+<tag>juguetes para niños<tag>
+<tag>casa de muñecas<tag>
+<tag>casas de muñecas<tag>
+<tag>tren de juguete<tag>
+<tag>tren de madera<tag>
+<tag>juguete<tag>
+<tag>juguetes<tag>
+<tag>juguetes tradicionales<tag>
+</tags>
+</etablissement>
+<etablissement nom = "Café Babylone">
+<tags langue ="fr">
+<tag>restaurant<tag>
+<tag>cafe<tag>
+<tag>vin<tag>
+<tag>vin rouge<tag>
+<tag>dejéuner<tag>
+<tag>éspace extérieur<tag>
+<tag>entrecôte à la plancha<tag>
+<tag>andouillette<tag>
+<tag>noix de Saint-Jacques<tag>
+<tag>salade<tag>
+<tag>poulet<tag>
+<tag>boeuf<tag>
+</tags>
+<tags langue ="en">
+<tag>wine<tag>
+<tag>red wine<tag>
+<tag>lunch<tag>
+<tag>chicken<tag>
+<tag>steak<tag>
+<tag>coffee<tag>
+<tag>english<tag>
+</tags>
+<tags langue ="es">
+<tag>restaurante<tag>
+<tag>café<tag>
+<tag>vino<tag>
+<tag>vino tinto<tag>
+<tag>almuerzo<tag>
+<tag>nuez de San-Jacques<tag>
+<tag>ensalada<tag>
+<tag>pollo<tag>
+<tag>carne<tag>
+</tags>
+</etablissement>
+<etablissement nom = "Caramel coiffure">
+<tags langue ="fr">
+<tag>coiffeur<tag>
+<tag>exclusivement femmes<tag>
+<tag>ongles<tag>
+<tag>onglerie<tag>
+<tag>shampoign<tag>
+<tag>couleur soin<tag>
+<tag>méches<tag>
+<tag>permanente<tag>
+<tag>tarif etudiant<tag>
+<tag>32 EUR - 250 EUR<tag>
+</tags>
+<tags langue ="en">
+<tag>hairdresse<tag>
+<tag>women only<tag>
+<tag>nails<tag>
+<tag>shampoo<tag>
+<tag>student price<tag>
+<tag>32 EUR - 250 EUR<tag>
+</tags>
+<tags langue ="es">
+<tag>peluquería<tag>
+<tag>manicura<tag>
+<tag>manicure<tag>
+<tag>shampoo<tag>
+<tag>tintura<tag>
+<tag>coloración<tag>
+<tag>rayitos<tag>
+<tag>permanente<tag>
+<tag>tarifa estudiantil<tag>
+<tag>32 EUR - 250 EUR<tag>
+</tags>
+</etablissement>
+<etablissement nom = "Cinéma Arvor">
+<tags langue ="fr">
+<tag>cinéma<tag>
+<tag>culture<tag>
+<tag>culturel<tag>
+<tag>salle de proximité<tag>
+<tag>films d'auteur<tag>
+<tag>tarif réduite<tag>
+<tag>tarif étudiant<tag>
+</tags>
+<tags langue ="en">
+<tag>cinema<tag>
+<tag>culture<tag>
+<tag>cultural<tag>
+<tag>non commercial movies<tag>
+<tag>student reductions<tag>
+</tags>
+<tags langue ="es">
+<tag>cine<tag>
+<tag>cultura<tag>
+<tag>cultural<tag>
+<tag>cine arte<tag>
+<tag>tarifa reducida<tag>
+<tag>tarifa estudiantil<tag>
+</tags>
+</etablissement>
+<etablissement nom = "Cinq - Design ArtShop">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "Copyright 35">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "Crazy Republic">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "La Harpe Noire">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "Destination Chocolat">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "The Original Fish&Chips by MissDom">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "Francoise Chatelier Coiffure">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "Galerie Leterreau">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "Goût & Gourmandise">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "Hôtel des Lices">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "ICR fitness club">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "Kusmi Tea">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "L'Aparté">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "L'Artiste Assoiffé">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "Le capitole">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "Le Bottier Rennais">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "Le Tire Bouchon">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "Librairie Planète Io">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "Orin Gilles Luthier">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "OCD">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "La Lupa">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "Pressing des Lices">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "Quincaillerie Rennaise">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "Le Khalifa">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "Racine Exotique">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+<etablissement nom = "La Taverne Grecque">
+<tags langue ="fr">
+<tag><tag>
+</tags>
+<tags langue ="en">
+<tag><tag>
+</tags>
+<tags langue ="es">
+<tag><tag>
+</tags>
+</etablissement>
+</parcours>

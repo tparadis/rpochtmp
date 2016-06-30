@@ -1,0 +1,89 @@
+html,body{
+	margin:0;
+	padding:0;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	background-color:white;
+	background-size:cover;
+}
+
+#topbanner{
+	position:absolute;
+	width:100%;
+	height:30px;
+	background-color:#3a424c;
+	color:white;
+}
+#topbanner span
+{
+	position:absolute;
+	left:10px;
+	top:5px;
+}
+#topbanner a, #topbanner a:visited{
+	
+	color:white;
+}
+#midbloc{
+	position:absolute;
+	width:391px;
+	height:95px;
+	left:50%;
+	top:50%;
+	margin-left:-200px;
+	margin-top:-50px;
+	color:white;
+	font-size:24px;
+	cursor:pointer;
+}
+#midbloc #dlicon{
+	position:absolute;
+	bottom:10px;
+	left:30px;
+	opacity:0;
+}
+#midblocBG{
+	position:absolute;
+	width:1203px;
+	height:161px;
+	left:50%;
+	top:50%;
+	margin-left:-601px;
+	margin-top:-80px;
+	background-image:url("images/background.jpg");
+	font-size:24px;
+}
+#creators{
+	position:absolute;
+	top:50%;
+	margin-top:-150px;
+    margin-left:15px;
+	color:#767e8a;
+}
+
+#creators li{
+	cursor:pointer;
+}
+.info{
+	font-size:20px;
+}
+
+#news{
+	position:absolute;
+	width:100%;
+	height:130px;
+	left:0%;
+	bottom:0px;
+	border-top:1px solid black;
+	color:#3a424c;
+	padding-left:10px;
+	font-size:24px;
+	cursor:pointer;
+}
+#news .feed{
+	font-size:18px;
+}
+
+
+

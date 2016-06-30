@@ -5,20 +5,15 @@
     <%= form_for(:updated, url: user_path(@user), method: :patch ) do |f| %>
       <%= render 'shared/error_messages' %>
 
-
 	  <% @tags = Sscategorie.all  %>
+	  
 
-      <%= f.label 'Enseigne' %>
-      <%= f.text_field :enseigne, value: @shop.enseigne, class: 'form-control' %>
-
-      <%= f.label 'Numéro de rue' %>
-      <%= f.text_field :street_num, value: @shop.street_num, class: 'form-control' %>
-
-      <%= f.label 'Nom de rue' %>
-      <%= f.text_field :street_name, value: @shop.street_name, class: 'form-control' %>
-	
+      <%= f.label 'Description' %>
+      <%= f.text_area :description, value: @shop.description, class: 'form-control' %>
+	  <br/>
+	 
       <%= f.label 'Catégorie 1' %><br/>
-      <%= f.collection_select :tag0, @tags.order(:nom), :id, :nom, {:selected => @shop.tag0 || 0}   %>
+      <%= f.collection_select :tag0, @tags0.order(:nom), :id, :nom, {:selected => @shop.tag0 || 0}   %>
 	  <br/>
 
       <%= f.label 'Catégorie 2' %><br/>
@@ -32,11 +27,21 @@
       <%= f.collection_select :tag3, @tags.order(:nom), :id, :nom, {:selected => @shop.tag3 || 0}   %>
 	  <br/>
 
-      <%= f.label 'Description' %>
-      <%= f.text_area :description, value: @shop.description, class: 'form-control' %>
-
       <%= f.label 'Facebook' %>
       <%= f.text_field :facebook, value: @shop.facebook, class: 'form-control' %>
+	  
+	  <%= f.label 'Instagram' %>
+      <%= f.text_field :instagram, value: @shop.instagram, class: 'form-control' %>
+	 
+	  <%= f.label 'Website' %>
+      <%= f.text_field :website, value: @shop.website, class: 'form-control' %>
+	 
+	  <%= f.label 'Telephone' %>
+      <%= f.text_field :phone_num, value: @shop.phone_num, class: 'form-control' %>
+	 
+	 <%= f.label 'Image' %>
+     <%= f.file_field :image, value: @shop.image, class: 'form-control' %>
+	  
 
 	  <%= f.label 'En solde ?' %><br/>
 	  <%= f.radio_button(:soldes, "1", {checked: @shop.soldes}) %>
@@ -44,6 +49,10 @@
 	  <%= f.radio_button(:soldes, "0", {checked: !@shop.soldes}) %>
 	  <%= f.label "Non" %>
 
+	  <div id="horaires">
+	  <label for="updated_horaires">Horaires</label><br/>
+	  <%= f.hidden_field :horaires, :value =>  @shop.horaires  %>
+	  </div>
 
       <%= f.submit "Confirmer", class: 'btn-block btn btn-primary' %>
 
@@ -54,3 +63,43 @@
 
   </div>
 </div>
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/horaires.js"></script>
+<script>
+
+$(document).ready(function(){
+
+	//Affichage de l'image du magasin en question
+
+	var fichier = basename($("#updated_image").attr("value"));
+
+	$("body").append("<div id='apercu' style='position:fixed;right:5px;top:60px; width: 200px; height: auto;border:1px solid black;background-color:white;'>"
+	+ "<span>Votre image :</span>"
+	+ "<img src=\"https://rpoch.istic.univ-rennes1.fr/static/images/"+fichier+" \" style='width:100%; height:auto; margin-top:10px'/>"
+	+ "</div>");
+	
+	$("#apercu").on("mouseover", function(){
+		
+		$(this).stop().animate({"width":"800px"}, 200);	
+		
+	})
+
+	$("#apercu").on("mouseleave", function(){
+		
+		$(this).stop().animate({"width":"200px"}, 200);	
+		
+	})
+
+
+
+
+	
+});
+
+function basename(str){
+	
+	return new String(str).substring(str.lastIndexOf('/') + 1);
+		
+}
+
+</script>

@@ -91,6 +91,13 @@ input[type="password"]
 	background-repeat:no-repeat;
 	background-position:left center;
 }
+input#token
+{
+	background-image:url("images/token.png");
+	background-size:15px 15px;
+	background-repeat:no-repeat;
+	background-position:left center;
+}
 input[type="submit"]
 {
 	background-color:#008b87;	
