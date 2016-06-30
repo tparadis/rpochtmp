@@ -1,25 +1,26 @@
 Rails.application.routes.draw do
 
-
-
   root 'welcome#index'
-  #root "session#new"
 
   #scope '/api' do
   #	get '/', to: "welcome#index"
-  	resources :tags
-  	resources :sscategories
-  	resources :categories
-  	resources :parcours_predefinis
-  	resources :commerces
-  	resources :resultats
+  	#resources :commerces
   #end
 
   #Routes pour le BACK-OFFICE
   scope '/bo' do
-  	
+	resources :phoneids
+	resources :tutos
+  	resources :notes
+  	resources :blacklists
+  	resources :tokens
   	resources :users
   	resources :promotions
+	resources :categories
+	resources :sscategories
+	resources :resultats
+	resources :parcours_predefinis
+	resources :commerces
   	get '/', to: "sessions#new"
 	get 	'accounts' => 'accounts#index'
 	post 	'accounts/edituser'
@@ -31,10 +32,16 @@ Rails.application.routes.draw do
   	get     'contact' => 'main#contact'
   	get     'news'    => 'main#news'
   	get 	'statmap' => 'statmap#index'
-  	get    'signup'   => 'users#new'
-  	get    'login'    => 'sessions#new'
-  	post   'login'    => 'sessions#login'
-  	delete 'logout'   => 'sessions#logout'
+	get 	'newcomm' => 'users#newcomm', :as => :newcomm
+	post    'createcomm'   => 'users#createcomm', :as => :createcomm
+  	get     'signup'   => 'users#new'
+	get	    'resultats' => 'resultats#index'
+  	get     'login'    => 'sessions#new'
+  	post    'login'    => 'sessions#login'
+  	delete  'logout'   => 'sessions#logout'
+	get 	'tokens/changemdp' => 'tokens#changemdp', :as => :changemdp
+	post    'tokens/reinit' => 'tokens#reinit', :as => :reinit
+	post 	'add_uuid_to_user' => 'users#add_uuid_to_user', :as => :add_uuid_to_user
 
 	get 'statistique/:id' => 'statistique#show', as: 'statistique'
 

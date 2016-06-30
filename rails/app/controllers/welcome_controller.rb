@@ -8,7 +8,11 @@ class WelcomeController < ApplicationController
 
 	
 
-  	params.require(:req)
+  	#params.require(:req)
+
+	if !params.has_key?(:req)
+		redirect_to 'https://rpoch.istic.univ-rennes1.fr/api/bo'
+	end
 		
 	if request.headers["CONTENT_TYPE"] == "application/json" || (params.has_key?(:format) && params[:format]=="json")
 		if params[:req] == "path"
@@ -28,7 +32,13 @@ class WelcomeController < ApplicationController
 		end
 
 		if params[:req] == "spec"
-			if params.has_key?(:id) && params.has_key?(:type) && params[:type] == "coord"
+			if params.has_key?(:nom) && params[:nom] != ""
+
+				#Retourne les infos du magasin en se basant sur le nom
+				@y = Interface.getCommerceByNom(params[:nom])
+				render json: {:commerce => @y}
+
+			elsif params.has_key?(:id) && params.has_key?(:type) && params[:type] == "coord"
 
 					@y = Interface.getCommerceCoordByID(params[:id])
 					render json: { :commerce => @y }
@@ -43,6 +53,60 @@ class WelcomeController < ApplicationController
 				render json: { :commerce => Interface.getSpecificCommerce}
 			end
 		end
+
+		#Requetes qui permettent de voir si les UUID sont valides ou non
+		if params[:req] == "verifyuuid" && params.has_key?(:uuid)
+
+			uuid = params[:uuid]
+			begin
+				c = Commerce.where("id = ?", uuid).first
+				err = ""
+
+				if c.blank?
+					err = "Erreur, aucun commerce n'est répertorié avec cet identifiant..."
+				elsif !c.user_id.blank?
+					err = "Ce commerce est déja affilié à un utilisateur..."
+				else
+					err = "ok"
+				end
+
+
+
+			rescue
+				err = "L'identifiant indiqué n'a pas le bon format. Auriez-vous oublié un caractère ? Avez-vous bien mis les tirets ?"
+			end
+			
+			#Volontairement nous faisons un délai de 2 secondes pour limiter les attaques par essais successifs
+			sleep 2
+			render json: {:err => err}
+
+		end
+
+		#Permet de voir si un utilisateur avec ce mail existe
+		if params[:req] == "verifyemail" && params.has_key?(:email)
+
+			err = ""
+
+			blank = User.where("email = ?",params[:email]).first.blank?
+			if blank
+		
+				#C'est ok, le mail n'existe pas
+				err = "ok"
+
+			else
+
+				err = "Erreur, un utilisateur existe deja avec ce mail."
+
+			end
+
+			#on fait volontairement attendre la requete de 3 secondes pour eviter les attaques
+			sleep 3
+			render json: {:err => err}	
+
+		
+		end
+
+
 
 		#requete qui va permettre de signaler des trucs de la part d'un utilisateur
 		if params[:req] == "signaler"
@@ -59,7 +123,66 @@ class WelcomeController < ApplicationController
 		if params[:req] == "rand"
 			render json: { :commerce => Interface.getRandomCommerce}
 		end
+		#Obtenir les textes des tutoriaux
+		if params[:req] == "tutos" && params.has_key?(:page)
+
+			@y = Tuto.where("page = ?", params[:page]).first
+			render json: @y
+
+		elsif params[:req] == "tutos"
+			@y = Tuto.all
+			render json: @y
+		end
+
+		#Recuperer un uuid d'identifiant
+		if params[:req] == "new"
+
+
+			@y = Phoneid.new
+			@y.info = "utilisateur réel"
+			if !@y.save
+				
+				render json: {:code => "error"}
+
+			end
+			
+			render json: @y
+
+
+
+		end
+
+		if params[:req] == "userExists" && params.has_key?(:id)
+
+			@y = Phoneid.find_by(id: params[:id])
+			render json: !@y.blank?
 		
+		end
+		
+		#Retourne un magasin Random lorsque l'utilisateur veut un magasin avec des tags précis
+		if params[:req] == "randomNew" && params.has_key?(:tags)
+
+			tags = eval(params[:tags])
+
+			@y = Interface.randomNew(tags)
+			render json: @y	
+
+		end
+
+
+		#requete sur les horaires
+		if params[:req] == "ouvert" && params.has_key?(:id) && params[:id] != ""
+		
+			@y = Interface.ouvertAuj?(params[:id])
+			render json: @y
+
+		end
+
+
+
+
+
+
 		if params[:req] == "predef"
 
 			if params.has_key?(:nom) && params[:nom] != ""
@@ -75,8 +198,8 @@ class WelcomeController < ApplicationController
 		if params[:req] == "allcat"
 			i = Interface.getCategories
 			j = Interface.getSSCategories
-			k = Interface.getTags
-			render json: {:sizecat => i.size(), :sizesscat => j.size(), :sizetags => k.size(), :cat => i, :sscat => j, :tags => k  }		
+			#k = Interface.getTags
+			render json: {:sizecat => i.size(), :sizesscat => j.size(), :cat => i, :sscat => j}#, :tags => k  }		
 		end
 		if params[:req] == "cat"
 			@y = Interface.getCategories
@@ -96,19 +219,39 @@ class WelcomeController < ApplicationController
 			render json: {:size => @y.size(), :tags => @y}
 		end
 
-		# Debut test 
+		if params[:req] == "sscatAll"
+			@y = Sscategory.order("nom").all
+			render json: {:size => @y.size(), :sscategories => @y}
+		end
+
+		# Debut test
+		# On rajoute un parametre pour avoir des items plus précis !
 		if params[:req] == "yolo"
-=begin
-			@y = Algo.getDynamicPath(params[:coord_dep_lat].to_f,params[:coord_dep_lng].to_f,
-									 params[:coord_arr_lat].to_f,params[:coord_arr_lng].to_f,
-									 params[:dist_max].to_f, params[:commerces])
-=end
+			
 			@y = Algo.getNewPath(params[:coord_dep_lat].to_f,params[:coord_dep_lng].to_f,
 									 params[:coord_arr_lat].to_f,params[:coord_arr_lng].to_f,
 									 params[:dist_max].to_f, params[:commerces])
-			# @y = Interface.getComCT(13, 48.117, 48.11017, -1.6866, -1.676)
+			
+			#@y = Interface.replace_if_necessary(@y)	
+
+			
 			render json: { :tags => @y}
+
 		end
+
+		if params[:req] == "yoloR"
+			
+			@y = Algo.getNewPath(params[:coord_dep_lat].to_f,params[:coord_dep_lng].to_f,
+									 params[:coord_arr_lat].to_f,params[:coord_arr_lng].to_f,
+									 params[:dist_max].to_f, params[:commerces])
+			
+			@y = Interface.replace_if_necessary(@y,eval(params[:tags]))	
+			
+			render json: { :tags => @y}
+
+		end
+
+
 		if params[:req] == "yolo_inter"
 			@y = Algo.getInterPath(params[:coord_dep_lat].to_f,params[:coord_dep_lng].to_f,
 									 params[:coord_arr_lat].to_f,params[:coord_arr_lng].to_f,
@@ -148,8 +291,20 @@ class WelcomeController < ApplicationController
 
 		end
 
-		#Permet d'afficher les suggestions de magasins dont l'enseigne contient deb
-		if params[:req] == "suggestion" && params[:deb] && params[:deb] != ""
+		if params[:req] == "aleatoireR" && params.has_key?(:tags) && params[:tags] != "" && params.has_key?(:uuid) && params[:uuid] != ""
+			@y = Interface.getAleatoireR(eval(params[:tags]), params[:uuid])
+
+			render json: {:magasin => @y}
+
+		end
+
+
+		if params[:req] == "suggestion" && params.has_key?(:deb) && params.has_key?(:indice) && params[:indice] != "" && params["deb"] != ""
+			@y = Interface.getSuggestionIndice(params[:deb], params[:indice].to_i)
+			render json: {:size => @y.size, :magasins => @y }
+
+
+		elsif params[:req] == "suggestion" && params.has_key?(:deb) && params[:deb] != ""
 
 			@y = Interface.getSuggestion(params[:deb])
 			render json: {:size => @y.size, :magasins => @y }
@@ -157,6 +312,25 @@ class WelcomeController < ApplicationController
 		end
 		# Fin test
 
+		if params[:req] == "stats" && params.has_key?(:id) && params[:id] != ""
+			@y = Interface.incrStatMag(params[:id])
+			render json: "ok"
+		end
+		
+		if params[:req] == "statSSCat" && params.has_key?(:idcat) && params[:idcat] != ""
+			@y = Interface.incrStatSSCat(params[:idcat])
+			render json: {:status => "ok"}
+		end
+		if params[:req] == "statCat" && params.has_key?(:idcat) && params[:idcat] != ""
+			@y = Interface.incrStatCat(params[:idcat])
+			render json: {:status => "ok"}
+		end
+
+		#Requete pour les appréciations
+		if params[:req] == "addNote" && params.has_key?(:commentaire) && params.has_key?(:idtel) && params[:idtel] != "" && params.has_key?(:commerce) && params.has_key?(:note) 
+			@y = Interface.addNote(params[:note], params[:commerce], params[:commentaire], params[:idtel])
+			render json: @y
+		end
 	else
 
 		@y = Algo.getPath(0)

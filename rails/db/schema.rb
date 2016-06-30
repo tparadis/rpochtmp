@@ -11,20 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323092620) do
+ActiveRecord::Schema.define(version: 20160628125700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
-  create_table "categories", force: :cascade do |t|
-    t.string   "nom"
+  create_table "blacklists", force: :cascade do |t|
+    t.string   "siret"
+    t.string   "enseigne"
+    t.string   "rasoc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "nom"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "reference"
     t.text     "en"
     t.text     "esp"
     t.text     "de"
+    t.text     "ko"
+    t.text     "jap"
+    t.boolean  "visible",    default: true
+    t.integer  "stat",       default: 0
   end
 
   create_table "commerces", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
@@ -62,34 +74,51 @@ ActiveRecord::Schema.define(version: 20160323092620) do
     t.float    "vp_ne_lng"
     t.float    "vp_sw_lat"
     t.float    "vp_sw_lng"
-    t.datetime "db_add_date",      default: '2016-03-21 14:01:36', null: false
-    t.text     "image",            default: "noimage.jpg"
+    t.datetime "db_add_date",                  default: '2016-03-21 14:01:36', null: false
+    t.text     "image",                        default: "noimage.jpg"
     t.integer  "tag0"
     t.integer  "tag1"
     t.integer  "tag2"
     t.integer  "tag3"
     t.text     "description"
     t.text     "facebook"
-	t.text     "instagram"
-	t.text     "website"
     t.integer  "nbvisites"
     t.integer  "user_id"
+    t.boolean  "soldes",                       default: false
+    t.string   "website",          limit: 255
+    t.string   "instagram",        limit: 255
+    t.json     "horaires",                     default: {}
   end
 
   add_index "commerces", ["user_id"], name: "index_commerces_on_user_id", using: :btree
+
+  create_table "notes", force: :cascade do |t|
+    t.integer  "note"
+    t.text     "commerce"
+    t.text     "commentaire"
+    t.string   "idtel"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "parcours_predefinis", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.string   "image"
-    t.uuid     "commerces",                array: true
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.uuid     "commerces",                                array: true
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.text     "en"
     t.text     "esp"
     t.text     "de"
     t.text     "fr"
-	t.boolean  "visible", 	  default: false
+    t.boolean  "visible",     default: false
+  end
+
+  create_table "phoneids", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string   "info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "promotions", force: :cascade do |t|
@@ -114,7 +143,7 @@ ActiveRecord::Schema.define(version: 20160323092620) do
 
   create_table "resultats", force: :cascade do |t|
     t.uuid     "magasin"
-    t.string   "type"
+    t.string   "objet"
     t.text     "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -122,14 +151,16 @@ ActiveRecord::Schema.define(version: 20160323092620) do
 
   create_table "sscategories", force: :cascade do |t|
     t.string   "nom"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "catparent"
     t.text     "en"
     t.text     "esp"
     t.text     "de"
     t.text     "ko"
     t.text     "jap"
+    t.integer  "stat",       default: 0
+    t.boolean  "ssmenu",     default: false
   end
 
   create_table "stats", force: :cascade do |t|
@@ -146,6 +177,31 @@ ActiveRecord::Schema.define(version: 20160323092620) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tokenmails", force: :cascade do |t|
+    t.string   "mail"
+    t.string   "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tokens", force: :cascade do |t|
+    t.string   "mail"
+    t.string   "valeur"
+    t.boolean  "valide"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tutos", force: :cascade do |t|
+    t.string   "fr"
+    t.string   "de"
+    t.string   "esp"
+    t.string   "en"
+    t.string   "page"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "username"
@@ -154,14 +210,6 @@ ActiveRecord::Schema.define(version: 20160323092620) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-  end
-
-  create_table "stats", force: :cascade do |t|
-    t.uuid     "commerce"
-    t.datetime "date_visite"
-    t.string   "parcours"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
   end
 
   add_foreign_key "commerces", "users"

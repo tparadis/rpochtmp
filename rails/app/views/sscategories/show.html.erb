@@ -7,23 +7,25 @@
 
 <p>
   <strong>Catparent:</strong>
-  <%= @sscategory.catparent %>
+  <%= Categorie.find(@sscategory.catparent.to_i).nom %>
 </p>
+<p>
   <strong>En:</strong>
   <%= @sscategory.en %>
 </p>
+<p>
   <strong>Esp:</strong>
   <%= @sscategory.esp %>
 </p>
+<p>
   <strong>De:</strong>
   <%= @sscategory.de %>
 </p>
-  <strong>Ko:</strong>
-  <%= @sscategory.ko %>
+<p>
+	<strong>Sous-menu</strong>
+	<%= @sscategory.ssmenu  %>
 </p>
-  <strong>Jap:</strong>
-  <%= @sscategory.jap %>
-</p>
+
 
 <%= link_to 'Edit', edit_sscategory_path(@sscategory) %> |
 <%= link_to 'Back', sscategories_path %>

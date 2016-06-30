@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Textes des Tutoriels</h1>
+<h5>Editez ici les textes qui apparaitrons pour les tutoriels lors de la première utilisation de l'application. Ceci apparaitra bien sur chez tous les utilisateurs de Rennes en Poche</h5><br/><br/>
+
+<table class="table tabled-bordered tabl-hover table-striped" >
+  <thead>
+    <tr>
+      <th>Fr</th>
+      <th>De</th>
+      <th>Esp</th>
+      <th>En</th>
+      <th>Page</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tutos.each do |tuto| %>
+      <tr>
+        <td><%= tuto.fr %></td>
+        <td><%= tuto.de %></td>
+        <td><%= tuto.esp %></td>
+        <td><%= tuto.en %></td>
+        <td><%= tuto.page %></td>
+        <td><%= link_to 'Show', tuto %></td>
+        <td><%= link_to 'Edit', edit_tuto_path(tuto) %></td>
+        <td><%= link_to 'Destroy', tuto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tuto', new_tuto_path %>

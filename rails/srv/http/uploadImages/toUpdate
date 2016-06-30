@@ -1,1 +1,0 @@
-update commerces set image='COIFFEUR TEST_1463.jpg' where enseigne = 'COIFFEUR TEST' and line= '1463';

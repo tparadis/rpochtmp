@@ -1,16 +1,22 @@
 class SscategoriesController < ApplicationController
   
-  before_action :set_sscategory, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /sscategories
   # GET /sscategories.json
   def index
     @sscategories = Sscategory.order('nom')
+	#on calcule le max des vues
+	@max = Sscategory.sum(:stat).to_i
+	if @max == 0
+		@max = 1
+	end
   end
 
   # GET /sscategories/1
   # GET /sscategories/1.json
   def show
+  	@sscategory = Sscategory.find(params[:id])
   end
 
   # GET /sscategories/new
@@ -20,6 +26,7 @@ class SscategoriesController < ApplicationController
 
   # GET /sscategories/1/edit
   def edit
+  	@sscategory = Sscategory.find(params[:id])
   end
 
   # POST /sscategories
@@ -41,6 +48,7 @@ class SscategoriesController < ApplicationController
   # PATCH/PUT /sscategories/1
   # PATCH/PUT /sscategories/1.json
   def update
+  	@sscategory = Sscategory.find(params[:id])
     respond_to do |format|
       if @sscategory.update(sscategory_params)
         format.html { redirect_to @sscategory, notice: 'Sscategory was successfully updated.' }
@@ -55,6 +63,7 @@ class SscategoriesController < ApplicationController
   # DELETE /sscategories/1
   # DELETE /sscategories/1.json
   def destroy
+  	@sscategory = Sscategory.find(params[:id])
     @sscategory.destroy
     respond_to do |format|
       format.html { redirect_to sscategories_url, notice: 'Sscategory was successfully destroyed.' }
@@ -70,6 +79,6 @@ class SscategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sscategory_params
-      params.require(:sscategory).permit(:nom, :catparent, :en, :esp, :de, :jap, :ko)
+      params.require(:sscategory).permit(:nom, :catparent, :en, :esp, :de, :ssmenu)
     end
 end

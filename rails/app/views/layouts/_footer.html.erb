@@ -4,6 +4,9 @@
       <li><%= link_to "A propos", about_path %></li>
       <li><%= link_to "Nous contacter", contact_path %></li>
       <li><%= link_to "News", news_path %></li>
+	  <% if is_admin? %>
+		<%= render 'layouts/footer/admin' %>
+	  <% end %>
     </ul>
   </nav>
 </footer>

@@ -11,7 +11,6 @@ class StatistiqueController < ApplicationController
 	when 'promoted'
 		
 		@shops = Commerce.where(user_id: @user.id)
-
 	when 'basic'
 
 	when 'admin'

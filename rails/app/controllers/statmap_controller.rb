@@ -1,4 +1,7 @@
 class StatmapController < ApplicationController
+  
+  before_action :require_admin, only: [:index, :show, :edit, :update, :destroy]
+  
   def index
 
 		#retourne les coordonnees de tous les points qui ont ete visites

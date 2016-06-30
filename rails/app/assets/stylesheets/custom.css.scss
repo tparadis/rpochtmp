@@ -4,6 +4,8 @@
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
+$bleucanard : #008B87;
+
 
 /* universal */
 
@@ -71,9 +73,11 @@ p {
     letter-spacing: -1px;
     padding: 12px;
     font-weight: bold;
+	font-family:'Arial';
     &:hover {
         color: white;
         text-decoration: none;
+		background-color:#00ADA8;
     }
 }
 
@@ -86,7 +90,9 @@ footer {
     border-top: 2px solid $gray-medium-light;
     color: $gray;
     a {
-        color: $gray;
+		position:relative;
+        color: white;
+		top:3px;
         &:hover {
             color: $gray;
         }

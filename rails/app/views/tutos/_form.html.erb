@@ -1,0 +1,33 @@
+<%= form_for(@tuto) do |f| %>
+  <% if @tuto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tuto.errors.count, "error") %> prohibited this tuto from being saved:</h2>
+
+      <ul>
+      <% @tuto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fr %><br>
+    <%= f.text_field :fr %>
+  </div>
+  <div class="field">
+    <%= f.label :de %><br>
+    <%= f.text_field :de %>
+  </div>
+  <div class="field">
+    <%= f.label :esp %><br>
+    <%= f.text_field :esp %>
+  </div>
+  <div class="field">
+    <%= f.label :en %><br>
+    <%= f.text_field :en %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

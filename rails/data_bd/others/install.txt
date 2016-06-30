@@ -1,3 +1,0 @@
-1 - installer node (et npm)
-2 - npm install excel node-xlsx
-3 - npm install pg
