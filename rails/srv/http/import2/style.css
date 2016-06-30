@@ -66,6 +66,23 @@ html,body
 	left:0;
 	background-color:rgba(0,0,0,0.6);
 }
+#feedback
+{
+	position:absolute;
+	width:500px;
+	height:auto;
+	padding:15px;
+	left:50%;
+	top:20px;
+	margin-left:-265px;
+	text-align:center;
+	z-index:20;
+	background-color:white;
+}
+#feedback table tr td
+{
+	border:1px solid black;
+}
 #etape
 {
 	position:absolute;

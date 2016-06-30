@@ -7,6 +7,7 @@ $(document).ready(function(){
 	document.getElementById("files").addEventListener("change", readFile, false);
 	$("#error").hide();
 	$("#fondNoir").hide();
+	$("#feedback").hide();
 
 	//Eviter de quitter la page:
 	$(window).bind("beforeunload", function(e)

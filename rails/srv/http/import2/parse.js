@@ -8,7 +8,7 @@ var nouveauxCommerces = []; //liste des nouveaux commerces
 var toRemoveCommerces = []; //liste des commerces à supprimer
 var blacklist; //La Blacklist
 var blackListNew = []; //La liste des nouveaux commerces blacklistés
-
+var infoUpdate = {};
 
 function lancerParse(evt)
 {
@@ -88,6 +88,8 @@ function lancerParse(evt)
 		//présent dans la BDD actuelle, et dans commercesNew 
 		//les commerces présents dans le fichier xlsx
 		toRemoveCommerces = getCommercesToRemove(commercesBDD, commercesNew); //Liste des commerces à supprimer
+		
+		infoUpdate.lxlsx = commercesNew.length;
 
 		commercesNew = addNewValuesToCurrentObjectBDD(commercesBDD, commercesNew); //Liste des commerces existants mise à jour		
 			
@@ -95,6 +97,10 @@ function lancerParse(evt)
 
 		//Appel à Google maps
 		commercesNew = getAllCoords(commercesNew, nouveauxCommerces); //Permet de mettre à jour les nouveaux commerces
+		
+		//Ajout d'infos pretes à etre affichées
+		infoUpdate.toRemove = toRemoveCommerces.length;
+		infoUpdate.lbdd = commercesBDD.length
 
 		//Affichage
 		displayTable(nouveauxCommerces); //Permet la modification des nouveaux commerces
@@ -302,6 +308,7 @@ function addNewValuesToCurrentObjectBDD(bdd,current)
 	var i = 0;
 	var j = 0;
 	var k = 0;
+	var nbBl = 0;
 
 	console.log("Debut de la mise a jour dans l'object BDD ");
 	var start = new Date().getTime();
@@ -364,6 +371,7 @@ function addNewValuesToCurrentObjectBDD(bdd,current)
 					if (blacklist[b].siret == current[i].siret)
 					{
 						console.log("(blacklisté)")
+						nbBl++;
 						bl = true;
 					}
 				}
@@ -379,6 +387,7 @@ function addNewValuesToCurrentObjectBDD(bdd,current)
 
 	var end = new Date().getTime();
 	var time = end - start;
+	infoUpdate.bl = nbBl;
 	console.log("fini en : "+time+" ms");
 	return current;	
 }
@@ -453,7 +462,7 @@ function displayTable(current)
 			
 		});
 
-		if(hit) console.log(infos)
+		//if(hit) console.log(infos)
 
 		//Bouton de BlackList
 		//Si on clique dessus, on ajoute son SIRET dans un tableau temporaire
@@ -631,6 +640,25 @@ function displayTable(current)
 		nouveauxCommerces[j]["tag2"] = $("tr:eq("+j+")").find("select[name='tag2'] option:selected").attr("value");
 		nouveauxCommerces[j]["tag3"] = $("tr:eq("+j+")").find("select[name='tag3'] option:selected").attr("value");
 	}
+
+	//On prépare les informations à montrer à l'utilisateur
+	var strinfos = "";
+	strinfos += "<h4>Informations concernant la mise à jour :</h4><br/>";
+	strinfos += "<table><tr><th>Infos</th><th>Nombre de commerces</th><th>Description</th></tr>";
+	strinfos += "<tr><td>A supprimer</td><td>"+infoUpdate.toRemove+"</td><td>C'est le nombre de commerces qui vont disparaitre lors de la mise à jour</td></tr>";
+	strinfos += "<tr><td>A ajouter</td><td>"+infoUpdate.toCreate+"</td><td>C'est le nombre de commerces qui vont être crées lors de la mise à jour</td></tr>";
+	strinfos += "<tr><td>Taille de la BDD</td><td>"+infoUpdate.lbdd+"</td><td>C'est le nombre de commerces que vous possédez actuellement en base de donnée</td></tr>";
+	strinfos += "<tr><td>Taille du fichier XLSX</td><td>"+infoUpdate.lxlsx+"</td><td>C'est le nombre de commerces que contient ce nouveau fichier</td></tr>";
+	strinfos += "<tr><td>Nombre de commerces Blacklistés</td><td>"+infoUpdate.bl+"</td><td>C'est le nombre de commerces détéctés comme Blacklistés</td></tr></table>";
+	strinfos += "<input type='submit' name='valideInfos' value=\"D'accord !\"/>";
+	$("#fondNoir").show();
+	$("#feedback").show();
+	$("#feedback").html(strinfos);
+	$("input[name='valideInfos']").on("click",function()
+	{
+		$("#fondNoir").hide();
+		$("#feedback").hide();
+	})
 
 }
 

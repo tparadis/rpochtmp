@@ -50,6 +50,7 @@ function getAllCoords(current, newCom)
 	checkifok(current)
 
 	console.log(resStats[0] + " magasins traités avec succès");	
+	infoUpdate.toCreate = resStats[0];
 	if(resStats[i] < newCom.length )
 	{
 		console.warn("Certains magasins n'ont pu être traités ! ");	
@@ -286,9 +287,9 @@ function metAJourCoords(i, d, current, newTab)
 function exception(adr)
 {
 	var except = false;
-	if(adr == "DE BRETAGNE"){ adr = "PLACE DE BRETAGNE"; except = true;}
-	if(adr == "SAINT HELIER"){ adr = "RUE SAINT HELIER"; except = true;}
-	if(adr == "DU GUESCLIN"){ adr = "RUE DUGUESCLIN"; except = true;} //Du gueslin est en 1 seul mot ici, Google Maps préfère
+	if(adr.toUpperCase() == "DE BRETAGNE"){ adr = "PLACE DE BRETAGNE"; except = true;}
+	if(adr.toUpperCase() == "SAINT HELIER"){ adr = "RUE SAINT HELIER"; except = true;}
+	if(adr.toUpperCase() == "RUE DU GUESCLIN"){ adr = "RUE DUGUESCLIN"; except = true;} //Du gueslin est en 1 seul mot ici, Google Maps préfère
 
 	if(except) console.log("Exception d'adresse => modification")
 
