@@ -211,7 +211,7 @@ function initialize() {
 		google.maps.event.addListener(marker, 'click', (function(marker, i) {
 				return function() {
 
-					infowindow.setContent(magasins[i].name + '<div id="marker" name="' + magasins[i].id + '" > <img class= "ImgBtnInfo" ></img></div><div id="go"><button>GO</button></div>');
+					infowindow.setContent(magasins[i].name + '<div id="marker" name="' + magasins[i].id + '" > <img class= "ImgBtnInfo" ></img></div><div id="go"><button>J\'y vais</button></div>');
 					infowindow.open(map, marker);
 					$("#marker").on("click", function(e) {
 							if (currentInfoWindow != undefined) {
