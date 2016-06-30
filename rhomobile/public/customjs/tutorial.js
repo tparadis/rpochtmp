@@ -95,7 +95,7 @@ function showTutorialPerso()
 	$("body").append("<div id='sampleWindow' style='top:70px; z-index:20;'><div class='persoW'>"
 	+"</div></div>");
 	var elem = document.getElementsByClassName("persoW");
-	var text = getTextTuto("footer", currentLang);
+	var text = getTextTuto("select", currentLang);
 	elem[0].innerHTML = text;
 	$("#grisement").show();
 	$("#sampleWindow").css("height","auto");
@@ -119,7 +119,7 @@ function showTutorialPredef()
 	+"</div></div>");
 	var elem = document.getElementsByClassName("persoW");
 	$("#grisement").show();
-	var text = getTextTuto("footer", currentLang);
+	var text = getTextTuto("predef", currentLang);
 	elem[0].innerHTML = text;
 	$("#sampleWindow").css("height","auto");
 	$("#grisement").on("mousedown",function(){
