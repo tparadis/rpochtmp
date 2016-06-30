@@ -7,7 +7,7 @@ var lang = {
 	"genererParcours" : "G&eacuten&eacuterer le parcours",
 	"lieu" : "Lieu",
 	"magasin" : "&nbsp;Magasin(s)",
-	"carte" : "Acc&eacuteder &agrave la Carte",
+	"carte" : "Affichez la Carte",
 	"ajouterMagasin" : "Ajouter un magasin",
 	"options" : "Options",
 	"detail" : "D&eacute;tail",
