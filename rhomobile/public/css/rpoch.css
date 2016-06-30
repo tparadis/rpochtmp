@@ -129,16 +129,22 @@ display:none;
         margin-left: auto;
         margin-right: auto;
 }
-
-
-
-.TxtParcoursPerso{
+.Txt{
 	position:relative;
+	top:60px;
+	right:180px;
 	color:#008B87;
-	 bottom:60px;
+	font-family:sscat;
+    padding:0;
+    z-index:200;
+}
+.TxtParcoursPerso{
+	color:#008B87;
 	font-family:sscat;
     padding:0;
     text-shadow:none;
+    position: relative;
+    bottom: 60px;
 }
 
 .TxtParcoursPerso2{

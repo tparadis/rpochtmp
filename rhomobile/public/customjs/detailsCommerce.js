@@ -121,7 +121,7 @@ function afficheSpecificationMagasin()
 						hor = "Ferme Aujourd'hui"
 					}
 				}else{
-					hor ="Horaires non renseignes"
+					hor ="Horaires non renseign&eacutes"
 				}
 			}catch(err){
 				console.log("Erreur: "+err);
@@ -150,6 +150,7 @@ function afficheSpecificationMagasin()
 			$("#botSpec").append("<div class='bordureBot'></div>");
 			$("#botSpec").append("<div class='telephone'><img src='/public/images/svg/phone.svg' /> <span><a style='color:white;text-shadow:none;' title='Call' href='tel:"+data.commerce.phone_num+"'>"+data.commerce.phone_num+"</a></span></div>");
 			$("#botSpec").append("<div class='bordureBot'></div>");
+			
 			
 			var affHor = false;
 				//POP UP "HORRAIRES"
@@ -319,7 +320,7 @@ function afficheSpecificationMagasin()
 $("#botSpec").append("<div class='socialNetworks'></div>");
 			
 			//Ajouter dynamiquement les affiliations aux liens
-			//des réseaux sociaux ci-dessous
+			//des reseaux sociaux ci-dessous
 			//Modifier le comportement des boutons en fonction de l'action voulue !
 			
 			
