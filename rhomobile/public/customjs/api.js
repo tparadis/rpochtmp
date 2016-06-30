@@ -139,6 +139,8 @@ api.getAllTutos = function(){return api.send({data: {"req":"tutos", "format":"js
 //accueil predef select perso
 api.getTuto = function(page){return api.send({data: {"req":"tutos", "format":"json", "page":page}})}
 
+api.statParcours =function(typeP){return api.send({data: {"req":"incpredef","format":"json","nom":typeP}})}
+
 api.randomNew = function(ids){return api.send({data: {"req":"randomNew","format":"json","tags":ids}})}
 
 api.getAleatoireR= function(tag,uuid){

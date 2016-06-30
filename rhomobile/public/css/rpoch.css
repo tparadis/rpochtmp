@@ -149,6 +149,14 @@ display:none;
 	padding: 0;
 	text-shadow: none;
 }
+.TxtParcoursPerso3{
+	position: relative;
+	color: #008B87;
+	bottom: 190px;
+	font-family: sscat;
+	padding: 0;
+	text-shadow: none;
+}
 .listeItem{
 	font-family:sscat;
 	text-shadow:none;
@@ -258,20 +266,52 @@ span#nb_magasins
 }
 
 .ImgBtnCarte{
-   content:url("/public/images/carte_btn_fr.png");
+   content:url("/public/images/carte_btn_fr_bleu.png");
    width:150px;
+   background-color:white;
+   padding-left:5px;
+   padding-right:5px;
+}
+.ImgBtnCarteBlanc{
+   content:url("/public/images/carte_btn_fr_blanc.png");
+   width:150px;
+   position:relative;
+   bottom: 140px;
+   background-color:#008B87;
+   padding-left:5px;
+   padding-right:5px;
 }
 
+.ImgBtnCartePredef{
+   content:url("/public/images/carte_btn_fr_bleu.png");
+   width:150px;
+   background-color:white;
+   padding-left:5px;
+   padding-right:5px;
+   position:relative;
+   left:81px;
+}
+.ImgBtnCarteBlancPredef{
+   content:url("/public/images/carte_btn_fr_blanc.png");
+   width:150px;
+   position:relative;
+   right:84px;
+   background-color:#008B87;
+   padding-left:5px;
+   padding-right:5px;
+}
+
+
 .ImgBtnInfo{
-	content:url("/public/images/svg/oeil.svg");
+	content:url("/public/images/oeil.png");
 	width:30px;
 }
 .ImgBtnRemplacer{
-	content:url("/public/images/svg/actualiser.svg");
+	content:url("/public/images/actualiser.png");
 	width:30px;
 }
 .ImgBtnSupprimer{
-	content:url("/public/images/svg/fermer.svg");
+	content:url("/public/images/fermer.png");
 	width:20px;
 }
 

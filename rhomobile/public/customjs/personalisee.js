@@ -77,7 +77,7 @@ function initialize() {
 		isPredef = true;
 		var parcoursChoisi = $("#parcours_predef").attr("name");
 		var data = api.getPredef(parcoursChoisi);
-		
+		api.statParcours(parcoursChoisi);
 		console.log("Parcours predef :"+parcoursChoisi);  
         
 		var i = 0;

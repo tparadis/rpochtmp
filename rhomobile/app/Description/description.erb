@@ -8,11 +8,22 @@
       <h2 style="text-align: center" id="nompage" class="nomParcours" >
         Parcours 
       </h2>
-      <div id="clickToContinue"><img src="/public/images/arrow.png" /></div>
+     
       <div id="image" align="center" onclick="javascript:location.href='/app/Personalisee/requette_etudiant?type_parcours=<%=$typeparcours %>'">
-      <img class = "ImgBtnCarte "/>
-        <div class="TxtParcoursPerso2" text="carte"></div>       
+      <img class = "ImgBtnCartePredef "/>
+        <img  class = "ImgBtnCarteBlancPredef "/>
+                  
+      <div class="TxtParcoursPerso2" text="carte"></div>       
     </div>
+    <script>
+          function animateBtnCarte() {
+            $('.ImgBtnCarteBlancPredef').animate({'opacity': 1},1250).animate({'opacity': 0},1250);
+            $('.ImgBtnCartePredef').animate({'opacity': 0},1250).animate({'opacity': 1},1250, animateBtnCarte);; 
+            $('.TxtParcoursPerso2 ').animate({'color': 'white'},1250).animate({'color': '#008B87'},1250);
+          } 
+          animateBtnCarte()
+     </script>
+    
       <table align="center" id="liste_magasins">
                 
         <tbody>
@@ -82,12 +93,5 @@
           }
         
       </script>
-      <script>
-      
-        function animateArrow() {
-            $('#clickToContinue').animate({'margin-left':'-100px', 'opacity':'0'},2000).animate({'margin-left':'-60px', 'opacity':'0.8'},2000, animateArrow); 
-        }
-        animateArrow()
-      
-      </script>
+     
 

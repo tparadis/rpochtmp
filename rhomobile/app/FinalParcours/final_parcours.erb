@@ -25,17 +25,20 @@
        <div id="carte" class="fpinner">
        <a  onclick="afficherParcours()">
          <img  class = "ImgBtnCarte "/>
-           <div text="carte" align="center" class= "TxtParcoursPerso2 "> </div>
+         <img  class = "ImgBtnCarteBlanc "/>
+           <div text="carte" align="center" class= "TxtParcoursPerso3 "> </div>
           </a>
        </div>
    </div>
-             <div id="flecheParcours"><img src="/public/images/arrowUp.png" /></div>
+
                 
                          <script>
-                                 function animateArrow() {
-                                     $('#flecheParcours').animate({'margin-top':'0px', 'opacity':'0.8'},750).animate({'margin-top':'10px', 'opacity':'0'},750, animateArrow); 
-                                 }
-                                 animateArrow()
+                                 function animateBtnCarte() {
+                                   $('.ImgBtnCarteBlanc').animate({'opacity': 1},1250).animate({'opacity': 0},1250);
+                                   $('.ImgBtnCarte').animate({'opacity': 0},1250).animate({'opacity': 1},1250, animateBtnCarte);; 
+                                   $('.TxtParcoursPerso3 ').animate({'color': 'white'},1250).animate({'color': '#008B87'},1250);
+                                 } 
+                                 animateBtnCarte()
                          </script>
 
 <%= render :partial => "/partials/page_foot_index" %>

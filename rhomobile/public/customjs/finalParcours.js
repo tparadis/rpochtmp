@@ -123,7 +123,7 @@ function genererParcours(){
 	    	var elem = sessionStorage.getItem(idtags[i]);
 	    	elem = JSON.parse(elem);
 
-		    	//Obligatoire si l'utilisateur a deja clique sur Generer un sessionStorage et qu'il veut remettre un autre magasin apr�s
+		    	//Obligatoire si l'utilisateur a deja clique sur Generer un sessionStorage et qu'il veut remettre un autre magasin apres
 		    	//Sinon les id s'ajoutent indefiniments a la suite dans le meme tableau !
 		    	var id = tagCourant.id;
 		    	var tmp = elem.pop();
