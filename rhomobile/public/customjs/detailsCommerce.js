@@ -5,6 +5,7 @@
 var id;
 var http = "http://"
 var https = "https://"
+var oldOffset = 0;
 var descraffiche = false;
 var form_validate = {
 	  required: function (value) {
@@ -16,6 +17,7 @@ $(document).ready(function(e){
 	
 	checkIfImplemented();
 	$("#pageSpec").hide(0);
+
 	
 });
 
@@ -23,6 +25,7 @@ function checkIfImplemented()
 {
 	if($("#pageSpec").length == 0)
 	{
+		
 	
 	//S'il n'y a pas les balises pour le rendu de notre page, on l'ajoute directement.
 	$("body").append("<div id='loaderDescr'><img src='/public/images/loading.gif' /></div>");
@@ -45,7 +48,12 @@ function afficheSpecificationMagasin()
 	//RÃ©cupÃ¨re les parametres de l'URL
 	if(descraffiche == false)
 	{
+		//On récupère l'ancien offset
+		oldOffset = $(document).scrollTop();
+		console.log(oldOffset)
+		
 		$("#loaderDescr").show(400, function(){
+			
 			id = sessionStorage.getItem("currentMagasin");
 			sessionStorage.removeItem("currentMagasin");
 			
@@ -316,7 +324,7 @@ function afficheSpecificationMagasin()
 			  });
 			
 			
-$("#botSpec").append("<div class='socialNetworks'></div>");
+			$("#botSpec").append("<div class='socialNetworks'></div>");
 			
 			//Ajouter dynamiquement les affiliations aux liens
 			//des rÃ©seaux sociaux ci-dessous
@@ -385,6 +393,7 @@ $("#botSpec").append("<div class='socialNetworks'></div>");
 					//On reaffiche la page active
 					$(".ui-page-active").show();
 					descraffiche = false;
+					$("html, body").animate({scrollTop:oldOffset}, 400);
 					
 			});
 			
@@ -393,7 +402,9 @@ $("#botSpec").append("<div class='socialNetworks'></div>");
 			
 		});
 		descraffiche = true;
+		
 	}
+	$("html, body").animate({scrollTop:0}, 400);
 	
 }
 
