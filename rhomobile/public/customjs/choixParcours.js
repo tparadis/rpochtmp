@@ -1,6 +1,7 @@
 var datar = "";
 var firstTime = true;
 var MAXMAGASINS = 30;
+var currentli = 0;
 
 $(document).ready(function () {
     var nbCat = localStorage.getItem('nbCat');
@@ -144,12 +145,24 @@ $(document).ready(function () {
     actualiserMagasins();
     
     //Ajout des animation sur les li
-    $("li").on("click",function(){
-    	
-    	$(this).animate({"background-color":"#008B87"}, 300).animate({"background-color":"white"}, 300);
-    	
-
+    $("li").on("click",function(){    	
+    	var action = $(this).attr("onclick");
+    	if(action.indexOf("addSsCat") >=0)
+    	{
+    		//Action à effectuer sur une catégorie normale
+    		$(this).closest("li").animate({"background-color":"#008B87"}, 200).animate({"background-color":"rgb(167,191,199)"},300);
+    		console.log(action)
+    		
+    	}
+    	else
+    	{
+    		currentli = $(this).attr('id');
+    		console.log(currentli)
+    	}
     });
+    $("button.addcat").on("click",function(e){
+    	$("div[role='main'] li#"+currentli).animate({"background-color":"#008B87"}, 200).animate({"background-color":"rgb(167,191,199)"},300);
+    })
  
 });
 
