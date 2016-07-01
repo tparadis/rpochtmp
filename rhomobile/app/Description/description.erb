@@ -45,29 +45,22 @@
         var i = 0;
         var magasins_size = data.size;
         var magasin_nom;
-        var id;
 
-        //récupération de l'image associé au parcours sur le serveur
-        //Pour l'instant l'image récupérée est la même que celle utilisée pour décrire le parcours sur parcours_predef
+        //récupération de l\'image associé au parcours sur le serveur
+        //Pour l\'instant l'image récupérée est la même que celle utilisée pour décrire le parcours sur parcours_predef
+        $("table").before('<div><p align="center" class="description">'+data.description+'</p></div>');
+       
+        adresseImg = "http://rpoch.istic.univ-rennes1.fr/static/images/" +data.image; 
 
-        while (i < predefs.size && adresseImg == "") {              
-          if (predefs.parcourspredefs[i].name == parcoursChoisi) {   
-            adresseImg = "http://rpoch.istic.univ-rennes1.fr/static/images/" +predefs.parcourspredefs[i].image; 
-            id = i;
-          }
-          else {
-            i++;
-          }
-        }
         //affichage de l'image et de la description
         //  $("table").append('<div align="left" class="ImgParcoursPredef"><img src="'+adresseImg+'" alt="image" style="height :150px"></div>')
-        $("table").before('<div><p align="center" class="description">'+predefs.parcourspredefs[id].description+'</p></div>');
+        
         //Nom du parcours
         switch(localStorage.getItem(0)){
-          case "fr": $("#nompage").text(predefs.parcourspredefs[id].fr); break;
-          case "en": $("#nompage").text(predefs.parcourspredefs[id].en); break;
-          case "de": $("#nompage").text(predefs.parcourspredefs[id].de); break;
-          case "esp": $("#nompage").text(predefs.parcourspredefs[id].esp); break;
+          case "fr": $("#nompage").text("Parcours "+data.fr); break;
+          case "en": $("#nompage").text("Course "+data.en); break;
+          case "de": $("#nompage").text("Curso "+data.de); break;
+          case "esp": $("#nompage").text("Kurs "+data.esp); break;
         }
         
         //liste des magasins du parcours 
@@ -77,7 +70,7 @@
             while (i < magasins_size){
               magasin_nom = data.magasins[i].enseigne;
               // on attache les magasins à la liste
-              $("tbody").append('<tr class="detailButton" name='+predefs.parcourspredefs[id].commerces[i]+'><td class="listeItem">'+magasin_nom.toUpperCase()+'</td><td><a ><img class= "ImgBtnInfo" ></img></a></td></tr>');
+              $("tbody").append('<tr class="detailButton" name='+data.magasins[i].id+'><td class="listeItem">'+magasin_nom.toUpperCase()+'</td><td><a ><img class= "ImgBtnInfo" ></img></a></td></tr>');
               i++;
             }
             $('tr.detailButton').each(function() {

@@ -165,15 +165,13 @@ var signalementLang =
 {
 	
 	
-	"fr": ["Coordonnées incorrectes", "Horaires incorrects", "Classification incorrecte", "Magasin fermé", "Autres"],
+	"fr": ["Adresse erronée", "Horaires incorrects", "Magasin fermé", "Autres"],
 	
-	"en": ["Invalid address", "Incorrect time", "Incorrect classification", "Closed shop", "Others"], 
-
+	"en": ["Invalid address", "Incorrect time", "Closed shop", "Others"], 
 	
-	"esp": ["Contacto no válido", "Hora incorrecta", "Clasificación incorrecta", "Tienda cerrada", "Otro"], 
-
+	"esp": ["Contacto no válido", "Hora incorrecta","Tienda cerrada", "Otro"], 
 	
-	"de": ["Ungültigen Kontakt", "Falsche Zeit", "Falsche Klassifizierung", "Laden geschlossen", "Andere"]
+	"de": ["Ungültigen Kontakt", "Falsche Zeit", "Laden geschlossen", "Andere"]
 
 }
 

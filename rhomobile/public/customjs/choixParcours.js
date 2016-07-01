@@ -169,7 +169,7 @@ $(document).ready(function () {
 	//Animations sur les Catégories
 	$(".collapsible-cat-container").on("click",function(){
 		
-		$("html,body").stop().animate({"scrollTop":($(this).offset().top - 60)},600);
+		$("html,body").stop().animate({"scrollTop":($(this).offset().top - 60)},300);
 		
 	})
 	

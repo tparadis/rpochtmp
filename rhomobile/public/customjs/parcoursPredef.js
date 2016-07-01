@@ -1,5 +1,6 @@
 function afficheParcours(){
 	
+	
 	var data = api.getAllPredef();
 	var i =0;
 	var lang = localStorage["0"];

@@ -129,7 +129,7 @@ function afficheSpecificationMagasin()
 						hor = "Ferme Aujourd'hui"
 					}
 				}else{
-					hor ="Horaires non renseign&eacutes"
+					hor ="Horaires non renseign&eacute;s"
 				}
 			}catch(err){
 				console.log("Erreur: "+err);
@@ -402,9 +402,14 @@ function afficheSpecificationMagasin()
 			
 			
 		});
+		
 		descraffiche = true;
 		
 	}
+	
+	//Petites animations après l'affichage 
+	
+	
 	$("html, body").animate({scrollTop:0}, 400);
 	
 }
