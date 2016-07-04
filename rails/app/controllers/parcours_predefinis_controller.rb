@@ -6,6 +6,7 @@ class ParcoursPredefinisController < ApplicationController
   # GET /parcours_predefinis.json
   def index
     @parcours_predefinis = ParcoursPredefini.all
+	@totalclick = ParcoursPredefini.sum(:stats)
   end
 
   # GET /parcours_predefinis/1

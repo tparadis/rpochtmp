@@ -10,6 +10,7 @@
       <th>Image</th>
       <th>Commerces</th>
 	  <th>Nombre</th>
+	  <th>Popularité</th>
 	  <th>Fr</th>
 	  <th>En</th>
 	  <th>De</th>
@@ -38,6 +39,15 @@
 		
 		</td>
 		<td><%= i %></td>
+		<td>
+			<% if @totalclick == 0 %>
+				<%= Aucun click effectué  %>
+			<% else %>
+				<%= ((parcours_predefini.stats.to_f / @totalclick.to_f) *100).to_s + "%" %>
+			<% end %>
+		
+		
+		</td>
         <td><%= parcours_predefini.fr %></td>
 		<td><%= parcours_predefini.en %></td>
 		<td><%= parcours_predefini.de %></td>
