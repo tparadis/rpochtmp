@@ -19,7 +19,7 @@
        <div class="fpinner">
         <a href="<%= url_for :controller => :SousCategories, :action => :sous_categories %>" >
            <img class = "ImgAjoutMag"/>
-           <div text="votreParcours" align="center" class= "TxtParcoursPerso2 "> </div>
+           <div text="completeParcours" align="center" class= "TxtParcoursPerso2 "> </div>
         </a>
        </div>
       
@@ -30,21 +30,14 @@
            <div text="carte" align="center" class= "TxtParcoursPerso3 "> </div>
           </a>
        </div>
-           
-       <div class ="Txt" >
-            OU
-        </div>
-   </div>
-
-                
-                         <script>
-                                 function animateBtnCarte() {
-                                   $('.ImgBtnCarteBlanc').animate({'opacity': 1},1250).animate({'opacity': 0},1250);
-                                   $('.ImgBtnCarte').animate({'opacity': 0},1250).animate({'opacity': 1},1250, animateBtnCarte);; 
-                                   $('.TxtParcoursPerso3 ').animate({'color': 'white'},1250).animate({'color': '#008B87'},1250);
-                                 } 
-                                 animateBtnCarte()
-                         </script>
+             <script>
+                     function animateBtnCarte() {
+                       $('.ImgBtnCarteBlanc').animate({'opacity': 1},1250).animate({'opacity': 0},1250);
+                       $('.ImgBtnCarte').animate({'opacity': 0},1250).animate({'opacity': 1},1250, animateBtnCarte);; 
+                       $('.TxtParcoursPerso3 ').animate({'color': 'white'},1250).animate({'color': '#008B87'},1250);
+                     } 
+                     animateBtnCarte()
+             </script>
 
 <%= render :partial => "/partials/page_foot_index" %>
 </div>

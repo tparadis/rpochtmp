@@ -4,6 +4,7 @@ var lang = {
 	"rpochapp" : "Application Rennes en poche",	
 	"creerParcours" : "Cr&eacuteer son propre parcours",
 	"votreParcours" : "Votre Parcours",
+	"completeParcours" : "Compl&eacutetez votre Parcours",
 	"genererParcours" : "G&eacuten&eacuterer le parcours",
 	"lieu" : "Lieu",
 	"magasin" : "&nbsp;Magasin(s)",
