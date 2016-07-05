@@ -478,10 +478,11 @@ module Interface
 
 		ret = Array.new
 		
-		listid.commerces.each do |com|
-			ret.push Commerce.where(:id => com).select('id,enseigne,location_lat,location_lng').first
+		listid.commerces.each_with_index do |com,i|
+			listid.commerces[i] = Commerce.where(:id => com).first
 		end
-		ret
+		
+		listid
 
 	end
 

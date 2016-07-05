@@ -31,6 +31,22 @@ class WelcomeController < ApplicationController
 			render json: {:size => @y.size(), :commerces => @y}
 		end
 
+		#Ajouter des stats aux parcours prédefinis
+		if params[:req] == "incpredef" && params.has_key?(:nom) && params[:nom] != ""
+	
+			p = ParcoursPredefini.where("name = ?", params[:nom]).first
+			if p.blank?
+				render json: {:msg => "error"}
+			end
+			p.stats = p.stats + 1
+			if !p.save
+				render json: {:msg => "pasok"}
+			else
+				render json: {:msg => "ok"}
+			end
+
+		end
+
 		if params[:req] == "spec"
 			if params.has_key?(:nom) && params[:nom] != ""
 
@@ -187,7 +203,8 @@ class WelcomeController < ApplicationController
 
 			if params.has_key?(:nom) && params[:nom] != ""
 				@y = Interface.getPredefParNom(params[:nom])
-				render json: {:size => @y.size(), :magasins => @y }	
+				@z = ParcoursPredefini.select("description,image,fr,de,en,esp").where("name = ?",params[:nom]).first
+				render json: {:size => @y["commerces"].length, :magasins => @y["commerces"], :description =>@z.description, :image => @z.image, :fr => @z.fr, :en => @z.en, :de => @z.de, :esp => @z.esp}	
 			else			
 
 				@y = Interface.getParcoursPredefinis

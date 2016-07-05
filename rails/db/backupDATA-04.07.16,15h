@@ -8,1011 +8,7 @@ SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
---
--- Name: uuid-ossp; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
-
-
---
--- Name: EXTENSION "uuid-ossp"; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION "uuid-ossp" IS 'generate universally unique identifiers (UUIDs)';
-
-
 SET search_path = public, pg_catalog;
-
-SET default_tablespace = '';
-
-SET default_with_oids = false;
-
---
--- Name: blacklists; Type: TABLE; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE TABLE blacklists (
-    id integer NOT NULL,
-    siret character varying,
-    enseigne character varying,
-    rasoc character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
-ALTER TABLE public.blacklists OWNER TO rails;
-
---
--- Name: blacklists_id_seq; Type: SEQUENCE; Schema: public; Owner: rails
---
-
-CREATE SEQUENCE blacklists_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.blacklists_id_seq OWNER TO rails;
-
---
--- Name: blacklists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: rails
---
-
-ALTER SEQUENCE blacklists_id_seq OWNED BY blacklists.id;
-
-
---
--- Name: categories; Type: TABLE; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE TABLE categories (
-    id integer NOT NULL,
-    nom character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    reference character varying,
-    en text,
-    esp text,
-    de text,
-    ko text,
-    jap text,
-    visible boolean DEFAULT true,
-    stat integer DEFAULT 0
-);
-
-
-ALTER TABLE public.categories OWNER TO rails;
-
---
--- Name: categories_id_seq; Type: SEQUENCE; Schema: public; Owner: rails
---
-
-CREATE SEQUENCE categories_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.categories_id_seq OWNER TO rails;
-
---
--- Name: categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: rails
---
-
-ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
-
-
---
--- Name: commerces; Type: TABLE; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE TABLE commerces (
-    id uuid DEFAULT uuid_generate_v4() NOT NULL,
-    line integer,
-    siret text,
-    enseigne text,
-    rasoc text,
-    date_deb_act date,
-    date_rad date,
-    code_ape text,
-    label_ape text,
-    zone_ape text,
-    label_zone_ape text,
-    street_num text,
-    street_name text,
-    sort_street_name text,
-    city_code text,
-    city_label text,
-    epci2014 text,
-    phone_num text,
-    fax_num text,
-    email text,
-    street_number text,
-    route text,
-    city text,
-    dptmt text,
-    region text,
-    country text,
-    postal_code text,
-    location_lat double precision,
-    location_lng double precision,
-    location_type text,
-    google_place_id text,
-    vp_ne_lat double precision,
-    vp_ne_lng double precision,
-    vp_sw_lat double precision,
-    vp_sw_lng double precision,
-    db_add_date timestamp without time zone DEFAULT '2016-03-21 14:01:36.373854'::timestamp without time zone NOT NULL,
-    image text DEFAULT 'noimage.jpg'::text,
-    tag0 integer,
-    tag1 integer,
-    tag2 integer,
-    tag3 integer,
-    description text,
-    facebook text,
-    nbvisites integer,
-    user_id integer,
-    soldes boolean DEFAULT false,
-    website character varying(255),
-    instagram character varying(255),
-    horaires json DEFAULT '{}'::json
-);
-
-
-ALTER TABLE public.commerces OWNER TO rails;
-
---
--- Name: COLUMN commerces.id; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.id IS 'identifiant commerce de la bdd';
-
-
---
--- Name: COLUMN commerces.line; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.line IS 'Numéro de ligne (dans le fichier cci)';
-
-
---
--- Name: COLUMN commerces.siret; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.siret IS 'Siret';
-
-
---
--- Name: COLUMN commerces.enseigne; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.enseigne IS 'Enseigne';
-
-
---
--- Name: COLUMN commerces.rasoc; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.rasoc IS 'Raison sociale';
-
-
---
--- Name: COLUMN commerces.date_deb_act; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.date_deb_act IS 'Date début activité';
-
-
---
--- Name: COLUMN commerces.date_rad; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.date_rad IS 'Date radiation';
-
-
---
--- Name: COLUMN commerces.code_ape; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.code_ape IS 'Code APE';
-
-
---
--- Name: COLUMN commerces.label_ape; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.label_ape IS 'Libellé code APE';
-
-
---
--- Name: COLUMN commerces.zone_ape; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.zone_ape IS 'Zone appartenance APE';
-
-
---
--- Name: COLUMN commerces.label_zone_ape; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.label_zone_ape IS 'Libellé zone appartenance APE';
-
-
---
--- Name: COLUMN commerces.street_num; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.street_num IS 'Numéro de voie';
-
-
---
--- Name: COLUMN commerces.street_name; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.street_name IS 'Nom de voie';
-
-
---
--- Name: COLUMN commerces.sort_street_name; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.sort_street_name IS 'Tri Nom de voie';
-
-
---
--- Name: COLUMN commerces.city_code; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.city_code IS 'Commune';
-
-
---
--- Name: COLUMN commerces.city_label; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.city_label IS 'Libellé commune';
-
-
---
--- Name: COLUMN commerces.epci2014; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.epci2014 IS 'EPCI 2014';
-
-
---
--- Name: COLUMN commerces.phone_num; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.phone_num IS 'Téléphone';
-
-
---
--- Name: COLUMN commerces.fax_num; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.fax_num IS 'Fax';
-
-
---
--- Name: COLUMN commerces.email; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.email IS 'Email';
-
-
---
--- Name: COLUMN commerces.street_number; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.street_number IS 'Numéro de rue (Google)';
-
-
---
--- Name: COLUMN commerces.route; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.route IS 'Nom de la rue (Google)';
-
-
---
--- Name: COLUMN commerces.city; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.city IS 'Nom de la ville (Google)';
-
-
---
--- Name: COLUMN commerces.dptmt; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.dptmt IS 'Nom du département (Google)';
-
-
---
--- Name: COLUMN commerces.region; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.region IS 'Nom de la région (Google)';
-
-
---
--- Name: COLUMN commerces.country; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.country IS 'Nom du pays (Google)';
-
-
---
--- Name: COLUMN commerces.postal_code; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.postal_code IS 'Code postal (Google)';
-
-
---
--- Name: COLUMN commerces.location_lat; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.location_lat IS 'Localisation latitude (Google)';
-
-
---
--- Name: COLUMN commerces.location_lng; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.location_lng IS 'Localisation longitude (Google)';
-
-
---
--- Name: COLUMN commerces.location_type; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.location_type IS 'Type de coordonnées (Google)';
-
-
---
--- Name: COLUMN commerces.google_place_id; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.google_place_id IS 'Identifiant du lieu (Google)';
-
-
---
--- Name: COLUMN commerces.vp_ne_lat; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.vp_ne_lat IS 'Loc. nord est latitude (Google)';
-
-
---
--- Name: COLUMN commerces.vp_ne_lng; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.vp_ne_lng IS 'Loc. nord est longitude (Google)';
-
-
---
--- Name: COLUMN commerces.vp_sw_lat; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.vp_sw_lat IS 'Loc. sud ouest latitude (Google)';
-
-
---
--- Name: COLUMN commerces.vp_sw_lng; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.vp_sw_lng IS 'Loc. sud ouest longitude (Google)';
-
-
---
--- Name: COLUMN commerces.db_add_date; Type: COMMENT; Schema: public; Owner: rails
---
-
-COMMENT ON COLUMN commerces.db_add_date IS 'Date d''ajout à la base de données';
-
-
---
--- Name: notes; Type: TABLE; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE TABLE notes (
-    id integer NOT NULL,
-    note integer,
-    commerce text,
-    commentaire text,
-    idtel character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
-ALTER TABLE public.notes OWNER TO rails;
-
---
--- Name: notes_id_seq; Type: SEQUENCE; Schema: public; Owner: rails
---
-
-CREATE SEQUENCE notes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.notes_id_seq OWNER TO rails;
-
---
--- Name: notes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: rails
---
-
-ALTER SEQUENCE notes_id_seq OWNED BY notes.id;
-
-
---
--- Name: parcours_predefinis; Type: TABLE; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE TABLE parcours_predefinis (
-    id integer NOT NULL,
-    name character varying,
-    description text,
-    image character varying,
-    commerces uuid[],
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    en text,
-    esp text,
-    de text,
-    fr text,
-    visible boolean DEFAULT false
-);
-
-
-ALTER TABLE public.parcours_predefinis OWNER TO rails;
-
---
--- Name: parcours_predefinis_id_seq; Type: SEQUENCE; Schema: public; Owner: rails
---
-
-CREATE SEQUENCE parcours_predefinis_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.parcours_predefinis_id_seq OWNER TO rails;
-
---
--- Name: parcours_predefinis_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: rails
---
-
-ALTER SEQUENCE parcours_predefinis_id_seq OWNED BY parcours_predefinis.id;
-
-
---
--- Name: phoneids; Type: TABLE; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE TABLE phoneids (
-    id uuid DEFAULT uuid_generate_v4() NOT NULL,
-    info character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
-ALTER TABLE public.phoneids OWNER TO rails;
-
---
--- Name: promotions; Type: TABLE; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE TABLE promotions (
-    id integer NOT NULL,
-    user_id integer,
-    status character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    kbis character varying,
-    rid character varying,
-    siret character varying
-);
-
-
-ALTER TABLE public.promotions OWNER TO rails;
-
---
--- Name: promotions_id_seq; Type: SEQUENCE; Schema: public; Owner: rails
---
-
-CREATE SEQUENCE promotions_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.promotions_id_seq OWNER TO rails;
-
---
--- Name: promotions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: rails
---
-
-ALTER SEQUENCE promotions_id_seq OWNED BY promotions.id;
-
-
---
--- Name: requests; Type: TABLE; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE TABLE requests (
-    id integer NOT NULL,
-    user_id integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
-ALTER TABLE public.requests OWNER TO rails;
-
---
--- Name: requests_id_seq; Type: SEQUENCE; Schema: public; Owner: rails
---
-
-CREATE SEQUENCE requests_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.requests_id_seq OWNER TO rails;
-
---
--- Name: requests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: rails
---
-
-ALTER SEQUENCE requests_id_seq OWNED BY requests.id;
-
-
---
--- Name: resultats; Type: TABLE; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE TABLE resultats (
-    id integer NOT NULL,
-    magasin uuid,
-    objet character varying,
-    message text,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
-ALTER TABLE public.resultats OWNER TO rails;
-
---
--- Name: resultats_id_seq; Type: SEQUENCE; Schema: public; Owner: rails
---
-
-CREATE SEQUENCE resultats_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.resultats_id_seq OWNER TO rails;
-
---
--- Name: resultats_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: rails
---
-
-ALTER SEQUENCE resultats_id_seq OWNED BY resultats.id;
-
-
---
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE TABLE schema_migrations (
-    version character varying NOT NULL
-);
-
-
-ALTER TABLE public.schema_migrations OWNER TO rails;
-
---
--- Name: sscategories; Type: TABLE; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE TABLE sscategories (
-    id integer NOT NULL,
-    nom character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    catparent integer,
-    en text,
-    esp text,
-    de text,
-    ko text,
-    jap text,
-    stat integer DEFAULT 0,
-    ssmenu boolean DEFAULT false
-);
-
-
-ALTER TABLE public.sscategories OWNER TO rails;
-
---
--- Name: sscategories_id_seq; Type: SEQUENCE; Schema: public; Owner: rails
---
-
-CREATE SEQUENCE sscategories_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.sscategories_id_seq OWNER TO rails;
-
---
--- Name: sscategories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: rails
---
-
-ALTER SEQUENCE sscategories_id_seq OWNED BY sscategories.id;
-
-
---
--- Name: stats; Type: TABLE; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE TABLE stats (
-    id integer NOT NULL,
-    commerce uuid,
-    date_visite timestamp without time zone,
-    parcours character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
-ALTER TABLE public.stats OWNER TO rails;
-
---
--- Name: stats_id_seq; Type: SEQUENCE; Schema: public; Owner: rails
---
-
-CREATE SEQUENCE stats_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.stats_id_seq OWNER TO rails;
-
---
--- Name: stats_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: rails
---
-
-ALTER SEQUENCE stats_id_seq OWNED BY stats.id;
-
-
---
--- Name: tags; Type: TABLE; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE TABLE tags (
-    id integer NOT NULL,
-    nom character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
-ALTER TABLE public.tags OWNER TO rails;
-
---
--- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: rails
---
-
-CREATE SEQUENCE tags_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.tags_id_seq OWNER TO rails;
-
---
--- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: rails
---
-
-ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
-
-
---
--- Name: tokenmails; Type: TABLE; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE TABLE tokenmails (
-    id integer NOT NULL,
-    mail character varying,
-    token character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
-ALTER TABLE public.tokenmails OWNER TO rails;
-
---
--- Name: tokenmails_id_seq; Type: SEQUENCE; Schema: public; Owner: rails
---
-
-CREATE SEQUENCE tokenmails_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.tokenmails_id_seq OWNER TO rails;
-
---
--- Name: tokenmails_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: rails
---
-
-ALTER SEQUENCE tokenmails_id_seq OWNED BY tokenmails.id;
-
-
---
--- Name: tokens; Type: TABLE; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE TABLE tokens (
-    id integer NOT NULL,
-    mail character varying,
-    valeur character varying,
-    valide boolean,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
-ALTER TABLE public.tokens OWNER TO rails;
-
---
--- Name: tokens_id_seq; Type: SEQUENCE; Schema: public; Owner: rails
---
-
-CREATE SEQUENCE tokens_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.tokens_id_seq OWNER TO rails;
-
---
--- Name: tokens_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: rails
---
-
-ALTER SEQUENCE tokens_id_seq OWNED BY tokens.id;
-
-
---
--- Name: tutos; Type: TABLE; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE TABLE tutos (
-    id integer NOT NULL,
-    fr character varying,
-    de character varying,
-    esp character varying,
-    en character varying,
-    page character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
-ALTER TABLE public.tutos OWNER TO rails;
-
---
--- Name: tutos_id_seq; Type: SEQUENCE; Schema: public; Owner: rails
---
-
-CREATE SEQUENCE tutos_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.tutos_id_seq OWNER TO rails;
-
---
--- Name: tutos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: rails
---
-
-ALTER SEQUENCE tutos_id_seq OWNED BY tutos.id;
-
-
---
--- Name: users; Type: TABLE; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE TABLE users (
-    id integer NOT NULL,
-    email character varying,
-    username character varying,
-    status character varying,
-    salt character varying,
-    password_digest character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
-ALTER TABLE public.users OWNER TO rails;
-
---
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: rails
---
-
-CREATE SEQUENCE users_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.users_id_seq OWNER TO rails;
-
---
--- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: rails
---
-
-ALTER SEQUENCE users_id_seq OWNED BY users.id;
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: rails
---
-
-ALTER TABLE ONLY blacklists ALTER COLUMN id SET DEFAULT nextval('blacklists_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: rails
---
-
-ALTER TABLE ONLY categories ALTER COLUMN id SET DEFAULT nextval('categories_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: rails
---
-
-ALTER TABLE ONLY notes ALTER COLUMN id SET DEFAULT nextval('notes_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: rails
---
-
-ALTER TABLE ONLY parcours_predefinis ALTER COLUMN id SET DEFAULT nextval('parcours_predefinis_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: rails
---
-
-ALTER TABLE ONLY promotions ALTER COLUMN id SET DEFAULT nextval('promotions_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: rails
---
-
-ALTER TABLE ONLY requests ALTER COLUMN id SET DEFAULT nextval('requests_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: rails
---
-
-ALTER TABLE ONLY resultats ALTER COLUMN id SET DEFAULT nextval('resultats_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: rails
---
-
-ALTER TABLE ONLY sscategories ALTER COLUMN id SET DEFAULT nextval('sscategories_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: rails
---
-
-ALTER TABLE ONLY stats ALTER COLUMN id SET DEFAULT nextval('stats_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: rails
---
-
-ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: rails
---
-
-ALTER TABLE ONLY tokenmails ALTER COLUMN id SET DEFAULT nextval('tokenmails_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: rails
---
-
-ALTER TABLE ONLY tokens ALTER COLUMN id SET DEFAULT nextval('tokens_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: rails
---
-
-ALTER TABLE ONLY tutos ALTER COLUMN id SET DEFAULT nextval('tutos_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: rails
---
-
-ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
-
 
 --
 -- Data for Name: blacklists; Type: TABLE DATA; Schema: public; Owner: rails
@@ -1069,14 +65,14 @@ SELECT pg_catalog.setval('blacklists_id_seq', 63, true);
 
 COPY categories (id, nom, created_at, updated_at, reference, en, esp, de, ko, jap, visible, stat) FROM stdin;
 15	cache	2016-06-09 09:51:18.037083	2016-06-13 11:30:59.990632	cache	cache	cache	cache	\N	\N	f	0
-3	Équipement maison	2016-01-20 18:35:56.257433	2016-06-29 13:08:55.125917	mobilier	Housing	Mobiliario	Hauses Ausstattung	\N	\N	t	16
+8	Bar Café Restaurant	2016-01-20 18:58:04.623855	2016-07-01 07:37:33.898842	bar/cafes/restaurants	Bar Coffee Restaurant	Bar Café Restaurante	Bar Cafe Restaurant	\N	\N	t	129
+3	Équipement maison	2016-01-20 18:35:56.257433	2016-07-01 07:58:17.23602	mobilier	Housing	Mobiliario	Hauses Ausstattung	\N	\N	t	17
+1	Alimentaire	2016-01-20 18:35:29.1725	2016-07-01 07:59:37.945602	nourriture	Groceries	Alimentación	Lebensmittel	\N	\N	t	737
 7	Service	2016-01-20 18:36:44.281684	2016-06-29 13:20:58.807031	services	Services	Servicios	Abteilung	\N	\N	t	26
-6	Culture Sport Loisir	2016-01-20 18:36:35.287555	2016-06-29 13:48:57.370375	culturel	Culture	Cultura	Kultur	\N	\N	t	54
+4	Équipement personne	2016-01-20 18:36:11.876029	2016-07-01 08:06:52.993325	vetements Et Accesoires	Accessories	Ropa y accesorios	Ausrüstung Person	\N	\N	t	389
+6	Culture Sport Loisir	2016-01-20 18:36:35.287555	2016-06-30 09:28:11.090392	culturel	Culture	Cultura	Kultur	\N	\N	t	58
+13	Autres	2016-01-23 17:20:22.893217	2016-06-30 09:42:24.764386	magasins inclassables	Others	Otros	Sonstiges	\N	\N	t	58
 5	Hygiène Sante Beaute	2016-01-20 18:36:24.993917	2016-06-29 09:13:31.665851	vendeurSpecialise	Healthcare	Higiene	Hygiene	\N	\N	t	3
-4	Équipement personne	2016-01-20 18:36:11.876029	2016-06-29 12:56:01.924502	vetements Et Accesoires	Accessories	Ropa y accesorios	Ausrüstung Person	\N	\N	t	384
-13	Autres	2016-01-23 17:20:22.893217	2016-06-29 14:44:52.831108	magasins inclassables	Others	Otros	Sonstiges	\N	\N	t	55
-8	Bar Café Restaurant	2016-01-20 18:58:04.623855	2016-06-29 13:04:17.878235	bar/cafes/restaurants	Bar Coffee Restaurant	Bar Café Restaurante	Bar Cafe Restaurant	\N	\N	t	118
-1	Alimentaire	2016-01-20 18:35:29.1725	2016-06-30 08:01:46.292942	nourriture	Groceries	Alimentación	Lebensmittel	\N	\N	t	708
 \.
 
 
@@ -1085,6 +81,23 @@ COPY categories (id, nom, created_at, updated_at, reference, en, esp, de, ko, ja
 --
 
 SELECT pg_catalog.setval('categories_id_seq', 15, true);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: rails
+--
+
+COPY users (id, email, username, status, salt, password_digest, created_at, updated_at) FROM stdin;
+3	admin@hotmail.fr	admin	admin	\N	$2a$10$MVDV69oZPDCGsteKbQ1NqOlG1A8AZw2pusR8tBxDGhbwBtfQXUEM.	2016-03-29 10:29:11.487702	2016-03-29 10:29:11.487702
+2	leopoldofr@hotmail.fr	leopoldofr	promoted	\N	$2a$10$DPx08cIOGOd05oawFolJ/.BmxTwmQP.1UponG82kHhU/wTxfWm7hu	2016-03-24 17:57:33.039162	2016-05-30 14:36:36.443337
+19	contact@rennespoche.fr	CCI	admin	\N	$2a$10$cauQz3/6n631rFOpponhfuGbLEKNozPnK7QXh7RcSWtknXTMO9dY6	2016-06-01 12:09:32.177844	2016-06-01 12:09:43.762915
+21	basic@hotmail.fr	basic	basic	\N	$2a$10$eGnO.B4b9W1g6jiJLfAzEOXmRCHLHQcwppr.8Ra5OWAvauW9cINsi	2016-06-17 07:32:44.759588	2016-06-17 07:32:44.759588
+24	leo@hotmail.fr	leo	promoted	\N	$2a$10$KrADfD6zyl5o1/s8YS4RGu/G.YkvqOvsB0d8KcO2Fx90PZ32quqsi	2016-06-24 12:00:45.850286	2016-06-24 12:00:45.850286
+25	trololo@machin.com	trololo	promoted	\N	$2a$10$WGjZ4Diz2QNtiorVXQO1nuwfe8ch71smLuB26DPM8fdBv9eBZxl/i	2016-06-24 12:38:16.729261	2016-06-24 12:38:16.729261
+26	tank@hotmail.fr	tank	promoted	\N	$2a$10$B8WHik1IKJWvGigxg3eX3.p7Cm3v5DZ3d6BmQ2dmQcp9HUtAn.eV6	2016-06-24 12:47:25.125559	2016-06-24 12:47:25.125559
+27	tanks@hotmail.fr	tanks	promoted	\N	$2a$10$ztCzpxDEqCQ6R/5hJBNvEOdZjrGMy3jdpkv8iKbeTAyHflZgumuXG	2016-06-24 12:50:00.324538	2016-06-24 12:50:00.324538
+29	leopoldo@hotmail.fr	leopoldo	promoted	\N	$2a$10$lmiOhfb.z8SkVhUrQrUuRuYFIVpG9B8p7NkHWE.dxVmDKyQQEJDo.	2016-06-29 08:00:27.286936	2016-06-29 08:00:27.286936
+\.
 
 
 --
@@ -1131,7 +144,6 @@ b40a651d-fc87-48d0-abd5-072df06520eb	1101	513.484.642.00022	ALADDIN	FDC	1995-04-
 281559c8-71a7-46d6-918b-c8ce9b4920ed	878	498.457.597.00033	INDIA	PADMA	2009-02-01	\N	5610A	RESTAURATION TRADITIONNELLE	6 ORCD	CULTURE, SPORTS, LOISIRS	6	 DERVAL	Rue Derval	238	RENNES					6	Rue Derval	Rennes	Ille-et-Vilaine	Bretagne	France	35000	48.1114642999999873	-1.67657699999999998	ROOFTOP	ChIJhTb6uDXeDkgRt4MVxMoeAqE	48.1128132802914976	-1.67522801970849811	48.1101153197084983	-1.67792598029150208	2016-03-21 14:01:36	noimage.jpg	56	0	0	0			\N	\N	f			{"lundi0":"9","lundi0mn":"00","lundi1":"0","lundi1mn":"00","lundi2":"0","lundi2mn":"00","lundi3":"18","lundi3mn":"00","mardi0":"9","mardi0mn":"00","mardi1":"0","mardi1mn":"00","mardi2":"0","mardi2mn":"00","mardi3":"18","mardi3mn":"00","mercredi0":"9","mercredi0mn":"00","mercredi1":"0","mercredi1mn":"00","mercredi2":"0","mercredi2mn":"00","mercredi3":"18","mercredi3mn":"00","jeudi0":"9","jeudi0mn":"00","jeudi1":"0","jeudi1mn":"00","jeudi2":"0","jeudi2mn":"00","jeudi3":"18","jeudi3mn":"00","vendredi0":"9","vendredi0mn":"00","vendredi1":"0","vendredi1mn":"00","vendredi2":"0","vendredi2mn":"00","vendredi3":"18","vendredi3mn":"00","samedi0":"0","samedi0mn":"00","samedi1":"0","samedi1mn":"00","samedi2":"0","samedi2mn":"00","samedi3":"0","samedi3mn":"00","dimanche0":"0","dimanche0mn":"00","dimanche1":"0","dimanche1mn":"00","dimanche2":"0","dimanche2mn":"00","dimanche3":"0","dimanche3mn":"00"}
 a6b3bd0d-8d0d-43dd-a3c2-83bd6502b889	1127	510.634.819.00013	LA MARMITE DU SACA SACA	MME SIENDOLO JEANNE CLAUDINE	2009-04-15	\N	5610C	RESTAURATION DE TYPE RAPIDE	5 ORCD	HYGIENE SANTE	10	 DERVAL	DERVAL	238	RENNES	Rennes Métrop.	02 99 67 93 61			10	Rue Derval	Rennes	Ille-et-Vilaine	Bretagne	France	35000	48.1117740999999981	-1.67673110000000003	ROOFTOP	EiMxMCBSdWUgRGVydmFsLCAzNTAwMCBSZW5uZXMsIEZyYW5jZQ	48.1131238302914923	-1.67537281970849805	48.1104258697085001	-1.67807078029150203	2015-11-01 19:15:04	noimage.jpg	56	0	0	0			0	\N	f			{"lundi0":"9","lundi0mn":"00","lundi1":"0","lundi1mn":"00","lundi2":"0","lundi2mn":"00","lundi3":"18","lundi3mn":"00","mardi0":"9","mardi0mn":"00","mardi1":"0","mardi1mn":"00","mardi2":"0","mardi2mn":"00","mardi3":"18","mardi3mn":"00","mercredi0":"9","mercredi0mn":"00","mercredi1":"0","mercredi1mn":"00","mercredi2":"0","mercredi2mn":"00","mercredi3":"18","mercredi3mn":"00","jeudi0":"9","jeudi0mn":"00","jeudi1":"0","jeudi1mn":"00","jeudi2":"0","jeudi2mn":"00","jeudi3":"18","jeudi3mn":"00","vendredi0":"9","vendredi0mn":"00","vendredi1":"0","vendredi1mn":"00","vendredi2":"0","vendredi2mn":"00","vendredi3":"18","vendredi3mn":"00","samedi0":"0","samedi0mn":"00","samedi1":"0","samedi1mn":"00","samedi2":"0","samedi2mn":"00","samedi3":"0","samedi3mn":"00","dimanche0":"0","dimanche0mn":"00","dimanche1":"0","dimanche1mn":"00","dimanche2":"0","dimanche2mn":"00","dimanche3":"0","dimanche3mn":"00"}
 a3d6da8a-6eb0-45a4-b8af-73a0526fd895	248	798.785.085.00035	LE FORUM DU LIVRE	LE FORUM DU LIVRE	1996-08-27	\N	4761Z	COMMERCE DE DETAIL DE LIVRES EN MAGASIN SPECIALISE	4 ORCD	EQUIPEMENT DE LA PERSONNE	11	 DE LA VISITATION	DE LA VISITATION	238	RENNES	Rennes Métrop.	02 99 79 38 93	02 99 78 28 25	contact@librairieforumdulivre.fr	11	Rue de la Visitation	Rennes	Ille-et-Vilaine	Bretagne	France	35000	48.1144139999999965	-1.67876840000000005	ROOFTOP	ChIJVU4w6TbeDkgR-pLVWpDgYEo	48.1157629802914926	-1.67741941970849795	48.1130650197084933	-1.68011738029150193	2015-11-01 19:14:13	Forum du Livre.jpg	9	\N	\N	\N	Librairie indépendante incontournable du centre ville de Rennes, le Forum du Livre a déménagé récemment pour venir s’installer dans le centre commercial de la Visitation. C’est l’endroit idéal pour venir se ravitailler en ouvrages littéraires, ouvrages spécialisés, bande-dessinées, littérature jeunesse. Farfouillez parmi les 80 000 références en stock. Profitez également de l’espace papeterie et fournitures scolaires à l’étage et du café littéraire, le seul et unique sur Rennes qui organise très régulièrement des rencontres suivies de séances de dédicace avec des auteurs	https://www.facebook.com/librairieforumdulivre/?fref=ts	1	\N	f	https://www.librairieforumdulivre.fr		{}
-5f1ebea2-a35b-47db-99e7-e734f8f985e3	565	569.200.785.00016	CHAUSSURES BESSEC	STE GERANTE CHAUSSURE BESSEC	2012-02-14	\N	4772A	COMMERCE DE DETAIL DE LA CHAUSSURE	9 ORCD	CHR	8	 DE ROHAN	DE ROHAN	238	RENNES	Rennes Métrop.	02 99 79 45 94	02 99 79 15 08	bessec.chaussures@wanadoo.fr	8	Rue de Rohan	Rennes	Ille-et-Vilaine	Bretagne	France	35000	48.1107761000000025	-1.68010710000000008	ROOFTOP	ChIJ45-AhzPeDkgRa_p8cPRv2xc	48.1121250802914986	-1.67875811970849798	48.1094271197084993	-1.68145608029150195	2015-11-01 19:14:55	noimage.jpg	21	62	60	\N	Créé il y a 150 ans en 1862, Bessec Chaussure est aujourd’hui le premier détaillant indépendant en chaussures du Grand-Ouest et l’un des plus importants de France.Niché dans la rue de Rohan et spécialisé dans la vente de chaussures multimarques, il offre un large choix ainsi qu’un service de qualité. Venez découvrir une sélection pointue des meilleures marques françaises et étrangères pour la femme, l’homme et l’enfant. 	https://www.facebook.com/bessec.chaussures/?fref=ts	0	\N	f	http://www.bessec-chaussures.com/nos-magasins/rennes/bessec-rennes-centre-73.html		{}
 468fae7f-c3e1-4411-9b15-11c426bd695e	987	535.347.926.00011	LA SAIGONNAISE	LAN ET LOI	2012-09-01	\N	5610A	RESTAURATION TRADITIONNELLE	9 ORCD	CHR	14	 SAINT MALO	SAINT MALO	238	RENNES	Rennes Métrop.	02 99 78 29 40			14	Rue Saint-Malo	Rennes	Ille-et-Vilaine	Bretagne	France	35000	48.1159458999999998	-1.68072920000000003	ROOFTOP	ChIJ58rgzTDeDkgRCNMhZjYVTGo	48.117294880291503	-1.67938021970849793	48.1145969197084966	-1.68207818029150191	2015-11-01 19:28:39	noimage.jpg	56	0	0	0			0	\N	f			{"lundi0":"9","lundi0mn":"00","lundi1":"0","lundi1mn":"00","lundi2":"0","lundi2mn":"00","lundi3":"18","lundi3mn":"00","mardi0":"9","mardi0mn":"00","mardi1":"0","mardi1mn":"00","mardi2":"0","mardi2mn":"00","mardi3":"18","mardi3mn":"00","mercredi0":"9","mercredi0mn":"00","mercredi1":"0","mercredi1mn":"00","mercredi2":"0","mercredi2mn":"00","mercredi3":"18","mercredi3mn":"00","jeudi0":"9","jeudi0mn":"00","jeudi1":"0","jeudi1mn":"00","jeudi2":"0","jeudi2mn":"00","jeudi3":"18","jeudi3mn":"00","vendredi0":"9","vendredi0mn":"00","vendredi1":"0","vendredi1mn":"00","vendredi2":"0","vendredi2mn":"00","vendredi3":"18","vendredi3mn":"00","samedi0":"0","samedi0mn":"00","samedi1":"0","samedi1mn":"00","samedi2":"0","samedi2mn":"00","samedi3":"0","samedi3mn":"00","dimanche0":"0","dimanche0mn":"00","dimanche1":"0","dimanche1mn":"00","dimanche2":"0","dimanche2mn":"00","dimanche3":"0","dimanche3mn":"00"}
 aa4b9312-d393-4da0-a063-32feffeb32ca	1139	801.840.588.00017	LE SUSHI 35	LE SUSHI 35	2000-05-01	\N	5610C	RESTAURATION DE TYPE RAPIDE	4 ORCD	EQUIPEMENT DE LA PERSONNE	48	 LEGRAVEREND	LEGRAVEREND	238	RENNES	Rennes Métrop.	02 99 30 46 95			48	Rue Legraverend	Rennes	Ille-et-Vilaine	Bretagne	France	35000	48.1179041999999981	-1.6850620999999999	ROOFTOP	ChIJU0nzpjreDkgR6pS8yjQb_j4	48.1192531802915013	-1.68371311970849802	48.116555219708502	-1.686411080291502	2015-11-01 19:26:26	noimage.jpg	46	0	0	0			0	\N	f			{"lundi0":"9","lundi0mn":"00","lundi1":"0","lundi1mn":"00","lundi2":"0","lundi2mn":"00","lundi3":"18","lundi3mn":"00","mardi0":"9","mardi0mn":"00","mardi1":"0","mardi1mn":"00","mardi2":"0","mardi2mn":"00","mardi3":"18","mardi3mn":"00","mercredi0":"9","mercredi0mn":"00","mercredi1":"0","mercredi1mn":"00","mercredi2":"0","mercredi2mn":"00","mercredi3":"18","mercredi3mn":"00","jeudi0":"9","jeudi0mn":"00","jeudi1":"0","jeudi1mn":"00","jeudi2":"0","jeudi2mn":"00","jeudi3":"18","jeudi3mn":"00","vendredi0":"9","vendredi0mn":"00","vendredi1":"0","vendredi1mn":"00","vendredi2":"0","vendredi2mn":"00","vendredi3":"18","vendredi3mn":"00","samedi0":"0","samedi0mn":"00","samedi1":"0","samedi1mn":"00","samedi2":"0","samedi2mn":"00","samedi3":"0","samedi3mn":"00","dimanche0":"0","dimanche0mn":"00","dimanche1":"0","dimanche1mn":"00","dimanche2":"0","dimanche2mn":"00","dimanche3":"0","dimanche3mn":"00"}
 e1911d7d-4d36-4549-8eaf-1bf39338f1fd	1	499.557.791.00021	TOUT ROTI TOUT CUIT	LES HALLES NT	2005-12-23	\N	1013B	CHARCUTERIE	9 ORCD	CHR		 HONORE COMMEUREC	Place Honoré Commeurec	238	RENNES		02 99 79 12 21				Place Honoré Commeurec	Rennes	Ille-et-Vilaine	Bretagne	France	35000	48.1084715999999872	-1.67963200000000001	ROOFTOP	ChIJvxmyqDTeDkgRBO2KWK-eA0c	48.1097635302915023	-1.67829551970849811	48.107065569708503	-1.68099348029150208	2016-03-21 14:01:36	noimage.jpg	12	\N	\N	\N			\N	\N	f			{"lundi0":"8","lundi0mn":"00","lundi1":"0","lundi1mn":"00","lundi2":"0","lundi2mn":"00","lundi3":"19","lundi3mn":"30","mardi0":"8","mardi0mn":"00","mardi1":"0","mardi1mn":"00","mardi2":"0","mardi2mn":"00","mardi3":"19","mardi3mn":"30","mercredi0":"8","mercredi0mn":"00","mercredi1":"0","mercredi1mn":"00","mercredi2":"0","mercredi2mn":"00","mercredi3":"19","mercredi3mn":"30","jeudi0":"8","jeudi0mn":"00","jeudi1":"0","jeudi1mn":"00","jeudi2":"0","jeudi2mn":"00","jeudi3":"19","jeudi3mn":"30","vendredi0":"8","vendredi0mn":"00","vendredi1":"0","vendredi1mn":"00","vendredi2":"0","vendredi2mn":"00","vendredi3":"19","vendredi3mn":"30","samedi0":"8","samedi0mn":"00","samedi1":"0","samedi1mn":"00","samedi2":"0","samedi2mn":"00","samedi3":"19","samedi3mn":"30","dimanche0":"0","dimanche0mn":"00","dimanche1":"0","dimanche1mn":"00","dimanche2":"0","dimanche2mn":"00","dimanche3":"0","dimanche3mn":"00"}
@@ -1161,6 +173,7 @@ c4064f80-e608-4807-956b-da3098229822	17	739.200.426.00016	BOULANGERIE JANVIER	SA
 4e73a760-792a-4fdf-89fe-a4c49d449fd3	37	400.420.832.00018		BELHOGA	2002-07-22	\N	4511Z	COMMERCE DE VOITURES ET DE VEHICULES AUTOMOBILES LEGERS	4 ORCD	EQUIPEMENT DE LA PERSONNE	2	 DE LA TOUR D AUVERGNE	Boulevard de la Tour d'Auvergne	238	RENNES					2	Boulevard de la Tour d'Auvergne	Rennes	Ille-et-Vilaine	Bretagne	France	35000	48.1080536999999993	-1.68486540000000007	ROOFTOP	ChIJERIprDLeDkgRuMyLTPsOYLU	48.1094026802915025	-1.68351641970849797	48.1067047197085031	-1.68621438029150195	2016-03-21 14:01:36	noimage.jpg	87	0	0	0			\N	3	f			{"lundi0":"9","lundi0mn":"00","lundi1":"0","lundi1mn":"00","lundi2":"0","lundi2mn":"00","lundi3":"18","lundi3mn":"00","mardi0":"9","mardi0mn":"00","mardi1":"0","mardi1mn":"00","mardi2":"0","mardi2mn":"00","mardi3":"18","mardi3mn":"00","mercredi0":"9","mercredi0mn":"00","mercredi1":"0","mercredi1mn":"00","mercredi2":"0","mercredi2mn":"00","mercredi3":"18","mercredi3mn":"00","jeudi0":"9","jeudi0mn":"00","jeudi1":"0","jeudi1mn":"00","jeudi2":"0","jeudi2mn":"00","jeudi3":"18","jeudi3mn":"00","vendredi0":"9","vendredi0mn":"00","vendredi1":"0","vendredi1mn":"00","vendredi2":"0","vendredi2mn":"00","vendredi3":"18","vendredi3mn":"00","samedi0":"0","samedi0mn":"00","samedi1":"0","samedi1mn":"00","samedi2":"0","samedi2mn":"00","samedi3":"0","samedi3mn":"00","dimanche0":"0","dimanche0mn":"00","dimanche1":"0","dimanche1mn":"00","dimanche2":"0","dimanche2mn":"00","dimanche3":"0","dimanche3mn":"00"}
 01830f50-d3ce-48e3-ae4e-56c16abc7530	1209	538.679.879.00014		SARL ALEYNA	2005-09-01	\N	5610C	RESTAURATION DE TYPE RAPIDE	4 ORCD	EQUIPEMENT DE LA PERSONNE	24	 JEAN JANVIER	JEAN JANVIER	238	RENNES	Rennes Métrop.	02 99 01 62 33			24	Avenue Jean Janvier	Rennes	Ille-et-Vilaine	Bretagne	France	35000	48.1052299999999988	-1.67321150000000007	ROOFTOP	ChIJKxDjnrXfDkgRW5fpkO7CReQ	48.1065789802914878	-1.67186251970849797	48.1038810197085027	-1.67456048029150195	2015-11-01 19:25:31	noimage.jpg	46	\N	\N	\N			0	\N	f			{}
 76229c46-dd74-46e6-888d-3f5af344adab	695	384.258.802.00030		OPTINVEST	2008-11-28	\N	4778A	COMMERCES DE DETAIL D'OPTIQUE	5 ORCD	HYGIENE SANTE	3	 EDITH CAWELL	EDITH CAWELL	238	RENNES	Rennes Métrop.	02 99 79 54 99	02 99 79 17 15	lebarse-rennes@krys.com	3	Rue Edith Cavell	Rennes	Ille-et-Vilaine	Bretagne	France	35000	48.1113128999999873	-1.6780219999999999	ROOFTOP	ChIJhznHSDTeDkgR90cfz_lV-Cc	48.1126618802914905	-1.67667301970849802	48.1099639197084983	-1.679370980291502	2015-11-01 19:24:46	noimage.jpg	41	\N	\N	\N			0	\N	f			{}
+5f1ebea2-a35b-47db-99e7-e734f8f985e3	565	569.200.785.00016	CHAUSSURES BESSEC	STE GERANTE CHAUSSURE BESSEC	2012-02-14	\N	4772A	COMMERCE DE DETAIL DE LA CHAUSSURE	9 ORCD	CHR	8	 DE ROHAN	DE ROHAN	238	RENNES	Rennes Métrop.	02 99 79 45 94	02 99 79 15 08	bessec.chaussures@wanadoo.fr	8	Rue de Rohan	Rennes	Ille-et-Vilaine	Bretagne	France	35000	48.1107761000000025	-1.68010710000000008	ROOFTOP	ChIJ45-AhzPeDkgRa_p8cPRv2xc	48.1121250802914986	-1.67875811970849798	48.1094271197084993	-1.68145608029150195	2015-11-01 19:14:55	noimage.jpg	21	62	60	0	Créé il y a 150 ans en 1862, Bessec Chaussure est aujourd’hui le premier détaillant indépendant en chaussures du Grand-Ouest et l’un des plus importants de France.Niché dans la rue de Rohan et spécialisé dans la vente de chaussures multimarques, il offre un large choix ainsi qu’un service de qualité. Venez découvrir une sélection pointue des meilleures marques françaises et étrangères pour la femme, l’homme et l’enfant. 	https://www.facebook.com/bessec.chaussures/?fref=ts	0	3	f	www.bessec-chaussures.com		{"lundi0":"9","lundi0mn":"00","lundi1":"0","lundi1mn":"00","lundi2":"0","lundi2mn":"00","lundi3":"18","lundi3mn":"00","mardi0":"9","mardi0mn":"00","mardi1":"0","mardi1mn":"00","mardi2":"0","mardi2mn":"00","mardi3":"18","mardi3mn":"00","mercredi0":"9","mercredi0mn":"00","mercredi1":"0","mercredi1mn":"00","mercredi2":"0","mercredi2mn":"00","mercredi3":"18","mercredi3mn":"00","jeudi0":"9","jeudi0mn":"00","jeudi1":"0","jeudi1mn":"00","jeudi2":"0","jeudi2mn":"00","jeudi3":"18","jeudi3mn":"00","vendredi0":"9","vendredi0mn":"00","vendredi1":"0","vendredi1mn":"00","vendredi2":"0","vendredi2mn":"00","vendredi3":"18","vendredi3mn":"00","samedi0":"0","samedi0mn":"00","samedi1":"0","samedi1mn":"00","samedi2":"0","samedi2mn":"00","samedi3":"0","samedi3mn":"00","dimanche0":"0","dimanche0mn":"00","dimanche1":"0","dimanche1mn":"00","dimanche2":"0","dimanche2mn":"00","dimanche3":"0","dimanche3mn":"00"}
 16be17d4-6c5b-445d-a954-f832722d4d6c	111	500.644.877.00010	WHISKY RHUM LE CAVISTE SPECIALISTE	SKYE	2000-09-01	\N	4725Z	COMMERCE DE DETAIL DE BOISSONS EN MAGASIN SPECIALISE	4 ORCD	EQUIPEMENT DE LA PERSONNE	1	 PONTGERARD	PONTGERARD	238	RENNES	Rennes Métrop.	02 99 79 35 67	02 99 79 35 67	info@whisky-rhum.com	1	Rue Pongerard	Rennes	Ille-et-Vilaine	Bretagne	France	35000	48.1131691000000004	-1.68123240000000007	ROOFTOP	ChIJIyaMWzHeDkgRaah2YIuNoNE	48.1145180802914965	-1.67988341970849797	48.1118201197084971	-1.68258138029150195	2015-11-01 19:27:06	whisky et rhum2.jpg	79	\N	\N	\N	À proximité de la place Rallier du Baty, se cache un lieu tout à fait inédit : le Caviste Whisky Rhum, unique cave à whisky et rhum de la ville. Les amateurs apprécieront le savoir-faire de son propriétaire, Tristan Prodhomme, un breton d’origine écossaise. Avant d’ouvrir sa propre cave, il a déjà expérimenté le goût du whisky en Ecosse, l’une des grandes terres natales du single malt. Découvrez plus de 250 références et des produits introuvables en France. C’est ainsi que les whiskies de chez Dewar Rattray (embouteilleur indépendant de whisky basé en Ecosse) et les rhums de chez Bristol Classic Rum (embouteilleur indépendant) prennent place sur les étagères de la boutique. Sans oublier une gamme de bouteilles d’Irlande, du Pays de Galles, de Bretagne, et du Japon… Pour les connaisseurs.	https://www.facebook.com/WHISKY-RHUM-le-caviste-sp%C3%A9cialiste-110380065659357/?	0	\N	f	www.whisky-rhum.com		{"lundi0":"8","lundi0mn":"00","lundi1":"0","lundi1mn":"00","lundi2":"0","lundi2mn":"00","lundi3":"19","lundi3mn":"30","mardi0":"8","mardi0mn":"00","mardi1":"0","mardi1mn":"00","mardi2":"0","mardi2mn":"00","mardi3":"19","mardi3mn":"30","mercredi0":"8","mercredi0mn":"00","mercredi1":"0","mercredi1mn":"00","mercredi2":"0","mercredi2mn":"00","mercredi3":"19","mercredi3mn":"30","jeudi0":"8","jeudi0mn":"00","jeudi1":"0","jeudi1mn":"00","jeudi2":"0","jeudi2mn":"00","jeudi3":"19","jeudi3mn":"30","vendredi0":"8","vendredi0mn":"00","vendredi1":"0","vendredi1mn":"00","vendredi2":"0","vendredi2mn":"00","vendredi3":"19","vendredi3mn":"30","samedi0":"8","samedi0mn":"00","samedi1":"0","samedi1mn":"00","samedi2":"0","samedi2mn":"00","samedi3":"19","samedi3mn":"30","dimanche0":"0","dimanche0mn":"00","dimanche1":"0","dimanche1mn":"00","dimanche2":"0","dimanche2mn":"00","dimanche3":"0","dimanche3mn":"00"}
 b3252b74-7a71-4121-a32d-354c1972c4f1	267	440.014.660.00011		GREENWICH	2015-08-01	\N	4762Z	COMMERCE DE DETAIL DE JOURNAUX ET PAPETERIE EN MAGASIN SPECIALISE	9 ORCD	CHR	1	 JEAN JAURES	JEAN JAURES	238	RENNES	Rennes Métrop.	02 99 78 34 90	02 99 78 34 90	librairiegreenwich@free.fr	1	Rue Jean Jaurès	Rennes	Ille-et-Vilaine	Bretagne	France	35000	48.1104164999999995	-1.67800820000000006	ROOFTOP	ChIJh02SVzTeDkgR2ftftElocco	48.1117654802915027	-1.67665921970849796	48.1090675197085034	-1.67935718029150194	2015-11-01 19:25:35	noimage.jpg	9	\N	\N	\N	La Librairie Greenwich met en avant la littérature étrangère et propose des traductions du monde entier allant de l’Amérique à l’Afrique, de l’Europe à l’Asie et des versions originales anglaises et espagnoles. Afin de satisfaire un lectorat exigeant et curieux, la librairie a sélectionné une panoplie d’ouvrages des meilleurs écrivains, poètes ou essayistes, avec un choix important de nouveautés et fonds en version originale.	https://www.facebook.com/librairiegreenwich/?fref=ts	0	\N	f	http://librairiegreenwich.fr		{}
 61411ea5-ad1d-47da-85b9-c68134f0aa86	994	524.545.282.00013		L EDELWEISS	2014-01-08	\N	5610A	RESTAURATION TRADITIONNELLE	9 ORCD	CHR	34	 SAINT MALO	SAINT MALO	238	RENNES	Rennes Métrop.	02 99 38 80 89			34	Rue Saint-Malo	Rennes	Ille-et-Vilaine	Bretagne	France	35000	48.1164363999999978	-1.68073040000000007	ROOFTOP	ChIJOcsQyjDeDkgRMebg2BDoJMc	48.117785380291501	-1.67938141970849797	48.1150874197085017	-1.68207938029150195	2015-11-01 19:28:36	noimage.jpg	56	\N	\N	\N			0	\N	f			{}
@@ -2554,13 +1567,13 @@ SELECT pg_catalog.setval('notes_id_seq', 31, true);
 -- Data for Name: parcours_predefinis; Type: TABLE DATA; Schema: public; Owner: rails
 --
 
-COPY parcours_predefinis (id, name, description, image, commerces, created_at, updated_at, en, esp, de, fr, visible) FROM stdin;
-5	RACDC	Le parcours de la rédactrice de Rennes à Coups de Coeur	racdc.svg	{bc56cf23-99e9-47c6-aa30-37b9c01a713d,72d4e987-8171-4856-9d40-9ff10e686f58,27976c37-72ef-4761-976c-052185abe954,32db408f-e777-4ecb-8b0e-b7b23cc43a43,8a8609b4-a88a-46af-9aec-cc375c99fea4,3dd7d0af-b3ff-4dd5-9a7a-3c068041cda9,617082e3-c790-4ae0-94d3-77b6c52914ab,2e114e51-74b8-498b-924f-80bb2821ef58,effc6a7a-fa0e-4da8-8838-4971ebd837ab,ea43a7cc-9c96-481a-a67a-3bbb0073b8ba,a267d65e-86f2-4a81-9031-d01b315054cb,1878f9c4-cff9-43e4-a54d-9aadc3cb53db}	2016-05-12 14:16:16.528524	2016-06-16 14:29:38.713576	A Coup de Coeur	A Coup de Coeur	A Coup de Coeur	A Coup de Coeur	t
-1	gourmand	Le parcours Gourmand, qui plaira aux petits comme aux grands !	gourmand.svg	{38aa53bf-6fc2-469a-bcef-726fa103123e,12a578e2-335b-4b45-9c29-84d90157c29d,fd9c6e8e-7f4e-4681-9041-6b0e45f4f21d,74153789-6d06-4581-9f55-aeeb69e9ce1e,3dd7d0af-b3ff-4dd5-9a7a-3c068041cda9,7bf671f4-3682-4745-a91c-6cf588f2abf4,6eabcdc7-d571-469a-8456-a67685d72863,32056cc9-3e92-4441-a3bc-db47821a3ddf,f7b05368-def8-44c1-814c-c4ec1789e36e,f0c6068d-cf45-46b5-8ba8-c9401bd9dd10,cd828660-4016-4261-bc22-5a97e87cd987,f35c2af2-1b78-4cc7-82f9-07662141616a,a45cc5e7-6bc2-4a9f-b2d5-6f5c337d7115,cb5bd8f1-7eec-4081-9c98-7c2b9e7012f6,16be17d4-6c5b-445d-a954-f832722d4d6c,4c80cf2e-1042-43f5-a158-239fa16eed1b,be8fee71-35d6-494d-a26a-4a30beba8a2a,27404d60-57bb-48a4-b217-85ec5ca883a5,62b1959f-3814-4499-994e-1c035d162878,867d4021-dba5-4ddf-92fa-0cfc32e82902}	2016-01-19 19:40:45.565281	2016-06-17 13:49:31.001416	Gourmet	Gourmet	Feinschmecker	Gourmand	t
-2	etudiant	Le parcours construit par les créateurs de Rennes en poche!	etudiant.svg	{f72549d6-d03d-4a60-b8d2-f44da6234c5b,7bb84a5f-0718-4087-bb8d-4c81987a73eb,440a1dab-7762-43e2-ae60-f6ce8884fdd0,5a57fd26-efc6-4c5d-b9e1-f5463618f3a0,b58c6741-6b99-4b3a-b978-81f2ede096dc,1fd79395-75d0-471e-a7c1-4893225bbc5f,a550f828-0f47-41ed-9f1b-6a69c9f1307c,6aee1d01-9725-42c0-bfef-efcce6db2db6,65589478-f1e3-4e9a-9c7c-ac9f439d2123,74d0e0d7-ae8b-4eb6-93b6-3b0c0bdfbd42,7475dbf1-ab03-41ae-b7e7-600e171e34d5,683f5f42-cb35-4e5c-b960-5d16c39543fe,da1852f2-8111-4aa2-ae9a-b773c39d3dfa,fb9aee59-2dd9-472e-9ee8-8bb0f1be2441,0971a84a-3f05-4dc9-b77b-1de19a196dbc,4f68f5ae-dbae-4cc4-b52f-5cd31b087bd5,52170362-0c9a-49d4-87de-123021117b56,2354e4d5-5d07-4346-aaaf-8835540fcd91,a8de43ed-c734-4562-8be6-91e652f37b3d}	2016-01-22 09:48:22.249233	2016-06-15 13:03:47.984641	Student	Estudiante	Schuler	Etudiant	t
-3	famille	Le parcours familial à faire en ... famille	parcoursgen.svg	{f1970ff7-5210-4c7e-b654-da3a33819df0,1878f9c4-cff9-43e4-a54d-9aadc3cb53db,9be35884-6e3e-4d73-90e8-fe90bf5b091a,b776feb9-0921-482b-9b8f-c32f09912325,b3252b74-7a71-4121-a32d-354c1972c4f1,528fd434-2312-4fde-bb3e-e562bee95519,dce11fc5-013f-416f-91dc-78f1f918c554,c156c4b4-40a7-4f48-ba0f-020321f60b62,246b4945-d02b-47ae-ab2e-03eaef1e2ead,21d77865-f9af-4d34-90bf-61b57c7268d5,221cfd46-c551-45ec-9c31-c9d883695045,bc19aa3f-f847-48f3-ab1a-0c2df1215a67,f89c2173-35a3-438e-a38d-c5bd4956b5de,1635dced-40c3-4d6d-a0be-f0a4095aef5b,52170362-0c9a-49d4-87de-123021117b56,0971a84a-3f05-4dc9-b77b-1de19a196dbc,3f03fb57-f923-4096-916e-cea665f23ed6,b7fed06e-2639-4a24-81c6-ceb4bf365c3c}	2016-01-25 20:37:33.21525	2016-06-15 13:11:51.100851	Family	familiar	Familienkurs	Famille	t
-7	Parcours Debug	Le parcours de test pour le debug du Back-Office	debug.png	{60a7a4cf-e21e-4573-ad8c-32ffbff7c8e5,30101eef-e640-41fd-bcb9-a1e9a13bfd88,3e68e806-b640-428a-98e5-3ed057c53a27,695c0277-8f89-4aa5-9ca1-2a067494341e,5a262798-5667-4716-a76a-206d85a5e245,bc19aa3f-f847-48f3-ab1a-0c2df1215a67,281559c8-71a7-46d6-918b-c8ce9b4920ed}	2016-05-31 14:27:55.184671	2016-06-22 14:51:32.901547	DEBUG	DEBUG	DEBUG	DEBUG	t
-6	Shopping	Action de se rendre dans les magasins pour regarder les vitrines, les étalages et faire des achats.	shopping.svg	{bca6c628-c6b2-494f-886f-619312ff4c3e,b3879475-6ea7-457b-a207-b5ee0cfcda4c,5f1ebea2-a35b-47db-99e7-e734f8f985e3,969e0404-e9c8-44d0-bc5e-1461eb8fcdf6,2227184f-9351-4f96-9090-e0eaa2aa11c6,4f68f5ae-dbae-4cc4-b52f-5cd31b087bd5,bfc6b4be-7b64-4fa7-8e77-1db8d52c0770,dd2af833-9623-4091-9613-18e35ac080d0,e293dc67-f3f7-43c8-add3-8b871100360d,390f8162-a1fd-42b3-89b6-89b9b6a52afc,e34f90bf-e0c9-4c5c-9250-1f875b393a23,c6050e41-b413-47ce-8cb6-5dbc897cb081,0cb0a9ee-af19-4fbc-acc8-a6045693ab3d,6e198544-df28-4a9e-a642-11906a9f525e,0cb9c09c-45e6-4985-9fca-28f3f4b49758,579354b9-d0ea-4d79-9b58-fc54db51b428,577abe6b-fd6d-4982-b4aa-f9d66aae50fe,7882a8fe-4ccc-4685-bf7a-7fcb5176cd43}	2016-05-18 08:06:33.531364	2016-06-15 14:07:21.670763	Shopping	Compras	Einkaufen	Shopping	t
+COPY parcours_predefinis (id, name, description, image, commerces, created_at, updated_at, en, esp, de, fr, visible, stats) FROM stdin;
+1	gourmand	Le parcours Gourmand, qui plaira aux petits comme aux grands !	gourmand.svg	{38aa53bf-6fc2-469a-bcef-726fa103123e,12a578e2-335b-4b45-9c29-84d90157c29d,fd9c6e8e-7f4e-4681-9041-6b0e45f4f21d,74153789-6d06-4581-9f55-aeeb69e9ce1e,3dd7d0af-b3ff-4dd5-9a7a-3c068041cda9,7bf671f4-3682-4745-a91c-6cf588f2abf4,6eabcdc7-d571-469a-8456-a67685d72863,32056cc9-3e92-4441-a3bc-db47821a3ddf,f7b05368-def8-44c1-814c-c4ec1789e36e,f0c6068d-cf45-46b5-8ba8-c9401bd9dd10,cd828660-4016-4261-bc22-5a97e87cd987,f35c2af2-1b78-4cc7-82f9-07662141616a,a45cc5e7-6bc2-4a9f-b2d5-6f5c337d7115,cb5bd8f1-7eec-4081-9c98-7c2b9e7012f6,16be17d4-6c5b-445d-a954-f832722d4d6c,4c80cf2e-1042-43f5-a158-239fa16eed1b,be8fee71-35d6-494d-a26a-4a30beba8a2a,27404d60-57bb-48a4-b217-85ec5ca883a5,62b1959f-3814-4499-994e-1c035d162878,867d4021-dba5-4ddf-92fa-0cfc32e82902}	2016-01-19 19:40:45.565281	2016-06-30 09:07:30.64554	Gourmet	Gourmet	Feinschmecker	Gourmand	t	2
+7	Parcours Debug	Le parcours de test pour le debug du Back-Office	debug.png	{60a7a4cf-e21e-4573-ad8c-32ffbff7c8e5,30101eef-e640-41fd-bcb9-a1e9a13bfd88,3e68e806-b640-428a-98e5-3ed057c53a27,695c0277-8f89-4aa5-9ca1-2a067494341e,5a262798-5667-4716-a76a-206d85a5e245,bc19aa3f-f847-48f3-ab1a-0c2df1215a67,281559c8-71a7-46d6-918b-c8ce9b4920ed}	2016-05-31 14:27:55.184671	2016-06-30 09:14:50.213744	DEBUG	DEBUG	DEBUG	DEBUG	t	2
+6	Shopping	Déambulez parmi les belles enseignes	shopping.svg	{bca6c628-c6b2-494f-886f-619312ff4c3e,b3879475-6ea7-457b-a207-b5ee0cfcda4c,5f1ebea2-a35b-47db-99e7-e734f8f985e3,969e0404-e9c8-44d0-bc5e-1461eb8fcdf6,2227184f-9351-4f96-9090-e0eaa2aa11c6,4f68f5ae-dbae-4cc4-b52f-5cd31b087bd5,bfc6b4be-7b64-4fa7-8e77-1db8d52c0770,dd2af833-9623-4091-9613-18e35ac080d0,e293dc67-f3f7-43c8-add3-8b871100360d,390f8162-a1fd-42b3-89b6-89b9b6a52afc,e34f90bf-e0c9-4c5c-9250-1f875b393a23,c6050e41-b413-47ce-8cb6-5dbc897cb081,0cb0a9ee-af19-4fbc-acc8-a6045693ab3d,6e198544-df28-4a9e-a642-11906a9f525e,0cb9c09c-45e6-4985-9fca-28f3f4b49758,579354b9-d0ea-4d79-9b58-fc54db51b428,577abe6b-fd6d-4982-b4aa-f9d66aae50fe,7882a8fe-4ccc-4685-bf7a-7fcb5176cd43}	2016-05-18 08:06:33.531364	2016-06-30 11:51:15.241731	Shopping	Compras	Einkaufen	Shopping	t	0
+3	famille	Le parcours idéal pour famille	parcoursgen.svg	{f1970ff7-5210-4c7e-b654-da3a33819df0,1878f9c4-cff9-43e4-a54d-9aadc3cb53db,9be35884-6e3e-4d73-90e8-fe90bf5b091a,b776feb9-0921-482b-9b8f-c32f09912325,b3252b74-7a71-4121-a32d-354c1972c4f1,528fd434-2312-4fde-bb3e-e562bee95519,dce11fc5-013f-416f-91dc-78f1f918c554,c156c4b4-40a7-4f48-ba0f-020321f60b62,246b4945-d02b-47ae-ab2e-03eaef1e2ead,21d77865-f9af-4d34-90bf-61b57c7268d5,221cfd46-c551-45ec-9c31-c9d883695045,bc19aa3f-f847-48f3-ab1a-0c2df1215a67,f89c2173-35a3-438e-a38d-c5bd4956b5de,1635dced-40c3-4d6d-a0be-f0a4095aef5b,52170362-0c9a-49d4-87de-123021117b56,0971a84a-3f05-4dc9-b77b-1de19a196dbc,3f03fb57-f923-4096-916e-cea665f23ed6,b7fed06e-2639-4a24-81c6-ceb4bf365c3c}	2016-01-25 20:37:33.21525	2016-06-30 13:48:43.106991	With Family	Con Familiar	Mit Familien	En Famille	t	0
+2	etudiant	Le parcours construit par les créateurs de Rennes en poche!	etudiant.svg	{f72549d6-d03d-4a60-b8d2-f44da6234c5b,7bb84a5f-0718-4087-bb8d-4c81987a73eb,440a1dab-7762-43e2-ae60-f6ce8884fdd0,5a57fd26-efc6-4c5d-b9e1-f5463618f3a0,b58c6741-6b99-4b3a-b978-81f2ede096dc,1fd79395-75d0-471e-a7c1-4893225bbc5f,a550f828-0f47-41ed-9f1b-6a69c9f1307c,6aee1d01-9725-42c0-bfef-efcce6db2db6,65589478-f1e3-4e9a-9c7c-ac9f439d2123,74d0e0d7-ae8b-4eb6-93b6-3b0c0bdfbd42,7475dbf1-ab03-41ae-b7e7-600e171e34d5,683f5f42-cb35-4e5c-b960-5d16c39543fe,da1852f2-8111-4aa2-ae9a-b773c39d3dfa,fb9aee59-2dd9-472e-9ee8-8bb0f1be2441,0971a84a-3f05-4dc9-b77b-1de19a196dbc,4f68f5ae-dbae-4cc4-b52f-5cd31b087bd5,52170362-0c9a-49d4-87de-123021117b56,2354e4d5-5d07-4346-aaaf-8835540fcd91,a8de43ed-c734-4562-8be6-91e652f37b3d}	2016-01-22 09:48:22.249233	2016-07-01 08:04:31.733018	Student	Estudiante	Schuler	Etudiant	t	1
+5	RACDC	Le parcours de la rédactrice de Rennes à Coup de Coeur	racdc.svg	{bc56cf23-99e9-47c6-aa30-37b9c01a713d,72d4e987-8171-4856-9d40-9ff10e686f58,27976c37-72ef-4761-976c-052185abe954,32db408f-e777-4ecb-8b0e-b7b23cc43a43,8a8609b4-a88a-46af-9aec-cc375c99fea4,3dd7d0af-b3ff-4dd5-9a7a-3c068041cda9,617082e3-c790-4ae0-94d3-77b6c52914ab,2e114e51-74b8-498b-924f-80bb2821ef58,effc6a7a-fa0e-4da8-8838-4971ebd837ab,ea43a7cc-9c96-481a-a67a-3bbb0073b8ba,a267d65e-86f2-4a81-9031-d01b315054cb,1878f9c4-cff9-43e4-a54d-9aadc3cb53db}	2016-05-12 14:16:16.528524	2016-07-01 08:15:50.450543	A Coup de Coeur	A Coup de Coeur	A Coup de Coeur	A Coup de Coeur	t	2
 \.
 
 
@@ -2586,6 +1599,11 @@ eb90b58b-ae08-46fa-8526-641f0e3f0d67	utilisateur réel	2016-06-27 08:12:40.90203
 b58b72d5-14bb-4607-ac82-5a6cbb649bb2	utilisateur réel	2016-06-27 13:34:58.712158	2016-06-27 13:34:58.712158
 c9f5ba26-3b75-4b7b-b916-6b2992773956	utilisateur réel	2016-06-27 14:57:47.495588	2016-06-27 14:57:47.495588
 1ea6a967-bf29-4bea-9652-b8b9fc05ec8f	utilisateur réel	2016-06-27 15:56:50.495686	2016-06-27 15:56:50.495686
+4e6c1781-5ced-4bad-b494-a76909630c3c	utilisateur réel	2016-06-30 08:41:57.37582	2016-06-30 08:41:57.37582
+56a6c66b-695c-433c-9e47-66a5f42f351e	utilisateur réel	2016-06-30 08:56:54.45518	2016-06-30 08:56:54.45518
+01a5f884-e70a-4e31-970b-fecf58f61cbc	utilisateur réel	2016-07-01 07:44:21.87122	2016-07-01 07:44:21.87122
+3bbbfaff-41c9-47c9-8e9d-b834c67ac1b3	utilisateur réel	2016-07-01 07:57:16.881843	2016-07-01 07:57:16.881843
+f770bbcc-79cc-4d68-81e7-37d07dba42e6	utilisateur réel	2016-07-01 08:08:22.798894	2016-07-01 08:08:22.798894
 \.
 
 
@@ -2662,6 +1680,7 @@ COPY schema_migrations (version) FROM stdin;
 20160623112608
 20160623113934
 20160628125700
+20160630085539
 \.
 
 
@@ -2670,26 +1689,28 @@ COPY schema_migrations (version) FROM stdin;
 --
 
 COPY sscategories (id, nom, created_at, updated_at, catparent, en, esp, de, ko, jap, stat, ssmenu) FROM stdin;
+103	Tabac	2016-06-29 07:53:01.287278	2016-06-30 08:39:56.954546	13	Smoking	Tobacco	Tabak	\N	\N	6	f
 82	Cours particulier	2016-01-23 16:00:31.12981	2016-06-27 12:44:57.683573	7	Private lessons	Clases particulares	Privatunterricht	\N	\N	2	f
 64	Papeterie	2016-01-23 15:05:38.028619	2016-06-29 13:48:55.792815	6	Stationery	Papelería	Briefpapier	\N	\N	2	f
-103	Tabac	2016-06-29 07:53:01.287278	2016-06-29 14:44:51.530863	13	Smoking	Tobacco	Tabak	\N	\N	5	f
+89	Occasion	2016-01-25 20:05:28.708505	2016-06-30 08:42:26.151373	13	Second Hand	Segunda mano	Gebraucht	\N	\N	11	f
 30	Spectacle	2016-01-21 19:45:28.06856	2016-02-01 11:47:23.142435	6	Spectacles	Espectáculos	Brille	\N	\N	0	f
+87	Entretien Auto-Vélo	2016-01-25 20:02:48.546078	2016-06-30 11:52:46.047459	7				\N	\N	0	f
+80	Lingerie	2016-01-23 15:58:11.744062	2016-06-30 11:58:35.415571	4	Lingerie	Ropa interior	Dessous	\N	\N	24	t
 100	Traiteur	2016-01-26 12:35:18.151767	2016-06-29 07:24:48.527137	1	Delicatessen	Delicatessen	Feinkost	\N	\N	0	f
 85	Produits surgelés	2016-01-25 19:59:17.240545	2016-06-24 09:42:47.078611	1	Frozen products	Productos congelados	Tiefkühlprodukte	\N	\N	1	f
-87	Auto	2016-01-25 20:02:48.546078	2016-06-15 08:56:41.789493	7	Car equipment	Accesorios para vehículos	Auto geräte	\N	\N	0	f
 0	(Sans catégories)	2016-01-21 00:00:00	2016-06-14 09:54:20.987354	15				\N	\N	0	f
 51	Fleuriste	2016-01-21 19:52:31.26915	2016-06-20 07:43:31.16114	3	Florist	Floristería	"der blumenhändler"	\N	\N	1	f
 71	Quincaillerie	2016-01-23 15:33:07.808589	2016-06-29 08:06:31.944945	3	Hardware	Ferretería	Hardware	\N	\N	1	f
+12	Boucherie	2016-01-21 19:37:42.846113	2016-07-01 07:25:47.338775	1	Butchery	Carnicería	Schlächterei	\N	\N	405	f
 2	Coiffeur	2016-01-21 18:50:57.242613	2016-06-29 09:11:20.793895	5	Hairdresser	Peluquería	Friseur	\N	\N	4	t
 39	Salon de beauté	2016-01-21 19:48:49.687125	2016-06-29 09:15:09.518818	5	Beauty care	Cuidado de la belleza	Schönheitspflege	\N	\N	0	f
+75	Charcuterie	2016-01-23 15:48:10.285359	2016-07-01 07:25:47.898058	1	Cold meats	Embutidos	Aufschnitt	\N	\N	76	f
 72	Adulte	2016-01-23 15:39:48.956471	2016-06-23 11:40:20.994445	15	Adult	Adultos	Erwachsener			0	f
 14	Pâtisserie	2016-01-21 19:38:09.529139	2016-06-22 12:39:24.226907	1	Cake Shop	Panadería	Backwaren			4	f
 41	Optique	2016-01-21 19:49:06.316148	2016-06-29 09:16:11.618356	5	Optician	Óptica	Optiker	\N	\N	9	f
-80	Lingerie	2016-01-23 15:58:11.744062	2016-06-24 12:06:10.517842	4	Lingerie	Ropa interior	Dessous	\N	\N	23	t
 11	Pharmacie	2016-01-21 19:12:38.001915	2016-06-29 09:16:38.249025	5	Pharmacy	Farmacia	Apotheke	\N	\N	0	f
 104	Esthetique	2016-06-29 09:57:15.549917	2016-06-29 09:57:15.549917	5				\N	\N	0	f
 4	Épicerie	2016-01-21 18:58:57.580268	2016-06-29 11:43:43.827349	1	Grocery store	Tienda de comestibles	Lebensmittelmarkt	\N	\N	17	f
-12	Boucherie	2016-01-21 19:37:42.846113	2016-06-29 12:55:38.536297	1	Butchery	Carnicería	Schlächterei	\N	\N	395	f
 93	Snack	2016-01-26 11:15:49.28587	2016-02-01 11:49:19.472659	8	Snack food	Pasabocas/Bocadillos	Snack-food-	\N	\N	0	f
 3	Cinéma	2016-01-21 18:58:18.024158	2016-02-01 20:22:12.359431	6	Cinema	Cine	Kino	\N	\N	0	f
 37	Photographie	2016-01-21 19:47:01.502495	2016-01-24 14:43:36.06944	7	Photography	Fotografía	Fotografie	\N	\N	0	f
@@ -2702,44 +1723,42 @@ COPY sscategories (id, nom, created_at, updated_at, catparent, en, esp, de, ko, 
 58	Femme	2016-01-23 14:48:20.716097	2016-06-09 12:35:18.934058	15	Woman	Mujer	Frau	\N	\N	0	f
 59	Homme	2016-01-23 14:48:41.842093	2016-06-09 12:35:33.506577	15	Man	Hombre	Mann	\N	\N	0	f
 62	Mixte	2016-01-23 14:51:28.026199	2016-06-09 12:35:50.871987	15	Mixed	Mixto	Gemischt	\N	\N	0	f
-89	Occasion	2016-01-25 20:05:28.708505	2016-06-29 14:44:52.569808	13	Second Hand	Segunda mano	Gebraucht	\N	\N	10	f
 101	Cordonnerie	2016-01-26 18:25:20.352495	2016-06-29 13:19:56.870328	7	Shoemaker	Zapatería	Schuster	\N	\N	3	f
-75	Charcuterie	2016-01-23 15:48:10.285359	2016-06-30 07:09:54.48917	1	Cold meats	Embutidos	Aufschnitt	\N	\N	74	f
-46	Fast food	2016-01-21 19:50:46.376466	2016-06-20 14:44:41.864165	8	Fast food	Comida rápida	Fast food	\N	\N	1	f
 88	Inconnu	2016-01-25 20:04:52.172757	2016-06-14 09:56:12.622628	15	Unknown	Desconocido	Unbekannt	\N	\N	0	f
-47	Glacier	2016-01-21 19:51:03.259802	2016-06-22 12:53:13.057368	8	Ice cream shop	Heladería	Eiscreme	\N	\N	4	f
 48	Internationnal	2016-01-21 19:51:15.54819	2016-06-17 11:58:22.113535	8	Internationnal	Internacional	Internationnal	\N	\N	2	f
 15	Poissonnerie	2016-01-21 19:38:44.660964	2016-06-22 12:43:03.375801	1	Fish	Pescadería	Fisch	\N	\N	1	f
 65	Sport	2016-01-23 15:05:56.172007	2016-06-22 13:06:41.659069	6	Sport	Deporte	Sport	\N	\N	2	f
+79	Boissons	2016-01-23 15:57:27.260523	2016-07-01 07:25:46.780396	1	Beverage	Bebida	Getrank	\N	\N	16	f
 19	Électroménager	2016-01-21 19:42:13.394027	2016-06-22 12:53:49.097391	3	Home appliance	Electrodomésticos	Haushaltsgerät	\N	\N	3	f
-49	Bar/Café	2016-01-21 19:51:32.713339	2016-06-24 11:31:55.680041	8	Bar / Cafe	Bar / Café	Bar cafe	\N	\N	32	f
+49	Bar/Café	2016-01-21 19:51:32.713339	2016-07-01 07:37:32.719574	8	Bar / Cafe	Bar / Café	Bar cafe	\N	\N	37	f
+6	Crêperie	2016-01-21 19:08:01.362594	2016-07-01 07:37:33.17794	8	Creperie	Crepería	Crêperie	\N	\N	73	f
+67	Art et Decoration	2016-01-23 15:08:29.999981	2016-06-30 08:42:24.951774	6	Art	Arte	Kunst.	\N	\N	13	f
 84	Discothèque	2016-01-23 16:10:10.978951	2016-06-29 13:08:56.159738	6	Discotheque	Discoteca	Diskothek	\N	\N	10	f
-6	Crêperie	2016-01-21 19:08:01.362594	2016-06-24 07:21:06.237869	8	Creperie	Crepería	Crêperie	\N	\N	70	f
-67	Art et Decoration	2016-01-23 15:08:29.999981	2016-06-29 13:08:56.876118	6	Art	Arte	Kunst.	\N	\N	11	f
+46	Fast food	2016-01-21 19:50:46.376466	2016-07-01 07:37:33.673914	8	Fast food	Comida rápida	Fast food	\N	\N	3	f
+53	Antiquités	2016-01-22 19:13:16.87778	2016-07-01 07:58:16.996772	3	Ancient history	Antigüedades	Altertum	\N	\N	4	f
+13	Boulangerie	2016-01-21 19:37:59.331381	2016-07-01 07:59:37.676642	1	Bakery	Panadería	Backwaren	\N	\N	170	f
 50	Opérateur mobile	2016-01-21 19:52:06.951006	2016-06-29 13:19:56.370718	7	Mobile operator	Operador móvil	Mobilfunkbetreiber	\N	\N	14	f
 17	Fruits/Légumes	2016-01-21 19:39:12.890636	2016-06-29 12:55:39.043377	1	Fruits and vegetables	Verduras Frutas	Obst und gemüse	\N	\N	9	f
 36	Blanchisserie	2016-01-21 19:46:48.981221	2016-06-29 13:20:58.408849	7	Self-service laundry	Lavandería	Waschsalon	\N	\N	3	f
-53	Antiquités	2016-01-22 19:13:16.87778	2016-06-29 11:58:40.855876	3	Ancient history	Antigüedades	Altertum	\N	\N	3	f
-63	Musique	2016-01-23 14:52:37.727126	2016-06-29 13:48:56.405827	6	Music	Música	Musik	\N	\N	4	f
+21	Chaussures	2016-01-21 19:43:14.929924	2016-07-01 08:06:52.744174	4	Shoes	Calzado	Die schuhe	\N	\N	170	t
+16	Confiserie	2016-01-21 19:38:57.365826	2016-06-30 09:19:59.409882	1	Confectionery	Confitería	"confiserie"	\N	\N	57	f
 9	Librairie	2016-01-21 19:10:47.785037	2016-06-29 13:48:57.043702	6	Bookstore	Librería	"buchhandlung"			4	f
-16	Confiserie	2016-01-21 19:38:57.365826	2016-06-29 14:20:39.524698	1	Confectionery	Confitería	"confiserie"	\N	\N	56	f
+69	Jeux	2016-01-23 15:11:23.592726	2016-06-30 09:28:10.433126	6	Gaming	Juego	Gaming	\N	\N	4	f
+63	Musique	2016-01-23 14:52:37.727126	2016-06-30 09:28:10.86962	6	Music	Música	Musik	\N	\N	5	f
 57	Maroquinerie	2016-01-23 14:47:15.028283	2016-06-24 13:12:57.246072	4	Leather Goods	Marroquinería	"lederwaren"	\N	\N	27	f
-24	Vêtement	2016-01-21 19:43:52.087807	2016-06-24 11:14:27.764263	4	Clothing	Ropa	Kleidung	\N	\N	33	t
-94	Cigarette électronique	2016-01-26 11:20:25.075006	2016-06-29 14:44:50.958922	13	Electronic cigarette	Cigarrillo electrónico	Elektrische zigarette	\N	\N	8	f
+94	Cigarette électronique	2016-01-26 11:20:25.075006	2016-06-30 09:42:24.291907	13	Electronic cigarette	Cigarrillo electrónico	Elektrische zigarette	\N	\N	9	f
+24	Vêtement	2016-01-21 19:43:52.087807	2016-06-30 11:58:34.706592	4	Clothing	Ropa	Kleidung	\N	\N	34	t
+27	Bijouterie	2016-01-21 19:44:31.883859	2016-06-30 11:58:36.11573	4	Jewelry store	Joyería	Juwelier	\N	\N	27	f
 61	Sandwicherie	2016-01-23 14:50:09.312938	2016-06-29 08:54:09.689506	8	Sandwich	Sándwich	Sandwich	\N	\N	2	f
-27	Bijouterie	2016-01-21 19:44:31.883859	2016-06-24 12:06:09.246551	4	Jewelry store	Joyería	Juwelier	\N	\N	26	f
-79	Boissons	2016-01-23 15:57:27.260523	2016-06-30 08:01:45.350931	1	Beverage	Bebida	Getrank	\N	\N	8	f
-13	Boulangerie	2016-01-21 19:37:59.331381	2016-06-30 08:01:45.994383	1	Bakery	Panadería	Backwaren	\N	\N	162	f
-21	Chaussures	2016-01-21 19:43:14.929924	2016-06-29 12:56:01.654344	4	Shoes	Calzado	Die schuhe	\N	\N	168	t
 40	Parfumerie	2016-01-21 19:48:58.268442	2016-06-29 09:15:42.776132	5	Perfumery	Perfumería	"parfümerie"	\N	\N	17	f
 44	Sante	2016-01-21 19:49:53.655682	2016-06-29 09:32:38.029592	5	Health			\N	\N	2	f
-69	Jeux	2016-01-23 15:11:23.592726	2016-06-29 13:04:14.439938	6	Gaming	Juego	Gaming	\N	\N	3	f
 33	Monument	2016-01-21 19:45:58.740501	2016-06-29 13:04:15.165477	6	Monument	Monumento	Denkmal	\N	\N	19	f
 8	Kebab	2016-01-21 19:08:50.018809	2016-06-29 13:04:15.836401	8	Kebab	Kebab	Şiş kebap	\N	\N	2	f
 56	Restaurant	2016-01-23 14:36:42.983035	2016-06-29 13:04:16.559847	8	Restaurant	Restaurante	Das restaurant	\N	\N	3	f
 77	Salon de thé	2016-01-23 15:50:57.347481	2016-06-29 13:04:17.32464	8	Tea Room	Salón de té	Tee raum	\N	\N	3	f
 68	Informatique	2016-01-23 15:08:52.129757	2016-06-29 13:08:53.323542	3	IT	Informática	Italienisch	\N	\N	7	f
 83	Meuble	2016-01-23 16:03:53.361448	2016-06-29 13:08:54.039048	3	Furniture	Mobiliario	Möbel	\N	\N	5	f
+47	Glacier	2016-01-21 19:51:03.259802	2016-07-01 07:20:25.827176	8	Ice cream shop	Heladería	Eiscreme	\N	\N	5	f
 \.
 
 
@@ -2838,10 +1857,10 @@ SELECT pg_catalog.setval('tokens_id_seq', 63, true);
 --
 
 COPY tutos (id, fr, de, esp, en, page, created_at, updated_at) FROM stdin;
-3	Cliquez sur une categorie ci-dessous pour en afficher les tags.  Ajoutez en plusieurs. Lorsque vous avez fini, cliquez sur l'icone en haut sur la droite pour continuer.				select	2016-06-20 14:08:48.946802	2016-06-20 14:08:48.946802
 2	Commencez en choisissant l'un des parcours que la CCI de Rennes vous propose				predef	2016-06-20 14:08:28.583345	2016-06-24 13:10:15.745186
 1	Bienvenue. Cette barre en bas vous permet de naviguer dans l'application. De gauche à droite : 'Les parcours prédefinis', 'Les parcours personnalisés', 'rechercher', 'changer de langue', 'options'"				footer	2016-06-20 14:08:14.658822	2016-06-24 13:26:53.805371
 4	Ici vous pouvez accéder aux informations d'un magasin et modifier votre parcours (remplacer un magasin / supprimer une étape) Vous pouvez aussi utiliser la barre de recherche pour ajouter un magasin à votre parcours.				persoTop	2016-06-20 14:09:01.728685	2016-06-24 13:29:50.599046
+3	Choisissez les magasins dans les activités qui vous plaisent. Ensuite, cliquez sur l'icône en haut à droite pour comfirmer votre sélection. 				select	2016-06-20 14:08:48.946802	2016-06-30 11:22:36.646379
 \.
 
 
@@ -2853,217 +1872,10 @@ SELECT pg_catalog.setval('tutos_id_seq', 4, true);
 
 
 --
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: rails
---
-
-COPY users (id, email, username, status, salt, password_digest, created_at, updated_at) FROM stdin;
-3	admin@hotmail.fr	admin	admin	\N	$2a$10$MVDV69oZPDCGsteKbQ1NqOlG1A8AZw2pusR8tBxDGhbwBtfQXUEM.	2016-03-29 10:29:11.487702	2016-03-29 10:29:11.487702
-2	leopoldofr@hotmail.fr	leopoldofr	promoted	\N	$2a$10$DPx08cIOGOd05oawFolJ/.BmxTwmQP.1UponG82kHhU/wTxfWm7hu	2016-03-24 17:57:33.039162	2016-05-30 14:36:36.443337
-19	contact@rennespoche.fr	CCI	admin	\N	$2a$10$cauQz3/6n631rFOpponhfuGbLEKNozPnK7QXh7RcSWtknXTMO9dY6	2016-06-01 12:09:32.177844	2016-06-01 12:09:43.762915
-21	basic@hotmail.fr	basic	basic	\N	$2a$10$eGnO.B4b9W1g6jiJLfAzEOXmRCHLHQcwppr.8Ra5OWAvauW9cINsi	2016-06-17 07:32:44.759588	2016-06-17 07:32:44.759588
-24	leo@hotmail.fr	leo	promoted	\N	$2a$10$KrADfD6zyl5o1/s8YS4RGu/G.YkvqOvsB0d8KcO2Fx90PZ32quqsi	2016-06-24 12:00:45.850286	2016-06-24 12:00:45.850286
-25	trololo@machin.com	trololo	promoted	\N	$2a$10$WGjZ4Diz2QNtiorVXQO1nuwfe8ch71smLuB26DPM8fdBv9eBZxl/i	2016-06-24 12:38:16.729261	2016-06-24 12:38:16.729261
-26	tank@hotmail.fr	tank	promoted	\N	$2a$10$B8WHik1IKJWvGigxg3eX3.p7Cm3v5DZ3d6BmQ2dmQcp9HUtAn.eV6	2016-06-24 12:47:25.125559	2016-06-24 12:47:25.125559
-27	tanks@hotmail.fr	tanks	promoted	\N	$2a$10$ztCzpxDEqCQ6R/5hJBNvEOdZjrGMy3jdpkv8iKbeTAyHflZgumuXG	2016-06-24 12:50:00.324538	2016-06-24 12:50:00.324538
-29	leopoldo@hotmail.fr	leopoldo	promoted	\N	$2a$10$lmiOhfb.z8SkVhUrQrUuRuYFIVpG9B8p7NkHWE.dxVmDKyQQEJDo.	2016-06-29 08:00:27.286936	2016-06-29 08:00:27.286936
-\.
-
-
---
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: rails
 --
 
 SELECT pg_catalog.setval('users_id_seq', 29, true);
-
-
---
--- Name: blacklists_pkey; Type: CONSTRAINT; Schema: public; Owner: rails; Tablespace: 
---
-
-ALTER TABLE ONLY blacklists
-    ADD CONSTRAINT blacklists_pkey PRIMARY KEY (id);
-
-
---
--- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: rails; Tablespace: 
---
-
-ALTER TABLE ONLY categories
-    ADD CONSTRAINT categories_pkey PRIMARY KEY (id);
-
-
---
--- Name: commerces_pkey; Type: CONSTRAINT; Schema: public; Owner: rails; Tablespace: 
---
-
-ALTER TABLE ONLY commerces
-    ADD CONSTRAINT commerces_pkey PRIMARY KEY (id);
-
-
---
--- Name: notes_pkey; Type: CONSTRAINT; Schema: public; Owner: rails; Tablespace: 
---
-
-ALTER TABLE ONLY notes
-    ADD CONSTRAINT notes_pkey PRIMARY KEY (id);
-
-
---
--- Name: parcours_predefinis_pkey; Type: CONSTRAINT; Schema: public; Owner: rails; Tablespace: 
---
-
-ALTER TABLE ONLY parcours_predefinis
-    ADD CONSTRAINT parcours_predefinis_pkey PRIMARY KEY (id);
-
-
---
--- Name: phoneids_pkey; Type: CONSTRAINT; Schema: public; Owner: rails; Tablespace: 
---
-
-ALTER TABLE ONLY phoneids
-    ADD CONSTRAINT phoneids_pkey PRIMARY KEY (id);
-
-
---
--- Name: promotions_pkey; Type: CONSTRAINT; Schema: public; Owner: rails; Tablespace: 
---
-
-ALTER TABLE ONLY promotions
-    ADD CONSTRAINT promotions_pkey PRIMARY KEY (id);
-
-
---
--- Name: requests_pkey; Type: CONSTRAINT; Schema: public; Owner: rails; Tablespace: 
---
-
-ALTER TABLE ONLY requests
-    ADD CONSTRAINT requests_pkey PRIMARY KEY (id);
-
-
---
--- Name: resultats_pkey; Type: CONSTRAINT; Schema: public; Owner: rails; Tablespace: 
---
-
-ALTER TABLE ONLY resultats
-    ADD CONSTRAINT resultats_pkey PRIMARY KEY (id);
-
-
---
--- Name: sscategories_pkey; Type: CONSTRAINT; Schema: public; Owner: rails; Tablespace: 
---
-
-ALTER TABLE ONLY sscategories
-    ADD CONSTRAINT sscategories_pkey PRIMARY KEY (id);
-
-
---
--- Name: stats_pkey; Type: CONSTRAINT; Schema: public; Owner: rails; Tablespace: 
---
-
-ALTER TABLE ONLY stats
-    ADD CONSTRAINT stats_pkey PRIMARY KEY (id);
-
-
---
--- Name: tags_pkey; Type: CONSTRAINT; Schema: public; Owner: rails; Tablespace: 
---
-
-ALTER TABLE ONLY tags
-    ADD CONSTRAINT tags_pkey PRIMARY KEY (id);
-
-
---
--- Name: tokenmails_pkey; Type: CONSTRAINT; Schema: public; Owner: rails; Tablespace: 
---
-
-ALTER TABLE ONLY tokenmails
-    ADD CONSTRAINT tokenmails_pkey PRIMARY KEY (id);
-
-
---
--- Name: tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: rails; Tablespace: 
---
-
-ALTER TABLE ONLY tokens
-    ADD CONSTRAINT tokens_pkey PRIMARY KEY (id);
-
-
---
--- Name: tutos_pkey; Type: CONSTRAINT; Schema: public; Owner: rails; Tablespace: 
---
-
-ALTER TABLE ONLY tutos
-    ADD CONSTRAINT tutos_pkey PRIMARY KEY (id);
-
-
---
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: rails; Tablespace: 
---
-
-ALTER TABLE ONLY users
-    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
-
-
---
--- Name: index_commerces_on_user_id; Type: INDEX; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE INDEX index_commerces_on_user_id ON commerces USING btree (user_id);
-
-
---
--- Name: index_promotions_on_user_id; Type: INDEX; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE INDEX index_promotions_on_user_id ON promotions USING btree (user_id);
-
-
---
--- Name: index_requests_on_user_id; Type: INDEX; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE INDEX index_requests_on_user_id ON requests USING btree (user_id);
-
-
---
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: rails; Tablespace: 
---
-
-CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
-
-
---
--- Name: fk_rails_8ead8b1e6b; Type: FK CONSTRAINT; Schema: public; Owner: rails
---
-
-ALTER TABLE ONLY requests
-    ADD CONSTRAINT fk_rails_8ead8b1e6b FOREIGN KEY (user_id) REFERENCES users(id);
-
-
---
--- Name: fk_rails_d136760618; Type: FK CONSTRAINT; Schema: public; Owner: rails
---
-
-ALTER TABLE ONLY commerces
-    ADD CONSTRAINT fk_rails_d136760618 FOREIGN KEY (user_id) REFERENCES users(id);
-
-
---
--- Name: fk_rails_fffaee91fa; Type: FK CONSTRAINT; Schema: public; Owner: rails
---
-
-ALTER TABLE ONLY promotions
-    ADD CONSTRAINT fk_rails_fffaee91fa FOREIGN KEY (user_id) REFERENCES users(id);
-
-
---
--- Name: public; Type: ACL; Schema: -; Owner: postgres
---
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
 --
