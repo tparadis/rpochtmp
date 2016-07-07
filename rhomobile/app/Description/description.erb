@@ -38,7 +38,7 @@
       <script type="text/javascript" charset="utf-8" src="/public/customjs/trad.js"></script>
       <script src="/public/customjs/detailsCommerce.js"></script>
       <script>
-        var predefs = api.getAllPredef();
+        
         var adresseImg = "";
         var parcoursChoisi = "<%= $typeparcours %>";
         var data = api.getPredef(parcoursChoisi);
@@ -53,8 +53,7 @@
         adresseImg = "http://rpoch.istic.univ-rennes1.fr/static/images/" +data.image; 
 
         //affichage de l'image et de la description
-        //  $("table").append('<div align="left" class="ImgParcoursPredef"><img src="'+adresseImg+'" alt="image" style="height :150px"></div>')
-        
+        //  $("table").append('<div align="left" class="ImgParcoursPredef"><img src="'+adresseImg+'" alt="image" style="height :150px"></div>')';          
         //Nom du parcours
         switch(localStorage.getItem(0)){
           case "fr": $("#nompage").text("Parcours "+data.fr); break;
