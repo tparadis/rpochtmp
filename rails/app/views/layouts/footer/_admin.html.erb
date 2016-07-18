@@ -65,7 +65,7 @@ function onChangeSearch()
 		var isOnPredef = $("textarea[id=parcours_predefini_commerces").length;
 			//Requete AJAX
 			$.ajax({
-				url: 'https://rpoch.istic.univ-rennes1.fr/api/?req=suggestion&format=json&deb='+deb+'&indice='+nombre,
+				url: 'https://www.rennespoche.fr/api/?req=suggestion&format=json&deb='+deb+'&indice='+nombre,
 				type: 'GET',
 				dataType: 'json',
 				success: function(rep)

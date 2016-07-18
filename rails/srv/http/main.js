@@ -64,8 +64,8 @@ $(document).ready(function(){
 
 	//Actions sur le bouton de login
 	$("#BTN[name='login']").on("click", function(){
-		
-		window.location.replace("https://rpoch.istic.univ-rennes1.fr/api/bo");	
+
+		window.location.replace("/api/bo");	
 		
 	});
 
