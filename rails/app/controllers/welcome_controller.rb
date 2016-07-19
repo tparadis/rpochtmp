@@ -11,10 +11,13 @@ class WelcomeController < ApplicationController
   	#params.require(:req)
 
 	if !params.has_key?(:req)
-		redirect_to 'https://rpoch.istic.univ-rennes1.fr/api/bo'
+		redirect_to 'https://www.rennespoche.fr/api/bo'
 	end
 		
 	if request.headers["CONTENT_TYPE"] == "application/json" || (params.has_key?(:format) && params[:format]=="json")
+	
+
+	# Debut des requetes
 		if params[:req] == "path"
 			
 			if params.has_key?(:nombreMagasins) && params[:nombreMagasins].to_i > 0 
@@ -47,6 +50,7 @@ class WelcomeController < ApplicationController
 
 		end
 
+		#Afficher les informations d'un commerce
 		if params[:req] == "spec"
 			if params.has_key?(:nom) && params[:nom] != ""
 
@@ -124,7 +128,7 @@ class WelcomeController < ApplicationController
 
 
 
-		#requete qui va permettre de signaler des trucs de la part d'un utilisateur
+		#requete qui va permettre de signaler des erreurs de la part d'un utilisateur
 		if params[:req] == "signaler"
 
 			if params.has_key?(:magasin) && params.has_key?(:objet) && params.has_key?(:message) && params["magasin"]!= "" && params["objet"] != "" && params["message"] != ""
@@ -135,10 +139,12 @@ class WelcomeController < ApplicationController
 				render json: ""
 			end
 		end
-
+		
+		#Renvoie des commerces Random
 		if params[:req] == "rand"
 			render json: { :commerce => Interface.getRandomCommerce}
 		end
+		
 		#Obtenir les textes des tutoriaux
 		if params[:req] == "tutos" && params.has_key?(:page)
 
@@ -163,16 +169,13 @@ class WelcomeController < ApplicationController
 			end
 			
 			render json: @y
-
-
-
 		end
-
+		
+		#Verifier l'existence d'un uuid
 		if params[:req] == "userExists" && params.has_key?(:id)
 
 			@y = Phoneid.find_by(id: params[:id])
 			render json: !@y.blank?
-		
 		end
 		
 		#Retourne un magasin Random lorsque l'utilisateur veut un magasin avec des tags précis
@@ -186,7 +189,7 @@ class WelcomeController < ApplicationController
 		end
 
 
-		#requete sur les horaires
+		#requete sur les horaires d'un magasin
 		if params[:req] == "ouvert" && params.has_key?(:id) && params[:id] != ""
 		
 			@y = Interface.ouvertAuj?(params[:id])
@@ -194,11 +197,7 @@ class WelcomeController < ApplicationController
 
 		end
 
-
-
-
-
-
+		#Renvoie le parcours predefinis demandée (ou tous les parcours predefinis)
 		if params[:req] == "predef"
 
 			if params.has_key?(:nom) && params[:nom] != ""
@@ -212,17 +211,20 @@ class WelcomeController < ApplicationController
 			end
 		end
 		
+		#Renvoie toutes les categories
 		if params[:req] == "allcat"
 			i = Interface.getCategories
 			j = Interface.getSSCategories
 			#k = Interface.getTags
 			render json: {:sizecat => i.size(), :sizesscat => j.size(), :cat => i, :sscat => j}#, :tags => k  }		
 		end
+		#Renvoie une categorie
 		if params[:req] == "cat"
 			@y = Interface.getCategories
 			render json: {:size => @y.size(), :categories => @y}
 		end
 
+		#Renvoie une Sous Categorie
 		if params[:req] == "sscat" && params.has_key?(:id) && params[:id].to_i >0
 			@y = Interface.getSSCategorieByID(params[:id])
 			render json: {:tag => @y}
@@ -230,12 +232,13 @@ class WelcomeController < ApplicationController
 			@y = Interface.getSSCategories
 			render json: {:size => @y.size(), :sscategories => @y}
 		end
-
+		
 		if params[:req] == "tags"
 			@y = Interface.getTags
 			render json: {:size => @y.size(), :tags => @y}
 		end
 
+		#Renvoie toute les Sscategory
 		if params[:req] == "sscatAll"
 			@y = Sscategory.order("nom").all
 			render json: {:size => @y.size(), :sscategories => @y}
@@ -256,6 +259,7 @@ class WelcomeController < ApplicationController
 
 		end
 
+		#Requete pour créer un parcours prennant en compte un tableau de tags
 		if params[:req] == "yoloR"
 			
 			@y = Algo.getNewPath(params[:coord_dep_lat].to_f,params[:coord_dep_lng].to_f,
@@ -308,6 +312,7 @@ class WelcomeController < ApplicationController
 
 		end
 
+		#Memme requete que "aleatoire" mais avec un tableau de tags en parametre
 		if params[:req] == "aleatoireR" && params.has_key?(:tags) && params[:tags] != "" && params.has_key?(:uuid) && params[:uuid] != ""
 			@y = Interface.getAleatoireR(eval(params[:tags]), params[:uuid])
 
