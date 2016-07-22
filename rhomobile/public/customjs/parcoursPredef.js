@@ -33,7 +33,7 @@ function afficheParcours(){
 			'<div class="elem">'+
 				'<a href="/app/Description/requette_description?type_parcours='+data.parcourspredefs[i].name+'">'+
 					'<div class="container">'+
-						'<img src="http://rpoch.istic.univ-rennes1.fr/static/images/icons/'+data.parcourspredefs[i].image+'" alt="image" />'+
+						'<img src="http://www.rennespoche.fr/static/images/icons/'+data.parcourspredefs[i].image+'" alt="image" />'+
 						'<span>Rennes</span><br/>'+
 						'<div class="nom">'+txt+'</div>'+
 						'<div class="bordure"></div>'+

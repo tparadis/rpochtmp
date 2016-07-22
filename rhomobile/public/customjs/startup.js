@@ -1,3 +1,6 @@
+/*
+ * Au démarrage de l'appli on crée ou on recupere k'identenfiant utilisateur 
+ */
 $(document).ready(function(){
 	
 	//On récupère si besoin un identifiant (uuid) unique pour l'utilisateur

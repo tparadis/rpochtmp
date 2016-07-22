@@ -155,22 +155,3 @@ function writeCurrentState(state)
 	
 	fichier.close();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

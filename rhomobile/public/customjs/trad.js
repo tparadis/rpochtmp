@@ -1,3 +1,6 @@
+/*
+ * Charge toutes les catégorie et les textes selon la langue sélectionné
+ */
 var defaultLanguage;
 langageCourant = "";
 function getAllElementsWithAttribute(attribute)
@@ -126,15 +129,7 @@ function actualiserLanguage(){
 	}
 }
 
-
-
 window.onload = actualiserLanguage();
 $(document).ready(function(e){
-	
 	getLanguage();
-	
-	
 })
-
-
-

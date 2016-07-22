@@ -1,7 +1,7 @@
 
-//La magasin appelable de partout. Elle va permettre d'afficher un magasin
-//sans avoir √† rediriger l'utilisateur en le for√ßant √† refaire une requete GOOGLE API
-//Sur le long terme on passe d'environ 10 requetes api google √† ... une !
+//Le magasin appelable de partout. Elle va permettre d'afficher un magasin
+//sans avoir a rediriger l'utilisateur en le forÁant a† refaire une requete GOOGLE API
+//Sur le long terme on passe d'environ 10 requetes api google a† ... une !
 var id;
 var http = "http://"
 var https = "https://"
@@ -45,7 +45,7 @@ function checkIfImplemented()
 function afficheSpecificationMagasin()
 {
 	
-	//R√©cup√®re les parametres de l'URL
+	//Recupere les parametres de l'URL
 	if(descraffiche == false)
 	{
 		//On rÈcupËre l'ancien offset
@@ -65,14 +65,14 @@ function afficheSpecificationMagasin()
 			$("#botSpec").html("");
 			$("#sscat").html("");
 			
-			//On check que les boutons "boutonsParcours" soient bien jart√©s
+			//On check que les boutons "boutonsParcours" soient bien partis
 			$("#boutonsParcours").hide();
 			var data = api.getCommDetail(id);
 			
 			//Faire un truc
-			var url = "http://rpoch.istic.univ-rennes1.fr/static/images/";
+			var url = "http://www.rennespoche.fr/static/images/";
 			
-			//Si l'image est √† null
+			//Si l'image est a† null
 			try
 			{
 				console.log(data.commerce.image.url)
@@ -118,7 +118,7 @@ function afficheSpecificationMagasin()
 				descr = "(Aucune description disponible)";
 				console.log("Erreur: "+err);
 			}
-			
+			//affichage des horaires
 			var hor = "";
 			try{
 				var time = api.getHorraires(data.commerce.id);
@@ -126,7 +126,7 @@ function afficheSpecificationMagasin()
 					if(time.ouvert){
 						hor =	timeString(time);
 					}else{
-						hor = "Ferme Aujourd'hui"
+						hor = "Ferm&eacute "
 					}
 				}else{
 					hor ="Horaires non renseign&eacute;s"
@@ -142,6 +142,7 @@ function afficheSpecificationMagasin()
 			$("#midSpec").append("<div class='bordureBot'></div>");
 			$("#midSpec").append("<div class='description'>"+descr+"</div>");
 			
+			
 			//Affichage de la note
 			$("#midSpec").append("<div class='note'><ul class='noteList'></ul></div>");
 			for(var d = 0; d < data.commerce.note.charAt(0); d++){
@@ -150,7 +151,7 @@ function afficheSpecificationMagasin()
 			for(var d = data.commerce.note.charAt(0) ; d < 5; d++){
 				$(".noteList").append("<li class='notelist' ><div class='checkPasNote'><input type='hidden' disabled='disabled' name='selector'></div></li>");
 			}
-			
+			$("#midSpec").append("<div id ='com' class='commentaire'>Notez ce magasin</div>");
 			
 			
 			
@@ -160,8 +161,8 @@ function afficheSpecificationMagasin()
 			$("#botSpec").append("<div class='bordureBot'></div>");
 			
 			
+			//POP UP "HORRAIRES"
 			var affHor = false;
-				//POP UP "HORRAIRES"
 			$(".horaires").on("click", function () {
 				
 				if(time.horairesok && !affHor){
@@ -207,7 +208,7 @@ function afficheSpecificationMagasin()
 			
 			
 			//DEBUT "LAISSEZ UN COMMENTAIRE"
-			$("#botSpec").append("<div id ='com' class='commentaire'>Notez ce magasin</div>");
+		
 			
 			var comment = false;	
 			
@@ -414,6 +415,7 @@ function afficheSpecificationMagasin()
 	
 }
 
+//fonction d'affichage pour les horraires
 function weekString(day){
 	var res ;
 	if(!(day[0] == day[6] && day[0] == 0)){
@@ -450,7 +452,7 @@ function timeString(time){
 }
 
 
-//Converti un id de tag en nom  de cat√©gorie (ex: cat7)
+//Converti un id de tag en nom  de categorie (ex: cat7)
 function findSSCat(id,t){
 	
 	var nbSS = parseInt(localStorage.getItem("nbSsCat"));
@@ -471,7 +473,7 @@ function findSSCat(id,t){
 	
 }
 
-//Convertir en chaine de cat√©gorie
+//Convertir en chaine de categorie
 function findSSCatString(id){
 	
 	var nbSS = parseInt(localStorage.getItem("nbSsCat"));
@@ -492,7 +494,7 @@ function findSSCatString(id){
 	
 }
 
-//utilis√© dans parcours etudiant
+//utilise dans parcours etudiant
 //A modifier apres pour rendre le code plus lisible.
 function findCatSubCat(id){
 	    var data = api.getCommDetail(id);

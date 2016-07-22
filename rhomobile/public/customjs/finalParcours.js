@@ -1,10 +1,16 @@
+/*
+ * appelle les méthodes relatives a la gestion de parcours personnalisé
+ * Creation / changer un magasin / supprimer un magasin du parcours
+ * gère l'affichage de la liste de magasin pour la page finalParcours.erb 
+ */
 var dist_max = 1000;
 var res ="";
 
 $(document).ready(function() {
 	refresh();
 });
-
+//affiche la liste des magasins et les boutons d'affichage de details, de remplacement et de suppresion
+//si la liste ne contient pas de magasin on cache le bouton pour acceder carte 
 function refresh() {
 	$("#example tbody").html("");
 	dist_max = getDistMax();
@@ -59,6 +65,7 @@ function refresh() {
 	  }
 }
 
+//supprime un magasin et reaffiche la liste des commerces 
 function supprimerMag(numLigne) {
 	for(var i=numLigne ; i < sessionStorage.length ; i++) {
 		sessionStorage.setItem(i, sessionStorage.getItem(i+1));
@@ -67,6 +74,8 @@ function supprimerMag(numLigne) {
 	refresh();
 }
 
+//genere le parcours avec les sous-categories dans la session storage et stock les magasins dans la session storage
+//un magasin déjà present dans la session storage ne sera pas changé
 function genererParcours(){
 	var commerces = [];
 	var tags = [];
@@ -82,7 +91,6 @@ function genererParcours(){
 			var data =	api.statSSCat(mag[0]);
 			var dataa = api.statCat(mag[2]);
 		}
-		
 	}
 
 	var coord_dep_lat = localStorage.getItem("userlat");
@@ -94,17 +102,8 @@ function genererParcours(){
 	var coord_arr_lng = localStorage.getItem("userlng");
 	dist_max = getDistMax();
 	
-	
-	var start = new Date().getTime();
-	console.log(""+start);
-	
 	var data = api.genParcours2(coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, commerces,tags);
 	var data2 = api.genParcours(coord_dep_lat, coord_dep_lng, coord_arr_lat, coord_arr_lng, dist_max, commerces);
-	var end = new Date().getTime();
-	var time = end - start;
-	Rho.Log.error('Execution time: ' + time,"APP");
-	console.log(""+time);	
-	
 	
 		res = "";
 		$("tbody").html("");
@@ -112,8 +111,10 @@ function genererParcours(){
 			
 		
 		for (var i = 0 ; i < tags.length ; i++)
-	    {// remplacer la categorie parent par l'id magasin
+	    {
+	    	
 	    	var tagCourant
+			//si genParcours2 n'a rien renvoyé pour un magasin  on prend celui de genParcours
 	    	if(data.tags[i] != null){
 	    		 tagCourant= data.tags[i];
 	    	}else{
@@ -123,8 +124,6 @@ function genererParcours(){
 	    	var elem = sessionStorage.getItem(idtags[i]);
 	    	elem = JSON.parse(elem);
 
-		    	//Obligatoire si l'utilisateur a deja clique sur Generer un sessionStorage et qu'il veut remettre un autre magasin apres
-		    	//Sinon les id s'ajoutent indefiniments a la suite dans le meme tableau !
 		    	var id = tagCourant.id;
 		    	var tmp = elem.pop();
 		    	elem.pop();
@@ -136,16 +135,17 @@ function genererParcours(){
 		    	elem.push(tmp)
 		    	sessionStorage.setItem(idtags[i], JSON.stringify(elem));
 		    	
-		    	
 	    	}
 	    }
-	    window.location.replace("/app/FinalParcours/final_parcours");
-	    
+	    window.location.replace("/app/FinalParcours/final_parcours");	    
 	 }
+
+//on redirige vers la carte
 function afficherParcours() {
 	   $.get('/app/Personalisee/get_callback',{ parcours_perso: res });
 }
 
+//remplace un magasin
 function newMag(i) {
 	var elem = JSON.parse(sessionStorage.getItem(i));
 	var tag = elem[6];
@@ -157,7 +157,7 @@ function newMag(i) {
 		elem[2] = id;
 		elem[3] = data.magasin.enseigne.toLowerCase();
 		elem[4] = data.magasin.location_lat;
-		elem[5] = data.magasin.location_lng;
+		elem[5] = da.ta.magasin.location_lng;
 		sessionStorage.setItem(i, JSON.stringify(elem));
 	
 	}

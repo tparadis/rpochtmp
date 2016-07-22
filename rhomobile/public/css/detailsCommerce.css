@@ -137,6 +137,18 @@
 	padding-right:15px;
 	line-height:18px;
 }
+#midSpec .commentaire
+{
+	position:relative;
+	float:left;
+	width:100%;
+	font-family:descriptif;
+	text-align:center;
+	margin-top:10px;
+	height:auto;
+	text-shadow:none;
+	color:black;
+}
 .note .checkNote{
 	width:50px;
 	height:50px;
@@ -226,17 +238,7 @@
 	height:auto;
 	color:white;
 }
-#botSpec .commentaire
-{
-	position:relative;
-	float:left;
-	width:100%;
-	text-align:center;
-	margin-top:10px;
-	height:auto;
-	color:white;
-	text-shadow:none;
-}
+
 #botSpec .socialNetworks
 {
 	position:relative;

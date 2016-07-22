@@ -1,3 +1,8 @@
+/*
+ * Fichier regropuant les actions effectués par le footer
+ * 
+ */
+
 var prevRecherche = "";
 var timer;
 var filename;
@@ -57,7 +62,7 @@ function afficheTout()
 	});
 	
 	
-	//Truc pour les langues du languageSelect
+	//Affichage pour les langues du languageSelect
 	var box = $(".languageSelect");
 	var langs = ["fr", "en", "esp", "de"];
 	var equiv = ["FRANCAIS", "ENGLISH", "SPANISH", "DEUTSCH"];
@@ -79,7 +84,7 @@ function afficheTout()
 			
 		}
 
-	//Fin du truc pour les langues
+	//fin affichage pour les langues
 	
 	$(".elem").on("click", function(){
 		changeLanguage($(this).attr('name'));
@@ -110,7 +115,7 @@ function afficheTout()
 	var box = $("body").find(".languageSelect");
 	$(box).css("bottom", $("body").find("div[id='footer']").height() +"px");
 
-	//Truc pour ne pas supprimer le Grisement si le tuto était active
+	//Ne pas supprimer le Grisement si le tuto était active
 	
 	var pageName = location.pathname.split('/').slice(-1)[0];
 	var grisVisible = getCurrentState(pageName);
@@ -373,9 +378,9 @@ function onChangeSearch()
 	
 }
 
+//Ajoute le magasin au parcours
 function addMagasinParcours(id, i)
-{
-	
+{	
 	if(sessionStorage.length < 8)
 	{
 	
@@ -409,7 +414,7 @@ function addMagasinParcours(id, i)
 	
 }
 
-
+//affichage pour la page final parcours
 function refreshFinalParcours()
 {
 	
@@ -455,10 +460,3 @@ function refreshFinalParcours()
 	    	   
 	    	 }
 }
-
-
-
-
-
-
-

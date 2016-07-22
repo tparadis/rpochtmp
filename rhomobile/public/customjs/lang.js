@@ -1,8 +1,11 @@
+/*
+ * fichier regropuant tous les textes de l'application dne provennant pas du serveur et leur traduction
+ */
 var lang = {
 	"fr" : {
 	"rpoch" : "Rennes en poche",
 	"rpochapp" : "Application Rennes en poche",	
-	"creerParcours" : "Cr&eacuteer son propre parcours",
+	"creerParcours" : "Cr&eacuteez son propre parcours",
 	"votreParcours" : "Votre Parcours",
 	"completeParcours" : "Compl&eacutetez votre Parcours",
 	"genererParcours" : "G&eacuten&eacuterer le parcours",

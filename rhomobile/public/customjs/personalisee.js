@@ -1,3 +1,8 @@
+/*
+ * Affichage et traitements relatifs à la map (GOOGLE MAPS)
+ * 
+ */
+
 var waypointsArray = [];
 var i = 0;
 var lat = 0;
@@ -35,17 +40,16 @@ function initialize() {
 	
 	currentLang = localStorage.getItem("0");
 	
-	//On cleane la sessionStorage d'elements indesirables
+	//On clean la sessionStorage d'elements indesirables
 	if (sessionStorage.getItem("currentMagasin") != null) {
 		sessionStorage.removeItem("currentMagasin");
 	}
-	//if (sessionStorage.getItem("posRecuperer") != null) {
-	//	var valeurPosRecup = sessionStorage.getItem("posRecuperer");
 		var valeurPosRecup = 1;
 		sessionStorage.removeItem("posRecuperer");
-	//}
 	
 	magasins = [];
+
+	//pop up si geoloc non activé
 	if(!navigator.geolocation){
 		$("body").append("<div id='warningWindow' style='top:70px; z-index:20;'><div class='activgeo'>"
 	+"</div></div>");
@@ -57,7 +61,7 @@ function initialize() {
 		});	
 	}
 
-	
+	//pop up si un probleme de geoloc
 	if( (navigator.geolocation) && (localStorage.getItem("userlat") == "48.1113531") && (localStorage.getItem("userlng")=="-1.6786842999999863")){
 		$("body").append("<div id='warningWindow' style='top:70px; z-index:20;'><div class='probgeo'>"
 	+"</div></div>");
@@ -131,7 +135,6 @@ function initialize() {
 		var image = {
 
 			url: urlimg,
-			// url:localStorage.getItem("sscatimg"+magasin[0]),
 			scaledSize: new google.maps.Size(30, 30),
 			size: new google.maps.Size(30, 30),
 			origin: new google.maps.Point(0, 0),
@@ -152,8 +155,7 @@ function initialize() {
 		}
 	}
 
-	//sessionStorage.setItem("posRecuperer", 1);
-
+	//creation de la map
 	directionsService = new google.maps.DirectionsService;
 	directionsDisplay = new google.maps.DirectionsRenderer;
 	var mapCanvas = document.getElementById('map');
@@ -166,12 +168,9 @@ function initialize() {
 	}
 	map = new google.maps.Map(mapCanvas, mapOptions);
 	directionsDisplay.setMap(map);
-	//Comment to test on rhosimulator
 	
 	var image = {
-
-		url: "http://rpoch.istic.univ-rennes1.fr/static/images/googlePos.png",
-		// url:localStorage.getItem("sscatimg"+magasin[0]),
+		url: "http://www.rennespoche.fr/static/images/googlePos.png",
 		scaledSize: new google.maps.Size(30, 30),
 		size: new google.maps.Size(50, 50),
 		origin: new google.maps.Point(0, 0),
@@ -186,10 +185,12 @@ function initialize() {
 		icon: image
 	});
 
+	//on recupere la position de l'utilisateur toutes les 2 secondes 
 	window.setInterval(function() {
 			userMarker.setPosition({ lat: Number(localStorage.getItem("userlat")), lng: Number(localStorage.getItem("userlng")) });
 		}, 2000);
-	//Comment to test on rhosimulator
+	
+	//on ajoute les magasins a la map
 	var infowindow = new google.maps.InfoWindow();
 	for (i = 0; i < magasins.length; i++) {
 		lat = magasins[i].latitude;
@@ -208,6 +209,7 @@ function initialize() {
 				icon: magasins[i].image,
 				
 			});
+		//en cliquant sur le marqueur on ouvre une fenetre permettant d'aller sur detailsCommerce ou créer le chemin jusqu'au magasin  
 		google.maps.event.addListener(marker, 'click', (function(marker, i) {
 				return function() {
 
@@ -248,14 +250,14 @@ function initialize() {
 					
 				}
 			})(marker, i));
-		//attachMessage(marker, magasins[i].name);
 	}
 	;
-
+	//si on passe devant le magasin on incremente les statistiques
 	setInterval("passerDevant()", 5000);
 	
 }
 
+//fonction auxiliaire qui permet de trouver le nom de la categorie selon l'id
 function findCatSubCat(id) {
 	var data = api.getCommDetail(id);
 	var nbSS = parseInt(localStorage.getItem("nbSsCat"));
@@ -278,6 +280,7 @@ function findCatSubCat(id) {
 
 }
 
+//On incremente le nb de visite d'un magasin si on passe devant
 function passerDevant() {
 	if (navigator.geolocation) {
 

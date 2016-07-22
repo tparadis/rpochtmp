@@ -1,3 +1,7 @@
+/*
+ * Si le serveur ne repond pas ou que l'utilisateur n'a pas de connexion internet 
+ * on cache l'application 
+ */
 $(document).ready(function(e){
 
 
@@ -33,7 +37,7 @@ function beginTest()
 {
 	//Dans le hashmap {} ci dessous, nous aurions pu mettre l'adresse du serveur pour la cle 'host'
 	//mais cela ne marche pas et renvoi toujours non connecte quelle que soit l'url!
-	Rho.Network.detectConnection({host:"rpoch.istic.univ-rennes1.fr/static/",detectionTimeout:1000, port:443}, calledBack);
+	Rho.Network.detectConnection({host:"wwwrennespoche.fr/static/",detectionTimeout:1000, port:443}, calledBack);
 }
 
 function calledBack(params)
@@ -53,9 +57,6 @@ function calledBack(params)
 					window.location.replace("/app");
 				}
 				});
-			
-		
-		
 	}
 }
 
@@ -87,7 +88,7 @@ function detectNetwork(){
 		
 		if(appendOnce == true)
 		{
-			//Afficher un truc genre "pas internet"
+			//Afficher un truc "pas internet"
 			$('body').append(balise);
 			
 			
